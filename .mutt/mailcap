@@ -1,0 +1,3 @@
+text/html; nohup xdg-open %s>&/dev/null|sleep 4;description=HTML Text; nametemplate=%s.html; test=test -n "$DISPLAY"
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+image/*; mutt_bgrun xdg-open %s;
