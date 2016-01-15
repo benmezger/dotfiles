@@ -12,8 +12,8 @@ auto_update             "yes"
 bind_to_address			"localhost"
 
 audio_output {
-    type            "alsa"
-    name            "My sound card"
+    type            "osx"
+    name            "My Mac Device"
 	path			"/tmp/mpd.fifo"
     mixer_type      "software"
 }

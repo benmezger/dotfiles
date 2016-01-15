@@ -21,11 +21,14 @@ setopt nohashdirs
 setopt no_share_history
 
 # aliases
+# alias rm='trash-put'
 alias cdworkspace='cd ~/Workspace'
 alias resource='source ~/.zshrc'
 alias dotfiles="cd ~/Workspace/git/dotfiles"
 alias fucking='sudo'
 alias vi='vim'
+alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles YES && killall Finder"
+alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles NO && killall Finder"
 alias pip_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
@@ -55,7 +58,7 @@ eval "$(fasd --init auto)"
 
 # solarized colors for xterm
 if [[ -n $LINUX ]]; then
-	eval `dircolors $HOME/.dircolors`
+	eval `gdircolors $HOME/.dircolors`
 fi
 
 # key bindings

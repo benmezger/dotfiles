@@ -56,7 +56,7 @@ unset move
 set beep_new
 
 # solarized ;)
-source ~/.mutt/monokai.colors
+source ~/.mutt/solarized.muttrc
 
 # goobook
 bind editor <Tab> complete-query

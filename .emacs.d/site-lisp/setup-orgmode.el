@@ -102,15 +102,10 @@
 (setq org-plantuml-jar-path
       (expand-file-name "~/Workspace/plantuml.jar"))
 
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (setq org-file-apps
-                   '((auto-mode . emacs)
-                     ("\\.mm\\'" . default)
-                     ("\\.x?html?\\'" . default)
-                     ("\\.pdf\\'" . "zathura %s")))))
-
 ;; set default major mode :)
 (setq-default major-mode 'org-mode)
+
+;; preview latex in buffer
+(setq org-latex-create-formula-image-program 'dvipng)
 
 (provide 'setup-orgmode)

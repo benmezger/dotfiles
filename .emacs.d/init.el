@@ -1,8 +1,8 @@
 ;; let cask manage my packages
 
 (if (eq system-type 'darwin)
-    (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-  (require 'cask "/home/ephexeve/.cask/cask.el"))
+    (require 'cask "~/.cask/cask.el")
+  (require 'cask "~/.cask/cask.el"))
 (cask-initialize)
 
 ;; custom site lisp
@@ -35,7 +35,6 @@
 (require 'setup-w3m)
 (require 'setup-elfeed)
 (require 'setup-exec-path-from-shell)
-(require 'setup-xinput)
 (require 'setup-jabber)
 (require 'setup-twitter)
 (require 'setup-virtualenvwrapper)
