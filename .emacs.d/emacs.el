@@ -113,9 +113,11 @@ Null prefix argument turns off the mode."
       (append '(("\\.gpg$" . sensitive-mode))
               auto-mode-alist))
 
+; tell epa to use gpg2 instead
+(setq epg-gpg-program "gpg2")
+
 ;; Default browser
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium-browser")
+(setq browse-url-browser-function 'browse-url-default-macosx-browser)
 
 ;; start server if it's not running
 (load "server")

@@ -1,2 +1,6 @@
+.weechat/script/plugins.xml.gz
+*.swp
+.DS_Store
 *.pyc
+.#*
 .weechat/sec.conf

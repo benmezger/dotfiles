@@ -1,12 +1,9 @@
 ;; completion
 (require 'ycmd)
 (ycmd-setup)
-
 (set-variable 'ycmd-server-command '("python"))
 (add-to-list 'ycmd-server-command (expand-file-name "~/Workspace/git/ycmd/ycmd") t)
 (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
-(set-variable 'ycmd-extra-conf-whitelist '("~/Workspace/*"))
-
 (set-variable 'ycmd-request-message-level' -1)
 
 (require 'company-ycmd)
