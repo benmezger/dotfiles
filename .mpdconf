@@ -1,0 +1,19 @@
+# Required files
+db_file            "~/.config/mpd/database"
+log_file           "/tmp/mpd_log"
+
+# Optional
+music_directory         "~/Music"
+playlist_directory      "~/.config/mpd/playlists"
+pid_file 	            "/tmp/mpd_pid"
+state_file				"/tmp/mdp_state"
+sticker_file			"~/.config/mpd/sticker.sql"
+auto_update             "yes"
+bind_to_address			"localhost"
+
+audio_output {
+    type            "alsa"
+    name            "My sound card"
+	path			"/tmp/mpd.fifo"
+    mixer_type      "software"
+}

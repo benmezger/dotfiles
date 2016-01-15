@@ -1,0 +1,4 @@
+user_interface = alternative
+display_bitrate = yes
+statusbar_visibility = yes
+allow_for_physical_item_deletion = no
