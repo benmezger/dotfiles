@@ -40,10 +40,8 @@ export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j2"
-export GPGKEY=C6C2927E
-export EMAIL="mezger.benjamin@gmail.com"
-export NAME="Ben Mezger"
-export SMTPSERVER="smtp.gmail.com"
+export GPGKEY=0xF2403AC05942EE08
+export {http,https,ftp}_proxy="localhost:8118"
 
 # python
 VIRTUAL_ENV_DISABLE_PROMPT=1
