@@ -148,12 +148,12 @@ mode "resize" {
 }
 
 # backlight
-bindsym XF86MonBrightnessDown exec /home/ephexeve/Workspace/builds/usr/bin/light -U 10
-bindsym XF86MonBrightnessUp exec /home/ephexeve/Workspace/builds/usr/bin/light -A 10
+bindsym XF86MonBrightnessDown exec /home/ephexeve/workspace/builds/usr/bin/light -U 10
+bindsym XF86MonBrightnessUp exec /home/ephexeve/workspace/builds/usr/bin/light -A 10
 
 # keyboard backlight
-bindsym XF86KbdBrightnessDown exec /home/ephexeve/Workspace/builds/usr/local/bin/kbdlight down 10
-bindsym XF86KbdBrightnessUp exec /home/ephexeve/Workspace/builds/usr/local/bin/kbdlight up 10
+bindsym XF86KbdBrightnessDown exec /home/ephexeve/workspace/builds/usr/local/bin/kbdlight down 10
+bindsym XF86KbdBrightnessUp exec /home/ephexeve/workspace/builds/usr/local/bin/kbdlight up 10
 
 # alsa
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
