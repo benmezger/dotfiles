@@ -13,8 +13,8 @@ fi
 source $HOME/.zsh/detect_os.zsh
 
 export PATH="$HOME/.bin:$HOME/.virtualenvs/pyenv/bin"
-export PATH=$PATH":$HOME/Workspace/builds/bin:$HOME/Workspace/builds/usr/local/bin"
-export PATH=$PATH":$HOME/Workspace/builds/usr/bin"
+export PATH=$PATH":$HOME/workspace/builds/bin:$HOME/workspace/builds/usr/local/bin"
+export PATH=$PATH":$HOME/workspace/builds/usr/bin"
 export PATH=$PATH":/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH":$HOME/.go/bin"
 export GOPATH="$HOME/.go"
@@ -32,7 +32,7 @@ fi
 
 # exports
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Workspace
+export PROJECT_HOME=$HOME/workspace
 export EDITOR=vim
 export VISUAL=vim
 export LC_ALL=en_US.UTF-8

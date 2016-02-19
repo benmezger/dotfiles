@@ -21,9 +21,9 @@ setopt nohashdirs
 setopt no_share_history
 
 # aliases
-alias cdworkspace='cd ~/Workspace'
+alias cdworkspace='cd ~/workspace'
 alias resource='source ~/.zshrc'
-alias dotfiles="cd ~/Workspace/git/dotfiles"
+alias dotfiles="cd ~/workspace/git/dotfiles"
 alias fucking='sudo'
 alias vi='vim'
 alias pip_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
