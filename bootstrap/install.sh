@@ -22,7 +22,7 @@ function do_python {
     sudo pip2 install virtualenvwrapper
     ENVW=$(which virtualenvwrapper.sh)
     export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/Workspace
+    export PROJECT_HOME=$HOME/workspace
     source $ENVW
     mkvirtualenv pyenv
     workon pyenv
@@ -33,14 +33,14 @@ function do_python {
 
 function do_git {
     echo "Installing git stuff"
-    if [ ! -d "$HOME/Workspace" ]; then
-	mkdir -p $HOME/Workspace/git
-    elif [ ! -d "$HOME/Workspace/git" ]; then
-	mkdir $HOME/Workspace/git
+    if [ ! -d "$HOME/workspace" ]; then
+	mkdir -p $HOME/workspace/git
+    elif [ ! -d "$HOME/workspace/git" ]; then
+	mkdir $HOME/workspace/git
     fi
     sh git_packages.sh
     echo "configuring YCMD"
-    (cd $HOME/Workspace/git/ycmd/; git submodule update --init --recursive; ./build --clang-completer --gocode-completer)
+    (cd $HOME/workspace/git/ycmd/; git submodule update --init --recursive; ./build --clang-completer --gocode-completer)
     echo "Done git"
 }
 
