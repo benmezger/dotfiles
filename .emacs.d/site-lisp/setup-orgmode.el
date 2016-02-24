@@ -100,7 +100,7 @@
 
 ;; plantuml support for UML
 (setq org-plantuml-jar-path
-      (expand-file-name "~/Workspace/plantuml.jar"))
+      (expand-file-name "~/workspace/plantuml.jar"))
 
 (add-hook 'org-mode-hook
           '(lambda ()
