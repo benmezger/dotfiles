@@ -6,7 +6,7 @@
 # Usage: torswitch : default torrc
 #        torswitch -b : custom torrc
 
-# Copyright (c) 2015, Ben Mezger
+# Copyright (c) 2015, Ben Mezger, me@benmezger.nl
 # 
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
