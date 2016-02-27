@@ -41,3 +41,4 @@ NeoBundle "myusuf3/numbers.vim"
 NeoBundle "christoomey/vim-tmux-navigator"
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle "editorconfig/editorconfig-vim"

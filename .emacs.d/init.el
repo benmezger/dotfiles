@@ -40,6 +40,7 @@
 (require 'setup-virtualenvwrapper)
 (require 'setup-ag)
 (require 'setup-evil)
+(require 'setup-editorconfig)
 
 ;; session
 (add-hook 'after-init-hook 'session-initialize)
