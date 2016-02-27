@@ -36,7 +36,8 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'history-substring-search' \
   'prompt' \
-  'gpg'
+  'gpg' \
+  'syntax-highlighting'
 
 #
 # Editor
