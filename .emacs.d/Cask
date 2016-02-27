@@ -28,3 +28,5 @@
 (depends-on "virtualenvwrapper")
 (depends-on "ag")
 (depends-on "evil")
+(depends-on "editorconfig")
+(depends-on "editorconfig-fnmatch" :git "https://github.com/editorconfig/editorconfig-emacs.git")
