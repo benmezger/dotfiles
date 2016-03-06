@@ -1,13 +1,16 @@
 [user]
 	name = Ephexeve M
 	email = ephexeve@gmail.com
-	signingkey = 0xB0CC9F01C6C2927E
+	signingkey = 0xF18FAEF45EC9EF4D
 [core]
-	excludesfile = /home/ephexeve/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -39,9 +42,20 @@
 	web = instaweb --httpd=webrick
 	webstop = instaweb --httpd=webrick --stop
 	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
+	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/'d"
 	smudge = cat
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[credential]
+	helper = osxkeychain
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
