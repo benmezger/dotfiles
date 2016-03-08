@@ -148,12 +148,12 @@ mode "resize" {
 }
 
 # backlight
-bindsym XF86MonBrightnessDown exec /home/ephexeve/workspace/builds/usr/bin/light -U 10
-bindsym XF86MonBrightnessUp exec /home/ephexeve/workspace/builds/usr/bin/light -A 10
+bindsym XF86MonBrightnessDown exec /usr/bin/light -U 10
+bindsym XF86MonBrightnessUp exec /usr/bin/light -A 10
 
 # keyboard backlight
-bindsym XF86KbdBrightnessDown exec /home/ephexeve/workspace/builds/usr/local/bin/kbdlight down 10
-bindsym XF86KbdBrightnessUp exec /home/ephexeve/workspace/builds/usr/local/bin/kbdlight up 10
+bindsym XF86KbdBrightnessDown exec ~/workspace/builds/usr/local/bin/kbdlight down 10
+bindsym XF86KbdBrightnessUp exec ~/workspace/builds/usr/local/bin/kbdlight up 10
 
 # alsa
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -162,9 +162,11 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Shift+x exec ~/.bin/lock.sh
+
 bar {
   font pango: Inconsolata FontAwesome, Icons 8 
-  status_command i3blocks -c /home/ephexeve/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
   tray_output primary
   colors {
     statusline #999999
@@ -181,10 +183,10 @@ exec --no-startup-id sxhkd
 exec --no-startup-id nm-applet
 exec --no-startup-id xset dpms 600
 exec --no-startup-id xautolock -time 10 -locker ~/.bin/lock.sh
-exec --no-startup-id feh --bg-fill /home/ephexeve/Pictures/wallpaper.png
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec --no-startup-id dropbox
 exec sudo bash -c "echo 100000 > /proc/sys/fs/inotify/max_user_watches"
-exec --no-startup-id dunst -config /home/ephexeve/.config/dunst/dunstrc
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
 client.focused_inactive #073642 #073642 #93a1a1 #002b36
