@@ -42,6 +42,6 @@
 (require 'setup-ag)
 (require 'setup-evil)
 (require 'setup-editorconfig)
-
+(require 'ox-rst) ; https://github.com/masayuko/ox-rst
 ;; session
 (add-hook 'after-init-hook 'session-initialize)
