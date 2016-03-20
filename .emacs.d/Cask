@@ -29,3 +29,4 @@
 (depends-on "ag")
 (depends-on "evil")
 (depends-on "editorconfig" :git "https://github.com/editorconfig/editorconfig-emacs.git")
+(depends-on "htmlize")
