@@ -23,11 +23,6 @@ let g:neobundle#install_process_timeout = 1800
 
 source ~/.vim/plugins.vim
 
-" include user's extra bundle
-if filereadable(expand("~/.vimrc.local.bundles"))
-  source ~/.vimrc.local.bundles
-endif
-
 call neobundle#end()
 
 " vim config
@@ -73,12 +68,13 @@ let no_buffers_menu=1
 " let g:molokai_original = 1
 " highlight VertSplit ctermfg=1 ctermbg=0
 colorscheme monokai
+hi ColorColumn ctermbg=237 " overwrite defaults
 
 set mousemodel=popup
 set t_Co=256
 set nocursorline
-set guioptions=egmrti
-set gfn=Monospace\ 8
+" set guioptions=egmrti
+" set gfn=Monospace\ 8
 
 " if has("gui_running")
 " 	if has("gui_mac") || has("gui_macvim")
@@ -169,9 +165,9 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 au FileType make set noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
-if has("gui_running")
-	autocmd BufWritePre * :call TrimWhiteSpace()
-endif
+" if has("gui_running")
+"  	autocmd BufWritePre * :call TrimWhiteSpace()
+" endif
 
 if has('macunix')
 	vmap <C-x> :!pbcopy<CR>
@@ -236,7 +232,7 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 " vim-python
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=80
     \ formatoptions+=croq softtabstop=4 smartindent
     \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au BufRead,BufNewFile *.py set nosmartindent " python
