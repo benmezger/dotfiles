@@ -53,3 +53,8 @@ fi
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
+
+# change current mac-address
+function new-macaddr(){
+    sudo ifconfig $1 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')
+}

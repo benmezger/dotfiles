@@ -91,4 +91,3 @@ workon pyenv
 if [ -f ~/.zsh/funcs.zsh ]; then
 	source ~/.zsh/funcs.zsh
 fi
-
