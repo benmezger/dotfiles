@@ -1,7 +1,6 @@
 grasp
 ipython
-trash-cli
 rtv
-pip-accel
 goobook
 mackup
+
