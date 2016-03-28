@@ -4,14 +4,13 @@ echo "Copying etc files to /etc"
 sudo cp -rfv etc/* /etc/
 echo "Done copying files"
 
-ln -s `pwd`/ca-certificates.crt ~/.ssh/
+ln -s "$(pwd)/ca-certificates.crt ~/.ssh/"
 
 # install packages
 function do_aptget {
     package_file="package_file"
-    while read -r line
-    do
-	sudo apt-get install $line
+    while read -r line; do
+	    sudo apt-get install "$line"
     done < "$package_file"
 }
 
@@ -24,6 +23,7 @@ function do_python {
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/workspace
     source $ENVW
+
     mkvirtualenv pyenv
     workon pyenv
     pip install --upgrade pip setuptools
@@ -34,14 +34,30 @@ function do_python {
 function do_git {
     echo "Installing git stuff"
     if [ ! -d "$HOME/workspace" ]; then
-	mkdir -p $HOME/workspace/git
+	    mkdir -p "$HOME/workspace/git"
     elif [ ! -d "$HOME/workspace/git" ]; then
-	mkdir $HOME/workspace/git
+	    mkdir "$HOME/workspace/git"
     fi
+    
     sh git_packages.sh
     echo "configuring YCMD"
-    (cd $HOME/workspace/git/ycmd/; git submodule update --init --recursive; ./build --clang-completer --gocode-completer)
+    (cd "$HOME/workspace/git/ycmd/"; git submodule update --init --recursive; ./build --clang-completer --gocode-completer)
     echo "Done git"
+}
+
+
+function do_rvm {
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    
+    \curl -o /tmp/rvm-installer -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer
+    \curl -o /tmp/rvm-installer.asc -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer.asc
+    
+    gpg --verify /tmp/rvm-installer.asc /tmp/rvm-installer
+    rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+    
+    bash rvm-installer stable
+    rehash
+    rvm install ruby ruby-2.2.1
 }
 
 function do_zsh {
@@ -50,7 +66,7 @@ function do_zsh {
 	for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
 		  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	  done"
-    zsh $PREZTO
+    zsh "$PREZTO"
     echo "Done zsh."
 }
 
@@ -58,6 +74,7 @@ do_aptget
 do_python
 do_git
 do_zsh
+do_rvm
 
 MACKUP_BIN="$HOME/.virtualenvs/pyenv/bin/mackup"
 cp -r ../.mackup* ~/
