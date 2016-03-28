@@ -2,12 +2,12 @@
 
 set -e # exit if any non zero return code
 
-echo "Copying ca-certificates to .ssh"
-if [ ! -d "$HOME/.ssh" ]; then
-	mkdir $HOME/.ssh
+echo "Copying ca-certificates to $HOME/.certs"
+if [ ! -d "$HOME/.certs" ]; then
+	mkdir $HOME/.certs
 fi
 
-ln -fs $(pwd)/ca-certificates.crt $HOME/.ssh/ca-certificates.crt
+ln -fs $(pwd)/ca-certificates.crt $HOME/.certs/ca-certificates.crt
 
 function do_brew {
 	if [ ! hash brew 2>/dev/null ]; then
@@ -37,6 +37,20 @@ function do_python {
 	workon pyenv
 	pip install --upgrade pip setuptools
 	pip install -r requirements.txt
+}
+
+function do_rvm {
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    
+    \curl -o /tmp/rvm-installer -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer
+    \curl -o /tmp/rvm-installer.asc -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer.asc
+    
+    gpg --verify /tmp/rvm-installer.asc /tmp/rvm-installer
+    rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+    
+    bash rvm-installer stable
+    rehash
+    rvm install ruby ruby-2.2.1
 }
 
 function do_git {
@@ -81,4 +95,4 @@ do_python
 do_git
 do_zsh
 do_mackup
-
+do_rvm
