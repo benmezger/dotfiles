@@ -4,7 +4,6 @@ brew upgrade --all
 brew install python
 brew install vim
 brew install emacs --with-ctags --with-gnutls --with-mailutils --with-imagemagick --with-d-bus --with-cocoa
-brew install fortune
 brew install w3m
 brew install cask
 brew install fasd
@@ -24,6 +23,7 @@ brew install texinfo
 brew install ispell
 brew install valgrind --head
 brew install ghostscript
+brew install shellcheck
 
 brew tap homebrew/dupes
 brew install homebrew/dupes/gdb --with-brewed-python
@@ -44,5 +44,5 @@ brew cask install vagrant
 brew cask install java6
 brew cask install emacs
 brew cask install firefox
-brew cask install font-inconsolata
+brew cask install font-inconsolata-dz
 brew cask install font-inconsolata-for-powerline
