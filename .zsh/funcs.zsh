@@ -62,5 +62,5 @@ function new-macaddr(){
 function new-dns(){
     # args: "Wi-Fi", "Ethernet", etc
     # All DNS's are from opennicproject.org
-    networksetup -setdnsservers "$1" 50.116.23.211 107.150.40.234 107.170.95.180 50.116.40.226
+    networksetup -setdnsservers $1 50.116.23.211 107.150.40.234 107.170.95.180 50.116.40.226
 }
