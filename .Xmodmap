@@ -1,10 +1,1 @@
-keycode 232 = XF86MonBrightnessDown
-keycode 233 = XF86MonBrightnessUp
-
-keycode 237 = XF86KbdBrightnessDown
-keycode 238 = XF86KbdBrightnessUp
-
-keycode 94 = grave asciitilde grave asciitilde
-keycode 49 = section plusminus section plusminus
-
 pointer = 1 2 3 5 4 7 6 8 9 10 11 12
