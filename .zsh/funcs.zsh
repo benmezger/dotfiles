@@ -58,3 +58,9 @@ function mkd() {
 function new-macaddr(){
     sudo ifconfig $1 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')
 }
+
+function new-dns(){
+    # args: "Wi-Fi", "Ethernet", etc
+    # All DNS's are from opennicproject.org
+    networksetup -setdnsservers "$1" 50.116.23.211 107.150.40.234 107.170.95.180 50.116.40.226
+}
