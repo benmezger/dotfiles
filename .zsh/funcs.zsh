@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # generate git ignore
 function gitignore(){
     curl -L -s https://www.gitignore.io/api/$@;
@@ -45,8 +47,8 @@ if [ -d "$HOME/.zsh/bd/" ]; then
 fi
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add ~/.ssh/bdigi_ocean
+    eval `ssh-agent -s`
+    ssh-add ~/.ssh/bdigi_ocean
 fi
 
 # Create a new directory and enter it
@@ -57,4 +59,15 @@ function mkd() {
 # change current mac-address
 function new-macaddr(){
     sudo ifconfig $1 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')
+}
+
+function secure-dns(){
+    # DNS info: opennicproject.org
+    file='/etc/resolv.conf'
+    dns=('82.211.31.248' '193.183.98.154' '5.9.49.12' '185.83.217.248')
+    sudo /bin/su -c "cat /dev/null > $file"
+    
+    for d in $dns; do
+        sudo /bin/su -c "echo 'nameserver $d' >> $file"
+    done
 }
