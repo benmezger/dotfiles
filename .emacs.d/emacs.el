@@ -80,7 +80,7 @@
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
 ;; set font
-(set-frame-font "Inconsolata-dz-11")
+(set-frame-font "Inconsolata-dz-10")
 
 (define-minor-mode sensitive-mode
   "For sensitive files like password lists.
