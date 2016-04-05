@@ -165,7 +165,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+x exec ~/.bin/lock.sh
 
 bar {
-  font pango: Inconsolata FontAwesome, Icons 8 
+  font pango: Inconsolata-dz FontAwesome, Icons 8 
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   tray_output primary
   colors {
