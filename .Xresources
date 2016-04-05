@@ -15,4 +15,4 @@ rofi.fixed_num_lines: 1
 rofi.hmode: false
 rofi.terminal: st
 rofi.ssh-set-title: false
-rofi.font: Inconsolata 9
+rofi.font: Inconsolata-dz 9
