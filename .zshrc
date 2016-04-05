@@ -85,6 +85,6 @@ bindkey "^[[B" history-search-forward
 workon pyenv
 
 # extra
-if [ -f ~/.zsh/funcs.zsh ]; then
-	source ~/.zsh/funcs.zsh
+if [ -f ~/.zsh/utils.zsh ]; then
+	source ~/.zsh/utils.zsh
 fi
