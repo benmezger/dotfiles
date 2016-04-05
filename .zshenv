@@ -41,7 +41,6 @@ export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j2"
 export GPGKEY=0xF2403AC05942EE08
-export {http,https,ftp}_proxy="localhost:8118"
 
 # python
 VIRTUAL_ENV_DISABLE_PROMPT=1

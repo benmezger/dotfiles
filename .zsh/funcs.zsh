@@ -71,3 +71,7 @@ function secure-dns(){
         sudo /bin/su -c "echo 'nameserver $d' >> $file"
     done
 }
+
+function proxify(){
+    export {http,https,ftp}_proxy="localhost:8118"
+}
