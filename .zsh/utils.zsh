@@ -51,3 +51,8 @@ function secure-dns(){
 function proxify(){
     export {http,https,ftp}_proxy="localhost:8118"
 }
+
+function unproxify(){
+    unset {http,https,ftp}_proxy
+}
+
