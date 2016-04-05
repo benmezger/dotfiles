@@ -70,6 +70,17 @@ function do_zsh {
     echo "Done zsh."
 }
 
+function install_fonts {
+    mkdir $HOME/.local/share/fonts
+    curl -o /tmp/inconsolata.zip http://media.nodnod.net/Inconsolata-dz.otf.zip
+    curl -o /tmp/"Inconsolata-dz for Powerline.otf" \ 
+        https://github.com/powerline/fonts/blob/master/InconsolataDz/Inconsolata-dz%20for%20Powerline.otf
+
+    (unzip /tmp/inconsolata.zip; mv /tmp/Inconsolatad-dz.otf $HOME/.local/share/fonts/)
+    (mv /tmp/"Inconsolata-dz for Powerline.otf" $HOME/.local/share/fonts/)
+    fc-cache -fv 
+}
+
 do_aptget
 do_python
 do_git
