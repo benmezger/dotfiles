@@ -32,6 +32,7 @@ alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles NO && killa
 alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
 if [[ -n $OSX ]]; then
 	alias em="/usr/local/bin/emacsclient -ct"
