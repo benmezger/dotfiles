@@ -72,7 +72,9 @@ let no_buffers_menu=1
 " highlight BadWhitespace ctermbg=red guibg=red
 " let g:molokai_original = 1
 " highlight VertSplit ctermfg=1 ctermbg=0
-colorscheme monokai
+colorscheme base16-default
+let base16colorspace=256  " Access colors present in 256 colorspace
+hi ColorColumn ctermbg=237 " overwrite defaults
 
 set mousemodel=popup
 set t_Co=256
@@ -446,3 +448,4 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Gundo
 nnoremap <F4> :GundoToggle<CR>
+
