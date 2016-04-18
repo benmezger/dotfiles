@@ -67,12 +67,13 @@ let no_buffers_menu=1
 " highlight BadWhitespace ctermbg=red guibg=red
 " let g:molokai_original = 1
 " highlight VertSplit ctermfg=1 ctermbg=0
-colorscheme base16-default
+colorscheme base16-monokai
+set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 hi ColorColumn ctermbg=237 " overwrite defaults
 
 set mousemodel=popup
-set t_Co=256
+set t_Co=16
 set nocursorline
 " set guioptions=egmrti
 " set gfn=Monospace\ 8
