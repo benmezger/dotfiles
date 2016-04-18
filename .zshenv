@@ -45,3 +45,7 @@ export GPGKEY=0xF2403AC05942EE08
 # python
 VIRTUAL_ENV_DISABLE_PROMPT=1
 source $(which virtualenvwrapper.sh)
+
+# base16
+BASE16_SHELL="$HOME/workspace/git/base16-shell/base16-monokai.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
