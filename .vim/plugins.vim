@@ -42,3 +42,4 @@ NeoBundle "christoomey/vim-tmux-navigator"
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle "editorconfig/editorconfig-vim"
+NeoBundle "chriskempson/base16-vim"
