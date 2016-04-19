@@ -49,3 +49,9 @@ source $(which virtualenvwrapper.sh)
 # base16
 BASE16_SHELL="$HOME/workspace/git/base16-shell/base16-monokai.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+fi
