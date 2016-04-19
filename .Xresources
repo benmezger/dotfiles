@@ -28,8 +28,9 @@ URxvt*scrollTtyKeypress: true
 ! scrollback buffer in secondary screen
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
+! perl extensions
+URxvt.perl-ext-common: default,matcher,fullscreen
 ! clickable urls
-URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 ! to open and list recent urls via keyboard
@@ -50,6 +51,8 @@ URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0px
 URxvt*borderLess: false
+! fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Base16 Monokai
 ! Scheme: Wimer Hazenberg (http://www.monokai.nl)
