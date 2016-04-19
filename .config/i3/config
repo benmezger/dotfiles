@@ -30,13 +30,14 @@ font pango:inconsolata 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec --no-startup-id urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -run-list-command ". ~/zsh_aliases_functions.sh" -run-command "/bin/zsh -i -c '{cmd}'" -show run
+bindsym $mod+d exec --no-startup-id rofi -show run 
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -147,18 +148,14 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# backlight
-bindsym XF86MonBrightnessDown exec /usr/bin/light -U 10
-bindsym XF86MonBrightnessUp exec /usr/bin/light -A 10
-
-# keyboard backlight
-bindsym XF86KbdBrightnessDown exec ~/workspace/builds/usr/local/bin/kbdlight down 10
-bindsym XF86KbdBrightnessUp exec ~/workspace/builds/usr/local/bin/kbdlight up 10
-
 # alsa
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# backlight
+bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 15
+bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 15
 
 bindsym $mod+r mode "resize"
 
@@ -167,7 +164,6 @@ bindsym $mod+Shift+x exec ~/.bin/lock.sh
 bar {
   font pango: Inconsolata-dz FontAwesome, Icons 8 
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
-  tray_output primary
   colors {
     statusline #999999
     background #131D24
@@ -179,13 +175,11 @@ new_window 1pixel
 hide_edge_borders both
 
 # autostarts
-exec --no-startup-id sxhkd
 exec --no-startup-id nm-applet
 exec --no-startup-id xset dpms 600
 exec --no-startup-id xautolock -time 10 -locker ~/.bin/lock.sh
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
-exec --no-startup-id dropbox
-exec sudo bash -c "echo 100000 > /proc/sys/fs/inotify/max_user_watches"
+exec --no-startup-id killall -q xfce4-notifyd 
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
