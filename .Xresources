@@ -45,7 +45,7 @@ URxvt.url-select.underline: true
 ! cursor underline  
 URxvt*cursorUnderline: true
 ! scrollbar position
-URxvt*scrollBar_right: true
+URxvt*scrollBar: false
 ! no borders
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0px
