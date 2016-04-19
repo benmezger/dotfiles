@@ -18,7 +18,7 @@ rofi.ssh-set-title: false
 rofi.font: Inconsolata-dz 9
 
 ! URxvt
-URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10
+URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
 ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
@@ -29,7 +29,7 @@ URxvt*scrollTtyKeypress: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 ! perl extensions
-URxvt.perl-ext-common: default,matcher,fullscreen
+URxvt.perl-ext-common: default,matcher,fullscreen,tabbed
 ! clickable urls
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
@@ -53,6 +53,11 @@ URxvt*externalBorder: 0px
 URxvt*borderLess: false
 ! fullscreen
 URxvt.keysym.F11: perl:fullscreen:switch
+! tab colors
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
 
 ! Base16 Monokai
 ! Scheme: Wimer Hazenberg (http://www.monokai.nl)
