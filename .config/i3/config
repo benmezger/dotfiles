@@ -30,7 +30,7 @@ font pango:inconsolata 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -149,13 +149,13 @@ mode "resize" {
 }
 
 # alsa
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 # backlight
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 15
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 15
+bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 15
+bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 15
 
 bindsym $mod+r mode "resize"
 
