@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # screen powersave
 xset +dpms
 xset dpms 0 0 300
@@ -6,4 +8,4 @@ xset dpms 0 0 300
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # run urxvt daemon
-urxvtd --quiet --opendisplay --fork
+[[ -z "$(pidof urxvtd)" ]] && urxvtd --quiet --opendisplay --fork
