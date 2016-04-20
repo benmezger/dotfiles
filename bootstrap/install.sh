@@ -1,16 +1,12 @@
 #!/bin/bash
 
-echo "Copying etc files to /etc"
-sudo cp -rfv etc/* /etc/
-echo "Done copying files"
-
 ln -s "$(pwd)/ca-certificates.crt ~/.ssh/"
 
 # install packages
-function do_aptget {
+function pacman{
     package_file="package_file"
     while read -r line; do
-	    sudo apt-get install "$line"
+	    sudo pacman -S "$line"
     done < "$package_file"
 }
 
@@ -41,7 +37,7 @@ function do_git {
     
     sh git_packages.sh
     echo "configuring YCMD"
-    (cd "$HOME/workspace/git/ycmd/"; git submodule update --init --recursive; ./build --clang-completer --gocode-completer)
+    (cd "$HOME/workspace/git/ycmd/"; ./build --clang-completer --gocode-completer)
     echo "Done git"
 }
 
@@ -79,7 +75,7 @@ function install_fonts {
     fc-cache -fv 
 }
 
-do_aptget
+do_pacman
 do_python
 do_git
 do_zsh
