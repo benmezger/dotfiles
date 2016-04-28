@@ -5,6 +5,7 @@ source $HOME/.shell/detect-os
 
 # environments
 export PATH="${PATH}:$HOME/.bin"
+export PATH="${PATH}:$HOME/workspace/bin"
 
 if [[ -n $LINUX ]]; then
     export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python2"
