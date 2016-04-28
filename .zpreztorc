@@ -36,7 +36,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'prompt' \
   'gpg' \
-  'syntax-highlighting'
+  'syntax-highlighting' \
+  'ruby'
 
 #
 # Editor
