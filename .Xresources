@@ -1,20 +1,10 @@
-rofi.opacity: 85
-rofi.background: #272822
-rofi.foreground: #f8f8f2
-rofi.highlightbg: #49483E
-rofi.highlightfg: #ffffff
-rofi.bordercolor: #678698
-rofi.padding: 1
-rofi.lines: 10
-rofi.borderwidth: 1
-rofi.location: 7
-rofi.yoffset: 0
-rofi.xoffset: 0
-rofi.width: 100
-rofi.fixed_num_lines: 1
-rofi.hmode: false
+rofi.opacity: 50 
+rofi.color-enabled: true
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c
 rofi.terminal: st
-rofi.ssh-set-title: false
 rofi.font: Inconsolata-dz 9
 
 ! URxvt
