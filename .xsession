@@ -1,1 +1,3 @@
-exec i3
+#!/bin/bash
+
+bash -c .xinitrc
