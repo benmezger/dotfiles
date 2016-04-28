@@ -1,0 +1,49 @@
+# common variables/aliases for zsh/bash
+
+# detect current system
+source $HOME/.shell/detect-os
+
+# environments
+export PATH="${PATH}:$HOME/.bin"
+
+if [[ -n $LINUX ]]; then
+    export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python2"
+    export PATH="${PATH}:$HOME/.cask/bin"
+elif [[ -n $OSX ]]; then
+    export PATH="${PATH}:/usr/texbin"
+    export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+fi
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/workspace
+export EDITOR=vim
+export VISUAL=vim
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export KEYTIMEOUT=1 # vim mode key lag
+export PYTHONSTARTUP="$HOME/.pythonrc"
+export MAKEFLAGS="-j2"
+export GPGKEY=0xF2403AC05942EE08
+
+# source aliases
+source $HOME/.shell/aliases
+
+# source common funcs
+source $HOME/.shell/utils
+
+# python
+VIRTUAL_ENV_DISABLE_PROMPT=1
+source $(which virtualenvwrapper.sh)
+
+# base16
+BASE16_SHELL="$HOME/workspace/git/base16-shell/base16-monokai.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+fi
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
