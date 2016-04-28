@@ -6,19 +6,19 @@ function gitignore(){
 }
 
 function take(){
-	mkdir -p $1
+    mkdir -p $1
 	cd $1
 }
 
 function copyfile {
-	[[ "$#" != 1 ]] && return 1
-	local file_to_copy=$1
-	cat $file_to_copy | xsel --clipboard
+    [[ "$#" != 1 ]] && return 1
+    local file_to_copy=$1
+    cat $file_to_copy | xsel --clipboard
 }
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+    mkdir -p "$@" && cd "$_";
 }
 
 # change current mac-address
