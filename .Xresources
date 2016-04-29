@@ -1,6 +1,6 @@
 rofi.opacity: 50 
 rofi.color-enabled: true
-rofi.color-window: #272822, #272822, #49483e
+rofi.color-window: #272822, #524f52, #49483e
 rofi.color-normal: #272822, argb:d7ffffff, #272822, #49483e, #ffffff
 rofi.color-active: #272822, argb:dafd971f, #272822, #49483e, #fd971f
 rofi.color-urgent: #272822, argb:edf7208b, #272822, #49483e, #f92672
