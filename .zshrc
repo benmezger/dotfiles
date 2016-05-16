@@ -45,3 +45,6 @@ bindkey -a '^R' redo
 bindkey '^G' what-cursor-position
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
+
+# use pyenv as default python env
+workon pyenv
