@@ -2,7 +2,7 @@
 (require 'ycmd)
 (ycmd-setup)
 
-(set-variable 'ycmd-server-command '("python"))
+(set-variable 'ycmd-server-command '("python2"))
 (add-to-list 'ycmd-server-command (expand-file-name "~/workspace/git/ycmd/ycmd") t)
 (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
 (set-variable 'ycmd-extra-conf-whitelist '("~/workspace/*"))
