@@ -12,6 +12,3 @@ fi
 
 # source common
 source $HOME/.shell/common
-
-# use pyenv (virtualenv) as default
-workon pyenv

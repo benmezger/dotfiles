@@ -33,7 +33,7 @@ source $HOME/.shell/utils
 
 # python
 VIRTUAL_ENV_DISABLE_PROMPT=1
-source $(which virtualenvwrapper.sh)
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # base16
 BASE16_SHELL="$HOME/workspace/git/base16-shell/base16-monokai.dark.sh"
