@@ -38,7 +38,8 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'gpg' \
   'syntax-highlighting' \
-  'ruby'
+  'ruby' \
+  'python'
 
 #
 # Editor
