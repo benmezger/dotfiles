@@ -1,9 +1,7 @@
 # common functions
 
 # generate git ignore
-function gitignore(){
-    curl -L -s https://www.gitignore.io/api/$@;
-}
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 function take(){
     mkdir -p $1
