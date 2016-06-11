@@ -39,7 +39,8 @@ zstyle ':prezto:load' pmodule \
   'gpg' \
   'syntax-highlighting' \
   'ruby' \
-  'python'
+  'python' \
+  'fasd'
 
 #
 # Editor
