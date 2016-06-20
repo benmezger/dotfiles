@@ -30,3 +30,4 @@
 (depends-on "evil")
 (depends-on "editorconfig" :git "https://github.com/editorconfig/editorconfig-emacs.git")
 (depends-on "htmlize")
+(depends-on "git-modes" :git "https://github.com/magit/git-modes.git")
