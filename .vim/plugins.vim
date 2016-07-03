@@ -30,8 +30,8 @@ NeoBundle "terryma/vim-multiple-cursors"
 NeoBundle "vim-scripts/SearchComplete"
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build' : {
-     \     'mac' : './install.sh --clang-completer',
-     \     'unix' : './install.sh --clang-completer',
+     \     'mac' : './install.sh --clang-completer --system-libclang',
+     \     'unix' : './install.sh --clang-completer --system-libclang',
      \    }
      \ }
 NeoBundle "Yggdroot/indentLine"
