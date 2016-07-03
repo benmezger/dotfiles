@@ -7,6 +7,9 @@ rofi.color-urgent: #272822, argb:edf7208b, #272822, #49483e, #f92672
 rofi.terminal: urxvtc
 rofi.font: Inconsolata-dz 10
 
+! cursor size
+Xcursor.size: 13 
+
 ! URxvt
 URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
 ! do not scroll with output
