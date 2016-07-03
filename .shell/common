@@ -22,7 +22,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
-export MAKEFLAGS="-j2"
+export MAKEFLAGS="-j4 -l5"
 export GPGKEY=0xF2403AC05942EE08
 
 # source aliases
