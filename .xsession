@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-bash -c .xinitrc
+bash $HOME/.xinitrc
