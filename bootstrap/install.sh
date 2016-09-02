@@ -3,7 +3,7 @@
 ln -s "$(pwd)/ca-certificates.crt ~/.ssh/"
 
 # install packages
-function pacman{
+function pacman {
     package_file="package_file"
     while read -r line; do
 	    sudo pacman -S "$line"
@@ -68,14 +68,28 @@ function do_zsh {
 
 function install_fonts {
     mkdir $HOME/.local/share/fonts
-    curl -o /tmp/inconsolata.zip http://media.nodnod.net/Inconsolata-dz.otf.zip
-    wget -O $HOME/.local/share/fonts/Inconsolata-dz-for-Powerline.otf "https://github.com/powerline/fonts/blob/master/InconsolataDz/Inconsolata-dz%20for%20Powerline.otf?raw=true"
-
-    (unzip /tmp/inconsolata.zip; mv /tmp/Inconsolatad-dz.otf $HOME/.local/share/fonts/)
+    wget -O $HOME/.local/share/fonts/Inconsolata-dz-for-Powerline.otf \
+         "https://github.com/powerline/fonts/blob/master/InconsolataDz/Inconsolata-dz%20for%20Powerline.otf?raw=true"
     fc-cache -fv 
 }
 
+function get_pacaur {
+    git clone https://aur.archlinux.org/pacaur.git /tmp/
+    git clone https://aur.archlinux.org/cower.git /tmp/
+    (cd /tmp/cower; makepkg -si; cd ../pacaur/; makepkg -si)
+}
+
+function installaur_packages {
+    package_file="aur"
+    while read -r line; do
+        pacaur -S "$line"
+    done < "$package_file"
+}
+
 do_pacman
+get_pacaur
+installaur_packages
+install_fonts
 do_python
 do_git
 do_zsh
