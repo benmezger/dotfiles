@@ -33,3 +33,4 @@
 (depends-on "git-modes" :git "https://github.com/magit/git-modes.git")
 (depends-on "json-reformat")
 (depends-on "yaml-mode")
+(depends-on "dockerfile-mode")
