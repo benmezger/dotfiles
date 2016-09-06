@@ -25,8 +25,7 @@ set modeline
 set expandtab " helps with backspacing because of expandtab
 
 " options
-" opening a new file when the current buffer has unsaved changes causes files
-" to be hidden instead of closed.
+" opening a new file when the current buffer has unsaved changes causes files " to be hidden instead of closed.
 " The unsaved changes can still be accessed by typing :ls and then :b[N],
 " where [N] is the number of a buffer
 " see: http://usevim.com/2012/10/19/vim101-set-hidden/
@@ -102,6 +101,24 @@ set wildmode=longest:full,list:full
 colorscheme base16-monokai
 let base16colorspace=256 " Access colors present in 256 colorspace
 set background=dark
+
+" statusline config from -> http://stackoverflow.com/a/5380230/6744969
+hi User1 ctermfg=16 ctermbg=234      
+hi User2 ctermfg=196 ctermbg=234
+hi User3 ctermfg=171 ctermbg=234
+hi User4 ctermfg=70 ctermbg=234   
+hi User5 ctermfg=226 ctermbg=234 
+
+set statusline=
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
 
 " keybindings to make life easier
 cnoreabbrev W! w!
