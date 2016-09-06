@@ -9,6 +9,7 @@ Plug 'airblade/vim-gitgutter'                                           " show w
 Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer'} " completion
 Plug 'haya14busa/incsearch.vim'                                         " a better insearch
 Plug 'junegunn/vim-easy-align'                                          " easy align text
+Plug 'jamessan/vim-gnupg'                                               " transparent editing of gpg files
 
 " Add plugins to &runtimepath
 call plug#end()
