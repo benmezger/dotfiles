@@ -2,19 +2,17 @@
 " some configs from:
 " https://github.com/rstacruz/vim-opinion/
 
-" include plugs
-source ~/.vim/plugins.vim
+source ~/.vim/plugins.vim " include plugs
 
 " default file encoding and unicode
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set bomb "vim will put a 'byte order mark' (
-         "or BOM for short) at the start of Unicode files
+set bomb                     " vim will put a 'byte order mark' (
+                             " or BOM for short) at the start of Unicode files
 set fileformats=unix,mac,dos " recognize file formats
 
-" make backspace work like most other apps
-set backspace=indent,eol,start
+set backspace=indent,eol,start " make backspace work like most other apps
 
 " space > tabs
 set tabstop=4
@@ -29,46 +27,46 @@ set expandtab " helps with backspacing because of expandtab
 " The unsaved changes can still be accessed by typing :ls and then :b[N],
 " where [N] is the number of a buffer
 " see: http://usevim.com/2012/10/19/vim101-set-hidden/
-set hidden " don't care about closing modified buffers
-set showcmd " display incomplete commands
-set history=50 " keep 50 lines of command line history
+set hidden        " don't care about closing modified buffers
+set showcmd       " display incomplete commands
+set history=50    " keep 50 lines of command line history
 let mapleader=',' " use ',' as mapleader
 
-" searching
-set hlsearch " highlight all search matches
-set incsearch " start searching when you type the first character of the search string
+               " searching
+set hlsearch   " highlight all search matches
+set incsearch  " start searching when you type the first character of the search string
 set ignorecase " searching is not case sensitive
-set smartcase "when 'ignorecase' and 'smartcase' are both on, if a 
-              "pattern contains an uppercase letter, it is case sensitive, 
-			  "otherwise, it is not
-set gdefault " sub all matches in a line by default
+set smartcase  " when 'ignorecase' and 'smartcase' are both on, if a
+               " pattern contains an uppercase letter, it is case sensitive,
+               " otherwise, it is not
+set gdefault   " sub all matches in a line by default
 
-set binary " makes Vim more suitable for editing binary files
+set binary        " makes Vim more suitable for editing binary files
 set shell=/bin/sh " use sh as default shell
 
 " programming
 syntax on
-set cindent " enables automatic indenting c-style
+set cindent          " enables automatic indenting c-style
 set cinoptions=l1,j1 " affects the way cindent reindents lines
-set showmatch " flashes matching brackets or parenthasis
-set matchtime=3 " how long to flash brackets
+set showmatch        " flashes matching brackets or parenthasis
+set matchtime=3      " how long to flash brackets
 
 " backups
-set nobackup " don't backup
-set nowritebackup " don't make backup before overwritting
-set noswapfile " fuck swapfiles
+set nobackup       " don't backup
+set nowritebackup  " don't make backup before overwritting
+set noswapfile     " fuck swapfiles
 set directory=/tmp " dir for tmp files
 
 " info
-set number " number lines
-set numberwidth=5  " width of number column
-set showmode " shows vi mode in lower left
-set cmdheight=1 " more room for error msgs
-set scrolloff=4 " places a couple lines between the current line and the screen edge
+set number          " number lines
+set numberwidth=5   " width of number column
+set showmode        " shows vi mode in lower left
+set cmdheight=1     " more room for error msgs
+set scrolloff=4     " places a couple lines between the current line and the screen edge
 set sidescrolloff=2 " places a couple lines between the current column and the screen edge
-set laststatus=2 " status bar always visible
-set ttyfast " improve redrawing
-set lazyredraw " will not redraw the screen while running macros (goes faster)
+set laststatus=2    " status bar always visible
+set ttyfast         " improve redrawing
+set lazyredraw      " will not redraw the screen while running macros (goes faster)
 
 " encryption
 
@@ -145,7 +143,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " vim-gitgutter
-set updatetime=250 " . The delay is governed by vim's updatetime option
+set updatetime=250                  " . The delay is governed by vim's updatetime option
 let g:gitgutter_highlight_lines = 1 " highlight line
 
 " YouCompleteMe
@@ -155,4 +153,11 @@ let g:ycm_python_binary_path = 'python2' " use python 2.* by default
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" vim-easy align
+" start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
