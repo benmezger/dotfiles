@@ -46,5 +46,9 @@ bindkey '^G' what-cursor-position
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
+# source fzf
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 # use pyenv as default python env
 workon pyenv
