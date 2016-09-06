@@ -147,7 +147,8 @@ set updatetime=250                  " . The delay is governed by vim's updatetim
 let g:gitgutter_highlight_lines = 1 " highlight line
 
 " YouCompleteMe
-let g:ycm_python_binary_path = 'python2' " use python 2.* by default
+let g:ycm_python_binary_path = 'python2'          " use python 2.* by default
+let g:ycm_collect_identifiers_from_tags_files = 1 " use tag files
 
 " incsearch.vim
 map /  <Plug>(incsearch-forward)
