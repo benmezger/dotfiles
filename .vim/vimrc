@@ -27,10 +27,11 @@ set expandtab " helps with backspacing because of expandtab
 " The unsaved changes can still be accessed by typing :ls and then :b[N],
 " where [N] is the number of a buffer
 " see: http://usevim.com/2012/10/19/vim101-set-hidden/
-set hidden        " don't care about closing modified buffers
-set showcmd       " display incomplete commands
-set history=50    " keep 50 lines of command line history
-let mapleader=',' " use ',' as mapleader
+set hidden         " don't care about closing modified buffers
+set showcmd        " display incomplete commands
+set history=50     " keep 50 lines of command line history
+let mapleader=','  " use ',' as mapleader
+set colorcolumn=80 " Color in column 80
 
                " searching
 set hlsearch   " highlight all search matches
@@ -166,4 +167,17 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1 " Disable folding
+
+" Allow for TOC window to auto-fit when it's possible to it to shrink
+let g:vim_markdown_toc_autofit = 1
+
+" fenced code block
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c'] 
+
+" used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
+let g:vim_markdown_math = 1 
 
