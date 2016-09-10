@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ln -s "$(pwd)/ca-certificates.crt ~/.ssh/"
-
 # install packages
 function pacman {
     package_file="package_file"
@@ -37,7 +35,7 @@ function do_git {
     
     sh git_packages.sh
     echo "configuring YCMD"
-    (cd "$HOME/workspace/git/ycmd/"; ./build --clang-completer --gocode-completer)
+    (cd "$HOME/workspace/git/ycmd/"; ./build --clang-completer)
     echo "Done git"
 }
 
