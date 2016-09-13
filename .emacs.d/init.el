@@ -23,3 +23,4 @@
 (require 'setup-gitgutter)
 (require 'setup-smartline)
 (require 'setup-smartparens)
+(require 'setup-exec-path-from-shell)
