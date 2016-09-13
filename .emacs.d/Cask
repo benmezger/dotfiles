@@ -14,3 +14,4 @@
 (depends-on "smart-mode-line")
 (depends-on "git-gutter")
 (depends-on "smartparens")
+(depends-on "exec-path-from-shell" :git "https://github.com/ephexeve/exec-path-from-shell.git" :branch "revert-path")
