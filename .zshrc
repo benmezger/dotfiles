@@ -44,9 +44,9 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
 # source fzf
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # python
 # use pyenv as default python env
 workon pyenv
+
