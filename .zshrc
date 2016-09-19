@@ -49,6 +49,8 @@ bindkey "^[[B" history-search-forward
 # source fzf
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""' # don't exclude hidden files
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # apply the command to CTRL-T as well
 
 # use pyenv as default python env
 workon pyenv
