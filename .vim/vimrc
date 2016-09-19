@@ -181,3 +181,15 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c'
 " used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
 let g:vim_markdown_math = 1 
 
+
+" vim-startify
+
+" bookmarks
+let g:startify_bookmarks = [{'d': '~/workspace/git/dotfiles'},
+            \ {'w': '~/workspace'},
+            \ {'t': '/etc'},
+            \ ]
+
+let g:startify_update_oldfiles = 0 " update :Startify on-the-fly
+let g:startify_session_autoload = 1 " auto load session if dir contains a Session.vim
+let g:startify_files_number = 20 " show 20 files
