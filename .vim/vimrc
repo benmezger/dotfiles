@@ -138,7 +138,7 @@ cnoreabbrev Q q
 " plugs
 "
 
-" syntastic recommended settings
+"" syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -148,20 +148,20 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" vim-gitgutter
+"" vim-gitgutter
 set updatetime=250                  " . The delay is governed by vim's updatetime option
 let g:gitgutter_highlight_lines = 1 " highlight line
 
-" YouCompleteMe
+"" YouCompleteMe
 let g:ycm_python_binary_path = 'python2'          " use python 2.* by default
 let g:ycm_collect_identifiers_from_tags_files = 1 " use tag files
 
-" incsearch.vim
+"" incsearch.vim
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-" vim-easy align
+"" vim-easy align
 " start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -169,7 +169,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-" vim-markdown
+"" vim-markdown
 let g:vim_markdown_folding_disabled = 1 " Disable folding
 
 " Allow for TOC window to auto-fit when it's possible to it to shrink
@@ -182,7 +182,7 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c'
 let g:vim_markdown_math = 1 
 
 
-" vim-startify
+"" vim-startify
 
 " bookmarks
 let g:startify_bookmarks = [{'d': '~/workspace/git/dotfiles'},
