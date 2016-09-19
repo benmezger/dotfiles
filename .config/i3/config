@@ -175,6 +175,7 @@ bindsym $mod+Shift+x exec ~/.bin/lock.sh
 bar {
   font pango: Inconsolata-dz FontAwesome, Icons 8
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  mode hide
   colors {
     statusline #999999
     background #272822
