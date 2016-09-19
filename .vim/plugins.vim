@@ -12,6 +12,7 @@ Plug 'junegunn/vim-easy-align'                                          " easy a
 Plug 'jamessan/vim-gnupg'                                               " transparent editing of gpg files
 Plug 'plasticboy/vim-markdown'                                          " Markdown vim mode
 Plug 'mhinz/vim-startify'                                               " the fancy start screen for vim
+Plug 'tpope/vim-eunuch'                                                 " helpers for UNIX
 
 " Add plugins to &runtimepath
 call plug#end()
