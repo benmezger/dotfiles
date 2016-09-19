@@ -11,6 +11,7 @@ Plug 'haya14busa/incsearch.vim'                                         " a bett
 Plug 'junegunn/vim-easy-align'                                          " easy align text
 Plug 'jamessan/vim-gnupg'                                               " transparent editing of gpg files
 Plug 'plasticboy/vim-markdown'                                          " Markdown vim mode
+Plug 'mhinz/vim-startify'                                               " the fancy start screen for vim
 
 " Add plugins to &runtimepath
 call plug#end()
