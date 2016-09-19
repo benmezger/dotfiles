@@ -6,7 +6,6 @@ ttf-inconsolata-dz
 xss-lock
 xfce4-pulseaudio-plugin
 stremio-bin
-telegram-desktop-bin
 fasd
 numix-icon-theme-git
 numix-themes
@@ -15,3 +14,8 @@ git-crypt
 fasd
 fpp-git
 urxvt-fullscreen
+dropbox
+slack-desktop
+keybase-bin
+cryptomator
+thunar-dropbox
