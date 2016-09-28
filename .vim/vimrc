@@ -143,9 +143,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " vim-gitgutter
@@ -155,6 +155,7 @@ let g:gitgutter_highlight_lines = 1 " highlight line
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python2'          " use python 2.* by default
 let g:ycm_collect_identifiers_from_tags_files = 1 " use tag files
+let g:ycm_confirm_extra_conf = 0
 
 " incsearch.vim
 map /  <Plug>(incsearch-forward)
