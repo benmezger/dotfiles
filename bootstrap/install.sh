@@ -2,7 +2,7 @@
 
 # install packages
 function pacman {
-    package_file="package_file"
+    package_file="packages"
     while read -r line; do
 	    sudo pacman -S "$line"
     done < "$package_file"
@@ -78,7 +78,7 @@ function get_pacaur {
 }
 
 function installaur_packages {
-    package_file="aur"
+    package_file="aur-packages"
     while read -r line; do
         pacaur -S "$line"
     done < "$package_file"
