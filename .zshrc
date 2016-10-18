@@ -23,8 +23,9 @@ zplug "cusxio/delta-prompt"
 
 # prezto modules
 # load gpg from prezto
-zplug "modules/gpg", "from:prezto"
-zplug "modules/completion", "from:prezto"
+zplug "modules/gpg", as:plugin, "from:prezto"
+zplug "modules/completion", as:plugin, "from:prezto"
+zplug "modules/spectrum", "as:plugin", "from:prezto"
 
 # zplug check returns true if all packages are installed
 # Therefore, when it returns false, run zplug install
@@ -43,13 +44,63 @@ HISTSIZE=10000  # internal history
 SAVEHIST=10000  # history file
 
 # zsh options
-setopt HIST_IGNORE_SPACE # do not record an event starting with a space
-setopt SHARE_HISTORY # share history between sessions
-setopt INC_APPEND_HISTORY # write to the history file immediately, not when the shell exits
+
+# history
+# from: https://github.com/sorin-ionescu/prezto/blob/master/modules/history/init.zsh
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing non-existent history.
+
+# setopt nohashdirs # zsh rehash
+# setopt no_share_history # don't share history
+
+# from https://github.com/sorin-ionescu/prezto/blob/master/modules/directory/init.zsh
+setopt AUTO_CD              # Auto changes to a directory without typing cd.
+setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+setopt PUSHD_TO_HOME        # Push to home directory when no argument is given.
+setopt CDABLE_VARS          # Change directory to a path stored in a variable.
+setopt AUTO_NAME_DIRS       # Auto add variable-stored paths to ~ list.
+setopt MULTIOS              # Write to multiple descriptors.
+setopt EXTENDED_GLOB        # Use extended globbing syntax.
+unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
+                            # Use >! and >>! to bypass.
 
 ## key bindings
 # vi mode
 bindkey -v
+
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'g~' vi-oper-swap-case # swap case
+bindkey -a '^R' redo
+bindkey '^G' what-cursor-position
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 # exports
 export WORKON_HOME=$HOME/.virtualenvs
@@ -63,6 +114,7 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
 export GPGKEY=0xF2403AC05942EE08
 export PATH="${PATH}:$HOME/.bin"
+export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # colors
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
@@ -101,3 +153,6 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index # stack
