@@ -39,7 +39,7 @@ zplug load
 ############################# END OF ZPLUG #############################
 
 # zsh variables
-HISTFILE="~/.zhistory"
+HISTFILE="$HOME/.zhistory"
 HISTSIZE=10000  # internal history
 SAVEHIST=10000  # history file
 
