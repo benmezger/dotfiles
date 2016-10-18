@@ -17,9 +17,8 @@ zplug "zsh-users/zsh-autosuggestions"
 BASE16_SCHEME="monokai"
 zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh"
 
-# prompt theme - TODO: find a better prompt
-zplug "cusxio/delta-prompt"
-# zplug "yous/lime"
+# prompt theme
+zplug "miekg/lean", as:plugin
 
 # prezto modules
 # load gpg from prezto
