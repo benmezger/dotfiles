@@ -21,6 +21,9 @@ zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh"
 zplug "cusxio/delta-prompt"
 # zplug "yous/lime"
 
+# load gpg from prezto
+zplug "modules/gpg", "from:prezto"
+
 # zplug check returns true if all packages are installed
 # Therefore, when it returns false, run zplug install
 if ! zplug check; then
