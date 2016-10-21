@@ -29,6 +29,9 @@ zplug "benmezger/4fbc53631077bd1d2d10faa1dea29830", as:plugin, from:gist, \
 zplug "modules/gpg", as:plugin, "from:prezto"
 zplug "modules/completion", as:plugin, "from:prezto"
 zplug "modules/spectrum", "as:plugin", "from:prezto"
+
+# python2 virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=$(which python2)
 zplug "modules/python", "as:plugin", "from:prezto"
 
 # zplug check returns true if all packages are installed
