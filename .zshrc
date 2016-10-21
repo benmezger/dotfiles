@@ -24,6 +24,9 @@ zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh"
 zplug "benmezger/4fbc53631077bd1d2d10faa1dea29830", as:plugin, from:gist, \
     "use:dotenv"
 
+# syntax highlighting
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+
 # prezto modules
 
 # prompt
@@ -31,13 +34,14 @@ zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 zplug "modules/command-not-found", from:prezto
-zplug "modules/history-substring-search", from:prezto
+zplug "modules/completion", as:plugin, from:prezto
+zplug "modules/fasd", from:prezto
 zplug "modules/git", from:prezto
-zplug "modules/syntax-highlighting", from:prezto
+zplug "modules/history-substring-search", from:prezto
+zplug "modules/history", from:prezto
 
-zplug "modules/gpg", as:plugin, "from:prezto"
-zplug "modules/completion", as:plugin, "from:prezto"
 zplug "modules/spectrum", "as:plugin", "from:prezto"
+zplug "modules/gpg", as:plugin, "from:prezto"
 
 # python2 virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=$(which python2)
