@@ -25,7 +25,7 @@ zplug "benmezger/4fbc53631077bd1d2d10faa1dea29830", as:plugin, from:gist, \
     "use:dotenv"
 
 # syntax highlighting
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
 # prezto modules
 
@@ -33,7 +33,6 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
-zplug "modules/command-not-found", from:prezto
 zplug "modules/completion", as:plugin, from:prezto
 zplug "modules/fasd", from:prezto
 zplug "modules/git", from:prezto
@@ -150,7 +149,7 @@ alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 p
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
-alias ls="${aliases[ls]:-ls} -G"
+alias ls="${aliases[ls]:-ls} -G --color=always"
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
