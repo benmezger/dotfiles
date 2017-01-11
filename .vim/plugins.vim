@@ -9,7 +9,7 @@ Plug 'airblade/vim-gitgutter'                                           " show w
 Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer'} " completion
 Plug 'haya14busa/incsearch.vim'                                         " a better insearch
 Plug 'junegunn/vim-easy-align'                                          " easy align text
-Plug 'jamessan/vim-gnupg', {'for': []}                                  " transparent editing of gpg files
+Plug 'jamessan/vim-gnupg' " transparent editing of gpg files
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                     " Markdown vim mode
 Plug 'mhinz/vim-startify'                                               " the fancy start screen for vim
 Plug 'tpope/vim-eunuch'                                                 " helpers for UNIX
