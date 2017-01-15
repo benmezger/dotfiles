@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+# Test if $1 is available
+isavailable() {
+    type "$1" &>/dev/null
+}
+
 # screen powersave
 xset +dpms
 xset dpms 0 0 300
@@ -9,6 +14,10 @@ xset dpms 0 0 300
 
 # run urxvt daemon
 [[ -z "$(pidof urxvtd)" ]] && urxvtd --quiet --opendisplay --fork
+
+# start redshift
+# current lat/log: oud-zuid
+isavailable redshift && redshift -l "52.346270":"4.865343" &
 
 # Here Xfce is kept as default
 session=${1:-xfce}
