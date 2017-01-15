@@ -196,7 +196,6 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id xss-lock -- ~/.bin/lock.sh 
 exec --no-startup-id dropbox
-exec --no-startup-id redshift -l "52.346270":"4.865343" # oud-zuid
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
 client.focused_inactive #073642 #073642 #93a1a1 #002b36
