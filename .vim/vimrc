@@ -16,11 +16,12 @@ set backspace=indent,eol,start " make backspace work like most other apps
 
 " space > tabs
 set tabstop=4
-set shiftwidth=4 
+set shiftwidth=4
 set softtabstop=4
 set expandtab " insert space character when tab is pressed
 set modeline
 set expandtab " helps with backspacing because of expandtab
+set textwidth=80
 
 " options
 " opening a new file when the current buffer has unsaved changes causes files " to be hidden instead of closed.
@@ -107,11 +108,11 @@ let base16colorspace=256 " Access colors present in 256 colorspace
 set background=dark
 
 " statusline config from -> http://stackoverflow.com/a/5380230/6744969
-hi User1 ctermfg=16 ctermbg=234      
+hi User1 ctermfg=16 ctermbg=234
 hi User2 ctermfg=196 ctermbg=234
 hi User3 ctermfg=171 ctermbg=234
-hi User4 ctermfg=70 ctermbg=234   
-hi User5 ctermfg=226 ctermbg=234 
+hi User4 ctermfg=70 ctermbg=234
+hi User5 ctermfg=226 ctermbg=234
 
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
@@ -150,12 +151,13 @@ let g:syntastic_check_on_wq = 0
 
 "" vim-gitgutter
 set updatetime=250                  " . The delay is governed by vim's updatetime option
-let g:gitgutter_highlight_lines = 1 " highlight line
+let g:gitgutter_highlight_lines = 0 " highlight line
 
 "" YouCompleteMe
 let g:ycm_python_binary_path = 'python2'          " use python 2.* by default
 let g:ycm_collect_identifiers_from_tags_files = 1 " use tag files
 let g:ycm_confirm_extra_conf = 0
+set completeopt-=preview
 
 "" incsearch.vim
 map /  <Plug>(incsearch-forward)
@@ -177,10 +179,10 @@ let g:vim_markdown_folding_disabled = 1 " Disable folding
 let g:vim_markdown_toc_autofit = 1
 
 " fenced code block
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c'] 
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c']
 
 " used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
-let g:vim_markdown_math = 1 
+let g:vim_markdown_math = 1
 
 
 "" vim-startify
