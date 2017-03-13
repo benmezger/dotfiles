@@ -17,7 +17,7 @@ xset dpms 0 0 300
 
 # start redshift
 # current lat/log: oud-zuid
-isavailable redshift && redshift -l "52.346270":"4.865343" &
+isavailable redshift && redshift -l "-27.578023":"-48.537449" &
 
 # Here Xfce is kept as default
 session=${1:-xfce}
