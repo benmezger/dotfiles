@@ -33,6 +33,7 @@ set showcmd        " display incomplete commands
 set history=50     " keep 50 lines of command line history
 let mapleader=','  " use ',' as mapleader
 set colorcolumn=80 " Color in column 80
+set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
                " searching
 set hlsearch   " highlight all search matches
@@ -208,3 +209,5 @@ let g:ctrlp_custom_ignore = {
     \ }
 let g:ctrlp_clear_cache_on_exit = 0      "  don't clean cache when exiting vim
 let g:ctrlp_show_hidden = 1              "  show hidden files
+
+au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
