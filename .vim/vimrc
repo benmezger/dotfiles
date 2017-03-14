@@ -33,6 +33,7 @@ set showcmd        " display incomplete commands
 set history=50     " keep 50 lines of command line history
 let mapleader=','  " use ',' as mapleader
 set colorcolumn=80 " Color in column 80
+set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
                " searching
 set hlsearch   " highlight all search matches
@@ -197,3 +198,17 @@ let g:startify_bookmarks = [{'d': '~/workspace/git/dotfiles'},
 let g:startify_update_oldfiles = 0 " update :Startify on-the-fly
 let g:startify_session_autoload = 1 " auto load session if dir contains a Session.vim
 let g:startify_files_number = 20 " show 20 files
+
+"" ctrlp
+let g:ctrlp_working_path_mode = 'ra'     "  set local working directory
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip "  exclude these files linux/osx
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|virtualenvs|virtualbox-vms)$',
+    \ 'file': '\v\.(exe|so|dll|pyc|out)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
+let g:ctrlp_clear_cache_on_exit = 0      "  don't clean cache when exiting vim
+let g:ctrlp_show_hidden = 1              "  show hidden files
+
+au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
+
