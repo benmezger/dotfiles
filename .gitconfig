@@ -55,9 +55,9 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [stash]
-	showPatch = true:
+	showPatch = true
 [log]
-	decorate = full:
+	decorate = full
 [merge]
 	conflictstyle = diff3
 [status]
