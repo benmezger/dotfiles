@@ -46,6 +46,9 @@ zplug "modules/gpg", as:plugin, "from:prezto"
 export VIRTUALENVWRAPPER_PYTHON=$(which python2)
 zplug "modules/python", "as:plugin", "from:prezto"
 
+# let zplug manage itself like other packages
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
 # zplug check returns true if all packages are installed
 # Therefore, when it returns false, run zplug install
 if ! zplug check; then
@@ -149,7 +152,7 @@ alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 p
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
-alias ls="${aliases[ls]:-ls} -G --color=always"
+alias ls="${aliases[ls]:-ls} -G"
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
