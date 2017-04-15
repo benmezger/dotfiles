@@ -1,0 +1,13 @@
+---
+- name: Install Aura
+  git: repo=https://aur.archlinux.org/aura-bin.git dest=/tmp/aura-bin force=yes
+
+- name: Build Aura
+  command: (cd /tmp/aura-bin; makepkg -si;)
+
+- name: Install Aura
+  become: true
+  command: pacman -U /tmp/aura-bin/*.tar.gz
+
+- include: pacman.yml
+- include: python.yml

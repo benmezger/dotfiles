@@ -1,0 +1,28 @@
+---
+- name: Install Pacman packages
+  pacman: name={{ item }} state=latest
+  with_items:
+    - python2
+    - gvim
+    - fasd
+    - ack
+    - gnupg2
+    - tmux
+    - tor
+    - valgrind
+    - firefox
+    - chromium
+
+- name: Install packages from AUR
+  command: aura -A name={{ item }} state=present
+  with_items:
+    - wire-desktop-bin
+    - xss-lock
+    - spotify
+    - ttf-font-awesome
+    - numix-icon-theme-git
+    - gitter
+    - dropbox
+    - git-crypt
+    - solaar
+
