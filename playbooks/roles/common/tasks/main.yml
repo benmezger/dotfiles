@@ -1,0 +1,9 @@
+---
+- name: Install zplug
+  command: curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
+
+- name: Create local directories
+  file: path="{{ ansible_env.HOME | join('/workspace/git') }}" state=directory
+
+- name: Restore dotfiles with Mackup
+  command: mackup restore
