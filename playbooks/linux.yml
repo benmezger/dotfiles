@@ -1,5 +1,5 @@
 ---
 - hosts: localhost
   roles:
-    - roles: linux
-    - common: common
+    - role: linux
+    - role: common
