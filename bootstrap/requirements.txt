@@ -1,6 +1,0 @@
-grasp
-ipython
-rtv
-goobook
-mackup
-
