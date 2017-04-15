@@ -1,0 +1,42 @@
+---
+- name: Install Homebrew
+  command: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+- name: Tap fonts
+  homebrew_tap: tap=caskroom/fonts state=present
+
+- name: Tap cask
+  homebrew_tap: tap=caskroom/cask state=present
+
+- name: Install Homebrew packages
+  homebrew: name={{ item }} state=latest
+  with_items:
+    - python
+    - vim
+    - fasd
+    - ack
+    - gnupg2
+    - tmux
+    - tor
+    - reattach-to-user-namespace
+    - valgrind
+
+- name: Install apps using Homebrew Cask
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - google-chrome
+    - firefox
+    - transmission
+    - iterm2
+    - vlc
+    - skype
+    - thunderbird
+
+- name: Install fonts using Homebrew Cask
+  homebrew_cask: name=font-inconsolata-dz state=present
+
+- name: Cleanup Homebrew packages
+  command: brew cleanup -s
+
+- name: Cleanup Homebrew Cask apps
+  command: brew cask cleanup
