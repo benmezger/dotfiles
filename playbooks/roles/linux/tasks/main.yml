@@ -3,7 +3,6 @@
   git: repo=https://aur.archlinux.org/aura-bin.git dest=/tmp/aura-bin force=yes
 
 - name: Build and install Aura
-  become: true
   command: chdir=/tmp/aura-bin makepkg -si --noconfirm
 
 - include: pacman.yml
