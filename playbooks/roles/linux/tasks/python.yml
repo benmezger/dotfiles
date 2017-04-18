@@ -1,9 +1,0 @@
----
-- name: Install Python packages using pip
-  pip: name={{ item }} executable=pip2
-  with_items:
-    - virtualenvwrapper
-    - ipython
-    - grasp
-    - mackup
-  become: true
