@@ -1,6 +1,0 @@
----
-- name: Install zplug
-  git: repo=https://github.com/zplug/zplug dest=~/zplug
-
-- name: Restore dotfiles with Mackup
-  command: mackup restore
