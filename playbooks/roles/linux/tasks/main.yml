@@ -1,5 +1,5 @@
 ---
-- name: Install Aura
+- name: Clone Aura
   git: repo=https://aur.archlinux.org/aura-bin.git dest=/tmp/aura-bin force=yes
 
 - name: Build and install Aura
