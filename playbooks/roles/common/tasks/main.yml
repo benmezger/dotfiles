@@ -1,6 +1,6 @@
 ---
 - name: Install zplug
-  command: curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
+  git: repo=https://github.com/zplug/zplug dest=~/zplug
 
 - name: Create local directories
   file: path="{{ ansible_env.HOME | join('/workspace/git') }}" state=directory
