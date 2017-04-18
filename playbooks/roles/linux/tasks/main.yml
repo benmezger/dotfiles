@@ -4,7 +4,7 @@
 
 - name: Build and install Aura
   become: true
-  command: chdir=/tmp/aura-bin make -si --noconfirm
+  command: chdir=/tmp/aura-bin makepkg -si --noconfirm
 
 - include: pacman.yml
 - include: python.yml
