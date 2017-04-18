@@ -6,6 +6,10 @@
 
 My OSX dotfiles can be found in the ```osx``` branch.
 
-Run ```ansible-playbook -i inventory linux.yml -K``` to start the instalation.
+How to run:
+
+1. ```$ git submodule update --init --recursive```
+2. ```$ cd playbooks```
+2. ```$ ansible-playbook -i inventory linux.yml -K```
 
 Note: A few files are encrypted. You will need to adapt them for your needs.
