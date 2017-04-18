@@ -1,9 +1,11 @@
 ---
 - name: Install Pacman packages
-  pacman: name={{ item }} state=latest
+  become: true
+  command: pacman -S {{ item }} --noconfirm
   with_items:
     - python2
-    - gvim
+    - python2-pip
+    - vim
     - fasd
     - ack
     - gnupg2
@@ -14,7 +16,7 @@
     - chromium
 
 - name: Install packages from AUR
-  command: aura -A name={{ item }} state=present
+  command: aura -A {{ item }} --noconfirm
   with_items:
     - wire-desktop-bin
     - xss-lock
