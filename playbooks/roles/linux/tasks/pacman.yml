@@ -18,6 +18,7 @@
 
 - name: Install packages from AUR
   command: aura -A {{ item }} --noconfirm
+  become: true
   with_items:
     - wire-desktop-bin
     - xss-lock
