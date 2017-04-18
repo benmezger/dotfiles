@@ -15,6 +15,12 @@
     - firefox
     - chromium
     - zsh
+    - xorg-xset
+    - xorg-xrdb
+    - dunst
+    - pcsclite
+    - feh
+    - pcsc-tools
 
 - name: Install packages from AUR
   command: aura -A {{ item }} --noconfirm
