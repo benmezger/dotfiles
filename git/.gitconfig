@@ -1,0 +1,64 @@
+[user]
+	name = Ben Mezger
+	email = me@benmezger.nl
+	signingkey = 0xF2403AC05942EE08
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[push]
+	default = current
+	followTags = true
+[alias]
+	unadd = reset HEAD
+	ec = config --global -e # edit gitconfig
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate # List commits in short form, with colors and branch/tag annotations.
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat # List commits showing changed files
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short # List oneline commits showing dates
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative # List oneline commits showing relative dates
+	le = log --oneline --decorate #Default look for short git log
+	logtree = "log --graph --oneline --decorate --all" # same as above, but with graph
+	filelog = log -u # See all the commits related to a file, with the diff of the changes with git log -u
+	dl = "!git ll -1" # Show modified files in last commit
+	dlc = diff --cached HEAD^ # Show a diff last commit
+	dr  = "!f() { git diff "$1"^.."$1"; }; f" # Show content (full diff) of a commit given a revision
+	lc  = "!f() { git ll "$1"^.."$1"; }; f" # ^
+	diffr  = "!f() { git diff "$1"^.."$1"; }; f" # ^
+	la = "!git config -l | grep alias | cut -c 7-" # List all your Aliases
+	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+	web = instaweb --httpd=webrick
+	webstop = instaweb --httpd=webrick --stop
+	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
+	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+[filter "gitignore"]
+	clean = "sed '/#gitignore$/'d"
+	smudge = cat
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[stash]
+	showPatch = true
+[log]
+	decorate = full
+[merge]
+	conflictstyle = diff3
+[status]
+	showUntrackedFiles = all

@@ -1,0 +1,110 @@
+rofi.opacity: 50 
+rofi.color-enabled: true
+rofi.color-window: #272822, #524f52, #49483e
+rofi.color-normal: #272822, argb:d7ffffff, #272822, #49483e, #ffffff
+rofi.color-active: #272822, argb:dafd971f, #272822, #49483e, #fd971f
+rofi.color-urgent: #272822, argb:edf7208b, #272822, #49483e, #f92672
+rofi.terminal: urxvtc
+rofi.font: Inconsolata-dz 10
+
+! cursor size
+Xcursor.size: 13 
+
+! URxvt
+URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! scrollback buffer in secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+! perl extensions
+URxvt.perl-ext-common: default,matcher,fullscreen,tabbed,clipboard
+! clickable urls
+URxvt.url-launcher: firefox
+URxvt.matcher.button: 2
+! to open and list recent urls via keyboard
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+! color matching links
+URxvt.matcher.rend.0: Uline Bold fg5
+! yankable URLs
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: firefox
+URxvt.url-select.underline: true
+! cursor underline  
+URxvt*cursorUnderline: true
+! scrollbar position
+URxvt*scrollBar: false
+! no borders
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0px
+URxvt*borderLess: false
+! fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+! tab colors
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+! clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+! larger history
+URxvt.saveLines: 1000000
+
+! Base16 Monokai
+! Scheme: Wimer Hazenberg (http://www.monokai.nl)
+
+#define base00 #272822
+#define base01 #383830
+#define base02 #49483e
+#define base03 #75715e
+#define base04 #a59f85
+#define base05 #f8f8f2
+#define base06 #f5f4f1
+#define base07 #f9f8f5
+#define base08 #f92672
+#define base09 #fd971f
+#define base0A #f4bf75
+#define base0B #a6e22e
+#define base0C #a1efe4
+#define base0D #66d9ef
+#define base0E #ae81ff
+#define base0F #cc6633
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06

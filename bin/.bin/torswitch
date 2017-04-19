@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# A badly written torrc switcher
+# Works on Debian and OSX
+#
+# Usage: torswitch : default torrc
+#        torswitch -b : custom torrc
+
+# Copyright (c) 2015, Ben Mezger, me@benmezger.nl
+# 
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# #ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+status=0
+
+function kill_tor {
+    echo "Stopping any tor services"
+    
+    if [[ -n $LINUX ]]; then
+        sudo systemctl stop tor.service 
+        if [ $status -ne 0 ]; then
+            echo "Tor is not running."
+        fi
+    elif [[ -n $OSX ]]; then
+        brew services stop tor
+        if [ $status -ne 0 ]; then
+            echo "Tor is not running."
+        fi
+    fi
+
+    sleep 1 # wait to properly kill
+    
+    pkill -f tor > /dev/null 2>&1 & # kill any user daemon
+
+    sleep 1 # wait to properly kill
+}
+
+# custom tor config (bypass blocked ports)
+function start_blocked_tor {
+    kill_tor
+    echo "Starting custom tor"
+
+    tor -f $HOME/.config/custom_torrc > /dev/null 2>&1 &
+    if [ $status -ne 0 ]; then
+        echo "Tor couldn't start"
+    fi
+    exit 0
+}
+
+# default tor config
+function start_tor {
+    kill_tor
+    echo "Starting tor"
+    
+    if [[ -n $LINUX ]]; then
+        sudo systemctl start tor.service > /dev/null 2>&1 &
+        if [ $status -ne 0 ]; then
+            echo "Tor couldn't start"
+        fi
+    elif [[ -n $OSX ]]; then
+        brew services start tor > /dev/null 2>&1 &
+        if [ $status -ne 0 ]; then
+            echo "Tor couldn't start"
+        fi
+    fi
+    exit 0
+}
+
+# just any argument, honestly, it does one thing only.
+if [ ! -z $1 ]; then
+    # if any argument, start blocked tor
+    start_blocked_tor
+fi
+start_tor
