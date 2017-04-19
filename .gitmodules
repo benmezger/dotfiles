@@ -2,3 +2,4 @@
 	path = playbooks
 	url = https://github.com/benmezger/dotans
 	branch = master
+        ignore = all
