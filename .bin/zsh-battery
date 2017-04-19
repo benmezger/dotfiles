@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [[ -n $LINUX ]]; then
-    STATUS=`$(acpi | grep -o "[0-9]*%)%`
-    echo $STATUS
-else
-    STATUS=`pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p'`
-    echo $STATUS
-fi
