@@ -1,0 +1,7 @@
+set editing-mode vi
+set keymap vi
+set convert-meta on
+
+# for single press Tab results for when a partial or no completion is possible
+set show-all-if-ambiguous on
+# Tab: complete
