@@ -22,11 +22,11 @@ from os import getenv
 
 # returns {u'X-Real-Ip': [u'xx.xx.xx.xx'], u'X-Ifconfig-Country': [u'xxx'], u'X-Ifconfig-Ip':
 # [u'xx.xx.xx.xx'], u'Accept-Encoding': [u'xxx'], u'User-Agent': [u'xxx']}
-ip_info = loads(urlopen("https://ifconfig.co/all.json").read())
+ip_info = loads(urlopen("https://ifconfig.co/json").read())
 
-real_ip = ip_info.get('X-Real-Ip')[0]
-country = ip_info.get('X-Ifconfig-Country')[0]
-ifconfig_ip = ip_info.get('X-Ifconfig-Ip')[0]
+real_ip = ip_info.get('ip')
+country = ip_info.get('country')
+city  = ip_info.get("city")
 
 is_torified = loads(urlopen("https://check.torproject.org/api/ip").read()).get("IsTor")
 
@@ -34,8 +34,8 @@ local_ip = gethostbyname(gethostname())
 hostname = gethostname()
 
 print "Public IP:", real_ip
-print "Ifconfig IP:", ifconfig_ip
 print "Country:", country
+print "City", city
 
 print
 print "Is Torified:", "Yes" if is_torified == True else "No"
