@@ -1,1 +1,5 @@
 weechat/.weechat/sec.conf
+vim/.vim/plugged
+vim/.vim/autoload
+gnupg/.gnupg/private-keys-v1.d/
+gnupg/.gnupg/sshcontrol
