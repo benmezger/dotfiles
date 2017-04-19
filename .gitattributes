@@ -1,6 +1,0 @@
-.weechat/irc.conf filter=git-crypt diff=git-crypt
-.emacs.d/site-lisp/secrets.el filter=git-crypt diff=git-crypt
-.mutt/accounts/goobook-benmezger filter=git-crypt diff=git-crypt
-.mutt/accounts/benmezger filter=git-crypt diff=git-crypt
-.offlineimaprc filter=git-crypt diff=git-crypt
-.bin/offlineimap.py filter=git-crypt diff=git-crypt
