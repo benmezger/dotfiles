@@ -20,7 +20,7 @@ xset dpms 0 0 300
 isavailable redshift && redshift -l "-27.578023":"-48.537449" &
 
 # Here Xfce is kept as default
-session=${1:-xfce}
+session=${1:-i3}
 
 case $session in
     i3|i3wm           ) exec i3;;
