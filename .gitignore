@@ -1,5 +1,13 @@
-weechat/.weechat/sec.conf
+# blacklist
 vim/.vim/plugged
 vim/.vim/autoload
-gnupg/.gnupg/private-keys-v1.d/
-gnupg/.gnupg/sshcontrol
+gnupg/.gnupg
+config/.config
+weechat/.weechat/sec.conf
+
+# whitelist
+!config/.config/dunst
+!config/.config/i3
+!config/.config/user-dirs.dirs
+!gnupg/.gnupg/gpg-agent.conf
+!gnupg/.gnupg/gpg.conf
