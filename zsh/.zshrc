@@ -176,8 +176,3 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index # stack
 
-## Set SSH to use gpg-agent
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-fi
