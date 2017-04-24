@@ -3,8 +3,11 @@ vim/.vim/plugged
 vim/.vim/autoload
 gnupg/.gnupg
 weechat/.weechat/sec.conf
+ipython/.ipython
 
 # whitelist
 !gnupg/.gnupg/gpg-agent.conf
 !gnupg/.gnupg/gpg.conf
 
+!ipython/.ipython/extensions/*
+!ipython/.ipython/nbextensions
