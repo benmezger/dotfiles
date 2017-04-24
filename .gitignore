@@ -4,6 +4,7 @@ vim/.vim/autoload
 gnupg/.gnupg
 config/.config
 weechat/.weechat/sec.conf
+ipython/.ipython
 
 # whitelist
 !config/.config/dunst
@@ -11,3 +12,5 @@ weechat/.weechat/sec.conf
 !config/.config/user-dirs.dirs
 !gnupg/.gnupg/gpg-agent.conf
 !gnupg/.gnupg/gpg.conf
+!ipython/.ipython/extensions/*
+!ipython/.ipython/nbextensions
