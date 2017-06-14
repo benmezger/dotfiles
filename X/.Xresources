@@ -1,4 +1,4 @@
-rofi.opacity: 50 
+rofi.opacity: 50
 rofi.color-enabled: true
 rofi.color-window: #272822, #524f52, #49483e
 rofi.color-normal: #272822, argb:d7ffffff, #272822, #49483e, #ffffff
@@ -8,7 +8,7 @@ rofi.terminal: urxvtc
 rofi.font: Inconsolata-dz 10
 
 ! cursor size
-Xcursor.size: 13 
+Xcursor.size: 13
 
 ! URxvt
 URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
@@ -22,9 +22,9 @@ URxvt*scrollTtyKeypress: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 ! perl extensions
-URxvt.perl-ext-common: default,matcher,fullscreen,tabbed,clipboard
+URxvt.perl-ext-common: default,matcher,fullscreen,tabbed,clipboard,searchable-scrollback
 ! clickable urls
-URxvt.url-launcher: firefox
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 2
 ! to open and list recent urls via keyboard
 URxvt.keysym.C-Delete: perl:matcher:last
@@ -34,9 +34,9 @@ URxvt.matcher.rend.0: Uline Bold fg5
 ! yankable URLs
 URxvt.perl-ext: default,url-select
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: firefox
+URxvt.url-select.launcher: /usr/bin/google-chrome-stable
 URxvt.url-select.underline: true
-! cursor underline  
+! cursor underline
 URxvt*cursorUnderline: true
 ! scrollbar position
 URxvt*scrollBar: false
