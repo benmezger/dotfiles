@@ -2,6 +2,7 @@
 vim/.vim/plugged
 vim/.vim/autoload
 gnupg/.gnupg
+config/.config
 weechat/.weechat/sec.conf
 ipython/.ipython
 
