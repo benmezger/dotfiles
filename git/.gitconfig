@@ -62,3 +62,5 @@
 	conflictstyle = diff3
 [status]
 	showUntrackedFiles = all
+[commit]
+	verbose = true
