@@ -33,6 +33,11 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
+# tmux
+zplug 'modules/tmux', from:prezto
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
 zplug "modules/completion", as:plugin, from:prezto
 zplug "modules/fasd", from:prezto
 zplug "modules/git", from:prezto
@@ -134,6 +139,7 @@ export MAKEFLAGS="-j4 -l5"
 export GPGKEY=0xF2403AC05942EE08
 export PATH="${PATH}:$HOME/.bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 # colors
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
