@@ -66,3 +66,4 @@
 	verbose = true
 [advice]
 	pushNonFastForward = false
+	statusHints = false
