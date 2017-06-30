@@ -64,3 +64,5 @@
 	showUntrackedFiles = all
 [commit]
 	verbose = true
+[advice]
+	pushNonFastForward = false
