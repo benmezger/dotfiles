@@ -5,6 +5,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+	whitespace = trailing-space,space-before-tab
 [filter "media"]
 	required = true
 	clean = git media clean %f
