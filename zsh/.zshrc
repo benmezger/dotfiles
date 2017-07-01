@@ -140,6 +140,7 @@ export GPGKEY=0xF2403AC05942EE08
 export PATH="${PATH}:$HOME/.bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
 # colors
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
