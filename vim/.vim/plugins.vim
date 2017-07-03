@@ -14,7 +14,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                     " Markdo
 Plug 'mhinz/vim-startify'                                               " the fancy start screen for vim
 Plug 'tpope/vim-eunuch'                                                 " helpers for UNIX
 Plug 'easymotion/vim-easymotion'                                        " Vim motions on speed
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'                                              " Rainbow Parentheses Improved
 Plug 'junegunn/goyo.vim'                                                " Distraction-free writing in Vim
 
 " Add plugins to &runtimepath
