@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'                                          " base16 themes
-Plug 'tpope/vim-fugitive', {'for': []}                                  " git <3
+Plug 'tpope/vim-fugitive'                                  " git <3
 Plug 'scrooloose/syntastic'                                             " syntax checking
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ctrlpvim/ctrlp.vim'                                               " fuzzy searching
