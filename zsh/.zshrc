@@ -34,9 +34,9 @@ zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 # tmux
-zplug 'modules/tmux', from:prezto
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+# zplug 'modules/tmux', from:prezto
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 zplug "modules/completion", as:plugin, from:prezto
 zplug "modules/fasd", from:prezto
