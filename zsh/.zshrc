@@ -24,6 +24,10 @@ zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh"
 zplug "benmezger/4fbc53631077bd1d2d10faa1dea29830", as:plugin, from:gist, \
     "use:dotenv"
 
+# transfer.sh
+zplug "nl5887/a511f172d3fb3cd0e42d", as:plugin, from:gist, \
+    "use:transfer.sh"
+
 # syntax highlighting
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
