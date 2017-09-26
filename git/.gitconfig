@@ -39,6 +39,7 @@
 	webstop = instaweb --httpd=webrick --stop
 	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
 	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+	git = !exec git
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/'d"
 	smudge = cat
