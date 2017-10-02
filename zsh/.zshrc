@@ -153,7 +153,7 @@ export GREP_COLOR='37;45' # BSD.
 export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
 ## aliases
-alias dotfiles="cd ~/workspace/git/dotfiles"
+alias dotfiles="cd ~/dotfiles"
 alias fucking='sudo'
 alias vi="vim"
 alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
