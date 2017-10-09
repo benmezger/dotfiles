@@ -18,6 +18,7 @@ xset dpms 0 0 300
 # start redshift
 # current lat/log: oud-zuid
 isavailable redshift && redshift -l "-27.578023":"-48.537449" -t "5500":"3000" &
+isavailable synclient && synclient TouchpadOff=1 &
 
 # Here Xfce is kept as default
 session=${1:-i3}
