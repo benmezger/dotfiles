@@ -73,3 +73,5 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
+[github]
+	user = benmezger
