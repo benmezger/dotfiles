@@ -38,9 +38,9 @@ zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 # tmux
-# zplug 'modules/tmux', from:prezto
-# zstyle ':prezto:module:tmux:auto-start' local 'yes'
-# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+export ZSH_TMUX_AUTOCONNECT=true
+export ZSH_TMUX_AUTOSTART=true
+zplug 'plugins/tmux', from:oh-my-zsh
 
 zplug "modules/completion", as:plugin, from:prezto
 zplug "modules/fasd", from:prezto
