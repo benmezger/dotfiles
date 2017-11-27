@@ -187,3 +187,6 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index # stack
 
+function lb() {
+    vim ~/logbook/$(date '+%Y-%m-%d').md
+}
