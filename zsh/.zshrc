@@ -58,6 +58,10 @@ zplug "modules/gpg", as:plugin, "from:prezto"
 export VIRTUALENVWRAPPER_PYTHON=$(which python2)
 zplug "modules/python", "as:plugin", "from:prezto"
 
+# ruby rbenv
+zplug "modules/ruby", "as:plugin", "from:prezto"
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
 # zplug check returns true if all packages are installed
 # Therefore, when it returns false, run zplug install
 if ! zplug check; then
