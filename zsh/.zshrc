@@ -137,6 +137,9 @@ bindkey '^G' what-cursor-position
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
+# functions
+exists() { which "$1" > /dev/null 2>&1; } # check if a givin command exists
+
 # exports
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/workspace
@@ -157,6 +160,14 @@ export LSCOLORS='exfxcxdxbxGxDxabagacad'
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 export GREP_COLOR='37;45' # BSD.
 export GREP_COLORS="mt=$GREP_COLOR" # GNU.
+
+# system-dependent
+if exists emerge; then  # is distro is Gentoo, then set  the following variables
+    export NUMCPUS=$(nproc)
+    export NUMCPUSPLUSONE=$(( NUMCPUS + 1 ))
+    export MAKEOPTS="-j${NUMCPUSPLUSONE} -l${NUMCPUS}"
+    export EMERGE_DEFAULT_OPTS="--jobs=${NUMCPUSPLUSONE} --load-average=${NUMCPUS}"
+fi
 
 ## aliases
 alias dotfiles="cd ~/dotfiles"
