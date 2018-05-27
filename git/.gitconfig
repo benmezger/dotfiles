@@ -80,7 +80,7 @@
 [diff "zip"]
     textconv = unzip -v
 [diff "pdf"]
-    textconv = pdfinfo
+    textconv = mdls
 [diff "bin"]
     textconv = hexdump -v -C
 [github]
