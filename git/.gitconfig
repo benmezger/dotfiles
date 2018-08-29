@@ -85,3 +85,5 @@
     textconv = hexdump -v -C
 [github]
     user = benmezger
+[flake8]
+    strict = true
