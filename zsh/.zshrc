@@ -190,6 +190,7 @@ alias lc='lt -c'         # Lists sorted by date, most recent last, shows change 
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls' # I often screw this up.
 alias grep="${aliases[grep]:-grep} --color=auto"
+alias ipy="python -c 'import IPython; IPython.frontend.terminal.ipapp.launch_new_instance()'"
 
 # fasd aliases
 alias a='fasd -a'        # any
