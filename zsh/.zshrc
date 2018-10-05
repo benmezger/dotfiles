@@ -206,3 +206,9 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index # stack
 function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
+
+# import work stuff
+if [ -f $HOME/.workspace ]; then
+    source $HOME/.workspace
+fi
+
