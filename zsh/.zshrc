@@ -214,3 +214,9 @@ fi
 function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
+
+# import work stuff
+if [ -f $HOME/.workspace ]; then
+    source $HOME/.workspace
+fi
+
