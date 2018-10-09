@@ -2,7 +2,7 @@
 source ~/.zplug/init.zsh
 
 # manage zplug itself
-zplug "zplug/zplug"
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # use double quotes - up-arrow history
 zplug "zsh-users/zsh-history-substring-search"
@@ -62,10 +62,12 @@ zplug "modules/python", "as:plugin", "from:prezto"
 zplug "modules/ruby", "as:plugin", "from:prezto"
 zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
-# zplug check returns true if all packages are installed
-# Therefore, when it returns false, run zplug install
-if ! zplug check; then
-    zplug install
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
 
 # Then, source plugins and add commands to $PATH
