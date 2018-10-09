@@ -29,7 +29,7 @@ zplug "nl5887/a511f172d3fb3cd0e42d", as:plugin, from:gist, \
     "use:transfer.sh"
 
 # syntax highlighting
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # prezto modules
 
