@@ -37,6 +37,13 @@ set -g -x LS_COLORS 'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07
 set -g -x GREP_COLOR '37;45' # BSD.
 set -g -x GREP_COLORS "mt=$GREP_COLOR" # GNU.
 
+if type -q emerge  # is distro is Gentoo, then set  the following variables
+    set -g -x NUMCPUS (nproc)
+    set -g -x NUMCPUSPLUSONE $NUMCPUS + 1
+    set -g -x MAKEOPTS="-j$NUMCPUSPLUSONE -l$NUMCPUS"
+    set -g -x EMERGE_DEFAULT_OPTS="--jobs=$NUMCPUSPLUSONE --load-average=$NUMCPUS"
+end
+
 ## aliases
 alias dotfiles="cd ~/dotfiles"
 alias fucking='sudo'
@@ -55,7 +62,6 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls' # I often screw this up.
-alias ipy="python -c 'import IPython; IPython.frontend.terminal.ipapp.launch_new_instance()'"
 
 # fasd aliases
 alias a='fasd -a'        # any
@@ -70,12 +76,13 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 # source custom files
 source $HOME/.config/fish/functions/vim_prompt.fish
 source $HOME/.config/fish/functions/start_tmux.fish
+source $HOME/.config/fish/functions/fasd_cd.fish
 
 # tmux auto start local
 set -U TMUX_AUTO_START_LOCAL 1
 
 if status is-interactive >/dev/null
-	set -q TMUX_AUTO_START_LOCAL;  or set -U TMUX_AUTO_START_LOCAL  0
-	set -q TMUX_AUTO_START_REMOTE; or set -U TMUX_AUTO_START_REMOTE 0
-	__tmux_start
+    set -q TMUX_AUTO_START_LOCAL;  or set -U TMUX_AUTO_START_LOCAL  0
+    set -q TMUX_AUTO_START_REMOTE; or set -U TMUX_AUTO_START_REMOTE 0
+    __tmux_start
 end
