@@ -77,6 +77,7 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 source $HOME/.config/fish/functions/vim_prompt.fish
 source $HOME/.config/fish/functions/start_tmux.fish
 source $HOME/.config/fish/functions/fasd_cd.fish
+source $HOME/.config/fish/functions/env.fish
 
 # tmux auto start local
 set -U TMUX_AUTO_START_LOCAL 1
@@ -85,4 +86,8 @@ if status is-interactive >/dev/null
     set -q TMUX_AUTO_START_LOCAL;  or set -U TMUX_AUTO_START_LOCAL  0
     set -q TMUX_AUTO_START_REMOTE; or set -U TMUX_AUTO_START_REMOTE 0
     __tmux_start
+end
+
+function fish_greeting
+    fortune -a
 end
