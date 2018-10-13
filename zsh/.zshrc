@@ -15,7 +15,7 @@ zplug "zsh-users/zsh-autosuggestions"
 
 # base16-shell
 BASE16_SCHEME="monokai"
-zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh"
+zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh", defer:0
 
 # prompt theme
 #zplug "miekg/lean", as:plugin
@@ -51,13 +51,7 @@ zplug "modules/history", from:prezto
 zplug "modules/spectrum", "as:plugin", "from:prezto"
 zplug "modules/gpg", as:plugin, "from:prezto"
 
-# python2 virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=$(which python2)
 zplug "modules/python", "as:plugin", "from:prezto"
-
-# ruby rbenv
-zplug "modules/ruby", "as:plugin", "from:prezto"
-zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
