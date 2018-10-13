@@ -69,24 +69,13 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # source custom files
 source $HOME/.config/fish/functions/vim_prompt.fish
+source $HOME/.config/fish/functions/start_tmux.fish
 
 # tmux auto start local
 set -U TMUX_AUTO_START_LOCAL 1
 
-# auto start tmux or attach to a running session
-if test -z "$TMUX" -a -z "$EMACS" -a -z "$VIM" \
-        -a \( \( -n "$SSH_TTY" -a $TMUX_AUTO_START_REMOTE -eq 1 \) \
-            -o \( -z "$SSH_TTY" -a $TMUX_AUTO_START_LOCAL -eq 1 \) \)
-    tmux start-server
-
-    # create session
-    if not tmux has-session ^/dev/null
-        set -l tmux_session 'fish'
-        tmux \
-            new-session -d -s "$tmux_session" \; \
-            set-option -t "$tmux_session" destroy-unattached off >/dev/null ^&1
-    end
-
-    # attach session
-    exec tmux attach-session
+if status is-interactive >/dev/null
+	set -q TMUX_AUTO_START_LOCAL;  or set -U TMUX_AUTO_START_LOCAL  0
+	set -q TMUX_AUTO_START_REMOTE; or set -U TMUX_AUTO_START_REMOTE 0
+	__tmux_start
 end
