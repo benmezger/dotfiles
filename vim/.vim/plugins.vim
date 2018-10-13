@@ -16,6 +16,7 @@ Plug 'mhinz/vim-startify'                                               " the fa
 Plug 'tpope/vim-eunuch'                                                 " helpers for UNIX
 Plug 'easymotion/vim-easymotion'                                        " Vim motions on speed
 Plug 'luochen1990/rainbow'                                              " Rainbow Parentheses Improved
+Plug 'dag/vim-fish'                                                     " Vim support for editing fish scripts
 
 " Add plugins to &runtimepath
 call plug#end()
