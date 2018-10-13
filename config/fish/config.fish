@@ -1,0 +1,92 @@
+# Install fisher
+if not functions -q fisher
+    echo "Installing fisher for the first time..." >&2
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fisher
+end
+
+# fish config
+fish_vi_key_bindings
+
+# Set base16 theme
+base16 monokai
+
+# pyenv
+status --is-interactive; and source (pyenv init -| psub)
+
+# exports
+set -g -x WORKON_HOME "$HOME/.virtualenvs"
+set -g -x PROJECT_HOME "$HOME/workspace"
+set -g -x EDITOR vim
+set -g -x VISUAL vim
+set -g -x LC_ALL en_US.UTF-8
+set -g -x LANG en_US.UTF-8
+set -g -x KEYTIMEOUT 1 # vim mode key lag
+set -g -x PYTHONSTARTUP "$HOME/.pythonrc"
+set -g -x MAKEFLAGS "-j4 -l5"
+set -g -x GPGKEY 0xF2403AC05942EE08
+set -g -x PATH $PATH "$HOME/.bin"
+set -g -x LESS '-F -g -i -M -R -S -w -X -z-4'
+set -g -x _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings on -Dswing.aatext true'
+set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
+
+# colors
+set -g -x LSCOLORS 'exfxcxdxbxGxDxabagacad'
+set -g -x LS_COLORS 'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+set -g -x GREP_COLOR '37;45' # BSD.
+set -g -x GREP_COLORS "mt=$GREP_COLOR" # GNU.
+
+## aliases
+alias dotfiles="cd ~/dotfiles"
+alias fucking='sudo'
+alias vi="vim"
+alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
+alias lessf="less +F"
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
+alias l='ls -1A'         # Lists in one column, hidden files.
+alias ll='ls -lh'        # Lists human readable sizes.
+alias lr='ll -R'         # Lists human readable sizes, recursively.
+alias la='ll -A'         # Lists human readable sizes, hidden files.
+alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
+alias lx='ll -XB'        # Lists sorted by extension (GNU only).
+alias lk='ll -Sr'        # Lists sorted by size, largest last.
+alias lt='ll -tr'        # Lists sorted by date, most recent last.
+alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
+alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
+alias sl='ls' # I often screw this up.
+alias ipy="python -c 'import IPython; IPython.frontend.terminal.ipapp.launch_new_instance()'"
+
+# fasd aliases
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+# source custom files
+source $HOME/.config/fish/functions/vim_prompt.fish
+
+# tmux auto start local
+set -U TMUX_AUTO_START_LOCAL 1
+
+# auto start tmux or attach to a running session
+if test -z "$TMUX" -a -z "$EMACS" -a -z "$VIM" \
+        -a \( \( -n "$SSH_TTY" -a $TMUX_AUTO_START_REMOTE -eq 1 \) \
+            -o \( -z "$SSH_TTY" -a $TMUX_AUTO_START_LOCAL -eq 1 \) \)
+    tmux start-server
+
+    # create session
+    if not tmux has-session ^/dev/null
+        set -l tmux_session 'fish'
+        tmux \
+            new-session -d -s "$tmux_session" \; \
+            set-option -t "$tmux_session" destroy-unattached off >/dev/null ^&1
+    end
+
+    # attach session
+    exec tmux attach-session
+end
