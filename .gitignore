@@ -5,6 +5,7 @@ gnupg/.gnupg
 config/.config
 weechat/.weechat/sec.conf
 ipython/.ipython
+fish/.config/fish/functions
 
 # whitelist
 !gnupg/.gnupg/gpg-agent.conf
