@@ -233,3 +233,11 @@ let g:rbpt_colorpairs = [
 let g:rainbow_active = 1
 au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
 
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
