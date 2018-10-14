@@ -30,3 +30,7 @@ varclear _infopath
 set -g -x PATH $_path
 set -x -g INFOPATH $_infopath
 set -x -g MANPATH $_manpath
+
+# Set pyenv
+set -q PYENV_ROOT; or set -l PYENV_ROOT $HOME/.pyenv
+set PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
