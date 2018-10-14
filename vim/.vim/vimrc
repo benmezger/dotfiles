@@ -190,7 +190,7 @@ let g:vim_markdown_math = 1
 "" vim-startify
 
 " bookmarks
-let g:startify_bookmarks = [{'d': '~/workspace/git/dotfiles'},
+let g:startify_bookmarks = [{'d': '~/dotfiles'},
             \ {'w': '~/workspace'},
             \ {'t': '/etc'},
             \ ]
