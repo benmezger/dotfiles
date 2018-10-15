@@ -240,7 +240,13 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 " completion delay
-let g:deoplete#auto_complete_delay = 10
+call deoplete#custom#option({
+\ 'auto_complete_delay': 10,
+\ })
+
+" jedi
+let g:deoplete#sources#jedi#enable_typeinfo = 0
+let g:deoplete#sources#jedi#show_docstring = 0
 
 " yank to clipboard
 if has("clipboard")
