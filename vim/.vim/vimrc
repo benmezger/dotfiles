@@ -159,12 +159,6 @@ let g:syntastic_check_on_wq = 0
 set updatetime=250                  " . The delay is governed by vim's updatetime option
 let g:gitgutter_highlight_lines = 0 " highlight line
 
-"" YouCompleteMe
-let g:ycm_python_binary_path = 'python2'          " use python 2.* by default
-let g:ycm_collect_identifiers_from_tags_files = 1 " use tag files
-let g:ycm_confirm_extra_conf = 0
-set completeopt-=preview
-
 "" incsearch.vim
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -236,6 +230,21 @@ let g:rbpt_colorpairs = [
 
 let g:rainbow_active = 1
 au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
+
+"" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" use tab instdead
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" completion delay
+let g:deoplete#auto_complete_delay = 10
 
 " yank to clipboard
 if has("clipboard")
