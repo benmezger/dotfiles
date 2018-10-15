@@ -37,6 +37,15 @@ set -g -x LS_COLORS 'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07
 set -g -x GREP_COLOR '37;45' # BSD.
 set -g -x GREP_COLORS "mt=$GREP_COLOR" # GNU.
 
+# colorful man pages
+set -x LESS_TERMCAP_mb (printf "\033[01;31m")
+set -x LESS_TERMCAP_md (printf "\033[01;31m")
+set -x LESS_TERMCAP_me (printf "\033[0m")
+set -x LESS_TERMCAP_se (printf "\033[0m")
+set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
+set -x LESS_TERMCAP_ue (printf "\033[0m")
+set -x LESS_TERMCAP_us (printf "\033[01;32m")
+
 if type -q emerge  # is distro is Gentoo, then set  the following variables
     set -g -x NUMCPUS (nproc)
     set -g -x NUMCPUSPLUSONE $NUMCPUS + 1
