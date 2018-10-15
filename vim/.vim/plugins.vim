@@ -7,7 +7,6 @@ Plug 'scrooloose/syntastic'                                             " syntax
 Plug 'editorconfig/editorconfig-vim'                                    " editorConfig plugin for Vim
 Plug 'ctrlpvim/ctrlp.vim'                                               " fuzzy searching
 Plug 'airblade/vim-gitgutter'                                           " show what lines have changed when inside a git repo
-Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer'} " completion
 Plug 'haya14busa/incsearch.vim'                                         " a better insearch
 Plug 'junegunn/vim-easy-align'                                          " easy align text
 Plug 'jamessan/vim-gnupg'                                               " transparent editing of gpg files
@@ -17,6 +16,21 @@ Plug 'tpope/vim-eunuch'                                                 " helper
 Plug 'easymotion/vim-easymotion'                                        " Vim motions on speed
 Plug 'luochen1990/rainbow'                                              " Rainbow Parentheses Improved
 Plug 'dag/vim-fish'                                                     " Vim support for editing fish scripts
+
+" autocomplete
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" Python autocomplete
+Plug 'zchee/deoplete-jedi'
+
+" C/C++ autocomplete
+Plug 'zchee/deoplete-clang'
 
 " Add plugins to &runtimepath
 call plug#end()
