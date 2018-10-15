@@ -252,6 +252,9 @@ call deoplete#custom#option({
 let g:deoplete#sources#jedi#enable_typeinfo = 0
 let g:deoplete#sources#jedi#show_docstring = 0
 
+let g:deoplete#sources#jedi#python_host_prog = '~/.pyenv/versions/2.7.15/bin/python'
+let g:deoplete#sources#jedi#python3_host_prog = '~/.pyenv/versions/3.7.0/bin/python'
+
 " yank to clipboard
 if has("clipboard")
   set clipboard=unnamed " copy to the system clipboard
