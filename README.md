@@ -12,5 +12,3 @@ How to run:
 
 My Linux dotfiles can be found in the ```master``` branch.
 
-Note: A few files are encrypted. You will need to adapt them for your needs.
-
