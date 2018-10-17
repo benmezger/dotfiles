@@ -15,6 +15,7 @@ base16 monokai
 # pyenv
 status --is-interactive; and source (pyenv init -| psub)
 
+
 # exports
 set -g -x WORKON_HOME "$HOME/.virtualenvs"
 set -g -x PROJECT_HOME "$HOME/workspace"
@@ -54,34 +55,34 @@ if type -q emerge  # is distro is Gentoo, then set  the following variables
 end
 
 ## aliases
-alias dotfiles="cd ~/dotfiles"
-alias fucking='sudo'
-alias vi="vim"
-alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
-alias lessf="less +F"
-alias ccat='pygmentize -g -O style=colorful,linenos=1'
-alias l='ls -1A'         # Lists in one column, hidden files.
-alias ll='ls -lh'        # Lists human readable sizes.
-alias lr='ll -R'         # Lists human readable sizes, recursively.
-alias la='ll -A'         # Lists human readable sizes, hidden files.
-alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
-alias lx='ll -XB'        # Lists sorted by extension (GNU only).
-alias lk='ll -Sr'        # Lists sorted by size, largest last.
-alias lt='ll -tr'        # Lists sorted by date, most recent last.
-alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
-alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
-alias sl='ls' # I often screw this up.
-alias vim="nvim"
+alias dotfiles "cd ~/dotfiles"
+alias fucking 'sudo'
+alias vi "vim"
+alias pip-all "pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
+alias lessf "less +F"
+alias ccat 'pygmentize -g -O style colorful,linenos 1'
+alias l 'ls -1A'         # Lists in one column, hidden files.
+alias ll 'ls -lh'        # Lists human readable sizes.
+alias lr 'll -R'         # Lists human readable sizes, recursively.
+alias la 'll -A'         # Lists human readable sizes, hidden files.
+alias lm 'la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
+alias lx 'll -XB'        # Lists sorted by extension (GNU only).
+alias lk 'll -Sr'        # Lists sorted by size, largest last.
+alias lt 'll -tr'        # Lists sorted by date, most recent last.
+alias lc 'lt -c'         # Lists sorted by date, most recent last, shows change time.
+alias lu 'lt -u'         # Lists sorted by date, most recent last, shows access time.
+alias sl 'ls' # I often screw this up.
+alias vim "nvim"
 
 # fasd aliases
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
+alias a 'fasd -a'        # any
+alias s 'fasd -si'       # show / search / select
+alias d 'fasd -d'        # directory
+alias f 'fasd -f'        # file
+alias sd 'fasd -sid'     # interactive directory selection
+alias sf 'fasd -sif'     # interactive file selection
+alias z 'fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz 'fasd_cd -d -i' # cd with interactive selection
 
 # source custom files
 source $HOME/.config/fish/functions/vim_prompt.fish
