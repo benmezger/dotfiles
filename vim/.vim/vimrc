@@ -248,8 +248,12 @@ call deoplete#custom#option({
 let g:deoplete#sources#jedi#enable_typeinfo = 0
 let g:deoplete#sources#jedi#show_docstring = 0
 
-let g:deoplete#sources#jedi#python_host_prog = '~/.pyenv/versions/2.7.15/bin/python'
-let g:deoplete#sources#jedi#python3_host_prog = '~/.pyenv/versions/3.7.0/bin/python'
+let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
+if g:python_version =~ 3
+    let g:python_host_prog = "/usr/local/bin/python2"
+else
+    let g:python3_host_prog = "/usr/local/bin/python3"
+endif
 
 " yank to clipboard
 if has("clipboard")
