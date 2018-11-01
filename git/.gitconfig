@@ -1,7 +1,7 @@
 [user]
     name = Ben Mezger
     email = me@benmezger.nl
-    signingkey = 0x18C46052168892F7
+    signingkey = 0x1F7A0BF6A858FB3B
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
