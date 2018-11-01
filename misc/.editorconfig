@@ -12,10 +12,14 @@ ident_size = 4
 charset = utf-8
 trim_trailing_whitespace = true
 
-[*.{py,c,cpp,pl,rb,js,cc}]
+[*.{py,c,cpp,pl,rb,cc}]
 indent_style = space
 indent_size = 4
 charset = utf-8
+
+[*.js]
+indent_size = 2
+continuation_indent_size = 4
 
 [Makefile]
 indent_style = tab
