@@ -58,9 +58,7 @@ end
 alias dotfiles "cd ~/dotfiles"
 alias fucking 'sudo'
 alias vi "vim"
-alias pip-all "pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 alias lessf "less +F"
-alias ccat 'pygmentize -g -O style colorful,linenos 1'
 alias l 'ls -1A'         # Lists in one column, hidden files.
 alias ll 'ls -lh'        # Lists human readable sizes.
 alias lr 'll -R'         # Lists human readable sizes, recursively.
@@ -100,5 +98,5 @@ if status is-interactive >/dev/null
 end
 
 function fish_greeting
-    fortune -a
+    fortune -a -s
 end
