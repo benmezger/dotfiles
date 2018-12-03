@@ -291,6 +291,9 @@ nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
 nnoremap <leader>f :<C-u>Denite file_rec<CR>
 nnoremap <leader>re :<C-u>Denite register -mode=normal<CR>
 
+" indentLine
+let g:indentLine_setColors = 1
+
 " disable preview window
 set completeopt-=preview
 
