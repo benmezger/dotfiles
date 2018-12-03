@@ -8,7 +8,6 @@ Plug 'Shougo/denite.nvim'                           " more generic than fuzzy fi
 Plug 'airblade/vim-gitgutter'                       " show what lines have changed when inside a git repo
 Plug 'haya14busa/incsearch.vim'                     " a better insearch
 Plug 'junegunn/vim-easy-align'                      " easy align text
-Plug 'jamessan/vim-gnupg'                           " transparent editing of gpg files
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'} " Markdown vim mode
 Plug 'mhinz/vim-startify'                           " the fancy start screen for vim
 Plug 'tpope/vim-eunuch'                             " helpers for UNIX
@@ -18,6 +17,7 @@ Plug 'dag/vim-fish'                                 " Vim support for editing fi
 Plug 'neomake/neomake'                              " lint checker
 Plug 'bling/vim-bufferline'                         " how the list of buffers in the command bar
 Plug 'mkitt/tabline.vim'                            " Configure tabs within Terminal Vim
+Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
 
 " autocomplete
 if has('nvim')
