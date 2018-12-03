@@ -15,6 +15,7 @@
     followTags = true
 [alias]
     unadd = reset HEAD
+    undo-commit = reset --soft HEAD^
     ec = config --global -e # edit gitconfig
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate # List commits in short form, with colors and branch/tag annotations.
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat # List commits showing changed files
