@@ -47,6 +47,12 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
+switch (uname)
+    case Darwin
+        set -g -x HOMEBREW_NO_AUTO_UPDATE 1
+        set -g -x HOMEBREW_NO_ANALYTICS 1
+end
+
 if type -q emerge  # is distro is Gentoo, then set  the following variables
     set -g -x NUMCPUS (nproc)
     set -g -x NUMCPUSPLUSONE $NUMCPUS + 1
