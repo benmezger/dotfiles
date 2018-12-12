@@ -31,6 +31,7 @@ set -g -x PATH $PATH "$HOME/.bin"
 set -g -x LESS '-F -g -i -M -R -S -w -X -z-4'
 set -g -x _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings on -Dswing.aatext true'
 set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
+set -g -x RIPGREP_CONFIG_PATH ~/.ripgreprc
 
 # colors
 set -g -x LSCOLORS 'exfxcxdxbxGxDxabagacad'
