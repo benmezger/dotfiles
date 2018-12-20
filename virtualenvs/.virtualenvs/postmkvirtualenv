@@ -1,5 +1,0 @@
-#!/usr/local/bin/zsh
-# This hook is sourced after a new virtualenv is activated.
-
-pip install -r $HOME/.virtualenvs/developer_requirements.txt
-

@@ -1,5 +1,0 @@
-ipdb
-ipython
-pyflakes
-pep8
-pdbpp
