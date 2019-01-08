@@ -157,6 +157,11 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 call neomake#configure#automake('nrwi', 500)
 
+augroup my_neomake_qf
+    autocmd!
+    autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
+augroup END
+
 "" vim-gitgutter
 set updatetime=250                  " . The delay is governed by vim's updatetime option
 let g:gitgutter_highlight_lines = 0 " highlight line
