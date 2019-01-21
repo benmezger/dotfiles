@@ -152,9 +152,6 @@ noremap <Right> <NOP>
 " neomake
 let g:neomake_open_list = 2 " open list automatically
 " enable linters
-let g:neomake_javascript_enabled_makers = ['eslint']
-" detect current eseling through node_module
-au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 call neomake#configure#automake('nrwi', 500)
 
 augroup my_neomake_qf
@@ -229,6 +226,13 @@ au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
 
 "" Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
+let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
+if g:python_version =~ 3
+    let g:python_host_prog = "/usr/local/bin/python2"
+else
+    let g:python3_host_prog = "/usr/local/bin/python3"
+endif
 
 " use tab instdead
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
