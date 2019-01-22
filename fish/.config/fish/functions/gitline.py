@@ -258,7 +258,7 @@ class PromptBuilder:
 def build_prompt(colors, repo):
     pb = PromptBuilder(colors, repo)
     pb.add_section()
-    pb.add('REPO_INDICATOR', '${reset}ᚴ')
+    pb.add('REPO_INDICATOR', '${reset}ᚴ ')
 
     pb.add_section()
     if repo.action:
@@ -282,49 +282,49 @@ def build_prompt(colors, repo):
 
     pb.add_section()
     if repo.branch:
-        pb.add('BRANCH', '${branch}')
+        pb.add('BRANCH', '${branch} ')
     elif repo.commit_tag:
-        pb.add('COMMIT_TAG', '${commit_tag}')
+        pb.add('COMMIT_TAG', '${commit_tag} ')
     else:
-        pb.add('DETACHED', '${red}detached@${commit_hash}${reset}')
+        pb.add('DETACHED', '${red}detached@${commit_hash}${reset} ')
 
     pb.add_section()
     if repo.local_commits_to_pull and repo.local_commits_to_push:
-        pb.add('LOCAL_COMMITS_PUSH_PULL', '${local_commits_to_pull} ${yellow}⥯${reset} ${local_commits_to_push}')
+        pb.add('LOCAL_COMMITS_PUSH_PULL', '${local_commits_to_pull} ${yellow}⥯${reset} ${local_commits_to_push} ')
     elif repo.local_commits_to_push:
-        pb.add('LOCAL_COMMITS_PUSH', '${local_commits_to_push}${green}↑${reset}')
+        pb.add('LOCAL_COMMITS_PUSH', '${local_commits_to_push}${green}↑${reset} ')
     elif repo.local_commits_to_pull:
-        pb.add('LOCAL_COMMITS_PULL', '${local_commits_to_pull}${red}↓${reset}')
+        pb.add('LOCAL_COMMITS_PULL', '${local_commits_to_pull}${red}↓${reset} ')
 
     pb.add_section()
     if repo.staged_added:
-        pb.add('STAGED_ADDED', '${staged_added}${green}A${reset}')
+        pb.add('STAGED_ADDED', '${staged_added}${green}A${reset} ')
     if repo.staged_modified:
-        pb.add('STAGED_MODIFIED', '${staged_modified}${green}M${reset}')
+        pb.add('STAGED_MODIFIED', '${staged_modified}${green}M${reset} ')
     if repo.staged_deleted:
-        pb.add('STAGED_DELETED', '${staged_deleted}${green}D${reset}')
+        pb.add('STAGED_DELETED', '${staged_deleted}${green}D${reset} ')
     if repo.staged_renamed:
-        pb.add('STAGED_RENAMED', '${staged_renamed}${green}R${reset}')
+        pb.add('STAGED_RENAMED', '${staged_renamed}${green}R${reset} ')
     if repo.staged_copied:
-        pb.add('STAGED_COPIED', '${staged_copied}${green}C${reset}')
+        pb.add('STAGED_COPIED', '${staged_copied}${green}C${reset} ')
 
     pb.add_section()
     if repo.unstaged_modified:
-        pb.add('UNSTAGED_MODIFIED', '${unstaged_modified}${red}M${reset}')
+        pb.add('UNSTAGED_MODIFIED', '${unstaged_modified}${red}M${reset} ')
     if repo.unstaged_deleted:
-        pb.add('UNSTAGED_DELETED', '${unstaged_deleted}${red}D${reset}')
+        pb.add('UNSTAGED_DELETED', '${unstaged_deleted}${red}D${reset} ')
 
     pb.add_section()
     if repo.untracked:
-        pb.add('UNTRACKED', '${untracked}${white}A${reset}')
+        pb.add('UNTRACKED', '${untracked}${white}A${reset} ')
 
     pb.add_section()
     if repo.unmerged:
-        pb.add('UNMERGED', '${unmerged}${yellow}U${reset}')
+        pb.add('UNMERGED', '${unmerged}${yellow}U${reset} ')
 
     pb.add_section()
     if repo.stashes:
-        pb.add('STASHES', '${stashes}${yellow}≡${reset}')
+        pb.add('STASHES', '${stashes}${yellow}≡${reset} ')
 
     return pb.build()
 
