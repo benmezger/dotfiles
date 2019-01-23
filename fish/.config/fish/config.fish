@@ -107,3 +107,5 @@ end
 function fish_greeting
     fortune -a -s
 end
+
+set -U fish_ambiguous_width 1
