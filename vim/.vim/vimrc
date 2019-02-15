@@ -159,6 +159,12 @@ augroup my_neomake_qf
     autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
 augroup END
 
+let g:neomake_python_enabled_makers = ['mypy', 'flake8']
+augroup my_custom_maker
+    au!
+    au Filetype *.py let b:neomake_python_enabled_makers = ['mypy']
+augroup END
+
 "" vim-gitgutter
 set updatetime=250                  " . The delay is governed by vim's updatetime option
 let g:gitgutter_highlight_lines = 0 " highlight line
