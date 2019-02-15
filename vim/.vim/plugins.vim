@@ -9,13 +9,11 @@ Plug 'airblade/vim-gitgutter'                       " show what lines have chang
 Plug 'haya14busa/incsearch.vim'                     " a better insearch
 Plug 'junegunn/vim-easy-align'                      " easy align text
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'} " Markdown vim mode
-Plug 'mhinz/vim-startify'                           " the fancy start screen for vim
 Plug 'tpope/vim-eunuch'                             " helpers for UNIX
 Plug 'easymotion/vim-easymotion'                    " Vim motions on speed
 Plug 'luochen1990/rainbow'                          " Rainbow Parentheses Improved
 Plug 'dag/vim-fish'                                 " Vim support for editing fish scripts
 Plug 'neomake/neomake'                              " lint checker
-Plug 'bling/vim-bufferline'                         " how the list of buffers in the command bar
 Plug 'mkitt/tabline.vim'                            " Configure tabs within Terminal Vim
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
 
