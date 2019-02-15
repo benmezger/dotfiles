@@ -314,6 +314,9 @@ tramp
 .cask/
 dist/
 
+# mypy
+.mypy_cache/
+
 # Flycheck
 flycheck_*.el
 
