@@ -19,8 +19,8 @@ status --is-interactive; and source (pyenv init -| psub)
 # exports
 set -g -x WORKON_HOME "$HOME/.virtualenvs"
 set -g -x PROJECT_HOME "$HOME/workspace"
-set -g -x EDITOR vim
-set -g -x VISUAL vim
+set -g -x EDITOR nvim
+set -g -x VISUAL nvim
 set -g -x LC_ALL en_US.UTF-8
 set -g -x LANG en_US.UTF-8
 set -g -x KEYTIMEOUT 1 # vim mode key lag
