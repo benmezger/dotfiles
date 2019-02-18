@@ -12,7 +12,6 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'} " Markdown vim mode
 Plug 'tpope/vim-eunuch'                             " helpers for UNIX
 Plug 'easymotion/vim-easymotion'                    " Vim motions on speed
 Plug 'luochen1990/rainbow'                          " Rainbow Parentheses Improved
-Plug 'dag/vim-fish'                                 " Vim support for editing fish scripts
 Plug 'neomake/neomake'                              " lint checker
 Plug 'mkitt/tabline.vim'                            " Configure tabs within Terminal Vim
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
