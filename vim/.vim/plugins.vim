@@ -15,6 +15,7 @@ Plug 'luochen1990/rainbow'                          " Rainbow Parentheses Improv
 Plug 'neomake/neomake'                              " lint checker
 Plug 'mkitt/tabline.vim'                            " Configure tabs within Terminal Vim
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Better Python syntax
 
 " autocomplete
 if has('nvim')
