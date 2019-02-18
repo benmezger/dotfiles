@@ -233,6 +233,9 @@ au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
 "" Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
+" delay deoplet due to semshi
+let g:deoplete#auto_complete_delay = 100
+
 let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
 if g:python_version =~ 3
     let g:python_host_prog = "/usr/local/bin/python2"
