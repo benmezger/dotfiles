@@ -13,9 +13,8 @@ Plug 'tpope/vim-eunuch'                             " helpers for UNIX
 Plug 'easymotion/vim-easymotion'                    " Vim motions on speed
 Plug 'luochen1990/rainbow'                          " Rainbow Parentheses Improved
 Plug 'neomake/neomake'                              " lint checker
-Plug 'mkitt/tabline.vim'                            " Configure tabs within Terminal Vim
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Better Python syntax
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'} " Better Python syntax
 
 " autocomplete
 if has('nvim')
