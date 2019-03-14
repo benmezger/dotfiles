@@ -48,8 +48,6 @@
 [grep]
     extendRegexp = true
     lineNumber = true
-[credential]
-    helper = /usr/lib/git-core/git-credential-gnome-keyring
 [pager]
     diff = diff-so-fancy | less --tabs=4 -RFX
     show = diff-so-fancy | less --tabs=4 -RFX
