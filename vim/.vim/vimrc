@@ -2,6 +2,10 @@
 " some configs from:
 " https://github.com/rstacruz/vim-opinion/
 
+if has('python3')
+  silent! python3 1
+endif
+
 source ~/.vim/plugins.vim " include plugs
 
 " default file encoding and unicode
