@@ -38,9 +38,6 @@ zplug 'modules/prompt', from:prezto
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 # tmux
-# zplug 'modules/tmux', from:prezto
-# zstyle ':prezto:module:tmux:auto-start' local 'yes'
-# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 export ZSH_TMUX_AUTOCONNECT=true
 export ZSH_TMUX_AUTOSTART=true
 zplug 'plugins/tmux', from:oh-my-zsh
@@ -150,6 +147,7 @@ export GPGKEY=0xF2403AC05942EE08
 export PATH="${PATH}:$HOME/.bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
 # colors
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
@@ -173,7 +171,7 @@ alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 p
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
-alias ls="${aliases[ls]:-ls} -G --color=always"
+alias ls="${aliases[ls]:-ls} -G"
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
@@ -200,12 +198,6 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index # stack
-
-## Set SSH to use gpg-agent
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-fi
 
 function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
