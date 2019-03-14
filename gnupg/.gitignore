@@ -1,6 +1,0 @@
-# blacklist
-.gnupg
-
-# whitelist
-!.gnupg/gpg-agent.conf
-!.gnupg/gpg.conf
