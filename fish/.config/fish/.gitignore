@@ -1,6 +1,6 @@
-.config/fish/functions
-.config/fish/completions/fisher.fish
-.config/fish/conf.d/z.fish
-.config/fish/fish_variables
+functions
+completions/fisher.fish
+conf.d/z.fish
+fish_variables
 
-!.config/fish/functions/gitline.py
+!functions/gitline.py
