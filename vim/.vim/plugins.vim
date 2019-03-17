@@ -15,6 +15,7 @@ Plug 'luochen1990/rainbow'                          " Rainbow Parentheses Improv
 Plug 'neomake/neomake'                              " lint checker
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'} " Better Python syntax
+Plug 'wakatime/vim-wakatime' " Code tracking
 
 " autocomplete
 if has('nvim')
