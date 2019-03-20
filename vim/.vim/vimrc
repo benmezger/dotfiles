@@ -253,7 +253,7 @@ let g:deoplete#sources#clang#libclang_path = "/Library/Developer/CommandLineTool
 
 " denite
 call denite#custom#var('file_rec', 'command',
-    \ ['rg', '--files'])
+    \ ['rg', '--files', '--vimgrep'])
 
 " Change mappings.
 call denite#custom#map(
