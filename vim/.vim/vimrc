@@ -302,9 +302,9 @@ if has("clipboard")
 endif
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<c-i>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<C-i>"
+let g:UltiSnipsJumpForwardTrigger="<C-f>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
