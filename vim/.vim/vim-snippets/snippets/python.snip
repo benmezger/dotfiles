@@ -1,0 +1,9 @@
+snippet debug
+abbr ipdb or pdb
+alias debug dbg pdb ipdb
+    try:
+      import ipdb
+      ipdb.set_trace()
+    except ImportError:
+      import pdb
+      pdb.set_trace()
