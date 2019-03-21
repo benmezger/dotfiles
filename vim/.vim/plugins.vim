@@ -16,6 +16,8 @@ Plug 'neomake/neomake'                              " lint checker
 Plug 'Yggdroot/indentLine'                          " Display the indention levels with thin vertical line
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'} " Better Python syntax
 Plug 'wakatime/vim-wakatime' " Code tracking
+Plug 'SirVer/ultisnips' " snippet manager
+Plug 'honza/vim-snippets' " snippet engine
 
 " autocomplete
 if has('nvim')
