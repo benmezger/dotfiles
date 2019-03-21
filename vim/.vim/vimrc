@@ -252,7 +252,7 @@ let g:deoplete#sources#jedi#show_docstring = 0
 let g:deoplete#sources#clang#libclang_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
 
 " denite
-call denite#custom#var('file_rec', 'command',
+call denite#custom#var('file/rec', 'command',
     \ ['rg', '--files', '--vimgrep'])
 
 " Change mappings.
