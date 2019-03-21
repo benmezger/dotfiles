@@ -24,6 +24,7 @@ alias cls3
 options head
 	class ${1:#:clsname}:
 		def __init__(self, ${2}):
+			self.$2 = $2
 			${0:pass}
 
 snippet cls2
@@ -32,6 +33,7 @@ alias cls2
 options head
 	class ${1:#:clsname}(${2:object}):
 		def __init__(self, ${3}):
+			self.$3 = $3
 			${0:pass}
 
 snippet def
