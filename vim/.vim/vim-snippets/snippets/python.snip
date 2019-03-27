@@ -61,3 +61,11 @@ abbr [i for i in <iter>]
 alias compre compreh lcomp
 	[${1:#:name} for ${2:#:name} in ${2:iter}]
 	${0}
+
+snippet property
+abbr def <name>(self): ..
+alias property prodef propdef defprop @property
+	@property
+	def ${2:#funcname}(self):
+		${0:return}
+
