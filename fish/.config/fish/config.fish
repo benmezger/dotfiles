@@ -65,6 +65,16 @@ alias dotfiles "cd ~/dotfiles"
 alias fucking 'sudo'
 alias vi "vim"
 alias lessf "less +F"
+alias vim "nvim"
+
+# ls
+alias ls='exa'
+alias ll='exa -l'
+alias lll='exa -l | less'
+alias lla='exa -la'
+alias llt='exa -T'
+alias llfu='exa -bghHliS --git'
+alias sl 'ls' # I often screw this up.
 alias l 'ls -1A'         # Lists in one column, hidden files.
 alias ll 'ls -lh'        # Lists human readable sizes.
 alias lr 'll -R'         # Lists human readable sizes, recursively.
@@ -75,8 +85,6 @@ alias lk 'll -Sr'        # Lists sorted by size, largest last.
 alias lt 'll -tr'        # Lists sorted by date, most recent last.
 alias lc 'lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu 'lt -u'         # Lists sorted by date, most recent last, shows access time.
-alias sl 'ls' # I often screw this up.
-alias vim "nvim"
 
 # fasd aliases
 alias a 'fasd -a'        # any
