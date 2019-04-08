@@ -117,6 +117,12 @@ hi User3 ctermfg=171 ctermbg=234
 hi User4 ctermfg=70 ctermbg=234
 hi User5 ctermfg=226 ctermbg=234
 
+" Gitgutter in statusline
+function! GitStatus()
+    return join(filter(map(['A','M','D'], {i,v -> v.': '.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
+endfunction
+
+set statusline+=%{GitStatus()}
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
 set statusline +=%5*%{&ff}%*            "file format
@@ -125,6 +131,7 @@ set statusline +=%4*\ %<%F%*            "full path
 set statusline +=%2*%m%*                "modified flag
 set statusline +=%1*\ \|%{&fo}\|        "display format-options
 set statusline +=%{FugitiveStatusline()} " git branch
+set statusline+=%{GitStatus()}
 set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
