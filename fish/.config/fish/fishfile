@@ -5,3 +5,4 @@ barnybug/docker-fish-completion
 fisherman/z
 brigand/fast-nvm-fish
 fishpkg/fish-humanize-duration
+matchai/anybar-fish
