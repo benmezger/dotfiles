@@ -1,0 +1,6 @@
+# whitelist
+!./packages
+!./custom.el
+!./init.el
+!./packages.el
+
