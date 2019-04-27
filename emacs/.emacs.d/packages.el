@@ -23,6 +23,8 @@
     try
     which-key
     magit
+    git-gutter-fringe+
+    fringe-helper
     evil-magit
     helm
     helm-ls-git
