@@ -61,7 +61,8 @@
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (which-key-setup-minibuffer))
 
 ;; startup
 (load "~/.emacs.d/packages/base16.el")
