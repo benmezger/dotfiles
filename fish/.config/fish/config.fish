@@ -116,3 +116,8 @@ function fish_greeting
 end
 
 set -U fish_ambiguous_width 1
+
+# set path for rbenv
+set PATH $HOME/.rbenv/bin $PATH
+set PATH $HOME/.rbenv/shims $PATH
+rbenv rehash >/dev/null ^&1
