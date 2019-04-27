@@ -25,6 +25,7 @@
     magit
     evil-magit
     helm
+    helm-ls-git
     base16-theme
     rainbow-delimiters
     elpy

@@ -17,3 +17,7 @@
   :config (progn
             (setq helm-buffers-fuzzy-matching t)
             (helm-mode 1)))
+
+(use-package helm-ls-git
+  :bind (("C-M-;"   . helm-ls-git-ls)
+         ("C-x C-d" . helm-browse-project)))
