@@ -1,5 +1,5 @@
-; editorconfig
+;; editorconfig
 (use-package editorconfig
-    :ensure t
-    :config
-        (editorconfig-mode 1))
+  :ensure t
+  :config
+  (editorconfig-mode 1))
