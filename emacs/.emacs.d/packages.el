@@ -23,6 +23,7 @@
     try
     which-key
     magit
+    evil-magit
     helm
     base16-theme
     rainbow-delimiters
