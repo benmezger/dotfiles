@@ -8,3 +8,6 @@
 # blacklist
 elpa/*
 transient/*
+bookmarks
+eshell/*
+recentf
