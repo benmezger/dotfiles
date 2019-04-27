@@ -4,3 +4,7 @@
 !./init.el
 !./packages.el
 
+
+# blacklist
+elpa/*
+transient/*
