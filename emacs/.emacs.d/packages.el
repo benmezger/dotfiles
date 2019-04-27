@@ -33,11 +33,10 @@
     wakatime-mode
     evil
     editorconfig
-    linum-relative
+    ; linum-relative
     flycheck
     org
     ) "a list of packages to ensure are installed at launch.")
-
 
 ;; method to check if all packages are installed
 (defun packages-installed-p ()
@@ -71,9 +70,10 @@
 (load "~/.emacs.d/packages/helm.el")
 (load "~/.emacs.d/packages/magit.el")
 (load "~/.emacs.d/packages/rainbow_delimiter.el")
-(load "~/.emacs.d/packages/linenum.el")
+;; (load "~/.emacs.d/packages/linenum.el")
 
 (load "~/.emacs.d/packages/python.el")
 (load "~/.emacs.d/packages/wakatime.el")
 (load "~/.emacs.d/packages/flycheck.el")
 (load "~/.emacs.d/packages/orgmode.el")
+(load "~/.emacs.d/packages/gitgutter.el")

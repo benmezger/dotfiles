@@ -9,6 +9,9 @@
 (scroll-bar-mode -1)
 
 (global-hl-line-mode)
+(global-display-line-numbers-mode)
+(setq-default display-line-numbers-type 'relative)
+
 (setq-default cursor-type 'bar)
 
 ;; set font
