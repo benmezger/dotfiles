@@ -11,6 +11,10 @@
 (global-hl-line-mode)
 (setq-default cursor-type 'bar)
 
+;; set font
+(set-face-attribute 'default nil
+                    :family "Inconsolata-dz"
+                    :height 140)
 
 ;; set custom config file
 (setq custom-file "~/.emacs.d/custom.el")
