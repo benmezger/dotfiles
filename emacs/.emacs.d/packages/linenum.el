@@ -1,6 +1,8 @@
 (use-package linum-relative
   :ensure t
   :config
-  (setq linum-relative-backend 'display-line-numbers-mode)
+  (require 'linum-relative)
   (global-linum-mode)
-  (linum-relative-mode))
+  (linum-relative-mode)
+  (setq linum-relative-backend 'display-line-numbers-mode)
+  (setq linum-relative-current-symbol ""))
