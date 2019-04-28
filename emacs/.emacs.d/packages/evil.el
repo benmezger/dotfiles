@@ -2,7 +2,6 @@
   :ensure t
   :defer .1 ;; don't block emacs when starting, load evil immediately after startup
   :init
-  (setq evil-want-integration nil) ;; required by evil-collection
   (setq evil-search-module 'evil-search)
   (setq evil-ex-complete-emacs-commands nil)
   (setq evil-vsplit-window-right t) ;; like vim's 'splitright'
@@ -10,6 +9,7 @@
   (setq evil-shift-round nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
   :config
   (evil-mode)
 
