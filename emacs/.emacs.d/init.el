@@ -30,5 +30,15 @@
       kept-old-versions 2
       version-control t)
 
+(setq savehist-file "~/.emacs.d/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+
 ;; load packages
 (load "~/.emacs.d/packages.el")
