@@ -38,3 +38,6 @@ insert_final_newline = ignore
 indent_style = tab
 indent_size = 4
 tab_width = 4
+
+[*.{el}]
+indent_size = 2
