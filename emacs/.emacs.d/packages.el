@@ -41,6 +41,7 @@
     smart-mode-line
     smart-mode-line-atom-one-dark-theme
     mode-line-bell
+    yasnippet
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -84,3 +85,4 @@
 (load "~/.emacs.d/packages/orgmode.el")
 (load "~/.emacs.d/packages/gitgutter.el")
 (load "~/.emacs.d/packages/modeline.el")
+(load "~/.emacs.d/packages/yasnippet.el")
