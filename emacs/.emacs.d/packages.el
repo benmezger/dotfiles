@@ -77,3 +77,4 @@
 (load "~/.emacs.d/packages/wakatime.el")
 (load "~/.emacs.d/packages/flycheck.el")
 (load "~/.emacs.d/packages/orgmode.el")
+load "~/.emacs.d/packages/gitgutter.el")
