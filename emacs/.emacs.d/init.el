@@ -40,5 +40,8 @@
         search-ring
         regexp-search-ring))
 
+(setq user-full-name "Ben Mezger"
+      user-mail-address "me@benmezger.nl")
+
 ;; load packages
 (load "~/.emacs.d/packages.el")
