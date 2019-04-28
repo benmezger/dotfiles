@@ -29,8 +29,5 @@
       kept-old-versions 2
       version-control t)
 
-;; visual indication of an exception
- (setq visible-bell 1)
-
 ;; load packages
 (load "~/.emacs.d/packages.el")

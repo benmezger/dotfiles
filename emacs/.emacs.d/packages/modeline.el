@@ -1,6 +1,11 @@
 ;; (use-package smart-mode-line-atom-one-dark-theme
 ;; :ensure t)
 
+(use-package mode-line-bell
+  :ensure t
+  :config
+  (mode-line-bell-mode))
+
 (use-package smart-mode-line
   :ensure t
   :config

@@ -40,6 +40,7 @@
     org
     smart-mode-line
     smart-mode-line-atom-one-dark-theme
+    mode-line-bell
     ) "a list of packages to ensure are installed at launch.")
 
 
