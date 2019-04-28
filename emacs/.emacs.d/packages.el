@@ -42,6 +42,7 @@
     smart-mode-line-atom-one-dark-theme
     mode-line-bell
     yasnippet
+    undo-tree
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -86,3 +87,4 @@
 (load "~/.emacs.d/packages/gitgutter.el")
 (load "~/.emacs.d/packages/modeline.el")
 (load "~/.emacs.d/packages/yasnippet.el")
+(load "~/.emacs.d/packages/undotree.el")
