@@ -90,3 +90,4 @@
 (load "~/.emacs.d/packages/yasnippet.el")
 (load "~/.emacs.d/packages/undotree.el")
 (load "~/.emacs.d/packages/markdown.el")
+(load "~/.emacs.d/packages/completion.el")
