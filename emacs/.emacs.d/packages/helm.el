@@ -4,7 +4,7 @@
          ("C-x C-f" . helm-find-files)
          ("C-x f" . helm-recentf)
          ("M-y" . helm-show-kill-ring)
-         ("C-x b" . helm-buffers-list))
+         ("C-x b" . helm-mini))
   :bind (:map helm-map
               ("M-i" . helm-previous-line)
               ("M-k" . helm-next-line)
