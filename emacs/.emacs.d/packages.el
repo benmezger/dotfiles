@@ -43,6 +43,7 @@
     mode-line-bell
     yasnippet
     undo-tree
+    markdown-mode
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -88,3 +89,4 @@
 (load "~/.emacs.d/packages/modeline.el")
 (load "~/.emacs.d/packages/yasnippet.el")
 (load "~/.emacs.d/packages/undotree.el")
+(load "~/.emacs.d/packages/markdown.el")
