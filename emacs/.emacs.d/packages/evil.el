@@ -18,6 +18,7 @@
     :after evil
     :ensure t
     :config
+    :custom (evil-collection-setup-minibuffer t)
     (evil-collection-init))
 
   ;; * operator in vusual mode
