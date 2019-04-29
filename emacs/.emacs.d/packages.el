@@ -45,6 +45,7 @@
     undo-tree
     markdown-mode
     yaml-mode
+    exec-path-from-shell
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -93,3 +94,4 @@
 (load "~/.emacs.d/packages/markdown.el")
 (load "~/.emacs.d/packages/completion.el")
 (load "~/.emacs.d/packages/yaml.el")
+(load "~/.emacs.d/packages/execpath.el")
