@@ -47,6 +47,7 @@
     yaml-mode
     exec-path-from-shell
     highlight-indent-guides
+    ace-jump-mode
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -97,3 +98,4 @@
 (load "~/.emacs.d/packages/yaml.el")
 (load "~/.emacs.d/packages/execpath.el")
 (load "~/.emacs.d/packages/indentguide.el")
+(load "~/.emacs.d/packages/acejump.el")
