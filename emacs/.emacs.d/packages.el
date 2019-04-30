@@ -46,6 +46,7 @@
     markdown-mode
     yaml-mode
     exec-path-from-shell
+    highlight-indent-guides
     ) "a list of packages to ensure are installed at launch.")
 
 
@@ -95,3 +96,4 @@
 (load "~/.emacs.d/packages/completion.el")
 (load "~/.emacs.d/packages/yaml.el")
 (load "~/.emacs.d/packages/execpath.el")
+(load "~/.emacs.d/packages/indentguide.el")
