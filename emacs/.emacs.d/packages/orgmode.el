@@ -12,6 +12,9 @@
     (setq org-agenda-files '("~/orgs"))
     (setq org-default-notes-file "~/orgs/todos.org")
     (setq org-log-done t)
+    (setq-default org-display-custom-times t)
+    (setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
+    (add-hook 'org-mode-hook 'org-indent-mode)
     (setq org-todo-keywords
           '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
     (setq org-agenda-include-diary t)
