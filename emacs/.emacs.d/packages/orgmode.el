@@ -12,7 +12,9 @@
     (setq org-default-notes-file "~/orgs/todos.org")
     (setq org-log-done t)
     (setq org-todo-keywords
-          '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))))
+          '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+    (setq org-agenda-include-diary t)
+    (setq org-agenda-include-all-todo t))
 
 (use-package org-journal
   :ensure t
