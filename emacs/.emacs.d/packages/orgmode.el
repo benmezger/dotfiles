@@ -9,7 +9,7 @@
   :config
   (progn
     (setq org-directory "~/orgs")
-    (setq org-agenda-files '("~/org"))
+    (setq org-agenda-files '("~/orgs"))
     (setq org-default-notes-file "~/orgs/todos.org")
     (setq org-log-done t)
     (setq org-todo-keywords
