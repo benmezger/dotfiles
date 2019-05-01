@@ -10,6 +10,16 @@
   (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
+  (setq evil-emacs-state-modes nil)
+  (setq evil-insert-state-modes nil)
+  (setq evil-motion-state-modes nil)
+  (setq evil-emacs-state-cursor '("red" hbar))
+  (setq evil-normal-state-cursor '("green" hbar))
+  (setq evil-visual-state-cursor '("orange" hbar))
+  (setq evil-insert-state-cursor '("red" hbar))
+  (setq evil-replace-state-cursor '("red" hbar))
+  (setq evil-operator-state-cursor '("red" hbar))
+  (add-hook 'after-save-hook #'evil-normal-state)
   :config
   (evil-mode)
 
