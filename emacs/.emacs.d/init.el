@@ -1,7 +1,5 @@
-
 ;; disable startup message
 (setq inhibit-startup-message t)
-
 
 ;; Emacs general config
 (menu-bar-mode -1)
@@ -12,10 +10,6 @@
 (global-hl-line-mode)
 (setq-default cursor-type 'bar)
 
-;; set font
-(set-face-attribute 'default nil
-                    :family "Inconsolata-dz"
-                    :height 140)
 
 ;; set custom config file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -45,6 +39,9 @@
 
 ;; load packages
 (load "~/.emacs.d/packages.el")
+
+(set-frame-font "Inconsolata-dz 12" nil t)
+
 ;; set line number
 (global-display-line-numbers-mode)
 (set-face-attribute 'line-number-current-line nil :inverse-video nil)
