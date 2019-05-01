@@ -45,3 +45,6 @@
 
 ;; load packages
 (load "~/.emacs.d/packages.el")
+;; set line number
+(global-display-line-numbers-mode)
+(set-face-attribute 'line-number-current-line nil :inverse-video nil)

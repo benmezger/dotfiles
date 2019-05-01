@@ -35,7 +35,6 @@
     wakatime-mode
     evil
     editorconfig
-    linum-relative
     flycheck
     org
     smart-mode-line
@@ -83,7 +82,6 @@
 (load "~/.emacs.d/packages/helm.el")
 (load "~/.emacs.d/packages/magit.el")
 (load "~/.emacs.d/packages/rainbow_delimiter.el")
-(load "~/.emacs.d/packages/linenum.el")
 
 (load "~/.emacs.d/packages/python.el")
 (load "~/.emacs.d/packages/wakatime.el")
