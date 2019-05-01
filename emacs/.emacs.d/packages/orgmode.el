@@ -13,3 +13,10 @@
     (setq org-log-done t)
     (setq org-todo-keywords
           '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))))
+
+(use-package org-journal
+  :ensure t
+  :defer t
+  :custom
+  (org-journal-dir "~/orgs/journal/")
+  (org-journal-date-format "%A, %d %B %Y"))
