@@ -44,5 +44,6 @@
 (set-frame-font "Inconsolata-dz 12" nil t)
 
 ;; set line number
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 (set-face-attribute 'line-number-current-line nil :inverse-video nil)
