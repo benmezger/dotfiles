@@ -48,6 +48,7 @@
     highlight-indent-guides
     avy
     all-the-icons-dired
+    org-journal
     ) "a list of packages to ensure are installed at launch.")
 
 
