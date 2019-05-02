@@ -48,6 +48,7 @@
     highlight-indent-guides
     avy
     all-the-icons-dired
+    adoc-mode
     org-journal
     ) "a list of packages to ensure are installed at launch.")
 
@@ -100,3 +101,4 @@
 (load "~/.emacs.d/packages/indentguide.el")
 (load "~/.emacs.d/packages/avy.el")
 (load "~/.emacs.d/packages/icons.el")
+(load "~/.emacs.d/packages/adoc.el")
