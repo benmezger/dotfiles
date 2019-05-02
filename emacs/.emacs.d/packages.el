@@ -102,3 +102,7 @@
 (load "~/.emacs.d/packages/avy.el")
 (load "~/.emacs.d/packages/icons.el")
 (load "~/.emacs.d/packages/adoc.el")
+
+;; PGP
+(require 'epa-file)
+(epa-file-enable)
