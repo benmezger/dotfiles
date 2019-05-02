@@ -25,4 +25,13 @@
   :defer t
   :custom
   (org-journal-dir "~/orgs/journal/")
-  (org-journal-date-format "%A, %d %B %Y"))
+  (org-journal-date-format "%A, %d %B %Y")
+  :config
+  (defun org-journal-save-entry-and-exit()
+  "Simple convenience function.
+  Saves the buffer of the current day's entry and kills the window
+  Similar to org-capture like behavior"
+  (interactive)
+  (save-buffer)
+  (kill-buffer-and-window))
+  (define-key org-journal-mode-map (kbd "C-x C-s") 'org-journal-save-entry-and-exit))
