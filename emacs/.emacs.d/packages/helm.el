@@ -18,6 +18,12 @@
             (setq helm-buffers-fuzzy-matching t)
             (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
             (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+            (setq helm-grep-default-command
+              "ack-grep -Hn --color --smart-case --no-group %e %p %f"
+              helm-grep-default-recurse-command
+              "ack-grep -H --color --smart-case --no-group %e %p %f")
+            (setq helm-ls-git-grep-command
+              "git grep -n%cH --color=always --full-name -e %p %f")
             (setq helm-recentf-fuzzy-match t)
             (setq helm-buffers-fuzzy-matching t)
             (setq helm-buffers-fuzzy-matching t)
