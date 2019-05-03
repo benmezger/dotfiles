@@ -7,8 +7,8 @@
 
                                         ; add package archive
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
+                          ("melpa" . "https://melpa.org/packages/")
+                          ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)
 
@@ -20,44 +20,44 @@
 ;; packages to install
 (defvar required-packages
   '(
-    try
-    which-key
-    magit
-    git-gutter-fringe+
-    fringe-helper
-    evil-magit
-    helm
-    helm-ls-git
-    base16-theme
-    rainbow-delimiters
-    elpy
-    pyenv-mode
-    wakatime-mode
-    evil
-    editorconfig
-    flycheck
-    org
-    smart-mode-line
-    smart-mode-line-atom-one-dark-theme
-    mode-line-bell
-    yasnippet
-    undo-tree
-    markdown-mode
-    yaml-mode
-    exec-path-from-shell
-    highlight-indent-guides
-    avy
-    all-the-icons-dired
-    adoc-mode
-    org-journal
-    ) "a list of packages to ensure are installed at launch.")
+     try
+     which-key
+     magit
+     git-gutter-fringe+
+     fringe-helper
+     evil-magit
+     helm
+     helm-ls-git
+     base16-theme
+     rainbow-delimiters
+     elpy
+     pyenv-mode
+     wakatime-mode
+     evil
+     editorconfig
+     flycheck
+     org
+     smart-mode-line
+     smart-mode-line-atom-one-dark-theme
+     mode-line-bell
+     yasnippet
+     undo-tree
+     markdown-mode
+     yaml-mode
+     exec-path-from-shell
+     highlight-indent-guides
+     avy
+     all-the-icons-dired
+     adoc-mode
+     org-journal
+     ) "a list of packages to ensure are installed at launch.")
 
 
 ;; method to check if all packages are installed
 (defun packages-installed-p ()
   (loop for p in required-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+    when (not (package-installed-p p)) do (return nil)
+    finally (return t)))
 
 ;; if not all packages are installed, check one by one and install the missing ones.
 (unless (packages-installed-p)
