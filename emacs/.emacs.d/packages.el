@@ -50,6 +50,7 @@
      all-the-icons-dired
      adoc-mode
      org-journal
+     mode-icons
      ) "a list of packages to ensure are installed at launch.")
 
 
