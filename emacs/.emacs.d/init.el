@@ -41,6 +41,7 @@
 ;; load packages
 (load "~/.emacs.d/packages.el")
 
+(toggle-frame-maximized) ;; start at maximzed frame
 (set-frame-font "InconsolataDZ 12" nil t)
 
 ;; set line number
