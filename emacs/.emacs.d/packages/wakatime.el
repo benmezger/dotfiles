@@ -1,3 +1,3 @@
 (use-package wakatime-mode
-  :custom (wakatime-cli-path "/Users/benmezger/.pyenv/shims/wakatime")
+  :custom (wakatime-cli-path "~/.pyenv/shims/wakatime")
   :config (global-wakatime-mode))

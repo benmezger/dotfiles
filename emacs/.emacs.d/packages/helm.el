@@ -1,23 +1,29 @@
 ;; helm mode
 (use-package helm
   :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x f" . helm-recentf)
-         ("M-y" . helm-show-kill-ring)
-         ("C-x b" . helm-mini)
-         ("C-c h o" . helm-occur))
+          ("C-x C-f" . helm-find-files)
+          ("C-x f" . helm-recentf)
+          ("M-y" . helm-show-kill-ring)
+          ("C-x b" . helm-mini)
+          ("C-c h o" . helm-occur))
   :bind (:map helm-map
-              ("M-i" . helm-previous-line)
-              ("M-k" . helm-next-line)
-              ("M-I" . helm-previous-page)
-              ("M-K" . helm-next-page)
-              ("M-h" . helm-beginning-of-buffer)
-              ("M-H" . helm-end-of-buffer))
+          ("M-i" . helm-previous-line)
+          ("M-k" . helm-next-line)
+          ("M-I" . helm-previous-page)
+          ("M-K" . helm-next-page)
+          ("M-h" . helm-beginning-of-buffer)
+          ("M-H" . helm-end-of-buffer))
   :ensure t
   :config (progn
             (setq helm-buffers-fuzzy-matching t)
             (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
             (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+            (setq helm-grep-default-command
+              "ack-grep -Hn --color --smart-case --no-group %e %p %f"
+              helm-grep-default-recurse-command
+              "ack-grep -H --color --smart-case --no-group %e %p %f")
+            (setq helm-ls-git-grep-command
+              "git grep -n%cH --color=always --full-name -e %p %f")
             (setq helm-recentf-fuzzy-match t)
             (setq helm-buffers-fuzzy-matching t)
             (setq helm-buffers-fuzzy-matching t)
@@ -36,4 +42,4 @@
 
 (use-package helm-ls-git
   :bind (("C-M-;"   . helm-ls-git-ls)
-         ("C-x C-d" . helm-browse-project)))
+          ("C-x C-d" . helm-browse-project)))
