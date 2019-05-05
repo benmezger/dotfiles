@@ -33,6 +33,7 @@
   :config
   (setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'")
   (setq org-journal-enable-encryption t)
+  (setq org-journal-file-format "%Y%m%d.org")
   (setq org-journal-encrypt-journal t)
   (setq org-journal-enable-agenda-integration t)
   (setq org-journal-time-prefix "* ")
