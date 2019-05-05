@@ -2,7 +2,10 @@
 ;; orgmode
 (use-package org
   :ensure t
-  :mode ("\\.org\\'" . org-mode)
+  :mode (("\\.org\\'" . org-mode)
+          ("\\.text\\'" . org-mode)
+          ("\\.text\\'" . org-mode)
+          ("\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'" . org-mode))
   :bind (("C-c l" . org-store-link)
           ("C-c a" . org-agenda)
           ("C-c c" . org-capture))
