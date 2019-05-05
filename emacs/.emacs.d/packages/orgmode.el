@@ -12,10 +12,6 @@
   :config
   (progn
     (setq org-directory "~/orgs")
-    (setq org-agenda-files '("~/orgs"))
-    (setq org-agenda-include-diary t)
-    (setq org-agenda-include-all-todo t)
-    (setq org-default-notes-file "~/orgs/todos.org.gpg")
     (setq org-agenda-files '("~/orgs/inbox.org.gpg"
                               "~/orgs/gtd.org.gpg"
                               "~/orgs/tickler.org.gpg"))
@@ -44,9 +40,9 @@
     (setq-default org-display-custom-times t)
     (setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
     (setq org-src-fontify-natively t)
-    (add-hook 'org-mode-hook 'org-indent-mode)
     (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))))
+      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+
     (add-hook 'org-mode-hook 'org-indent-mode)
     (defun my-org-agenda-skip-all-siblings-but-first ()
       "Skip all but the first non-done entry."
