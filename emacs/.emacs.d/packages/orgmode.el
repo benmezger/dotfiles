@@ -16,13 +16,13 @@
                               "~/orgs/gtd.org.gpg"
                               "~/orgs/tickler.org.gpg"))
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                    (file+headline "~/orgs/inbox.org.gpg" "Tasks")
+                                    (file+headline "~/orgs/inbox.org.gpg" "\nTasks")
                                     "* TODO %i%?")
                                    ("T" "Tickler" entry
-                                     (file+headline "~/orgs/tickler.org.gpg" "Tickler")
+                                     (file+headline "~/orgs/tickler.org.gpg" "\nTickler")
                                      "* %i%? \n %U")
                                    ("G" "GTD" entry
-                                     (file+headline "~/orgs/gtd.org.gpg" "Get things done (GTD)")
+                                     (file+headline "~/orgs/gtd.org.gpg" "\nGet things done (GTD)")
                                      "* %i%? \n %U")
                                    ))
     (setq org-agenda-custom-commands
