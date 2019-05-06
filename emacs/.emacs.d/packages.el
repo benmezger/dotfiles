@@ -28,12 +28,14 @@
      evil-magit
      helm
      helm-ls-git
+     helm-projectile
      base16-theme
      rainbow-delimiters
      elpy
      pyenv-mode
      wakatime-mode
      evil
+     evil-leader
      editorconfig
      flycheck
      org
@@ -51,6 +53,7 @@
      adoc-mode
      org-journal
      mode-icons
+     projectile
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -103,6 +106,7 @@
 (load "~/.emacs.d/packages/avy.el")
 (load "~/.emacs.d/packages/icons.el")
 (load "~/.emacs.d/packages/adoc.el")
+(load "~/.emacs.d/packages/projectile.el")
 
 ;; PGP
 (require 'epa-file)

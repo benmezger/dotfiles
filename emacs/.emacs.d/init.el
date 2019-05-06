@@ -48,3 +48,6 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 (set-face-attribute 'line-number-current-line nil :inverse-video nil)
+
+(setq-default shell-file-name "/bin/bash")
+(setq-default explicit-shell-file-name "/bin/bash")
