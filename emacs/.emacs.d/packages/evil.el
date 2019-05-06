@@ -9,7 +9,7 @@
   (evil-leader/set-leader "<SPC> ,")
   (evil-leader/set-key "e" 'find-file)
   (evil-leader/set-key "g" 'helm-do-grep-ag)
-  (evil-leader/set-key "g" 'helm-do-grep-ag)
+  (evil-leader/set-key "f" 'projectile-find-file)
   (evil-leader/set-key "b" 'bookmark-jump))
 
 (use-package evil

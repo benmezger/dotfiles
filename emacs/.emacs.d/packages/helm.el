@@ -43,3 +43,6 @@
 (use-package helm-ls-git
   :bind (("C-M-;"   . helm-ls-git-ls)
           ("C-x C-d" . helm-browse-project)))
+
+(use-package helm-projectile
+  :ensure t)
