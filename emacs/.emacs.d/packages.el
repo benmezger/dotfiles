@@ -34,6 +34,7 @@
      pyenv-mode
      wakatime-mode
      evil
+     evil-leader
      editorconfig
      flycheck
      org

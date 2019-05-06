@@ -1,3 +1,17 @@
+(use-package evil-expat
+  :ensure t
+  :defer t
+  :init
+  ;; Set want-keybinding to nil before loading evil or evil collection.
+  ;; See https://github.com/emacs-evil/evil-collection/issues/60 for more details.
+  (setq evil-want-keybinding nil)
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC> ,")
+  (evil-leader/set-key "e" 'find-file)
+  (evil-leader/set-key "g" 'helm-do-grep-ag)
+  (evil-leader/set-key "g" 'helm-do-grep-ag)
+  (evil-leader/set-key "b" 'bookmark-jump))
+
 (use-package evil
   :ensure t
   :defer .1 ;; don't block emacs when starting, load evil immediately after startup
@@ -8,7 +22,7 @@
   (setq evil-split-window-below t) ;; like vim's 'splitbelow'
   (setq evil-shift-round nil)
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-keybinding nil)
+  (setq evil-want-keybinding t)
   (setq evil-want-integration t)
   (setq evil-emacs-state-modes nil)
   (setq evil-insert-state-modes nil)
