@@ -10,7 +10,8 @@
   (evil-leader/set-key "e" 'find-file)
   (evil-leader/set-key "g" 'helm-do-grep-ag)
   (evil-leader/set-key "f" 'helm-projectile)
-  (evil-leader/set-key "b" 'bookmark-jump))
+  (evil-leader/set-key "b" 'bookmark-jump)
+  (evil-leader/set-key "w" 'elpy-goto-definition))
 
 (use-package evil
   :ensure t
