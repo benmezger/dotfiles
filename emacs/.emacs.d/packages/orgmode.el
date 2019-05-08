@@ -16,7 +16,7 @@
                               "~/orgs/gtd.org.gpg"
                               "~/orgs/tickler.org.gpg"))
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                    (file+headline "~/orgs/inbox.org.gpg" "\nTasks")
+                                    (file+headline "~/orgs/inbox.org.gpg" "Tasks")
                                     "* TODO %i%?")
                                    ("T" "Tickler" entry
                                      (file+headline "~/orgs/tickler.org.gpg" "\nTickler")
