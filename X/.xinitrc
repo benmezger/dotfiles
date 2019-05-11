@@ -9,6 +9,9 @@ isavailable() {
 xset +dpms
 xset dpms 0 0 300
 
+# 230 has IPS or TN screen with 125.37 DPI
+xrandr --dpi 125.37
+
 # run xrdb
 [[ -f $HOME/.Xresources ]] && xrdb -load $HOME/.Xresources
 
