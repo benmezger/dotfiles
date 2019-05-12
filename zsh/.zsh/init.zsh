@@ -6,6 +6,11 @@ compinit -C -i
 setopt autocd
 setopt extendedglob
 setopt NO_NOMATCH
+setopt correct_all
+
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
 
 # general exports
 export WORKON_HOME=$HOME/.virtualenvs
@@ -32,6 +37,9 @@ export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
 # navidate completion
 zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored
+_approximate # enable approximate matches for completion
 
 # slimline
 export SLIMLINE_PROMPT_VERSION=1 # activate legacy option format
@@ -47,3 +55,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
+
+# fetch suggestions asynchronously
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
