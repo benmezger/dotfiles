@@ -6,3 +6,4 @@ robbyrussell/oh-my-zsh path:plugins/tmux
 chriskempson/base16-shell
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
+robbyrussell/oh-my-zsh path:plugins/z
