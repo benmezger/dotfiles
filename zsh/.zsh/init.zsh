@@ -6,6 +6,7 @@ compinit -C -i
 setopt autocd
 setopt extendedglob
 setopt NO_NOMATCH
+setopt correct_all
 
 # general exports
 export WORKON_HOME=$HOME/.virtualenvs
