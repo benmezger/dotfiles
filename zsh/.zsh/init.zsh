@@ -39,7 +39,9 @@ export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 _approximate # enable approximate matches for completion
+
 
 # slimline
 export SLIMLINE_PROMPT_VERSION=1 # activate legacy option format
