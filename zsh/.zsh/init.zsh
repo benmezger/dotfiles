@@ -22,7 +22,7 @@ export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
-export GPGKEY=0xF2403AC05942EE08
+export GPGKEY=0xAC7A30843ADC0D65
 export PATH="${PATH}:$HOME/.bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
