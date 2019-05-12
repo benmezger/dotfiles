@@ -8,6 +8,10 @@ setopt extendedglob
 setopt NO_NOMATCH
 setopt correct_all
 
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
+
 # general exports
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/workspace
