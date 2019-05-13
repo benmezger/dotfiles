@@ -51,3 +51,17 @@
 
 (setq-default shell-file-name "/bin/bash")
 (setq-default explicit-shell-file-name "/bin/bash")
+
+;; Set 50MB for the garbage collection
+;; and
+(setq gc-cons-threshold 50000000)
+(setq large-file-warning-threshold 100000000)
+
+;; Replate yes-or-not to y-or-n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; reload files automatically
+(global-auto-revert-mode t)
+
+;; Cleanup whitespaces before save
+(add-hook 'before-save-hook 'whitespace-cleanup)

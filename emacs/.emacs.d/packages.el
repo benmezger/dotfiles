@@ -54,6 +54,7 @@
      org-journal
      mode-icons
      projectile
+     diminish
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -107,6 +108,7 @@
 (load "~/.emacs.d/packages/icons.el")
 (load "~/.emacs.d/packages/adoc.el")
 (load "~/.emacs.d/packages/projectile.el")
+(load "~/.emacs.d/packages/diminish.el")
 
 ;; PGP
 (require 'epa-file)
