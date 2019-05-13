@@ -57,3 +57,18 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
+
+
+# autostart tmux
+# from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
+export TMUX_AUTOSTART="true"
+
+function _tmux_autostart(){
+  if [[ "$TMUX_AUTOSTART" == "true" && -z "$TMUX" ]]; then
+    tmux attach || TERM=xterm-256color tmux new
+    exit 0
+  fi
+  precmd_functions=(${precmd_functions#_tmux_autostart})
+}
+
+precmd_functions+=( _tmux_autostart )
