@@ -1,4 +1,3 @@
-
 ;; enable packages
 (require 'cl)
 (require 'package)
@@ -55,6 +54,7 @@
      mode-icons
      projectile
      diminish
+     auto-package-update
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -109,6 +109,7 @@
 (load "~/.emacs.d/packages/adoc.el")
 (load "~/.emacs.d/packages/projectile.el")
 (load "~/.emacs.d/packages/diminish.el")
+(load "~/.emacs.d/packages/autoupdate.el")
 
 ;; PGP
 (require 'epa-file)
