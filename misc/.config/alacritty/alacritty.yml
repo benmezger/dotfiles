@@ -149,7 +149,7 @@ font:
 render_timer: false
 
 # Keep the log file after quitting Alacritty.
-persistent_logging: false
+persistent_logging: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -322,7 +322,7 @@ live_config_reload: true
 #   - (Linux/macOS) /bin/bash --login
 #   - (Windows) powershell
 shell:
-  program: /usr/local/bin/fish
+  program: /usr/local/bin/zsh
 #  args:
 #    - --login
 
