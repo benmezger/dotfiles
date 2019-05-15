@@ -65,3 +65,6 @@
 
 ;; Cleanup whitespaces before save
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; human-readable file size format
+(setq dired-listing-switches "-alh")
