@@ -28,6 +28,8 @@
      helm
      helm-ls-git
      helm-projectile
+     helm-rg
+     ripgrep
      base16-theme
      rainbow-delimiters
      elpy
