@@ -6,7 +6,47 @@ alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 p
 alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
-alias ls="${aliases[ls]:-ls} -G --color"
+
+# From: https://github.com/zimfw/zimfw/blob/master/modules/utility/init.zsh
+if (( ${+commands[dircolors]} )); then
+    # GNU
+    (( ! ${+LS_COLORS} )) && if [[ -s ${HOME}/.dircolors ]]; then
+        eval $(dircolors -b $HOME/.dircolors)
+    else
+        export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+    fi
+    alias ls='ls --group-directories-first --color=auto'
+else
+    # BSD
+    (( ! ${+CLICOLOR} )) && export CLICOLOR=1
+    (( ! ${+LSCOLORS} )) && export LSCOLORS='ExfxcxdxbxGxDxabagacad'
+
+    # stock OpenBSD ls does not support colors at all, but colorls does.
+    if [[ ${OSTYPE} == openbsd* && ${+commands[colorls]} -ne 0 ]]; then
+        alias ls='colorls'
+    fi
+fi
+
+# grep Colours
+(( ! ${+GREP_COLOR} )) && export GREP_COLOR='37;45'               #BSD
+(( ! ${+GREP_COLORS} )) && export GREP_COLORS="mt=${GREP_COLOR}"  #GNU
+if [[ ${OSTYPE} == openbsd* ]]; then
+    (( ${+commands[ggrep]} )) && alias grep='ggrep --color=auto'
+else
+    alias grep='grep --color=auto'
+fi
+
+# less Colours
+if [[ ${PAGER} == 'less' ]]; then
+    (( ! ${+LESS_TERMCAP_mb} )) && export LESS_TERMCAP_mb=$'\E[1;31m'   # Begins blinking.
+    (( ! ${+LESS_TERMCAP_md} )) && export LESS_TERMCAP_md=$'\E[1;31m'   # Begins bold.
+    (( ! ${+LESS_TERMCAP_me} )) && export LESS_TERMCAP_me=$'\E[0m'      # Ends mode.
+    (( ! ${+LESS_TERMCAP_se} )) && export LESS_TERMCAP_se=$'\E[0m'      # Ends standout-mode.
+    (( ! ${+LESS_TERMCAP_so} )) && export LESS_TERMCAP_so=$'\E[7m'      # Begins standout-mode.
+    (( ! ${+LESS_TERMCAP_ue} )) && export LESS_TERMCAP_ue=$'\E[0m'      # Ends underline.
+    (( ! ${+LESS_TERMCAP_us} )) && export LESS_TERMCAP_us=$'\E[1;32m'   # Begins underline.
+fi
+
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
@@ -18,7 +58,6 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls' # I often screw this up.
-alias grep="${aliases[grep]:-grep} --color=auto"
 alias ipy="python -c 'import IPython; IPython.frontend.terminal.ipapp.launch_new_instance()'"
 
 # fasd aliases
