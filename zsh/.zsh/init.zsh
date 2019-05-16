@@ -72,3 +72,6 @@ function _tmux_autostart(){
 }
 
 precmd_functions+=( _tmux_autostart )
+
+#  load LS_COLORS
+eval $(dircolors -b $HOME/.dircolors)
