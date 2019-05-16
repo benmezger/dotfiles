@@ -42,9 +42,8 @@
   (use-package evil-collection
     :after evil
     :ensure t
-    :config
     :custom (evil-collection-setup-minibuffer t)
-    (evil-collection-init))
+    :init (evil-collection-init))
 
   ;; * operator in vusual mode
   (use-package evil-visualstar
