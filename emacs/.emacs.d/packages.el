@@ -32,6 +32,7 @@
      counsel
      counsel-projectile
      counsel-etags
+     flx
      ripgrep
      base16-theme
      rainbow-delimiters
