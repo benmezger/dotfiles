@@ -3,6 +3,7 @@
   :defer t
   :bind (("C-c p" . projectile-command-map))
   :init
+  (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)
   (setq projectile-project-search-path '("~/workspace/"))
