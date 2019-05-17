@@ -29,6 +29,8 @@
      ;; helm-ls-git
      ;; helm-projectile
      ;; helm-rg
+     counsel
+     counsel-projectile
      ripgrep
      base16-theme
      rainbow-delimiters
@@ -90,6 +92,7 @@
 (load "~/.emacs.d/packages/evil.el")
 (load "~/.emacs.d/packages/editorconfig.el")
 ;; (load "~/.emacs.d/packages/helm.el")
+(load "~/.emacs.d/packages/ivy.el")
 (load "~/.emacs.d/packages/magit.el")
 (load "~/.emacs.d/packages/rainbow_delimiter.el")
 
