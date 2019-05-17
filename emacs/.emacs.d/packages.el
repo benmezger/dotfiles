@@ -25,10 +25,10 @@
      git-gutter-fringe+
      fringe-helper
      evil-magit
-     helm
-     helm-ls-git
-     helm-projectile
-     helm-rg
+     ;; helm
+     ;; helm-ls-git
+     ;; helm-projectile
+     ;; helm-rg
      ripgrep
      base16-theme
      rainbow-delimiters
@@ -89,7 +89,7 @@
 (load "~/.emacs.d/packages/base16.el")
 (load "~/.emacs.d/packages/evil.el")
 (load "~/.emacs.d/packages/editorconfig.el")
-(load "~/.emacs.d/packages/helm.el")
+;; (load "~/.emacs.d/packages/helm.el")
 (load "~/.emacs.d/packages/magit.el")
 (load "~/.emacs.d/packages/rainbow_delimiter.el")
 

@@ -76,3 +76,6 @@
     (abort-recursive-edit)))
 
 (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
+
+;; fixes helm lag
+;; (setq x-wait-for-event-timeout nil)
