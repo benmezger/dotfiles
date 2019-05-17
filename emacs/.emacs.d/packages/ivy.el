@@ -72,4 +72,4 @@
   (counsel-projectile-mode))
 
 (use-package counsel-etags
-  ensure: t)
+  :ensure t)
