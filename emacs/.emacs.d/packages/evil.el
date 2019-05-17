@@ -17,6 +17,9 @@
   (evil-leader/set-key "f" 'counsel-projectile)
   (evil-leader/set-key "b" 'counsel-bookmark)
   (evil-leader/set-key "v" 'ivy-resume)
+  (evil-leader/set-key "l" 'counsel-locate)
+  (evil-leader/set-key "d" 'kill-buffer-and-window)
+  (evil-leader/set-key "g" 'magit-status)
   (evil-leader/set-key "w" 'elpy-goto-definition))
 
 (use-package evil
