@@ -15,3 +15,5 @@ savehist
 projectile-bookmarks.eld
 .last-package-update-day
 projectile.cache
+ido.last
+smex-items
