@@ -24,19 +24,18 @@
               "ack-grep -H --color --smart-case --no-group %e %p %f")
             (setq helm-ls-git-grep-command
               "git grep -n%cH --color=always --full-name -e %p %f")
-            (setq helm-recentf-fuzzy-match t)
-            (setq helm-buffers-fuzzy-matching t)
-            (setq helm-buffers-fuzzy-matching t)
-            (setq helm-locate-fuzzy-match t)
-            (setq helm-M-x-fuzzy-match t)
-            (setq helm-semantic-fuzzy-match t)
-            (setq helm-imenu-fuzzy-match t)
-            (setq helm-apropos-fuzzy-match t)
-            (setq helm-lisp-fuzzy-completion t)
-            (setq helm-session-fuzzy-match t)
-            (setq helm-etags-fuzzy-match t)
-            (setq helm-mode-fuzzy-match t)
-            (setq helm-completion-in-region-fuzzy-match t)
+            (setq helm-M-x-fuzzy-match t
+              helm-bookmark-show-location t
+              helm-buffers-fuzzy-matching t
+              helm-completion-in-region-fuzzy-match t
+              helm-file-cache-fuzzy-match t
+              helm-imenu-fuzzy-match t
+              helm-mode-fuzzy-match t
+              helm-locate-fuzzy-match t
+              helm-quick-update t
+              helm-recentf-fuzzy-match t
+              helm-apropos-fuzzy-match t
+              helm-semantic-fuzzy-match t)
             (helm-autoresize-mode 1)
             (helm-mode 1)))
 
