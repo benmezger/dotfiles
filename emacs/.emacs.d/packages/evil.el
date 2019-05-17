@@ -21,6 +21,8 @@
   (evil-leader/set-key "d" 'kill-buffer-and-window)
   (evil-leader/set-key "g" 'magit-status)
   (evil-leader/set-key "i" 'counsel-imenu)
+  (evil-leader/set-key-for-mode 'c-mode "w" 'counsel-etags-find-tag-at-point)
+  (evil-leader/set-key "p" 'counsel-projectile-switch-project)
   (evil-leader/set-key "w" 'elpy-goto-definition))
 
 (use-package evil

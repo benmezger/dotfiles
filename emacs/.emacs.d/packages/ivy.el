@@ -70,3 +70,6 @@
   :ensure t
   :init
   (counsel-projectile-mode))
+
+(use-package counsel-etags
+  ensure: t)

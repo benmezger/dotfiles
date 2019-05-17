@@ -31,6 +31,7 @@
      ;; helm-rg
      counsel
      counsel-projectile
+     counsel-etags
      ripgrep
      base16-theme
      rainbow-delimiters
