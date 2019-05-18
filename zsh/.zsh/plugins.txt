@@ -5,3 +5,4 @@ zdharma/fast-syntax-highlighting
 chriskempson/base16-shell
 zsh-users/zsh-history-substring-search
 robbyrussell/oh-my-zsh path:plugins/z
+robbyrussell/oh-my-zsh path:plugins/gpg-agent
