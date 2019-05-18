@@ -79,3 +79,8 @@
 
 ;; fixes helm lag
 ;; (setq x-wait-for-event-timeout nil)
+
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+(global-whitespace-mode +1)
