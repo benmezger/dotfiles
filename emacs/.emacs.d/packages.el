@@ -32,6 +32,8 @@
      counsel
      counsel-projectile
      counsel-etags
+     ivy-rich
+     all-the-icons-ivy
      flx
      ripgrep
      base16-theme

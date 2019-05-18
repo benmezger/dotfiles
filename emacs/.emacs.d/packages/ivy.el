@@ -8,6 +8,9 @@
   (setq search-default-mode #'char-fold-to-regexp)
   (setq ivy-use-virtual-buffers t
     ivy-count-format "%d/%d ")
+  (setq ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (t      . ivy--regex-fuzzy)))
 
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
@@ -72,3 +75,16 @@
 
 (use-package counsel-etags
   :ensure t)
+
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1)
+  (setq ivy-format-function #'ivy-format-function-line))
+
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (setq all-the-icons-ivy-file-commands
+    '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
+  (all-the-icons-ivy-setup))
