@@ -35,6 +35,7 @@
      ivy-rich
      all-the-icons-ivy
      flx
+     smex
      ripgrep
      base16-theme
      rainbow-delimiters
