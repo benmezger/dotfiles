@@ -42,7 +42,12 @@
 (load "~/.emacs.d/packages.el")
 
 (toggle-frame-maximized) ;; start at maximzed frame
-(set-frame-font "InconsolataDZ 12" nil t)
+
+(if (eq system-type 'darwin)
+  (set-frame-font "InconsolataDZ 12" nil t)
+  (if (eq system-type 'gnu/linux)
+    (set-frame-font "InconsolataDZ 8" nil t)))
+
 
 ;; set line number
 (setq display-line-numbers-type 'relative)
