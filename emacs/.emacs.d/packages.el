@@ -63,6 +63,7 @@
      projectile
      diminish
      auto-package-update
+     disable-mouse
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -119,6 +120,8 @@
 (load "~/.emacs.d/packages/projectile.el")
 (load "~/.emacs.d/packages/diminish.el")
 (load "~/.emacs.d/packages/autoupdate.el")
+(load "~/.emacs.d/packages/mouse.el")
+
 
 ;; PGP
 (require 'epa-file)
