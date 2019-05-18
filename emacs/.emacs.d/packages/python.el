@@ -17,4 +17,7 @@
   :config
   (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
   :init
-  (advice-add 'python-mode :before 'elpy-enable))
+  (advice-add 'python-mode :before 'elpy-enable)
+  (add-hook 'python-mode-hook
+    (lambda ()
+      (add-hook 'before-save-hook 'elpy-black-fix-code))))
