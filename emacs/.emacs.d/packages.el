@@ -113,7 +113,10 @@
 (load "~/.emacs.d/packages/markdown.el")
 (load "~/.emacs.d/packages/completion.el")
 (load "~/.emacs.d/packages/yaml.el")
-(load "~/.emacs.d/packages/execpath.el")
+
+(if (eq system-type 'darwin)
+  (load "~/.emacs.d/packages/execpath.el"))
+
 (load "~/.emacs.d/packages/indentguide.el")
 (load "~/.emacs.d/packages/avy.el")
 (load "~/.emacs.d/packages/icons.el")
