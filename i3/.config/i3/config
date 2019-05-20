@@ -194,6 +194,8 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.bin/lock.sh
 exec --no-startup-id dropbox
 exec --no-startup-id xset r rate 150 34
+exec --no-startup-id ckb-next
+exec --no-startup-id solaar
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
 client.focused_inactive #073642 #073642 #93a1a1 #002b36
