@@ -41,7 +41,7 @@
     (setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
     (setq org-src-fontify-natively t)
     (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+      '((sequence "☛ TODO(t)" " ⚑ WAITING(w)" "|" "✔ DONE(d)" "✘ CANCELLED(c)")))
 
     (add-hook 'org-mode-hook 'org-indent-mode)
     (defun my-org-agenda-skip-all-siblings-but-first ()
