@@ -11,6 +11,10 @@
   (setq ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
           (t      . ivy--regex-fuzzy)))
+  (setq counsel-grep-base-command
+    "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+  (setq counsel-rg-base-command
+    "rg -i -M 120 --no-heading --line-number --color never %s .")
 
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
