@@ -12,18 +12,30 @@
  ;; (evil-leader/set-key "f" 'helm-projectile)
  ;; (evil-leader/set-key "b" 'bookmark-jump)
  ;; (evil-leader/set-key "w" 'elpy-goto-definition))
+
+  ; general
   (evil-leader/set-key "e" 'find-file)
   (evil-leader/set-key "r" 'counsel-rg)
   (evil-leader/set-key "f" 'counsel-projectile)
   (evil-leader/set-key "b" 'counsel-bookmark)
   (evil-leader/set-key "v" 'ivy-resume)
-  (evil-leader/set-key "l" 'counsel-locate)
-  (evil-leader/set-key "d" 'kill-buffer-and-window)
   (evil-leader/set-key "g" 'magit-status)
   (evil-leader/set-key "i" 'counsel-imenu)
   (evil-leader/set-key "y" 'counsel-yank-pop)
   (evil-leader/set-key "p" 'counsel-projectile-switch-project)
   (evil-leader/set-key "c" 'counsel-git-checkout)
+  (evil-leader/set-key "<SPC>" 'counsel-M-x)
+
+  ;; splits
+  (evil-leader/set-key "s v" 'split-window-vertically)
+  (evil-leader/set-key "s h" 'split-window-horizontally)
+  (evil-leader/set-key "s d" 'delete-window)
+  (evil-leader/set-key "s o" 'delete-other-windows)
+  (evil-leader/set-key "s d" 'kill-buffer-and-window)
+  ;; lists
+  (evil-leader/set-key "l b" 'counsel-switch-buffer)
+  (evil-leader/set-key "l l" 'counsel-locate)
+
   (evil-leader/set-key-for-mode 'c-mode "w" 'counsel-etags-find-tag-at-point)
   (evil-leader/set-key-for-mode 'python-mode "w" 'elpy-goto-definition))
 
