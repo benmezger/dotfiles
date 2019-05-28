@@ -25,6 +25,7 @@
      git-gutter-fringe+
      fringe-helper
      evil-magit
+     evil-magit
      ;; helm
      ;; helm-ls-git
      ;; helm-projectile

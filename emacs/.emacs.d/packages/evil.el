@@ -90,4 +90,7 @@
     :config
     (evil-goggles-use-diff-faces)
     (evil-goggles-mode))
+
+  (use-package evil-magit
+    :ensure t)
   (message "Loading evil-mode...done"))
