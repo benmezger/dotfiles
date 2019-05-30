@@ -53,6 +53,7 @@ export ZSH_TMUX_AUTOSTART=1
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
