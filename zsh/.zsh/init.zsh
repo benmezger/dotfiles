@@ -80,3 +80,9 @@ if [ -f $HOME/.env-secrets ]; then
     # load secret env if it exists
     source $HOME/.env-secrets
 fi
+
+# check if fasd exists and initialize it
+if (( ${+commands[fasd]} )); then
+    eval "$(fasd --init auto)"
+fi
+
