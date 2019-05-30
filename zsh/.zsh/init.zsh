@@ -6,7 +6,7 @@ compinit -C -i
 setopt autocd
 setopt extendedglob
 setopt NO_NOMATCH
-setopt correct_all
+setopt CORRECT
 
 setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
