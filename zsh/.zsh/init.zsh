@@ -46,7 +46,6 @@ _approximate # enable approximate matches for completion
 # slimline
 export SLIMLINE_PROMPT_VERSION=1 # activate legacy option format
 export SLIMLINE_ENABLE_ASYNC_AUTOLOAD=0
-export GITLINE_NO_TRACKED_UPSTREAM='upstream ${red}!${reset}'
 
 # automatically start tmux
 export ZSH_TMUX_AUTOSTART=1
