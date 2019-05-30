@@ -75,3 +75,6 @@ precmd_functions+=( _tmux_autostart )
 
 #  load LS_COLORS
 eval $(dircolors -b $HOME/.dircolors)
+
+# load secret env
+source $HOME/.env-secrets
