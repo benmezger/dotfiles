@@ -26,14 +26,18 @@
   (evil-leader/set-key "c" 'counsel-git-checkout)
   (evil-leader/set-key "<SPC>" 'counsel-M-x)
 
-  ;; splits
-  (evil-leader/set-key "s v" 'split-window-vertically)
-  (evil-leader/set-key "s h" 'split-window-horizontally)
-  (evil-leader/set-key "s d" 'delete-window)
-  (evil-leader/set-key "s o" 'delete-other-windows)
-  (evil-leader/set-key "s d" 'kill-buffer-and-window)
+  ;; window
+  (evil-leader/set-key "w v" 'split-window-vertically)
+  (evil-leader/set-key "w h" 'split-window-horizontally)
+  (evil-leader/set-key "w d" 'delete-window)
+  (evil-leader/set-key "w o" 'delete-other-windows)
+  (evil-leader/set-key "w d" 'kill-buffer-and-window)
+
+  ;; buffers
+  (evil-leader/set-key "d b" 'counsel-switch-buffer)
+  (evil-leader/set-key "d k" 'kill-buffer)
+
   ;; lists
-  (evil-leader/set-key "l b" 'counsel-switch-buffer)
   (evil-leader/set-key "l l" 'counsel-locate)
 
   (evil-leader/set-key-for-mode 'c-mode "w" 'counsel-etags-find-tag-at-point)
@@ -104,5 +108,4 @@
     (evil-goggles-mode))
 
   (use-package evil-magit
-    :ensure t)
-  (message "Loading evil-mode...done"))
+    :ensure t))
