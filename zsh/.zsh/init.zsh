@@ -49,12 +49,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
-if command -v pyenv 1>/dev/null 2>&1; then
 
 if [[ ${OSTYPE} == darwin* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
+if (( ${+commands[pyenv]} )); then
     eval "$(pyenv init -)"
 fi
 
