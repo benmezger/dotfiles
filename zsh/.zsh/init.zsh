@@ -44,17 +44,15 @@ export SLIMLINE_ENABLE_ASYNC_AUTOLOAD=0
 # automatically start tmux
 export ZSH_TMUX_AUTOSTART=1
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-
 
 if [[ ${OSTYPE} == darwin* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 if (( ${+commands[pyenv]} )); then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
     eval "$(pyenv init -)"
 fi
 
