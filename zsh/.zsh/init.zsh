@@ -84,3 +84,10 @@ if (( ${+commands[fasd]} )); then
     eval "$(fasd --init auto)"
 fi
 
+
+# rbenv
+if (( ${+commands[rbenv]} )); then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
