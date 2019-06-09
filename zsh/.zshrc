@@ -1,5 +1,8 @@
+export GITLINE_NO_TRACKED_UPSTREAM='upstream ${red}!${reset}'
+
 source <(antibody init)
 antibody bundle < $HOME/.zsh/plugins.txt
+
 
 source $HOME/.zsh/init.zsh
 
