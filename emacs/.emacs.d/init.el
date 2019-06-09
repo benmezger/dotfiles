@@ -92,3 +92,7 @@
 
 ;; turn off alarm bell completly
 (setq ring-bell-function 'ignore)
+
+;; Store point place
+(save-place-mode 1)
+
