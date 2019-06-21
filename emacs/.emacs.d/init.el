@@ -96,3 +96,8 @@
 ;; Store point place
 (save-place-mode 1)
 
+;; save silently
+(setq save-silently t)
+
+;; unbind keys
+(global-unset-key (kbd "C-x C-b"))

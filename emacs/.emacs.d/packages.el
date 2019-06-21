@@ -66,6 +66,7 @@
      diminish
      auto-package-update
      disable-mouse
+     super-save
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -126,6 +127,7 @@
 (load "~/.emacs.d/packages/diminish.el")
 (load "~/.emacs.d/packages/autoupdate.el")
 (load "~/.emacs.d/packages/mouse.el")
+(load "~/.emacs.d/packages/super_save.el")
 
 
 ;; PGP

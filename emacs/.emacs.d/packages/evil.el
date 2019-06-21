@@ -17,7 +17,7 @@
   (evil-leader/set-key "e" 'find-file)
   (evil-leader/set-key "r" 'counsel-rg)
   (evil-leader/set-key "f" 'counsel-projectile)
-  (evil-leader/set-key "b" 'counsel-bookmark)
+  (evil-leader/set-key "d" 'counsel-bookmark)
   (evil-leader/set-key "v" 'ivy-resume)
   (evil-leader/set-key "g" 'magit-status)
   (evil-leader/set-key "i" 'counsel-imenu)
@@ -34,8 +34,8 @@
   (evil-leader/set-key "w d" 'kill-buffer-and-window)
 
   ;; buffers
-  (evil-leader/set-key "d b" 'counsel-switch-buffer)
-  (evil-leader/set-key "d k" 'kill-buffer)
+  (evil-leader/set-key "b" 'counsel-switch-buffer)
+  (evil-leader/set-key "k b" 'kill-buffer)
 
   ;; lists
   (evil-leader/set-key "l l" 'counsel-locate)
@@ -47,6 +47,7 @@
   :ensure t
   :defer .1 ;; don't block emacs when starting, load evil immediately after startup
   :init
+  (setq-default search-invisible t)
   (setq evil-search-module 'evil-search)
   (setq evil-ex-complete-emacs-commands nil)
   (setq evil-vsplit-window-right t) ;; like vim's 'splitright'
@@ -67,6 +68,9 @@
   (add-hook 'after-save-hook #'evil-normal-state)
   :config
   (evil-mode)
+  (add-hook 'evil-insert-state-exit-hook
+    (lambda ()
+      (call-interactively #'save-buffer)))
   (defun evil-normalize-all-buffers ()
     "Force a drop to normal state."
     (unless (eq evil-state 'normal)
