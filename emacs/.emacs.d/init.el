@@ -98,3 +98,6 @@
 
 ;; save silently
 (setq save-silently t)
+
+;; unbind keys
+(global-unset-key (kbd "C-x C-b"))
