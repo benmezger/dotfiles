@@ -96,3 +96,5 @@
 ;; Store point place
 (save-place-mode 1)
 
+;; save silently
+(setq save-silently t)
