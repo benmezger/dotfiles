@@ -101,3 +101,17 @@
 
 ;; unbind keys
 (global-unset-key (kbd "C-x C-b"))
+
+;; Surpress messages when the minibuffer is open
+(defun rsync-process-filter (proc string)
+  (let ((inhibit-read-only t))
+    (when (not (or
+                 (string-match "files...\r" string)
+                 (string-match "files to consider\n" string)))
+      (with-current-buffer (messages-buffer)
+        (goto-char (point-max))
+        (when (not (bolp))
+          (insert "\n"))
+        (insert string)
+        (when (not (bolp))
+          (insert "\n"))))))
