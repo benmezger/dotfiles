@@ -68,6 +68,9 @@
   (add-hook 'after-save-hook #'evil-normal-state)
   :config
   (evil-mode)
+  (add-hook 'evil-insert-state-exit-hook
+    (lambda ()
+      (call-interactively #'save-buffer)))
   (defun evil-normalize-all-buffers ()
     "Force a drop to normal state."
     (unless (eq evil-state 'normal)
