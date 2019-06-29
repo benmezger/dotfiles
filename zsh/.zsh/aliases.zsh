@@ -41,8 +41,6 @@ if (( ${+commands[exa]} )); then
 fi
 
 alias sl='ls' # I often screw this up.
-alias ipy="python -c 'import IPython; IPython.frontend.terminal.ipapp.launch_new_instance()'"
-
 
 # if fasd exists, create alias
 if (( ${+commands[fasd]} )); then
