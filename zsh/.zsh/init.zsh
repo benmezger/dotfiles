@@ -56,6 +56,10 @@ if (( ${+commands[pyenv]} )); then
     eval "$(pyenv init -)"
 fi
 
+export AUTOENV_FILE_ENTER=".hi"
+export AUTOENV_FILE_LEAVE=".bye"
+
+
 
 # autostart tmux
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
@@ -90,4 +94,3 @@ if (( ${+commands[rbenv]} )); then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
-

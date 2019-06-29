@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/linux,python,c++,c,perl,ruby,osx,emacs,vim,vagrant,netbeans,cmake,django
 
 ### OSX ###
@@ -373,3 +372,7 @@ local_settings.py
 db.sqlite3
 media
 
+### Env files ###
+.env
+.hi
+.bye
