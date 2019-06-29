@@ -39,3 +39,9 @@ eval $(dircolors -b $HOME/.dircolors)
 if (( ${+commands[fasd]} )); then
     eval "$(fasd --init auto)"
 fi
+
+if (( $+commands[dircolors] )); then
+    eval $(dircolors -b $HOME/.dircolors )
+elif (( $+commands[gdircolors] )); then
+    eval $(gdircolors -b $HOME/.dircolors )
+fi

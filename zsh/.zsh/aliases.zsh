@@ -7,35 +7,6 @@ alias lessf="less +F"
 alias tmux="TERM=xterm-256color tmux"
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
-# From: https://github.com/zimfw/zimfw/blob/master/modules/utility/init.zsh
-if (( ${+commands[dircolors]} )); then
-    # GNU
-    (( ! ${+LS_COLORS} )) && if [[ -s ${HOME}/.dircolors ]]; then
-        eval $(dircolors -b $HOME/.dircolors)
-    else
-        export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-    fi
-    alias ls='ls -aFhlG'
-else
-    # BSD
-    (( ! ${+CLICOLOR} )) && export CLICOLOR=1
-    (( ! ${+LSCOLORS} )) && export LSCOLORS='ExfxcxdxbxGxDxabagacad'
-
-    # stock OpenBSD ls does not support colors at all, but colorls does.
-    if [[ ${OSTYPE} == openbsd* && ${+commands[colorls]} -ne 0 ]]; then
-        alias ls='colorls'
-    fi
-fi
-
-# grep Colours
-(( ! ${+GREP_COLOR} )) && export GREP_COLOR='37;45'               #BSD
-(( ! ${+GREP_COLORS} )) && export GREP_COLORS="mt=${GREP_COLOR}"  #GNU
-if [[ ${OSTYPE} == openbsd* ]]; then
-    (( ${+commands[ggrep]} )) && alias grep='ggrep --color=auto'
-else
-    alias grep='grep --color=auto'
-fi
-
 # less Colours
 if [[ ${PAGER} == 'less' ]]; then
     (( ! ${+LESS_TERMCAP_mb} )) && export LESS_TERMCAP_mb=$'\E[1;31m'   # Begins blinking.
