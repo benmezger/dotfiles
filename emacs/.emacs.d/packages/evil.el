@@ -43,8 +43,8 @@
   ;; m = mode
   ;; d = definition
   ;; m w = mode go to definition
-  (evil-leader/set-key-for-mode 'c-mode "m d" 'counsel-etags-find-tag-at-point)
-  (evil-leader/set-key-for-mode 'python-mode "m d" 'elpy-goto-definition-other-window))
+  (evil-leader/set-key-for-mode 'c-mode "m g" 'counsel-etags-find-tag-at-point)
+  (evil-leader/set-key-for-mode 'python-mode "m g" 'elpy-goto-definition-other-window))
 
 (use-package evil
   :ensure t
