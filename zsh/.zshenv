@@ -9,7 +9,7 @@ export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
 export GPGKEY=0xAC7A30843ADC0D65
-export PATH="${PATH}:$HOME/.bin"
+export PATH="${PATH}:$HOME/.bin:/usr/local/bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
