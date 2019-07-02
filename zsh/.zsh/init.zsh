@@ -1,7 +1,5 @@
 # General init file
 
-source $HOME/.zsh/env.zsh
-
 autoload -Uz compinit
 compinit -C -i
 
