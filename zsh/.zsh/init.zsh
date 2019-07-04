@@ -43,3 +43,9 @@ if (( $+commands[dircolors] )); then
 elif (( $+commands[gdircolors] )); then
     eval $(gdircolors -b $HOME/.dircolors )
 fi
+
+## Pyenv
+if (( ${+commands[pyenv]} )); then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
