@@ -5,7 +5,6 @@ antibody bundle < $HOME/.zsh/plugins.txt
 
 source $HOME/.zsh/init.zsh
 
-source $HOME/.zsh/paths.zsh
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh

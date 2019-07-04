@@ -30,7 +30,9 @@ if (( ${+commands[pyenv]} )); then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    export PYENV_VERSION="3.7.0"
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 # Rbenv
