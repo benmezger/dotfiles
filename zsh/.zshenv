@@ -25,12 +25,11 @@ if [[ ${OSTYPE} == darwin* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-## Pyenv
-if (( ${+commands[pyenv]} )); then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-fi
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # Rbenv
 if (( ${+commands[rbenv]} )); then
