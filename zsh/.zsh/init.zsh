@@ -49,3 +49,12 @@ if (( ${+commands[pyenv]} )); then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+# from: http://www.zsh.org/mla/users/2001/msg00870.html
+custom-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+
+zle -N custom-backward-delete-word
+bindkey '^W' custom-backward-delete-word
