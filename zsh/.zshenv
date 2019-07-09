@@ -45,3 +45,7 @@ export AUTOENV_FILE_LEAVE=".bye"
 # autostart tmux
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
 export TMUX_AUTOSTART="true"
+
+if [ -f "$HOME/.secrets" ]; then
+    source "$HOME/.env-secrets"
+fi
