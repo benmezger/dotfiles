@@ -19,7 +19,6 @@
   (evil-leader/set-key "f" 'counsel-projectile)
   (evil-leader/set-key "d" 'counsel-bookmark)
   (evil-leader/set-key "v" 'ivy-resume)
-  (evil-leader/set-key "g" 'magit-status)
   (evil-leader/set-key "i" 'counsel-imenu)
   (evil-leader/set-key "y" 'counsel-yank-pop)
   (evil-leader/set-key "p" 'counsel-projectile-switch-project)
@@ -39,6 +38,25 @@
 
   ;; lists
   (evil-leader/set-key "l l" 'counsel-locate)
+
+  ;; git
+  (evil-leader/set-key "g b c" 'magit-branch-checkout)
+  ;; g b n of git create new branch and checkout, due to c belonging to magit-checkout
+  (evil-leader/set-key "g b n" 'magit-branch-and-checkout)
+  (evil-leader/set-key "g s" 'magit-status)
+  (evil-leader/set-key "g l" 'magit-log-current)
+  (evil-leader/set-key "g d u" 'magit-diff-unstaged)
+  (evil-leader/set-key "g c" 'magit-commit)
+  (evil-leader/set-key "g p" 'magit-push-current-to-upstream)
+   ;; g g as of "git get", due to the use of p for magit-push-current-to-upstream
+  (evil-leader/set-key "g g" 'magit-pull-from-upstream)
+  ;; g a of "git add modified/buffer/untracked due to g s which is for magit-status
+  (evil-leader/set-key "g a m" 'magit-stage-modified)
+  (evil-leader/set-key "g a b" 'magit-stage-file)
+  (evil-leader/set-key "g a u" 'magit-stage-untracked)
+
+  (evil-leader/set-key "g m m" 'magit-merge-plain)
+  (evil-leader/set-key "g m p" 'magit-merge-preview)
 
   ;; m = mode
   ;; d = definition
