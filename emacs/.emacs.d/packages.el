@@ -38,7 +38,8 @@
      flx
      smex
      ripgrep
-     base16-theme
+     ;; base16-theme
+     doom-themes
      rainbow-delimiters
      elpy
      pyenv-mode
@@ -48,8 +49,8 @@
      editorconfig
      flycheck
      org
-     smart-mode-line
-     smart-mode-line-atom-one-dark-theme
+     ;; smart-mode-line
+     ;; smart-mode-line-atom-one-dark-theme
      mode-line-bell
      yasnippet
      undo-tree
@@ -96,7 +97,8 @@
   (which-key-setup-minibuffer))
 
 ;; startup
-(load "~/.emacs.d/packages/base16.el")
+(load "~/.emacs.d/packages/doom.el")
+;; (load "~/.emacs.d/packages/base16.el")
 (load "~/.emacs.d/packages/evil.el")
 (load "~/.emacs.d/packages/editorconfig.el")
 ;; (load "~/.emacs.d/packages/helm.el")
@@ -109,7 +111,7 @@
 (load "~/.emacs.d/packages/flycheck.el")
 (load "~/.emacs.d/packages/orgmode.el")
 (load "~/.emacs.d/packages/gitgutter.el")
-(load "~/.emacs.d/packages/modeline.el")
+;; (load "~/.emacs.d/packages/modeline.el")
 (load "~/.emacs.d/packages/yasnippet.el")
 (load "~/.emacs.d/packages/undotree.el")
 (load "~/.emacs.d/packages/markdown.el")
