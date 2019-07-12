@@ -12,4 +12,4 @@ source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
 
 # base16 theme
-base16_monokai
+base16_gruvbox-dark-hard
