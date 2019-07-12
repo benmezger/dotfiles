@@ -4,6 +4,6 @@
     (all-the-icons-install-fonts t))
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(use-package mode-icons
-  :config
-  (mode-icons-mode))
+;;(use-package mode-icons
+;;  :config
+;;  (mode-icons-mode))
