@@ -5,6 +5,10 @@
   :init
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
+  (setq projectile-cache-file (concat emacs-cache-directory
+                                "projectile.cache"))
+  (setq projectile-known-projects-file (concat emacs-cache-directory
+                                         "projectile-bookmarks.eld"))
   (setq projectile-enable-caching t)
   (setq projectile-sort-order 'recently-active)
   (setq projectile-project-search-path '("~/workspace/"))

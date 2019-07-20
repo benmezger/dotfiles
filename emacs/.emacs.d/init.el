@@ -16,6 +16,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+;; set cache directory
+(defconst emacs-cache-directory
+  (expand-file-name (expand-file-name (concat user-emacs-directory ".cache/"))))
+
 ;; backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/fbackup")))
 (setq backup-by-copying t)
@@ -25,8 +29,10 @@
       kept-old-versions 2
       version-control t)
 
-(setq savehist-file "~/.emacs.d/savehist")
+(setq savehist-file (concat emacs-cache-directory "savehist"))
+
 (savehist-mode 1)
+
 (setq history-length t)
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
@@ -37,10 +43,6 @@
 
 (setq user-full-name "Ben Mezger"
       user-mail-address "me@benmezger.nl")
-
-;; set cache directory
-(defconst emacs-cache-directory
-  (expand-file-name (concat user-emacs-directory ".cache/")))
 
 ;; load packages
 (load "~/.emacs.d/packages.el")
@@ -99,6 +101,7 @@
 
 ;; Store point place
 (save-place-mode 1)
+(setq save-place-file (concat emacs-cache-directory "places"))
 
 ;; save silently
 (setq save-silently t)
@@ -119,3 +122,6 @@
         (insert string)
         (when (not (bolp))
           (insert "\n"))))))
+
+(setq bookmark-file (concat emacs-cache-directory "bookmarks"))
+(setq bookmark-default-file (concat emacs-cache-directory "bookmarks"))

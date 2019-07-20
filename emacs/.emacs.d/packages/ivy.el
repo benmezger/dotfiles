@@ -102,4 +102,8 @@
 
 (use-package smex
   :ensure t
-  :defer .1)
+  :defer .1
+  :config
+  (setq-default smex-history-length 32
+    smex-save-file (concat emacs-cache-directory
+                     ".smex-items")))
