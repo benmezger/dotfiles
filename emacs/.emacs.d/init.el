@@ -38,6 +38,10 @@
 (setq user-full-name "Ben Mezger"
       user-mail-address "me@benmezger.nl")
 
+;; set cache directory
+(defconst emacs-cache-directory
+  (expand-file-name (concat user-emacs-directory ".cache/")))
+
 ;; load packages
 (load "~/.emacs.d/packages.el")
 
