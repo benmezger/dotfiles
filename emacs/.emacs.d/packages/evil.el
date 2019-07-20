@@ -97,8 +97,7 @@
         (set-buffer buffer)
         (unless (or (minibufferp)
                   (eq evil-state 'emacs))
-          (evil-force-normal-state)))
-      (message "Dropped back to normal state in all buffers")))
+          (evil-force-normal-state)))))
 
   (defvar evil-normal-timer
     (run-with-idle-timer 30 t #'evil-normalize-all-buffers)
