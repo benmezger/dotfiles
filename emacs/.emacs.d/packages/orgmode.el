@@ -1,6 +1,7 @@
 
 ;; orgmode
 (use-package org
+  :defer 2
   :ensure t
   :mode (("\\.org\\'" . org-mode)
           ("\\.text\\'" . org-mode)

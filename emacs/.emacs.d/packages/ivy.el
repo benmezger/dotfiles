@@ -1,5 +1,6 @@
 (use-package counsel
   :ensure t
+  :defer .1
   :init
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
@@ -76,24 +77,29 @@
 
 (use-package counsel-projectile
   :ensure t
+  :defer .1
   :init
   (counsel-projectile-mode))
 
 (use-package counsel-etags
+  :defer .1
   :ensure t)
 
 (use-package ivy-rich
   :ensure t
+  :defer .1
   :config
   (ivy-rich-mode 1)
   (setq ivy-format-function #'ivy-format-function-line))
 
 (use-package all-the-icons-ivy
   :ensure t
+  :defer .1
   :config
   (setq all-the-icons-ivy-file-commands
     '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
   (all-the-icons-ivy-setup))
 
 (use-package smex
-  :ensure t)
+  :ensure t
+  :defer .1)

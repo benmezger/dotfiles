@@ -1,5 +1,6 @@
 (use-package git-gutter-fringe+
   :ensure t
+  :defer .1
   :config
   (use-package fringe-helper)
   (require 'git-gutter-fringe+)

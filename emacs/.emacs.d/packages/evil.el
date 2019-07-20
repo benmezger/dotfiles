@@ -1,6 +1,6 @@
 (use-package evil-expat
   :ensure t
-  :defer t
+  :defer .1
   :init
   ;; Set want-keybinding to nil before loading evil or evil collection.
   ;; See https://github.com/emacs-evil/evil-collection/issues/60 for more details.
@@ -106,6 +106,7 @@
   ;; vim-like keybindings everywhere in emacs
   (use-package evil-collection
     :after evil
+    :defer .1
     :ensure t
     :custom (evil-collection-setup-minibuffer t)
     :init (evil-collection-init))
@@ -113,6 +114,7 @@
   ;; * operator in vusual mode
   (use-package evil-visualstar
     :ensure t
+    :defer .1
     :bind (:map evil-visual-state-map
                 ("*" . evil-visualstar/begin-search-forward)
                 ("#" . evil-visualstar/begin-search-backward)))
@@ -120,14 +122,16 @@
   ;; ex commands, which a vim user is likely to be familiar with
   (use-package evil-expat
     :ensure t
-    :defer t)
+    :defer .1)
 
   ;; visual hints while editing
   (use-package evil-goggles
     :ensure t
+    :defer .1
     :config
     (evil-goggles-use-diff-faces)
     (evil-goggles-mode))
 
   (use-package evil-magit
-    :ensure t))
+    :ensure t
+    :defer .1))

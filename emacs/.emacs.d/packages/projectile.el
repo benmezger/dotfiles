@@ -1,6 +1,6 @@
 (use-package projectile
   :ensure t
-  :defer t
+  :defer 2
   :bind (("C-c p" . projectile-command-map))
   :init
   (setq projectile-completion-system 'ivy)

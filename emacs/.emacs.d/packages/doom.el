@@ -9,6 +9,7 @@
 
 (use-package doom-modeline
   :ensure t
+  :defer .1
   :config
   (setq doom-modeline-height 20)
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
