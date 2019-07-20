@@ -11,6 +11,7 @@
   (setq ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
           (t      . ivy--regex-fuzzy)))
+  (setq ivy-initial-inputs-alist nil)
   (setq counsel-grep-base-command
     "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
   (setq counsel-rg-base-command
