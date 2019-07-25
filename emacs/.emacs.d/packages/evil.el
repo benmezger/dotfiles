@@ -21,7 +21,6 @@
   (evil-leader/set-key "v" 'ivy-resume)
   (evil-leader/set-key "i" 'counsel-imenu)
   (evil-leader/set-key "y" 'counsel-yank-pop)
-  (evil-leader/set-key "p" 'counsel-projectile-switch-project)
   (evil-leader/set-key "c" 'counsel-git-checkout)
   (evil-leader/set-key "<SPC>" 'counsel-M-x)
 
@@ -57,6 +56,9 @@
 
   (evil-leader/set-key "g m m" 'magit-merge-plain)
   (evil-leader/set-key "g m p" 'magit-merge-preview)
+
+  (evil-leader/set-key "p p" 'counsel-projectile-switch-project)
+  (evil-leader/set-key "p k" 'projectile-kill-buffers)
 
   ;; m = mode
   ;; d = definition
