@@ -4,9 +4,12 @@
 
 (setq package-enable-at-startup t)
 
-                                        ; add package archive
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                          ("melpa" . "https://melpa.org/packages/")
+;; fixes Emacs bug https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; add package archive
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                          ("gnu" . "https://elpa.gnu.org/packages/")
                           ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)
