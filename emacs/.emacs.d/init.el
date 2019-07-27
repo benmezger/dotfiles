@@ -55,7 +55,7 @@
 (if (eq system-type 'darwin)
   (set-frame-font "InconsolataDZ 12" nil t)
   (if (eq system-type 'gnu/linux)
-    (set-frame-font "InconsolataDZ 8" nil t)))
+    (set-frame-font "Inconsolata-dz 8" nil t)))
 
 
 ;; set line number
