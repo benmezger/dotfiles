@@ -33,6 +33,9 @@
 
 (savehist-mode 1)
 
+;; fix Emacs bug
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
+
 (setq history-length t)
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
