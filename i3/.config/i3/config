@@ -183,7 +183,7 @@ set $gray #a89984
 set $darkgray #1d2021
 
 bar {
-  font pango: Inconsolata-dz FontAwesome, Icons 8
+  font pango: Inconsolata-dz FontAwesome, Icons 6.5
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   mode hide
   colors {
