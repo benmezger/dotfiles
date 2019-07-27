@@ -1,32 +1,35 @@
 # taken from https://github.com/Anachron
 
 [global]
-    font = "Inconsolata-dz 9"
+    font = "Inconsolata-dz 6.5"
     allow_markup = yes
     format = "<b>%s</b>\n%b"
     sort = yes
     indicate_hidden = yes
-    alignment = center
-    bounce_freq = 0
+    alignment = left
+    bounce_freq = 20
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
     geometry = "200x5-30+50"
+    shrink = yes
     transparency = 0
     idle_threshold = 120
     monitor = 0
-    follow = mouse
+    follow = keyboard
     sticky_history = yes
-    line_height = 0
+    history_length = 5
+    show_indicators = no
+    line_height = 1
     separator_height = 2
     padding = 8
-    horizontal_padding = 8
+    horizontal_padding = 16
     separator_color = frame
     startup_notification = false
 
 [frame]
     width = 1
-    color = "#464B50"
+    color = "#ebdbb2"
 
 [shortcuts]
     close = ctrl+space
@@ -34,18 +37,20 @@
     history = ctrl+grave
     context = ctrl+shift+period
 
-[base16_low]
-    msg_urgency = low
-    background = "#383830"
-    foreground = "#75715e"
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "#282828"
+    foreground = "#a89984"
+    timeout = 10
 
-[base16_normal]
-    msg_urgency = normal
-    background = "#49483e"
-    foreground = "#f8f8f2"
+[urgency_normal]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    timeout = 10
 
-[base16_critical]
-    msg_urgency = critical
-    background = "#f92672"
-    foreground = "#f5f4f1"
+[urgency_critical]
+    background = "#282828"
+    foreground = "#fb4934"
+    timeout = 0
 
