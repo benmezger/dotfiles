@@ -33,6 +33,9 @@
 
 (savehist-mode 1)
 
+;; fix Emacs bug
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
+
 (setq history-length t)
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
@@ -52,7 +55,7 @@
 (if (eq system-type 'darwin)
   (set-frame-font "InconsolataDZ 12" nil t)
   (if (eq system-type 'gnu/linux)
-    (set-frame-font "InconsolataDZ 8" nil t)))
+    (set-frame-font "Inconsolata-dz 8" nil t)))
 
 
 ;; set line number
