@@ -7,14 +7,14 @@
   (setq projectile-indexing-method 'alien)
   (setq projectile-cache-file (concat emacs-cache-directory
                                 "projectile.cache"))
-  (setq projectile-enable-caching t)
   (setq projectile-sort-order 'recently-active)
   (setq projectile-project-search-path '("~/workspace/"))
   ;; (setq projectile-completion-system 'helm)
   (projectile-mode 1)
 
-  (setq projectile-known-projects-file (concat emacs-cache-directory
-                                         "projectile-bookmarks.eld")))
+  (setq projectile-known-projects-file
+    (expand-file-name "projectile-bookmarks.eld" emacs-cache-directory))
+  (setq projectile-enable-caching t))
 
   ;; switch python version together with current project
   ;; (require 'pyenv-mode)
