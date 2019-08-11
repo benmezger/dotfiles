@@ -1,10 +1,14 @@
 export GITLINE_NO_TRACKED_UPSTREAM='upstream ${red}!${reset}'
 
-source <(/usr/bin/antibody init)
+if [[ ${OSTYPE} == darwin* ]]; then
+    source <(/usr/local/bin/antibody init)
+else
+    source <(/usr/bin/antibody init)
+fi
+
 antibody bundle < $HOME/.zsh/plugins.txt
 
 source $HOME/.zsh/init.zsh
-
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
