@@ -51,6 +51,7 @@
      evil-leader
      editorconfig
      flycheck
+     flycheck-irony
      org
      ;; smart-mode-line
      ;; smart-mode-line-atom-one-dark-theme
@@ -72,6 +73,10 @@
      disable-mouse
      super-save
      centaur-tabs
+     irony
+     company-irony
+     company-c-headers
+     company-irony-c-headers
      ) "a list of packages to ensure are installed at launch.")
 
 
