@@ -17,12 +17,6 @@
     (lambda () (local-set-key (kbd "<tab>") #'company-complete)
       (local-set-key (kbd "C-SPC") #'company-complete-selection))))
 
-(use-package company-c-headers
-  :defer 2
-  :config
-  (add-to-list 'company-backends 'company-c-headers))
-
-
 (use-package company-irony-c-headers
   :defer 2
   :config
