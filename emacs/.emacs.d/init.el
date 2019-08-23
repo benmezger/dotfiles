@@ -109,6 +109,8 @@
 ;; save silently
 (setq save-silently t)
 
+(setenv "LANG" "en_US.UTF-8")
+
 ;; unbind keys
 (global-unset-key (kbd "C-x C-b"))
 
@@ -128,3 +130,11 @@
 
 (setq bookmark-file (concat emacs-cache-directory "bookmarks"))
 (setq bookmark-default-file (concat emacs-cache-directory "bookmarks"))
+
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (message "Emacs ready in %s with %d garbage collections."
+      (format "%.2f seconds"
+        (float-time
+          (time-subtract after-init-time before-init-time)))
+      gcs-done)))
