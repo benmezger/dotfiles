@@ -48,7 +48,13 @@ export AUTOENV_FILE_LEAVE=".bye"
 ## Tmux
 # autostart tmux
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
-export TMUX_AUTOSTART="true"
+
+# Make sure we are not sshing to this shell
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    export TMUX_AUTOSTART="false"
+else
+    export TMUX_AUTOSTART="true"
+fi
 
 if [ -f "$HOME/.secrets" ]; then
     source "$HOME/.env-secrets"
