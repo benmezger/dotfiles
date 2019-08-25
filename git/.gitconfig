@@ -93,3 +93,5 @@
     smudge = git-lfs smudge -- %f
 [init]
     templatedir = ~/.gittemplates
+[merge "ours"]
+	driver = true
