@@ -1,0 +1,2 @@
+gpg/.gnupg/gpg-agent.conf merge=ours
+misc/.config/alacritty/alacritty.yml merge=ours
