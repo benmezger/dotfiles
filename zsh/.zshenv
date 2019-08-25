@@ -28,8 +28,12 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+if (( ${+commands[pyenv]} )); then
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$(pyenv init -)"
+fi
 
 # Rbenv
 if (( ${+commands[rbenv]} )); then
@@ -44,7 +48,13 @@ export AUTOENV_FILE_LEAVE=".bye"
 ## Tmux
 # autostart tmux
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
-export TMUX_AUTOSTART="true"
+
+# Make sure we are not sshing to this shell
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    export TMUX_AUTOSTART="false"
+else
+    export TMUX_AUTOSTART="true"
+fi
 
 if [ -f "$HOME/.secrets" ]; then
     source "$HOME/.env-secrets"

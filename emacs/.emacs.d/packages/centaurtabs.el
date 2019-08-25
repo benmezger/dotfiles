@@ -9,7 +9,6 @@
   (setq centaur-tabs-gray-out-icons 'buffer)
   (setq centaur-tabs-set-bar 'over)
   (setq centaur-tabs-set-close-button nil)
-  (centaur-tabs-inherit-tabbar-faces)
 
   (centaur-tabs-enable-buffer-reordering)
   (centaur-tabs-group-by-projectile-project)
