@@ -1,3 +1,12 @@
+;; this has to be set before use-package
+;; see: https://github.com/bbatsov/projectile/issues/989#issuecomment-278445662
+
+(setq projectile-known-projects-file
+  (concat emacs-cache-directory "projectile-bookmarks.eld"))
+
+(setq projectile-cache-file (concat emacs-cache-directory
+                              "projectile.cache"))
+
 (use-package projectile
   :ensure t
   :defer 2
@@ -5,15 +14,11 @@
   :init
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
-  (setq projectile-cache-file (concat emacs-cache-directory
-                                "projectile.cache"))
   (setq projectile-sort-order 'recently-active)
   (setq projectile-project-search-path '("~/workspace/"))
   ;; (setq projectile-completion-system 'helm)
   (projectile-mode 1)
 
-  (setq projectile-known-projects-file
-    (expand-file-name "projectile-bookmarks.eld" emacs-cache-directory))
   (setq projectile-enable-caching t))
 
   ;; switch python version together with current project
