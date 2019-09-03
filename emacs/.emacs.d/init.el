@@ -11,6 +11,8 @@
 (global-hl-line-mode)
 (setq-default cursor-type 'bar)
 
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
 
 ;; set custom config file
 (setq custom-file "~/.emacs.d/custom.el")

@@ -77,6 +77,7 @@
      company-irony
      company-c-headers
      company-irony-c-headers
+     clang-format
      ) "a list of packages to ensure are installed at launch.")
 
 
@@ -144,3 +145,6 @@
 ;; PGP
 (require 'epa-file)
 (epa-file-enable)
+
+;; include common
+(require 'hooks)
