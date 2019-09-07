@@ -17,8 +17,16 @@
   (add-hook 'objc-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
+(use-package company-irony
+  :defer 2
+  :requires (company irony)
+  :after (company-mode irony)
+  :config
+  '(add-to-list 'company-backends 'company-irony))
+
 (use-package company-irony-c-headers
   :defer 2
+  :requires (company company-irony irony)
   :config
   (eval-after-load 'company
     '(add-to-list
