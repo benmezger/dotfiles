@@ -11,7 +11,6 @@
   (setq centaur-tabs-set-close-button nil)
 
   (centaur-tabs-enable-buffer-reordering)
-  (centaur-tabs-group-by-projectile-project)
 
   (centaur-tabs-mode t)
   :bind
