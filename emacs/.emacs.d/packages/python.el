@@ -1,7 +1,7 @@
 (use-package pyenv-mode
   :init
   :ensure t
-  :defer .1
+  :defer 2
   :config (pyenv-mode)
 
   (setenv "WORKON_HOME" "~/.pyenv/versions/")
@@ -11,7 +11,7 @@
 
 (use-package pyenv-mode-auto
   :ensure t
-  :defer .1)
+  :defer 2)
 
 (use-package elpy
   :ensure t
