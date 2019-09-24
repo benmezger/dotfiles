@@ -92,3 +92,5 @@
     templatedir = ~/.gittemplates
 [merge "ours"]
 	driver = true
+[remote "origin"]
+	prune = true
