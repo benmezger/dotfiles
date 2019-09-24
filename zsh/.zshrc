@@ -17,3 +17,10 @@ source $HOME/.zsh/gpg-agent.zsh
 
 # base16 theme
 base16_gruvbox-dark-hard
+
+if (( ${+commands[pyenv]} )); then
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
