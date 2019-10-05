@@ -1,5 +1,6 @@
 (use-package centaur-tabs
   :demand
+  :ensure t
   :defer .1
   :config
   (setq centaur-tabs-set-modified-marker t)

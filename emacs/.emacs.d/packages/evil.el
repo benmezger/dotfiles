@@ -136,4 +136,7 @@
 
   (use-package evil-magit
     :ensure t
-    :defer .1))
+    :defer .1)
+
+  (use-package evil-leader
+    :ensure t))

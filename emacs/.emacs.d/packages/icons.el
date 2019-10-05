@@ -1,4 +1,5 @@
 (use-package all-the-icons-dired
+  :ensure t
   :defer .1
   :init
   (unless (member "all-the-icons" (font-family-list))

@@ -1,5 +1,6 @@
 (use-package company
   :defer 2
+  :ensure t
   :diminish company-mode
   :config (global-company-mode t)
 
@@ -7,10 +8,14 @@
     (lambda () (local-set-key (kbd "<tab>") #'company-complete)
       (local-set-key (kbd "C-SPC") #'company-complete-selection))))
 
+(use-package company-c-headers
+  :ensure t)
+
 ;; C
 (use-package irony
   :defer 2
   :diminish irony-mode
+  :ensure t
   :config
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
@@ -19,6 +24,7 @@
 
 (use-package company-irony
   :defer 2
+  :ensure t
   :requires (company irony)
   :after (company-mode irony)
   :config
@@ -26,8 +32,12 @@
 
 (use-package company-irony-c-headers
   :defer 2
+  :ensure t
   :requires (company company-irony irony)
   :config
   (eval-after-load 'company
     '(add-to-list
        'company-backends '(company-irony-c-headers company-irony))))
+
+(use-package clang-format
+  :ensure t)

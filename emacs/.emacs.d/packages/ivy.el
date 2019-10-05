@@ -86,6 +86,9 @@
   :defer .1
   :ensure t)
 
+(use-package flx
+  :ensure t)
+
 (use-package ivy-rich
   :ensure t
   :defer .1

@@ -16,3 +16,6 @@
   (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map)
 
   :bind (("C-x g" . magit-status)))
+
+(use-package evil-magit
+  :ensure t)
