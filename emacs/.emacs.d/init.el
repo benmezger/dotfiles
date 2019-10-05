@@ -140,3 +140,6 @@
         (float-time
           (time-subtract after-init-time before-init-time)))
       gcs-done)))
+
+(load "server")
+(unless (server-running-p) (server-start))
