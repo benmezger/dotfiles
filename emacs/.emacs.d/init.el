@@ -141,9 +141,20 @@
           (time-subtract after-init-time before-init-time)))
       gcs-done)))
 
+(defun update-anybar-color (color &optional port)
+  (shell-command
+    (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
+      color (or port 1738))))
 
 (load "server")
-(unless (server-running-p) (server-start))
+(unless (server-running-p)
+  (update-anybar-color "red")
+  (server-start))
+
+(update-anybar-color "green")
 
 (add-to-list 'default-frame-alist
-             '(font . "InconsolataDZ-12"))
+  '(font . "InconsolataDZ-12"))
+
+(add-hook 'kill-emacs-hook (lambda ()
+                             (update-anybar-color "red")))
