@@ -42,7 +42,6 @@
 (if (eq system-type 'darwin)
   (load "~/.emacs.d/packages/execpath.el"))
 
-(load "~/.emacs.d/packages/indentguide.el")
 (load "~/.emacs.d/packages/avy.el")
 (load "~/.emacs.d/packages/icons.el")
 
