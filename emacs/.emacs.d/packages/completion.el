@@ -11,17 +11,6 @@
 (use-package company-c-headers
   :ensure t)
 
-;; C
-(use-package irony
-  :defer 2
-  :diminish irony-mode
-  :ensure t
-  :config
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
-
 (use-package company-irony
   :defer 2
   :ensure t
@@ -39,5 +28,31 @@
     '(add-to-list
        'company-backends '(company-irony-c-headers company-irony))))
 
+;; C
+(use-package irony
+  :defer 2
+  :diminish irony-mode
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
 (use-package clang-format
   :ensure t)
+
+(use-package company-tabnine
+  :ensure t
+  :defer 2
+  :requires (company)
+  :config
+  (require 'company-tabnine)
+  ;; Trigger completion immediately.
+  (setq company-idle-delay 0)
+
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (setq company-show-numbers t)
+  (eval-after-load 'company
+    '(add-to-list
+       'company-backends '(company-irony-c-headers company-irony company-tabnine))))
