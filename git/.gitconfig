@@ -64,6 +64,7 @@
     showUntrackedFiles = all
 [commit]
     verbose = true
+    template = ~/.gittemplates/commit
 [advice]
     pushNonFastForward = false
     statusHints = false
@@ -91,6 +92,6 @@
 [init]
     templatedir = ~/.gittemplates
 [merge "ours"]
-	driver = true
+    driver = true
 [remote "origin"]
-	prune = true
+    prune = true
