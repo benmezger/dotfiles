@@ -1,20 +1,19 @@
 (use-package pyenv-mode
-  :init
   :ensure t
   :defer 2
   :config (pyenv-mode)
-
+  :init
   (setenv "WORKON_HOME" "~/.pyenv/versions/")
   (add-to-list 'exec-path "~/.pyenv/shims")
   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
   (add-hook 'python-mode-hook 'pyenv-mode))
-
+;;
 (use-package pyenv-mode-auto
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 (use-package elpy
   :ensure t
+  :after (pyenv-mode pyenv-mode-auto)
   :defer t
   :config
   (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
