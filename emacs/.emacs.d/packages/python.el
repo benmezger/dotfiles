@@ -1,6 +1,6 @@
 (use-package pyenv-mode
   :ensure t
-  :defer 2
+  :defer 1
   :config (pyenv-mode)
   :init
   (setenv "WORKON_HOME" "~/.pyenv/versions/")
@@ -11,14 +11,14 @@
 (use-package pyenv-mode-auto
   :ensure t)
 
-(use-package elpy
-  :ensure t
-  :after (pyenv-mode pyenv-mode-auto)
-  :defer t
-  :config
-  (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  (add-hook 'elpy-mode-hook
-    (lambda ()
-      (add-hook 'before-save-hook 'elpy-black-fix-code nil 'local)))) ;
+;;(use-package elpy
+;;  :ensure t
+;;  :after (pyenv-mode pyenv-mode-auto)
+;;  :defer t
+;;  :config
+;;  (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
+;;  :init
+;;  (advice-add 'python-mode :before 'elpy-enable)
+;;  (add-hook 'elpy-mode-hook
+;;    (lambda ()
+;;      (add-hook 'before-save-hook 'elpy-black-fix-code nil 'local)))) ;
