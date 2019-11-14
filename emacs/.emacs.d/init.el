@@ -65,8 +65,8 @@
 (global-display-line-numbers-mode)
 ;; (set-face-attribute 'line-number-current-line nil :inverse-video nil)
 
-(setq-default shell-file-name "/bin/bash")
-(setq-default explicit-shell-file-name "/bin/bash")
+(setq-default shell-file-name "/usr/local/bin/zsh")
+(setq-default explicit-shell-file-name "/usr/local/bin/zsh")
 
 ;; Set 50MB for the garbage collection
 ;; and
