@@ -14,10 +14,9 @@
   (setq doom-modeline-height 20)
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
 
-  (setq doom-modeline-icon t)
+  (setq doom-modeline-icon (display-graphic-p))
   (setq doom-modeline-major-mode-icon t)
   (setq doom-modeline-major-mode-color-icon t)
-  (setq doom-modeline-icon (display-graphic-p))
 
   (setq doom-modeline-buffer-state-icon t)
   (setq doom-modeline-buffer-modification-icon t)
