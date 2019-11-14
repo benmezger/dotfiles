@@ -51,6 +51,8 @@
 (load "~/.emacs.d/packages/mouse.el")
 (load "~/.emacs.d/packages/super_save.el")
 (load "~/.emacs.d/packages/centaurtabs.el")
+(load "~/.emacs.d/packages/whichkey.el")
+
 
 ;; PGP
 (require 'epa-file)
