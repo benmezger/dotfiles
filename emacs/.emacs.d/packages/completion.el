@@ -63,12 +63,12 @@
 ;; (use-package company-c-headers
 ;;   :ensure t)
 ;;
-;; (use-package ccls
-;;   :ensure t
-;;   :diminish t
-;;   :config
-;;   (require 'ccls)
-;;   (setq ccls-executable "/usr/local/bin/ccls"))
+(use-package ccls
+  :ensure t
+  :diminish t
+  :config
+  (require 'ccls)
+  (setq ccls-executable "/usr/local/bin/ccls"))
 
 ;;
 ;; (use-package company-irony
