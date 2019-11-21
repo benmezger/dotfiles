@@ -100,8 +100,8 @@
 ;;   (add-hook 'objc-mode-hook 'irony-mode)
 ;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 ;;
-;; (use-package clang-format
-;;   :ensure t)
+(use-package clang-format
+  :ensure t)
 ;;
 ;; (use-package company-tabnine
 ;;   :ensure t
