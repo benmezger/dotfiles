@@ -11,6 +11,11 @@
 (use-package pyenv-mode-auto
   :ensure t)
 
+(use-package blacken
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'blacken-mode))
+
 ;;(use-package elpy
 ;;  :ensure t
 ;;  :after (pyenv-mode pyenv-mode-auto)
