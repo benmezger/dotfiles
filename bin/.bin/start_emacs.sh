@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/zsh
 
 running=$(/usr/local/bin/emacsclient --eval '(daemonp)')
 
