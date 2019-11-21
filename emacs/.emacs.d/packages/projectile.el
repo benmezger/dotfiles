@@ -19,7 +19,14 @@
   ;; (setq projectile-completion-system 'helm)
   (projectile-mode 1)
 
-  (setq projectile-enable-caching t))
+  (setq projectile-enable-caching t)
+  (defun projectile-pyenv-mode-set ()
+    "Set pyenv version matching project name."
+    (let ((project (projectile-project-name)))
+      (if (member project (pyenv-mode-versions))
+        (pyenv-mode-set project)
+        (pyenv-mode-unset))))
+  (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set))
 
   ;; switch python version together with current project
   ;; (require 'pyenv-mode)
