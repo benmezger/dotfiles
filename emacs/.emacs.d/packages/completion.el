@@ -1,8 +1,8 @@
 (use-package eglot
+  :after (exec-path-from-shell)
   :ensure t
   :hook ((python-mode . eglot-ensure)
-          (c-mode . eglot-ensure))
-  )
+          (c-mode . eglot-ensure)))
 
 ;; (use-package lsp-mode
 ;;   :hook (python-mode . lsp-deferred)
@@ -66,6 +66,7 @@
 (use-package ccls
   :ensure t
   :diminish t
+  :after (eglot)
   :config
   (require 'ccls)
   (setq ccls-executable "/usr/local/bin/ccls"))
