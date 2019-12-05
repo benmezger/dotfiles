@@ -112,8 +112,7 @@
     :after evil
     :defer .1
     :ensure t
-    :custom (evil-collection-setup-minibuffer t)
-    :init (evil-collection-init))
+    :custom (evil-collection-setup-minibuffer t))
 
   ;; * operator in vusual mode
   (use-package evil-visualstar
