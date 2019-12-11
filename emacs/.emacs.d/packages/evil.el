@@ -63,9 +63,11 @@
   ;; m = mode
   ;; d = definition
   ;; m w = mode go to definition
-  (evil-leader/set-key-for-mode 'c-mode "m g" 'counsel-etags-find-tag-at-point)
-  (evil-leader/set-key-for-mode 'python-mode "m d" 'elpy-goto-definition-other-window)
-  (evil-leader/set-key-for-mode 'python-mode "m a" 'elpy-goto-assignment-other-window))
+  ;; (evil-leader/set-key-for-mode 'c-mode "m g" 'counsel-etags-find-tag-at-point)
+  ;; (evil-leader/set-key-for-mode 'python-mode "m d" 'elpy-goto-definition-other-window)
+
+  (evil-leader/set-key-for-mode 'c-mode "m f d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'python-mode "m f d" 'xref-find-definitions))
 
 (use-package evil
   :ensure t
@@ -110,8 +112,7 @@
     :after evil
     :defer .1
     :ensure t
-    :custom (evil-collection-setup-minibuffer t)
-    :init (evil-collection-init))
+    :custom (evil-collection-setup-minibuffer t))
 
   ;; * operator in vusual mode
   (use-package evil-visualstar
@@ -136,4 +137,7 @@
 
   (use-package evil-magit
     :ensure t
-    :defer .1))
+    :defer .1)
+
+  (use-package evil-leader
+    :ensure t))

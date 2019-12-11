@@ -48,9 +48,6 @@
 [grep]
     extendRegexp = true
     lineNumber = true
-[pager]
-    diff = diff-so-fancy | less --tabs=4 -RFX
-    show = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
     oldNormal = red bold
     oldHighlight = red bold 52
@@ -67,6 +64,7 @@
     showUntrackedFiles = all
 [commit]
     verbose = true
+    template = ~/.gittemplates/commit
 [advice]
     pushNonFastForward = false
     statusHints = false
@@ -94,4 +92,6 @@
 [init]
     templatedir = ~/.gittemplates
 [merge "ours"]
-	driver = true
+    driver = true
+[remote "origin"]
+    prune = true
