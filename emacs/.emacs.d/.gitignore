@@ -19,3 +19,6 @@ ido.last
 smex-items
 places
 irony/*
+mypyls/*
+mspyls/*
+.lsp*

@@ -61,30 +61,3 @@
       (or (string= "TODO" (org-get-todo-state))
         (string= "WAITING" (org-get-todo-state))
         (string= "SCHEDULED" (org-get-todo-state))))))
-
-(use-package org-journal
-  :ensure t
-  :defer t
-  :bind (("C-c C-j" . org-journal-new-entry))
-  :custom
-  (org-journal-dir "~/orgs/journal/")
-  (org-journal-date-format "%A, %d %B %Y")
-  :config
-  (setq org-journal-enable-agenda-integration t)
-  (setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'")
-  (setq org-journal-enable-encryption t)
-  (setq org-journal-file-format "%Y%m%d.org")
-  (setq org-journal-encrypt-journal t)
-  (setq org-journal-time-prefix "* ")
-  (setq org-crypt-key "0xAC7A30843ADC0D65")
-  (add-to-list 'org-modules 'org-crypt)
-  (add-to-list 'org-agenda-files org-journal-dir)
-  (require 'org-crypt)
-  (defun org-journal-save-entry-and-exit()
-    "Simple convenience function.
-  Saves the buffer of the current day's entry and kills the window
-  Similar to org-capture like behavior"
-    (interactive)
-    (save-buffer)
-    (kill-buffer-and-window))
-  (define-key org-journal-mode-map (kbd "C-x C-s") 'org-journal-save-entry-and-exit))

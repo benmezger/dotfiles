@@ -7,6 +7,7 @@
 
 (use-package flycheck-irony
   :ensure t
+  :requires flycheck
   :defer 5
   :config
   (eval-after-load 'flycheck

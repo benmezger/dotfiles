@@ -11,6 +11,8 @@
 (global-hl-line-mode)
 (setq-default cursor-type 'bar)
 
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
 
 ;; set custom config file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -63,8 +65,8 @@
 (global-display-line-numbers-mode)
 ;; (set-face-attribute 'line-number-current-line nil :inverse-video nil)
 
-(setq-default shell-file-name "/bin/bash")
-(setq-default explicit-shell-file-name "/bin/bash")
+(setq-default shell-file-name "/usr/local/bin/zsh")
+(setq-default explicit-shell-file-name "/usr/local/bin/zsh")
 
 ;; Set 50MB for the garbage collection
 ;; and
@@ -138,3 +140,21 @@
         (float-time
           (time-subtract after-init-time before-init-time)))
       gcs-done)))
+
+(defun update-anybar-color (color &optional port)
+  (shell-command
+    (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
+      color (or port 1738))))
+
+(load "server")
+(unless (server-running-p)
+  (update-anybar-color "red")
+  (server-start))
+
+(update-anybar-color "green")
+
+(add-to-list 'default-frame-alist
+  '(font . "InconsolataDZ-12"))
+
+(add-hook 'kill-emacs-hook (lambda ()
+                             (update-anybar-color "red")))
