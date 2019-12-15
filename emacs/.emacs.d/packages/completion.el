@@ -68,8 +68,8 @@
   :diminish t
   :after (eglot)
   :config
-  (require 'ccls)
-  (setq ccls-executable "/usr/local/bin/ccls"))
+  (setq ccls-executable "/usr/local/bin/ccls")
+  (require 'ccls))
 
 ;;
 ;; (use-package company-irony
