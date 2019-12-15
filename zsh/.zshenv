@@ -14,6 +14,12 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
+# Go path
+export GOPATH=$HOME/workspace/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 ### Plugins
 
 ## Slimline
