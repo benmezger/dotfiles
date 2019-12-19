@@ -28,6 +28,7 @@
 (load "~/.emacs.d/packages/rainbow_delimiter.el")
 
 (load "~/.emacs.d/packages/python.el")
+(load "~/.emacs.d/packages/golang.el")
 (load "~/.emacs.d/packages/wakatime.el")
 (load "~/.emacs.d/packages/flycheck.el")
 (load "~/.emacs.d/packages/orgmode.el")
