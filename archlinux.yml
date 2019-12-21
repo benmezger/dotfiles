@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles:
+    - role: common
+    - role: archlinux
+    - role: linux

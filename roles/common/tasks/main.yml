@@ -1,0 +1,25 @@
+---
+- name: Install zplug
+  git:
+    repo: https://github.com/zplug/zplug
+    dest: ~/.zplug
+
+- name: Clone TPM (for Tmux)
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+
+- name: Ensure vim directories exist
+  file:
+    path: ~/.vim/autoload
+    state: directory
+
+- name: Install Vim-Plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/plug.vim
+
+- name: Clone base16-shell
+  git:
+    repo: https://github.com/chriskempson/base16-shell
+    dest: ~/.config/base16-shell

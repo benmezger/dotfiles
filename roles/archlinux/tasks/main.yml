@@ -1,0 +1,34 @@
+---
+- name: Clone Aura
+  git:
+    repo: https://aur.archlinux.org/aura-bin.git
+    dest: /tmp/aura-bin
+    force: yes
+
+- name: Build and install Aura
+  command: makepkg -si --noconfirm
+  args:
+    chdir: /tmp/aura-bin
+
+- import_tasks: pacman.yml
+- import_tasks: ../../linux/tasks/services.yml
+- import_tasks: ../../common/tasks/python.yml
+
+- name: Restore files using GNU Stow
+  command: stow {{ item }}
+  args:
+    chdir: ~/dotfiles
+  with_items:
+    - bin
+    - config
+    - git
+    - gnupg
+    - ipython
+    - misc
+    - tmux
+    - vim
+    - zsh
+    - X
+    - virtualenvs
+    - fish
+    - emacs

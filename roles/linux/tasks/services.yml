@@ -1,0 +1,15 @@
+---
+- name: Enable pcscd service
+  systemd:
+    name: pcscd.socket
+    enabled: yes
+
+- name: Enable Network service
+  systemd:
+    name: NetworkManager.service
+    enabled: yes
+
+- name: Enable slim service
+  systemd:
+    name: slim.service
+    enabled: yes
