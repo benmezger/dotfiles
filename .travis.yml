@@ -17,7 +17,7 @@ env:
 
 branches:
   only:
-    - master
+    - osx
 
 before_install:
   - brew update
