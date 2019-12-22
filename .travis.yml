@@ -1,0 +1,33 @@
+sudo: required
+os: osx
+
+cache:
+  ccache: true
+  pip: true
+  directories:
+    - $HOME/Library/Caches/Homebrew
+    - $HOME/Library/Caches/pip
+    - /usr/local/Cellar
+    - /usr/local/Caskroom
+    - /usr/local/opt
+    - /Applications/
+
+env:
+  - TRAVIS=1
+
+branches:
+  only:
+    - master
+
+before_install:
+  - brew update
+
+install:
+  - brew install ansible
+  - brew install ccache
+  - export PATH="/usr/local/opt/ccache/libexec:$PATH"
+
+script:
+  - git clone https://github.com/benmezger/dotfiles.git ~/dotfiles
+  - (cd ~/dotfiles; git checkout osx)
+  - ansible-playbook -i inventory osx.yml
