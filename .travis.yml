@@ -30,4 +30,5 @@ install:
 script:
   - git clone https://github.com/benmezger/dotfiles.git ~/dotfiles
   - (cd ~/dotfiles; git checkout osx)
+  - ansible-galaxy install -r requirements.yml
   - ansible-playbook -i inventory osx.yml
