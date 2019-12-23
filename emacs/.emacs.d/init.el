@@ -146,10 +146,10 @@
     (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
       color (or port 1738))))
 
-(load "server")
-(unless (server-running-p)
-  (update-anybar-color "red")
-  (server-start))
+;; (load "server")
+;; (unless (server-running-p)
+;;   (update-anybar-color "red")
+;;   (server-start))
 
 (update-anybar-color "green")
 
