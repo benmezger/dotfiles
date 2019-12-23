@@ -64,12 +64,12 @@
 ;; (use-package company-c-headers
 ;;   :ensure t)
 ;;
-(use-package ccls
-  :ensure t
-  :diminish t
-  :config
-  (setq ccls-executable "/usr/local/bin/ccls")
-  (require 'ccls))
+;; (use-package ccls
+;;   :preface
+;;   (setq ccls-executable "/usr/local/bin/ccls"))
+;;   :diminish t
+;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;           (lambda () (require 'ccls) (lsp)))
 
 ;;
 ;; (use-package company-irony
