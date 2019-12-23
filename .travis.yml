@@ -10,7 +10,6 @@ cache:
     - /usr/local/Cellar
     - /usr/local/Caskroom
     - /usr/local/opt
-    - /Applications/
 
 env:
   - TRAVIS=1
