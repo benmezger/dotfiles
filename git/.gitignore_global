@@ -377,3 +377,7 @@ media
 
 # Terraform files
 .terraform
+
+# Ccls cache files
+.ccls-cache/*
+/.cquery_cached_index/
