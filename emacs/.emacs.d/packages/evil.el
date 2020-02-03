@@ -67,7 +67,8 @@
   ;; (evil-leader/set-key-for-mode 'python-mode "m d" 'elpy-goto-definition-other-window)
 
   (evil-leader/set-key-for-mode 'c-mode "m f d" 'xref-find-definitions)
-  (evil-leader/set-key-for-mode 'python-mode "m f d" 'xref-find-definitions))
+  (evil-leader/set-key-for-mode 'python-mode "m f d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'python-mode "m f r" 'xref-find-references))
 
 (use-package evil
   :ensure t
@@ -94,6 +95,7 @@
   (add-hook 'after-save-hook #'evil-normal-state)
   :config
   (evil-mode)
+
   (defun evil-normalize-all-buffers ()
     "Force a drop to normal state."
     (unless (eq evil-state 'normal)
