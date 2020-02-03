@@ -1,29 +1,37 @@
-(use-package eglot
-  :after (exec-path-from-shell)
+(use-package lsp-mode
+  :hook ((python-mode . lsp-deferred)
+          (c-mode . lsp-deferred)
+          (c++-mode . lsp-deferred))
+  :commands lsp lsp-deferred
+  :config
+  (setq lsp-response-timeout 90000))
+
+(use-package lsp-ui
   :ensure t
-  :hook ((python-mode . eglot-ensure)
-          (c-mode . eglot-ensure)
-          (go-mode . eglot-ensure)))
+  :commands lsp-ui-mode
+  :hook (lsp-mode-hook . lsp-ui-mode))
 
-;; (use-package lsp-mode
-;;   :hook (python-mode . lsp-deferred)
-;;   :hook (c-mode . lsp-deferred)
-;;   :commands (lsp lsp-deferred))
-;;
-;;   ;; :config
-;;   ;; (lsp-register-client
-;;   ;;   (make-lsp-client :new-connection (lsp-stdio-connection "pyls")
-;;   ;;     :major-modes '(python-mode)
-;;   ;;     :server-id 'pyls)))
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list)
 
-;; lsp extras
-;; (use-package lsp-ui
-;;   :ensure t
-;;   :after (eglot)
-;;   :commands lsp-ui-mode
-;;   :config
-;;   (setq lsp-ui-sideline-ignore-duplicate t))
-;;   ;; (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+(use-package company-lsp
+  :ensure t
+  :after (lsp-mode company)
+  :commands company-lsp
+  :diminish company-lsp
+  :config
+  (require 'company-lsp)
+  (push 'company-lsp company-backends)
+  (setq company-lsp-async t)
+  (setq company-lsp-cache-candidates t)
+  (setq company-lsp-enable-recompletion t))
+  ;; :config
+  ;; (require 'company-lsp)
+  ;; (push 'company-lsp company-backends)
+  ;; (setq company-transformers nil
+  ;;       company-lsp-async t
+  ;;       company-lsp-cache-candidates nil))
 
 (use-package company
   :ensure t
@@ -45,31 +53,25 @@
   ;;  (lambda () (local-set-key (kbd "<tab>") #'company-complete)
   ;;    (local-set-key (kbd "C-SPC") #'company-complete-selection))))
 
-(use-package company-lsp
-  :ensure t
-  :after (lsp-mode)
-  :diminish company-lsp
-  :config
-  (push 'company-lsp company-backends)
-  (setq company-lsp-async t)
-  (setq company-lsp-cache-candidates t)
-  (setq company-lsp-enable-recompletion t))
-  ;; :config
-  ;; (require 'company-lsp)
-  ;; (push 'company-lsp company-backends)
-  ;; (setq company-transformers nil
-  ;;       company-lsp-async t
-  ;;       company-lsp-cache-candidates nil))
+(use-package clang-format
+  :ensure t)
+
+
+;;(use-package cquery
+;;  :ensure t
+;;  :config
+;;  (setq cquery-executable "/usr/local/bin/cquery"))
 
 ;; (use-package company-c-headers
 ;;   :ensure t)
 ;;
-;; (use-package ccls
-;;   :preface
-;;   (setq ccls-executable "/usr/local/bin/ccls"))
-;;   :diminish t
-;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;           (lambda () (require 'ccls) (lsp)))
+(use-package ccls
+  :ensure t
+  :preface
+  (setq ccls-executable "/usr/local/bin/ccls")
+  :diminish t
+  :hook ((c-mode . (lambda () (require 'ccls)))
+          (c++-mode . (lambda () ((require 'ccls))))))
 
 ;;
 ;; (use-package company-irony
@@ -100,8 +102,6 @@
 ;;   (add-hook 'objc-mode-hook 'irony-mode)
 ;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 ;;
-(use-package clang-format
-  :ensure t)
 ;;
 ;; (use-package company-tabnine
 ;;   :ensure t
