@@ -170,20 +170,15 @@
   (add-to-list 'ivy-sort-functions-alist
     '(read-file-name-internal . eh-ivy-sort-file-function)))
 
-(after! smart-mode-line
-  :config
-  ;; (setq sml/theme 'atom-one-dark)
-  (setq sml/no-confirm-load-theme t)
-  (add-to-list 'sml/replacer-regexp-list '("^~/workspace/" " :WP: ") t)
-  (sml/setup))
-
-(after! super-save
-  :config
+(def-package! super-save
+  :init
   (setq super-save-auto-save-when-idle t)
+  :config
   (add-to-list 'super-save-hook-triggers 'find-file-hook)
   (super-save-mode +1))
 
-(after! wakatime-mode
-  :custom (wakatime-cli-path "~/.pyenv/shims/wakatime")
-  :config (global-wakatime-mode))
-
+(def-package! wakatime-mode
+  :init
+  (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
+  :config
+  (global-wakatime-mode))
