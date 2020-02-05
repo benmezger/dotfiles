@@ -121,7 +121,7 @@
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enable)))
 
-(after! counsel
+(after! ivy
   :config
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
