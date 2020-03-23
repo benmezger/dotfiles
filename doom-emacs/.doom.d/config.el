@@ -99,24 +99,6 @@
   ;; Don’t compact font caches during GC.
   (setq inhibit-compacting-font-caches t))
 
-(after! evil
-  :init
-  (add-hook 'after-save-hook #'evil-normal-state)
-  :config
-
-  (defun evil-normalize-all-buffers ()
-    "Force a drop to normal state."
-    (unless (eq evil-state 'normal)
-      (dolist (buffer (buffer-list))
-        (set-buffer buffer)
-        (unless (or (minibufferp)
-                  (eq evil-state 'emacs))
-          (evil-force-normal-state)))))
-
-  (defvar evil-normal-timer
-    (run-with-idle-timer 120 t #'evil-normalize-all-buffers)
-    "Drop back to normal state after idle for 30 seconds."))
-
 (after! flycheck
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enable)))
@@ -182,3 +164,7 @@
   (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
   :config
   (global-wakatime-mode))
+
+(def-package! py-isort
+  :init
+  (add-hook 'before-save-hook 'py-isort-before-save))
