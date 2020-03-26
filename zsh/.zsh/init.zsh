@@ -30,9 +30,6 @@ function _tmux_autostart(){
 
 precmd_functions+=( _tmux_autostart )
 
-#  load LS_COLORS
-eval $(dircolors -b $HOME/.dircolors)
-
 # check if fasd exists and initialize it
 if (( ${+commands[fasd]} )); then
     eval "$(fasd --init auto)"
