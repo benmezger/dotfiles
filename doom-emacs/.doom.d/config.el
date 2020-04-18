@@ -152,19 +152,31 @@
   (add-to-list 'ivy-sort-functions-alist
     '(read-file-name-internal . eh-ivy-sort-file-function)))
 
-(def-package! super-save
+(after! org
+  :config
+  (setq org-capture-templates
+    '(("t" "Todo" entry (file+headline "~/org/todo.org" "Inbox")
+        "* TODO %?\n  %i\n  %a")
+       ("n" "Note" entry (file+datetree "~/org/notes.org" "Inbox")
+         "* %?\nEntered on %U\n  %i\n  %a"))))
+
+(use-package! super-save
   :init
   (setq super-save-auto-save-when-idle t)
   :config
   (add-to-list 'super-save-hook-triggers 'find-file-hook)
   (super-save-mode +1))
 
-(def-package! wakatime-mode
+(use-package! wakatime-mode
   :init
   (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
   :config
   (global-wakatime-mode))
 
-(def-package! py-isort
+(use-package! py-isort
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
+
+(use-package! org-jira
+  :config
+  (setq jiralib-url "https://cheesecakelabs.atlassian.net"))
