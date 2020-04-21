@@ -54,5 +54,4 @@
 ;
 (package! pyenv-mode-auto)
 (package! wakatime-mode)
-(package! super-save)
 (package! org-jira)

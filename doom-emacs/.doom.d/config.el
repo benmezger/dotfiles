@@ -160,13 +160,6 @@
        ("n" "Note" entry (file+datetree "~/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a"))))
 
-(use-package! super-save
-  :init
-  (setq super-save-auto-save-when-idle t)
-  :config
-  (add-to-list 'super-save-hook-triggers 'find-file-hook)
-  (super-save-mode +1))
-
 (use-package! wakatime-mode
   :init
   (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
