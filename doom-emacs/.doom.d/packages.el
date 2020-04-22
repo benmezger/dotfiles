@@ -54,4 +54,3 @@
 ;
 (package! pyenv-mode-auto)
 (package! wakatime-mode)
-(package! org-jira)

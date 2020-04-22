@@ -169,14 +169,3 @@
 (use-package! py-isort
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
-
-(use-package! org-jira
-  :config
-  (setq jiralib-url "https://cheesecakelabs.atlassian.net")
-  (setq org-jira-working-dir "~/org/")
-  (setq org-jira-custom-jqls
-    '(
-       (:jql " project = SKYR AND assignee in (currentUser()) , updated DESC "
-         :limit 100
-         :filename "SKYR")
-       )))
