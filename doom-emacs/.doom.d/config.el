@@ -154,6 +154,7 @@
 
 (after! org
   :config
+  (setq org-log-done 'time)
   (setq org-capture-templates
     '(("t" "Todo" entry (file+headline "~/org/todo.org" "Inbox")
         "* TODO %?\n  %i\n  %a")
