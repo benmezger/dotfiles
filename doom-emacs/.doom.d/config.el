@@ -155,11 +155,22 @@
 (after! org
   :config
   (setq org-log-done 'time)
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
+
   (setq org-capture-templates
     '(("t" "Todo" entry (file+headline "~/org/todo.org" "Inbox")
         "* TODO %?\n  %i\n  %a")
-       ("n" "Note" entry (file+datetree "~/org/notes.org" "Inbox")
+       ("n" "Note" entry (file+olp+datetree "~/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a"))))
+
+(after! deft
+  :config
+  (setq deft-extension "org")
+  (setq deft-text-mode 'org-mode)
+  (setq deft-recursive t)
+  (setq deft-use-filename-as-title t)
+  (setq deft-directory org-directory))
 
 (use-package! wakatime-mode
   :init
