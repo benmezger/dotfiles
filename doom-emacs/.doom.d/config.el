@@ -156,12 +156,33 @@
   :config
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
+  (setq org-directory "~/workspace/org")
+  (setq org-agenda-files (list org-directory))
   (org-clock-persistence-insinuate)
+  (setq-default org-catch-invisible-edits 'smart)
+
+  (setq org-todo-keywords
+    '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
+       (sequence "READING(r!)" "HOLD(h@/!)" "|" "READ(e@/!)")
+       (sequence "|" "DONE(d!)" "CANCELED(c!)"))
+    org-todo-keyword-faces
+    '(("CURRENT"  . "orange")
+       ("TODO" . "systemRedColor")
+       ("READING" . "systemOrangeColor")
+       ("HOLD"  . "indianRed")
+       ("WAIT" . "salmon1")
+       ("PROJ" . "systemYellowColor")))
 
   (setq org-capture-templates
-    '(("t" "Todo" entry (file+headline "~/org/todo.org" "Inbox")
+    '(("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
         "* TODO %?\n  %i\n  %a")
-       ("n" "Note" entry (file+olp+datetree "~/org/notes.org" "Inbox")
+       ("s" "Schedule task" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
+         (file "~/workspace/org/templates/schedule.capture"))
+       ("c" "Code snippet" entry (file+olp "~/workspace/org/notes.org" "Notes" "Code snippets")
+         (file "~/workspace/org/templates/code-snippet.capture"))
+       ("b" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Book list")
+         (file "~/workspace/org/templates/new-book.capture"))
+       ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a"))))
 
 (after! deft
