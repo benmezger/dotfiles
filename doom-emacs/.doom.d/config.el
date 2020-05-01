@@ -166,11 +166,13 @@
 
 (after! deft
   :config
-  (setq deft-extension "org")
-  (setq deft-text-mode 'org-mode)
+  (setq deft-directory org-directory)
+  (setq deft-extensions '("org" "md" "txt"))
+  (setq deft-default-extension "org")
   (setq deft-recursive t)
-  (setq deft-use-filename-as-title t)
-  (setq deft-directory org-directory))
+  (setq deft-use-filename-as-title nil)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((nospace . "-"))))
 
 (use-package! wakatime-mode
   :init
