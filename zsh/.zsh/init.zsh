@@ -12,6 +12,9 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
+# disable keyboard beep
+unsetopt BEEP
+
 # navidate completion
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name '' # group results by category
