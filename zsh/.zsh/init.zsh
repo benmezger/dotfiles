@@ -12,6 +12,9 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
+# disable keyboard beep
+unsetopt BEEP
+
 # navidate completion
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name '' # group results by category
@@ -29,9 +32,6 @@ function _tmux_autostart(){
 }
 
 precmd_functions+=( _tmux_autostart )
-
-#  load LS_COLORS
-eval $(dircolors -b $HOME/.dircolors)
 
 # check if fasd exists and initialize it
 if (( ${+commands[fasd]} )); then
