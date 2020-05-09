@@ -160,6 +160,7 @@
   (setq org-agenda-files (list org-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
+  (setq org-log-into-drawer t)
 
   (setq org-todo-keywords
     '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
