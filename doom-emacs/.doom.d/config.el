@@ -205,3 +205,7 @@
 (use-package! py-isort
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
+
+(after! elfeed-org
+  :init
+  (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
