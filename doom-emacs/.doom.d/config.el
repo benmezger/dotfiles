@@ -209,3 +209,7 @@
 (after! elfeed-org
   :init
   (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
+
+(after! ob-mermaid
+  :init
+  (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
