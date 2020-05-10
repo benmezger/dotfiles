@@ -24,9 +24,9 @@
   doom              ; what makes DOOM look the way it does
   ;; doom-dashboard    ; a nifty splash screen for Emacs
   doom-quit         ; DOOM quit-message prompts when you quit Emacs
-  ;;fill-column       ; a `fill-column' indicator
+  fill-column       ; a `fill-column' indicator
   hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-  ;;indent-guides     ; highlighted indent columns
+  indent-guides     ; highlighted indent columns
   modeline          ; snazzy, Atom-inspired modeline, plus API
   nav-flash         ; blink the current line after jumping
   ophints           ; highlight the region an operation acts on
