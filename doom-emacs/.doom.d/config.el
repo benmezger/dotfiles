@@ -175,16 +175,20 @@
        ("PROJ" . "systemYellowColor")))
 
   (setq org-capture-templates
-    '(("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
-        "* TODO %?\n  %i\n  %a")
-       ("s" "Schedule task" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
-         (file "~/workspace/org/templates/schedule.capture"))
+    '(
+       ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
+         (file "~/workspace/org/templates/book-note.capture"))
        ("c" "Code snippet" entry (file+olp "~/workspace/org/notes.org" "Notes" "Code snippets")
          (file "~/workspace/org/templates/code-snippet.capture"))
-       ("b" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Book list")
-         (file "~/workspace/org/templates/new-book.capture"))
        ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
-         "* %?\nEntered on %U\n  %i\n  %a"))))
+         "* %?\nEntered on %U\n  %i\n  %a")
+       ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
+         (file "~/workspace/org/templates/new-book.capture"))
+       )
+    )
+  )
 
 (after! deft
   :config
