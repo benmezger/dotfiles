@@ -200,6 +200,11 @@
   (setq deft-use-filter-string-for-filename t)
   (setq deft-file-naming-rules '((nospace . "-"))))
 
+(after! doom-modeline
+  :config
+  (setq doom-modeline-continuous-word-count-modes
+    '(markdown-mode gfm-mod)))
+
 (use-package! wakatime-mode
   :init
   (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
