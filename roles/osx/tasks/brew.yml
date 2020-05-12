@@ -66,6 +66,8 @@
     - ckb-next
     - insomnia
     - stremio
+    - maccy
+    - syncthing
 
 - name: Install fonts using Homebrew Cask
   poll: 0
