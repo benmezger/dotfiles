@@ -40,10 +40,8 @@
       - automake
       - cmake
       - coreutils
-      - fortune
       - git-chglog
       - neovim
-      - fortune
 
 - name: Install apps using Homebrew Cask
   poll: 0
@@ -55,7 +53,7 @@
     state: present
     upgrade_all: yes
   with_items:
-    - google-chrome
+    - brave-browser
     - transmission
     - alacritty
     - vlc
@@ -66,10 +64,10 @@
     - hopper-disassembler
     - java
     - ckb-next
-    - anybar
     - insomnia
     - stremio
-    - tidal
+    - maccy
+    - syncthing
 
 - name: Install fonts using Homebrew Cask
   poll: 0

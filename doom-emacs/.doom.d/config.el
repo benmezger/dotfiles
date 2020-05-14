@@ -152,19 +152,73 @@
   (add-to-list 'ivy-sort-functions-alist
     '(read-file-name-internal . eh-ivy-sort-file-function)))
 
-(def-package! super-save
-  :init
-  (setq super-save-auto-save-when-idle t)
+(after! org
   :config
-  (add-to-list 'super-save-hook-triggers 'find-file-hook)
-  (super-save-mode +1))
+  (setq org-log-done 'time)
+  (setq org-clock-persist 'history)
+  (setq org-directory "~/workspace/org")
+  (setq org-agenda-files (list org-directory))
+  (org-clock-persistence-insinuate)
+  (setq-default org-catch-invisible-edits 'smart)
+  (setq org-log-into-drawer t)
 
-(def-package! wakatime-mode
+  (setq org-todo-keywords
+    '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
+       (sequence "READING(r!)" "HOLD(h@/!)" "|" "READ(e@/!)")
+       (sequence "|" "DONE(d!)" "CANCELED(c!)"))
+    org-todo-keyword-faces
+    '(("CURRENT"  . "orange")
+       ("TODO" . "systemRedColor")
+       ("READING" . "systemOrangeColor")
+       ("HOLD"  . "indianRed")
+       ("WAIT" . "salmon1")
+       ("PROJ" . "systemYellowColor")))
+
+  (setq org-capture-templates
+    '(
+       ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
+         (file "~/workspace/org/templates/book-note.capture"))
+       ("c" "Code snippet" entry (file+olp "~/workspace/org/notes.org" "Notes" "Code snippets")
+         (file "~/workspace/org/templates/code-snippet.capture"))
+       ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
+         "* %?\nEntered on %U\n  %i\n  %a")
+       ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
+         (file "~/workspace/org/templates/new-book.capture"))
+       )
+    )
+  )
+
+(after! deft
+  :config
+  (setq deft-directory org-directory)
+  (setq deft-extensions '("org" "md" "txt"))
+  (setq deft-default-extension "org")
+  (setq deft-recursive t)
+  (setq deft-use-filename-as-title nil)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((nospace . "-"))))
+
+(after! doom-modeline
+  :config
+  (setq doom-modeline-continuous-word-count-modes
+    '(markdown-mode gfm-mod)))
+
+(use-package! wakatime-mode
   :init
   (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
   :config
   (global-wakatime-mode))
 
-(def-package! py-isort
+(use-package! py-isort
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
+
+(after! elfeed-org
+  :init
+  (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
+
+(after! ob-mermaid
+  :init
+  (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
