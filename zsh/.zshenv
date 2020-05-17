@@ -31,11 +31,11 @@ if [[ ${OSTYPE} == darwin* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-
-# Rbenv
-if (( ${+commands[rbenv]} )); then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+if (( ${+commands[pyenv]} )); then
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$(pyenv init - zsh --no-rehash)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 ## Autoenv
