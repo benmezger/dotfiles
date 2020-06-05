@@ -152,15 +152,17 @@
   (add-to-list 'ivy-sort-functions-alist
     '(read-file-name-internal . eh-ivy-sort-file-function)))
 
+
 (after! org
   :config
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
   (setq org-directory "~/workspace/org")
-  (setq org-agenda-files (list org-directory))
+  (setq org-agenda-files (list org-directory org-roam-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
   (setq org-log-into-drawer t)
+  (auto-fill-mode t)
 
   (setq org-todo-keywords
     '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
@@ -178,17 +180,67 @@
     '(
        ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
          (file "~/workspace/org/templates/book-note.capture"))
-       ("c" "Code snippet" entry (file+olp "~/workspace/org/notes.org" "Notes" "Code snippets")
-         (file "~/workspace/org/templates/code-snippet.capture"))
        ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a")
        ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
          "* TODO %?\n  %i\n  %a")
        ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
          (file "~/workspace/org/templates/new-book.capture"))
-       )
-    )
-  )
+       ))
+
+  (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
+
+(after! org-roam
+  (setq org-roam-directory "~/workspace/org/roam")
+  (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
+
+  (setq org-roam-capture-templates
+    '(("d" "default" plain (function org-roam-capture--get-point)
+        "%?"
+        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+        :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+HUGO_SLUG: ${slug}
+
+- tags :: "
+        :unnarrowed t)
+       ("p" "private" plain (function org-roam-capture--get-point)
+         "%?"
+         :file-name "private/${slug}"
+         :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^G
+#+HUGO_SLUG: ${slug}"
+         :unnarrowed t)))
+
+  (setq org-roam-ref-capture-templates
+    '(("r" "ref" plain (function org-roam-capture--get-point)
+        "%?"
+        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+        :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+ROAM_KEY: ${ref}
+#+ROAM_TAGS: website
+#+HUGO_SLUG: ${slug}
+
+- tags ::
+- source :: ${ref}"
+        :unnarrowed t)))
+
+  (defun custom-org-protocol-focus-advice (orig &rest args)
+    (x-focus-frame nil)
+    (apply orig args))
+
+  (advice-add 'org-roam-protocol-open-ref :around
+    #'custom-org-protocol-focus-advice)
+  (advice-add 'org-roam-protocol-open-file :around
+    #'custom-org-protocol-focus-advice))
+
+(use-package! org-roam-server)
 
 (after! deft
   :config

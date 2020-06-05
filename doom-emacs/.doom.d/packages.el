@@ -55,3 +55,4 @@
 (package! pyenv-mode-auto)
 (package! wakatime-mode)
 (package! ob-mermaid)
+(package! org-roam-server)
