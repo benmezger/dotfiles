@@ -17,7 +17,7 @@
 (doom! :completion
   (company
     +auto +tng) ; the ultimate code completion backend
-  (ivy +fuzzy +icons) ; a search engine for love and life
+  (ivy +fuzzy) ; a search engine for love and life
 
   :ui
   deft
