@@ -162,6 +162,7 @@
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
   (setq org-log-into-drawer t)
+  (setq org-agenda-inhibit-startup t)
   (auto-fill-mode t)
 
   (setq org-todo-keywords
@@ -239,6 +240,43 @@
     #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around
     #'custom-org-protocol-focus-advice))
+
+(after! (org org-roam)
+  (defun benmezger/org-roam-export-all ()
+  "Re-exports all Org-roam files to Hugo markdown."
+  (interactive)
+  (dolist (f (org-roam--list-all-files))
+    (with-current-buffer (find-file f)
+      (when (s-contains? "SETUPFILE" (buffer-string))
+        (org-hugo-export-wim-to-md)))))
+
+  (defun benmezger/org-roam--backlinks-list (file)
+    (when (org-roam--org-roam-file-p file)
+      (mapcar #'car (org-roam-db-query
+                      [:select :distinct [from]
+                        :from links
+                        :where (= to $s1)
+                        :and from :not :like $s2] file "%private%"))))
+
+  (defun benmezger/org-export-preprocessor (_backend)
+    (when-let ((links (benmezger/org-roam--backlinks-list (buffer-file-name))))
+      (insert "\n** Backlinks\n")
+      (dolist (link links)
+        (insert (format "- [[file:%s][%s]]\n"
+                  (file-relative-name link org-roam-directory)
+                  (org-roam--get-title-or-slug link))))))
+
+  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor))
+
+(after! (org ox-hugo)
+  (defun benmezger/conditional-hugo-enable ()
+    (save-excursion
+      (if (cdr (assoc "SETUPFILE" (org-roam--extract-global-props '("SETUPFILE"))))
+        (org-hugo-auto-export-mode +1)
+        (org-hugo-auto-export-mode -1))))
+  (add-hook 'org-mode-hook #'benmezger/conditional-hugo-enable))
+
+
 
 (use-package! org-roam-server)
 
