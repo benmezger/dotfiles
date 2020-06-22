@@ -53,7 +53,7 @@ else
     export TMUX_AUTOSTART="true"
 fi
 
-if [ -f "$HOME/.secrets" ]; then
+if [ -f "$HOME/.env-secrets" ]; then
     source "$HOME/.env-secrets"
 fi
 
