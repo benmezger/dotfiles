@@ -5,6 +5,7 @@ cache:
   pip: true
   directories:
     - $HOME/Library/Caches/Homebrew
+    - $HOME/.pyenv
     - $HOME/Library/Caches/pip
     - /usr/local/Cellar
     - /usr/local/Caskroom
