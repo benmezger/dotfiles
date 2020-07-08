@@ -17,3 +17,5 @@ source $HOME/.zsh/gpg-agent.zsh
 
 # base16 theme
 base16_gruvbox-dark-hard
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

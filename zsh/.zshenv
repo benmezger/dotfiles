@@ -60,3 +60,6 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+# FZF
+export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
