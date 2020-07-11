@@ -192,6 +192,7 @@
   (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
 
 (after! org-roam
+  :defer t
   (setq org-roam-directory "~/workspace/org/roam")
   (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
 
@@ -242,6 +243,7 @@
     #'custom-org-protocol-focus-advice))
 
 (after! (org org-roam)
+  :defer t
   (defun benmezger/org-roam-export-all ()
   "Re-exports all Org-roam files to Hugo markdown."
   (interactive)
@@ -269,6 +271,7 @@
   (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor))
 
 (after! (org ox-hugo)
+  :defer t
   (defun benmezger/conditional-hugo-enable ()
     (save-excursion
       (if (cdr (assoc "SETUPFILE" (org-roam--extract-global-props '("SETUPFILE"))))
@@ -276,7 +279,8 @@
         (org-hugo-auto-export-mode -1))))
   (add-hook 'org-mode-hook #'benmezger/conditional-hugo-enable))
 
-(use-package! org-roam-server)
+(use-package! org-roam-server
+  :defer t)
 
 (use-package! org-projectile
   :config
@@ -293,6 +297,7 @@
 
 
 (after! deft
+  :defer t
   :config
   (setq deft-directory org-directory)
   (setq deft-extensions '("org" "md" "txt"))
@@ -314,13 +319,16 @@
   (global-wakatime-mode))
 
 (use-package! py-isort
+  :defer t
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
 
 (after! elfeed-org
+  :defer t
   :init
   (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
 
 (after! ob-mermaid
+  :defer t
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
