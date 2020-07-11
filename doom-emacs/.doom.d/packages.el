@@ -56,3 +56,4 @@
 (package! wakatime-mode)
 (package! ob-mermaid)
 (package! org-roam-server)
+(package! org-projectile)
