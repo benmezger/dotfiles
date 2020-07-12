@@ -25,9 +25,6 @@
 ;; `load-theme' function. These are the defaults.
 (setq doom-theme 'doom-monokai-spectrum)
 
-;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org/")
-
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
 (setq display-line-numbers-type t)
