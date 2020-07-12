@@ -283,6 +283,7 @@
   :defer t)
 
 (use-package! org-projectile
+  :after projectile
   :config
     (map! :leader
       (:prefix "n"
