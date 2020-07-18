@@ -207,10 +207,11 @@
         :unnarrowed t)
        ("p" "private" plain (function org-roam-capture--get-point)
          "%?"
-         :file-name "private/${slug}"
+         :file-name "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
          :head "#+TITLE: ${title}
 #+DATE: %T
-#+FILETAGS: %^G
+#+FILETAGS: :personal:%^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
 #+HUGO_SLUG: ${slug}"
          :unnarrowed t)))
 
