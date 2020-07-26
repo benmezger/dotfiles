@@ -325,7 +325,7 @@
 (after! elfeed-org
   :defer t
   :init
-  (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
+  (setq rmh-elfeed-org-files (list "~/workspace/org/urls.org")))
 
 (after! ob-mermaid
   :defer t
