@@ -17,7 +17,7 @@
 (doom! :completion
   (company
     +auto +tng) ; the ultimate code completion backend
-  (ivy +fuzzy +icons) ; a search engine for love and life
+  (ivy +fuzzy) ; a search engine for love and life
 
   :ui
   deft
@@ -26,7 +26,7 @@
   doom-quit         ; DOOM quit-message prompts when you quit Emacs
   fill-column       ; a `fill-column' indicator
   hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-  indent-guides     ; highlighted indent columns
+  ;; indent-guides     ; highlighted indent columns
   modeline          ; snazzy, Atom-inspired modeline, plus API
   nav-flash         ; blink the current line after jumping
   ophints           ; highlight the region an operation acts on
@@ -70,13 +70,13 @@
   ;;vterm             ; another terminals in Emacs
 
   :checkers
-  syntax              ; tasing you for every semicolon you forget
+  ;;syntax              ; tasing you for every semicolon you forget
   spell             ; tasing you for misspelling mispelling
   grammar           ; tasing grammar mistake every you make
 
   :tools
   ;;ansible
-  ;;debugger          ; FIXME stepping through code, to help you add bugs
+  debugger          ; FIXME stepping through code, to help you add bugs
   ;;direnv
   ;;docker
   editorconfig      ; let someone else argue about tabs vs spaces
@@ -100,6 +100,7 @@
   :lang
   ;;agda              ; types of types of types of types...
   (cc +lsp)                ; C/C++/Obj-C madness
+  (yaml +lsp)
   ;;clojure           ; java with a lisp
   ;;common-lisp       ; if you've seen one lisp, you've seen them all
   ;;coq               ; proofs-as-programs
@@ -131,6 +132,7 @@
   ;;nix               ; I hereby declare "nix geht mehr!"
   ;;ocaml             ; an objective camel
   (org              ; organize your plain life in plain text
+    +roam
     +hugo
     +gnuplot
     +pancoc

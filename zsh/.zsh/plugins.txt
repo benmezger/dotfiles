@@ -6,3 +6,4 @@ chriskempson/base16-shell
 zsh-users/zsh-history-substring-search
 robbyrussell/oh-my-zsh path:plugins/z
 Tarrasch/zsh-autoenv
+sobolevn/wakatime-zsh-plugin

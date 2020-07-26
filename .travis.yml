@@ -1,4 +1,3 @@
-sudo: required
 os: osx
 
 cache:
@@ -6,6 +5,7 @@ cache:
   pip: true
   directories:
     - $HOME/Library/Caches/Homebrew
+    - $HOME/.pyenv
     - $HOME/Library/Caches/pip
     - /usr/local/Cellar
     - /usr/local/Caskroom
@@ -18,12 +18,14 @@ branches:
   only:
     - osx
 
+before_cache:
+  - brew cleanup
+
 before_install:
-  - brew update
+  - test -x /usr/local/bin/ansible || brew install ansible
+  - test -x /usr/local/bin/ccache || brew install ccache
 
 install:
-  - brew install ansible
-  - brew install ccache
   - export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 script:

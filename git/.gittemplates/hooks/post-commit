@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Log commit messages as a 'highlight' in RescueTime Premium
 #

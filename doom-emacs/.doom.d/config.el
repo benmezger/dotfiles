@@ -18,15 +18,12 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 14))
+(setq doom-font (font-spec :family "InconsolataDZ" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-gruvbox)
-
-;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org/")
+(setq doom-theme 'doom-monokai-spectrum)
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
@@ -152,15 +149,18 @@
   (add-to-list 'ivy-sort-functions-alist
     '(read-file-name-internal . eh-ivy-sort-file-function)))
 
+
 (after! org
   :config
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
   (setq org-directory "~/workspace/org")
-  (setq org-agenda-files (list org-directory))
+  (setq org-agenda-files (list org-directory org-roam-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
   (setq org-log-into-drawer t)
+  (setq org-agenda-inhibit-startup t)
+  (auto-fill-mode t)
 
   (setq org-todo-keywords
     '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
@@ -178,19 +178,125 @@
     '(
        ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
          (file "~/workspace/org/templates/book-note.capture"))
-       ("c" "Code snippet" entry (file+olp "~/workspace/org/notes.org" "Notes" "Code snippets")
-         (file "~/workspace/org/templates/code-snippet.capture"))
        ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a")
        ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
          "* TODO %?\n  %i\n  %a")
        ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
          (file "~/workspace/org/templates/new-book.capture"))
-       )
-    )
-  )
+       ))
+
+  (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
+
+(after! org-roam
+  :defer t
+  (setq org-roam-directory "~/workspace/org/roam")
+  (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
+
+  (setq org-roam-capture-templates
+    '(("d" "default" plain (function org-roam-capture--get-point)
+        "%?"
+        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+        :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+HUGO_SLUG: ${slug}
+
+- tags :: "
+        :unnarrowed t)
+       ("p" "private" plain (function org-roam-capture--get-point)
+         "%?"
+         :file-name "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+         :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: :personal:%^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+HUGO_SLUG: ${slug}"
+         :unnarrowed t)))
+
+  (setq org-roam-ref-capture-templates
+    '(("r" "ref" plain (function org-roam-capture--get-point)
+        "%?"
+        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+        :head "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^G
+#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+ROAM_KEY: ${ref}
+#+ROAM_TAGS: website
+#+HUGO_SLUG: ${slug}
+
+- tags ::
+- source :: ${ref}"
+        :unnarrowed t)))
+
+  (defun custom-org-protocol-focus-advice (orig &rest args)
+    (x-focus-frame nil)
+    (apply orig args))
+
+  (advice-add 'org-roam-protocol-open-ref :around
+    #'custom-org-protocol-focus-advice)
+  (advice-add 'org-roam-protocol-open-file :around
+    #'custom-org-protocol-focus-advice))
+
+(after! (org org-roam)
+  :defer t
+  (defun benmezger/org-roam-export-all ()
+  "Re-exports all Org-roam files to Hugo markdown."
+  (interactive)
+  (dolist (f (org-roam--list-all-files))
+    (with-current-buffer (find-file f)
+      (when (s-contains? "SETUPFILE" (buffer-string))
+        (org-hugo-export-wim-to-md)))))
+
+  (defun benmezger/org-roam--backlinks-list (file)
+    (when (org-roam--org-roam-file-p file)
+      (mapcar #'car (org-roam-db-query
+                      [:select :distinct [from]
+                        :from links
+                        :where (= to $s1)
+                        :and from :not :like $s2] file "%private%"))))
+
+  (defun benmezger/org-export-preprocessor (_backend)
+    (when-let ((links (benmezger/org-roam--backlinks-list (buffer-file-name))))
+      (insert "\n** Backlinks\n")
+      (dolist (link links)
+        (insert (format "- [[file:%s][%s]]\n"
+                  (file-relative-name link org-roam-directory)
+                  (org-roam--get-title-or-slug link))))))
+
+  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor))
+
+(after! (org ox-hugo)
+  :defer t
+  (defun benmezger/conditional-hugo-enable ()
+    (save-excursion
+      (if (cdr (assoc "SETUPFILE" (org-roam--extract-global-props '("SETUPFILE"))))
+        (org-hugo-auto-export-mode +1)
+        (org-hugo-auto-export-mode -1))))
+  (add-hook 'org-mode-hook #'benmezger/conditional-hugo-enable))
+
+(use-package! org-roam-server
+  :defer t)
+
+(use-package! org-projectile
+  :after projectile
+  :config
+    (map! :leader
+      (:prefix "n"
+        :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
+
+  (org-projectile-per-project)
+  (defun org-projectile-get-project-todo-file (project-path)
+    (concat org-directory "/projects/" (file-name-nondirectory (directory-file-name project-path)) ".org"))
+ 
+  (push (org-projectile-project-todo-entry) org-capture-templates)
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+
 
 (after! deft
+  :defer t
   :config
   (setq deft-directory org-directory)
   (setq deft-extensions '("org" "md" "txt"))
@@ -212,13 +318,16 @@
   (global-wakatime-mode))
 
 (use-package! py-isort
+  :defer t
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
 
 (after! elfeed-org
+  :defer t
   :init
-  (setq rmh-elfeed-org-files (list "~/workspace/org/notes.org")))
+  (setq rmh-elfeed-org-files (list "~/workspace/org/urls.org")))
 
 (after! ob-mermaid
+  :defer t
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
