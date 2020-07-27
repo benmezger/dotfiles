@@ -155,6 +155,7 @@
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
   (setq org-directory "~/workspace/org")
+  (setq org-archive-location "archives/%s_archive::")
   (setq org-agenda-files (list org-directory org-roam-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
