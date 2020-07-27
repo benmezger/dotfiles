@@ -331,3 +331,11 @@
   :defer t
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
+
+(after! format-all
+  :defer t
+  :init
+  (add-hook 'python-mode-hook #'format-all-mode)
+  (add-hook 'yaml-mode-hook #'format-all-mode)
+  (add-hook 'rust-mode-hook #'format-all-mode)
+  (add-hook 'go-mode-hook #'format-all-mode))
