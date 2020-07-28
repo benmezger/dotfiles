@@ -336,7 +336,9 @@
 (after! format-all
   :defer t
   :init
-  (add-hook 'python-mode-hook #'format-all-mode)
-  (add-hook 'yaml-mode-hook #'format-all-mode)
-  (add-hook 'rust-mode-hook #'format-all-mode)
-  (add-hook 'go-mode-hook #'format-all-mode))
+  (setq +format-on-save-enabled-modes
+    '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+       sql-mode         ; sqlformat is currently broken
+       tex-mode         ; latexindent is broken
+       html-mode         ; latexindent is broken
+       latex-mode)))
