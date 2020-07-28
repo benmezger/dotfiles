@@ -332,13 +332,3 @@
   :defer t
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
-
-(after! format-all
-  :defer t
-  :init
-  (setq +format-on-save-enabled-modes
-    '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-       sql-mode         ; sqlformat is currently broken
-       tex-mode         ; latexindent is broken
-       html-mode         ; latexindent is broken
-       latex-mode)))
