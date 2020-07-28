@@ -314,7 +314,7 @@
 
 (use-package! wakatime-mode
   :init
-  (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
+  (setq wakatime-cli-path "/usr/local/bin/wakatime")
   :config
   (global-wakatime-mode))
 
