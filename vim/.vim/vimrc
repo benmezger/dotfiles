@@ -111,11 +111,11 @@ let base16colorspace=256 " Access colors present in 256 colorspace
 set background=dark
 
 " statusline config from -> http://stackoverflow.com/a/5380230/6744969
-hi User1 ctermfg=16
-hi User2 ctermfg=196
-hi User3 ctermfg=171
-hi User4 ctermfg=70
-hi User5 ctermfg=226
+hi User1 ctermfg=16 ctermbg=234
+hi User2 ctermfg=196 ctermbg=234
+hi User3 ctermfg=171 ctermbg=234
+hi User4 ctermfg=70 ctermbg=234
+hi User5 ctermfg=226 ctermbg=234
 
 " Gitgutter in statusline
 function! GitStatus()

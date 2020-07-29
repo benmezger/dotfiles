@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'chriskempson/base16-vim'                          " base16 themes
+Plug 'danielwe/base16-vim'                          " base16 themes
 Plug 'tpope/vim-fugitive'                           " git <3
 Plug 'tpope/vim-git'                                " vim Git runtime files
 Plug 'editorconfig/editorconfig-vim'                " editorConfig plugin for Vim
