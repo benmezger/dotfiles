@@ -31,6 +31,7 @@
 
 (display-time-mode 1)
 (display-battery-mode 1)
+(toggle-frame-maximized)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
