@@ -268,7 +268,8 @@
                   (file-relative-name link org-roam-directory)
                   (org-roam--get-title-or-slug link))))))
 
-  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor))
+  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor)
+  (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
 (after! (org ox-hugo)
   :defer t
