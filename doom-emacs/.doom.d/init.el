@@ -122,7 +122,7 @@
   ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
   ;;julia             ; a better, faster MATLAB
   ;;kotlin            ; a better, slicker Java(Script)
-  ;;latex             ; writing papers in Emacs has never been so fun
+  latex             ; writing papers in Emacs has never been so fun
   ;;lean
   ;;factor
   ;;ledger            ; an accounting system in Emacs
@@ -134,6 +134,7 @@
   (org              ; organize your plain life in plain text
     +roam
     +hugo
+    +journal
     +gnuplot
     +pancoc
     +dragndrop)       ; drag & drop files/images into org buffers
