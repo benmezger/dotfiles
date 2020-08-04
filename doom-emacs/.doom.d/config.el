@@ -165,26 +165,26 @@
   (auto-fill-mode t)
 
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
-       (sequence "READING(r!)" "HOLD(h@/!)" "|" "READ(e@/!)")
+    '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+       (sequence "READ(!)")
        (sequence "|" "DONE(d!)" "CANCELED(c!)"))
     org-todo-keyword-faces
     '(("CURRENT"  . "orange")
        ("TODO" . "systemRedColor")
-       ("READING" . "systemOrangeColor")
+       ("READ" . "systemOrangeColor")
        ("HOLD"  . "indianRed")
        ("WAIT" . "salmon1")
        ("PROJ" . "systemYellowColor")))
 
   (setq org-capture-templates
     '(
-       ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
-         (file "~/workspace/org/templates/book-note.capture"))
-       ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
+       ("c" "Code" entry (file "~/workspace/org/code.org")
+         (file "~/workspace/org/templates/code-snippet.capture"))
+       ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a")
-       ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
-         "* TODO %?\n  %i\n  %a")
-       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
+       ("t" "Todo" entry (file "~/workspace/org/todos.org")
+         "* TODO %?\n %i\n  %a")
+       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
          (file "~/workspace/org/templates/new-book.capture"))
        ))
 
