@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Ben Mezger"
-      user-mail-address "me@benmezger.nl")
+  user-mail-address "me@benmezger.nl")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -109,9 +109,9 @@
   ;; enable this if you want `swiper' to use it
   (setq search-default-mode #'char-fold-to-regexp)
   (setq ivy-re-builders-alist
-        '((swiper . ivy--regex-plus)
-           (counsel-rg . ivy--regex-plus)
-          (t      . ivy--regex-fuzzy)))
+    '((swiper . ivy--regex-plus)
+       (counsel-rg . ivy--regex-plus)
+       (t      . ivy--regex-fuzzy)))
 
   (recentf-mode 1)
   (defun eh-ivy-return-recentf-index (dir)
@@ -245,12 +245,12 @@
 (after! (org org-roam)
   :defer t
   (defun benmezger/org-roam-export-all ()
-  "Re-exports all Org-roam files to Hugo markdown."
-  (interactive)
-  (dolist (f (org-roam--list-all-files))
-    (with-current-buffer (find-file f)
-      (when (s-contains? "SETUPFILE" (buffer-string))
-        (org-hugo-export-wim-to-md)))))
+    "Re-exports all Org-roam files to Hugo markdown."
+    (interactive)
+    (dolist (f (org-roam--list-all-files))
+      (with-current-buffer (find-file f)
+        (when (s-contains? "SETUPFILE" (buffer-string))
+          (org-hugo-export-wim-to-md)))))
 
   (defun benmezger/org-roam--backlinks-list (file)
     (when (org-roam--org-roam-file-p file)
@@ -286,14 +286,14 @@
 (use-package! org-projectile
   :after projectile
   :config
-    (map! :leader
-      (:prefix "n"
-        :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
+  (map! :leader
+    (:prefix "n"
+      :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
 
   (org-projectile-per-project)
   (defun org-projectile-get-project-todo-file (project-path)
     (concat org-directory "/projects/" (file-name-nondirectory (directory-file-name project-path)) ".org"))
- 
+
   (push (org-projectile-project-todo-entry) org-capture-templates)
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
