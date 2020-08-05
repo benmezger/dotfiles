@@ -37,8 +37,7 @@ For OSX configuration files, use
 
 #### Linux
 
-For Archlinux's configuration files, use
-[`master`](https://github.com/benmezger/dotfiles/tree/master) branch, then run
+For Archlinux's configuration files, use the [`main`](https://github.com/benmezger/dotfiles/tree/main) branch, then run
 `ansible-playbook -i inventory archlinux.yml`.
 
 ### Install specific dotfiles only
