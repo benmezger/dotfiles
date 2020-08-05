@@ -1,6 +1,0 @@
-rofi.theme: ~/.config/rofi/themes/gruvbox/gruvbox-dark.rasi
-rofi.opacity: 50
-rofi.color-enabled: true
-rofi.terminal: alacritty
-rofi.font: Inconsolata-dz 10
-

@@ -1,9 +1,0 @@
-mafredri/zsh-async
-mengelbrecht/slimline
-zsh-users/zsh-completions path:zsh-completions/src kind:fpath
-zdharma/fast-syntax-highlighting
-chriskempson/base16-shell
-zsh-users/zsh-history-substring-search
-robbyrussell/oh-my-zsh path:plugins/z
-Tarrasch/zsh-autoenv
-sobolevn/wakatime-zsh-plugin

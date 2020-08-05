@@ -1,6 +1,0 @@
-# blacklist
-.ipython
-
-# whitelist
-!ipython/.ipython/extensions/*
-!ipython/.ipython/nbextensions
