@@ -1,0 +1,81 @@
+! cursor size
+Xcursor.size: 9
+
+! URxvt
+URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! scrollback buffer in secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+! perl extensions
+URxvt.perl-ext-common: default,matcher,fullscreen,tabbed,clipboard,searchable-scrollback
+! clickable urls
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 2
+! to open and list recent urls via keyboard
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+! color matching links
+URxvt.matcher.rend.0: Uline Bold fg5
+! yankable URLs
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/google-chrome-stable
+URxvt.url-select.underline: true
+! cursor underline
+URxvt*cursorUnderline: true
+! scrollbar position
+URxvt*scrollBar: false
+! no borders
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0px
+URxvt*borderLess: false
+! fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+! tab colors
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+! clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+! larger history
+URxvt.saveLines: 0
+
+! from: https://github.com/morhetz/gruvbox-contrib
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
