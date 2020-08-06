@@ -1,2 +1,3 @@
 - src: https://github.com/markosamuli/ansible-pyenv
   name: markosamuli.pyenv
+- name: kewlfft.aur
