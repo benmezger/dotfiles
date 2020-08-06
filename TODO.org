@@ -1,0 +1,9 @@
+#+TITLE: Dotfiles todos
+#+AUTHOR: Ben Mezger
+#+DATE: <2020-08-05 Wed>
+
+
+* TODO Update README on how to install individual configs
+* TODO Create multi-os support in travis
+- [X] OSX support
+- [ ] Linux support

@@ -1,0 +1,13 @@
+# Don't copy the following files if OS is OSX
+{{- if ne .chezmoi.os "darwin" }}
+.config/dunst
+.config/rofi
+.config/i3
+
+.xinitrc
+.xsession
+.Xmodmap
+.Xresources
+.xinitrc
+.xsession
+{{- end }}

@@ -22,7 +22,6 @@
       - tmux
       - tor
       - reattach-to-user-namespace
-      - stow
       - pinentry-mac
       - git
       - the_silver_searcher

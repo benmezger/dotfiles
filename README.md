@@ -27,30 +27,11 @@ drwxr-xr-x    5 benmezger staff  160 Jul 17 12:24 zsh
 
 Install Ansible galaxy requirements with `ansible-galaxy install -r requirements.yml`
 
-### Full install with dependencies
+### Installing
 
-#### OSX
-
-For OSX configuration files, use
-[`OSX`](https://github.com/benmezger/dotfiles/tree/osx) branch, then run
-`ansible-playbook -i inventory osx.yml`.
-
-#### Linux
-
-For Archlinux's configuration files, use the [`main`](https://github.com/benmezger/dotfiles/tree/main) branch, then run
-`ansible-playbook -i inventory archlinux.yml`.
-
-### Install specific dotfiles only
-
-I use [GNU stow](https://www.gnu.org/software/stow/) for handling my symlinks,
-it's much better than having to maintain a bash script for all links I need.
-
-Clone this repository to your `$HOME` directory, then run `stow` against the
-configuration you need. For example, for installing `zsh` run `stow zsh`. This
-will symlink the current directory to your `$HOME` directory. This will not
-install any external dependency, so make sure you check which dependency is
-required by reading the configuration and/or checking the ansible
-[roles](./roles).
+- Install `chezmoi`
+- `chezmoi -S ~/dotfiles init https://github/benmezger/dotfiles`
+- `chezmoi -S ~/dotfiles apply -v`
 
 ## Dependencies
 
