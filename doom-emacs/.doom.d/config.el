@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Ben Mezger"
-      user-mail-address "me@benmezger.nl")
+  user-mail-address "me@benmezger.nl")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -31,6 +31,7 @@
 
 (display-time-mode 1)
 (display-battery-mode 1)
+(toggle-frame-maximized)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -108,9 +109,9 @@
   ;; enable this if you want `swiper' to use it
   (setq search-default-mode #'char-fold-to-regexp)
   (setq ivy-re-builders-alist
-        '((swiper . ivy--regex-plus)
-           (counsel-rg . ivy--regex-plus)
-          (t      . ivy--regex-fuzzy)))
+    '((swiper . ivy--regex-plus)
+       (counsel-rg . ivy--regex-plus)
+       (t      . ivy--regex-fuzzy)))
 
   (recentf-mode 1)
   (defun eh-ivy-return-recentf-index (dir)
@@ -155,6 +156,7 @@
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
   (setq org-directory "~/workspace/org")
+  (setq org-archive-location "archives/%s_archive::")
   (setq org-agenda-files (list org-directory org-roam-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
@@ -163,26 +165,26 @@
   (auto-fill-mode t)
 
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "CURRENT(u)" "WAIT(w@/!)" "NEXT(n)" "PROJ(o!)" "|")
-       (sequence "READING(r!)" "HOLD(h@/!)" "|" "READ(e@/!)")
+    '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+       (sequence "READ(!)")
        (sequence "|" "DONE(d!)" "CANCELED(c!)"))
     org-todo-keyword-faces
     '(("CURRENT"  . "orange")
        ("TODO" . "systemRedColor")
-       ("READING" . "systemOrangeColor")
+       ("READ" . "systemOrangeColor")
        ("HOLD"  . "indianRed")
        ("WAIT" . "salmon1")
        ("PROJ" . "systemYellowColor")))
 
   (setq org-capture-templates
     '(
-       ("b" "Book note" entry (file+olp+datetree "~/workspace/org/notes.org" "Books" "Notes")
-         (file "~/workspace/org/templates/book-note.capture"))
-       ("n" "Note" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox")
+       ("c" "Code" entry (file "~/workspace/org/code.org")
+         (file "~/workspace/org/templates/code-snippet.capture"))
+       ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a")
-       ("t" "Todo" entry (file+olp+datetree "~/workspace/org/notes.org" "Inbox" "Tasks")
-         "* TODO %?\n  %i\n  %a")
-       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books" "List")
+       ("t" "Todo" entry (file "~/workspace/org/todos.org")
+         "* TODO %?\n %i\n  %a")
+       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
          (file "~/workspace/org/templates/new-book.capture"))
        ))
 
@@ -243,12 +245,12 @@
 (after! (org org-roam)
   :defer t
   (defun benmezger/org-roam-export-all ()
-  "Re-exports all Org-roam files to Hugo markdown."
-  (interactive)
-  (dolist (f (org-roam--list-all-files))
-    (with-current-buffer (find-file f)
-      (when (s-contains? "SETUPFILE" (buffer-string))
-        (org-hugo-export-wim-to-md)))))
+    "Re-exports all Org-roam files to Hugo markdown."
+    (interactive)
+    (dolist (f (org-roam--list-all-files))
+      (with-current-buffer (find-file f)
+        (when (s-contains? "SETUPFILE" (buffer-string))
+          (org-hugo-export-wim-to-md)))))
 
   (defun benmezger/org-roam--backlinks-list (file)
     (when (org-roam--org-roam-file-p file)
@@ -266,7 +268,8 @@
                   (file-relative-name link org-roam-directory)
                   (org-roam--get-title-or-slug link))))))
 
-  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor))
+  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor)
+  (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
 (after! (org ox-hugo)
   :defer t
@@ -283,14 +286,14 @@
 (use-package! org-projectile
   :after projectile
   :config
-    (map! :leader
-      (:prefix "n"
-        :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
+  (map! :leader
+    (:prefix "n"
+      :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
 
   (org-projectile-per-project)
   (defun org-projectile-get-project-todo-file (project-path)
     (concat org-directory "/projects/" (file-name-nondirectory (directory-file-name project-path)) ".org"))
- 
+
   (push (org-projectile-project-todo-entry) org-capture-templates)
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
@@ -313,7 +316,7 @@
 
 (use-package! wakatime-mode
   :init
-  (setq wakatime-cli-path "~/.pyenv/shims/wakatime")
+  (setq wakatime-cli-path "/usr/local/bin/wakatime")
   :config
   (global-wakatime-mode))
 
