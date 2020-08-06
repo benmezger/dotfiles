@@ -1,0 +1,53 @@
+#+TITLE: README
+#+SUBTITLE: My personal dotfiles
+#+AUTHOR: Ben Mezger
+#+DATE: <2020-08-06 Thu>
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+[[https://travis-ci.org/benmezger/dotfiles.svg?branch=main]]
+
+* Installing with Ansible
+** Requirements
+- [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
+
+Install Ansible galaxy requirements with =ansible-galaxy install -r
+requirements.yml=
+** OSX
+For MacOS, run =ansible-playbook -i inventory osx.yml=
+** Linux
+For Linux, run =ansible-playbook -i inventory archlinux.yml=
+
+
+* Installing with Chezmoi
+** Requirements
+- [[https://www.chezmoi.io/][Chezmoi]]
+** Installing
+Run =chezmoi init https://github.com/benmezger/dotfiles.git= (see [[https://www.chezmoi.io/docs/reference/][reference]] for
+more options) to checkout the repository and any submodules. Finally, run
+=chezmoi apply= to move changes to your home directory.
+
+When installing without Ansible, =chezmoi= wont install any external
+dependencies, so make sure you have all the required dependencies before runnign
+=chezmoi apply=.
+
+* Dependencies
+- Fonts
+  - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
+- ZSH
+  - [[https://github.com/getantibody/antibody][Antibody]]
+  - [[https://github.com/junegunn/fzf][FZF]]
+- Emacs
+  - [[https://github.com/hlissner/doom-emacs][Doom Emacs]]
+- System utilities
+  - [[https://github.com/wakatime/wakatime][Wakatime]]
+  - [[https://www.gnu.org/software/emacs/][Emacs]]
+  - [[https://www.chezmoi.io/][Chezmoi]]
+  - [[https://github.com/BurntSushi/ripgrep][Ripgrep]]
+  - [[https://github.com/pyenv/pyenv][pyenv]]
+  - [[https://gohugo.io/][Hugo]]
+- OSX
+  - [[https://brew.sh/][Homebrew]]
+  - [[https://github.com/mas-cli/mas][Mas]]
+- Linux
+  - [[https://i3wm.org/][i3wm]]
+  - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
