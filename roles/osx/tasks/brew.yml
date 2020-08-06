@@ -22,7 +22,6 @@
       - tmux
       - tor
       - reattach-to-user-namespace
-      - stow
       - pinentry-mac
       - git
       - the_silver_searcher
@@ -42,6 +41,14 @@
       - coreutils
       - git-chglog
       - neovim
+      - fzf
+      - wakatime-cli
+      - ripgrep
+      - antibody
+      - exa
+      - pandoc
+      - hugo
+      - pre-commit
 
 - name: Install apps using Homebrew Cask
   poll: 0
@@ -53,7 +60,7 @@
     state: present
     upgrade_all: yes
   with_items:
-    - brave-browser
+    - firefox
     - transmission
     - alacritty
     - vlc
@@ -68,6 +75,7 @@
     - stremio
     - maccy
     - syncthing
+    - postgres
 
 - name: Install fonts using Homebrew Cask
   poll: 0
