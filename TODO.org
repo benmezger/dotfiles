@@ -7,3 +7,5 @@
 * TODO Create multi-os support in travis
 - [X] OSX support
 - [ ] Linux support
+
+* TODO Fix issue with tmux not correctly searching text through panes
