@@ -1,14 +1,25 @@
 ---
-- name: Clone Aura
-  git:
-    repo: https://aur.archlinux.org/aura-bin.git
-    dest: /tmp/aura-bin
-    force: yes
+- name: Create aur user
+  user:
+    name: aur_builder
+    group: wheel
 
-- name: Build and install Aura
-  command: makepkg -si --noconfirm
-  args:
-    chdir: /tmp/aura-bin
+- name: Add aur user to sudoers
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: yes
+    validate: "visudo -cf %s"
+
+- name: Install pacaur
+  become: yes
+  become_user: aur_builder
+  aur:
+    name:
+      - auracle-git
+      - pacaur
+    use: makepkg
+    state: present
 
 - import_tasks: pacman.yml
 - import_tasks: ../../linux/tasks/services.yml

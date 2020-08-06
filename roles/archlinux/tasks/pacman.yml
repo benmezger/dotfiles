@@ -12,7 +12,6 @@
     - tmux
     - tor
     - valgrind
-    - chromium
     - zsh
     - xorg-xset
     - xorg-xrdb
@@ -64,15 +63,18 @@
     - zlib
     - xz
 
-- name: Install packages from AUR
-  command: aura -A {{ item }} --noconfirm
-  become: true
-  with_items:
-    - xss-lock
-    - spotify
-    - numix-icon-theme-git
-    - gitter
-    - dropbox
-    - git-crypt
-    - otf-inconsolata-dz
-    - pairing_tool
+- name: Install AUR packages
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: pacaur
+    name:
+      - xss-lock
+      - spotify
+      - numix-icon-theme-git
+      - gitter
+      - dropbox
+      - git-crypt
+      - otf-inconsolata-dz
+      - pairing_tool
+      - emacs27-git
