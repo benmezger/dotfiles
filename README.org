@@ -30,6 +30,9 @@ When installing without Ansible, =chezmoi= wont install any external
 dependencies, so make sure you have all the required dependencies before runnign
 =chezmoi apply=.
 
+* Commands
+For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
+
 * Dependencies
 - Fonts
   - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
