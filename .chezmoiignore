@@ -1,5 +1,18 @@
+roles
+.travis.yml
+Dockerfile
+LICENSE.md
+README.org
+TODO.org
+archlinux.yml
+docker-compose.yml
+docker-entrypoint.sh
+inventory
+osx.yml
+requirements.yml
+
 # Don't copy the following files if OS is OSX
-{{- if ne .chezmoi.os "darwin" }}
+{{- if ne .chezmoi.os "linux" }}
 .config/dunst
 .config/rofi
 .config/i3
