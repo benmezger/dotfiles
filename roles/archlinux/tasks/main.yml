@@ -15,7 +15,6 @@
   become: yes
   become_user: aur_builder
   aur:
-    state: present
     name:
       - auracle-git
       - pacaur
