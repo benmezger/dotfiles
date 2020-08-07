@@ -91,8 +91,8 @@
   (setq doom-modeline-env-load-string "...")
 
   (custom-set-faces
-    '(mode-line ((t (:height 1))))
-    '(mode-line-inactive ((t (:height 1)))))
+    '(mode-line ((t (:height 75))))
+    '(mode-line-inactive ((t (:height 75)))))
 
   ;; Don’t compact font caches during GC.
   (setq inhibit-compacting-font-caches t))
