@@ -316,7 +316,10 @@
 
 (use-package! wakatime-mode
   :init
-  (setq wakatime-cli-path "/usr/local/bin/wakatime")
+  (cond ((string-equal system-type "gnu/linux")
+    (setq wakatime-cli-path "/usr/bin/wakatime"))
+    ((string-equal system-type "darwin")
+      (setq wakatime-cli-path "/usr/local/bin/wakatime")))
   :config
   (global-wakatime-mode))
 
