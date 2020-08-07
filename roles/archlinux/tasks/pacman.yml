@@ -1,4 +1,8 @@
 ---
+- name: Sync Pacman
+  pacman:
+    update_cache: yes
+
 - name: Install Pacman packages
   pacman:
     state: present
