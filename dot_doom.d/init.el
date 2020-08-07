@@ -46,7 +46,6 @@
   :editor
   (evil +everywhere); come to the dark side, we have cookies
   file-templates    ; auto-snippets for empty files
-  (undo +tree)
   ;; fold              ; (nigh) universal code folding
   (format +onsave)  ; automated prettiness
   ;;god               ; run Emacs commands without modifier keys
@@ -59,6 +58,7 @@
   ;;word-wrap         ; soft wrapping with language-aware indent
 
   :emacs
+  (undo +tree)
   dired             ; making dired pretty [functional]
   electric          ; smarter, keyword-based electric-indent
   ibuffer           ; interactive buffer management
