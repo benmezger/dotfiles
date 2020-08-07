@@ -8,12 +8,9 @@
     state: present
     update_cache: yes
     name:
-      - python2
-      - python2-pip
-      - vim
       - fasd
       - ack
-      - gnupg2
+      - gnupg
       - tmux
       - tor
       - valgrind
@@ -34,34 +31,19 @@
       - imagemagick
       - cmake
       - libu2f-host
-      - linux-zen
-      - linux-zen-headers
-      - linux-headers
       - neovim
-      - gnome-keyring
       - acpi
       - gdb
       - unrar
       - zathura-pdf-mupdf
       - redshift
-      - networkmanager
-      - network-manager-applet
-      - networkmanager-openvpn
       - noto-fonts-emoji
-      - ttf-symbola
       - ttf-font-awesome
-      - the_silver_searcher
-      - vagrant
-      - docker
       - htop
       - urxvt-perls
       - rxvt-unicode
       - xf86-input-evdev
-      - xf86-input-mouse
-      - xf86-input-keyboard
       - xf86-video-intel
-      - slim
-      - qt5-base
       - fish
       - base-devel
       - openssl
@@ -71,16 +53,17 @@
 - name: Install AUR packages
   become: yes
   become_user: aur_builder
+  environment:
+    - BUILDDIR: /tmp
+    - SRCDEST: /tmp
   aur:
     state: present
     use: pacaur
+    become: yes
+    become_user: aur_builder
     name:
       - xss-lock
-      - spotify
       - numix-icon-theme-git
-      - gitter
-      - dropbox
-      - git-crypt
       - otf-inconsolata-dz
-      - pairing_tool
       - emacs27-git
+      - ttf-symbola
