@@ -11,13 +11,12 @@
     create: yes
     validate: "visudo -cf %s"
 
-- name: Install pacaur
+- name: Install Trizen
   become: yes
   become_user: aur_builder
   aur:
     name:
-      - auracle-git
-      - pacaur
+      - trizen
     use: makepkg
     state: present
 

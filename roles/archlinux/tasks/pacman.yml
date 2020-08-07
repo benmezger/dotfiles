@@ -58,9 +58,7 @@
     - SRCDEST: /tmp
   aur:
     state: present
-    use: pacaur
-    become: yes
-    become_user: aur_builder
+    use: trizen
     name:
       - xss-lock
       - numix-icon-theme-git
