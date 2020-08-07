@@ -10,6 +10,7 @@ docker-entrypoint.sh
 inventory
 osx.yml
 requirements.yml
+COMMANDS.org
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}

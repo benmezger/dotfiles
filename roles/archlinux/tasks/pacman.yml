@@ -53,15 +53,8 @@
 - name: Install AUR packages
   become: yes
   become_user: aur_builder
-  environment:
-    - BUILDDIR: /tmp
-    - SRCDEST: /tmp
   aur:
     state: present
     use: trizen
     name:
-      - xss-lock
-      - numix-icon-theme-git
-      - otf-inconsolata-dz
-      - emacs27-git
       - ttf-symbola

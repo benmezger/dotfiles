@@ -1,0 +1,36 @@
+#+TITLE: Commands
+#+SUBTITLE: Personal commands
+#+AUTHOR: Ben Mezger
+#+DATE: <2020-08-07 Fri>
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+#+NAME: Restore files with chezmoi
+#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+cd $dir
+chezmoi apply -v
+#+END_SRC
+
+#+RESULTS: Restore files with chezmoi
+#+begin_src shell
+#+end_src
+
+
+#+NAME: View difference between files
+#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+cd $dir
+chezmoi diff
+#+END_SRC
+
+#+RESULTS: View difference between files
+#+begin_src shell
+#+end_src
+
+#+NAME: Initialize chezmoi repository
+#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+cd $dir
+chezmoi init ~/dotfiles
+#+END_SRC
+
+#+RESULTS: Initialize chezmoi repository
+#+begin_src shell
+#+end_src
