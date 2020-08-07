@@ -34,3 +34,8 @@ chezmoi init ~/dotfiles
 #+RESULTS: Initialize chezmoi repository
 #+begin_src shell
 #+end_src
+
+#+NAME: Doom compile core and private modules
+#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+.emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
+#+END_SRC
