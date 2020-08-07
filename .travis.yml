@@ -9,7 +9,6 @@ matrix:
     - os: osx
       env:
         - CACHE_NAME=osx
-      language: python
       before_install:
         - test -x /usr/local/bin/ansible || brew install ansible
         - test -x /usr/local/bin/ccache || brew install ccache
