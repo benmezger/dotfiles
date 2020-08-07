@@ -62,6 +62,5 @@
     name:
       - xss-lock
       - numix-icon-theme-git
-      - otf-inconsolata-dz
       - emacs27-git
       - ttf-symbola
