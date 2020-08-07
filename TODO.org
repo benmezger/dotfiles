@@ -4,8 +4,13 @@
 
 
 * TODO Update README on how to install individual configs
-* TODO Create multi-os support in travis
+* DONE Create multi-os support in travis
+CLOSED: [2020-08-07 Fri 09:09]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2020-08-07 Fri 09:09]
+:END:
 - [X] OSX support
-- [ ] Linux support
+- [X] Linux support
 
 * TODO Fix issue with tmux not correctly searching text through panes
+* TODO Add Archlinux AUR packages
