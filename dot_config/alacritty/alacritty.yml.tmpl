@@ -45,6 +45,7 @@ window:
 
   # When true, alacritty starts maximized.
   startup_mode: "Fullscreen"
+  dynamic_title: true
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -93,7 +94,11 @@ font:
     #style: Italic
 
   # Point size
+  {{- if eq .chezmoi.os "darwin" }}
   size: 12.5
+  {{- else }}
+  size: 9
+  {{- end }}
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -209,7 +214,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: "0xffffff"
@@ -277,7 +282,6 @@ selection:
   save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 cursor:
   # Cursor style
