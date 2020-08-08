@@ -7,7 +7,7 @@ install:
 matrix:
   include:
     - os: osx
-      language: python
+      language: shell
       env:
         - CACHE_NAME=osx
       before_install:
