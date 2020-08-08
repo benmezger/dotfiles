@@ -7,10 +7,10 @@ install:
 matrix:
   include:
     - os: osx
+      language: python
       env:
         - CACHE_NAME=osx
       before_install:
-        - brew upgrade python
         - test -x /usr/local/bin/ansible || brew install ansible
         - test -x /usr/local/bin/ccache || brew install ccache
       script:
