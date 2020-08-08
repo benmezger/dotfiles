@@ -2,7 +2,7 @@
 Xcursor.size: 9
 
 ! URxvt
-URxvt.font: xft:Inconsolata\\-dz:size=10,xft:Inconsolata\\-dz for Powerline:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
+URxvt.font: xft:Hack:size=10,xft:Inconsolata\\-dz:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
 ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)

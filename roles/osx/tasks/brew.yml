@@ -82,8 +82,11 @@
   async: 45
   when: tapfonts is succeeded
   homebrew_cask:
-    name: font-inconsolata-dz
+    name: "{{ item }}"
     state: present
+  with_items:
+    - font-inconsolata-dz
+    - Hack
 
 - name: Cleanup Homebrew packages
   poll: 0

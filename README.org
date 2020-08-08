@@ -36,6 +36,7 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 * Dependencies
 - Fonts
   - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
+  - [[https://sourcefoundry.org/hack/][Hack]]
 - ZSH
   - [[https://github.com/getantibody/antibody][Antibody]]
   - [[https://github.com/junegunn/fzf][FZF]]

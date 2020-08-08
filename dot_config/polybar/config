@@ -42,7 +42,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 0
 
-font-0 = "Inconsolata DZ:style=dz:antialias=true:size=9;2"
+font-0 = "Hack:style=regular:antialias=true:size=9;2"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
