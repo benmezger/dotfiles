@@ -226,74 +226,6 @@ let g:rbpt_colorpairs = [
 let g:rainbow_active = 1
 au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
 
-"" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-" delay deoplet due to semshi
-let g:deoplete#auto_complete_delay = 100
-
-let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
-if g:python_version =~ 3
-    let g:python_host_prog = "/usr/local/bin/python2"
-else
-    let g:python3_host_prog = "/usr/local/bin/python3"
-endif
-
-" use tab instdead
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-" completion delay
-call deoplete#custom#option({
-\ 'auto_complete_delay': 10,
-\ })
-
-" jedi
-let g:deoplete#sources#jedi#enable_typeinfo = 0
-let g:deoplete#sources#jedi#show_docstring = 0
-
-let g:deoplete#sources#clang#libclang_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
-
-" denite
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--vimgrep'])
-
-" Change mappings.
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-p>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap'
-    \)
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-n>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap'
-    \)
-
-" Ag command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-
-nnoremap <leader>w :<C-u>DeniteCursorWord grep:. -mode=normal -auto-resize<CR>
-nnoremap <leader>b :<C-u>Denite buffer -auto-resize<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -mode=normal<CR>
-nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
-nnoremap <leader>f :<C-u>Denite file/rec<CR>
-nnoremap <leader>re :<C-u>Denite register -mode=normal<CR>
-
 " indentLine
 let g:indentLine_setColors = 1
 
@@ -309,31 +241,3 @@ if has("clipboard")
   endif
 endif
 
-" neosnippet
-""" neosnippet settings
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/vim-snippets/snippets'
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
