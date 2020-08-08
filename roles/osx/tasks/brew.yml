@@ -7,6 +7,14 @@
     name: homebrew/cask-fonts
     state: present
 
+- name: Tap Emacs 28
+  poll: 0
+  async: 45
+  register: tapemacs
+  homebrew_tap:
+    name: d12frosted/emacs-plus
+    state: present
+
 - name: Install Homebrew packages
   poll: 0
   async: 45
@@ -93,3 +101,13 @@
   async: 45
   when: (brewpkgs is succeeded) and (brewcasks is succeeded)
   command: brew cleanup -s
+
+- name: Install Emacs 28
+  poll: 0
+  async: 45
+  when: tapemacs is succeeded
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - emacs-plus@28

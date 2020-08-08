@@ -44,3 +44,8 @@ chezmoi init ~/dotfiles
 #+BEGIN_SRC :cache no
 xset r rate 180 40
 #+END_SRC
+
+#+NAME: Compiling Emacs 28 on OSX with native json support
+#+BEGIN_SRC :cache no
+brew install emacs-plus@28 --with-jansson
+#+END_SRC
