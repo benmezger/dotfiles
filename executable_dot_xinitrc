@@ -8,6 +8,7 @@ isavailable() {
 # screen powersave
 xset +dpms
 xset dpms 0 0 300
+xset r rate 180 40
 
 # 230 has IPS or TN screen with 125.37 DPI
 xrandr --dpi 125.37

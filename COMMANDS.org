@@ -39,3 +39,8 @@ chezmoi init ~/dotfiles
 #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
 .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
 #+END_SRC
+
+#+NAME: Speed up keyboard
+#+BEGIN_SRC :cache no
+xset r rate 180 40
+#+END_SRC
