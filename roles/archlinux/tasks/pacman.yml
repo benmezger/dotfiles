@@ -1,60 +1,20 @@
 ---
 - name: Sync Pacman
+  become: true
   pacman:
     update_cache: yes
 
 - name: Install Pacman packages
-  pacman:
-    state: present
-    update_cache: yes
-    name:
-      - fasd
-      - ack
-      - gnupg
-      - tmux
-      - tor
-      - valgrind
-      - zsh
-      - xorg-xset
-      - xorg-xrdb
-      - dunst
-      - pcsclite
-      - feh
-      - pcsc-tools
-      - scrot
-      - xautolock
-      - wget
-      - rofi
-      - openssh
-      - lxappearance
-      - ccid
-      - imagemagick
-      - cmake
-      - libu2f-host
-      - neovim
-      - acpi
-      - gdb
-      - unrar
-      - zathura-pdf-mupdf
-      - redshift
-      - noto-fonts-emoji
-      - ttf-font-awesome
-      - htop
-      - urxvt-perls
-      - rxvt-unicode
-      - xf86-input-evdev
-      - xf86-video-intel
-      - fish
-      - base-devel
-      - openssl
-      - zlib
-      - xz
+  become: true
+  shell:
+    pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
+    --noconfirm --needed
 
 - name: Install AUR packages
-  become: yes
   become_user: aur_builder
   aur:
     state: present
     use: trizen
     name:
       - ttf-symbola
+      - gtk-theme-arc-gruvbox-git

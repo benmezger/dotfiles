@@ -1,5 +1,5 @@
 roles
-.travis.yml
+.github/
 Dockerfile
 LICENSE.md
 README.org

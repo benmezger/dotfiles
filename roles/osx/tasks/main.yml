@@ -1,6 +1,5 @@
 ---
 - import_tasks: brew.yml
-# - import_tasks: "{{ playbook_dir }}/roles/common/tasks/python.yml"
 - import_tasks: mas.yml
   when: lookup('env', 'TRAVIS') == '0'
 

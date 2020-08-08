@@ -5,3 +5,4 @@
     - role: common
     - role: linux
     - role: kewlfft.aur
+    - role: nephelaiio.pyenv

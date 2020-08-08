@@ -1,0 +1,40 @@
+name: Test dotfiles installer
+on: push
+
+jobs:
+  archlinux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull docker image
+        run: docker-compose pull
+
+      - uses: satackey/action-docker-layer-caching@v0.0.5
+      - name: Run installer on Archlinux
+        run: docker-compose up --build
+  osx:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache homebrew packages
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-installed-packages
+        with:
+          path: |
+            $HOME/Library/Caches/Homebrew
+            $HOME/.pyenv
+            $HOME/Library/Caches/pip
+            /usr/local/Caskroom
+            /usr/local/opt
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Ansible
+        run: brew install ansible
+      - name: Install Ansible galaxies
+        run: ansible-galaxy install -r requirements.yml
+      - name: Run Ansible
+        run: ansible-playbook -i inventory osx.yml

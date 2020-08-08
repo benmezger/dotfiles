@@ -1,12 +1,20 @@
 ---
+
+- name: Check if chezmoi is installed
+  shell: type chezmoi &>/dev/null
+  register: chezmoi_exists
+  ignore_errors: yes
+
 - name: Create temporary bin directory for chezmoi
   tempfile:
     state: directory
     suffix: bin
+  when: chezmoi_exists.rc > 0
   register: chezmoi_bin
 
 - name: Install Chezmoi
   shell: curl -sfL https://git.io/chezmoi | sh
+  when: chezmoi_exists.rc > 0
   environment:
     - BINDIR: "{{ chezmoi_bin.path }}"
   args:
@@ -15,7 +23,7 @@
 - name: Install dotfiles
   command: chezmoi -S ~/dotfiles -v apply
   environment:
-    - PATH: "{{ chezmoi_bin.path }}:{{ ansible_env.PATH }}"
+    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
 
 - name: Install zplug
   git:
@@ -51,3 +59,4 @@
 
 - name: Install Emacs doom packages
   command: "~/.emacs.d/bin/doom install"
+

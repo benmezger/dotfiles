@@ -10,8 +10,8 @@
       when: lookup('env', 'TRAVIS') == '0'
       register: "mas_password"
   roles:
-    - role: common
     - role: osx
+    - role: common
     - role: markosamuli.pyenv
       vars:
         - pyenv_python3_version: "3.7.3"

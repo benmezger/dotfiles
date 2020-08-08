@@ -1,5 +1,6 @@
 ---
 - name: Enable pcscd service
+  become: yes
   systemd:
     name: pcscd.socket
     enabled: yes

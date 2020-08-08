@@ -1,10 +1,12 @@
 ---
 - name: Create aur user
+  become: true
   user:
     name: aur_builder
     group: wheel
 
 - name: Add aur user to sudoers
+  become: true
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
@@ -12,7 +14,6 @@
     validate: "visudo -cf %s"
 
 - name: Install Trizen
-  become: yes
   become_user: aur_builder
   aur:
     name:
@@ -21,6 +22,3 @@
     state: present
 
 - import_tasks: pacman.yml
-- import_tasks: ../../linux/tasks/services.yml
-- import_tasks: ../../common/tasks/python.yml
-- import_tasks: ../../common/tasks/main.yml

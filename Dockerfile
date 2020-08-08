@@ -2,9 +2,16 @@ FROM archlinux
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S git file awk gcc ansible base-devel --noconfirm
+RUN pacman -S sudo git file awk gcc ansible base-devel --noconfirm
 
-COPY . ./usr/src/
-WORKDIR ./usr/src/
+RUN useradd -ms /bin/bash archie
+RUN gpasswd -a archie wheel
+RUN echo 'archie ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER archie
+
+RUN mkdir /home/archie/dotfiles
+COPY . ./home/archie/dotfiles
+WORKDIR /home/archie/dotfiles
 
 ENTRYPOINT ["sh", "docker-entrypoint.sh"]
