@@ -2,7 +2,6 @@
 #+SUBTITLE: Personal commands
 #+AUTHOR: Ben Mezger
 #+DATE: <2020-08-07 Fri>
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 
 #+NAME: Restore files with chezmoi
 #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
@@ -43,4 +42,9 @@ chezmoi init ~/dotfiles
 #+NAME: Speed up keyboard
 #+BEGIN_SRC :cache no
 xset r rate 180 40
+#+END_SRC
+
+#+NAME: Compiling Emacs 28 on OSX with native json support
+#+BEGIN_SRC :cache no
+brew install emacs-plus@28 --with-jansson
 #+END_SRC
