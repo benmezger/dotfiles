@@ -17,6 +17,7 @@ COMMANDS.org
 .config/dunst
 .config/rofi
 .config/i3
+.config/polybar
 
 .xinitrc
 .xsession
