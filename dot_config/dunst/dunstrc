@@ -1,7 +1,7 @@
 # taken from https://github.com/Anachron
 
 [global]
-    font = "Inconsolata-dz 6.5"
+    font = "Hack 6.5"
     allow_markup = yes
     format = "<b>%s</b>\n%b"
     sort = yes

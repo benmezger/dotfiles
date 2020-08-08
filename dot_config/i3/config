@@ -4,7 +4,7 @@
 
 set $mod Mod4
 
-font pango:Inconsolata-dz 9
+font pango:Hack 9
 
 floating_modifier $mod
 
