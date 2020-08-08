@@ -2,7 +2,6 @@
 #+SUBTITLE: Personal commands
 #+AUTHOR: Ben Mezger
 #+DATE: <2020-08-07 Fri>
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 
 #+NAME: Restore files with chezmoi
 #+BEGIN_SRC shell :dir ~/ :cache no :results replace code

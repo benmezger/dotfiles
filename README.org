@@ -2,7 +2,12 @@
 #+SUBTITLE: My personal dotfiles
 #+AUTHOR: Ben Mezger
 #+DATE: <2020-08-06 Thu>
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+#+HTML_DOCTYPE: xhtml5
+#+HTML_HTML5_FANCY:
+
+#+INFOJS_OPT: view:t toc:t ltoc:t mouse:underline buttons:0 path:https://thomasf.github.io/solarized-css/org-info.min.js
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
 
 [[https://travis-ci.org/benmezger/dotfiles.svg?branch=main]]
 
@@ -55,3 +60,9 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 - Linux
   - [[https://i3wm.org/][i3wm]]
   - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
+
+* Commands
+#+INCLUDE: "./COMMANDS.org" :lines "3-"
+
+* TODOS
+#+INCLUDE: "./TODO.org" :lines "3-"
