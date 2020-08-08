@@ -19,7 +19,7 @@ secondary = #FF6200
 alert = #fb4934
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 20
 ;offset-x = 1%
