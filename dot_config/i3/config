@@ -164,3 +164,4 @@ exec --no-startup-id xautolock -time 10 -locker ~/.bin/lock.sh
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.bin/lock.sh
 exec_always --no-startup-id $HOME/.bin/launch_polybar.sh
+exec_always --no-startup-id $HOME/workspace/i3-autodisplay/i3-autodisplay -config ~/.config/i3-autodisplay/config.yml

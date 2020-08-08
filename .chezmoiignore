@@ -18,6 +18,7 @@ COMMANDS.org
 .config/rofi
 .config/i3
 .config/polybar
+.config/i3-autodisplay
 
 .xinitrc
 .xsession
