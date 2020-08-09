@@ -15,6 +15,13 @@
     name: d12frosted/emacs-plus
     state: present
 
+- name: Install Emacs 28
+  homebrew:
+    install_options: with-jansson
+    state: latest
+    name:
+      - emacs-plus@28
+
 - name: Install Homebrew packages
   poll: 0
   async: 45
