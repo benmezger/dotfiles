@@ -4,15 +4,22 @@
 
 
 * TODO Update README on how to install individual configs
-* TODO Create multi-os support in travis
+* CANCELED Create multi-os support in travis
+CLOSED: [2020-08-09 Sun 11:46]
 :LOGBOOK:
+- State "CANCELED"   from "TODO"       [2020-08-09 Sun 11:46]
+  Using github workflow instead of Travis
 - State "TODO"       from "DONE"       [2020-08-07 Fri 21:22]
 - State "DONE"       from "TODO"       [2020-08-07 Fri 09:09]
 :END:
 - [X] OSX support
 - [X] Linux support
-- [ ] Get linux to run
-- [ ] How to handle AUR packages?
+- [X] Get linux to run
+- [X] How to handle AUR packages?
+* TODO Verify if Github Workflow is caching packages property
+:LOGBOOK:
+- State "TODO"       from              [2020-08-09 Sun 11:47]
+:END:
 
 * TODO Fix issue with tmux not correctly searching text through panes
 * TODO Add Archlinux AUR packages

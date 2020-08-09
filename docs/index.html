@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <!-- 2020-08-09 Sun 02:46 -->
+  <!-- 2020-08-09 Sun 11:49 -->
   <meta charset="utf-8" />
   <meta name="viewport" content=
   "width=device-width, initial-scale=1" />
@@ -252,59 +252,64 @@
       <div id="text-table-of-contents">
         <ul>
           <li>
-            <a href="#org5bca14c">1. Installing with Ansible</a>
+            <a href="#org5b8ab76">1. Installing with Ansible</a>
             <ul>
               <li>
-                <a href="#org0c4f420">1.1. Requirements</a>
+                <a href="#org7c918ef">1.1. Requirements</a>
               </li>
               <li>
-                <a href="#orgfa0c38e">1.2. OSX</a>
+                <a href="#org356be61">1.2. OSX</a>
               </li>
               <li>
-                <a href="#org6d99442">1.3. Linux</a>
+                <a href="#orgb45553d">1.3. Linux</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#org29f02f4">2. Installing with Chezmoi</a>
+            <a href="#org181423a">2. Installing with Chezmoi</a>
             <ul>
               <li>
-                <a href="#orgbe67f2a">2.1. Requirements</a>
+                <a href="#orgf8b0e11">2.1. Requirements</a>
               </li>
               <li>
-                <a href="#orgea168d0">2.2. Installing</a>
+                <a href="#org84c7710">2.2. Installing</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#orgd8235d8">3. Commands</a>
+            <a href="#org9383f7a">3. Commands</a>
           </li>
           <li>
-            <a href="#org48752e9">4. Dependencies</a>
+            <a href="#org85b1864">4. Dependencies</a>
           </li>
           <li>
-            <a href="#orgca93406">5. Commands</a>
+            <a href="#orgea2cd92">5. Commands</a>
           </li>
           <li>
-            <a href="#org21e3816">6. TODOS</a>
+            <a href="#org18e6b6a">6. TODOS</a>
             <ul>
               <li>
-                <a href="#org58b9c67">6.1. <span class=
+                <a href="#orgef46013">6.1. <span class=
                 "todo TODO">TODO</span> Update README on how to
                 install individual configs</a>
               </li>
               <li>
-                <a href="#org9f6adc7">6.2. <span class=
-                "todo TODO">TODO</span> Create multi-os support in
-                travis</a>
+                <a href="#org200a97a">6.2. <span class=
+                "done CANCELED">CANCELED</span> Create multi-os
+                support in travis</a>
               </li>
               <li>
-                <a href="#orgfdcff3b">6.3. <span class=
+                <a href="#org5e17027">6.3. <span class=
+                "todo TODO">TODO</span> Verify if Github Workflow
+                is caching packages property</a>
+              </li>
+              <li>
+                <a href="#org7e7f842">6.4. <span class=
                 "todo TODO">TODO</span> Fix issue with tmux not
                 correctly searching text through panes</a>
               </li>
               <li>
-                <a href="#orgaced615">6.4. <span class=
+                <a href="#org515822f">6.5. <span class=
                 "todo TODO">TODO</span> Add Archlinux AUR
                 packages</a>
               </li>
@@ -317,12 +322,12 @@
     "https://github.com/benmezger/dotfiles/actions"><img src=
     "https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
     alt="Build Status" /></a></p>
-    <div id="outline-container-org5bca14c" class="outline-2">
-      <h2 id="org5bca14c"><span class="section-number-2">1</span>
+    <div id="outline-container-org5b8ab76" class="outline-2">
+      <h2 id="org5b8ab76"><span class="section-number-2">1</span>
       Installing with Ansible</h2>
       <div class="outline-text-2" id="text-1"></div>
-      <div id="outline-container-org0c4f420" class="outline-3">
-        <h3 id="org0c4f420"><span class=
+      <div id="outline-container-org7c918ef" class="outline-3">
+        <h3 id="org7c918ef"><span class=
         "section-number-3">1.1</span> Requirements</h3>
         <div class="outline-text-3" id="text-1-1">
           <ul class="org-ul">
@@ -337,16 +342,16 @@
           requirements.yml</code></p>
         </div>
       </div>
-      <div id="outline-container-orgfa0c38e" class="outline-3">
-        <h3 id="orgfa0c38e"><span class=
+      <div id="outline-container-org356be61" class="outline-3">
+        <h3 id="org356be61"><span class=
         "section-number-3">1.2</span> OSX</h3>
         <div class="outline-text-3" id="text-1-2">
           <p>For MacOS, run <code>ansible-playbook -i inventory
           osx.yml</code></p>
         </div>
       </div>
-      <div id="outline-container-org6d99442" class="outline-3">
-        <h3 id="org6d99442"><span class=
+      <div id="outline-container-orgb45553d" class="outline-3">
+        <h3 id="orgb45553d"><span class=
         "section-number-3">1.3</span> Linux</h3>
         <div class="outline-text-3" id="text-1-3">
           <p>For Linux, run <code>ansible-playbook -i inventory
@@ -354,12 +359,12 @@
         </div>
       </div>
     </div>
-    <div id="outline-container-org29f02f4" class="outline-2">
-      <h2 id="org29f02f4"><span class="section-number-2">2</span>
+    <div id="outline-container-org181423a" class="outline-2">
+      <h2 id="org181423a"><span class="section-number-2">2</span>
       Installing with Chezmoi</h2>
       <div class="outline-text-2" id="text-2"></div>
-      <div id="outline-container-orgbe67f2a" class="outline-3">
-        <h3 id="orgbe67f2a"><span class=
+      <div id="outline-container-orgf8b0e11" class="outline-3">
+        <h3 id="orgf8b0e11"><span class=
         "section-number-3">2.1</span> Requirements</h3>
         <div class="outline-text-3" id="text-2-1">
           <ul class="org-ul">
@@ -369,8 +374,8 @@
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgea168d0" class="outline-3">
-        <h3 id="orgea168d0"><span class=
+      <div id="outline-container-org84c7710" class="outline-3">
+        <h3 id="org84c7710"><span class=
         "section-number-3">2.2</span> Installing</h3>
         <div class="outline-text-3" id="text-2-2">
           <p>Run <code>chezmoi init
@@ -387,16 +392,16 @@
         </div>
       </div>
     </div>
-    <div id="outline-container-orgd8235d8" class="outline-2">
-      <h2 id="orgd8235d8"><span class="section-number-2">3</span>
+    <div id="outline-container-org9383f7a" class="outline-2">
+      <h2 id="org9383f7a"><span class="section-number-2">3</span>
       Commands</h2>
       <div class="outline-text-2" id="text-3">
         <p>For commands related to this repository, see <a href=
         "COMMANDS.html">COMMANDS</a></p>
       </div>
     </div>
-    <div id="outline-container-org48752e9" class="outline-2">
-      <h2 id="org48752e9"><span class="section-number-2">4</span>
+    <div id="outline-container-org85b1864" class="outline-2">
+      <h2 id="org85b1864"><span class="section-number-2">4</span>
       Dependencies</h2>
       <div class="outline-text-2" id="text-4">
         <ul class="org-ul">
@@ -481,83 +486,89 @@
         </ul>
       </div>
     </div>
-    <div id="outline-container-orgca93406" class="outline-2">
-      <h2 id="orgca93406"><span class="section-number-2">5</span>
+    <div id="outline-container-orgea2cd92" class="outline-2">
+      <h2 id="orgea2cd92"><span class="section-number-2">5</span>
       Commands</h2>
       <div class="outline-text-2" id="text-5">
         <div class="org-src-container">
-          <pre class="src src-shell" id="orgf52ac60"><span style=
+          <pre class="src src-shell" id="orge6c2ffd"><span style=
           "color: #5ad4e6;">cd</span> $<span style=
           "color: #f7f1ff;">dir</span>
 chezmoi apply -v
 </pre>
         </div>
         <div class="org-src-container">
-          <pre class="src src-shell" id="orgd417824"><span style=
+          <pre class="src src-shell" id="orgba7c665"><span style=
           "color: #5ad4e6;">cd</span> $<span style=
           "color: #f7f1ff;">dir</span>
 chezmoi diff
 </pre>
         </div>
         <div class="org-src-container">
-          <pre class="src src-shell" id="org53c1eaf"><span style=
+          <pre class="src src-shell" id="org339b06d"><span style=
           "color: #5ad4e6;">cd</span> $<span style=
           "color: #f7f1ff;">dir</span>
 chezmoi init ~/dotfiles
 </pre>
         </div>
         <div class="org-src-container">
-          <pre class="src src-shell" id="orgcccd068">
+          <pre class="src src-shell" id="org92835ca">
           .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml to<span style="color: #5ad4e6;">o</span>ls/lsp
 </pre>
         </div>
         <div class="org-src-container">
-          <pre class="src src-:cache" id="org0ce1f43">
+          <pre class="src src-:cache" id="org4f63b50">
           xset r rate 180 40
 </pre>
         </div>
         <div class="org-src-container">
-          <pre class="src src-:cache" id="org58b1010">
+          <pre class="src src-:cache" id="org39319d1">
           brew install emacs-plus@28 --with-jansson
 </pre>
         </div>
       </div>
     </div>
-    <div id="outline-container-org21e3816" class="outline-2">
-      <h2 id="org21e3816"><span class="section-number-2">6</span>
+    <div id="outline-container-org18e6b6a" class="outline-2">
+      <h2 id="org18e6b6a"><span class="section-number-2">6</span>
       TODOS</h2>
       <div class="outline-text-2" id="text-6"></div>
-      <div id="outline-container-org58b9c67" class="outline-3">
-        <h3 id="org58b9c67"><span class=
+      <div id="outline-container-orgef46013" class="outline-3">
+        <h3 id="orgef46013"><span class=
         "section-number-3">6.1</span> <span class=
         "todo TODO">TODO</span> Update README on how to install
         individual configs</h3>
       </div>
-      <div id="outline-container-org9f6adc7" class="outline-3">
-        <h3 id="org9f6adc7"><span class=
+      <div id="outline-container-org200a97a" class="outline-3">
+        <h3 id="org200a97a"><span class=
         "section-number-3">6.2</span> <span class=
-        "todo TODO">TODO</span> Create multi-os support in
+        "done CANCELED">CANCELED</span> Create multi-os support in
         travis</h3>
         <div class="outline-text-3" id="text-6-2">
           <ul class="org-ul">
             <li class="on"><code>[X]</code> OSX support</li>
             <li class="on"><code>[X]</code> Linux support</li>
-            <li class="off"><code>[&nbsp;]</code> Get linux to
-            run</li>
-            <li class="off"><code>[&nbsp;]</code> How to handle AUR
+            <li class="on"><code>[X]</code> Get linux to run</li>
+            <li class="on"><code>[X]</code> How to handle AUR
             packages?</li>
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgfdcff3b" class="outline-3">
-        <h3 id="orgfdcff3b"><span class=
+      <div id="outline-container-org5e17027" class="outline-3">
+        <h3 id="org5e17027"><span class=
         "section-number-3">6.3</span> <span class=
+        "todo TODO">TODO</span> Verify if Github Workflow is
+        caching packages property</h3>
+        <div class="outline-text-3" id="text-6-3"></div>
+      </div>
+      <div id="outline-container-org7e7f842" class="outline-3">
+        <h3 id="org7e7f842"><span class=
+        "section-number-3">6.4</span> <span class=
         "todo TODO">TODO</span> Fix issue with tmux not correctly
         searching text through panes</h3>
       </div>
-      <div id="outline-container-orgaced615" class="outline-3">
-        <h3 id="orgaced615"><span class=
-        "section-number-3">6.4</span> <span class=
+      <div id="outline-container-org515822f" class="outline-3">
+        <h3 id="org515822f"><span class=
+        "section-number-3">6.5</span> <span class=
         "todo TODO">TODO</span> Add Archlinux AUR packages</h3>
       </div>
     </div>
@@ -571,7 +582,7 @@ chezmoi init ~/dotfiles
     "timestamp-wrapper"><span class="timestamp">&lt;2020-08-05
     Wed&gt;</span></span></p>
     <p class="author">Author: Ben Mezger Ben Mezger</p>
-    <p class="date">Created: 2020-08-09 Sun 02:46</p>
+    <p class="date">Created: 2020-08-09 Sun 11:49</p>
   </div>
 </body>
 </html>
