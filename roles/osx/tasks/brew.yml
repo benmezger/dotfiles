@@ -108,13 +108,3 @@
   async: 45
   when: (brewpkgs is succeeded) and (brewcasks is succeeded)
   command: brew cleanup -s
-
-- name: Install Emacs 28
-  poll: 0
-  async: 45
-  when: tapemacs is succeeded
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - emacs-plus@28
