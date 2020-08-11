@@ -11,7 +11,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.5
       - name: Run installer on Archlinux
-        run: docker-compose up --build
+        run: docker-compose up --build --exit-code-from dotfiles
   osx:
     runs-on: macos-latest
     steps:
