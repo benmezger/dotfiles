@@ -50,9 +50,20 @@ brew install emacs-plus@28 --with-jansson
 #+END_SRC
 
 #+NAME: Pacman list installed packages without AUR
-#+BEGIN_SRC sh :results value file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
+#+BEGIN_SRC sh :results file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
 pacman -Qqen
 #+END_SRC
 
 #+RESULTS: Pacman list installed packages without AUR
 [[file:./roles/archlinux/tasks/pkgs.pacman]]
+
+#+NAME: Pacman list AUR packages
+#+BEGIN_SRC sh :results file :file pkgs.aur :output-dir ./roles/archlinux/tasks/
+pacman -Qqem
+#+END_SRC
+
+#+RESULTS: Pacman list AUR packages
+[[file:./roles/archlinux/tasks/pkgs.aur]]
+
+#+RESULTS: Pacman list
+[[file:./roles/archlinux/tasks/pkgs.aur]]
