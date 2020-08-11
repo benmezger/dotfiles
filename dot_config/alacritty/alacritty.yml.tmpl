@@ -44,8 +44,12 @@ window:
   decorations: full
 
   # When true, alacritty starts maximized.
+  {{- if eq .chezmoi.os "darwin" }}
   startup_mode: "Fullscreen"
+  {{- else }}
+  startup_mode: "Windowed"
   dynamic_title: true
+  {{- end }}
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
