@@ -16,6 +16,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id bash -c "rofi -show run"
 
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -29,10 +30,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -103,11 +104,6 @@ bindsym $mod+minus scratchpad show
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -119,9 +115,10 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 # pulse
