@@ -48,3 +48,11 @@ xset r rate 180 40
 #+BEGIN_SRC :cache no
 brew install emacs-plus@28 --with-jansson
 #+END_SRC
+
+#+NAME: Pacman list installed packages without AUR
+#+BEGIN_SRC sh :results value file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
+pacman -Qqen
+#+END_SRC
+
+#+RESULTS: Pacman list installed packages without AUR
+[[file:./roles/archlinux/tasks/pkgs.pacman]]
