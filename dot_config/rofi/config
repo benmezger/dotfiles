@@ -1,4 +1,4 @@
-rofi.theme: ~/.config/rofi/themes/gruvbox/gruvbox-dark.rasi
+rofi.theme: ~/.config/rofi/themes/gruvbox/gruvbox-dark-hard.rasi
 rofi.opacity: 50
 rofi.color-enabled: true
 rofi.terminal: alacritty
