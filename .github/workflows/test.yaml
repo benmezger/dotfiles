@@ -32,6 +32,8 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Homebrew cleanup
+        run: brew cleanup
       - name: Install Ansible
         run: brew install ansible
       - name: Install Ansible galaxies
