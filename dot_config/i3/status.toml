@@ -33,3 +33,6 @@ block = "sound"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
+
+[[block]]
+block = "github"
