@@ -289,5 +289,20 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xautolock -time 10 -locker ~/.bin/lock.sh
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.bin/lock.sh
-exec_always --no-startup-id $HOME/.bin/launch_polybar.sh
+#exec_always --no-startup-id $HOME/.bin/launch_polybar.sh
 exec_always --no-startup-id $HOME/workspace/i3-autodisplay/i3-autodisplay -config ~/.config/i3-autodisplay/config.yml
+
+bar {
+    font pango:Hack, FontAwesome 9
+    position top
+    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
+    colors {
+        separator #666666
+        background $bg
+        statusline $yellow
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+    }
+}

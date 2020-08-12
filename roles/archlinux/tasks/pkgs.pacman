@@ -165,3 +165,4 @@ xorg-xinit
 xorg-xinput
 zsh
 emacs
+i3status-rust
