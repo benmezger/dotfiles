@@ -65,9 +65,6 @@ pacman -Qqem
 #+RESULTS: Pacman list AUR packages
 [[file:./roles/archlinux/tasks/pkgs.aur]]
 
-#+RESULTS: Pacman list
-[[file:./roles/archlinux/tasks/pkgs.aur]]
-
 * Sourcing env with i3
 For some reason, i3 is sourcing =.xprofile= instead of =xinitrc=, so for getting
 Github plugin for the [[file:dot_config/i3/status.toml][i3status-rust]] you need to set up a variable in your

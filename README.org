@@ -51,11 +51,13 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 - Fonts
   - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
   - [[https://sourcefoundry.org/hack/][Hack]]
+  - [[https://fontawesome.com/][FontAwesome]]
 - ZSH
   - [[https://github.com/getantibody/antibody][Antibody]]
   - [[https://github.com/junegunn/fzf][FZF]]
 - Emacs
   - [[https://github.com/hlissner/doom-emacs][Doom Emacs]]
+  - Emacs >= 27
 - System utilities
   - [[https://github.com/wakatime/wakatime][Wakatime]]
   - [[https://www.gnu.org/software/emacs/][Emacs]]
@@ -69,6 +71,7 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 - Linux
   - [[https://i3wm.org/][i3wm]]
   - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
+  - [[https://github.com/greshake/i3status-rust][i3status-rust]]
 
 * Commands
 #+INCLUDE: "./COMMANDS.org" :lines "3-"

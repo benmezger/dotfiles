@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <!-- 2020-08-09 Sun 11:49 -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content=
-  "width=device-width, initial-scale=1" />
-  <title>README</title>
-  <meta name="generator" content="Org mode" />
-  <meta name="author" content="Ben Mezger Ben Mezger" />
-  <style type="text/css">
-  <!--/*--><![CDATA[/*><!--*/
+<!-- 2020-08-12 Wed 08:55 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>README</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ben Mezger Ben Mezger" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -191,36 +190,33 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
   /*]]>*/-->
-  </style>
-  <link rel="stylesheet" type="text/css" href=
-  "https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
+</style>
+<link rel="stylesheet" type="text/css" href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
 
-  <script type="text/javascript" src=
-  "https://thomasf.github.io/solarized-css/org-info.min.js">
-  //<![CDATA[
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  // @license-end
-  //]]>
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  <!--/*--><![CDATA[/*><!--*/
-  org_html_manager.set("TOC_DEPTH", "3");
-  org_html_manager.set("LINK_HOME", "");
-  org_html_manager.set("LINK_UP", "");
-  org_html_manager.set("LOCAL_TOC", "1");
-  org_html_manager.set("VIEW_BUTTONS", "0");
-  org_html_manager.set("MOUSE_HINT", "underline");
-  org_html_manager.set("FIXED_TOC", "0");
-  org_html_manager.set("TOC", "1");
-  org_html_manager.set("VIEW", "info");
-  org_html_manager.setup();  // activate after the parameters are set
-  /*]]>*///-->
-  // @license-end
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  <!--/*--><![CDATA[/*><!--*/
+<script type="text/javascript" src="https://thomasf.github.io/solarized-css/org-info.min.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+// @license-end
+</script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
@@ -240,349 +236,281 @@
          target.className = elem.cacheClassTarget;
      }
     /*]]>*///-->
-  // @license-end
-  </script>
+// @license-end
+</script>
 </head>
 <body>
-  <div id="content">
-    <h1 class="title">README<br />
-    <span class="subtitle">My personal dotfiles</span></h1>
-    <div id="table-of-contents">
-      <h2>Table of Contents</h2>
-      <div id="text-table-of-contents">
-        <ul>
-          <li>
-            <a href="#org5b8ab76">1. Installing with Ansible</a>
-            <ul>
-              <li>
-                <a href="#org7c918ef">1.1. Requirements</a>
-              </li>
-              <li>
-                <a href="#org356be61">1.2. OSX</a>
-              </li>
-              <li>
-                <a href="#orgb45553d">1.3. Linux</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org181423a">2. Installing with Chezmoi</a>
-            <ul>
-              <li>
-                <a href="#orgf8b0e11">2.1. Requirements</a>
-              </li>
-              <li>
-                <a href="#org84c7710">2.2. Installing</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org9383f7a">3. Commands</a>
-          </li>
-          <li>
-            <a href="#org85b1864">4. Dependencies</a>
-          </li>
-          <li>
-            <a href="#orgea2cd92">5. Commands</a>
-          </li>
-          <li>
-            <a href="#org18e6b6a">6. TODOS</a>
-            <ul>
-              <li>
-                <a href="#orgef46013">6.1. <span class=
-                "todo TODO">TODO</span> Update README on how to
-                install individual configs</a>
-              </li>
-              <li>
-                <a href="#org200a97a">6.2. <span class=
-                "done CANCELED">CANCELED</span> Create multi-os
-                support in travis</a>
-              </li>
-              <li>
-                <a href="#org5e17027">6.3. <span class=
-                "todo TODO">TODO</span> Verify if Github Workflow
-                is caching packages property</a>
-              </li>
-              <li>
-                <a href="#org7e7f842">6.4. <span class=
-                "todo TODO">TODO</span> Fix issue with tmux not
-                correctly searching text through panes</a>
-              </li>
-              <li>
-                <a href="#org515822f">6.5. <span class=
-                "todo TODO">TODO</span> Add Archlinux AUR
-                packages</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <p><a href=
-    "https://github.com/benmezger/dotfiles/actions"><img src=
-    "https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
-    alt="Build Status" /></a></p>
-    <div id="outline-container-org5b8ab76" class="outline-2">
-      <h2 id="org5b8ab76"><span class="section-number-2">1</span>
-      Installing with Ansible</h2>
-      <div class="outline-text-2" id="text-1"></div>
-      <div id="outline-container-org7c918ef" class="outline-3">
-        <h3 id="org7c918ef"><span class=
-        "section-number-3">1.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-1-1">
-          <ul class="org-ul">
-            <li>
-              <a href=
-              "https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">
-              Ansible</a>
-            </li>
-          </ul>
-          <p>Install Ansible galaxy requirements with
-          <code>ansible-galaxy install -r
-          requirements.yml</code></p>
-        </div>
-      </div>
-      <div id="outline-container-org356be61" class="outline-3">
-        <h3 id="org356be61"><span class=
-        "section-number-3">1.2</span> OSX</h3>
-        <div class="outline-text-3" id="text-1-2">
-          <p>For MacOS, run <code>ansible-playbook -i inventory
-          osx.yml</code></p>
-        </div>
-      </div>
-      <div id="outline-container-orgb45553d" class="outline-3">
-        <h3 id="orgb45553d"><span class=
-        "section-number-3">1.3</span> Linux</h3>
-        <div class="outline-text-3" id="text-1-3">
-          <p>For Linux, run <code>ansible-playbook -i inventory
-          archlinux.yml</code></p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org181423a" class="outline-2">
-      <h2 id="org181423a"><span class="section-number-2">2</span>
-      Installing with Chezmoi</h2>
-      <div class="outline-text-2" id="text-2"></div>
-      <div id="outline-container-orgf8b0e11" class="outline-3">
-        <h3 id="orgf8b0e11"><span class=
-        "section-number-3">2.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-2-1">
-          <ul class="org-ul">
-            <li>
-              <a href="https://www.chezmoi.io/">Chezmoi</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org84c7710" class="outline-3">
-        <h3 id="org84c7710"><span class=
-        "section-number-3">2.2</span> Installing</h3>
-        <div class="outline-text-3" id="text-2-2">
-          <p>Run <code>chezmoi init
-          https://github.com/benmezger/dotfiles.git</code> (see
-          <a href=
-          "https://www.chezmoi.io/docs/reference/">reference</a>
-          for more options) to checkout the repository and any
-          submodules. Finally, run <code>chezmoi apply</code> to
-          move changes to your home directory.</p>
-          <p>When installing without Ansible, <code>chezmoi</code>
-          wont install any external dependencies, so make sure you
-          have all the required dependencies before runnign
-          <code>chezmoi apply</code>.</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org9383f7a" class="outline-2">
-      <h2 id="org9383f7a"><span class="section-number-2">3</span>
-      Commands</h2>
-      <div class="outline-text-2" id="text-3">
-        <p>For commands related to this repository, see <a href=
-        "COMMANDS.html">COMMANDS</a></p>
-      </div>
-    </div>
-    <div id="outline-container-org85b1864" class="outline-2">
-      <h2 id="org85b1864"><span class="section-number-2">4</span>
-      Dependencies</h2>
-      <div class="outline-text-2" id="text-4">
-        <ul class="org-ul">
-          <li>Fonts
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">
-                Inconsolata-DZ</a>
-              </li>
-              <li>
-                <a href="https://sourcefoundry.org/hack/">Hack</a>
-              </li>
-            </ul>
-          </li>
-          <li>ZSH
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/getantibody/antibody">Antibody</a>
-              </li>
-              <li>
-                <a href="https://github.com/junegunn/fzf">FZF</a>
-              </li>
-            </ul>
-          </li>
-          <li>Emacs
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/hlissner/doom-emacs">Doom
-                Emacs</a>
-              </li>
-            </ul>
-          </li>
-          <li>System utilities
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/wakatime/wakatime">Wakatime</a>
-              </li>
-              <li>
-                <a href=
-                "https://www.gnu.org/software/emacs/">Emacs</a>
-              </li>
-              <li>
-                <a href="https://www.chezmoi.io/">Chezmoi</a>
-              </li>
-              <li>
-                <a href=
-                "https://github.com/BurntSushi/ripgrep">Ripgrep</a>
-              </li>
-              <li>
-                <a href="https://github.com/pyenv/pyenv">pyenv</a>
-              </li>
-              <li>
-                <a href="https://gohugo.io/">Hugo</a>
-              </li>
-            </ul>
-          </li>
-          <li>OSX
-            <ul class="org-ul">
-              <li>
-                <a href="https://brew.sh/">Homebrew</a>
-              </li>
-              <li>
-                <a href="https://github.com/mas-cli/mas">Mas</a>
-              </li>
-            </ul>
-          </li>
-          <li>Linux
-            <ul class="org-ul">
-              <li>
-                <a href="https://i3wm.org/">i3wm</a>
-              </li>
-              <li>
-                <a href="https://github.com/fosskers/aura">Aura
-                (Archlinux)</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="outline-container-orgea2cd92" class="outline-2">
-      <h2 id="orgea2cd92"><span class="section-number-2">5</span>
-      Commands</h2>
-      <div class="outline-text-2" id="text-5">
-        <div class="org-src-container">
-          <pre class="src src-shell" id="orge6c2ffd"><span style=
-          "color: #5ad4e6;">cd</span> $<span style=
-          "color: #f7f1ff;">dir</span>
+<div id="content">
+<h1 class="title">README
+<br />
+<span class="subtitle">My personal dotfiles</span>
+</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga418812">1. Installing with Ansible</a>
+<ul>
+<li><a href="#org6fd70c8">1.1. Requirements</a></li>
+<li><a href="#org8db80dd">1.2. OSX</a></li>
+<li><a href="#org724556c">1.3. Linux</a></li>
+</ul>
+</li>
+<li><a href="#org50ee8d8">2. Installing with Chezmoi</a>
+<ul>
+<li><a href="#orgd569818">2.1. Requirements</a></li>
+<li><a href="#org42de0dc">2.2. Installing</a></li>
+</ul>
+</li>
+<li><a href="#orgb74c33a">3. Commands</a></li>
+<li><a href="#orgfc2b62b">4. Dependencies</a></li>
+<li><a href="#org8e778d6">5. Commands</a>
+<ul>
+<li><a href="#org7863cf1">5.1. Sourcing env with i3</a></li>
+</ul>
+</li>
+<li><a href="#orgdb3fd88">6. TODOS</a>
+<ul>
+<li><a href="#orgaf5e6ae">6.1. <span class="todo TODO">TODO</span> Update README on how to install individual configs</a></li>
+<li><a href="#org9fe1722">6.2. <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</a></li>
+<li><a href="#orgcf9da52">6.3. <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</a></li>
+<li><a href="#org4c095b8">6.4. <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</a></li>
+<li><a href="#org1268cb1">6.5. <span class="todo TODO">TODO</span> Add Archlinux AUR packages</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+  <a
+    href="https://github.com/benmezger/dotfiles/actions"><img
+    src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
+    alt="Build Status">
+  </a>
+</p>
+
+<div id="outline-container-orga418812" class="outline-2">
+<h2 id="orga418812"><span class="section-number-2">1</span> Installing with Ansible</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6fd70c8" class="outline-3">
+<h3 id="org6fd70c8"><span class="section-number-3">1.1</span> Requirements</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Ansible</a></li>
+</ul>
+
+<p>
+Install Ansible galaxy requirements with <code>ansible-galaxy install -r
+requirements.yml</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org8db80dd" class="outline-3">
+<h3 id="org8db80dd"><span class="section-number-3">1.2</span> OSX</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+For MacOS, run <code>ansible-playbook -i inventory osx.yml</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org724556c" class="outline-3">
+<h3 id="org724556c"><span class="section-number-3">1.3</span> Linux</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+For Linux, run <code>ansible-playbook -i inventory archlinux.yml</code>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org50ee8d8" class="outline-2">
+<h2 id="org50ee8d8"><span class="section-number-2">2</span> Installing with Chezmoi</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgd569818" class="outline-3">
+<h3 id="orgd569818"><span class="section-number-3">2.1</span> Requirements</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><a href="https://www.chezmoi.io/">Chezmoi</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org42de0dc" class="outline-3">
+<h3 id="org42de0dc"><span class="section-number-3">2.2</span> Installing</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Run <code>chezmoi init https://github.com/benmezger/dotfiles.git</code> (see <a href="https://www.chezmoi.io/docs/reference/">reference</a> for
+more options) to checkout the repository and any submodules. Finally, run
+<code>chezmoi apply</code> to move changes to your home directory.
+</p>
+
+<p>
+When installing without Ansible, <code>chezmoi</code> wont install any external
+dependencies, so make sure you have all the required dependencies before runnign
+<code>chezmoi apply</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb74c33a" class="outline-2">
+<h2 id="orgb74c33a"><span class="section-number-2">3</span> Commands</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+For commands related to this repository, see <a href="COMMANDS.html">COMMANDS</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc2b62b" class="outline-2">
+<h2 id="orgfc2b62b"><span class="section-number-2">4</span> Dependencies</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Fonts
+<ul class="org-ul">
+<li><a href="https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">Inconsolata-DZ</a></li>
+<li><a href="https://sourcefoundry.org/hack/">Hack</a></li>
+<li><a href="https://fontawesome.com/">FontAwesome</a></li>
+</ul></li>
+<li>ZSH
+<ul class="org-ul">
+<li><a href="https://github.com/getantibody/antibody">Antibody</a></li>
+<li><a href="https://github.com/junegunn/fzf">FZF</a></li>
+</ul></li>
+<li>Emacs
+<ul class="org-ul">
+<li><a href="https://github.com/hlissner/doom-emacs">Doom Emacs</a></li>
+<li>Emacs &gt;= 27</li>
+</ul></li>
+<li>System utilities
+<ul class="org-ul">
+<li><a href="https://github.com/wakatime/wakatime">Wakatime</a></li>
+<li><a href="https://www.gnu.org/software/emacs/">Emacs</a></li>
+<li><a href="https://www.chezmoi.io/">Chezmoi</a></li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a></li>
+<li><a href="https://github.com/pyenv/pyenv">pyenv</a></li>
+<li><a href="https://gohugo.io/">Hugo</a></li>
+</ul></li>
+<li>OSX
+<ul class="org-ul">
+<li><a href="https://brew.sh/">Homebrew</a></li>
+<li><a href="https://github.com/mas-cli/mas">Mas</a></li>
+</ul></li>
+<li>Linux
+<ul class="org-ul">
+<li><a href="https://i3wm.org/">i3wm</a></li>
+<li><a href="https://github.com/fosskers/aura">Aura (Archlinux)</a></li>
+<li><a href="https://github.com/greshake/i3status-rust">i3status-rust</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8e778d6" class="outline-2">
+<h2 id="org8e778d6"><span class="section-number-2">5</span> Commands</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-shell" id="org68b5b11"><span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
 chezmoi apply -v
 </pre>
-        </div>
-        <div class="org-src-container">
-          <pre class="src src-shell" id="orgba7c665"><span style=
-          "color: #5ad4e6;">cd</span> $<span style=
-          "color: #f7f1ff;">dir</span>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgd1fbbdf"><span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
 chezmoi diff
 </pre>
-        </div>
-        <div class="org-src-container">
-          <pre class="src src-shell" id="org339b06d"><span style=
-          "color: #5ad4e6;">cd</span> $<span style=
-          "color: #f7f1ff;">dir</span>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org61535c7"><span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
 chezmoi init ~/dotfiles
 </pre>
-        </div>
-        <div class="org-src-container">
-          <pre class="src src-shell" id="org92835ca">
-          .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml to<span style="color: #5ad4e6;">o</span>ls/lsp
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org42d9c08">.emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml to<span style="color: #5ad4e6;">o</span>ls/lsp
 </pre>
-        </div>
-        <div class="org-src-container">
-          <pre class="src src-:cache" id="org4f63b50">
-          xset r rate 180 40
+</div>
+
+<div class="org-src-container">
+<pre class="src src-:cache" id="org2ab9a18">xset r rate 180 40
 </pre>
-        </div>
-        <div class="org-src-container">
-          <pre class="src src-:cache" id="org39319d1">
-          brew install emacs-plus@28 --with-jansson
+</div>
+
+<div class="org-src-container">
+<pre class="src src-:cache" id="org0b2c580">brew install emacs-plus@28 --with-jansson
 </pre>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org18e6b6a" class="outline-2">
-      <h2 id="org18e6b6a"><span class="section-number-2">6</span>
-      TODOS</h2>
-      <div class="outline-text-2" id="text-6"></div>
-      <div id="outline-container-orgef46013" class="outline-3">
-        <h3 id="orgef46013"><span class=
-        "section-number-3">6.1</span> <span class=
-        "todo TODO">TODO</span> Update README on how to install
-        individual configs</h3>
-      </div>
-      <div id="outline-container-org200a97a" class="outline-3">
-        <h3 id="org200a97a"><span class=
-        "section-number-3">6.2</span> <span class=
-        "done CANCELED">CANCELED</span> Create multi-os support in
-        travis</h3>
-        <div class="outline-text-3" id="text-6-2">
-          <ul class="org-ul">
-            <li class="on"><code>[X]</code> OSX support</li>
-            <li class="on"><code>[X]</code> Linux support</li>
-            <li class="on"><code>[X]</code> Get linux to run</li>
-            <li class="on"><code>[X]</code> How to handle AUR
-            packages?</li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org5e17027" class="outline-3">
-        <h3 id="org5e17027"><span class=
-        "section-number-3">6.3</span> <span class=
-        "todo TODO">TODO</span> Verify if Github Workflow is
-        caching packages property</h3>
-        <div class="outline-text-3" id="text-6-3"></div>
-      </div>
-      <div id="outline-container-org7e7f842" class="outline-3">
-        <h3 id="org7e7f842"><span class=
-        "section-number-3">6.4</span> <span class=
-        "todo TODO">TODO</span> Fix issue with tmux not correctly
-        searching text through panes</h3>
-      </div>
-      <div id="outline-container-org515822f" class="outline-3">
-        <h3 id="org515822f"><span class=
-        "section-number-3">6.5</span> <span class=
-        "todo TODO">TODO</span> Add Archlinux AUR packages</h3>
-      </div>
-    </div>
-  </div>
-  <div id="postamble" class="status">
-    <p class="date">Date: <span class=
-    "timestamp-wrapper"><span class="timestamp">&lt;2020-08-06
-    Thu&gt;</span></span> <span class=
-    "timestamp-wrapper"><span class="timestamp">&lt;2020-08-07
-    Fri&gt;</span></span> <span class=
-    "timestamp-wrapper"><span class="timestamp">&lt;2020-08-05
-    Wed&gt;</span></span></p>
-    <p class="author">Author: Ben Mezger Ben Mezger</p>
-    <p class="date">Created: 2020-08-09 Sun 11:49</p>
-  </div>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgf92eb16">pacman -Qqen
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgaf8e377">pacman -Qqem
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7863cf1" class="outline-3">
+<h3 id="org7863cf1"><span class="section-number-3">5.1</span> Sourcing env with i3</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+For some reason, i3 is sourcing <code>.xprofile</code> instead of <code>xinitrc</code>, so for getting
+Github plugin for the <a href="dot_config/i3/status.toml">i3status-rust</a> you need to set up a variable in your
+<code>.xprofile</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #948ae3;">export</span> <span style="color: #f7f1ff;">I3RS_GITHUB_TOKEN</span>=<span style="color: #fce566;">"your-github-token"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb3fd88" class="outline-2">
+<h2 id="orgdb3fd88"><span class="section-number-2">6</span> TODOS</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+
+
+<div id="outline-container-orgaf5e6ae" class="outline-3">
+<h3 id="orgaf5e6ae"><span class="section-number-3">6.1</span> <span class="todo TODO">TODO</span> Update README on how to install individual configs</h3>
+</div>
+<div id="outline-container-org9fe1722" class="outline-3">
+<h3 id="org9fe1722"><span class="section-number-3">6.2</span> <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> OSX support</li>
+<li class="on"><code>[X]</code> Linux support</li>
+<li class="on"><code>[X]</code> Get linux to run</li>
+<li class="on"><code>[X]</code> How to handle AUR packages?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcf9da52" class="outline-3">
+<h3 id="orgcf9da52"><span class="section-number-3">6.3</span> <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+</div>
+
+<div id="outline-container-org4c095b8" class="outline-3">
+<h3 id="org4c095b8"><span class="section-number-3">6.4</span> <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</h3>
+</div>
+<div id="outline-container-org1268cb1" class="outline-3">
+<h3 id="org1268cb1"><span class="section-number-3">6.5</span> <span class="todo TODO">TODO</span> Add Archlinux AUR packages</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-06 Thu&gt;</span></span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-07 Fri&gt;</span></span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-05 Wed&gt;</span></span></p>
+<p class="author">Author: Ben Mezger Ben Mezger</p>
+<p class="date">Created: 2020-08-12 Wed 08:55</p>
+</div>
 </body>
 </html>
