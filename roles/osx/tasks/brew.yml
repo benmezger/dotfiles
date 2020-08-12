@@ -18,7 +18,7 @@
 - name: Install Emacs 28
   homebrew:
     install_options: with-jansson
-    state: latest
+    state: present
     name:
       - emacs-plus@28
 
