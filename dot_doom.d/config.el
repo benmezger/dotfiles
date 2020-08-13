@@ -162,7 +162,7 @@
   (setq-default org-catch-invisible-edits 'smart)
   (setq org-log-into-drawer t)
   (setq org-agenda-inhibit-startup t)
-  (auto-fill-mode t)
+  (add-hook! 'org-mode-hook #'turn-on-auto-fill)
 
   (setq org-todo-keywords
     '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
