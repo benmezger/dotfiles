@@ -1,6 +1,6 @@
 antibody
 auracle-git
-emacs27-git
+emacs-git
 gruvbox-dark-gtk
 gruvbox-icon-theme
 gtk-theme-arc-gruvbox-git
@@ -16,3 +16,4 @@ siji-git
 slack-desktop
 trizen
 ttf-symbola
+
