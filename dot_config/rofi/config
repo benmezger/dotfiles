@@ -1,6 +1,6 @@
-rofi.theme: ~/.config/rofi/themes/gruvbox/gruvbox-dark-hard.rasi
-rofi.opacity: 50
+rofi.theme: gruvbox-dark-hard
 rofi.color-enabled: true
 rofi.terminal: alacritty
 rofi.font: Hack 10
-
+rofi.modi: combi
+rofi.combi-modi: window,drun
