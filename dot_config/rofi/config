@@ -4,3 +4,4 @@ rofi.terminal: alacritty
 rofi.font: Hack 10
 rofi.modi: combi
 rofi.combi-modi: window,drun
+rofi.show-icons: true
