@@ -30,6 +30,9 @@ format = "{1m}"
 block = "sound"
 
 [[block]]
+block = "backlight"
+
+[[block]]
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
