@@ -6,12 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Pull docker image
-        run: docker-compose pull
-
-      - uses: satackey/action-docker-layer-caching@v0.0.5
-      - name: Run installer on Archlinux
-        run: docker-compose up --build --exit-code-from dotfiles
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: benmezger/dotfiles
+          registry: docker.pkg.github.com
+          tag_with_ref: true
+          tag_with_sha: true
   osx:
     runs-on: macos-latest
     steps:
