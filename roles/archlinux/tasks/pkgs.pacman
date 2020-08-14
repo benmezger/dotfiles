@@ -167,3 +167,6 @@ zsh
 emacs
 i3status-rust
 papirus-icon-theme
+texlive-core
+hugo
+rsync
