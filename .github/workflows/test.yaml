@@ -28,6 +28,8 @@ jobs:
             $HOME/Library/Caches/pip
             /usr/local/Caskroom
             /usr/local
+            $HOME/Applications
+            /Applications
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
