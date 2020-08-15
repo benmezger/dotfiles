@@ -3,6 +3,6 @@ services:
   dotfiles:
     build: .
     container_name: dotfiles
-    image: benmezger/dotfiles
+    image: ${DOCKER_TAG}:latest
     volumes:
       - .:/usr/src/

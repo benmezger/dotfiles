@@ -4,22 +4,24 @@ on: push
 jobs:
   archlinux:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_TAG: docker.pkg.github.com/benmezger/dotfiles/archlinux-dotfiles
     steps:
       - uses: actions/checkout@v2
+
+      - name: Log into registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login \
+            docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
 
       - name: Pull docker image
         run: docker-compose pull
       - name: Run Archlinux installer
         run: docker-compose up --build --exit-code-from dotfiles
-
-      - name: Log into registry
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login \
-            docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
       - name: Push Docker images
         run: |
-          docker push docker.pkg.github.com/${{ github.actor }}/dotfiles/dotfiles:latest
+          docker push \
+          docker.pkg.github.com/${{ env.DOCKER_TAG }}:latest
           
   osx:
     runs-on: macos-latest
