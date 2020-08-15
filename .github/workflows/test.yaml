@@ -19,7 +19,7 @@ jobs:
 
       - name: Push Docker images
         run: |
-          docker push ${{ github.actor }}/dotfiles/archlinux-dotfiles
+          docker push docker.pkg.github.com/${{ github.actor }}/dotfiles/dotfiles:latest
           
   osx:
     runs-on: macos-latest
