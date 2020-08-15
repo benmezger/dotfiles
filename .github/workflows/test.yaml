@@ -6,21 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Pull docker image
-        run: docker-compose pull
-      - name: Run Archlinux installer
-        run: docker-compose up --build --exit-code-from dotfiles
-
-      - name: Log into registry
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login \
-            docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-      - name: Push Docker images
-        run: |
-          docker push ${{ github.actor }}/dotfiles/archlinux-dotfiles
-          
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.actor }}/dotfiles/archlinux-dotfiles
+          registry: docker.pkg.github.com
+          tag_with_ref: true
+          tag_with_sha: true
   osx:
     runs-on: macos-latest
     steps:
