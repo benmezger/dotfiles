@@ -9,7 +9,6 @@ jobs:
       - name: Pull docker image
         run: docker-compose pull
 
-      - uses: satackey/action-docker-layer-caching@v0.0.5
       - name: Run installer on Archlinux
         run: docker-compose up --build --exit-code-from dotfiles
   osx:
