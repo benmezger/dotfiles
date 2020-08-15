@@ -27,7 +27,7 @@ jobs:
             $HOME/.pyenv
             $HOME/Library/Caches/pip
             /usr/local/Caskroom
-            /usr/local/opt
+            /usr/local
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
