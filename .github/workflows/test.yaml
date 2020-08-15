@@ -9,9 +9,9 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
         with:
-          username: ${{ github.actor }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.actor }}/dotfiles/archlinux-dotfiles
+          repository: benmezger/dotfiles
           registry: docker.pkg.github.com
           tag_with_ref: true
           tag_with_sha: true
