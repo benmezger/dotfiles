@@ -204,6 +204,7 @@
 #+FILETAGS: %^G
 #+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
 #+HUGO_SLUG: ${slug}
+#+HUGO_TAGS: %^{Hugo tags}
 
 - tags :: "
         :unnarrowed t)
@@ -213,8 +214,8 @@
          :head "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: :personal:%^G
-#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
-#+HUGO_SLUG: ${slug}"
+#+HUGO_SLUG: ${slug}
+"
          :unnarrowed t)))
 
   (setq org-roam-ref-capture-templates
@@ -228,6 +229,7 @@
 #+ROAM_KEY: ${ref}
 #+ROAM_TAGS: website
 #+HUGO_SLUG: ${slug}
+#+HUGO_TAGS: %^{Hugo tags}
 
 - tags ::
 - source :: ${ref}"
