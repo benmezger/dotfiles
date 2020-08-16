@@ -24,6 +24,11 @@ xrandr --dpi 125.37
 isavailable redshift && redshift -l "-27.578023":"-48.537449" -t "5500":"3000" &
 isavailable synclient && synclient TouchpadOff=1 &
 
+isavailable nm-applet && nm-applet &
+isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock.sh &
+isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
+isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
+
 # Here Xfce is kept as default
 session=${1:-i3}
 
@@ -34,4 +39,3 @@ case $session in
     # No known session, try to run it as command
     *) exec $1;;
 esac
-
