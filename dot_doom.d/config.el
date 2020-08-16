@@ -186,7 +186,9 @@
          "* TODO %?\n %i\n  %a")
        ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
          (file "~/workspace/org/templates/new-book.capture"))
-       ))
+       ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
+         (file "~/workspace/org/templates/weekly-journal.capture") :tree-type week)))
+
 
   (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
 
