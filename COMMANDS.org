@@ -90,3 +90,30 @@ Github plugin for the [[file:dot_config/i3/status.toml][i3status-rust]] you need
 export I3RS_GITHUB_TOKEN="your-github-token"
 #+END_SRC
 
+
+* OSX
+** Set OSX defaults
+#+BEGIN_SRC shell
+# Turn on app auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
+
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+#+END_SRC
