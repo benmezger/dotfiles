@@ -20,6 +20,7 @@ docs/
 .config/i3
 .config/polybar
 .config/i3-autodisplay
+.config/greenclip.cfg
 
 .xinitrc
 .xsession
