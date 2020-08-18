@@ -4,3 +4,17 @@
   systemd:
     name: pcscd.socket
     enabled: yes
+
+- name: Install Greenclip service
+  become: yes
+  template:
+    src: services/greenclip.service
+    dest: /usr/lib/systemd/user/greenclip.service
+
+- name: Enable Greenclip service
+  become: no
+  systemd:
+    state: started
+    scope: user
+    name: greenclip.service
+    enabled: yes
