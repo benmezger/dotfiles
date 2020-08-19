@@ -313,3 +313,9 @@ if (( $+commands[pacman] )); then
     alias paci='sudo pacman -S'
     alias pacrdeps='sudo pacman -Rsn'
 fi
+
+# Django
+alias drunser='python manage.py runserver'
+alias dmakemig='python manage.py makemigrations'
+alias dmigrate='python manage.py migrate'
+alias dshell='python manage.py shell'
