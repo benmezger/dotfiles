@@ -220,23 +220,6 @@
 "
          :unnarrowed t)))
 
-  (setq org-roam-ref-capture-templates
-    '(("r" "ref" plain (function org-roam-capture--get-point)
-        "%?"
-        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
-        :head "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: %^G
-#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
-#+ROAM_KEY: ${ref}
-#+ROAM_TAGS: website
-#+HUGO_SLUG: ${slug}
-#+HUGO_TAGS: %^{Hugo tags}
-
-- tags ::
-- source :: ${ref}"
-        :unnarrowed t)))
-
   (defun custom-org-protocol-focus-advice (orig &rest args)
     (x-focus-frame nil)
     (apply orig args))
