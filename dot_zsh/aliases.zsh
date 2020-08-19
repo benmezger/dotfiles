@@ -307,3 +307,9 @@ fi
 if (( $+commands[emacsclient] )); then
     alias ec='emacsclient -c -n'
 fi
+
+if (( $+commands[pacman] )); then
+    alias pacall='sudo pacman -Syyu'
+    alias paci='sudo pacman -S'
+    alias pacrdeps='sudo pacman -Rsn'
+fi
