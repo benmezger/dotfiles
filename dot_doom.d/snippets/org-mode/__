@@ -18,8 +18,9 @@
           )) " " )
 `}
 #+SUBTITLE: $2
-#+EMAIL: me@benmezger.nl
-#+DATE: `(format-time-string "%Y-%m-%d")`
+#+AUTHOR: `(user-full-name)`
+#+EMAIL: `user-mail-address`
+#+DATE: <`(format-time-string "%F %a %R")`>
 
 #+HTML_DOCTYPE: xhtml5
 #+HTML_HTML5_FANCY:
