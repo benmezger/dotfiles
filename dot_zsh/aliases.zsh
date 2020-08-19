@@ -302,3 +302,8 @@ alias gwX='git rm -rf'
 if (( $+commands[nvim] )); then
     alias vim="nvim"
 fi
+
+
+if (( $+commands[emacsclient] )); then
+    alias ec='emacsclient -c -n'
+fi
