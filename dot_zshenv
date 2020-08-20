@@ -16,6 +16,7 @@ export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
 # Go path
 export GOPATH=$HOME/workspace/go
+export PATH="$GOPATH/bin:$PATH"
 
 ### Plugins
 
