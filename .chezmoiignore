@@ -13,6 +13,7 @@ requirements.yml
 COMMANDS.org
 docs/
 ansible.cfg
+CHANGELOG.md
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
