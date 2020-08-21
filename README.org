@@ -95,3 +95,8 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 
 * TODOS
 #+INCLUDE: "./TODO.org" :lines "3-"
+
+* Comment :noexport:
+# Local variables:
+# eval: (add-hook 'after-save-hook 'org-html-export-to-html t t)
+# end:
