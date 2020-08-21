@@ -21,7 +21,7 @@
     warn: no
 
 - name: Install dotfiles
-  command: chezmoi -S ~/dotfiles -v apply
+  shell: chezmoi -S ~/dotfiles -v apply
   environment:
     - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
     - CI: lookup('env', 'CI')
