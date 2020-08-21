@@ -24,6 +24,7 @@
   command: chezmoi -S ~/dotfiles -v apply
   environment:
     - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
+    - CI: lookup('env', 'CI')
 
 - name: Install zplug
   git:

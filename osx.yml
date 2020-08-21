@@ -3,11 +3,11 @@
   pre_tasks:
     - pause:
         prompt: "App Store email (mas)"
-      when: lookup('env', 'TRAVIS') == '0'
+      when: lookup('env', 'CI') == '0'
       register: "mas_email"
     - pause:
         prompt: "App store password (mas)"
-      when: lookup('env', 'TRAVIS') == '0'
+      when: lookup('env', 'CI') == '0'
       register: "mas_password"
   roles:
     - role: osx
