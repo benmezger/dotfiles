@@ -1,16 +1,11 @@
 # Taps
-tap "515hikaru/tap"
-tap "caskroom/versions"
 tap "d12frosted/emacs-plus"
 tap "getantibody/tap"
 tap "git-chglog/git-chglog"
 tap "heroku/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
-tap "homebrew/services"
 
 
 # brew install
@@ -123,14 +118,9 @@ brew "wordnet"
 brew "youtube-dl"
 brew "z"
 brew "zsh"
-brew "515hikaru/tap/mdtable2csv"
 brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-jansson"]
 brew "git-chglog/git-chglog/git-chglog"
-brew "golangci/tap/golangci-lint"
 brew "heroku/brew/heroku"
-brew "kyoh86/tap/richgo"
-brew "riscv/riscv/riscv-gnu-toolchain", link: false
-brew "riscv/riscv/riscv-tools"
 cask "1password-cli"
 cask "alacritty"
 cask "basictex"
