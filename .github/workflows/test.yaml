@@ -40,6 +40,7 @@ jobs:
           path: |
             $HOME/Library/Caches/Homebrew
             $HOME/.pyenv
+            $HOME/.ansible
             $HOME/Library/Caches/pip
             /usr/local/Caskroom
             /usr/local
