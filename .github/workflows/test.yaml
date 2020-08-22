@@ -49,6 +49,8 @@ jobs:
           key: homebrew-${{ runner.os }}
           restore-keys: |
             homebrew-${{ runner.os }}
+      - name: Upgrade homebrew
+        run: cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
       - name: Install Ansible
         run: brew install ansible
       - name: Install Ansible galaxies
