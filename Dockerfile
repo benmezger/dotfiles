@@ -11,7 +11,7 @@ RUN echo 'archie ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER archie
 
 RUN mkdir /home/archie/dotfiles
-COPY . ./home/archie/dotfiles
+COPY  --chown=archie:users . ./home/archie/dotfiles
 WORKDIR /home/archie/dotfiles
 
 ENTRYPOINT ["sh", "docker-entrypoint.sh"]
