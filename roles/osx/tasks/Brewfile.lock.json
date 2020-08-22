@@ -18,9 +18,6 @@
       },
       "homebrew/cask-fonts": {
         "revision": "7f708028ae41ec7051cdb4aafd27293b7fa9496b"
-      },
-      "homebrew/core": {
-        "revision": "a117e4fe1f2d4bc1d4ef49ab261493b654e3ec9a"
       }
     },
     "brew": {
@@ -880,30 +877,6 @@
           }
         }
       },
-      "node": {
-        "version": "14.8.0",
-        "bottle": {
-          "cellar": ":any",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/node-14.8.0.catalina.bottle.tar.gz",
-              "sha256": "ec85b0f1a6b5ab229ee1445ca604f6455e15dfa632efdb79839296e5c2fc6631"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/node-14.8.0.mojave.bottle.tar.gz",
-              "sha256": "5e2de72f9e1fc18df29226a40ae6efe39bff083f1f91d765c5dbd9db308613ae"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/node-14.8.0.high_sierra.bottle.tar.gz",
-              "sha256": "7129555cbbde75ed026b19506fb6f5184545a0ac30121cce63ab92d4310b99a3"
-            }
-          }
-        },
-        "options": {
-          "link": false
-        }
-      },
       "exa": {
         "version": "0.9.0",
         "bottle": {
@@ -1660,27 +1633,6 @@
           }
         }
       },
-      "n": {
-        "version": "6.7.0",
-        "bottle": {
-          "cellar": ":any_skip_relocation",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/n-6.7.0.catalina.bottle.tar.gz",
-              "sha256": "dbd70d6eeb53d38588d27d22ee4e3b6f05129dc7f97bc0449f52113c0a12b1b4"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/n-6.7.0.mojave.bottle.tar.gz",
-              "sha256": "dbd70d6eeb53d38588d27d22ee4e3b6f05129dc7f97bc0449f52113c0a12b1b4"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/n-6.7.0.high_sierra.bottle.tar.gz",
-              "sha256": "dbd70d6eeb53d38588d27d22ee4e3b6f05129dc7f97bc0449f52113c0a12b1b4"
-            }
-          }
-        }
-      },
       "nasm": {
         "version": "2.15.03",
         "bottle": {
@@ -2401,6 +2353,12 @@
       "heroku/brew/heroku": null
     },
     "cask": {
+      "1password-cli": {
+        "version": "1.5.0",
+        "options": {
+          "full_name": "1password-cli"
+        }
+      },
       "alacritty": {
         "version": "0.5.0",
         "options": {
@@ -2447,24 +2405,6 @@
         "version": "latest",
         "options": {
           "full_name": "font-inconsolata-dz"
-        }
-      },
-      "font-inconsolata-dz-for-powerline": {
-        "version": "latest",
-        "options": {
-          "full_name": "font-inconsolata-dz-for-powerline"
-        }
-      },
-      "font-input": {
-        "version": "latest",
-        "options": {
-          "full_name": "font-input"
-        }
-      },
-      "font-monoid": {
-        "version": "0.61",
-        "options": {
-          "full_name": "font-monoid"
         }
       },
       "font-powerline-symbols": {
