@@ -95,3 +95,5 @@
     driver = true
 [remote "origin"]
     prune = true
+[pull]
+    rebase = true
