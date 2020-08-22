@@ -10,6 +10,11 @@
       when: lookup('env', 'CI') == '0'
       register: "mas_password"
   roles:
+    - role: geerlingguy.homebrew
+      vars:
+        - homebrew_use_brewfile: yes
+        - homebrew_brewfile_dir: "./roles/osx/tasks/"
+
     - role: osx
     - role: common
     - role: markosamuli.pyenv
