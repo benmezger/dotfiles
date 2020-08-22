@@ -30,11 +30,9 @@ jobs:
             /usr/local
             $HOME/Applications
             /Applications
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
+          key: homebrew-${{ runner.os }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            homebrew-${{ runner.os }}
       - name: Install Ansible
         run: brew install ansible
       - name: Install Ansible galaxies
