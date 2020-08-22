@@ -15,6 +15,15 @@ jobs:
 
       - name: Run installer on Archlinux
         run: docker-compose up --build --exit-code-from dotfiles
+
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: benmezger/dotfiles/arch-dotfiles
+          tag_with_ref: true
   osx:
     runs-on: macos-latest
     steps:
