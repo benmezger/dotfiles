@@ -5,7 +5,6 @@ tap "git-chglog/git-chglog"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
 
 
 # brew install
