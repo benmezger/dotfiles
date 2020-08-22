@@ -42,9 +42,9 @@ jobs:
             $HOME/.pyenv
             $HOME/.ansible
             $HOME/Library/Caches/pip
-            /usr/local/Caskroom
-            /usr/local
             $HOME/Applications
+            /usr/local/Caskroom
+            /usr/local/Homebrew
             /Applications
           key: homebrew-${{ runner.os }}
           restore-keys: |
