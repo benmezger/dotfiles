@@ -171,3 +171,4 @@ texlive-core
 hugo
 rsync
 xcompmgr
+xdg-user-dirs
