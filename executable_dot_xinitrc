@@ -29,6 +29,7 @@ isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock.sh &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
 isavailable xcompmgr && xcompmgr -c &
+isavailable rescuetime && rescuetime &
 
 # Here Xfce is kept as default
 session=${1:-i3}
