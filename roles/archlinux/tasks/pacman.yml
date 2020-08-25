@@ -4,6 +4,14 @@
   pacman:
     update_cache: yes
 
+- name: Enable pacman.conf options
+  become: true
+  shell:
+    sed -i '/Color$/s/^#//g' /etc/pacman.conf
+    sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
+    sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
+    sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+
 - name: Install Pacman packages
   become: true
   shell:
