@@ -65,5 +65,5 @@
     dest: ~/.emacs.d
 
 - name: Install Emacs doom packages
-  command: "~/.emacs.d/bin/doom install"
+  command: "~/.emacs.d/bin/doom -y install"
 
