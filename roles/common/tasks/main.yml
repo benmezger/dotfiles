@@ -21,13 +21,15 @@
     warn: no
 
 - name: Initialize dotfiles
-  shell: chezmoi init -S ~/dotfiles
+  shell: chezmoi -S ~/dotfiles init
   environment:
     - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
     - CI: lookup('env', 'CI')
 
 - name: Install dotfiles
-  shell: chezmoi -S ~/dotfiles -v apply
+  shell: chezmoi -v apply
+  args:
+    chdir: ~/
   environment:
     - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
     - CI: lookup('env', 'CI')
