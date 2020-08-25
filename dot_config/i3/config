@@ -305,3 +305,6 @@ bar {
         urgent_workspace     $red $red $bg
     }
 }
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
