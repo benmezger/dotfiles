@@ -133,10 +133,6 @@ systemd-sysvcompat
 tar
 telegram-desktop
 texinfo
-thunar
-thunar-archive-plugin
-thunar-media-tags-plugin
-thunar-volman
 tmux
 trayer
 ttf-cormorant
@@ -172,3 +168,4 @@ hugo
 rsync
 xcompmgr
 xdg-user-dirs
+pcmanfm-gtk3
