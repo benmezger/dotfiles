@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-24 Mon 23:35 -->
+<!-- 2020-08-24 Mon 23:44 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>README</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Ben Mezger Ben Mezger" />
+<meta name="author" content="Ben Mezger" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -249,58 +249,58 @@ org_html_manager.setup();  // activate after the parameters are set
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd7bb035">1. Installing with Ansible</a>
+<li><a href="#org31f6b2a">1. Installing with Ansible</a>
 <ul>
-<li><a href="#org1488503">1.1. Requirements</a></li>
-<li><a href="#org1f328c2">1.2. OSX</a></li>
-<li><a href="#org78a2e2c">1.3. Archlinux</a></li>
+<li><a href="#org5cea2cc">1.1. Requirements</a></li>
+<li><a href="#org14ca821">1.2. OSX</a></li>
+<li><a href="#orgb4d45ad">1.3. Archlinux</a></li>
 </ul>
 </li>
-<li><a href="#org4683c76">2. Installing with Chezmoi</a>
+<li><a href="#orgf25dce7">2. Installing with Chezmoi</a>
 <ul>
-<li><a href="#org1caac99">2.1. Requirements</a></li>
-<li><a href="#org8aedf02">2.2. Installing</a></li>
+<li><a href="#orgeb092e6">2.1. Requirements</a></li>
+<li><a href="#org6005b63">2.2. Installing</a></li>
 </ul>
 </li>
-<li><a href="#orgb4146b1">3. Troubleshooting</a>
+<li><a href="#orgf38ae23">3. Troubleshooting</a>
 <ul>
-<li><a href="#orgc331fe2">3.1. Chezmoi does not seem to reload the configuration</a></li>
-<li><a href="#org8e87b3c">3.2. Ansible fails due to required administration password</a></li>
+<li><a href="#org02e0c06">3.1. Chezmoi does not seem to reload the configuration</a></li>
+<li><a href="#org379035a">3.2. Ansible fails due to required administration password</a></li>
 </ul>
 </li>
-<li><a href="#org4665e05">4. Commands</a></li>
-<li><a href="#orgcbce0ac">5. Dependencies</a></li>
-<li><a href="#orgcdcfe00">6. Commands</a>
+<li><a href="#org2e31476">4. Commands</a></li>
+<li><a href="#org459242f">5. Dependencies</a></li>
+<li><a href="#org0a1c24b">6. Commands</a>
 <ul>
-<li><a href="#org4488fca">6.1. Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></a></li>
-<li><a href="#org5401c51">6.2. Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a>
+<li><a href="#org21d3c71">6.1. Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></a></li>
+<li><a href="#orge81b924">6.2. Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a>
 <ul>
-<li><a href="#org6fde9c5">6.2.1. Doom emacs</a></li>
-<li><a href="#org12a5bbc">6.2.2. OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></a></li>
+<li><a href="#orge508573">6.2.1. Doom emacs</a></li>
+<li><a href="#org3bec90b">6.2.2. OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org4b43230">6.3. Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></a>
+<li><a href="#orgfa8bc82">6.3. Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></a>
 <ul>
-<li><a href="#orgf3702df">6.3.1. Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></a></li>
-<li><a href="#org2cc6bc3">6.3.2. Sourcing env with i3</a></li>
+<li><a href="#orgec2d733">6.3.1. Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></a></li>
+<li><a href="#org5094e8b">6.3.2. Sourcing env with i3</a></li>
 </ul>
 </li>
-<li><a href="#orgff01ed7">6.4. OSX</a>
+<li><a href="#orgb572d65">6.4. OSX</a>
 <ul>
-<li><a href="#org5acd14f">6.4.1. Set OSX defaults</a></li>
+<li><a href="#orgec68f78">6.4.1. Set OSX defaults</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org9f7af1e">7. TODOS</a>
+<li><a href="#orgc1f6dfe">7. TODOS</a>
 <ul>
-<li><a href="#org2707b4b">7.1. <span class="todo TODO">TODO</span> Update README on how to install individual configs</a></li>
-<li><a href="#orge6f0979">7.2. <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</a></li>
-<li><a href="#org47f80e7">7.3. <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</a></li>
-<li><a href="#orgfb72a86">7.4. <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</a></li>
-<li><a href="#orgf3356a5">7.5. <span class="todo TODO">TODO</span> Add Archlinux AUR packages</a></li>
-<li><a href="#org03126b0">7.6. <span class="todo TODO">TODO</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</a></li>
-<li><a href="#org428beac">7.7. <span class="todo TODO">TODO</span> Switch to <code>Brewfile</code></a></li>
+<li><a href="#orgc626675">7.1. <span class="todo TODO">TODO</span> Update README on how to install individual configs</a></li>
+<li><a href="#orga0a0f86">7.2. <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</a></li>
+<li><a href="#org6a8db13">7.3. <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</a></li>
+<li><a href="#org736896c">7.4. <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</a></li>
+<li><a href="#org383b378">7.5. <span class="todo TODO">TODO</span> Add Archlinux AUR packages</a></li>
+<li><a href="#org915b1a9">7.6. <span class="done DONE">DONE</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</a></li>
+<li><a href="#org97df059">7.7. <span class="done DONE">DONE</span> Switch to <code>Brewfile</code></a></li>
 </ul>
 </li>
 </ul>
@@ -319,12 +319,12 @@ org_html_manager.setup();  // activate after the parameters are set
 documentation.</i>
 </p>
 
-<div id="outline-container-orgd7bb035" class="outline-2">
-<h2 id="orgd7bb035"><span class="section-number-2">1</span> Installing with Ansible</h2>
+<div id="outline-container-org31f6b2a" class="outline-2">
+<h2 id="org31f6b2a"><span class="section-number-2">1</span> Installing with Ansible</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1488503" class="outline-3">
-<h3 id="org1488503"><span class="section-number-3">1.1</span> Requirements</h3>
+<div id="outline-container-org5cea2cc" class="outline-3">
+<h3 id="org5cea2cc"><span class="section-number-3">1.1</span> Requirements</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Ansible</a></li>
@@ -336,16 +336,16 @@ requirements.yml</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org1f328c2" class="outline-3">
-<h3 id="org1f328c2"><span class="section-number-3">1.2</span> OSX</h3>
+<div id="outline-container-org14ca821" class="outline-3">
+<h3 id="org14ca821"><span class="section-number-3">1.2</span> OSX</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 For MacOS, run <code>ansible-playbook -i inventory osx.yml</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org78a2e2c" class="outline-3">
-<h3 id="org78a2e2c"><span class="section-number-3">1.3</span> Archlinux</h3>
+<div id="outline-container-orgb4d45ad" class="outline-3">
+<h3 id="orgb4d45ad"><span class="section-number-3">1.3</span> Archlinux</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 For Linux, run <code>ansible-playbook -i inventory archlinux.yml</code>
@@ -354,12 +354,12 @@ For Linux, run <code>ansible-playbook -i inventory archlinux.yml</code>
 </div>
 </div>
 
-<div id="outline-container-org4683c76" class="outline-2">
-<h2 id="org4683c76"><span class="section-number-2">2</span> Installing with Chezmoi</h2>
+<div id="outline-container-orgf25dce7" class="outline-2">
+<h2 id="orgf25dce7"><span class="section-number-2">2</span> Installing with Chezmoi</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org1caac99" class="outline-3">
-<h3 id="org1caac99"><span class="section-number-3">2.1</span> Requirements</h3>
+<div id="outline-container-orgeb092e6" class="outline-3">
+<h3 id="orgeb092e6"><span class="section-number-3">2.1</span> Requirements</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><a href="https://www.chezmoi.io/">Chezmoi</a></li>
@@ -367,8 +367,8 @@ For Linux, run <code>ansible-playbook -i inventory archlinux.yml</code>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8aedf02" class="outline-3">
-<h3 id="org8aedf02"><span class="section-number-3">2.2</span> Installing</h3>
+<div id="outline-container-org6005b63" class="outline-3">
+<h3 id="org6005b63"><span class="section-number-3">2.2</span> Installing</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Run <code>chezmoi init https://github.com/benmezger/dotfiles.git</code> (see <a href="https://www.chezmoi.io/docs/reference/">reference</a> for
@@ -392,12 +392,12 @@ a <code>CI</code> env variable before running to skip this step.
 </div>
 </div>
 
-<div id="outline-container-orgb4146b1" class="outline-2">
-<h2 id="orgb4146b1"><span class="section-number-2">3</span> Troubleshooting</h2>
+<div id="outline-container-orgf38ae23" class="outline-2">
+<h2 id="orgf38ae23"><span class="section-number-2">3</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgc331fe2" class="outline-3">
-<h3 id="orgc331fe2"><span class="section-number-3">3.1</span> Chezmoi does not seem to reload the configuration</h3>
+<div id="outline-container-org02e0c06" class="outline-3">
+<h3 id="org02e0c06"><span class="section-number-3">3.1</span> Chezmoi does not seem to reload the configuration</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Run <code>chezmoi init &lt;dotfiles-path&gt;</code> again. This should reload the configuration
@@ -405,8 +405,8 @@ by copying <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to <code>$HOME/.config/
 </p>
 </div>
 </div>
-<div id="outline-container-org8e87b3c" class="outline-3">
-<h3 id="org8e87b3c"><span class="section-number-3">3.2</span> Ansible fails due to required administration password</h3>
+<div id="outline-container-org379035a" class="outline-3">
+<h3 id="org379035a"><span class="section-number-3">3.2</span> Ansible fails due to required administration password</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Run <code>ansible</code> with <code>-K</code> flag before executing for prompting for the root
@@ -416,8 +416,8 @@ password before executing tasks.
 </div>
 </div>
 
-<div id="outline-container-org4665e05" class="outline-2">
-<h2 id="org4665e05"><span class="section-number-2">4</span> Commands</h2>
+<div id="outline-container-org2e31476" class="outline-2">
+<h2 id="org2e31476"><span class="section-number-2">4</span> Commands</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 For commands related to this repository, see <a href="COMMANDS.html">COMMANDS</a>
@@ -425,8 +425,8 @@ For commands related to this repository, see <a href="COMMANDS.html">COMMANDS</a
 </div>
 </div>
 
-<div id="outline-container-orgcbce0ac" class="outline-2">
-<h2 id="orgcbce0ac"><span class="section-number-2">5</span> Dependencies</h2>
+<div id="outline-container-org459242f" class="outline-2">
+<h2 id="org459242f"><span class="section-number-2">5</span> Dependencies</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Fonts
@@ -470,8 +470,8 @@ For commands related to this repository, see <a href="COMMANDS.html">COMMANDS</a
 </div>
 </div>
 
-<div id="outline-container-orgcdcfe00" class="outline-2">
-<h2 id="orgcdcfe00"><span class="section-number-2">6</span> Commands</h2>
+<div id="outline-container-org0a1c24b" class="outline-2">
+<h2 id="org0a1c24b"><span class="section-number-2">6</span> Commands</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 These are general commands I use while managing my <code>dotfiles</code> and my system . I
@@ -480,8 +480,8 @@ terminal.
 </p>
 </div>
 
-<div id="outline-container-org4488fca" class="outline-3">
-<h3 id="org4488fca"><span class="section-number-3">6.1</span> Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></h3>
+<div id="outline-container-org21d3c71" class="outline-3">
+<h3 id="org21d3c71"><span class="section-number-3">6.1</span> Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><p>
@@ -513,16 +513,16 @@ Initialize chezmoi repository, reloading <code>$HOME/.config/chezmoi/chezmoi.[ya
 </div>
 </div>
 
-<div id="outline-container-org5401c51" class="outline-3">
-<h3 id="org5401c51"><span class="section-number-3">6.2</span> Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div id="outline-container-orge81b924" class="outline-3">
+<h3 id="orge81b924"><span class="section-number-3">6.2</span> Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 General Emacs maintanence.
 </p>
 </div>
 
-<div id="outline-container-org6fde9c5" class="outline-4">
-<h4 id="org6fde9c5"><span class="section-number-4">6.2.1</span> Doom emacs</h4>
+<div id="outline-container-orge508573" class="outline-4">
+<h4 id="orge508573"><span class="section-number-4">6.2.1</span> Doom emacs</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li><p>
@@ -536,8 +536,8 @@ Doom compile core and private modules
 </div>
 </div>
 
-<div id="outline-container-org12a5bbc" class="outline-4">
-<h4 id="org12a5bbc"><span class="section-number-4">6.2.2</span> OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></h4>
+<div id="outline-container-org3bec90b" class="outline-4">
+<h4 id="org3bec90b"><span class="section-number-4">6.2.2</span> OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li><p>
@@ -552,8 +552,8 @@ Compile Emacs 28 on OSX with native json support
 </div>
 </div>
 
-<div id="outline-container-org4b43230" class="outline-3">
-<h3 id="org4b43230"><span class="section-number-3">6.3</span> Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></h3>
+<div id="outline-container-orgfa8bc82" class="outline-3">
+<h3 id="orgfa8bc82"><span class="section-number-3">6.3</span> Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 General Linux commands
@@ -570,8 +570,8 @@ Speed up keyboard
 </ul>
 </div>
 
-<div id="outline-container-orgf3702df" class="outline-4">
-<h4 id="orgf3702df"><span class="section-number-4">6.3.1</span> Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></h4>
+<div id="outline-container-orgec2d733" class="outline-4">
+<h4 id="orgec2d733"><span class="section-number-4">6.3.1</span> Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></h4>
 <div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
 <li><p>
@@ -620,7 +620,7 @@ Find all <code>*.pacnew</code> files in <code>/etc</code>
 </div>
 
 <ol class="org-ol">
-<li><a id="org3e56060"></a>Docker&#xa0;&#xa0;&#xa0;<span class="tag"><span class="docker">docker</span></span><br />
+<li><a id="orgcf7a899"></a>Docker&#xa0;&#xa0;&#xa0;<span class="tag"><span class="docker">docker</span></span><br />
 <div class="outline-text-5" id="text-6-3-1-1">
 <ul class="org-ul">
 <li><p>
@@ -637,8 +637,8 @@ Allow Docker runs with non-root user.
 </ol>
 </div>
 
-<div id="outline-container-org2cc6bc3" class="outline-4">
-<h4 id="org2cc6bc3"><span class="section-number-4">6.3.2</span> Sourcing env with i3</h4>
+<div id="outline-container-org5094e8b" class="outline-4">
+<h4 id="org5094e8b"><span class="section-number-4">6.3.2</span> Sourcing env with i3</h4>
 <div class="outline-text-4" id="text-6-3-2">
 <ul class="org-ul">
 <li><p>
@@ -655,12 +655,12 @@ your <code>.xprofile</code>
 </div>
 </div>
 
-<div id="outline-container-orgff01ed7" class="outline-3">
-<h3 id="orgff01ed7"><span class="section-number-3">6.4</span> OSX</h3>
+<div id="outline-container-orgb572d65" class="outline-3">
+<h3 id="orgb572d65"><span class="section-number-3">6.4</span> OSX</h3>
 <div class="outline-text-3" id="text-6-4">
 </div>
-<div id="outline-container-org5acd14f" class="outline-4">
-<h4 id="org5acd14f"><span class="section-number-4">6.4.1</span> Set OSX defaults</h4>
+<div id="outline-container-orgec68f78" class="outline-4">
+<h4 id="orgec68f78"><span class="section-number-4">6.4.1</span> Set OSX defaults</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #69676c;"># </span><span style="color: #69676c;">Turn on app auto-update</span>
@@ -692,17 +692,15 @@ defaults write com.apple.dock autohide-time-modifier -float <span style="color: 
 </div>
 </div>
 
-<div id="outline-container-org9f7af1e" class="outline-2">
-<h2 id="org9f7af1e"><span class="section-number-2">7</span> TODOS</h2>
+<div id="outline-container-orgc1f6dfe" class="outline-2">
+<h2 id="orgc1f6dfe"><span class="section-number-2">7</span> TODOS</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-
-
-<div id="outline-container-org2707b4b" class="outline-3">
-<h3 id="org2707b4b"><span class="section-number-3">7.1</span> <span class="todo TODO">TODO</span> Update README on how to install individual configs</h3>
+<div id="outline-container-orgc626675" class="outline-3">
+<h3 id="orgc626675"><span class="section-number-3">7.1</span> <span class="todo TODO">TODO</span> Update README on how to install individual configs</h3>
 </div>
-<div id="outline-container-orge6f0979" class="outline-3">
-<h3 id="orge6f0979"><span class="section-number-3">7.2</span> <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</h3>
+<div id="outline-container-orga0a0f86" class="outline-3">
+<h3 id="orga0a0f86"><span class="section-number-3">7.2</span> <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> OSX support</li>
@@ -712,35 +710,35 @@ defaults write com.apple.dock autohide-time-modifier -float <span style="color: 
 </ul>
 </div>
 </div>
-<div id="outline-container-org47f80e7" class="outline-3">
-<h3 id="org47f80e7"><span class="section-number-3">7.3</span> <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</h3>
+<div id="outline-container-org6a8db13" class="outline-3">
+<h3 id="org6a8db13"><span class="section-number-3">7.3</span> <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</h3>
 <div class="outline-text-3" id="text-7-3">
 </div>
 </div>
 
-<div id="outline-container-orgfb72a86" class="outline-3">
-<h3 id="orgfb72a86"><span class="section-number-3">7.4</span> <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</h3>
+<div id="outline-container-org736896c" class="outline-3">
+<h3 id="org736896c"><span class="section-number-3">7.4</span> <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</h3>
 </div>
-<div id="outline-container-orgf3356a5" class="outline-3">
-<h3 id="orgf3356a5"><span class="section-number-3">7.5</span> <span class="todo TODO">TODO</span> Add Archlinux AUR packages</h3>
+<div id="outline-container-org383b378" class="outline-3">
+<h3 id="org383b378"><span class="section-number-3">7.5</span> <span class="todo TODO">TODO</span> Add Archlinux AUR packages</h3>
 </div>
-<div id="outline-container-org03126b0" class="outline-3">
-<h3 id="org03126b0"><span class="section-number-3">7.6</span> <span class="todo TODO">TODO</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</h3>
+<div id="outline-container-org915b1a9" class="outline-3">
+<h3 id="org915b1a9"><span class="section-number-3">7.6</span> <span class="done DONE">DONE</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</h3>
 <div class="outline-text-3" id="text-7-6">
 </div>
 </div>
 
-<div id="outline-container-org428beac" class="outline-3">
-<h3 id="org428beac"><span class="section-number-3">7.7</span> <span class="todo TODO">TODO</span> Switch to <code>Brewfile</code></h3>
+<div id="outline-container-org97df059" class="outline-3">
+<h3 id="org97df059"><span class="section-number-3">7.7</span> <span class="done DONE">DONE</span> Switch to <code>Brewfile</code></h3>
 <div class="outline-text-3" id="text-7-7">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-06 Thu&gt;</span></span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-07 Fri&gt;</span></span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-05 Wed&gt;</span></span></p>
-<p class="author">Author: Ben Mezger Ben Mezger</p>
-<p class="date">Created: 2020-08-24 Mon 23:35</p>
+<p class="date">Date: 2020-08-06 Thu 00:00</p>
+<p class="author">Author: Ben Mezger</p>
+<p class="date">Created: 2020-08-24 Mon 23:44</p>
 </div>
 </body>
 </html>

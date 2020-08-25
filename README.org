@@ -91,10 +91,10 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
   - [[https://github.com/greshake/i3status-rust][i3status-rust]]
 
 * Commands
-#+INCLUDE: "./COMMANDS.org" :lines "3-"
+#+INCLUDE: "./COMMANDS.org" :lines "5-"
 
 * TODOS
-#+INCLUDE: "./TODO.org" :lines "3-"
+#+INCLUDE: "./TODO.org" :lines "5-"
 
 * Comment :noexport:
 # Local variables:
