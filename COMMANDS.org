@@ -1,95 +1,98 @@
-#+TITLE: Commands
+#+TITLE: System commands
 #+SUBTITLE: Personal commands
 #+AUTHOR: Ben Mezger
 #+DATE: <2020-08-07 Fri>
 
-These are general commands I use while managing my =dotfiles=. I run them in
-orgmode itself, but you can simply copy and paste it to your terminal.
+These are general commands I use while managing my =dotfiles= and my system . I
+run them in orgmode itself, but you can simply copy and paste it to your
+terminal.
 
 * Chezmoi :dotfiles:chezmoi:
-#+NAME: Restore files with chezmoi
-#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-cd $dir
-chezmoi apply -v
-#+END_SRC
 
-#+RESULTS: Restore files with chezmoi
-#+begin_src shell
-#+end_src
+- Apply dotfile changes with Chezmoi.
+  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+  cd $dir
+  chezmoi apply -v
+  #+END_SRC
+- View difference between dotfiles and restores files.
+  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+  cd $dir
+  chezmoi diff
+  #+END_SRC
 
-
-#+NAME: View difference between files
-#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-cd $dir
-chezmoi diff
-#+END_SRC
-
-#+RESULTS: View difference between files
-#+begin_src shell
-#+end_src
-
-#+NAME: Initialize chezmoi repository
-#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-cd $dir
-chezmoi init ~/dotfiles
-#+END_SRC
-
-#+RESULTS: Initialize chezmoi repository
-#+begin_src shell
-#+end_src
+- Initialize chezmoi repository, reloading =$HOME/.config/chezmoi/chezmoi.[yaml|toml]=
+  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+  cd $dir
+  chezmoi init ~/dotfiles
+  #+END_SRC
 
 * Emacs :emacs:
+General Emacs maintanence.
+
 ** Doom emacs
-#+NAME: Doom compile core and private modules
-#+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-.emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
-#+END_SRC
+- Doom compile core and private modules
+  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
+  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
+  #+END_SRC
 
 ** OSX :osx:
-#+NAME: Compiling Emacs 28 on OSX with native json support
-#+BEGIN_SRC :cache no
-brew install emacs-plus@28 --with-jansson
-#+END_SRC
+- Compile Emacs 28 on OSX with native json support
+  #+BEGIN_SRC :cache no
+  brew install emacs-plus@28 --with-jansson
+  #+END_SRC
 
 * Linux :linux:
-#+NAME: Speed up keyboard
-#+BEGIN_SRC :cache no
-xset r rate 180 40
-#+END_SRC
+General Linux commands
+
+- Speed up keyboard
+  #+BEGIN_SRC :cache no
+  xset r rate 180 40
+  #+END_SRC
 
 ** Archlinux :archlinux:
-#+NAME: Pacman list installed packages without AUR
-#+BEGIN_SRC sh :results file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
-pacman -Qqen
-#+END_SRC
+- List =pacman= packages ignoring foreing packages (AUR, etc).
+  #+BEGIN_SRC sh :results file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
+  pacman -Qqen
+  #+END_SRC
 
-#+RESULTS: Pacman list installed packages without AUR
-[[file:./roles/archlinux/tasks/pkgs.pacman]]
+  #+RESULTS: Pacman list installed packages without AUR
+  [[file:./roles/archlinux/tasks/pkgs.pacman]]
 
-#+NAME: Pacman list AUR packages
-#+BEGIN_SRC sh :results file :file pkgs.aur :output-dir ./roles/archlinux/tasks/
-pacman -Qqem
-#+END_SRC
+- Get list of foreing (AUR, etc) packages with =pacman=.
+  #+BEGIN_SRC sh :results file :file pkgs.aur :output-dir ./roles/archlinux/tasks/
+  pacman -Qqem
+  #+END_SRC
 
-#+RESULTS: Pacman list AUR packages
-[[file:./roles/archlinux/tasks/pkgs.aur]]
+  #+RESULTS: Pacman list AUR packages
+  [[file:./roles/archlinux/tasks/pkgs.aur]]
+
+- Enable color, total download, check space and verbose pkg list when running
+  =pacman=.
+  #+BEGIN_SRC shell :dir "/sudo::" :cache no
+  sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
+  sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
+  sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
+  sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+  #+END_SRC
+- Find all =*.pacnew= files in =/etc=
+  #+BEGIN_SRC shell :cache no :dir "/sudo::" :results output
+  find /etc -regextype posix-extended -regex ".+\.pac(new|save)"
+  #+END_SRC
 
 *** Docker :docker:
-#+NAME: Running docker with non-root user.
-#+BEGIN_SRC shell
-sudo usermod -aG docker $USER
-newgrp docker
-#+END_SRC
+- Allow Docker runs with non-root user.
+  #+BEGIN_SRC shell
+  sudo usermod -aG docker $USER
+  newgrp docker
+  #+END_SRC
 
 ** Sourcing env with i3
-For some reason, i3 is sourcing =.xprofile= instead of =xinitrc=, so for getting
-Github plugin for the [[file:dot_config/i3/status.toml][i3status-rust]] you need to set up a variable in your
-=.xprofile=
-
-#+BEGIN_SRC shell
-export I3RS_GITHUB_TOKEN="your-github-token"
-#+END_SRC
-
+- For some reason, i3 is sourcing =.xprofile= instead of =xinitrc=, so for
+  getting Github plugin for the [[file:dot_config/i3/status.toml][i3status-rust]] you need to set up a variable in
+  your =.xprofile=
+  #+BEGIN_SRC shell
+  export I3RS_GITHUB_TOKEN="your-github-token"
+  #+END_SRC
 
 * OSX
 ** Set OSX defaults
