@@ -17,12 +17,3 @@
   shell:
     pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
     --noconfirm --needed
-
-- name: Install AUR packages
-  become_user: aur_builder
-  aur:
-    state: present
-    use: trizen
-    name:
-      - ttf-symbola
-      - gtk-theme-arc-gruvbox-git
