@@ -67,3 +67,6 @@
 - name: Install Emacs doom packages
   command: "~/.emacs.d/bin/doom -y install"
 
+- name: Print AUR information
+  debug:
+    msg: "Make sure you manually install the AUR packages located at {{ playbook_dir }}/aur.pkgs"
