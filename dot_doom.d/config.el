@@ -324,3 +324,25 @@
   :defer t
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
+
+
+(after! mu4e
+  :defer t
+  :config
+  (set-email-account! "Personal"
+    '((mu4e-sent-folder       . "/personal/sent")
+       (mu4e-drafts-folder     . "/personal/drafts")
+       (mu4e-trash-folder      . "/personal/trash")
+       (mu4e-refile-folder     . "/personal/all")
+       (smtpmail-smtp-user     . "me@benmezger.nl")
+       (mu4e-compose-signature . "---\nBen Mezger"))
+    t)
+
+  (set-email-account! "work"
+    '((mu4e-sent-folder       . "/work/sent")
+       (mu4e-drafts-folder     . "/work/drafts")
+       (mu4e-trash-folder      . "/work/trash")
+       (mu4e-refile-folder     . "/work/all")
+       (smtpmail-smtp-user     . "ben@ckl.io")
+       (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))
+    t))
