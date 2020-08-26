@@ -21,3 +21,19 @@
     scope: user
     name: greenclip.service
     enabled: yes
+
+- name: Install MBSync service
+  template:
+    src: services/mbsync.service
+    dest: ~/.config/systemd/user/mbsync.service
+
+- name: Install MBSync timer service
+  template:
+    src: services/mbsync.timer
+    dest: ~/.config/systemd/user/mbsync.timer
+
+- name: Enable MBSync timer service
+  systemd:
+    scope: user
+    name: mbsync.timer
+    enabled: yes
