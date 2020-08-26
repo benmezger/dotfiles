@@ -39,6 +39,7 @@ jobs:
         with:
           path: |
             $HOME/Library/Caches/Homebrew
+            /Library/Caches/Homebrew
             $HOME/.pyenv
             $HOME/.ansible
             $HOME/Library/Caches/pip
