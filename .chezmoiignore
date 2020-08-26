@@ -31,3 +31,7 @@ CHANGELOG.md
 .xinitrc
 .xsession
 {{- end }}
+
+{{- if and (eq (env "CI") "1") (not .secrets) }}
+.mbsyncrc
+{{- end }}
