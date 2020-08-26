@@ -33,7 +33,6 @@
 (display-battery-mode 1)
 (toggle-frame-maximized)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -329,14 +328,16 @@
 (after! mu4e
   :defer t
   :config
-  (set-email-account! "Personal"
+  (set-email-account! "personal"
     '((mu4e-sent-folder       . "/personal/sent")
        (mu4e-drafts-folder     . "/personal/drafts")
        (mu4e-trash-folder      . "/personal/trash")
        (mu4e-refile-folder     . "/personal/all")
+       (user-mail-address . "me@benmezger.nl")
        (smtpmail-smtp-user     . "me@benmezger.nl")
-       (mu4e-compose-signature . "---\nBen Mezger"))
-    t)
+       (smtpmail-smtp-server     . "smtp.gmail.com")
+       (smtpmail-smtp-service . 587)
+       (mu4e-compose-signature . "---\nBen Mezger")))
 
   (set-email-account! "work"
     '((mu4e-sent-folder       . "/work/sent")
@@ -344,5 +345,7 @@
        (mu4e-trash-folder      . "/work/trash")
        (mu4e-refile-folder     . "/work/all")
        (smtpmail-smtp-user     . "ben@ckl.io")
-       (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))
-    t))
+       (user-mail-address . "ben@ckl.io")
+       (smtpmail-smtp-server     . "smtp.gmail.com")
+       (smtpmail-smtp-service . 587)
+       (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
