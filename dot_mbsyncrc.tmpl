@@ -36,3 +36,36 @@ Group personal
 Channel personal-inbox
 Channel personal-sent
 Channel personal-trash
+
+IMAPAccount work
+Host imap.gmail.com
+User {{ .work.workmail }}
+Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
+SSLType IMAPS
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/mail/personal/
+Inbox ~/mail/work/inbox
+
+Channel work-inbox
+Master :work-remote:
+Slave :work-local:
+Patterns "INBOX"
+
+Channel work-sent
+Master :work-remote:"[Gmail]/Sent Mail"
+Slave :work-local:sent
+
+Channel work-trash
+Master :work-remote:"[Gmail]/Trash"
+Slave :work-local:trash
+
+Group work
+Channel work-inbox
+Channel work-sent
+Channel work-trash
