@@ -41,6 +41,14 @@ format = "%a %d/%m %R"
 block = "github"
 
 [[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/{{ .chezmoi.homedir}}/mail/personal", "{{ .chezmoi.homedir }}/mail/personal/inbox"]
+threshold_warning = 1
+threshold_critical = 10
+display_type = "new"
+
+[[block]]
 block = "pomodoro"
 length = 25
 break_length = 5
