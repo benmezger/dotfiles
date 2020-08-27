@@ -2,6 +2,7 @@
 #+SUBTITLE: Personal commands
 #+AUTHOR: Ben Mezger
 #+DATE: <2020-08-07 Fri>
+#+OPTIONS: ^:nil
 
 These are general commands I use while managing my =dotfiles= and my system . I
 run them in orgmode itself, but you can simply copy and paste it to your
@@ -25,6 +26,26 @@ terminal.
   cd $dir
   chezmoi init ~/dotfiles
   #+END_SRC
+
+- 1Password integration
+  Chezmoi requires 1password for the following files:
+  |------------------------|
+  | ./dot_env-secrets.tmpl |
+  | ./dot_mbsyncrc.tmpl    |
+  |------------------------|
+
+  As a result, it requires 1Password cli installed and logged with =eval $(op
+  signin my.1password.com <email>)=. Make sure you change any 1Password UUID
+  from these files with your UUID.
+ 
+  You can test your UUID with:
+  #+BEGIN_SRC shell
+  op get item <uuid> | jq .details.password
+  #+END_SRC
+
+  Chezmoi will only run 1Password against these files if:
+    + Environment is not set to =CI=
+    + =chezmoi.yaml= has =secrets= set to =true=.
 
 * Emacs :emacs:
 General Emacs maintanence.
