@@ -28,6 +28,10 @@ Channel personal-sent
 Master :personal-remote:"[Gmail]/Sent Mail"
 Slave :personal-local:sent
 
+Channel personal-archives
+Master :personal-remote:"[Gmail]/All Mail"
+Slave :personal-local:archives
+
 Channel personal-trash
 Master :personal-remote:"[Gmail]/Bin"
 Slave :personal-local:trash
@@ -36,6 +40,7 @@ Group personal
 Channel personal-inbox
 Channel personal-sent
 Channel personal-trash
+Channel personal-archives
 
 IMAPAccount work
 Host imap.gmail.com

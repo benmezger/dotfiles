@@ -332,7 +332,7 @@
     '((mu4e-sent-folder       . "/personal/sent")
        (mu4e-drafts-folder     . "/personal/drafts")
        (mu4e-trash-folder      . "/personal/trash")
-       (mu4e-refile-folder     . "/personal/all")
+       (mu4e-refile-folder     . "/personal/archives")
        (user-mail-address . "me@benmezger.nl")
        (smtpmail-smtp-user     . "me@benmezger.nl")
        (smtpmail-smtp-server     . "smtp.gmail.com")
