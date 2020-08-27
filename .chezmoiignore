@@ -32,6 +32,6 @@ CHANGELOG.md
 .xsession
 {{- end }}
 
-{{- if and (eq (env "CI") "1") (not .secrets) }}
+{{- if or (eq (env "CI") "1") (not .secrets) }}
 .mbsyncrc
 {{- end }}
