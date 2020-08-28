@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "d12frosted/emacs-plus": {
-        "revision": "f5aefc8ee706914eba102104c6021018340dfaf1"
+        "revision": "c8aec586c7ce2ac631b84f863ed2ee094de3615b"
       },
       "getantibody/tap": {
         "revision": "1712a55c79bdab259acb0ff023c9d80f1591c377"
@@ -17,7 +17,7 @@
         "revision": "d1fe8a76750e7df23373720f5ea212afcad847bd"
       },
       "homebrew/cask-fonts": {
-        "revision": "a9c791441bc0e4fe8cb6a5eb0a3d09cb79fd72a7"
+        "revision": "1f1d346222497f3700aefbbbd1bba33c11f4be61"
       }
     },
     "brew": {
@@ -267,22 +267,22 @@
         }
       },
       "awscli": {
-        "version": "2.0.43",
+        "version": "2.0.44",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.catalina.bottle.tar.gz",
-              "sha256": "5a58289c4c92b2c128037074f813ab2956ee0e35e913dcfa655f83353803b2d1"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.44.catalina.bottle.tar.gz",
+              "sha256": "391408bb08636c2190a9c9b75d4574e20475cb4e199d14b24ad2c02a03d4aee7"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.mojave.bottle.tar.gz",
-              "sha256": "85f2cceb6b29ad70cbd0c6ab169fceb869a7831c5d65221d9786977447f14598"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.44.mojave.bottle.tar.gz",
+              "sha256": "b610a107875dac44a9a3a5c45569228dfb0c51769af74e69ac3aec57ac1c8c70"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.high_sierra.bottle.tar.gz",
-              "sha256": "36969a7b29c24f682e2655cbdd8bb9a87a664f59512b395c5b57d171662bf530"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.44.high_sierra.bottle.tar.gz",
+              "sha256": "2eeada5996038d52a6d9efe9458180b5f38fc69ab3e8ab98c810d0c17cac93ce"
             }
           }
         }
@@ -2305,13 +2305,7 @@
           }
         }
       },
-      "d12frosted/emacs-plus/emacs-plus@28": {
-        "options": {
-          "args": [
-            "with-jansson"
-          ]
-        }
-      },
+      "d12frosted/emacs-plus/emacs-plus@28": null,
       "git-chglog/git-chglog/git-chglog": null,
       "heroku/brew/heroku": null,
       "podman": {
@@ -2474,9 +2468,9 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.4.13-277-gff8d30d",
+        "HOMEBREW_VERSION": "2.4.13-286-gfa39db0",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "b5791a7f15fa72364bc5cc96304a3a1f977c94dd",
+        "Homebrew/homebrew-core": "b509e184c73c214f6399f4d1f074da8fb8244cb4",
         "CLT": "11.5.0.0.1.1588476445",
         "Xcode": "11.5",
         "macOS": "10.15.6"
