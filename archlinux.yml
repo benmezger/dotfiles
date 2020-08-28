@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - role: archlinux
+    - role: common
+    - role: linux
+    - role: nephelaiio.pyenv

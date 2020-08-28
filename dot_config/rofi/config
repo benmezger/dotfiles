@@ -1,0 +1,8 @@
+rofi.theme: gruvbox-dark-hard
+rofi.color-enabled: true
+rofi.terminal: alacritty
+rofi.font: Hack 10
+rofi.modi: combi
+rofi.combi-modi: window,drun,run
+rofi.show-icons: true
+rofi.icon-theme: Papirus-Dark

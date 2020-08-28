@@ -1,0 +1,51 @@
+# see http://editorconfig.org/
+
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+tab_width = 8
+ident_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.{py,pl,rb}]
+indent_style = space
+indent_size = 4
+charset = utf-8
+
+[*.{c,cc,cpp,h,hpp}]
+indent_style = tab
+tab_width = 8
+indent_size = 8
+
+[*.{html,css,scss}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+continuation_indent_size = 2
+charset = utf-8
+
+[*.{js,ts}]
+indent_size = 2
+tab_width = 2
+continuation_indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[*.{json,yml}]
+indent_style = space
+indent_size = 2
+insert_final_newline = ignore
+
+[*.snip]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+[*.el]
+indent_size = 2

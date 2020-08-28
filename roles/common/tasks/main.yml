@@ -1,0 +1,74 @@
+---
+
+- name: Check if chezmoi is installed
+  shell: type chezmoi &>/dev/null
+  register: chezmoi_exists
+  ignore_errors: yes
+
+- name: Create temporary bin directory for chezmoi
+  tempfile:
+    state: directory
+    suffix: bin
+  when: chezmoi_exists.rc > 0
+  register: chezmoi_bin
+
+- name: Install Chezmoi
+  shell: curl -sfL https://git.io/chezmoi | sh
+  when: chezmoi_exists.rc > 0
+  environment:
+    - BINDIR: "{{ chezmoi_bin.path }}"
+  args:
+    warn: no
+
+- name: Initialize dotfiles
+  shell: chezmoi -S ~/dotfiles init
+  environment:
+    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
+    - CI: "{{ lookup('env', 'CI') }}"
+
+- name: Install dotfiles
+  shell: chezmoi -v apply
+  args:
+    chdir: ~/
+  environment:
+    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
+    - CI: "{{ lookup('env', 'CI') }}"
+
+- name: Install zplug
+  git:
+    repo: https://github.com/zplug/zplug
+    dest: ~/.zplug
+
+- name: Clone TPM (for Tmux)
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+
+- name: Ensure vim directories exist
+  file:
+    path: ~/.vim/autoload
+    state: directory
+
+- name: Install Vim-Plug
+  poll: 0
+  async: 45
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/plug.vim
+
+- name: Clone base16-shell
+  git:
+    repo: https://github.com/chriskempson/base16-shell
+    dest: ~/.config/base16-shell
+
+- name: Clone Emacs doom
+  git:
+    repo: https://github.com/hlissner/doom-emacs
+    dest: ~/.emacs.d
+
+- name: Install Emacs doom packages
+  command: "~/.emacs.d/bin/doom -y install"
+
+- name: Print AUR information
+  debug:
+    msg: "Make sure you manually install the AUR packages located at {{ playbook_dir }}/aur.pkgs"
