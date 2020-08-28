@@ -1,0 +1,5 @@
+# from: https://github.com/lpicanco/i3-autodisplay
+displays:
+  - name: HDMI1
+    workspaces: [2]
+    randr_extra_options: "--above LVDS1 --mode 1920x1080"

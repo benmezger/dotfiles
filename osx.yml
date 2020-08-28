@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  pre_tasks:
+    - pause:
+        prompt: "App Store email (mas)"
+      when: lookup('env', 'CI') == '0'
+      register: "mas_email"
+    - pause:
+        prompt: "App store password (mas)"
+      when: lookup('env', 'CI') == '0'
+      register: "mas_password"
+  roles:
+    - role: geerlingguy.homebrew
+      vars:
+        - homebrew_use_brewfile: yes
+        - homebrew_brewfile_dir: "./roles/osx/tasks/"
+
+    - role: osx
+    - role: common
+    - role: markosamuli.pyenv
+      vars:
+        - pyenv_python3_version: "3.7.3"
+        - pyenv_python_versions:
+            - "{{ pyenv_python3_version }}"
+        - pyenv_global: "{{ pyenv_python3_version }} system"
+        - pyenv_virtualenvwrapper: true
+        - pyenv_detect_existing_install: true
+        - pyenv_init_shell: false
+        - pyenv_install_from_package_manager: false

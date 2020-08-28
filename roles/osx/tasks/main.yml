@@ -1,0 +1,23 @@
+---
+- import_tasks: brew.yml
+- import_tasks: mas.yml
+  when: lookup('env', 'TRAVIS') == '0'
+
+- name: Ensure vim directories exist
+  poll: 0
+  async: 45
+  file:
+    path: ~/.vim/autoload
+    state: directory
+
+- name: Copy Tmux launchd daemon
+  poll: 0
+  async: 45
+  become: true
+  command: cp {{ playbook_dir }}/roles/osx/tasks/confs/com.tmux.plist /Library/LaunchDaemons/
+
+- name: Make launchd start tmux on boot
+  poll: 0
+  async: 45
+  become: true
+  command: launchctl load -w /Library/LaunchDaemons/com.tmux.plist

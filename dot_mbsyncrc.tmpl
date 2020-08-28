@@ -1,0 +1,76 @@
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount personal
+Host imap.gmail.com
+User {{ .email }}
+# To store the password in an encrypted file use PassCmd instead of Pass
+# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+Pass {{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+SSLType IMAPS
+
+IMAPStore personal-remote
+Account personal
+
+MaildirStore personal-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/mail/personal/
+Inbox ~/mail/personal/inbox
+
+Channel personal-inbox
+Master :personal-remote:
+Slave :personal-local:
+Patterns "INBOX"
+
+Channel personal-sent
+Master :personal-remote:"[Gmail]/Sent Mail"
+Slave :personal-local:sent
+
+Channel personal-archives
+Master :personal-remote:"[Gmail]/All Mail"
+Slave :personal-local:archives
+
+Channel personal-trash
+Master :personal-remote:"[Gmail]/Bin"
+Slave :personal-local:trash
+
+Group personal
+Channel personal-inbox
+Channel personal-sent
+Channel personal-trash
+Channel personal-archives
+
+IMAPAccount work
+Host imap.gmail.com
+User {{ .work.workmail }}
+Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
+SSLType IMAPS
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/mail/personal/
+Inbox ~/mail/work/inbox
+
+Channel work-inbox
+Master :work-remote:
+Slave :work-local:
+Patterns "INBOX"
+
+Channel work-sent
+Master :work-remote:"[Gmail]/Sent Mail"
+Slave :work-local:sent
+
+Channel work-trash
+Master :work-remote:"[Gmail]/Trash"
+Slave :work-local:trash
+
+Group work
+Channel work-inbox
+Channel work-sent
+Channel work-trash

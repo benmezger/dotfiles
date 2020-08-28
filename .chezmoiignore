@@ -1,0 +1,37 @@
+roles
+.github/
+Dockerfile
+LICENSE.md
+README.org
+TODO.org
+archlinux.yml
+docker-compose.yml
+docker-entrypoint.sh
+inventory
+osx.yml
+requirements.yml
+COMMANDS.org
+docs/
+ansible.cfg
+CHANGELOG.md
+
+# Don't copy the following files if OS is OSX
+{{- if ne .chezmoi.os "linux" }}
+.config/dunst
+.config/rofi
+.config/i3
+.config/polybar
+.config/i3-autodisplay
+.config/greenclip.cfg
+
+.xinitrc
+.xsession
+.Xmodmap
+.Xresources
+.xinitrc
+.xsession
+{{- end }}
+
+{{- if or (eq (env "CI") "1") (not .secrets) }}
+.mbsyncrc
+{{- end }}

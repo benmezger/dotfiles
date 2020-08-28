@@ -1,0 +1,22 @@
+---
+- name: Login to Apple Store
+  command: mas signin "{{ mas_email }}" "{{ mas_password }}"
+
+- name: Install Apple Store apps using mas
+  poll: 0
+  async: 45
+  command: mas install "{{ item }}"
+  with_items:
+    - 599327197  # Collective
+    - 1094298678 # RealDNS
+    - 443126292  # TrashMe
+    - 737047715  # Magic Number
+    - 1262957439 # Textual 7
+    - 639764244  # Xee
+    - 441258766  # Magnet
+    - 747648890  # Telegram
+    - 1054607607 # Helium
+    - 1006087419 # SnippetsLab
+    - 1257711898 # DeskCover
+    - 937984704  # Amphetamine
+    - 1384080005 # Tweetbot

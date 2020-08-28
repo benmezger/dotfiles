@@ -1,0 +1,39 @@
+---
+- name: Enable pcscd service
+  become: yes
+  systemd:
+    name: pcscd.socket
+    enabled: yes
+
+- name: Create user systemd directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
+    mode: '0755'
+
+- name: Install Greenclip service
+  template:
+    src: services/greenclip.service
+    dest: ~/.config/systemd/user/greenclip.service
+
+- name: Enable Greenclip service
+  systemd:
+    scope: user
+    name: greenclip.service
+    enabled: yes
+
+- name: Install MBSync service
+  template:
+    src: services/mbsync.service
+    dest: ~/.config/systemd/user/mbsync.service
+
+- name: Install MBSync timer service
+  template:
+    src: services/mbsync.timer
+    dest: ~/.config/systemd/user/mbsync.timer
+
+- name: Enable MBSync timer service
+  systemd:
+    scope: user
+    name: mbsync.timer
+    enabled: yes
