@@ -1,19 +1,25 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
-### Chore
-- Add CHANGELOG
-
-### Zsh
-- Update PATH with GOPATH
-
-
-<a name="v3.2"></a>
-## [v3.2] - 2020-08-20
 ### Alacritty
 - Enable background opacity
 
 ### Chore
+- Fix chezmoi CI or secret check logic
+- Ignore mbsyncrc if running on CI
+- Disable kewlfft.aur Ansible module
+- Fix OSX CI cache
+- Remove wordnet and inconsolata from Brewfile
+- Cache .ansible
+- Upload docker image to Github
+- Cancel all previous builds on push
+- Dont run homebrew clean on OSX workflow
+- Refactor workflow cache for OSX
+- Copy dotfiles as archie user
+- Initialize dotfiles before running apply
+- Run chezmoi with shell instead of command
+- Use CI instead of TRAVIS env variable
+- Add CHANGELOG
 - Bump actions/checkout version to v2.3.2
 - Ignore ansible.cfg on Chezmoi apply
 - Cache Applications on OSX
@@ -26,6 +32,13 @@
 - Disable Docker layer-caching and use GH registry
 
 ### Docs
+- Update COMMANDS.org
+- Skip first 5 line of an org include
+- Update todo list
+- Update command list
+- Update list of todos
+- Add HTML auto export to README
+- Update README
 - Add OSX defaults
 - Update COMMANDS.org
 - Update README/COMMANDS.org
@@ -34,26 +47,99 @@
 - Add app name to notification
 
 ### Emacs
+- Update Mu4e settings
+- Enable mu4e client in Emacs
+- Move macos to :os section
 - Remove unused ref-capture template
 - Add custom orgmode file snippet
 - Add weekly journal capture
 - Add HUGO_TAGS to roam
 - Turn on auto-fill on org buffers
 
+### Feat
+- Make zsh source work stuff
+- Install pdb++
+- Backup virtualenv files
+
+### Fish
+- Set EDITOR and VISUAL to nvim
+- Don't set _JAVA_OPTIONS.
+- Treat ambiguous unicode character as width 1
+- Add spaces to gitline so RPROMPT don't get mingled.
+- Update fishfile with new dependencies
+- Added gitline to repo.
+- Disable Homebrew analytics and autoupdate for OSX
+- Removed unused aliases and allow bad fortunes.
+- Install nvm plugin
+- Updated alias syntax
+- Alias to nvim
+- Colorful man pages
+- Set pyenv's variable
+- Install Z and remove pisces since it doesn't work well.
+- Set environment variables
+- Added fast_cd, system-specific variables and removed unused alias.
+- Ignore any other module
+- Auto start tmux script
+- Moved tmux start to functions/
+- Moved files due to stow
+
+### Fishe
+- Git ignore fish config files
+
 ### Fix
 - Push docker image to Github with correct tag
+- Use personal Github for slimfish.
+- Keep a gitignore for each software.
+
+### Git
+- Rebase on pull by default
+- Git LFS filter and ignore mypy cache
+- undo-commit alias.
+- Changed PGP signing key
+- Cleaned repository with unused files
+
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
 
 ### Greenclip
 - Add greenclip configuration
 
 ### I3
-- Add Rofi's greenclip shortcut
-
-### I3
+- Make popup window floating by default
 - Enable backlight block for status
 - Add Pomodoro to status bar
 - Auto hide status bar
 - Allow window stick to workspaces
+
+### I3
+- Add Rofi's greenclip shortcut
+
+### MBSync
+- Sync personal email archives
+- Add work email
+- Fix bad remote trash name
+
+### Mail
+- Enable mbsync for email handling
+
+### Misc
+- Set html/css indentation rule
+
+### Playbooks
+- Updated submodule
+
+### Playbooks
+- Updated playbook submodule
+
+### Readme
+- Updated readme
+
+### Refactor
+- Remove vim-fish
+- Removed virtualenv as we use pyenv now.
+
+### Ripgrep
+- Use rg to grep and find files with Denite and keep it config in env
 
 ### Rofi
 - Enable run combi
@@ -61,11 +147,59 @@
 - Show application icons
 - Update rofi configuration so it uses combi
 
+### Scripts
+- Run tmux session on boot (OSX only)
+
+### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- Remove vim-startify config
+- Use base16-vim fork due to unupdated repo.
+- Enable semshi only for Python; Removed unused tabline plugin
+- Better Python syntax
+- Removed unused plugins
+- Neomake mypy and Flake8 makers.
+- Remove JS linter and re-add python version checker.
+- No need to check Python version.
+- Close NeoMake buffer on closing vim.
+- Set indentLine colours.
+- Denite custom binding
+- New plug configs
+- Autoindent, enable cursorline, hybrid numbers, remove encryption,     disabled arrow keys.
+- Find python host program dynamically
+- Added python version
+- Deoplet options
+- Remove YouComplete me and use Deoplet.
+- Renamed bookmarks
+- Set clipboard
+- Fish-shell syntax
+- Cleaned unused plugs
+- Use different rainbow parentheses with better colors.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
 ### X
+- Run rescuetime on startx
 - Enable xcompmgr for opacity
 - Move i3 non restart startup to xinitrc
 
+### XDG
+- Add XDG default directories
+
 ### Zsh
+- Get OP_SESSION from current env
+- Fix tmux autostart check
+- Add secret env with 1password integration
+- Update PATH with GOPATH
 - Add Django aliases
 - Add pacman aliases
 - Add emacsclient alias
@@ -75,13 +209,13 @@
 - Add chezmoi custom completion
 - Add correct zsh-completion path
 - Disable Tmux autostart if running on i3wm
+- Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
+- Defer syntax highlight.
+- Updated zplug syntax
 
-### Reverts
-- Chore: Disable Docker layer-caching and use GH registry
-- Chore: Fix Docker's GH name requirement
-- Chore: Manually build and push docker image
-- Fix: Push docker image to Github with correct tag
-- Chore: Pull from specified docker tag and repo owner
+### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
 
 
 <a name="v3.1"></a>
@@ -359,6 +493,96 @@
 - Enable tabs by using centaur-tabs
 - Automatically close all Magit buffers on magit-quit
 - Don't set mode-icons-mode since Doom-modeline does this for us
+
+### Feat
+- Add Travis config
+- Add Ansible files for auto install
+
+### Fix
+- Disable Emacs server
+
+### GIt
+- Ignore ccls-cache
+
+### GPG
+- Fixed Linux pinentry program
+
+### Git
+- Remove conflicting Ruby ignore with Go required paths
+- Add correct PGP key
+- Ignore Terraform cache files
+- Ignore emacs temporary files
+- Add useful commit tips as a git-commit template
+- Prune when pulling from origin
+- Remove diff-so-fancy as diff pager
+- Add merge strategy to git's global config
+- Merge  strategy to specific files where merge should not overwrite
+- Ignore Emacs's irony files
+- Fixed templatedir path
+- Don't add Makefile to the global git ignore file
+
+### Gnupg
+- Add pinentry-mac's program to gpg agent
+
+### I3
+- Fixed font size for i3bar
+
+### I3wm
+- Add gruvbox colors and bind Alacritty to $mod+Return
+
+### Kitty
+- Add Kitty's terminal configuration
+
+### Linux
+- Merged linux configuration to OSX
+
+### Misc
+- Remove deprecated Alacritty config
+- Configure tab sizes for html and js related files
+- Add Rofi config
+
+### Refactor
+- Remove old Emacs configuration
+
+### TMP
+- REMOVE README.md FROM CKL
+- Added first anex modified file
+
+### Test
+- Remove OSX's /Application directory from Travi's cache system
+
+### Tmux
+- Use themepack instead of custom theme
+- Set new theme and remove custom theme
+
+### Vim
+- Use gruvbox theme
+- Fixed wrong gitignore file
+- Add gitignore
+
+### X
+- Remove rofi from XResource and use Gruvbox theme
+
+### Zsh
+- Add FZF options
+- Update env-secrets path
+- Install zsh wakatime plugin
+- Move pyenv to zshenv instead and don't rehash
+- Disable beep
+- Remove duplicate eval on dircolors
+- Set Golang path
+- Fixes pyenv not auto-switching versions between projects
+- Check if shell is running within an SSH session
+- Export path before checking if pyenv exists
+- Check OS before sourcing Antibody
+- Check OS before sourcing Antibody
+- Fix Antibody path
+- USe Gruvbox hard dark base16 theme
+
+
+<a name="v1.2"></a>
+## [v1.2] - 2019-07-11
+### Emacs
 - Use Doom-themes and Doom-modeline [testing]
 - Add magit- keys to evil-leader
 - Fix evil-leader key
@@ -408,106 +632,29 @@
 - Ignore projectile cache file
 - Set a better cache and enable Helm integration
 
-### Feat
-- Add Travis config
-- Add Ansible files for auto install
-
 ### Fix
-- Disable Emacs server
 - Check if pyenv exists and if so, evaluate it
 - Don't let homebrew autoupdate
 - Remove duplicated LS_COLORS and GREP_COLORS
 - Updated Alacritty's config
 
-### GIt
-- Ignore ccls-cache
-
-### GPG
-- Fixed Linux pinentry program
-
 ### Git
-- Remove conflicting Ruby ignore with Go required paths
-- Add correct PGP key
-- Ignore Terraform cache files
-- Ignore emacs temporary files
-- Add useful commit tips as a git-commit template
-- Prune when pulling from origin
-- Remove diff-so-fancy as diff pager
-- Add merge strategy to git's global config
-- Merge  strategy to specific files where merge should not overwrite
-- Ignore Emacs's irony files
-- Fixed templatedir path
-- Don't add Makefile to the global git ignore file
 - Set custom hooks for git init
-
-### Gnupg
-- Add pinentry-mac's program to gpg agent
 
 ### I3
 - Start ckb-next for the keyboard and solaar for the mouse.
 
-### I3
-- Fixed font size for i3bar
-
-### I3wm
-- Add gruvbox colors and bind Alacritty to $mod+Return
-
 ### Ipython
 - Add vi key-bindings
 
-### Kitty
-- Add Kitty's terminal configuration
-
-### Linux
-- Merged linux configuration to OSX
-
-### Misc
-- Remove deprecated Alacritty config
-- Configure tab sizes for html and js related files
-- Add Rofi config
-
-### Refactor
-- Remove old Emacs configuration
-
-### TMP
-- REMOVE README.md FROM CKL
-- Added first anex modified file
-
-### Test
-- Remove OSX's /Application directory from Travi's cache system
-
 ### Tmux
-- Use themepack instead of custom theme
-- Set new theme and remove custom theme
 - Set mode style (mode-highlight colour)
 - Refactored Tmux config
-
-### Vim
-- Use gruvbox theme
-- Fixed wrong gitignore file
-- Add gitignore
-
-### X
-- Remove rofi from XResource and use Gruvbox theme
 
 ### ZSH
 - Move pyenv to it's own scope
 
 ### Zsh
-- Add FZF options
-- Update env-secrets path
-- Install zsh wakatime plugin
-- Move pyenv to zshenv instead and don't rehash
-- Disable beep
-- Remove duplicate eval on dircolors
-- Set Golang path
-- Fixes pyenv not auto-switching versions between projects
-- Check if shell is running within an SSH session
-- Export path before checking if pyenv exists
-- Check OS before sourcing Antibody
-- Check OS before sourcing Antibody
-- Fix Antibody path
-- USe Gruvbox hard dark base16 theme
 - source secrets env if available
 - Speed up pyenv init by launching zsh
 - Set custom backward delete word function
@@ -548,8 +695,14 @@
 
 <a name="v1.1"></a>
 ## [v1.1] - 2019-05-16
+
+<a name="v2.1"></a>
+## [v2.1] - 2019-05-16
 ### Alacritty
 - Keybindings for font-size and new instance
+
+### Docs
+- Update README.md
 
 ### Emacs
 - Projectile indexing and caching config.
@@ -651,12 +804,15 @@
 - Use exa command as alias to ls.
 - Updated gitignore with new custom fish files.
 - Update .gitignore path for fish
+- Set ambiguous width on fish and update gitignore.
 
 ### Fix
 - Moved .gitignore files to it's proper directory to prevent stow conflict.
 
 ### Git
 - Ignore .python-version
+- Remove credential helper
+- Use mdls as textconv for PDF diff
 
 ### GnuPG
 - Fixed obsolete keyserver option
@@ -671,9 +827,11 @@
 - Set Alacritty's default terminal program and enable persistent log
 - Set indent size for *.el files
 - Set snippet indent style in editorconfig
+- Update editorconfig with html/css config
 
 ### Tmux
 - Fixed unknown variable after Tmux upgrade
+- removed duplicated history-limit config
 
 ### Vim
 - Add current git branch to statusline
@@ -693,9 +851,13 @@
 - Use vimgrep with rg on denite find file
 - Use new file/rec command instead of file_rec for Denite
 - Use Wakatime's plugin to create programming metrics
+- Update base16-vim repository and check if vim has python 3
 
 ### X
 - Set DPI for thinkpad
+
+### ZSH
+- Update zshrc with a better ls aliass; disable tmux auto-start; remove gpg-agent
 
 ### Zsh
 - Add prezto Git alises
@@ -720,35 +882,126 @@
 - Emacs: Use emac's own line numering
 
 
-<a name="v1.0"></a>
-## v1.0 - 2019-03-14
-### Docs
-- Update README.md
+<a name="v1.7-OSX"></a>
+## [v1.7-OSX] - 2018-11-01
+### Feat
+- Make zsh source work stuff
+- Install pdb++
+- Backup virtualenv files
 
 ### Fish
-- Set ambiguous width on fish and update gitignore.
+- Removed unused aliases and allow bad fortunes.
+- Install nvm plugin
+- Updated alias syntax
+- Alias to nvim
+- Colorful man pages
+- Set pyenv's variable
+- Install Z and remove pisces since it doesn't work well.
+- Set environment variables
+- Added fast_cd, system-specific variables and removed unused alias.
+- Ignore any other module
+- Auto start tmux script
+- Moved tmux start to functions/
+- Moved files due to stow
 
 ### Git
-- Remove credential helper
-- Use mdls as textconv for PDF diff
+- Changed PGP signing key
+- Cleaned repository with unused files
 
-### Misc
-- Update editorconfig with html/css config
+### Playbooks
+- Updated submodule
 
-### Tmux
-- removed duplicated history-limit config
+### Readme
+- Updated readme
+
+### Scripts
+- Run tmux session on boot (OSX only)
 
 ### Vim
-- Update base16-vim repository and check if vim has python 3
+- New plug configs
+- Autoindent, enable cursorline, hybrid numbers, remove encryption,     disabled arrow keys.
+- Find python host program dynamically
+- Added python version
+- Deoplet options
+- Remove YouComplete me and use Deoplet.
+- Renamed bookmarks
+- Set clipboard
+- Fish-shell syntax
+- Cleaned unused plugs
 
-### ZSH
-- Update zshrc with a better ls aliass; disable tmux auto-start; remove gpg-agent
+### Zsh
+- Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
+- Defer syntax highlight.
+- Updated zplug syntax
 
 
-[Unreleased]: https://github.com/benmezger/dotfiles/compare/v3.2...HEAD
-[v3.2]: https://github.com/benmezger/dotfiles/compare/v3.1...v3.2
+<a name="v1.6-OSX"></a>
+## [v1.6-OSX] - 2018-05-27
+### Zsh
+- Load rbenv module from zprezto
+
+
+<a name="v1.5-OSX"></a>
+## [v1.5-OSX] - 2018-01-22
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Tmux
+- xterm seems to make vim faster when scrolling
+
+### Zsh
+- Function to open up daily logbooks
+
+
+<a name="v1.4-OSX"></a>
+## [v1.4-OSX] - 2017-08-28
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- disable mouse support.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+
+<a name="v1.3-OSX"></a>
+## [v1.3-OSX] - 2017-07-07
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+
+<a name="v1.2-OSX"></a>
+## [v1.2-OSX] - 2017-04-19
+
+<a name="v1.2-Linux"></a>
+## [v1.2-Linux] - 2017-04-19
+
+<a name="v1.1-Linux"></a>
+## [v1.1-Linux] - 2017-04-15
+
+<a name="v1.1-OSX"></a>
+## v1.1-OSX - 2017-04-15
+
+[Unreleased]: https://github.com/benmezger/dotfiles/compare/v3.1...HEAD
 [v3.1]: https://github.com/benmezger/dotfiles/compare/v3.0...v3.1
 [v3.0]: https://github.com/benmezger/dotfiles/compare/v2.2...v3.0
 [v2.2]: https://github.com/benmezger/dotfiles/compare/v2.0...v2.2
-[v2.0]: https://github.com/benmezger/dotfiles/compare/v1.1...v2.0
-[v1.1]: https://github.com/benmezger/dotfiles/compare/v1.0...v1.1
+[v2.0]: https://github.com/benmezger/dotfiles/compare/v1.2...v2.0
+[v1.2]: https://github.com/benmezger/dotfiles/compare/v1.1...v1.2
+[v1.1]: https://github.com/benmezger/dotfiles/compare/v2.1...v1.1
+[v2.1]: https://github.com/benmezger/dotfiles/compare/v1.7-OSX...v2.1
+[v1.7-OSX]: https://github.com/benmezger/dotfiles/compare/v1.6-OSX...v1.7-OSX
+[v1.6-OSX]: https://github.com/benmezger/dotfiles/compare/v1.5-OSX...v1.6-OSX
+[v1.5-OSX]: https://github.com/benmezger/dotfiles/compare/v1.4-OSX...v1.5-OSX
+[v1.4-OSX]: https://github.com/benmezger/dotfiles/compare/v1.3-OSX...v1.4-OSX
+[v1.3-OSX]: https://github.com/benmezger/dotfiles/compare/v1.2-OSX...v1.3-OSX
+[v1.2-OSX]: https://github.com/benmezger/dotfiles/compare/v1.2-Linux...v1.2-OSX
+[v1.2-Linux]: https://github.com/benmezger/dotfiles/compare/v1.1-Linux...v1.2-Linux
+[v1.1-Linux]: https://github.com/benmezger/dotfiles/compare/v1.1-OSX...v1.1-Linux
