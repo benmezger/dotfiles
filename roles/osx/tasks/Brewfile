@@ -114,7 +114,7 @@ brew "wget"
 brew "youtube-dl"
 brew "z"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-jansson"]
+brew "d12frosted/emacs-plus/emacs-plus@28"
 brew "git-chglog/git-chglog/git-chglog"
 brew "heroku/brew/heroku"
 brew "podman"
