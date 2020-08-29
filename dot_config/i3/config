@@ -293,7 +293,7 @@ exec_always --no-startup-id $HOME/workspace/i3-autodisplay/i3-autodisplay -confi
 bar {
     font pango:Hack, FontAwesome 9
     position top
-    mode hide
+    mode dock
     status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
     colors {
         separator #666666
