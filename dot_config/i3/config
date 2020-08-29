@@ -8,7 +8,7 @@ font pango:Hack 9
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id $HOME/.bin/open-terminal.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
