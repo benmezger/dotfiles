@@ -34,7 +34,7 @@ brew "chezmoi"
 brew "clang-format"
 brew "cloc"
 brew "cookiecutter"
-brew "coreutils"
+brew "coreutils", link: true
 brew "llvm"
 brew "cquery"
 brew "gawk"
