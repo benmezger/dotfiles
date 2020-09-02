@@ -91,6 +91,7 @@
     smudge = git-lfs smudge -- %f
 [init]
     templatedir = ~/.gittemplates
+    defaultBranch = main
 [merge "ours"]
     driver = true
 [remote "origin"]
