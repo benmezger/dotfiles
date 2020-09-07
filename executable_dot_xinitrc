@@ -30,6 +30,7 @@ isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
 isavailable xcompmgr && xcompmgr -c &
 isavailable rescuetime && rescuetime &
+isavailable feh && feh --bg-fill --randomize ~/workspace/wallpapers/* &
 
 # Here Xfce is kept as default
 session=${1:-i3}
