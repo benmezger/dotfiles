@@ -65,3 +65,8 @@ export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
 
 # setup custom completion path
 fpath=($HOME/.zsh/completions $fpath)
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup \
+    && test -f $HEROKU_AC_ZSH_SETUP_PATH \
+    && source $HEROKU_AC_ZSH_SETUP_PATH
