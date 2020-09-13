@@ -77,3 +77,10 @@
   git:
     repo: https://github.com/benmezger/wallpapers
     dest: ~/workspace/wallpapers
+
+- name: Install Gitmux
+  shell: go get -u github.com/arl/gitmux
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
