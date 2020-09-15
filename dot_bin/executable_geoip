@@ -15,40 +15,39 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
 
-from urllib2 import urlopen
+from urllib.request import urlopen
 from json import loads
 from socket import gethostbyname, gethostname
 from os import getenv
 
-# returns {u'X-Real-Ip': [u'xx.xx.xx.xx'], u'X-Ifconfig-Country': [u'xxx'], u'X-Ifconfig-Ip':
-# [u'xx.xx.xx.xx'], u'Accept-Encoding': [u'xxx'], u'User-Agent': [u'xxx']}
-ip_info = loads(urlopen("https://ifconfig.co/json").read())
+ip_info = loads(urlopen("https://ipinfo.io").read())
 
-real_ip = ip_info.get('ip')
-country = ip_info.get('country')
-city  = ip_info.get("city")
-
-is_torified = loads(urlopen("https://check.torproject.org/api/ip").read()).get("IsTor")
+real_ip = ip_info.get("ip")
+country = ip_info.get("country")
+city = ip_info.get("city")
+is_torified = ip_info.get("privacy", {}).get("tor", None)
+is_vpned = ip_info.get("privacy", {}).get("vpn", None)
 
 local_ip = gethostbyname(gethostname())
 hostname = gethostname()
 
-print "Public IP:", real_ip
-print "Country:", country
-print "City", city
+print("Public IP:", real_ip)
+print("Country:", country)
+print("City", city)
 
 print
-print "Is Torified:", "Yes" if is_torified == True else "No"
+print("Is Torified:", is_torified)
+print("Is VPNed:", is_vpned)
 print
 
-print "Local IP:", local_ip
-print "Hostname:", hostname
+print("Local IP:", local_ip)
+print("Hostname:", hostname)
 
 http_proxy = getenv("http_proxy")
 https_proxy = getenv("https_proxy")
 ftp_proxy = getenv("ftp_proxy")
 
-print "\nLocal variables:"
-print "HTTP Proxy:", http_proxy if True else "None"
-print "HTTPS Proxy:", https_proxy if True else "None"
-print "FTP Proxy:", ftp_proxy if True else "None"
+print("\nLocal variables:")
+print("HTTP Proxy:", http_proxy or None)
+print("HTTPS Proxy:", https_proxy or None)
+print("FTP Proxy:", ftp_proxy or None)
