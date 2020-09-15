@@ -21,4 +21,8 @@ base16_gruvbox-dark-hard
 if [[ ${OSTYPE} == linux* ]]; then
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
+else
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+    source /usr/local/opt/fzf/shell/completion.zsh
 fi
+    
