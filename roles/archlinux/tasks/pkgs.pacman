@@ -166,7 +166,6 @@ papirus-icon-theme
 texlive-core
 hugo
 rsync
-xcompmgr
 xdg-user-dirs
 pcmanfm-gtk3
 isync
@@ -174,3 +173,4 @@ notmuch
 xdotool
 git-lfs
 unclutter
+picom

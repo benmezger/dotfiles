@@ -84,3 +84,25 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
+
+
+- name: Install Go LSP
+  shell: go get -u golang.org/x/tools/gopls@latest
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
+
+- name: Install Git Changelog generator
+  shell: go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
+
+- name: Install i3 autodisplay
+  shell: go get -u github.com/lpicanco/i3-autodisplay
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
