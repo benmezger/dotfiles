@@ -1,3 +1,7 @@
 #!/usr/bin/bash
 
-bash $HOME/.xinitrc
+. $HOME/.xinitrc
+
+if [ -f /usr/bin/i3 ]; then
+    exec i3
+fi
