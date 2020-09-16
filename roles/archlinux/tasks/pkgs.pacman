@@ -152,8 +152,6 @@ xarchiver
 xautolock
 xf86-video-intel
 xfsprogs
-xmonad
-xmonad-contrib
 xorg-server
 xorg-xbacklight
 xorg-xev
