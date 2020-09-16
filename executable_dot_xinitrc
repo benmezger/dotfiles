@@ -28,7 +28,7 @@ isavailable nm-applet && nm-applet &
 isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock.sh &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
-isavailable xcompmgr && xcompmgr -c &
+isavailable picom && picom --config ~/.config/picom.conf &
 isavailable rescuetime && rescuetime &
 isavailable feh && feh --bg-fill --randomize ~/workspace/wallpapers/* &
 isavailable unclutter && unclutter &
