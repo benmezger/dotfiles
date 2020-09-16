@@ -30,7 +30,7 @@ isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
 isavailable picom && picom --config ~/.config/picom.conf &
 isavailable rescuetime && rescuetime &
-isavailable feh && feh --bg-fill --randomize ~/workspace/wallpapers/* &
+isavailable feh && feh --bg-scale --randomize ~/workspace/wallpapers/* &
 isavailable unclutter && unclutter &
 
 # Here Xfce is kept as default
