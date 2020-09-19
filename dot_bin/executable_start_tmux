@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+HOMEDIR=`eval echo ~`
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    tmux=/usr/bin/tmux
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    tmux=/usr/local/bin/tmux
+fi
+
+$tmux new -s default -d -c $HOMEDIR
