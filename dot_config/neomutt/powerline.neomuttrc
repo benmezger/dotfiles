@@ -1,0 +1,46 @@
+# ----------------------------------------------------------------------------
+# Powerline / nerdfont
+# This is a bit "hackish" due to neomutt limitations
+#
+# Author: Sheoak <contact [at] sheoak.fr>
+# ----------------------------------------------------------------------------
+set index_format=" %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)&  ? %?X?&·? %s"
+set pager_format=" %n %zc | %T %s%*  %{!%d %b · %H:%M} %?X?|  %X ?| %P  "
+set status_format = " %f%?r? %r? |  %m %?n?  %n ? | %?d?  %d ?%?t?  %t ?%?F?  %F? %> |%?p?   %p ?"
+set vfolder_format = " %N %?n?%3n&   ?  %8m  · %f"
+set attach_format = "%u%D  %T%-75.75d %?T?%&   ? %5s · %m/%M"
+
+# no addressed to me, to me, group, cc, sent by me, mailing list
+set to_chars=""
+# unchanged mailbox, changed, read only, attach mode
+set status_chars = " "
+ifdef crypt_chars set crypt_chars = " "
+set flag_chars = "      "
+
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+tag-transforms "replied" "↻ "  \
+               "encrytpted" "" \
+               "signed" "" \
+               "attachment" "" \
+
+# The formats must start with 'G' and the entire sequence is case sensitive.
+tag-formats "replied" "GR" \
+            "encrypted" "GE" \
+            "signed" "GS" \
+            "attachment" "GA" \
+
+color status white black
+# powerline status bar hack
+color status green black ''
+color status yellow black ''
+color status red black ''
+color status brightblack blue '(.*)' 1
+color status blue black '.*()' 1
+color status blue black '\s* [0-9]+\s*'
+color status blue black '().*$' 1
+color status yellow black '()\s*\s*[0-9]+\s*' 1
+color status yellow black '\s*\s*[0-9]+\s*'
+color status blue yellow '() ([0-9]+%|all|end) \s*' 1
+color status brightblack black ' ([0-9]+%|all|end) \s*'
+color status yellow black '()\s*' 1
+color status default black '|'

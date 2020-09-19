@@ -22,3 +22,7 @@ linux-zen
 rofi-greenclip
 1password-cli
 mu
+w3m
+mailcap
+neomutt
+msmtp

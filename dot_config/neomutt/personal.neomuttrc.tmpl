@@ -1,0 +1,10 @@
+set my_user={{ .email }}
+set my_pass={{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+
+set realname = 'Ben Mezger'
+set from = {{ .email }}
+set use_from = yes
+
+set smtp_pass = $my_pass
+set smtp_url=smtps://$my_user@{{ .smtp_host }}
+set ssl_force_tls = yes

@@ -43,7 +43,7 @@ Channel personal-trash
 Channel personal-archives
 
 IMAPAccount work
-Host {{ .work.smtp_host }}
+Host {{ .work.imap_host }}
 User {{ .work.workmail }}
 Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
 SSLType IMAPS
