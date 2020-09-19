@@ -43,4 +43,4 @@ color status yellow black '\s*\s*[0-9]+\s*'
 color status blue yellow '() ([0-9]+%|all|end) \s*' 1
 color status brightblack black ' ([0-9]+%|all|end) \s*'
 color status yellow black '()\s*' 1
-color status default black '|'
+color status default black '\|'
