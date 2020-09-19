@@ -1,25 +1,25 @@
-set my_user={{ .email }}
+set my_user={{ .work.workmail }}
 
 {{- if or (eq (env "CI") "0") (.secrets) }}
 set my_pass={{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
 {{- end }}
 
 set realname = 'Ben Mezger'
-set from = {{ .email }}
+set from = {{ .work.workmail }}
 set use_from = yes
 
 {{- if or (eq (env "CI") "0") (.secrets) }}
 set smtp_pass = $my_pass
-set smtp_url=smtps://$my_user@{{ .smtp_host }}
+set smtp_url=smtps://$my_user@{{ .work.smtp_host }}
 set ssl_force_tls = yes
 {{- end }}
 
-set folder = "~/mail/personal"
+set folder = "~/mail/work"
 set mbox_type = "Maildir"
 set spoolfile = +inbox
 set postponed = "+drafts"
-set header_cache = ~/.cache/mutt/personal/headers
-set message_cachedir= ~/.cache/mutt/personal/bodies
+set header_cache = ~/.cache/mutt/work/headers
+set message_cachedir= ~/.cache/mutt/work/bodies
 unset record
 
 unset move # gmail handles that
