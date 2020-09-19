@@ -9,6 +9,7 @@ User {{ .email }}
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 Pass {{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
 SSLType IMAPS
+AuthMechs PLAIN
 
 IMAPStore personal-remote
 Account personal
@@ -47,6 +48,7 @@ Host {{ .work.imap_host }}
 User {{ .work.workmail }}
 Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
 SSLType IMAPS
+AuthMechs PLAIN
 
 IMAPStore work-remote
 Account work
