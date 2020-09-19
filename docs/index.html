@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <!-- 2020-09-19 Sat 16:12 -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content=
-  "width=device-width, initial-scale=1" />
-  <title>README</title>
-  <meta name="generator" content="Org mode" />
-  <meta name="author" content="Ben Mezger" />
-  <style type="text/css">
-  <!--/*--><![CDATA[/*><!--*/
+<!-- 2020-09-19 Sat 16:55 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>README</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ben Mezger" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -191,36 +190,33 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
   /*]]>*/-->
-  </style>
-  <link rel="stylesheet" type="text/css" href=
-  "https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
+</style>
+<link rel="stylesheet" type="text/css" href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
 
-  <script type="text/javascript" src=
-  "https://thomasf.github.io/solarized-css/org-info.min.js">
-  //<![CDATA[
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  // @license-end
-  //]]>
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  <!--/*--><![CDATA[/*><!--*/
-  org_html_manager.set("TOC_DEPTH", "3");
-  org_html_manager.set("LINK_HOME", "");
-  org_html_manager.set("LINK_UP", "");
-  org_html_manager.set("LOCAL_TOC", "1");
-  org_html_manager.set("VIEW_BUTTONS", "0");
-  org_html_manager.set("MOUSE_HINT", "underline");
-  org_html_manager.set("FIXED_TOC", "0");
-  org_html_manager.set("TOC", "1");
-  org_html_manager.set("VIEW", "1");
-  org_html_manager.setup();  // activate after the parameters are set
-  /*]]>*///-->
-  // @license-end
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  <!--/*--><![CDATA[/*><!--*/
+<script type="text/javascript" src="https://thomasf.github.io/solarized-css/org-info.min.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "1");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+// @license-end
+</script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
@@ -240,852 +236,650 @@
          target.className = elem.cacheClassTarget;
      }
     /*]]>*///-->
-  // @license-end
-  </script>
+// @license-end
+</script>
 </head>
 <body>
-  <div id="content">
-    <h1 class="title">README<br />
-    <span class="subtitle">My personal dotfiles</span></h1>
-    <div id="table-of-contents">
-      <h2>Table of Contents</h2>
-      <div id="text-table-of-contents">
-        <ul>
-          <li>
-            <a href="#org8f748c0">1. Installing with Ansible</a>
-            <ul>
-              <li>
-                <a href="#orgb85f385">1.1. Requirements</a>
-              </li>
-              <li>
-                <a href="#org4342999">1.2. OSX</a>
-              </li>
-              <li>
-                <a href="#orgc5c5ce5">1.3. Archlinux</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org85e384b">2. Installing with Chezmoi</a>
-            <ul>
-              <li>
-                <a href="#orgcd43ffc">2.1. Requirements</a>
-              </li>
-              <li>
-                <a href="#orgfd9bcbe">2.2. Installing</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orgdd186bf">3. Troubleshooting</a>
-            <ul>
-              <li>
-                <a href="#org4bee956">3.1. Chezmoi does not seem to
-                reload the configuration</a>
-              </li>
-              <li>
-                <a href="#org0eaa580">3.2. Ansible fails due to
-                required administration password</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orgf106881">4. Commands</a>
-          </li>
-          <li>
-            <a href="#org127f1a8">5. Dependencies</a>
-          </li>
-          <li>
-            <a href="#org3caae9d">6. Features</a>
-            <ul>
-              <li>
-                <a href="#orgb617fab">6.1. OSX features</a>
-              </li>
-              <li>
-                <a href="#org8a8bad9">6.2. Archlinux features</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orgc665291">7. Commands</a>
-            <ul>
-              <li>
-                <a href="#org2e521fc">7.1.
-                Chezmoi&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class=
-                "dotfiles">dotfiles</span>&nbsp;<span class=
-                "chezmoi">chezmoi</span></span></a>
-              </li>
-              <li>
-                <a href="#org7de8ed6">7.2.
-                Emacs&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class="emacs">emacs</span></span></a>
-                <ul>
-                  <li>
-                    <a href="#org86acd55">7.2.1. Doom emacs</a>
-                  </li>
-                  <li>
-                    <a href="#orgd16bbf2">7.2.2.
-                    OSX&nbsp;&nbsp;&nbsp;<span class=
-                    "tag"><span class="osx">osx</span></span></a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#org36abd8e">7.3.
-                Linux&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class="linux">linux</span></span></a>
-                <ul>
-                  <li>
-                    <a href="#orge1a5055">7.3.1.
-                    Archlinux&nbsp;&nbsp;&nbsp;<span class=
-                    "tag"><span class=
-                    "archlinux">archlinux</span></span></a>
-                  </li>
-                  <li>
-                    <a href="#org3bb8727">7.3.2. Sourcing env with
-                    i3</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#orgdbecfa8">7.4. OSX</a>
-                <ul>
-                  <li>
-                    <a href="#orgac28cbd">7.4.1. Set OSX
-                    defaults</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orge520380">8. TODOS</a>
-            <ul>
-              <li>
-                <a href="#org265a9a2">8.1. <span class=
-                "todo TODO">TODO</span> Update README on how to
-                install individual configs</a>
-              </li>
-              <li>
-                <a href="#orgc2459a7">8.2. <span class=
-                "done CANCELED">CANCELED</span> Create multi-os
-                support in travis</a>
-              </li>
-              <li>
-                <a href="#org733b8d5">8.3. <span class=
-                "todo TODO">TODO</span> Verify if Github Workflow
-                is caching packages property</a>
-              </li>
-              <li>
-                <a href="#org8170230">8.4. <span class=
-                "todo TODO">TODO</span> Fix issue with tmux not
-                correctly searching text through panes</a>
-              </li>
-              <li>
-                <a href="#orgb6a7fcd">8.5. <span class=
-                "todo TODO">TODO</span> Add Archlinux AUR
-                packages</a>
-              </li>
-              <li>
-                <a href="#orgb230408">8.6. <span class=
-                "done DONE">DONE</span> Figure out how to handle
-                1password-cli with Chezmoi when running Ansible</a>
-              </li>
-              <li>
-                <a href="#org18368d2">8.7. <span class=
-                "done DONE">DONE</span> Switch to
-                <code>Brewfile</code></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <p><a href=
-    "https://github.com/benmezger/dotfiles/actions"><img src=
-    "https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
-    alt="Build Status" /></a></p>
-    <p><i>Github does not render orgmode files properly, <a href=
-    "https://benmezger.github.io/dotfiles">see</a> for a better
-    view of this documentation.</i></p>
-    <div id="outline-container-org8f748c0" class="outline-2">
-      <h2 id="org8f748c0"><span class="section-number-2">1</span>
-      Installing with Ansible</h2>
-      <div class="outline-text-2" id="text-1"></div>
-      <div id="outline-container-orgb85f385" class="outline-3">
-        <h3 id="orgb85f385"><span class=
-        "section-number-3">1.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-1-1">
-          <ul class="org-ul">
-            <li>
-              <a href=
-              "https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">
-              Ansible</a>
-            </li>
-          </ul>
-          <p>Install Ansible galaxy requirements with
-          <code>ansible-galaxy install -r
-          requirements.yml</code></p>
-        </div>
-      </div>
-      <div id="outline-container-org4342999" class="outline-3">
-        <h3 id="org4342999"><span class=
-        "section-number-3">1.2</span> OSX</h3>
-        <div class="outline-text-3" id="text-1-2">
-          <p>For MacOS, run <code>ansible-playbook -i inventory
-          osx.yml</code></p>
-        </div>
-      </div>
-      <div id="outline-container-orgc5c5ce5" class="outline-3">
-        <h3 id="orgc5c5ce5"><span class=
-        "section-number-3">1.3</span> Archlinux</h3>
-        <div class="outline-text-3" id="text-1-3">
-          <p>For Linux, run <code>ansible-playbook -i inventory
-          archlinux.yml</code></p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org85e384b" class="outline-2">
-      <h2 id="org85e384b"><span class="section-number-2">2</span>
-      Installing with Chezmoi</h2>
-      <div class="outline-text-2" id="text-2"></div>
-      <div id="outline-container-orgcd43ffc" class="outline-3">
-        <h3 id="orgcd43ffc"><span class=
-        "section-number-3">2.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-2-1">
-          <ul class="org-ul">
-            <li>
-              <a href="https://www.chezmoi.io/">Chezmoi</a>
-            </li>
-            <li>
-              <a href=
-              "https://1password.com/downloads/command-line/">1Password-cli</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-orgfd9bcbe" class="outline-3">
-        <h3 id="orgfd9bcbe"><span class=
-        "section-number-3">2.2</span> Installing</h3>
-        <div class="outline-text-3" id="text-2-2">
-          <p>Run <code>chezmoi init
-          https://github.com/benmezger/dotfiles.git</code> (see
-          <a href=
-          "https://www.chezmoi.io/docs/reference/">reference</a>
-          for more options) to checkout the repository and any
-          submodules. Finally, run <code>chezmoi apply</code> to
-          move changes to your home directory.</p>
-          <p>When installing without Ansible, <code>chezmoi</code>
-          wont install any external dependencies, so make sure you
-          have all the required dependencies before running
-          <code>chezmoi apply</code>.</p>
-          <p>Chezmoi will try to apply 1Password-cli in <a href=
-          "dot_env-secrets.tmpl">env-secrets</a> if <code>CI</code>
-          env is not set or <code>secrets</code> is set to
-          <code>true</code> in <code>chezmoi.yaml</code> (defaults
-          to <code>false</code>). Make sure the UUID are correct
-          with your password’s UUID, <a href=
-          "https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid">
-          see</a> for more information or set a <code>CI</code> env
-          variable before running to skip this step.</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orgdd186bf" class="outline-2">
-      <h2 id="orgdd186bf"><span class="section-number-2">3</span>
-      Troubleshooting</h2>
-      <div class="outline-text-2" id="text-3"></div>
-      <div id="outline-container-org4bee956" class="outline-3">
-        <h3 id="org4bee956"><span class=
-        "section-number-3">3.1</span> Chezmoi does not seem to
-        reload the configuration</h3>
-        <div class="outline-text-3" id="text-3-1">
-          <p>Run <code>chezmoi init &lt;dotfiles-path&gt;</code>
-          again. This should reload the configuration by copying
-          <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to
-          <code>$HOME/.config/chezmoi/chezmoi.yaml</code>.</p>
-        </div>
-      </div>
-      <div id="outline-container-org0eaa580" class="outline-3">
-        <h3 id="org0eaa580"><span class=
-        "section-number-3">3.2</span> Ansible fails due to required
-        administration password</h3>
-        <div class="outline-text-3" id="text-3-2">
-          <p>Run <code>ansible</code> with <code>-K</code> flag
-          before executing for prompting for the root password
-          before executing tasks.</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orgf106881" class="outline-2">
-      <h2 id="orgf106881"><span class="section-number-2">4</span>
-      Commands</h2>
-      <div class="outline-text-2" id="text-4">
-        <p>For commands related to this repository, see <a href=
-        "COMMANDS.html">COMMANDS</a></p>
-      </div>
-    </div>
-    <div id="outline-container-org127f1a8" class="outline-2">
-      <h2 id="org127f1a8"><span class="section-number-2">5</span>
-      Dependencies</h2>
-      <div class="outline-text-2" id="text-5">
-        <ul class="org-ul">
-          <li>Fonts
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">
-                Inconsolata-DZ</a>
-              </li>
-              <li>
-                <a href="https://sourcefoundry.org/hack/">Hack</a>
-              </li>
-              <li>
-                <a href="https://fontawesome.com/">FontAwesome</a>
-              </li>
-            </ul>
-          </li>
-          <li>ZSH
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/getantibody/antibody">Antibody</a>
-              </li>
-              <li>
-                <a href="https://github.com/junegunn/fzf">FZF</a>
-              </li>
-            </ul>
-          </li>
-          <li>Emacs
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/hlissner/doom-emacs">Doom
-                Emacs</a>
-              </li>
-              <li>Emacs &gt;= 27</li>
-            </ul>
-          </li>
-          <li>System utilities
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/wakatime/wakatime">Wakatime</a>
-              </li>
-              <li>
-                <a href=
-                "https://www.gnu.org/software/emacs/">Emacs</a>
-              </li>
-              <li>
-                <a href="https://www.chezmoi.io/">Chezmoi</a>
-              </li>
-              <li>
-                <a href=
-                "https://github.com/BurntSushi/ripgrep">Ripgrep</a>
-              </li>
-              <li>
-                <a href="https://github.com/pyenv/pyenv">pyenv</a>
-              </li>
-              <li>
-                <a href="https://gohugo.io/">Hugo</a>
-              </li>
-              <li>
-                <a href=
-                "https://1password.com/downloads/command-line/">1Password-cli</a>
-              </li>
-            </ul>
-          </li>
-          <li>OSX
-            <ul class="org-ul">
-              <li>
-                <a href="https://brew.sh/">Homebrew</a>
-              </li>
-              <li>
-                <a href="https://github.com/mas-cli/mas">Mas</a>
-              </li>
-            </ul>
-          </li>
-          <li>Linux
-            <ul class="org-ul">
-              <li>
-                <a href="https://i3wm.org/">i3wm</a>
-              </li>
-              <li>
-                <a href="https://github.com/fosskers/aura">Aura
-                (Archlinux)</a>
-              </li>
-              <li>
-                <a href=
-                "https://github.com/greshake/i3status-rust">i3status-rust</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="outline-container-org3caae9d" class="outline-2">
-      <h2 id="org3caae9d"><span class="section-number-2">6</span>
-      Features</h2>
-      <div class="outline-text-2" id="text-6">
-        <ul class="org-ul">
-          <li>Auto install all system dependencies with
-          Ansible</li>
-          <li>Applies secrets and password with
-          <code>1password-cli</code></li>
-          <li>Custom scripts in <code>.bin</code></li>
-          <li><code>Alacritty</code> config based on OS</li>
-          <li><code>fish</code> configuration</li>
-          <li><code>neomutt</code> support with multiple
-          accounts</li>
-          <li><code>msmtp</code> for sending emails with multiple
-          account support</li>
-          <li><code>mbsync</code> for syncing emails with multiple
-          account support</li>
-          <li>Custom <code>curl</code> configuration</li>
-          <li>Custom <code>dircolors</code> (Gruvbox-dark
-          colorscheme)</li>
-          <li>Custom <code>gitconfig</code>
-            <ul class="org-ul">
-              <li>Custom <code>git</code> templates for commit
-              messages</li>
-            </ul>
-          </li>
-          <li>Custom <code>tmux</code> configuration
-            <ul class="org-ul">
-              <li><code>Gitmux</code> configuration</li>
-              <li><code>Gruvbox</code> colorscheme</li>
-            </ul>
-          </li>
-          <li>Custom <code>zsh</code> configuration
-            <ul class="org-ul">
-              <li>Auto attach a <code>tmux</code> session when
-              running on OSX</li>
-              <li>Sources a custom <code>env</code> file for secret
-              keys</li>
-              <li>Fast <code>zsh</code> prompt with
-              <code>git</code> <code>RPROMPT</code> enabled</li>
-              <li>Custom completion files enabled</li>
-              <li><code>fzf</code> enabled for reverse search</li>
-              <li><code>pyenv</code> support</li>
-              <li><code>wakatime</code> support</li>
-            </ul>
-          </li>
-          <li>Custom <code>bash</code> configuration</li>
-          <li>Custom <code>emacs doom</code> configuration
-            <ul class="org-ul">
-              <li><code>wakatime</code> support</li>
-              <li><code>mu4e</code> enabled</li>
-            </ul>
-          </li>
-          <li>Custom <code>gnupg</code> configuration</li>
-          <li>Custom <code>inputrc</code> configuration</li>
-          <li>Custom <code>pythonrc</code> configuration</li>
-          <li>Clean <code>vim</code> configuration</li>
-          <li>Custom <code>editorconfig</code> configuration</li>
-        </ul>
-      </div>
-      <div id="outline-container-orgb617fab" class="outline-3">
-        <h3 id="orgb617fab"><span class=
-        "section-number-3">6.1</span> OSX features</h3>
-        <div class="outline-text-3" id="text-6-1">
-          <ul class="org-ul">
-            <li>Auto start a <code>tmux</code> session with
-            <code>launchctl</code></li>
-            <li>Run <code>isync</code> and <code>mu</code> with
-            <code>launchctl</code> every 5min</li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org8a8bad9" class="outline-3">
-        <h3 id="org8a8bad9"><span class=
-        "section-number-3">6.2</span> Archlinux features</h3>
-        <div class="outline-text-3" id="text-6-2">
-          <ul class="org-ul">
-            <li>Auto start <code>greenclip</code> with
-            <code>systemd</code></li>
-            <li>Run <code>isync</code> and <code>mu</code> with
-            <code>systemd</code> every 5min</li>
-            <li><code>i3-display</code> support for handling
-            multi-monitor</li>
-            <li>Custom <code>i3wm</code> configuration
-              <ul class="org-ul">
-                <li>Custom <code>i3status-rs</code> support with
-                Gruvbox colorscheme</li>
-                <li><code>polybar</code> support</li>
-              </ul>
-            </li>
-            <li><code>picom</code> support</li>
-            <li><code>rofi</code> support with clipboard
-            manager</li>
-            <li>Minimal <code>dunst</code> notification
-            manager</li>
-            <li>Custom <code>user-dirs</code> configuration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orgc665291" class="outline-2">
-      <h2 id="orgc665291"><span class="section-number-2">7</span>
-      Commands</h2>
-      <div class="outline-text-2" id="text-7">
-        <p>These are general commands I use while managing my
-        <code>dotfiles</code> and my system . I run them in orgmode
-        itself, but you can simply copy and paste it to your
-        terminal.</p>
-      </div>
-      <div id="outline-container-org2e521fc" class="outline-3">
-        <h3 id="org2e521fc"><span class=
-        "section-number-3">7.1</span>
-        Chezmoi&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "dotfiles">dotfiles</span>&nbsp;<span class=
-        "chezmoi">chezmoi</span></span></h3>
-        <div class="outline-text-3" id="text-7-1">
-          <ul class="org-ul">
-            <li>
-              <p>Apply dotfile changes with Chezmoi.</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
+<div id="content">
+<h1 class="title">README
+<br />
+<span class="subtitle">My personal dotfiles</span>
+</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org66d38fc">1. Features</a>
+<ul>
+<li><a href="#org6b170a1">1.1. OSX features</a></li>
+<li><a href="#org4b87630">1.2. Archlinux features</a></li>
+</ul>
+</li>
+<li><a href="#orge8a2d0a">2. Screenshots</a>
+<ul>
+<li><a href="#orga7c5ae1">2.1. Archlinux</a></li>
+</ul>
+</li>
+<li><a href="#org79aeb9c">3. Installing with Ansible</a>
+<ul>
+<li><a href="#org3c2baf8">3.1. Requirements</a></li>
+<li><a href="#org5592ddb">3.2. OSX</a></li>
+<li><a href="#orgee7f1f6">3.3. Archlinux</a></li>
+</ul>
+</li>
+<li><a href="#org011cc7b">4. Installing with Chezmoi</a>
+<ul>
+<li><a href="#org535c69d">4.1. Requirements</a></li>
+<li><a href="#orgc4de40a">4.2. Installing</a></li>
+</ul>
+</li>
+<li><a href="#org7961bc0">5. Dependencies</a></li>
+<li><a href="#org7f017bf">6. Commands</a>
+<ul>
+<li><a href="#org3da71ca">6.1. Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></a></li>
+<li><a href="#orgaa5cbda">6.2. Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a>
+<ul>
+<li><a href="#org03b1013">6.2.1. Doom emacs</a></li>
+<li><a href="#org3626da6">6.2.2. OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org15489f6">6.3. Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></a>
+<ul>
+<li><a href="#org07b09b6">6.3.1. Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></a></li>
+<li><a href="#org0e9d649">6.3.2. Sourcing env with i3</a></li>
+</ul>
+</li>
+<li><a href="#org47f5b44">6.4. OSX</a>
+<ul>
+<li><a href="#org2ac3492">6.4.1. Set OSX defaults</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org800c775">7. Troubleshooting</a>
+<ul>
+<li><a href="#orgecab6e4">7.1. Chezmoi does not seem to reload the configuration</a></li>
+<li><a href="#orgadeb944">7.2. Ansible fails due to required administration password</a></li>
+</ul>
+</li>
+<li><a href="#org744b4a6">8. TODOS</a>
+<ul>
+<li><a href="#orgd72a103">8.1. <span class="todo TODO">TODO</span> Update README on how to install individual configs</a></li>
+<li><a href="#org67e9bd4">8.2. <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</a></li>
+<li><a href="#orgc2718e1">8.3. <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</a></li>
+<li><a href="#org5ac8913">8.4. <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</a></li>
+<li><a href="#org4d5fd9e">8.5. <span class="todo TODO">TODO</span> Add Archlinux AUR packages</a></li>
+<li><a href="#org5e47d9c">8.6. <span class="done DONE">DONE</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</a></li>
+<li><a href="#org38c459a">8.7. <span class="done DONE">DONE</span> Switch to <code>Brewfile</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+  <a
+    href="https://github.com/benmezger/dotfiles/actions"><img
+    src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
+    alt="Build Status">
+  </a>
+</p>
+
+<p>
+<i>Github does not render orgmode files properly, <a href="https://benmezger.github.io/dotfiles">see</a> for a better view of this
+documentation.</i>
+</p>
+
+<div id="outline-container-org66d38fc" class="outline-2">
+<h2 id="org66d38fc"><span class="section-number-2">1</span> Features</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Auto install all system dependencies with Ansible</li>
+<li>Applies secrets and password with <code>1password-cli</code></li>
+<li>Custom scripts in <code>.bin</code></li>
+<li><code>Alacritty</code> config based on OS</li>
+<li><code>fish</code> configuration</li>
+<li><code>neomutt</code> support with multiple accounts</li>
+<li><code>msmtp</code> for sending emails with multiple account support</li>
+<li><code>mbsync</code> for syncing emails with multiple account support</li>
+<li>Custom <code>curl</code> configuration</li>
+<li>Custom <code>dircolors</code> (Gruvbox-dark colorscheme)</li>
+<li>Custom <code>gitconfig</code>
+<ul class="org-ul">
+<li>Custom <code>git</code> templates for commit messages</li>
+</ul></li>
+<li>Custom <code>tmux</code> configuration
+<ul class="org-ul">
+<li><code>Gitmux</code> configuration</li>
+<li><code>Gruvbox</code> colorscheme</li>
+</ul></li>
+<li>Custom <code>zsh</code> configuration
+<ul class="org-ul">
+<li>Auto attach a <code>tmux</code> session when running on OSX</li>
+<li>Sources a custom <code>env</code> file for secret keys</li>
+<li>Fast <code>zsh</code> prompt with <code>git</code> <code>RPROMPT</code> enabled</li>
+<li>Custom completion files enabled</li>
+<li><code>fzf</code> enabled for reverse search</li>
+<li><code>pyenv</code> support</li>
+<li><code>wakatime</code> support</li>
+</ul></li>
+<li>Custom <code>bash</code> configuration</li>
+<li>Custom <code>emacs doom</code> configuration
+<ul class="org-ul">
+<li><code>wakatime</code> support</li>
+<li><code>mu4e</code> enabled</li>
+</ul></li>
+<li>Custom <code>gnupg</code> configuration</li>
+<li>Custom <code>inputrc</code> configuration</li>
+<li>Custom <code>pythonrc</code> configuration</li>
+<li>Clean <code>vim</code> configuration</li>
+<li>Custom <code>editorconfig</code> configuration</li>
+</ul>
+</div>
+
+<div id="outline-container-org6b170a1" class="outline-3">
+<h3 id="org6b170a1"><span class="section-number-3">1.1</span> OSX features</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Auto start a <code>tmux</code> session with <code>launchctl</code></li>
+<li>Run <code>isync</code> and <code>mu</code> with <code>launchctl</code> every 5min</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b87630" class="outline-3">
+<h3 id="org4b87630"><span class="section-number-3">1.2</span> Archlinux features</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Auto start <code>greenclip</code> with <code>systemd</code></li>
+<li>Run <code>isync</code> and <code>mu</code> with <code>systemd</code> every 5min</li>
+<li><code>i3-display</code> support for handling multi-monitor</li>
+<li>Custom <code>i3wm</code> configuration
+<ul class="org-ul">
+<li>Custom <code>i3status-rs</code> support with Gruvbox colorscheme</li>
+<li><code>polybar</code> support</li>
+</ul></li>
+<li><code>picom</code> support</li>
+<li><code>rofi</code> support with clipboard manager</li>
+<li>Minimal <code>dunst</code> notification manager</li>
+<li>Custom <code>user-dirs</code> configuration</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8a2d0a" class="outline-2">
+<h2 id="orge8a2d0a"><span class="section-number-2">2</span> Screenshots</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga7c5ae1" class="outline-3">
+<h3 id="orga7c5ae1"><span class="section-number-3">2.1</span> Archlinux</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<div class="figure">
+<p><img src="./arch-screenshot.png" alt="archlinux-screenshot" align="center" width="850px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79aeb9c" class="outline-2">
+<h2 id="org79aeb9c"><span class="section-number-2">3</span> Installing with Ansible</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org3c2baf8" class="outline-3">
+<h3 id="org3c2baf8"><span class="section-number-3">3.1</span> Requirements</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Ansible</a></li>
+</ul>
+
+<p>
+Install Ansible galaxy requirements with <code>ansible-galaxy install -r
+requirements.yml</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org5592ddb" class="outline-3">
+<h3 id="org5592ddb"><span class="section-number-3">3.2</span> OSX</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+For MacOS, run <code>ansible-playbook -i inventory osx.yml</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgee7f1f6" class="outline-3">
+<h3 id="orgee7f1f6"><span class="section-number-3">3.3</span> Archlinux</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+For Linux, run <code>ansible-playbook -i inventory archlinux.yml</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org011cc7b" class="outline-2">
+<h2 id="org011cc7b"><span class="section-number-2">4</span> Installing with Chezmoi</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org535c69d" class="outline-3">
+<h3 id="org535c69d"><span class="section-number-3">4.1</span> Requirements</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><a href="https://www.chezmoi.io/">Chezmoi</a></li>
+<li><a href="https://1password.com/downloads/command-line/">1Password-cli</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc4de40a" class="outline-3">
+<h3 id="orgc4de40a"><span class="section-number-3">4.2</span> Installing</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Run <code>chezmoi init https://github.com/benmezger/dotfiles.git</code> (see <a href="https://www.chezmoi.io/docs/reference/">reference</a> for
+more options) to checkout the repository and any submodules. Finally, run
+<code>chezmoi apply</code> to move changes to your home directory.
+</p>
+
+<p>
+When installing without Ansible, <code>chezmoi</code> wont install any external
+dependencies, so make sure you have all the required dependencies before running
+<code>chezmoi apply</code>.
+</p>
+
+<p>
+Chezmoi will try to apply 1Password-cli in <a href="dot_env-secrets.tmpl">env-secrets</a> if <code>CI</code> env is not set or
+<code>secrets</code> is set to <code>true</code> in <code>chezmoi.yaml</code> (defaults to <code>false</code>). Make sure
+the UUID are correct with your password&rsquo;s UUID, <a href="https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid">see</a> for more information or set
+a <code>CI</code> env variable before running to skip this step.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7961bc0" class="outline-2">
+<h2 id="org7961bc0"><span class="section-number-2">5</span> Dependencies</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Fonts
+<ul class="org-ul">
+<li><a href="https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">Inconsolata-DZ</a></li>
+<li><a href="https://sourcefoundry.org/hack/">Hack</a></li>
+<li><a href="https://fontawesome.com/">FontAwesome</a></li>
+</ul></li>
+<li>ZSH
+<ul class="org-ul">
+<li><a href="https://github.com/getantibody/antibody">Antibody</a></li>
+<li><a href="https://github.com/junegunn/fzf">FZF</a></li>
+</ul></li>
+<li>Emacs
+<ul class="org-ul">
+<li><a href="https://github.com/hlissner/doom-emacs">Doom Emacs</a></li>
+<li>Emacs &gt;= 27</li>
+</ul></li>
+<li>System utilities
+<ul class="org-ul">
+<li><a href="https://github.com/wakatime/wakatime">Wakatime</a></li>
+<li><a href="https://www.gnu.org/software/emacs/">Emacs</a></li>
+<li><a href="https://www.chezmoi.io/">Chezmoi</a></li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a></li>
+<li><a href="https://github.com/pyenv/pyenv">pyenv</a></li>
+<li><a href="https://gohugo.io/">Hugo</a></li>
+<li><a href="https://1password.com/downloads/command-line/">1Password-cli</a></li>
+</ul></li>
+<li>OSX
+<ul class="org-ul">
+<li><a href="https://brew.sh/">Homebrew</a></li>
+<li><a href="https://github.com/mas-cli/mas">Mas</a></li>
+</ul></li>
+<li>Linux
+<ul class="org-ul">
+<li><a href="https://i3wm.org/">i3wm</a></li>
+<li><a href="https://github.com/fosskers/aura">Aura (Archlinux)</a></li>
+<li><a href="https://github.com/greshake/i3status-rust">i3status-rust</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7f017bf" class="outline-2">
+<h2 id="org7f017bf"><span class="section-number-2">6</span> Commands</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+For commands related to this repository, see <a href="COMMANDS.html">COMMANDS</a>
+</p>
+
+<p>
+These are general commands I use while managing my <code>dotfiles</code> and my system . I
+run them in orgmode itself, but you can simply copy and paste it to your
+terminal.
+</p>
+</div>
+
+<div id="outline-container-org3da71ca" class="outline-3">
+<h3 id="org3da71ca"><span class="section-number-3">6.1</span> Chezmoi&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dotfiles">dotfiles</span>&#xa0;<span class="chezmoi">chezmoi</span></span></h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><p>
+Apply dotfile changes with Chezmoi.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
   chezmoi apply -v
 </pre>
-              </div>
-            </li>
-            <li>
-              <p>View difference between dotfiles and restores
-              files.</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
+</div></li>
+<li><p>
+View difference between dotfiles and restores files.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
   chezmoi diff
 </pre>
-              </div>
-            </li>
-            <li>
-              <p>Initialize chezmoi repository, reloading
-              <code>$HOME/.config/chezmoi/chezmoi.[yaml|toml]</code></p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
+</div></li>
+
+<li><p>
+Initialize chezmoi repository, reloading <code>$HOME/.config/chezmoi/chezmoi.[yaml|toml]</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">cd</span> $<span style="color: #f7f1ff;">dir</span>
   chezmoi init ~/dotfiles
 </pre>
-              </div>
-            </li>
-            <li>
-              <p>1Password integration Chezmoi requires 1password
-              for the following files:</p>
-              <table>
-                <colgroup>
-                  <col class="org-left" />
-                </colgroup>
-                <tbody>
-                  <tr>
-                    <td class="org-left">
-                    ./dot_env-secrets.tmpl</td>
-                  </tr>
-                  <tr>
-                    <td class="org-left">./dot_mbsyncrc.tmpl</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>As a result, it requires 1Password cli installed
-              and logged with <code>eval $(op signin
-              my.1password.com &lt;email&gt;)</code>. Make sure you
-              change any 1Password UUID from these files with your
-              UUID.</p>
-              <p>You can test your UUID with:</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">
-                op get item &lt;uuid&gt; | jq .details.password
+</div></li>
+
+<li><p>
+1Password integration
+Chezmoi requires 1password for the following files:
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">./dot_env-secrets.tmpl</td>
+</tr>
+
+<tr>
+<td class="org-left">./dot_mbsyncrc.tmpl</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+As a result, it requires 1Password cli installed and logged with <code>eval $(op
+  signin my.1password.com &lt;email&gt;)</code>. Make sure you change any 1Password UUID
+from these files with your UUID.
+</p>
+
+<p>
+You can test your UUID with:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  op get item &lt;uuid&gt; | jq .details.password
 </pre>
-              </div>
-              <p>Chezmoi will only run 1Password against these
-              files if:</p>
-              <ul class="org-ul">
-                <li>Environment is not set to <code>CI</code></li>
-                <li><code>chezmoi.yaml</code> has
-                <code>secrets</code> set to <code>true</code>.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org7de8ed6" class="outline-3">
-        <h3 id="org7de8ed6"><span class=
-        "section-number-3">7.2</span>
-        Emacs&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "emacs">emacs</span></span></h3>
-        <div class="outline-text-3" id="text-7-2">
-          <p>General Emacs maintanence.</p>
-        </div>
-        <div id="outline-container-org86acd55" class="outline-4">
-          <h4 id="org86acd55"><span class=
-          "section-number-4">7.2.1</span> Doom emacs</h4>
-          <div class="outline-text-4" id="text-7-2-1">
-            <ul class="org-ul">
-              <li>
-                <p>Doom compile core and private modules</p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">
-                  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml <span style="color: #5ad4e6;">t</span>ools/lsp
+</div>
+
+<p>
+Chezmoi will only run 1Password against these files if:
+</p>
+<ul class="org-ul">
+<li>Environment is not set to <code>CI</code></li>
+<li><code>chezmoi.yaml</code> has <code>secrets</code> set to <code>true</code>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa5cbda" class="outline-3">
+<h3 id="orgaa5cbda"><span class="section-number-3">6.2</span> Emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+General Emacs maintanence.
+</p>
+</div>
+
+<div id="outline-container-org03b1013" class="outline-4">
+<h4 id="org03b1013"><span class="section-number-4">6.2.1</span> Doom emacs</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ul class="org-ul">
+<li><p>
+Doom compile core and private modules
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml <span style="color: #5ad4e6;">t</span>ools/lsp
 </pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div id="outline-container-orgd16bbf2" class="outline-4">
-          <h4 id="orgd16bbf2"><span class=
-          "section-number-4">7.2.2</span>
-          OSX&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-          "osx">osx</span></span></h4>
-          <div class="outline-text-4" id="text-7-2-2">
-            <ul class="org-ul">
-              <li>
-                <p>Compile Emacs 28 on OSX with native json
-                support</p>
-                <div class="org-src-container">
-                  <pre class="src src-:cache">
-                  brew install emacs-plus@28 --with-jansson
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3626da6" class="outline-4">
+<h4 id="org3626da6"><span class="section-number-4">6.2.2</span> OSX&#xa0;&#xa0;&#xa0;<span class="tag"><span class="osx">osx</span></span></h4>
+<div class="outline-text-4" id="text-6-2-2">
+<ul class="org-ul">
+<li><p>
+Compile Emacs 28 on OSX with native json support
+</p>
+<div class="org-src-container">
+<pre class="src src-:cache">  brew install emacs-plus@28 --with-jansson
 </pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-org36abd8e" class="outline-3">
-        <h3 id="org36abd8e"><span class=
-        "section-number-3">7.3</span>
-        Linux&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "linux">linux</span></span></h3>
-        <div class="outline-text-3" id="text-7-3">
-          <p>General Linux commands</p>
-          <ul class="org-ul">
-            <li>
-              <p>Speed up keyboard</p>
-              <div class="org-src-container">
-                <pre class="src src-:cache">  xset r rate 180 40
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org15489f6" class="outline-3">
+<h3 id="org15489f6"><span class="section-number-3">6.3</span> Linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linux">linux</span></span></h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+General Linux commands
+</p>
+
+<ul class="org-ul">
+<li><p>
+Speed up keyboard
+</p>
+<div class="org-src-container">
+<pre class="src src-:cache">  xset r rate 180 40
 </pre>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div id="outline-container-orge1a5055" class="outline-4">
-          <h4 id="orge1a5055"><span class=
-          "section-number-4">7.3.1</span>
-          Archlinux&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-          "archlinux">archlinux</span></span></h4>
-          <div class="outline-text-4" id="text-7-3-1">
-            <ul class="org-ul">
-              <li>
-                <p>List <code>pacman</code> packages ignoring
-                foreing packages (AUR, etc).</p>
-                <div class="org-src-container">
-                  <pre class="src src-sh">  pacman -Qqen
+</div></li>
+</ul>
+</div>
+
+<div id="outline-container-org07b09b6" class="outline-4">
+<h4 id="org07b09b6"><span class="section-number-4">6.3.1</span> Archlinux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="archlinux">archlinux</span></span></h4>
+<div class="outline-text-4" id="text-6-3-1">
+<ul class="org-ul">
+<li><p>
+List <code>pacman</code> packages ignoring foreing packages (AUR, etc).
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  pacman -Qqen
 </pre>
-                </div>
-                <p><a href=
-                "./roles/archlinux/tasks/pkgs.pacman">./roles/archlinux/tasks/pkgs.pacman</a></p>
-              </li>
-              <li>
-                <p>Get list of foreing (AUR, etc) packages with
-                <code>pacman</code>.</p>
-                <div class="org-src-container">
-                  <pre class="src src-sh">  pacman -Qqem
+</div>
+
+<p>
+<a href="./roles/archlinux/tasks/pkgs.pacman">./roles/archlinux/tasks/pkgs.pacman</a>
+</p></li>
+
+<li><p>
+Get list of foreing (AUR, etc) packages with <code>pacman</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  pacman -Qqem
 </pre>
-                </div>
-                <p><a href=
-                "./roles/archlinux/tasks/pkgs.aur">./roles/archlinux/tasks/pkgs.aur</a></p>
-              </li>
-              <li>
-                <p>Enable color, total download, check space and
-                verbose pkg list when running
-                <code>pacman</code>.</p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #5ad4e6;">sudo</span> sed -i <span style=
-                  "color: #fce566;">'/Color$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/TotalDownload$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/CheckSpace$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/VerbosePkgLists$/s/^#//g'</span> /etc/pacman.conf
+</div>
+
+<p>
+<a href="./roles/archlinux/tasks/pkgs.aur">./roles/archlinux/tasks/pkgs.aur</a>
+</p></li>
+
+<li><p>
+Enable color, total download, check space and verbose pkg list when running
+<code>pacman</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">sudo</span> sed -i <span style="color: #fce566;">'/Color$/s/^#//g'</span> /etc/pacman.conf
+  <span style="color: #5ad4e6;">sudo</span> sed -i <span style="color: #fce566;">'/TotalDownload$/s/^#//g'</span> /etc/pacman.conf
+  <span style="color: #5ad4e6;">sudo</span> sed -i <span style="color: #fce566;">'/CheckSpace$/s/^#//g'</span> /etc/pacman.conf
+  <span style="color: #5ad4e6;">sudo</span> sed -i <span style="color: #fce566;">'/VerbosePkgLists$/s/^#//g'</span> /etc/pacman.conf
 </pre>
-                </div>
-              </li>
-              <li>
-                <p>Find all <code>*.pacnew</code> files in
-                <code>/etc</code></p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #5ad4e6;">find</span> /etc -regextype posix-extended -regex <span style="color: #fce566;">".+\.pac(new|save)"</span>
+</div></li>
+<li><p>
+Find all <code>*.pacnew</code> files in <code>/etc</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">find</span> /etc -regextype posix-extended -regex <span style="color: #fce566;">".+\.pac(new|save)"</span>
 </pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <ol class="org-ol">
-            <li>
-              <a id=
-              "org2029027"></a>Docker&nbsp;&nbsp;&nbsp;<span class=
-              "tag"><span class="docker">docker</span></span><br />
-              <div class="outline-text-5" id="text-7-3-1-1">
-                <ul class="org-ul">
-                  <li>
-                    <p>Allow Docker runs with non-root user.</p>
-                    <div class="org-src-container">
-                      <pre class="src src-shell">  <span style=
-                      "color: #5ad4e6;">sudo</span> usermod -aG docker $<span style=
-                      "color: #f7f1ff;">USER</span>
+</div></li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org67984ca"></a>Docker&#xa0;&#xa0;&#xa0;<span class="tag"><span class="docker">docker</span></span><br />
+<div class="outline-text-5" id="text-6-3-1-1">
+<ul class="org-ul">
+<li><p>
+Allow Docker runs with non-root user.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #5ad4e6;">sudo</span> usermod -aG docker $<span style="color: #f7f1ff;">USER</span>
   <span style="color: #948ae3;">newgrp</span> docker
 </pre>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ol>
-        </div>
-        <div id="outline-container-org3bb8727" class="outline-4">
-          <h4 id="org3bb8727"><span class=
-          "section-number-4">7.3.2</span> Sourcing env with i3</h4>
-          <div class="outline-text-4" id="text-7-3-2">
-            <ul class="org-ul">
-              <li>
-                <p>For some reason, i3 is sourcing
-                <code>.xprofile</code> instead of
-                <code>xinitrc</code>, so for getting Github plugin
-                for the <a href=
-                "dot_config/i3/status.toml">i3status-rust</a> you
-                need to set up a variable in your
-                <code>.xprofile</code></p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #948ae3;">export</span> <span style=
-                  "color: #f7f1ff;">I3RS_GITHUB_TOKEN</span>=<span style=
-                  "color: #fce566;">"your-github-token"</span>
+</div></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org0e9d649" class="outline-4">
+<h4 id="org0e9d649"><span class="section-number-4">6.3.2</span> Sourcing env with i3</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<ul class="org-ul">
+<li><p>
+For some reason, i3 is sourcing <code>.xprofile</code> instead of <code>xinitrc</code>, so for
+getting Github plugin for the <a href="dot_config/i3/status.toml">i3status-rust</a> you need to set up a variable in
+your <code>.xprofile</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #948ae3;">export</span> <span style="color: #f7f1ff;">I3RS_GITHUB_TOKEN</span>=<span style="color: #fce566;">"your-github-token"</span>
 </pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-orgdbecfa8" class="outline-3">
-        <h3 id="orgdbecfa8"><span class=
-        "section-number-3">7.4</span> OSX</h3>
-        <div class="outline-text-3" id="text-7-4"></div>
-        <div id="outline-container-orgac28cbd" class="outline-4">
-          <h4 id="orgac28cbd"><span class=
-          "section-number-4">7.4.1</span> Set OSX defaults</h4>
-          <div class="outline-text-4" id="text-7-4-1">
-            <div class="org-src-container">
-              <pre class="src src-shell"><span style=
-              "color: #69676c;"># </span><span style=
-              "color: #69676c;">Turn on app auto-update</span>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47f5b44" class="outline-3">
+<h3 id="org47f5b44"><span class="section-number-3">6.4</span> OSX</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+<div id="outline-container-org2ac3492" class="outline-4">
+<h4 id="org2ac3492"><span class="section-number-4">6.4.1</span> Set OSX defaults</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #69676c;"># </span><span style="color: #69676c;">Turn on app auto-update</span>
 defaults write com.apple.commerce AutoUpdate -bool true
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Install System data files &amp; security updates</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Install System data files &amp; security updates</span>
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int <span style="color: #948ae3; font-weight: bold;">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Download newly available updates in background</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Download newly available updates in background</span>
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int <span style="color: #948ae3; font-weight: bold;">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Check for software updates daily, not just once per week</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Check for software updates daily, not just once per week</span>
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int <span style="color: #948ae3; font-weight: bold;">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Don’t show recent applications in Dock</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Don&#8217;t show recent applications in Dock</span>
 defaults write com.apple.dock show-recents -bool false
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Automatically hide and show the Dock</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Automatically hide and show the Dock</span>
 defaults write com.apple.dock autohide -bool true
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Remove the auto-hiding Dock delay</span>
-defaults write com.apple.dock autohide-delay -float <span style=
-"color: #948ae3; font-weight: bold;">0</span>
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Remove the animation when hiding/showing the Dock</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Remove the auto-hiding Dock delay</span>
+defaults write com.apple.dock autohide-delay -float <span style="color: #948ae3; font-weight: bold;">0</span>
+<span style="color: #69676c;"># </span><span style="color: #69676c;">Remove the animation when hiding/showing the Dock</span>
 defaults write com.apple.dock autohide-time-modifier -float <span style="color: #948ae3; font-weight: bold;">0</span>
 </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orge520380" class="outline-2">
-      <h2 id="orge520380"><span class="section-number-2">8</span>
-      TODOS</h2>
-      <div class="outline-text-2" id="text-8"></div>
-      <div id="outline-container-org265a9a2" class="outline-3">
-        <h3 id="org265a9a2"><span class=
-        "section-number-3">8.1</span> <span class=
-        "todo TODO">TODO</span> Update README on how to install
-        individual configs</h3>
-      </div>
-      <div id="outline-container-orgc2459a7" class="outline-3">
-        <h3 id="orgc2459a7"><span class=
-        "section-number-3">8.2</span> <span class=
-        "done CANCELED">CANCELED</span> Create multi-os support in
-        travis</h3>
-        <div class="outline-text-3" id="text-8-2">
-          <ul class="org-ul">
-            <li class="on"><code>[X]</code> OSX support</li>
-            <li class="on"><code>[X]</code> Linux support</li>
-            <li class="on"><code>[X]</code> Get linux to run</li>
-            <li class="on"><code>[X]</code> How to handle AUR
-            packages?</li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org733b8d5" class="outline-3">
-        <h3 id="org733b8d5"><span class=
-        "section-number-3">8.3</span> <span class=
-        "todo TODO">TODO</span> Verify if Github Workflow is
-        caching packages property</h3>
-        <div class="outline-text-3" id="text-8-3"></div>
-      </div>
-      <div id="outline-container-org8170230" class="outline-3">
-        <h3 id="org8170230"><span class=
-        "section-number-3">8.4</span> <span class=
-        "todo TODO">TODO</span> Fix issue with tmux not correctly
-        searching text through panes</h3>
-      </div>
-      <div id="outline-container-orgb6a7fcd" class="outline-3">
-        <h3 id="orgb6a7fcd"><span class=
-        "section-number-3">8.5</span> <span class=
-        "todo TODO">TODO</span> Add Archlinux AUR packages</h3>
-      </div>
-      <div id="outline-container-orgb230408" class="outline-3">
-        <h3 id="orgb230408"><span class=
-        "section-number-3">8.6</span> <span class=
-        "done DONE">DONE</span> Figure out how to handle
-        1password-cli with Chezmoi when running Ansible</h3>
-        <div class="outline-text-3" id="text-8-6"></div>
-      </div>
-      <div id="outline-container-org18368d2" class="outline-3">
-        <h3 id="org18368d2"><span class=
-        "section-number-3">8.7</span> <span class=
-        "done DONE">DONE</span> Switch to
-        <code>Brewfile</code></h3>
-        <div class="outline-text-3" id="text-8-7"></div>
-      </div>
-    </div>
-  </div>
-  <div id="postamble" class="status">
-    <p class="date">Date: 2020-08-06 Thu 00:00</p>
-    <p class="author">Author: Ben Mezger</p>
-    <p class="date">Created: 2020-09-19 Sat 16:12</p>
-  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org800c775" class="outline-2">
+<h2 id="org800c775"><span class="section-number-2">7</span> Troubleshooting</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgecab6e4" class="outline-3">
+<h3 id="orgecab6e4"><span class="section-number-3">7.1</span> Chezmoi does not seem to reload the configuration</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Run <code>chezmoi init &lt;dotfiles-path&gt;</code> again. This should reload the configuration
+by copying <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to <code>$HOME/.config/chezmoi/chezmoi.yaml</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgadeb944" class="outline-3">
+<h3 id="orgadeb944"><span class="section-number-3">7.2</span> Ansible fails due to required administration password</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Run <code>ansible</code> with <code>-K</code> flag before executing for prompting for the root
+password before executing tasks.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org744b4a6" class="outline-2">
+<h2 id="org744b4a6"><span class="section-number-2">8</span> TODOS</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgd72a103" class="outline-3">
+<h3 id="orgd72a103"><span class="section-number-3">8.1</span> <span class="todo TODO">TODO</span> Update README on how to install individual configs</h3>
+</div>
+<div id="outline-container-org67e9bd4" class="outline-3">
+<h3 id="org67e9bd4"><span class="section-number-3">8.2</span> <span class="done CANCELED">CANCELED</span> Create multi-os support in travis</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> OSX support</li>
+<li class="on"><code>[X]</code> Linux support</li>
+<li class="on"><code>[X]</code> Get linux to run</li>
+<li class="on"><code>[X]</code> How to handle AUR packages?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc2718e1" class="outline-3">
+<h3 id="orgc2718e1"><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> Verify if Github Workflow is caching packages property</h3>
+<div class="outline-text-3" id="text-8-3">
+</div>
+</div>
+
+<div id="outline-container-org5ac8913" class="outline-3">
+<h3 id="org5ac8913"><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> Fix issue with tmux not correctly searching text through panes</h3>
+</div>
+<div id="outline-container-org4d5fd9e" class="outline-3">
+<h3 id="org4d5fd9e"><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> Add Archlinux AUR packages</h3>
+</div>
+<div id="outline-container-org5e47d9c" class="outline-3">
+<h3 id="org5e47d9c"><span class="section-number-3">8.6</span> <span class="done DONE">DONE</span> Figure out how to handle 1password-cli with Chezmoi when running Ansible</h3>
+<div class="outline-text-3" id="text-8-6">
+</div>
+</div>
+
+<div id="outline-container-org38c459a" class="outline-3">
+<h3 id="org38c459a"><span class="section-number-3">8.7</span> <span class="done DONE">DONE</span> Switch to <code>Brewfile</code></h3>
+<div class="outline-text-3" id="text-8-7">
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-08-06 Thu 00:00</p>
+<p class="author">Author: Ben Mezger</p>
+<p class="date">Created: 2020-09-19 Sat 16:55</p>
+</div>
 </body>
 </html>

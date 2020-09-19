@@ -23,73 +23,6 @@
 /Github does not render orgmode files properly, [[https://benmezger.github.io/dotfiles][see]] for a better view of this
 documentation./
 
-* Installing with Ansible
-** Requirements
-- [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
-
-Install Ansible galaxy requirements with =ansible-galaxy install -r
-requirements.yml=
-** OSX
-For MacOS, run =ansible-playbook -i inventory osx.yml=
-** Archlinux
-For Linux, run =ansible-playbook -i inventory archlinux.yml=
-
-* Installing with Chezmoi
-** Requirements
-- [[https://www.chezmoi.io/][Chezmoi]]
-- [[https://1password.com/downloads/command-line/][1Password-cli]]
-** Installing
-Run =chezmoi init https://github.com/benmezger/dotfiles.git= (see [[https://www.chezmoi.io/docs/reference/][reference]] for
-more options) to checkout the repository and any submodules. Finally, run
-=chezmoi apply= to move changes to your home directory.
-
-When installing without Ansible, =chezmoi= wont install any external
-dependencies, so make sure you have all the required dependencies before running
-=chezmoi apply=.
-
-Chezmoi will try to apply 1Password-cli in [[file:dot_env-secrets.tmpl][env-secrets]] if =CI= env is not set or
-=secrets= is set to =true= in =chezmoi.yaml= (defaults to =false=). Make sure
-the UUID are correct with your password's UUID, [[https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid][see]] for more information or set
-a =CI= env variable before running to skip this step.
-
-* Troubleshooting
-** Chezmoi does not seem to reload the configuration
-Run =chezmoi init <dotfiles-path>= again. This should reload the configuration
-by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/chezmoi.yaml=.
-** Ansible fails due to required administration password
-Run =ansible= with =-K= flag before executing for prompting for the root
-password before executing tasks.
-
-* Commands
-For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
-
-* Dependencies
-- Fonts
-  - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
-  - [[https://sourcefoundry.org/hack/][Hack]]
-  - [[https://fontawesome.com/][FontAwesome]]
-- ZSH
-  - [[https://github.com/getantibody/antibody][Antibody]]
-  - [[https://github.com/junegunn/fzf][FZF]]
-- Emacs
-  - [[https://github.com/hlissner/doom-emacs][Doom Emacs]]
-  - Emacs >= 27
-- System utilities
-  - [[https://github.com/wakatime/wakatime][Wakatime]]
-  - [[https://www.gnu.org/software/emacs/][Emacs]]
-  - [[https://www.chezmoi.io/][Chezmoi]]
-  - [[https://github.com/BurntSushi/ripgrep][Ripgrep]]
-  - [[https://github.com/pyenv/pyenv][pyenv]]
-  - [[https://gohugo.io/][Hugo]]
-  - [[https://1password.com/downloads/command-line/][1Password-cli]]
-- OSX
-  - [[https://brew.sh/][Homebrew]]
-  - [[https://github.com/mas-cli/mas][Mas]]
-- Linux
-  - [[https://i3wm.org/][i3wm]]
-  - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
-  - [[https://github.com/greshake/i3status-rust][i3status-rust]]
-
 * Features
 - Auto install all system dependencies with Ansible
 - Applies secrets and password with =1password-cli=
@@ -139,9 +72,79 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
 - =rofi= support with clipboard manager
 - Minimal =dunst= notification manager
 - Custom =user-dirs= configuration
+* Screenshots
+** Archlinux
+#+ATTR_HTML: :alt archlinux-screenshot :align center :width 850px
+[[./arch-screenshot.png]]
+
+* Installing with Ansible
+** Requirements
+- [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
+
+Install Ansible galaxy requirements with =ansible-galaxy install -r
+requirements.yml=
+** OSX
+For MacOS, run =ansible-playbook -i inventory osx.yml=
+** Archlinux
+For Linux, run =ansible-playbook -i inventory archlinux.yml=
+
+* Installing with Chezmoi
+** Requirements
+- [[https://www.chezmoi.io/][Chezmoi]]
+- [[https://1password.com/downloads/command-line/][1Password-cli]]
+** Installing
+Run =chezmoi init https://github.com/benmezger/dotfiles.git= (see [[https://www.chezmoi.io/docs/reference/][reference]] for
+more options) to checkout the repository and any submodules. Finally, run
+=chezmoi apply= to move changes to your home directory.
+
+When installing without Ansible, =chezmoi= wont install any external
+dependencies, so make sure you have all the required dependencies before running
+=chezmoi apply=.
+
+Chezmoi will try to apply 1Password-cli in [[file:dot_env-secrets.tmpl][env-secrets]] if =CI= env is not set or
+=secrets= is set to =true= in =chezmoi.yaml= (defaults to =false=). Make sure
+the UUID are correct with your password's UUID, [[https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid][see]] for more information or set
+a =CI= env variable before running to skip this step.
+
+* Dependencies
+- Fonts
+  - [[https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz][Inconsolata-DZ]]
+  - [[https://sourcefoundry.org/hack/][Hack]]
+  - [[https://fontawesome.com/][FontAwesome]]
+- ZSH
+  - [[https://github.com/getantibody/antibody][Antibody]]
+  - [[https://github.com/junegunn/fzf][FZF]]
+- Emacs
+  - [[https://github.com/hlissner/doom-emacs][Doom Emacs]]
+  - Emacs >= 27
+- System utilities
+  - [[https://github.com/wakatime/wakatime][Wakatime]]
+  - [[https://www.gnu.org/software/emacs/][Emacs]]
+  - [[https://www.chezmoi.io/][Chezmoi]]
+  - [[https://github.com/BurntSushi/ripgrep][Ripgrep]]
+  - [[https://github.com/pyenv/pyenv][pyenv]]
+  - [[https://gohugo.io/][Hugo]]
+  - [[https://1password.com/downloads/command-line/][1Password-cli]]
+- OSX
+  - [[https://brew.sh/][Homebrew]]
+  - [[https://github.com/mas-cli/mas][Mas]]
+- Linux
+  - [[https://i3wm.org/][i3wm]]
+  - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
+  - [[https://github.com/greshake/i3status-rust][i3status-rust]]
 
 * Commands
+For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
+
 #+INCLUDE: "./COMMANDS.org" :lines "5-"
+
+* Troubleshooting
+** Chezmoi does not seem to reload the configuration
+Run =chezmoi init <dotfiles-path>= again. This should reload the configuration
+by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/chezmoi.yaml=.
+** Ansible fails due to required administration password
+Run =ansible= with =-K= flag before executing for prompting for the root
+password before executing tasks.
 
 * TODOS
 #+INCLUDE: "./TODO.org" :lines "5-"
