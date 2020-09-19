@@ -1,5 +1,4 @@
 ---
-
 - name: Check if chezmoi is installed
   shell: type chezmoi &>/dev/null
   register: chezmoi_exists
@@ -69,10 +68,6 @@
 - name: Install Emacs doom packages
   command: "~/.emacs.d/bin/doom -y install"
 
-- name: Print AUR information
-  debug:
-    msg: "Make sure you manually install the AUR packages located at {{ playbook_dir }}/aur.pkgs"
-
 - name: Clone wallpapers
   git:
     repo: https://github.com/benmezger/wallpapers
@@ -84,7 +79,6 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
-
 
 - name: Install Go LSP
   shell: go get -u golang.org/x/tools/gopls

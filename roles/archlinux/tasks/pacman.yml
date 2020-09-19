@@ -6,34 +6,37 @@
 
 - name: Install Pacman packages
   become: true
-  shell:
-    pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
+  shell: pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
     --noconfirm --needed
 
 - name: Enable Pacman color in pacman.conf
   become: true
   lineinfile:
     dest: /etc/pacman.conf
-    regexp: '^#Color$'
-    line: 'Color'
+    regexp: "^#Color$"
+    line: "Color"
 
 - name: Enable Pacman Total download in pacman.conf
   become: true
   lineinfile:
     dest: /etc/pacman.conf
-    regexp: '^#TotalDownload$'
-    line: 'TotalDownload'
+    regexp: "^#TotalDownload$"
+    line: "TotalDownload"
 
 - name: Enable Pacman check space in pacman.conf
   become: true
   lineinfile:
     dest: /etc/pacman.conf
-    regexp: '^#CheckSpace$'
-    line: 'CheckSpace'
+    regexp: "^#CheckSpace$"
+    line: "CheckSpace"
 
 - name: Enable Pacman verbose pkg list in pacman.conf
   become: true
   lineinfile:
     dest: /etc/pacman.conf
-    regexp: '^#VerbosePkgLists$'
-    line: 'VerbosePkgLists'
+    regexp: "^#VerbosePkgLists$"
+    line: "VerbosePkgLists"
+
+- name: Print AUR information
+  debug:
+    msg: "Make sure you manually install the AUR packages located at {{ playbook_dir }}/aur.pkgs"
