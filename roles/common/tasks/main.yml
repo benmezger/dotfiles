@@ -87,7 +87,7 @@
 
 
 - name: Install Go LSP
-  shell: go get -u golang.org/x/tools/gopls@latest
+  shell: go get -u golang.org/x/tools/gopls
   environment:
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
