@@ -328,6 +328,19 @@
 (after! mu4e
   :defer t
   :config
+  (cond ((string-equal system-type "gnu/linux")
+          (setq sendmail-program "/usr/bin/msmtp"
+            send-mail-function 'smtpmail-send-it
+            message-sendmail-f-is-evil t
+            message-sendmail-extra-arguments '("--read-envelope-from"))
+          message-send-mail-function 'message-send-mail-with-sendmail)
+    ((string-equal system-type "darwin")
+      (setq sendmail-program "/usr/local/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail)))
+
   (set-email-account! "personal"
     '((mu4e-sent-folder       . "/personal/sent")
        (mu4e-drafts-folder     . "/personal/drafts")
