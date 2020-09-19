@@ -99,10 +99,3 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
-
-- name: Install i3 autodisplay
-  shell: go get -u github.com/lpicanco/i3-autodisplay
-  environment:
-    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
-  args:
-    warn: no
