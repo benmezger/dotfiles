@@ -3,7 +3,7 @@ Expunge Both
 SyncState *
 
 IMAPAccount personal
-Host imap.gmail.com
+Host {{ .imap_host }}
 User {{ .email }}
 # To store the password in an encrypted file use PassCmd instead of Pass
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
@@ -43,7 +43,7 @@ Channel personal-trash
 Channel personal-archives
 
 IMAPAccount work
-Host imap.gmail.com
+Host {{ .work.smtp_host }}
 User {{ .work.workmail }}
 Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
 SSLType IMAPS
