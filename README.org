@@ -90,6 +90,56 @@ For commands related to this repository, see [[file:COMMANDS.org][COMMANDS]]
   - [[https://github.com/fosskers/aura][Aura (Archlinux)]]
   - [[https://github.com/greshake/i3status-rust][i3status-rust]]
 
+* Features
+- Auto install all system dependencies with Ansible
+- Applies secrets and password with =1password-cli=
+- Custom scripts in =.bin=
+- =Alacritty= config based on OS
+- =fish= configuration
+- =neomutt= support with multiple accounts
+- =msmtp= for sending emails with multiple account support
+- =mbsync= for syncing emails with multiple account support
+- Custom =curl= configuration
+- Custom =dircolors= (Gruvbox-dark colorscheme)
+- Custom =gitconfig=
+  + Custom =git= templates for commit messages
+- Custom =tmux= configuration
+  + =Gitmux= configuration
+  + =Gruvbox= colorscheme
+- Custom =zsh= configuration
+  + Auto attach a =tmux= session when running on OSX
+  + Sources a custom =env= file for secret keys
+  + Fast =zsh= prompt with =git= =RPROMPT= enabled
+  + Custom completion files enabled
+  + =fzf= enabled for reverse search
+  + =pyenv= support
+  + =wakatime= support
+- Custom =bash= configuration
+- Custom =emacs doom= configuration
+  + =wakatime= support
+  + =mu4e= enabled
+- Custom =gnupg= configuration
+- Custom =inputrc= configuration
+- Custom =pythonrc= configuration
+- Clean =vim= configuration
+- Custom =editorconfig= configuration
+
+** OSX features
+- Auto start a =tmux= session with =launchctl=
+- Run =isync= and =mu= with =launchctl= every 5min
+
+** Archlinux features
+- Auto start =greenclip= with =systemd=
+- Run =isync= and =mu= with =systemd= every 5min
+- =i3-display= support for handling multi-monitor
+- Custom =i3wm= configuration
+  + Custom =i3status-rs= support with Gruvbox colorscheme
+  + =polybar= support
+- =picom= support
+- =rofi= support with clipboard manager
+- Minimal =dunst= notification manager
+- Custom =user-dirs= configuration
+
 * Commands
 #+INCLUDE: "./COMMANDS.org" :lines "5-"
 
