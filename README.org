@@ -77,6 +77,10 @@ documentation./
 #+ATTR_HTML: :alt archlinux-screenshot :align center :width 850px
 [[./arch-screenshot.png]]
 
+** OSX
+#+ATTR_HTML: :alt osx-screenshot :align center :width 850px
+[[./osx-screenshot.png]]
+
 * Installing with Ansible
 ** Requirements
 - [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
