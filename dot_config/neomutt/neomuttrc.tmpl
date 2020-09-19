@@ -1,5 +1,9 @@
 set editor = `echo \$EDITOR`
+{{- if eq .chezmoi.os "darwin" }}
+set sendmail = "/usr/local/bin/msmtp"
+{{- else }}
 set sendmail = "/usr/bin/msmtp"
+{{- end }}
 
 set wait_key = no
 set timeout = 3
