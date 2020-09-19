@@ -21,3 +21,13 @@
   async: 45
   become: true
   command: launchctl load -w /Library/LaunchDaemons/com.tmux.plist
+
+- name: Copy mbsync launchd daemon
+  poll: 0
+  async: 45
+  command: cp {{ playbook_dir }}/roles/osx/tasks/confs/com.mbsync.plist ~/Library/LaunchAgents/
+
+- name: Make launchd start mbsync every 5min
+  poll: 0
+  async: 45
+  command: launchctl load -w ~/Library/LaunchAgents/com.mbsync.plist
