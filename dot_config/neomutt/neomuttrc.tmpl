@@ -1,23 +1,25 @@
-set my_name = "Ben Mezger"
 set editor = `echo \$EDITOR`
 set sendmail = "/usr/bin/msmtp"
-set from = {{ .email }}
-set use_from = yes
 
-set folder = "~/mail/personal"
-set mbox_type = "Maildir"
-set spoolfile = +inbox
-set record = +sent
-# gmail automatically saves sent email to +[Gmail]/Sent
-unset record
-
-set postponed = +drafts
-set header_cache = "~/.cache/mutt"
+set wait_key = no
+set timeout = 3
+set mail_check = 0
+set mail_check_stats
+set quit
+set beep_new
+set thorough_search
+set smart_wrap
 
 set sort = threads
 set sort_aux = reverse-last-date-received
+set sort_re
 set date_format = "%d-%m-%y %I:%M%p"
 set mailcap_path = "~/.config/neomutt/mailcap"
+
+# Tells Mutt to automatically view files with these mime types
+auto_view text/html
+# Order to try and show multipart emails
+alternative_order text/plain text/enriched text/html
 
 # from: https://github.com/sheoak/neomutt-powerline-nerdfonts/blob/master/powerline.neomuttrc
 set index_format=" %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)&  ? %?X?&·? %s"
@@ -45,11 +47,17 @@ tag-formats "replied" "GR" \
             "signed" "GS" \
             "attachment" "GA" \
 
-# Tells Mutt to automatically view files with these mime types
-auto_view text/html
-# Order to try and show multipart emails
-alternative_order text/plain text/enriched text/html
-
 # colorscheme
 source ./gruvbox-powerline.neomuttrc
 source ./powerline.neomuttrc
+
+# Folder hooks
+folder-hook 'personal.neomuttrc' 'source ~/.config/neomutt/personal.neomuttrc'
+folder-hook 'work.neomuttrc' 'source ~/.config/neomutt/work.neomuttrc'
+
+# default account
+source ./personal.neomuttrc
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/personal.neomuttrc<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/work.neomuttrc<enter><change-folder>!<enter>'
