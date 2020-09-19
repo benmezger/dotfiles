@@ -1,35 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:</string>
+      <string>
+      /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:</string>
     </dict>
     <key>Label</key>
     <string>com.tmux</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/tmux</string>
-        <string>new</string>
-        <string>-s</string>
-        <string>fish</string>
+      <string>/bin/bash</string>
+      <string>-c</string>
+      <string>$HOME/.bin/start_tmux</string>
     </array>
     <key>RunAtLoad</key>
-    <true/>
+    <true />
     <key>KeepAlive</key>
-    <true/>
+    <true />
     <key>LaunchOnlyOnce</key>
-    <false/>
+    <false />
     <key>StandardOutPath</key>
     <string>/tmp/startup.stdout</string>
     <key>StandardErrorPath</key>
     <string>/tmp/startup.stderr</string>
-    <key>UserName</key>
-    <string>benmezger</string>
     <key>InitGroups</key>
-    <true/>
+    <true />
   </dict>
 </plist>
-
