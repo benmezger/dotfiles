@@ -1,0 +1,23 @@
+# personal
+account        personal
+tls_starttls on
+auth on
+tls on
+host           {{ .smtp_host }}
+port           {{ .smtp_port }}
+from           {{ .email }}
+user           {{ .email }}
+password       {{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+
+# work
+account        work
+tls_starttls on
+auth on
+tls on
+host           {{ .work.smtp_host }}
+port           {{ .work.smtp_port }}
+from           {{ .work.workmail }}
+user           {{ .work.workmail }}
+password       {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
+
+account default: personal

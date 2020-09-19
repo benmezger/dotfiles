@@ -34,4 +34,5 @@ CHANGELOG.md
 
 {{- if or (eq (env "CI") "1") (not .secrets) }}
 .mbsyncrc
+.config/msmtp
 {{- end }}
