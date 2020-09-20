@@ -11,13 +11,17 @@
       register: "mas_password"
   roles:
     - role: geerlingguy.homebrew
+      tags: [deps, homebrew, osx]
       vars:
         - homebrew_use_brewfile: yes
         - homebrew_brewfile_dir: "./roles/osx/tasks/"
 
     - role: osx
+      tags: [osx]
     - role: common
+      tags: [common, dotfiles, osx]
     - role: markosamuli.pyenv
+      tags: [deps, python, osx]
       vars:
         - pyenv_python3_version: "3.7.3"
         - pyenv_python_versions:

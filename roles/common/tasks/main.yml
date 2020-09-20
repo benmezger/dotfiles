@@ -39,16 +39,24 @@
   git:
     repo: https://github.com/zplug/zplug
     dest: ~/.zplug
+  tags:
+    - git
+    - zsh
 
 - name: Clone TPM (for Tmux)
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
+  tags:
+    - git
+    - tmux
 
 - name: Ensure vim directories exist
   file:
     path: ~/.vim/autoload
     state: directory
+  tags:
+    - vim
 
 - name: Install Vim-Plug
   poll: 0
@@ -56,24 +64,36 @@
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: ~/.vim/autoload/plug.vim
+  tags:
+    - vim
 
 - name: Clone base16-shell
   git:
     repo: https://github.com/chriskempson/base16-shell
     dest: ~/.config/base16-shell
+  tags:
+    - git
 
 - name: Clone Emacs doom
   git:
     repo: https://github.com/hlissner/doom-emacs
     dest: ~/.emacs.d
+  tags:
+    - git
+    - emacs
 
 - name: Install Emacs doom packages
   command: "~/.emacs.d/bin/doom -y install"
+  tags:
+    - dotfiles
+    - emacs
 
 - name: Clone wallpapers
   git:
     repo: https://github.com/benmezger/wallpapers
     dest: ~/workspace/wallpapers
+  tags:
+    - git
 
 - name: Install Gitmux
   shell: go get -u github.com/arl/gitmux
@@ -81,6 +101,9 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
+  tags:
+    - deps
+    - go
 
 - name: Install Go LSP
   shell: go get -u golang.org/x/tools/gopls
@@ -88,6 +111,9 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
+  tags:
+    - deps
+    - go
 
 - name: Install Git Changelog generator
   shell: go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
@@ -95,3 +121,6 @@
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
+  tags:
+    - deps
+    - go
