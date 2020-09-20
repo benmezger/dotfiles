@@ -1,0 +1,25 @@
+#!/usr/local/bin/zsh
+
+if (( ${+commands[emacs]} )); then
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        emacsclient=/usr/bin/emacsclient
+        emacs=/usr/bin/emacs
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        emacsclient=/usr/local/bin/emacsclient
+        emacs=/usr/local/bin/emacs
+    fi
+
+    running=$($emacsclient --eval '(daemonp)')
+
+    if [ $running ]; then
+        export EDITOR='$emacsclient -c'
+    else
+        $emacs --daemon
+        export EDITOR='$emacsclient -c'
+    fi
+
+else
+    export EDITOR=vim
+fi
+
+eval $EDITOR '$@'
