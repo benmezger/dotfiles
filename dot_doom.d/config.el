@@ -112,7 +112,6 @@
        (counsel-rg . ivy--regex-plus)
        (t      . ivy--regex-fuzzy)))
 
-  (recentf-mode 1)
   (defun eh-ivy-return-recentf-index (dir)
     (when (and (boundp 'recentf-list)
             recentf-list)
