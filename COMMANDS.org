@@ -62,6 +62,17 @@ General Emacs maintanence.
   brew install emacs-plus@28 --with-jansson
   #+END_SRC
 
+** Required =authinfo= entries
+Email and Forge requires the following entries to be set in your
+=$HOME/.authinfo=. Make sure you encrypt =.authinfo= with PGP.
+
+#+BEGIN_SRC org :results file :file .authinfo :output-dir ~/
+machine api.github.com login <gh-user>^forge password <password>
+machine irc.freenode.net login <user> password <passord> port 6667
+machine imap.gmail.com login <email> password <password> port 443
+machine smtp.gmail.com login <email> password <password> port 587
+#+END_SRC
+
 * Linux :linux:
 General Linux commands
 
