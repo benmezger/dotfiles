@@ -82,6 +82,8 @@
     textconv = hexdump -v -C
 [github]
     user = benmezger
+[gitlab]
+    user = seds
 [flake8]
     strict = true
 [filter "lfs"]
