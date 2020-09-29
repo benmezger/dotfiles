@@ -90,7 +90,7 @@
 
 - name: Clone wallpapers
   git:
-    repo: https://github.com/benmezger/wallpapers
+    repo: https://gitlab.com/benmezger/wallpapers.git
     dest: ~/workspace/wallpapers
   tags:
     - git
