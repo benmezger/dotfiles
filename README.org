@@ -294,6 +294,11 @@ by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/c
 ** Ansible fails due to required administration password
 Run =ansible= with =-K= flag before executing for prompting for the root
 password before executing tasks.
+** =You are not currently signed in. Please run `op signin --help` for instructions=
+This is because =chezmoi= requires =1password= to be logged in for filling any
+secrets. Make sure your 1password UUIDS are up to date, see [[https://github.com/twpayne/chezmoi/blob/master/docs/HOWTO.md#use-1password-to-keep-your-secrets][this]] for more
+information. After setting all your UUIDS, login with =eval $(op signin)= and
+finally, =chezmoi apply=
 
 
 * TODOS
