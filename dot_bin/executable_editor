@@ -9,14 +9,7 @@ if (( ${+commands[emacs]} )); then
         emacs=/usr/local/bin/emacs
     fi
 
-    running=$($emacsclient --eval '(daemonp)')
-
-    if [ $running ]; then
-        export EDITOR='$emacsclient -c'
-    else
-        $emacs --daemon
-        export EDITOR='$emacsclient -c'
-    fi
+    export EDITOR='$emacsclient -c -a ""'
 
 else
     export EDITOR=vim
