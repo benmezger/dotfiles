@@ -307,8 +307,11 @@ fi
 
 
 if (( $+commands[emacsclient] )); then
-    alias ec='emacsclient -c -n'
+    alias e='emacsclient -c -n -a ""'
 fi
+
+alias editor='$EDITOR'
+alias v='vim'
 
 if (( $+commands[pacman] )); then
     alias pacall='sudo pacman -Syyu'
