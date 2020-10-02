@@ -267,21 +267,6 @@
 (use-package! org-roam-server
   :defer t)
 
-(use-package! org-projectile
-  :after projectile
-  :config
-  (map! :leader
-    (:prefix "n"
-      :desc "Add a TODO to project" "p" #'org-projectile-project-todo-completing-read))
-
-  (org-projectile-per-project)
-  (defun org-projectile-get-project-todo-file (project-path)
-    (concat org-directory "/projects/" (file-name-nondirectory (directory-file-name project-path)) ".org"))
-
-  (push (org-projectile-project-todo-entry) org-capture-templates)
-  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
-
-
 (after! deft
   :defer t
   :config
