@@ -37,6 +37,7 @@
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
 # c.InteractiveShellApp.extensions = []
+c.InteractiveShellApp.extensions = ["grasp"]
 
 ## dotted module name of an IPython extension to load.
 #  Default: ''
