@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+# Author: Ben Mezger <me@benmezger.nl>
+# Created at <2020-10-02 Fri 08:53>
+
+import shutil
+import pathlib
+import os
+
+homedir = pathlib.Path().home()
+
+
+def remove_path(path):
+    if path.exists():
+        print(f"Removing {path}")
+        shutil.rmtree(path, ignore_errors=True)
+
+
+def clean_emacs():
+    cache_path = homedir.joinpath(".emacs.d/.local/cache")
+    remove_path(cache_path)
+
+
+def clean_osx():
+    if not os.uname().sysname == "Darwin":
+        print("Skipping clean_osx")
+        return
+
+    cache_path = homedir.joinpath("Library/Caches")
+    remove_path(cache_path)
+
+
+def clean_home_files():
+    cache_path = homedir.joinpath(".cache")
+    remove_path(cache_path)
+
+    ipython_cache = homedir.joinpath(".ipynb_checkpoints")
+    remove_path(ipython_cache)
+
+
+if __name__ == "__main__":
+    prompt = input("Really clean cache? (y/N) ")
+    if prompt == "y":
+        clean_emacs()
+        clean_osx()
+        clean_home_files()
