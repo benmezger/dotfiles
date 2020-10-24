@@ -13,7 +13,7 @@
     <string>com.tmux</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/bin/bash</string>
+      <string>/bin/zsh</string>
       <string>-c</string>
       <string>$HOME/.bin/start_tmux</string>
     </array>
