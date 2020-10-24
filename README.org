@@ -81,7 +81,12 @@ documentation./
 #+ATTR_HTML: :alt osx-screenshot :align center :width 850px
 [[./osx-screenshot.png]]
 
-* Installing with Ansible
+
+* Auto installer
+Run =bash install.sh=, which installs the required dependencies for running the
+ansible playbooks
+
+* Installing manually with Ansible
 ** Requirements
 - [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
 
@@ -92,7 +97,7 @@ For MacOS, run =ansible-playbook -i inventory osx.yml=
 ** Archlinux
 For Linux, run =ansible-playbook -i inventory archlinux.yml=
 
-* Installing with Chezmoi
+* Installing manually with Chezmoi
 ** Requirements
 - [[https://www.chezmoi.io/][Chezmoi]]
 - [[https://1password.com/downloads/command-line/][1Password-cli]]
