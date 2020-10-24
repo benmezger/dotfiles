@@ -92,6 +92,7 @@
   git:
     repo: https://gitlab.com/benmezger/wallpapers.git
     dest: ~/workspace/wallpapers
+    force: yes
   tags:
     - git
 
