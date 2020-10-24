@@ -189,12 +189,6 @@ General Emacs maintanence.
   .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
   #+END_SRC
 
-*** OSX :osx:
-- Compile Emacs 28 on OSX with native json support
-  #+BEGIN_SRC :cache no
-  brew install emacs-plus@28 --with-jansson
-  #+END_SRC
-
 *** Required =authinfo= entries
 Email and Forge requires the following entries to be set in your
 =$HOME/.authinfo=. Make sure you encrypt =.authinfo= with PGP.
