@@ -324,3 +324,8 @@ alias drunser='python manage.py runserver'
 alias dmakemig='python manage.py makemigrations'
 alias dmigrate='python manage.py migrate'
 alias dshell='python manage.py shell'
+
+if (( $+commands[ggrep] )); then
+    export GREP_OPTIONS='-rnIi --color'
+    alias ggrep="ggrep $GREP_OPTIONS"
+fi
