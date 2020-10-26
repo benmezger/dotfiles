@@ -34,6 +34,7 @@ if (( ${+commands[pyenv]} )); then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     eval "$(pyenv init - zsh --no-rehash)"
     eval "$(pyenv virtualenv-init -)"
+    . $(pyenv root)/completions/pyenv.zsh
 fi
 
 ## Autoenv
