@@ -183,6 +183,8 @@
          "* TODO %?\n %i\n  %a")
        ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
          (file "~/workspace/org/templates/new-book.capture"))
+       ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
+         (file "~/workspace/org/templates/decision.capture"))
        ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
          (file "~/workspace/org/templates/weekly-journal.capture") :tree-type week)))
 
