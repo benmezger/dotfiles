@@ -3,8 +3,24 @@
 
 ### Alacritty
 - Enable background opacity
+- Start in Windowed mode in Linux
+- Refactor deprecated config and per machine font size
+
+### Bash
+- Add bashrc
+
+### Bin
+- Add clean cache script
+- Start emacs with empty alternative
+- Add editor script for handling $EDITOR
+- Update geoip script
 
 ### Chore
+- Add initial dependencies installer
+- Update chezmoi sourceDir
+- Use gitlab repo for wallpapers
+- Add Ansible tags for tasks
+- Install git-lfs both for Archlinux and OSX
 - Fix chezmoi CI or secret check logic
 - Ignore mbsyncrc if running on CI
 - Disable kewlfft.aur Ansible module
@@ -30,8 +46,53 @@
 - Manually build and push docker image
 - Fix Docker's GH name requirement
 - Disable Docker layer-caching and use GH registry
+- Add custom ansible.cfg
+- Get exit code from dotfiles
+- Change workflow name
+- Chezmoi ignore docs
+- Tap emacs 28 on OSX
+- Disable pyenv for archlinux
+- Add OSX language to Python
+- Force python update
+- Don't enable network/slim
+- Link commands to README
+- Remove language from travis OSX build
+- Remove problematic AUR dependencies
+- Temporary disable inconsolata due to xorg-font
+- Ignore ansible files with chezmoi and fix i3blocks
+- Use trizen instead of pacaur
+- Remove duplicate key and mount src as volume
+- remove removed/moved/renamed archlinux packages
+- Set state to present and sync pacman
+- Use pacman module instead of command
+- Include common main task in Archlinux
+- Refactor Travis to handle multiple OSes
+- Ignore ansible files with chezmoi and fix i3blocks
+- Use trizen instead of pacaur
+- Remove duplicate key and mount src as volume
+- remove removed/moved/renamed archlinux packages
+- Set state to present and sync pacman
+- Use pacman module instead of command
+- Include common main task in Archlinux
+- Refactor Travis to handle multiple OSes
+- Enable pyenv for Archlinux
+- Use pacaur for AUR dependencies
+- Add aur ansible requirement
+- Add Dockerfile for Archlinux
+- Handle chezmoi in Ansible roles
+- Add default chezmoi sourceDir
+
+### Dircolors
+- Use gruvbox dircolors
 
 ### Docs
+- Remove OSX emacs install with jansson as this is the default now
+- Update README
+- Merge COMMANDS and TODO with README.md
+- Add OSX screenshot
+- Add Archlinux screenshot
+- Update README with feature list
+- Update CHANGELOG
 - Update COMMANDS.org
 - Skip first 5 line of an org include
 - Update todo list
@@ -42,11 +103,32 @@
 - Add OSX defaults
 - Update COMMANDS.org
 - Update README/COMMANDS.org
+- Update todos
+- Add custom export path
+- Remove travis badge and add github workflow
+- Add documentation html
+- Update TODO list
+- Add doom compile command
+- Update todo progress
+- Add basic dotfiles commands
+- Update todo list
+- Move markdown to orgmode
+- Add todo file
 
 ### Dunst
 - Add app name to notification
 
 ### Emacs
+- Disable lsp for python-mode
+- Use Eglot instead of lsp-mode
+- Enable docker mode
+- Add decision note org template
+- Disable org-projectile
+- Disable ivy-virtual-buffers
+- Enable Forge
+- Remove duplicate recentf-mode
+- Add python new file header snippet
+- Use msmtp as sendmail program
 - Update Mu4e settings
 - Enable mu4e client in Emacs
 - Move macos to :os section
@@ -55,8 +137,15 @@
 - Add weekly journal capture
 - Add HUGO_TAGS to roam
 - Turn on auto-fill on org buffers
+- Move undo plugin to :emacs section
+- Enable undo tree mode
+- Check if system is gnu/linux before setq
+- Check if system is gnu/linux before setq
 
 ### Feat
+- Use i3status-rust instead of polybar
+- Add aur packages
+- Add dotfiles with chezmoi project structure
 - Make zsh source work stuff
 - Install pdb++
 - Backup virtualenv files
@@ -91,28 +180,53 @@
 - Use personal Github for slimfish.
 - Keep a gitignore for each software.
 
+### Font
+- Use Hack font globally
+- Use Hack font globally
+
 ### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Git
+- Add gitlab username for Emacs Forge
+- Create default main branch instead of master
 - Rebase on pull by default
 - Git LFS filter and ignore mypy cache
 - undo-commit alias.
 - Changed PGP signing key
 - Cleaned repository with unused files
 
-### Git
-- Use osxkeychain for OSX instead of Gnome-key.
-
 ### Greenclip
 - Add greenclip configuration
 
 ### I3
+- Set bar mode to dock instead of hide
+- Open terminal in pwd of the focused window
 - Make popup window floating by default
 - Enable backlight block for status
 - Add Pomodoro to status bar
 - Auto hide status bar
 - Allow window stick to workspaces
+- Enable github in status bar
+- Update resize/move keybindings
+- Add i3-gaps configuration and modes
+- Remove pulseaudio from polybar
+- set 1920x1080 resolution
+- Use polybar and refactor configuration
 
 ### I3
+- Set wallpaper on I3 instead of xinitrc
 - Add Rofi's greenclip shortcut
+- Add autodisplay configuration
+
+### IPython
+- Load grasp on start
+
+### ISync
+- add smtp and imap host to chezmoi config
+
+### Inputrc
+- Update colors-stats and completion
 
 ### MBSync
 - Sync personal email archives
@@ -122,8 +236,19 @@
 ### Mail
 - Enable mbsync for email handling
 
+### Mbsync
+- Set AuthMechs to PLAIN
+
 ### Misc
 - Set html/css indentation rule
+
+### Neomutt
+- Set sendmail path according to the current OS
+- Skip pipe bar
+- View headers on email and set foward fmt
+- Enable Vi keybindings
+- Handle multiple email accounts
+- Add Neomutt with MSMTP
 
 ### Playbooks
 - Updated submodule
@@ -131,10 +256,18 @@
 ### Playbooks
 - Updated playbook submodule
 
+### Polybar
+- Add initial polybar configuration
+
+### Python
+- Add custom Ipython config with start.py
+
 ### Readme
 - Updated readme
 
 ### Refactor
+- Refactor ansible roles and CI
+- Remove dotfiles
 - Remove vim-fish
 - Removed virtualenv as we use pyenv now.
 
@@ -146,18 +279,22 @@
 - Use papirus dark icon theme
 - Show application icons
 - Update rofi configuration so it uses combi
+- Use gruvbox-dark-hard theme
 
 ### Scripts
 - Run tmux session on boot (OSX only)
 
 ### Tmux
+- Refactor Tmux theme
+- Use gruvbox theme and use gitmux
+- Better mouse mode with plugin enabled.
+
+### Tmux
 - xterm seems to make vim faster when scrolling
 - disable mouse support.
 
-### Tmux
-- Better mouse mode with plugin enabled.
-
 ### Vim
+- Cleanup plugins
 - Remove vim-startify config
 - Use base16-vim fork due to unupdated repo.
 - Enable semshi only for Python; Removed unused tabline plugin
@@ -188,14 +325,36 @@
 - Weechat has been removed due to the lack of use.
 
 ### X
+- Use Xsession for starting i3wm
+- Use bg-scale when setting wallaper
+- Use picom instead of xcompmgr
+- Start unclutter on .xinitrc
+- Run Feh on X start for setting a wallpaper
 - Run rescuetime on startx
 - Enable xcompmgr for opacity
 - Move i3 non restart startup to xinitrc
+- Add dwm to session list
+- Speed up keyboard
 
 ### XDG
 - Add XDG default directories
 
 ### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
+
+### Zsh
+- Source pyenv zsh completion on start
+- Alias ggrep and set GREP_OPTIONS
+- Add 1pass-cli completion
+- Add poetry completion and PATH
+- Update zsh aliases for editor
+- Add docker-compose completion
+- Add Github 'gh' command completion
+- Use FZF completion from opt/ if on OSX
+- Source FZF completion/binding on Linux
+- Add HEROKU autocomplete path
+- Add 'c' as in clear for alias
 - Get OP_SESSION from current env
 - Fix tmux autostart check
 - Add secret env with 1password integration
@@ -209,140 +368,14 @@
 - Add chezmoi custom completion
 - Add correct zsh-completion path
 - Disable Tmux autostart if running on i3wm
+- Check if nvim exists before aliasing vim
 - Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
 - Defer syntax highlight.
 - Updated zplug syntax
 
-### Zsh
-- Load rbenv module from zprezto
-- Function to open up daily logbooks
-
 
 <a name="v3.1"></a>
-## [v3.1] - 2020-08-12
-### Alacritty
-- Start in Windowed mode in Linux
-- Refactor deprecated config and per machine font size
-
-### Bash
-- Add bashrc
-
-### Chore
-- Add custom ansible.cfg
-- Get exit code from dotfiles
-- Change workflow name
-- Chezmoi ignore docs
-- Tap emacs 28 on OSX
-- Disable pyenv for archlinux
-- Add OSX language to Python
-- Force python update
-- Don't enable network/slim
-- Link commands to README
-- Remove language from travis OSX build
-- Remove problematic AUR dependencies
-- Temporary disable inconsolata due to xorg-font
-- Ignore ansible files with chezmoi and fix i3blocks
-- Use trizen instead of pacaur
-- Remove duplicate key and mount src as volume
-- remove removed/moved/renamed archlinux packages
-- Set state to present and sync pacman
-- Use pacman module instead of command
-- Include common main task in Archlinux
-- Refactor Travis to handle multiple OSes
-- Ignore ansible files with chezmoi and fix i3blocks
-- Use trizen instead of pacaur
-- Remove duplicate key and mount src as volume
-- remove removed/moved/renamed archlinux packages
-- Set state to present and sync pacman
-- Use pacman module instead of command
-- Include common main task in Archlinux
-- Refactor Travis to handle multiple OSes
-- Enable pyenv for Archlinux
-- Use pacaur for AUR dependencies
-- Add aur ansible requirement
-- Add Dockerfile for Archlinux
-
-### Dircolors
-- Use gruvbox dircolors
-
-### Docs
-- Update todos
-- Add custom export path
-- Remove travis badge and add github workflow
-- Add documentation html
-- Update TODO list
-- Add doom compile command
-- Update todo progress
-- Add basic dotfiles commands
-- Update todo list
-- Move markdown to orgmode
-
-### Emacs
-- Move undo plugin to :emacs section
-- Enable undo tree mode
-- Check if system is gnu/linux before setq
-- Check if system is gnu/linux before setq
-
-### Feat
-- Use i3status-rust instead of polybar
-- Add aur packages
-
-### Font
-- Use Hack font globally
-- Use Hack font globally
-
-### I3
-- Add autodisplay configuration
-
-### I3
-- Enable github in status bar
-- Update resize/move keybindings
-- Add i3-gaps configuration and modes
-- Remove pulseaudio from polybar
-- set 1920x1080 resolution
-- Use polybar and refactor configuration
-
-### Inputrc
-- Update colors-stats and completion
-
-### Polybar
-- Add initial polybar configuration
-
-### Refactor
-- Refactor ansible roles and CI
-
-### Rofi
-- Use gruvbox-dark-hard theme
-
-### Vim
-- Cleanup plugins
-
-### X
-- Add dwm to session list
-- Speed up keyboard
-
-### Zsh
-- Check if nvim exists before aliasing vim
-
-
-<a name="v3.0"></a>
-## [v3.0] - 2020-08-06
-### Chore
-- Handle chezmoi in Ansible roles
-- Add default chezmoi sourceDir
-
-### Docs
-- Add todo file
-
-### Feat
-- Add dotfiles with chezmoi project structure
-
-### Refactor
-- Remove dotfiles
-
-
-<a name="v2.2"></a>
-## [v2.2] - 2020-08-05
+## [v3.1] - 2020-08-05
 ### Chore
 - Remove master branch
 - Update OSX brew dependencies
@@ -374,8 +407,8 @@
 - Vim: Disable statusline background
 
 
-<a name="v2.0"></a>
-## [v2.0] - 2020-07-26
+<a name="v3.0"></a>
+## [v3.0] - 2020-07-26
 ### Alacritty
 - Remove deprecated Faux scrolling
 - Fixed shell path and font-size
@@ -493,96 +526,6 @@
 - Enable tabs by using centaur-tabs
 - Automatically close all Magit buffers on magit-quit
 - Don't set mode-icons-mode since Doom-modeline does this for us
-
-### Feat
-- Add Travis config
-- Add Ansible files for auto install
-
-### Fix
-- Disable Emacs server
-
-### GIt
-- Ignore ccls-cache
-
-### GPG
-- Fixed Linux pinentry program
-
-### Git
-- Remove conflicting Ruby ignore with Go required paths
-- Add correct PGP key
-- Ignore Terraform cache files
-- Ignore emacs temporary files
-- Add useful commit tips as a git-commit template
-- Prune when pulling from origin
-- Remove diff-so-fancy as diff pager
-- Add merge strategy to git's global config
-- Merge  strategy to specific files where merge should not overwrite
-- Ignore Emacs's irony files
-- Fixed templatedir path
-- Don't add Makefile to the global git ignore file
-
-### Gnupg
-- Add pinentry-mac's program to gpg agent
-
-### I3
-- Fixed font size for i3bar
-
-### I3wm
-- Add gruvbox colors and bind Alacritty to $mod+Return
-
-### Kitty
-- Add Kitty's terminal configuration
-
-### Linux
-- Merged linux configuration to OSX
-
-### Misc
-- Remove deprecated Alacritty config
-- Configure tab sizes for html and js related files
-- Add Rofi config
-
-### Refactor
-- Remove old Emacs configuration
-
-### TMP
-- REMOVE README.md FROM CKL
-- Added first anex modified file
-
-### Test
-- Remove OSX's /Application directory from Travi's cache system
-
-### Tmux
-- Use themepack instead of custom theme
-- Set new theme and remove custom theme
-
-### Vim
-- Use gruvbox theme
-- Fixed wrong gitignore file
-- Add gitignore
-
-### X
-- Remove rofi from XResource and use Gruvbox theme
-
-### Zsh
-- Add FZF options
-- Update env-secrets path
-- Install zsh wakatime plugin
-- Move pyenv to zshenv instead and don't rehash
-- Disable beep
-- Remove duplicate eval on dircolors
-- Set Golang path
-- Fixes pyenv not auto-switching versions between projects
-- Check if shell is running within an SSH session
-- Export path before checking if pyenv exists
-- Check OS before sourcing Antibody
-- Check OS before sourcing Antibody
-- Fix Antibody path
-- USe Gruvbox hard dark base16 theme
-
-
-<a name="v1.2"></a>
-## [v1.2] - 2019-07-11
-### Emacs
 - Use Doom-themes and Doom-modeline [testing]
 - Add magit- keys to evil-leader
 - Fix evil-leader key
@@ -632,29 +575,106 @@
 - Ignore projectile cache file
 - Set a better cache and enable Helm integration
 
+### Feat
+- Add Travis config
+- Add Ansible files for auto install
+
 ### Fix
+- Disable Emacs server
 - Check if pyenv exists and if so, evaluate it
 - Don't let homebrew autoupdate
 - Remove duplicated LS_COLORS and GREP_COLORS
 - Updated Alacritty's config
 
+### GIt
+- Ignore ccls-cache
+
+### GPG
+- Fixed Linux pinentry program
+
 ### Git
+- Remove conflicting Ruby ignore with Go required paths
+- Add correct PGP key
+- Ignore Terraform cache files
+- Ignore emacs temporary files
+- Add useful commit tips as a git-commit template
+- Prune when pulling from origin
+- Remove diff-so-fancy as diff pager
+- Add merge strategy to git's global config
+- Merge  strategy to specific files where merge should not overwrite
+- Ignore Emacs's irony files
+- Fixed templatedir path
+- Don't add Makefile to the global git ignore file
 - Set custom hooks for git init
+
+### Gnupg
+- Add pinentry-mac's program to gpg agent
 
 ### I3
 - Start ckb-next for the keyboard and solaar for the mouse.
 
+### I3
+- Fixed font size for i3bar
+
+### I3wm
+- Add gruvbox colors and bind Alacritty to $mod+Return
+
 ### Ipython
 - Add vi key-bindings
 
+### Kitty
+- Add Kitty's terminal configuration
+
+### Linux
+- Merged linux configuration to OSX
+
+### Misc
+- Remove deprecated Alacritty config
+- Configure tab sizes for html and js related files
+- Add Rofi config
+
+### Refactor
+- Remove old Emacs configuration
+
+### TMP
+- REMOVE README.md FROM CKL
+- Added first anex modified file
+
+### Test
+- Remove OSX's /Application directory from Travi's cache system
+
 ### Tmux
+- Use themepack instead of custom theme
+- Set new theme and remove custom theme
 - Set mode style (mode-highlight colour)
 - Refactored Tmux config
+
+### Vim
+- Use gruvbox theme
+- Fixed wrong gitignore file
+- Add gitignore
+
+### X
+- Remove rofi from XResource and use Gruvbox theme
 
 ### ZSH
 - Move pyenv to it's own scope
 
 ### Zsh
+- Add FZF options
+- Update env-secrets path
+- Install zsh wakatime plugin
+- Move pyenv to zshenv instead and don't rehash
+- Disable beep
+- Remove duplicate eval on dircolors
+- Set Golang path
+- Fixes pyenv not auto-switching versions between projects
+- Check if shell is running within an SSH session
+- Export path before checking if pyenv exists
+- Check OS before sourcing Antibody
+- Check OS before sourcing Antibody
+- Fix Antibody path
+- USe Gruvbox hard dark base16 theme
 - source secrets env if available
 - Speed up pyenv init by launching zsh
 - Set custom backward delete word function
@@ -693,16 +713,10 @@
 - Zsh: Don't use unicode for non-tracked upstream git branch
 
 
-<a name="v1.1"></a>
-## [v1.1] - 2019-05-16
-
 <a name="v2.1"></a>
 ## [v2.1] - 2019-05-16
 ### Alacritty
 - Keybindings for font-size and new instance
-
-### Docs
-- Update README.md
 
 ### Emacs
 - Projectile indexing and caching config.
@@ -804,15 +818,12 @@
 - Use exa command as alias to ls.
 - Updated gitignore with new custom fish files.
 - Update .gitignore path for fish
-- Set ambiguous width on fish and update gitignore.
 
 ### Fix
 - Moved .gitignore files to it's proper directory to prevent stow conflict.
 
 ### Git
 - Ignore .python-version
-- Remove credential helper
-- Use mdls as textconv for PDF diff
 
 ### GnuPG
 - Fixed obsolete keyserver option
@@ -827,11 +838,9 @@
 - Set Alacritty's default terminal program and enable persistent log
 - Set indent size for *.el files
 - Set snippet indent style in editorconfig
-- Update editorconfig with html/css config
 
 ### Tmux
 - Fixed unknown variable after Tmux upgrade
-- removed duplicated history-limit config
 
 ### Vim
 - Add current git branch to statusline
@@ -851,13 +860,9 @@
 - Use vimgrep with rg on denite find file
 - Use new file/rec command instead of file_rec for Denite
 - Use Wakatime's plugin to create programming metrics
-- Update base16-vim repository and check if vim has python 3
 
 ### X
 - Set DPI for thinkpad
-
-### ZSH
-- Update zshrc with a better ls aliass; disable tmux auto-start; remove gpg-agent
 
 ### Zsh
 - Add prezto Git alises
@@ -880,6 +885,111 @@
 
 ### Reverts
 - Emacs: Use emac's own line numering
+
+
+<a name="v1.0"></a>
+## [v1.0] - 2019-03-14
+
+<a name="v2.0"></a>
+## [v2.0] - 2019-03-14
+### Docs
+- Update README.md
+
+### Fish
+- Set ambiguous width on fish and update gitignore.
+
+### Git
+- Remove credential helper
+- Use mdls as textconv for PDF diff
+
+### Misc
+- Update editorconfig with html/css config
+
+### Tmux
+- removed duplicated history-limit config
+
+### Vim
+- Update base16-vim repository and check if vim has python 3
+
+### ZSH
+- Update zshrc with a better ls aliass; disable tmux auto-start; remove gpg-agent
+
+
+<a name="v1.7-LINUX"></a>
+## [v1.7-LINUX] - 2018-11-01
+### Feat
+- Make zsh source work stuff
+- Install pdb++
+- Backup virtualenv files
+
+### Fish
+- Removed unused aliases and allow bad fortunes.
+- Install nvm plugin
+- Updated alias syntax
+- Alias to nvim
+- Colorful man pages
+- Set pyenv's variable
+- Install Z and remove pisces since it doesn't work well.
+- Set environment variables
+- Added fast_cd, system-specific variables and removed unused alias.
+- Auto start tmux script
+- Ignore any other module
+- Moved tmux start to functions/
+- Moved files due to stow
+
+### Git
+- Changed PGP signing key
+- Cleaned repository with unused files
+
+### Kernel
+- RANDOMIZE_MEMORY & RANDOMIZE_BASE enabled.
+- Enable Tux logo upon boot.
+- New configs enables and disabled:
+- A few enables and disables:
+- my .config for the Linux kernel.
+
+### Playbooks
+- Updated submodule
+
+### Playbooks
+- Updated playbook submodule
+
+### Readme
+- updated readme
+
+### Tmux
+- disable mouse support.
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- New plug configs
+- Autoindent, enable cursorline, hybrid numbers, remove encryption,     disabled arrow keys.
+- Find python host program dynamically
+- Added python version
+- Deoplet options
+- Remove YouComplete me and use Deoplet.
+- Renamed bookmarks
+- Set clipboard
+- Fish-shell syntax
+- Cleaned unused plugs
+- Use different rainbow parentheses with better colors.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+### Zsh
+- Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
+- Defer syntax highlight.
+- Updated zplug syntax
+
+### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
 
 
 <a name="v1.7-OSX"></a>
@@ -937,8 +1047,68 @@
 
 <a name="v1.6-OSX"></a>
 ## [v1.6-OSX] - 2018-05-27
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
 ### Zsh
 - Load rbenv module from zprezto
+- Function to open up daily logbooks
+
+
+<a name="v1.6-LINUX"></a>
+## [v1.6-LINUX] - 2018-05-27
+### Zsh
+- Load rbenv module from zprezto
+
+
+<a name="v1.5-Linux"></a>
+## [v1.5-Linux] - 2018-01-22
+### Kernel
+- RANDOMIZE_MEMORY & RANDOMIZE_BASE enabled.
+- Enable Tux logo upon boot.
+- New configs enables and disabled:
+- A few enables and disables:
+- my .config for the Linux kernel.
+
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Tmux
+- disable mouse support.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+### Zsh
+- Function to open up daily logbooks
 
 
 <a name="v1.5-OSX"></a>
@@ -961,12 +1131,68 @@
 ### Tmux
 - disable mouse support.
 
+### Tmux
+- Better mouse mode with plugin enabled.
+
 ### Vim
 - keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+
+<a name="v1.4-LINUX"></a>
+## [v1.4-LINUX] - 2017-08-28
+### Kernel
+- RANDOMIZE_MEMORY & RANDOMIZE_BASE enabled.
+- Enable Tux logo upon boot.
+- New configs enables and disabled:
+- A few enables and disables:
+- my .config for the Linux kernel.
+
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- disable mouse support.
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
 
 
 <a name="v1.3-OSX"></a>
 ## [v1.3-OSX] - 2017-07-07
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+
+<a name="v1.3-LINUX"></a>
+## [v1.3-LINUX] - 2017-07-07
+### Kernel
+- RANDOMIZE_MEMORY & RANDOMIZE_BASE enabled.
+- Enable Tux logo upon boot.
+- New configs enables and disabled:
+- A few enables and disables:
+- my .config for the Linux kernel.
+
 ### Tmux
 - Better mouse mode with plugin enabled.
 
@@ -991,17 +1217,20 @@
 
 [Unreleased]: https://github.com/benmezger/dotfiles/compare/v3.1...HEAD
 [v3.1]: https://github.com/benmezger/dotfiles/compare/v3.0...v3.1
-[v3.0]: https://github.com/benmezger/dotfiles/compare/v2.2...v3.0
-[v2.2]: https://github.com/benmezger/dotfiles/compare/v2.0...v2.2
-[v2.0]: https://github.com/benmezger/dotfiles/compare/v1.2...v2.0
-[v1.2]: https://github.com/benmezger/dotfiles/compare/v1.1...v1.2
-[v1.1]: https://github.com/benmezger/dotfiles/compare/v2.1...v1.1
-[v2.1]: https://github.com/benmezger/dotfiles/compare/v1.7-OSX...v2.1
+[v3.0]: https://github.com/benmezger/dotfiles/compare/v2.1...v3.0
+[v2.1]: https://github.com/benmezger/dotfiles/compare/v1.0...v2.1
+[v1.0]: https://github.com/benmezger/dotfiles/compare/v2.0...v1.0
+[v2.0]: https://github.com/benmezger/dotfiles/compare/v1.7-LINUX...v2.0
+[v1.7-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.7-OSX...v1.7-LINUX
 [v1.7-OSX]: https://github.com/benmezger/dotfiles/compare/v1.6-OSX...v1.7-OSX
-[v1.6-OSX]: https://github.com/benmezger/dotfiles/compare/v1.5-OSX...v1.6-OSX
+[v1.6-OSX]: https://github.com/benmezger/dotfiles/compare/v1.6-LINUX...v1.6-OSX
+[v1.6-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.5-Linux...v1.6-LINUX
+[v1.5-Linux]: https://github.com/benmezger/dotfiles/compare/v1.5-OSX...v1.5-Linux
 [v1.5-OSX]: https://github.com/benmezger/dotfiles/compare/v1.4-OSX...v1.5-OSX
-[v1.4-OSX]: https://github.com/benmezger/dotfiles/compare/v1.3-OSX...v1.4-OSX
-[v1.3-OSX]: https://github.com/benmezger/dotfiles/compare/v1.2-OSX...v1.3-OSX
+[v1.4-OSX]: https://github.com/benmezger/dotfiles/compare/v1.4-LINUX...v1.4-OSX
+[v1.4-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.3-OSX...v1.4-LINUX
+[v1.3-OSX]: https://github.com/benmezger/dotfiles/compare/v1.3-LINUX...v1.3-OSX
+[v1.3-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.2-OSX...v1.3-LINUX
 [v1.2-OSX]: https://github.com/benmezger/dotfiles/compare/v1.2-Linux...v1.2-OSX
 [v1.2-Linux]: https://github.com/benmezger/dotfiles/compare/v1.1-Linux...v1.2-Linux
 [v1.1-Linux]: https://github.com/benmezger/dotfiles/compare/v1.1-OSX...v1.1-Linux
