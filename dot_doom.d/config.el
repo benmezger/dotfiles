@@ -162,7 +162,7 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-inhibit-startup t)
   (add-hook! 'org-mode-hook #'turn-on-auto-fill)
-  (setq bibtex-completion-bibliography (concat org-directory "/bibliography/bib.org"))
+  (setq bibtex-completion-bibliography (concat org-directory "/bibliography.bib"))
 
   (setq org-todo-keywords
     '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
@@ -350,3 +350,22 @@
        (smtpmail-smtp-server     . "smtp.gmail.com")
        (smtpmail-smtp-service . 587)
        (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
+
+(after! org-ref
+  (setq org-ref-completion-library 'org-ref-ivy-cite)
+  (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
+  (setq reftex-default-bibliography org-ref-default-bibliography))
+
+
+(after! bibtex-completion
+  (setq bibtex-completion-format-citation-functions
+    '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)
+       (latex-mode    . bibtex-completion-format-citation-cite)
+       (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+       (default       . bibtex-completion-format-citation-default)))
+  )
+
+(use-package! citeproc-org
+  :after org
+  :config
+  (citeproc-org-setup))

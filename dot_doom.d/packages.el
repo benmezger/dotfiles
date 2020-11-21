@@ -57,3 +57,7 @@
 (package! ob-mermaid)
 (package! org-roam-server)
 (package! yasnippet-snippets)
+(package! org-ref)
+(package! citeproc-org)
+(package! helm
+  :disable t)
