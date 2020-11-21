@@ -111,6 +111,8 @@
        (counsel-rg . ivy--regex-plus)
        (t      . ivy--regex-fuzzy)))
 
+  (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
+
   (defun eh-ivy-return-recentf-index (dir)
     (when (and (boundp 'recentf-list)
             recentf-list)
@@ -160,6 +162,7 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-inhibit-startup t)
   (add-hook! 'org-mode-hook #'turn-on-auto-fill)
+  (setq bibtex-completion-bibliography (concat org-directory "/bibliography/bib.org"))
 
   (setq org-todo-keywords
     '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
