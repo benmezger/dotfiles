@@ -354,6 +354,8 @@
 (after! org-ref
   (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
+  (setq org-ref-pdf-directory (concat org-directory "/pdfs/"))
+  (setq org-ref-bibliography-notes (concat org-directory "/bibnotes.org"))
   (setq reftex-default-bibliography org-ref-default-bibliography))
 
 
@@ -362,8 +364,7 @@
     '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)
        (latex-mode    . bibtex-completion-format-citation-cite)
        (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-       (default       . bibtex-completion-format-citation-default)))
-  )
+       (default       . bibtex-completion-format-citation-default))))
 
 (use-package! citeproc-org
   :after org
