@@ -29,14 +29,6 @@ if [[ ${OSTYPE} == darwin* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-if (( ${+commands[pyenv]} )); then
-    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-    eval "$(pyenv init - zsh --no-rehash)"
-    eval "$(pyenv virtualenv-init -)"
-    . $(pyenv root)/completions/pyenv.zsh
-fi
-
 ## Autoenv
 export AUTOENV_FILE_ENTER=".hi"
 export AUTOENV_FILE_LEAVE=".bye"
@@ -64,22 +56,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
 
 
-# setup custom completion path
-fpath=($HOME/.zsh/completions $fpath)
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup \
-    && test -f $HEROKU_AC_ZSH_SETUP_PATH \
-    && source $HEROKU_AC_ZSH_SETUP_PATH
-
-
 if [ -f "$HOME/.poetry/bin/poetry" ]; then
     export PATH="$HOME/.poetry/bin:${PATH}"
 fi
 
-# check if z.lua exists and initialize it
-if [[ ${OSTYPE} == darwin* ]]; then
-    if [ -f "/usr/local/share/z.lua/z.lua.plugin.zsh" ]; then
-        eval "$(lua /usr/local/share/z.lua/z.lua --init zsh enhanced once echo fzf)"
-    fi
-fi
