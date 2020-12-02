@@ -351,6 +351,7 @@
        (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
 
 (after! org-ref
+  :config
   (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
   (setq org-ref-pdf-directory (concat org-directory "/pdfs/"))
@@ -368,4 +369,12 @@
 (use-package! citeproc-org
   :after org
   :config
+  (map! :map org-mode-map
+        :localleader
+        (:prefix ("-" . "bibliography")
+          "i" #'org-ref-insert-link
+          "r" #'org-ref-insert-ref-link
+          "l" #'org-ref-insert-bibliography-link
+          "c" #'org-ref-insert-cite-with-completion))
+
   (citeproc-org-setup))
