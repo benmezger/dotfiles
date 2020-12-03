@@ -38,4 +38,6 @@ install.sh
 .config/msmtp
 .wakatime.cfg
 .env-secrets
+.ssh/id_rsa.pub
+.ssh/id_rsa
 {{- end }}
