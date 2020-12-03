@@ -36,4 +36,5 @@ install.sh
 {{- if or (eq (env "CI") "1") (not .secrets) }}
 .mbsyncrc
 .config/msmtp
+.wakatime.cfg
 {{- end }}
