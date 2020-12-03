@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+
 if [ ! -d "$HOME/mail" ]; then
-    mkdir -p $HOME/{work,personal}
+    mkdir -p $HOME/mail/{work,personal}
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
