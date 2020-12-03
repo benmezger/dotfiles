@@ -3,11 +3,11 @@
   pre_tasks:
     - pause:
         prompt: "App Store email (mas)"
-      when: lookup('env', 'CI') == '0'
+      when: (lookup('env', 'CI') == '') and (ansible_distribution_major_version < '11')
       register: "mas_email"
     - pause:
         prompt: "App store password (mas)"
-      when: lookup('env', 'CI') == '0'
+      when: (lookup('env', 'CI') == '') and (ansible_distribution_major_version < '11')
       register: "mas_password"
   roles:
     - role: geerlingguy.homebrew

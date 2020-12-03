@@ -1,6 +1,7 @@
 ---
 - name: Login to Apple Store
   command: mas signin "{{ mas_email }}" "{{ mas_password }}"
+  when: ansible_distribution_major_version < '11'
 
 - name: Install Apple Store apps using mas
   poll: 0
