@@ -37,4 +37,5 @@ install.sh
 .mbsyncrc
 .config/msmtp
 .wakatime.cfg
+.env-secrets
 {{- end }}
