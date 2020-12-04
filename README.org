@@ -56,9 +56,11 @@ documentation./
 - Custom =pythonrc= configuration
 - Clean =vim= configuration
 - Custom =editorconfig= configuration
+- Custom =weechat= configuration
 
 ** OSX features
 - Auto start a =tmux= session with =launchctl=
+- Custom OSX preference setup
 - Run =isync= and =mu= with =launchctl= every 5min
 
 ** Archlinux features
@@ -314,12 +316,18 @@ CLOSED: [2020-08-09 Sun 11:46]
 - [X] Linux support
 - [X] Get linux to run
 - [X] How to handle AUR packages?
-** TODO Verify if Github Workflow is caching packages property
+** DONE Verify if Github Workflow is caching packages property
+CLOSED: [2020-12-04 Fri 09:44]
 :LOGBOOK:
+- State "DONE"       from "TODO"       [2020-12-04 Fri 09:44]
 - State "TODO"       from              [2020-08-09 Sun 11:47]
 :END:
 
-** TODO Fix issue with tmux not correctly searching text through panes
+** DONE Fix issue with tmux not correctly searching text through panes
+CLOSED: [2020-12-04 Fri 09:44]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2020-12-04 Fri 09:44]
+:END:
 ** TODO Add Archlinux AUR packages
 ** DONE Figure out how to handle 1password-cli with Chezmoi when running Ansible
 CLOSED: [2020-08-24 Mon 23:43]
