@@ -14,8 +14,8 @@ bindsym $mod+Return exec --no-startup-id $HOME/.bin/open-terminal.sh
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id bash -c "rofi -show"
-bindsym $mod+p exec  --no-startup-id bash -c "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+bindsym $mod+d exec --no-startup-id bash -c "$HOME/.bin/dmenu launcher"
+bindsym $mod+p exec --no-startup-id bash -c "$HOME/.bin/dmenu clipboard"
 
 # change focus
 bindsym $mod+j focus left
