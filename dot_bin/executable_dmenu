@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+# Author: Ben Mezger <me@benmezger.nl>
+# Created at <2020-10-02 Fri 08:53>
+
+FONT="-fn Hack-10"
+THEME="-nb #1e1e1e -sf #1e1e1e -sb #f4800d -nf #F4800d"
+LINE_LEN="-l 15"
+DMENU_CMD="dmenu $THEME $FONT $LINE_LEN"
+
+
+function help() {
+   echo "Dmenu utitlity."
+   echo
+   echo "Syntax:      dmenu [launcher|clipboard]"
+   echo "options:"
+   echo "    launcher     Application launcher"
+   echo "    clipboard    Display and select clipboard history (requires greenclip)"
+   echo "    help         Display this help message"
+   echo
+}
+
+case "$1" in
+    "launcher")
+        dmenu_run $FONT $LINE_LEN $THEME
+        ;;
+    "clipboard")
+        greenclip print \
+            | sed '/^$/d' \
+            | dmenu $FONT $THEME -i $LINE_LEN -p clipboard \
+            | xargs -r -d'\n' -I '{}' greenclip print '{}'
+        ;;
+    "help")
+        help
+        ;;
+    *)
+        help
+        ;;
+esac
