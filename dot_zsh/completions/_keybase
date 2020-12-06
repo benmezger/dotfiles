@@ -1,0 +1,358 @@
+#compdef keybase
+#autoload
+
+# keybase completion, based on cli help text
+# https://github.com/fnoris/keybase-zsh-completion
+
+# The MIT License (MIT)
+#
+# Copyright (c) 2014 David Tiersch
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+
+local curcontext="$curcontext" state line ret=1
+local -a _command_args
+local -a _global_args
+local -a _subcommands
+
+local IFS=$'\n'
+_global_args=($(keybase advanced | grep '^\s*--' | sed -r 's/^[\t ]*(--[^\t ,]+)( [^\t ,]*)?,? ?(--?[^\t ]+)?[\t ]*(.*)$/(\3)\1[\4]/'))
+
+_arguments -C -A "-v" -A "--version"\
+  '(- 1 *)'{-v,--version}'[display version information]' \
+  '1: :->cmds' \
+  $_global_args \
+  '*:: :->args' && ret=0
+
+case $state in
+  cmds)
+    _subcommands=(
+      "base62:base62 operations"
+      "cert:print the CA cert for api.keybase.io"
+      "chat:chat securely with keybase users"
+      "ctl:control the background keybase service"
+      "currency:manage cyrptocurrency address"
+      "decrypt:decrypt messages or files for keybase users"
+      "deprovision:revoke the current device, log out, and delete local state"
+      "device:manage your devices"
+      "dump-keyfamily:print out a user's current key family"
+      "encrypt:encrypt messages or files for keybase users"
+      "follow:verify a user's authenticity and optionally follow them"
+      "track:verify a user's authenticity and optionally follow them"
+      "fs:perform filesystem operations"
+      "id:identify a user and check their signature chain"
+      "list-followers:list thost who follow you"
+      "list-following:list who you or the given user is following"
+      "log:manage keybase log"
+      "login:establish a session with the keybase server"
+      "logout:logout and remove session information"
+      "paperkey:generate paper keys for recovering your account"
+      "passphrase:change or recover your keybase passphrase"
+      "pgp:manage keybase PGP keys"
+      "ping:ping the keybase API server"
+      "prove:generate a new proof"
+      "rekey:rekey status and actions"
+      "search:search for keybase users"
+      "sign:sign a document"
+      "signup:signup for a new account"
+      "sigs:manage signatures"
+      "status:show information about current user"
+      "unfollow:unfollow a user"
+      "untrack:unfollow a user"
+      "update:the updater"
+      "verify:verify message or file signatures for keybase users"
+      "version:print out version and build information"
+      "help, h:shows a list fo commands or help for one command"
+    )
+    _describe -t subcommands 'Keybase subcommands' _subcommands && ret=0
+    ;;
+  args)
+    case $line[1] in
+      help)
+        _values 'commands' \
+          'base62' \
+          'cert' \
+          'chat' \
+          'ctl' \
+          'currency' \
+          'decrypt' \
+          'deprovision' \
+          'device' \
+          'dump-keyfamily' \
+          'encrypt' \
+          'follow' \
+          'track' \
+          'fs' \
+          'id' \
+          'list-followers' \
+          'list-following' \
+          'log' \
+          'login' \
+          'logout' \
+          'paperkey' \
+          'passphrase' \
+          'pgp' \
+          'ping' \
+          'prove' \
+          'rekey' \
+          'search' \
+          'sign' \
+          'signup' \
+          'sigs' \
+          'status' \
+          'unfollow' \
+          'untrack' \
+          'update' \
+          'verify' \
+          'version' \
+          'help, h' && ret=0
+        ;;
+      base62)
+        _values "command" \
+          'decode[base62 decode]' \
+          'encode[base62 encode]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      chat)
+        _values "command" \
+          'api[JSON api]' \
+          'download[Download an attachment from a conversation]' \
+          'hide[Hide or block a conversation]' \
+          'list[List conversations, sorted by activity]' \
+          'ls[List conversations, sorted by activity]' \
+          "list-unread[List conversations, with unread messages at the top]" \
+          "lsur[List conversations, with unread messages at the top]" \
+          'mute[Mute or unmute a conversation]' \
+          'read[Show new messages in a conversation and mark them as read]' \
+          'report[Report a conversation (also blocks it)]' \
+          'send[Send a message to a conversation]' \
+          'upload[Upload an attachment to a conversation]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      ctl)
+        _values "command" \
+          'start[Start the backgroung keybase service]' \
+          'stop[Stop the backgroung keybase service]' \
+          'reload[Reload config file]' \
+          'restart[Restart the background keybase service]' \
+          "log-rotate[Close and open the keybase service's log file]" \
+          'watchdog[Start, watch and prop up the backgound service]' \
+          'watchdog2[Start and monitor background services]' \
+          'app-exit[Exit the Keybase app]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      currency)
+        _values "command" \
+          'add[Sign a cryptocurrency (bitcoin or zcash) address into your identity]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      decrypt)
+        _command_args=(
+          '(--infile)--infile[Specify an input file]' \
+          '(--message)--message[Provide the message on the command line]' \
+          '(--outfile)--outfile[Specify an outfile (stdout by default)]' \
+          '(--interactive)--interactive[Interactive prompt for decryption after sender verification]' \
+          '(--force)--force[Force unprompted decryption, even on an indentify failure]' \
+          '(--paperkey)--paperkey[Use a paper key for decryption]' \
+          '(--encryptor-outfile)--encryptor-outfile[Write the Keybase name of the encryptor to this file]'
+        )
+        ;;
+      device)
+        _values "command" \
+          'remove[Remove a device]' \
+          'list[List devices]' \
+          'add[Authorize a new device]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      encrypt)
+        _command_args=(
+          '(--binary)--binary[Output in binary (rather than ASCII/armored)]' \
+          '(--infile)--infile[Specify an input file]' \
+          '(message)--message[Provide the message on the command line]' \
+          '(--outfile)--outfile[Specify an outfile (stdout by default)]' \
+          "(--hide-recipients)--hide-recipients[Don't include recipients in metadata]" \
+          "(--anonymous)--anonymous[Don't include sender or recipients in metadata. Implies --hide-recipients]" \
+          "(--no-self)--no-self[Don't encrypt for yourself]"
+        )
+        ;;
+      follow)
+        _command_args=(
+          "(--local)--local[Only follow locally, don't send a public statement to the server]" \
+          '(-y)-y[Approve remote following without prompting]' \
+          '(--skip-proof-cache)--skip-proof-cache[Skip cached proofs, force re-check]'
+        )
+        ;;
+      track)
+        _command_args=(
+          "(--local)--local[Only follow locally, don't send a public statement to the server]" \
+          '(-y)-y[Approve remote following without prompting]' \
+          '(--skip-proof-cache)--skip-proof-cache[Skip cached proofs, force re-check]'
+        )
+        ;;
+      fs)
+        _values "command" \
+          'ls[list directory contents]' \
+          'cp[copy one or more directory elements to dest]' \
+          'mv[move one or more directory elements to dest]' \
+          'read[output file contents to standard output]' \
+          'rm[remove one or more directory elements]' \
+          'mkdir[create directory]' \
+          'stat[stat directory element]' \
+          'get-status[get status of pending operation]' \
+          'kill[kill operation]' \
+          'ps[list running operations]' \
+          'write[write input to file]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      id)
+        _command_args=(
+          '(--skip-proof-cache)--skip-proof-cache[Skip cached proofs, force re-check]'
+        )
+        ;;
+      list-followers)
+        _command_args=(
+          '(--verbose)--verbose[A full dump, with more gory details]'
+        )
+        ;;
+      list-following)
+        _command_args=(
+          '(--filter)--filter[Provide a regex filter]' \
+          '(--headers)--headers[Show column headers]' \
+          '(--json)--json[Output as JSON (default is text)]' \
+          '(--verbose)--verbose[A full dump, with more gory details]'
+        )
+        ;;
+      log)
+        _values "command" \
+          'send[Send recent debug logs to keybase]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      login)
+        _command_args=(
+          '(--provision-by-email)--provision-by-email[Use an email address associated with a keybase account to provision a device]'
+        )
+        ;;
+      passphrase)
+        _values "command" \
+          'change[Change your keybase account passphrase]' \
+          'recover[Recover your keybase account passphrase]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      pgp)
+        _values "command" \
+          'gen[Generate a new PGP key and write to local secret keychain]' \
+          'pull[Download the latest PGP keys for people you track]' \
+          'update[Update your public PGP keys on keybase with those exported from the local GPG keyring]' \
+          'select[Select a key as your own and register the public half with the server]' \
+          'sign[PGP sign a document]' \
+          'encrypt[PGP encrypt messages or files for keybase users]' \
+          'decrypt[PGP decrypt messages or files for keybase users]' \
+          'verify[PGP verify message or file signatures for keybase users]' \
+          'export[Export a PGP key from keybase]' \
+          'import[Import a PGP key into keybase]' \
+          'drop[Drop Keybases use of a PGP key]' \
+          'list[List the active PGP keys in your account]' \
+          'purge[Purge all PGP keys from Keybase keyring]' \
+          'help[Shows a list of commands or help for one command]'
+         ;;
+      ping)
+        _command_args=(
+          '(--gregor)--gregor[Ping the Gregor server]'
+        )
+        ;;
+      prove)
+        _command_args=(
+          '(--output)--output[Output proof text to file (rather than standard out)]' \
+          "(--force)--force[Don't prompt]" \
+        )
+        _values "prove command" \
+          'service[Supported services are: coinbase, hackernews, reddit, dns, github, twitter, web, http, https]' \
+          'service username[Username or hostname at that service]'
+        ;;
+      rekey)
+        _values "command" \
+          'status[Get pending rekey status]' \
+          'paper[Submit a paper key to help rekeying]' \
+          'help[Shows a list of commands or help for one command]'
+         ;;
+      search)
+        _command_args=(
+          '(--json)--json[Output as JSON]'
+        )
+        ;;
+      sign)
+        _command_args=(
+          '(--binary)--binary[Output binary message (default is armored)]' \
+          '(--detached)--detached[Detached signature (default is attached)]' \
+          '(--infile)--infile[Specify an input file]' \
+          '(--message)--message[Provide the message to sign on the command line]' \
+          '(--outfile)--outfile[Specify an outfile (default is STDOUT)]'
+        )
+        ;;
+      signup)
+        _command_args=(
+          '(--invite-code)--invite-code[Specify an invite code]' \
+          '(--email)--email[Specify an account email]' \
+          '(--username)--username[Specify a username]'
+        )
+        ;;
+      sigs)
+        _values "command" \
+          'list[List signatures]' \
+          'revoke[Revoke a signature by sig ID]' \
+          'help[Shows a list of commands or help for one command]'
+        ;;
+      status)
+        _command_args=(
+          '(--json)--json[Output status as JSON]' \
+        )
+        ;;
+      update)
+        _values "command" \
+          'check[Trigger an update check]' \
+          'run[Run the update with custom options]' \
+          'check-in-use[Check if we are in use (safe for restart)]' \
+          'notify[Notify the service about an update event]'
+        ;;
+      verify)
+        _command_args=(
+          '(--detached)--detached[Specify a detached signature file]' \
+          '(--infile)--infile[Specify an input file]' \
+          '(--message)--message[Provide the message to verify on the command line]' \
+          "(--no-output)--no-output[Don't output the verified message]" \
+          '(--outfile)--outfile[Specify an outfile (default is STDOUT)]'
+          '(--signed-by)--signed-by[Assert signed by the given user (can use user assertion fomat)]' \
+        )
+        ;;
+      version)
+        _command_args=(
+          "(--format)--format[Alternate format for version output. Specify 's' for simple (1.2.3) or 'v' for verbose. Default (blank) includes build number (1.2.3-400)]" \
+          "(--no-service)--no-service[Don't report on the service's build information]"
+        )
+        ;;
+    esac
+    ;;
+esac
+
+_arguments \
+  $_command_args \
+  &&  ret=0
+
+return ret
