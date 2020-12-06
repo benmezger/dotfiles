@@ -17,6 +17,7 @@ function help() {
    echo "    launcher     Application launcher"
    echo "    clipboard    Display and select clipboard history (requires greenclip)"
    echo "    switch       Switch between opened window (requires wmctrl)"
+   echo "    calculate    Calculator (requires calc)"
    echo "    help         Display this help message"
    echo
 }
@@ -47,6 +48,15 @@ case "$1" in
             | sed -n "$num p" \
             | cut -c -10 \
             | xargs wmctrl -i -a
+        ;;
+    "calculate")
+        while inp=$(echo -e "$oup" | dmenu -p Calculate: $THEME $FONT)
+        do
+            if oup2=$(calc -pd "$inp"); then
+                echo -n "$oup2" | xsel -i
+                oup="$oup2\n$oup"
+            fi
+        done
         ;;
     *)
         help
