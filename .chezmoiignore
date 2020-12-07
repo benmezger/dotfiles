@@ -15,6 +15,7 @@ docs/
 ansible.cfg
 CHANGELOG.md
 install.sh
+.weechat/logs
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
