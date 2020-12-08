@@ -11,6 +11,7 @@ else
 fi
 
 source $HOME/.zsh/init.zsh
+source $HOME/.zsh/evals.zsh
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
