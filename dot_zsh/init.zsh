@@ -33,18 +33,6 @@ function _tmux_autostart(){
 
 precmd_functions+=( _tmux_autostart )
 
-if (( $+commands[dircolors] )); then
-    eval $(dircolors -b $HOME/.dircolors )
-elif (( $+commands[gdircolors] )); then
-    eval $(gdircolors -b $HOME/.dircolors )
-fi
-
-## Pyenv
-if (( ${+commands[pyenv]} )); then
-    eval "$(pyenv init - zsh --no-rehash)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
 # from: http://www.zsh.org/mla/users/2001/msg00870.html
 custom-backward-delete-word() {
     local WORDCHARS=${WORDCHARS/\//}
@@ -53,22 +41,6 @@ custom-backward-delete-word() {
 
 zle -N custom-backward-delete-word
 bindkey '^W' custom-backward-delete-word
-
-
-if (( ${+commands[pyenv]} )); then
-    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-    eval "$(pyenv init - zsh --no-rehash)"
-    eval "$(pyenv virtualenv-init -)"
-    . $(pyenv root)/completions/pyenv.zsh
-fi
-
-# check if z.lua exists and initialize it
-if [[ ${OSTYPE} == darwin* ]]; then
-    if [ -f "/usr/local/share/z.lua/z.lua.plugin.zsh" ]; then
-        eval "$(lua /usr/local/share/z.lua/z.lua --init zsh enhanced once echo fzf)"
-    fi
-fi
 
 
 # heroku autocomplete setup

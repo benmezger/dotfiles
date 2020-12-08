@@ -21,7 +21,6 @@ export PATH="$GOPATH/bin:$PATH"
 ### Plugins
 
 ## Slimline
-export SLIMLINE_PROMPT_VERSION=1 # activate legacy option format
 export SLIMLINE_ENABLE_ASYNC_AUTOLOAD=0
 
 ## Homebrew
@@ -62,3 +61,4 @@ fi
 
 export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
+export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git aws_profile virtualenv nodejs vi_mode exit_status"
