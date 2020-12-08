@@ -1,5 +1,3 @@
-export GITLINE_NO_TRACKED_UPSTREAM='upstream ${red}!${reset}'
-
 if [[ ${OSTYPE} == darwin* ]]; then
     export PATH=/usr/local/bin:$PATH
 else
