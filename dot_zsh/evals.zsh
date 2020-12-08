@@ -15,20 +15,6 @@ set_pyenv() {
     fi
 }
 
-set_zlua(){
-    # check if z.lua exists and initialize it
-    if [[ ${OSTYPE} == darwin* ]]; then
-        _set_zlua(){
-            if [ -f "/usr/local/share/z.lua/z.lua.plugin.zsh" ]; then
-                eval "$(lua /usr/local/share/z.lua/z.lua --init zsh enhanced once echo fzf)"
-            fi
-        }
-        async_start_worker lua_worker -n
-        async_register_callback lua_worker _set_zlua
-        async_job lua_worker sleep 0.1
-    fi
-}
-
 
 set_dircolors(){
     _set_dircolors() {
@@ -48,7 +34,6 @@ init_jobs() {
 
     set_pyenv
     set_dircolors
-    set_zlua
 }
 
 init_jobs
