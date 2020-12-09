@@ -42,4 +42,5 @@ install.sh
 .ssh/id_rsa.pub
 .ssh/id_rsa
 .weechat/sec.conf
+.weechat/weechat.conf
 {{- end }}
