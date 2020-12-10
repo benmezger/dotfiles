@@ -10,12 +10,15 @@
 - Add bashrc
 
 ### Bin
+- Fix bad maildir
 - Add clean cache script
 - Start emacs with empty alternative
 - Add editor script for handling $EDITOR
 - Update geoip script
 
 ### Chore
+- Check if .ssh and file exists before chmod
+- Ignore OSX DS_Store files
 - Add initial dependencies installer
 - Update chezmoi sourceDir
 - Use gitlab repo for wallpapers
@@ -85,7 +88,14 @@
 ### Dircolors
 - Use gruvbox dircolors
 
+### Dmenu
+- Add locate file command
+- Add calculate command
+- Set switch command to case
+
 ### Docs
+- Update README
+- Update CHANGELOG
 - Remove OSX emacs install with jansson as this is the default now
 - Update README
 - Merge COMMANDS and TODO with README.md
@@ -119,6 +129,11 @@
 - Add app name to notification
 
 ### Emacs
+- Add custom org-ref keybindings
+- Customize modeline font size
+- Add org-ref notes and pdf files
+- Enable org-ref and citeproc-org
+- Enable biblio for managing bibliography
 - Disable lsp for python-mode
 - Use Eglot instead of lsp-mode
 - Enable docker mode
@@ -176,6 +191,7 @@
 - Git ignore fish config files
 
 ### Fix
+- Check if variable CI exists or set a default
 - Push docker image to Github with correct tag
 - Use personal Github for slimfish.
 - Keep a gitignore for each software.
@@ -185,9 +201,7 @@
 - Use Hack font globally
 
 ### Git
-- Use osxkeychain for OSX instead of Gnome-key.
-
-### Git
+- Add global gitignore file
 - Add gitlab username for Emacs Forge
 - Create default main branch instead of master
 - Rebase on pull by default
@@ -196,10 +210,14 @@
 - Changed PGP signing key
 - Cleaned repository with unused files
 
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
 ### Greenclip
 - Add greenclip configuration
 
 ### I3
+- Use dmenu instead of rofi
 - Set bar mode to dock instead of hide
 - Open terminal in pwd of the focused window
 - Make popup window floating by default
@@ -251,10 +269,10 @@
 - Add Neomutt with MSMTP
 
 ### Playbooks
-- Updated submodule
+- Updated playbook submodule
 
 ### Playbooks
-- Updated playbook submodule
+- Updated submodule
 
 ### Polybar
 - Add initial polybar configuration
@@ -281,17 +299,22 @@
 - Update rofi configuration so it uses combi
 - Use gruvbox-dark-hard theme
 
+### SSH
+- Add public/private SSH keys
+
 ### Scripts
 - Run tmux session on boot (OSX only)
 
 ### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
+### Tmux
+- Use tmux-256color instead of xterm
+- set escape-time to 0 because of Weechat
 - Refactor Tmux theme
 - Use gruvbox theme and use gitmux
 - Better mouse mode with plugin enabled.
-
-### Tmux
-- xterm seems to make vim faster when scrolling
-- disable mouse support.
 
 ### Vim
 - Cleanup plugins
@@ -321,7 +344,22 @@
 ### Vim
 - keep vim-fugitive enabled by default.
 
+### Wakatime
+- Add wakatime config
+
 ### Weechat
+- Add ZNC aliases
+- Disable go auto_jump
+- Realign default layout
+- Disable status and input from highmon
+- Update default layout
+- Add new scripts and fix chat suffix
+- Add personal BNC
+- Add highmon, go plugins
+- Add BNC server
+- Fix vi keybinding conflict
+- Update theme and enable vim-mode
+- Add weechat config
 - Weechat has been removed due to the lack of use.
 
 ### X
@@ -340,10 +378,16 @@
 - Add XDG default directories
 
 ### Zsh
-- Load rbenv module from zprezto
-- Function to open up daily logbooks
-
-### Zsh
+- Alias weechat to run with screen-256color
+- Use legacy version of slimline
+- Update slimline RPROMPT section
+- Use z.lua instead of robbyrussell/z
+- Move evals to evals.zsh with async support
+- Set gitline repo indicator and branch
+- Add keybase completion
+- Move CI/secrets check to .chezmoiignore
+- Move heavy weight functions to init.zsh
+- Use z.lua instead of fasd
 - Source pyenv zsh completion on start
 - Alias ggrep and set GREP_OPTIONS
 - Add 1pass-cli completion
@@ -372,6 +416,10 @@
 - Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
 - Defer syntax highlight.
 - Updated zplug syntax
+
+### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
 
 
 <a name="v3.1"></a>
