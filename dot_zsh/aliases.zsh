@@ -317,3 +317,5 @@ if (( $+commands[ggrep] )); then
     export GREP_OPTIONS='-rnIi --color'
     alias ggrep="ggrep $GREP_OPTIONS"
 fi
+
+alias weechat="TERM=screen-256color weechat"
