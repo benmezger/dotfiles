@@ -7,7 +7,7 @@ FONT="-fn Hack-10"
 THEME="-nb #1e1e1e -sf #1e1e1e -sb #f4800d -nf #F4800d"
 LINE_LEN="-l 15"
 DMENU_CMD="dmenu $THEME $FONT $LINE_LEN"
-
+SCRIPT=`realpath -s $0`
 
 function help() {
    echo "Dmenu utitlity."
@@ -69,6 +69,11 @@ case "$1" in
         fi
         ;;
     *)
-        help
+        input=`echo -en "launcher\nclipboard\nswitch\ncalculate\nlocate" | dmenu -p "cmd"`
+        if [[ "$input" != '' ]]; then
+            exec $SCRIPT $input
+        else
+            help
+        fi
         ;;
 esac
