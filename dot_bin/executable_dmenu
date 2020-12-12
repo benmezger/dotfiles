@@ -30,7 +30,7 @@ case "$1" in
     "clipboard")
         greenclip print \
             | sed '/^$/d' \
-            | dmenu $FONT $THEME -i $LINE_LEN -p clipboard \
+            | $DMENU_CMD -i -p clipboard \
             | xargs -r -d'\n' -I '{}' greenclip print '{}'
         ;;
     "help")
@@ -42,7 +42,7 @@ case "$1" in
             | cut -d " " -f 4- \
             | nl -w 3 -n rn \
             | sed -r 's/^([ 0-9]+)[ \t]*(.*)$/\1 - \2/' \
-            | dmenu -b -i -p "window" $FONT $THEME $LINE_LEN \
+            | $DMENU_CMD -b -i -p "window" \
             | cut -d '-' -f -1)
         [[ -z "$num" ]] && exit
         wmctrl -l \
@@ -51,7 +51,7 @@ case "$1" in
             | xargs wmctrl -i -a
         ;;
     "calculate")
-        while inp=$(echo -e "$oup" | dmenu -p Calculate: $THEME $FONT)
+        while inp=$(echo -e "$oup" | $DMENU_CMD -p Calculate: $THEME $FONT)
         do
             if oup2=$(calc -pd "$inp"); then
                 echo -n "$oup2" | xsel -i
@@ -60,16 +60,16 @@ case "$1" in
         done
         ;;
     "locate")
-        input="$(xsel -o | dmenu $THEME $FONT $LINE_LEN -p "file search":)"
+        input="$(xsel -o | $DMENU_CMD -p "file search":)"
         if [[ "$input" != '' ]]; then
             result="$(echo "$input" \
                 | locate -e -r "$input" \
-                | dmenu $THEME $FONT $LINE_LEN -p "search result:" )"
+                | $DMENU_CMD -p "search result:" )"
             xdg-open $result
         fi
         ;;
     *)
-        input=`echo -en "launcher\nclipboard\nswitch\ncalculate\nlocate" | dmenu -p "cmd"`
+        input=`echo -en "launcher\nclipboard\nswitch\ncalculate\nlocate" | $DMENU_CMD -p "cmd"`
         if [[ "$input" != '' ]]; then
             exec $SCRIPT $input
         else
