@@ -77,3 +77,8 @@ if (( $+commands[ggrep] )); then
 fi
 
 alias weechat="TERM=screen-256color weechat"
+
+alias ..="cd .."
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
