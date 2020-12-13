@@ -1,15 +1,28 @@
-# zsh history
-if [ -z $HISTFILE ]; then
-    HISTFILE=$HOME/.zsh_history
-fi
-HISTSIZE=100000
-SAVEHIST=100000
-HISTCONTROL=ignoredups
+# from: https://github.com/sorin-ionescu/prezto/blob/0a405494cae54e208ff550c1ba83380ed115410a/modules/history/init.zsh
 
-setopt append_history
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing non-existent history.
+
+#
+# Variables
+#
+
+HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zhistory}"  # The path to the history file.
+HISTSIZE=10000                   # The maximum number of events to save in the internal history.
+SAVEHIST=10000                   # The maximum number of events to save in the history file.
+
+#
+# Aliases
+#
+
+# Lists the ten most used commands.
+alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
