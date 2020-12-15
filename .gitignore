@@ -1,3 +1,4 @@
 *.DS_Store
 dot_weechat/private_logs
 /dot_weechat/*.log
+__pycache__
