@@ -1,1 +1,1 @@
-./check_mail.py
+../check_mail.py
