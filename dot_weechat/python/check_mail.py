@@ -10,7 +10,7 @@ import mailbox
 import time
 import os
 
-SCRIPT_NAME = "check_mail"
+SCRIPT_NAME = "check_mail.py"
 SCRIPT_AUTHOR = "Ben Mezger (seds) <me@benmezger.nl>"
 SCRIPT_VERSION = "1.1"
 SCRIPT_DESC = "Check for new emails"
@@ -219,15 +219,14 @@ def create_bar_item():
     weechat.bar_item_update("check_mail")
 
 
-if __name__ == "__main__":
-    if weechat.register(
-        SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE, SCRIPT_DESC, "", ""
-    ):
+if weechat.register(
+    SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE, SCRIPT_DESC, "", ""
+):
 
-        conf = Config()
-        conf.read()
-        mail = Mail(config=conf)
+    conf = Config()
+    conf.read()
+    mail = Mail(config=conf)
 
-        weechat.hook_config("check_mail.*", "on_config_changed", "")
-        create_bar_item()
-        mail.set_timer()
+    weechat.hook_config("check_mail.*", "on_config_changed", "")
+    create_bar_item()
+    mail.set_timer()
