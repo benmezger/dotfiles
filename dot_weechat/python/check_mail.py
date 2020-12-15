@@ -157,7 +157,9 @@ class Config:
 
 
 class Mail:
-    def __init__(self, config=Config(), **kwargs):
+    def __init__(self, config=None, **kwargs):
+        if config is None:
+            config = Config()
         self.config = config
         self.mail = mailbox.Maildir(self.config.mail_dir, **kwargs)
 
