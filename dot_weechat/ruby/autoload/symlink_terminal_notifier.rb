@@ -1,1 +1,1 @@
-terminal_notifier.rb
+../terminal_notifier.rb
