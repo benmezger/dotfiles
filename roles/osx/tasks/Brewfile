@@ -104,7 +104,6 @@ brew "tig"
 brew "tmux"
 brew "tor", restart_service: true
 brew "tree"
-brew "unrar"
 brew "vim", args: ["HEAD"]
 brew "wakatime-cli"
 brew "watch"

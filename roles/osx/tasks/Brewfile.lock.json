@@ -2379,38 +2379,11 @@
           }
         }
       },
-      "unrar": {
-        "version": "6.0.2",
-        "bottle": {
-          "cellar": ":any",
-          "prefix": "/usr/local",
-          "files": {
-            "big_sur": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-6.0.2.big_sur.bottle.tar.gz",
-              "sha256": "b4bc0394134840fcff8cde84516230f5e271f6d0dd7d200f03604f15a229d230"
-            },
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-6.0.2.catalina.bottle.tar.gz",
-              "sha256": "09574ca127597134674931bea9c895d59d2db3d0de60f585b51332b79f4780fe"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-6.0.2.mojave.bottle.tar.gz",
-              "sha256": "98cf6ec9a70800a279741c495a399da829052847324e79768b870d2e3314b51b"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-6.0.2.high_sierra.bottle.tar.gz",
-              "sha256": "26071207b6c5c9fa3747187f0c4b88d305417d2a95f4349c0d8c95754ca95ad0"
-            }
-          }
-        }
-      },
       "vim": {
         "version": "HEAD-d5a986f",
         "bottle": false,
         "options": {
-          "args": [
-            "HEAD"
-          ]
+          "args": ["HEAD"]
         }
       },
       "wakatime-cli": {
