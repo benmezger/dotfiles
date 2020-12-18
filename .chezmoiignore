@@ -34,6 +34,7 @@ config/pgcli/history
 .Xresources
 .xinitrc
 .xsession
+.config/picom.conf
 
 .weechat/python/anotify.py
 .weechat/python/autoload/anotify.py
