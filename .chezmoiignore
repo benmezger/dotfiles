@@ -17,6 +17,7 @@ CHANGELOG.md
 install.sh
 .weechat/logs
 .weechat/python/__pycache__/
+config/pgcli/history
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
