@@ -18,6 +18,10 @@ install.sh
 .weechat/logs
 .weechat/python/__pycache__/
 config/pgcli/history
+Library/Rescuetime.com/activities
+Library/Rescuetime.com/activities_backup
+Library/Rescuetime.com/activities_log
+Library/Rescuetime.com/log/*.txt
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
@@ -55,4 +59,6 @@ config/pgcli/history
 .ssh/id_rsa
 .weechat/sec.conf
 .weechat/weechat.conf
+
+Library/
 {{- end }}
