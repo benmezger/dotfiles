@@ -82,3 +82,7 @@ alias ..="cd .."
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
+
+if [ -f "$HOME/.emacs.d/bin/doom" ]; then
+    alias doom="$HOME/.emacs.d/bin/doom"
+fi
