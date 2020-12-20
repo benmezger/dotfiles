@@ -20,7 +20,7 @@
     warn: no
 
 - name: Initialize dotfiles
-  shell: chezmoi -S dotfiles init
+  shell: chezmoi -S ~/dotfiles init
   args:
     chdir: ~/
   environment:
