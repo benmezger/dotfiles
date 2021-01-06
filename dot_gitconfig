@@ -6,6 +6,7 @@
     excludesfile = ~/.gitignore_global
     editor = ~/.bin/editor
     whitespace = trailing-space,space-before-tab
+    hooksPath = ~/.gittemplates/hooks
 [filter "media"]
     required = true
     clean = git media clean %f

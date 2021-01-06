@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+API_KEY={{ (onepassword "ja35niy27bhbzc5qasnrw7uhzy").details.password }}
+DIR=`git rev-parse --show-toplevel`
+PROJECT=`echo $DIR | rev | cut -d'/' -f 1 | rev`
+
+# REQUIRED FIELDS - Today's date and commit message
+MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+DATE_TODAY=$(date +"%Y-%m-%d %H:%M:%S")
+
+echo "Publishing commit to RescueTime..."
+curl --data \
+    "key=$API_KEY&highlight_date=$DATE_TODAY&description=$MESSAGE&source=$PROJECT" \
+    https://www.rescuetime.com/anapi/highlights_post
+echo "\n"
