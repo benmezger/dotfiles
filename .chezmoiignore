@@ -59,6 +59,7 @@ Library/Rescuetime.com/log/*.txt
 .ssh/id_rsa
 .weechat/sec.conf
 .weechat/weechat.conf
+.gittemplates/hooks/post-commit
 
 Library/
 {{- end }}
