@@ -48,8 +48,8 @@ jobs:
             homebrew-${{ runner.os }}
       - name: Upgrade homebrew
         run: cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
-      - name: Upgrade Python
-        run: brew upgrade python@3.9
+      - name: Unlink default Python
+        run: brew unlink python@3.9
       - name: Install Ansible
         run: brew install ansible
       - name: Install Ansible galaxies
