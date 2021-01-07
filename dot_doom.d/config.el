@@ -67,10 +67,6 @@
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
 
-
-(custom-set-faces!
-  '(mode-line nil :height 140))
-
 (after! doom-modeline
   :config
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
