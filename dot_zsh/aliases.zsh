@@ -86,3 +86,5 @@ alias .....="cd ../../../../"
 if [ -f "$HOME/.emacs.d/bin/doom" ]; then
     alias doom="$HOME/.emacs.d/bin/doom"
 fi
+
+dotfiles-update() { cd "$HOME/dotfiles" && ./install.sh; }
