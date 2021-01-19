@@ -25,3 +25,5 @@ w3m
 mailcap
 neomutt
 msmtp
+bitwarden-bin
+bitwarden-cli
