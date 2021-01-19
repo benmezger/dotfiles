@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-API_KEY={{ (onepassword "ja35niy27bhbzc5qasnrw7uhzy").details.password }}
+API_KEY={{ (bitwarden "item" "0a211e43-0f78-4a97-a684-acb500c08fff").login.password }}
 DIR=`git rev-parse --show-toplevel`
 PROJECT=`echo $DIR | rev | cut -d'/' -f 1 | rev`
 

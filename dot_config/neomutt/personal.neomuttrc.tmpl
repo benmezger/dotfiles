@@ -1,7 +1,7 @@
 set my_user={{ .email }}
 
 {{- if or (eq (env "CI") "0") (.secrets) }}
-set my_pass={{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+set my_pass={{ (bitwarden "item" "c553f8b1-f4a3-4220-8b0b-acb500c08fff").login.password }}
 {{- end }}
 
 set realname = 'Ben Mezger'

@@ -1,7 +1,7 @@
 set my_user={{ .work.workmail }}
 
 {{- if or (eq (env "CI") "0") (.secrets) }}
-set my_pass={{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+set my_pass={{ (bitwarden "item" "aeff6fce-4245-4fea-80a6-acb500c08fff").login.password }}
 {{- end }}
 
 set realname = 'Ben Mezger'
