@@ -23,7 +23,7 @@
     - role: markosamuli.pyenv
       tags: [deps, python, osx]
       vars:
-        - pyenv_python3_version: "3.7.3"
+        - pyenv_python3_version: "3.9.0"
         - pyenv_python_versions:
             - "{{ pyenv_python3_version }}"
         - pyenv_global: "{{ pyenv_python3_version }} system"
