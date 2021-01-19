@@ -20,7 +20,6 @@ xinit-xsession
 linux-zen-headers
 linux-zen
 rofi-greenclip
-1password-cli
 mu
 w3m
 mailcap
