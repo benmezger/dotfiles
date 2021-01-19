@@ -126,3 +126,10 @@
   tags:
     - deps
     - go
+
+- name: Install vim plugins
+  shell: nvim +PlugInstall +qall --headless
+  tags:
+    - vim
+    - deps
+    - dotfiles
