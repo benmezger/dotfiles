@@ -17,6 +17,6 @@ salt = on
 
 [data]
 __passphrase__ = on
-freenode_pass = {{ (onepassword "hunw2yivc5gbxmsvszxaqc6ztq").details.password }}
-ircseds_pass = {{ (onepassword "uthrl7ixvrbx3np34hkxe5ecry").details.password }}
-bnc_server = {{ (onepassword "hwu47pzx6baf5nizeaedu6ui3u").details.password }}
+freenode_pass = {{ (bitwarden "item" "da4d9bba-62ee-47d4-8e9c-acb500c08fff").login.password }}
+ircseds_pass = {{ (bitwarden "item" "f07a3e72-6d5a-43de-9314-acb500c08fff").login.password }}
+bnc_server = {{ (bitwarden "item" "66879550-7ff9-4e50-9a2d-acb500c08fff").login.password }}

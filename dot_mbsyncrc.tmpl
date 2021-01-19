@@ -7,7 +7,7 @@ Host {{ .imap_host }}
 User {{ .email }}
 # To store the password in an encrypted file use PassCmd instead of Pass
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
-Pass {{ (onepassword "wm5uwogy2dblv4fci4w23steci").details.password }}
+Pass {{ (bitwarden "item" "c553f8b1-f4a3-4220-8b0b-acb500c08fff").login.password }}
 SSLType IMAPS
 AuthMechs PLAIN
 
@@ -46,7 +46,7 @@ Channel personal-archives
 IMAPAccount work
 Host {{ .work.imap_host }}
 User {{ .work.workmail }}
-Pass {{ (onepassword "pd6wr5nrjszqvhuzevcc34zijq").details.password }}
+Pass {{ (bitwarden "item" "aeff6fce-4245-4fea-80a6-acb500c08fff").login.password }}
 SSLType IMAPS
 AuthMechs PLAIN
 
