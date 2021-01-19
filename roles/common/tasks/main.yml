@@ -119,6 +119,7 @@
 - name: Install Git Changelog generator
   shell: go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
   environment:
+    - GO111MODULE: "on"
     - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
   args:
     warn: no
