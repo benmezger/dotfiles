@@ -25,7 +25,7 @@ documentation./
 
 * Features
 - Auto install all system dependencies with Ansible
-- Applies secrets and password with =1password-cli=
+- Applies secrets and password with =bitwarden=
 - Custom scripts in =.bin=
 - =Alacritty= config based on OS
 - =fish= configuration
@@ -102,7 +102,7 @@ For Linux, run =ansible-playbook -i inventory archlinux.yml=
 * Installing manually with Chezmoi
 ** Requirements
 - [[https://www.chezmoi.io/][Chezmoi]]
-- [[https://1password.com/downloads/command-line/][1Password-cli]]
+- [[https://bitwarden.com/help/article/cli/#quick-start][Bitwarden-cli]]
 ** Installing
 Run =chezmoi init https://github.com/benmezger/dotfiles.git= (see [[https://www.chezmoi.io/docs/reference/][reference]] for
 more options) to checkout the repository and any submodules. Finally, run
@@ -112,7 +112,7 @@ When installing without Ansible, =chezmoi= wont install any external
 dependencies, so make sure you have all the required dependencies before running
 =chezmoi apply=.
 
-Chezmoi will try to apply 1Password-cli in [[file:dot_env-secrets.tmpl][env-secrets]] if =CI= env is not set or
+Chezmoi will try to apply bitwarden in [[file:dot_env-secrets.tmpl][env-secrets]] if =CI= env is not set or
 =secrets= is set to =true= in =chezmoi.yaml= (defaults to =false=). Make sure
 the UUID are correct with your password's UUID, [[https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid][see]] for more information or set
 a =CI= env variable before running to skip this step.
@@ -135,7 +135,7 @@ a =CI= env variable before running to skip this step.
   - [[https://github.com/BurntSushi/ripgrep][Ripgrep]]
   - [[https://github.com/pyenv/pyenv][pyenv]]
   - [[https://gohugo.io/][Hugo]]
-  - [[https://1password.com/downloads/command-line/][1Password-cli]]
+  - [[https://bitwarden.com/help/article/cli/#quick-start][Bitwarden-cli]]
 - OSX
   - [[https://brew.sh/][Homebrew]]
   - [[https://github.com/mas-cli/mas][Mas]]
@@ -167,28 +167,23 @@ terminal.
   chezmoi init ~/dotfiles
   #+END_SRC
 
-- 1Password integration
-  Chezmoi requires 1password for the following files:
-  |------------------------|
-  | ./dot_env-secrets.tmpl |
-  | ./dot_mbsyncrc.tmpl    |
-  |------------------------|
+- Bitwarden integration
+  Chezmoi applies Bitwarden's in every file which requires a secret.
 
-  As a result, it requires 1Password cli installed and logged with =eval $(op
-  signin my.1password.com <email>)=. Make sure you change any 1Password UUID
-  from these files with your UUID.
+  As a result, it requires Bitwarden installed and logged with =bw login
+  <email>=. Make sure you change my Bitwarden's UUID to match yours.
 
   You can test your UUID with:
   #+BEGIN_SRC shell
-  op get item <uuid> | jq .details.password
+  bw get item <uuid> | jq .login.password
   #+END_SRC
 
-  Chezmoi will only run 1Password against these files if:
+  Chezmoi will only run Bitwarden against these files if:
     + Environment is not set to =CI=
     + =chezmoi.yaml= has =secrets= set to =true=.
 
 ** Emacs :emacs:
-General Emacs maintanence.
+General Emacs maintenance.
 
 *** Doom emacs
 - Doom compile core and private modules
@@ -296,10 +291,10 @@ by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/c
 Run =ansible= with =-K= flag before executing for prompting for the root
 password before executing tasks.
 ** =You are not currently signed in. Please run `op signin --help` for instructions=
-This is because =chezmoi= requires =1password= to be logged in for filling any
-secrets. Make sure your 1password UUIDS are up to date, see [[https://github.com/twpayne/chezmoi/blob/master/docs/HOWTO.md#use-1password-to-keep-your-secrets][this]] for more
-information. After setting all your UUIDS, login with =eval $(op signin)= and
-finally, =chezmoi apply=
+This is because =chezmoi= requires =bitwarden= to be logged in for filling any
+secrets. Make sure your bitwarden's UUIDS are up to date, see [[https://github.com/twpayne/chezmoi/blob/master/docs/HOWTO.md#use-bitwarden-to-keep-your-secrets][this]] for more
+information. After setting all your UUIDS, login with =bw= and
+finally run =chezmoi apply=.
 
 
 * TODOS
