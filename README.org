@@ -298,6 +298,11 @@ finally run =chezmoi apply=.
 
 
 * TODOS
+** TODO Remove 1Password documents from the configuration file
+:LOGBOOK:
+- State "TODO"       from              [2021-01-21 Thu 22:34]
+:END:
+1Password Documents are currently kept as I am slowly migrating to Bitwarden
 ** TODO Update README on how to install individual configs
 ** CANCELED Create multi-os support in travis
 CLOSED: [2020-08-09 Sun 11:46]
