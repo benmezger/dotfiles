@@ -18,6 +18,7 @@ source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
+source $HOME/.zsh/aw-watcher-shell.zsh 
 
 # base16 theme
 base16_gruvbox-dark-hard
