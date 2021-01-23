@@ -61,3 +61,4 @@
 (package! citeproc-org)
 (package! helm
   :disable t)
+(package! activity-watch-mode)
