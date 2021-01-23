@@ -3,4 +3,3 @@ dot_weechat/private_logs
 /dot_weechat/*.log
 __pycache__
 dot_config/pgcli/history
-/private_Library/RescueTime.com/log/
