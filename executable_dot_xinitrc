@@ -29,5 +29,4 @@ isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock.sh &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
 isavailable picom && picom --config ~/.config/picom.conf &
-isavailable rescuetime && rescuetime &
 isavailable unclutter && unclutter &
