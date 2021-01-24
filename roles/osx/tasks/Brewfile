@@ -127,6 +127,8 @@ brew "mopidy", restart_service: true
 brew "mopidy-spotify"
 brew "mopidy-mpd"
 brew "ncmpcpp"
+brew "mpc"
+brew "koekeishiya/formulae/skhd", restart_service: true
 cask "bitwarden"
 cask "activitywatch"
 cask "alacritty"
