@@ -286,6 +286,7 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 * Keybindings
 ** OSX
 *** MPC
+- =fn + cmd - e= - =opens editor=
 - =cmd + return= - =opens alacritty=
 - =fn + cmd - f1= - =mpc play=
 - =fn + cmd - f2= - =mpc pause=
