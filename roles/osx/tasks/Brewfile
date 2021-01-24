@@ -128,6 +128,7 @@ brew "mopidy-spotify"
 brew "mopidy-mpd"
 brew "ncmpcpp"
 brew "mpc"
+brew "gstreamer"
 brew "koekeishiya/formulae/skhd", restart_service: true
 cask "bitwarden"
 cask "activitywatch"
