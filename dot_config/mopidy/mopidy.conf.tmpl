@@ -1,0 +1,15 @@
+[core]
+restore_state = true
+
+[mpd]
+enabled = true
+hostname = ::
+
+[spotify]
+enabled = true
+username = {{ (bitwarden "item" "d8ebcdfe-0ecc-40ec-a464-acb500c08fff").login.username }}
+password = {{ (bitwarden "item" "d8ebcdfe-0ecc-40ec-a464-acb500c08fff").login.password }}
+client_id = {{ (index (bitwarden "item" "64c5ef38-cb4b-4ae7-961d-acba0047e94b").fields 0).value }} 
+client_secret = {{ (bitwarden "item" "64c5ef38-cb4b-4ae7-961d-acba0047e94b").login.password}}
+bitrate = 320
+allow_cache = true
