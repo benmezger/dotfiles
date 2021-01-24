@@ -1,4 +1,8 @@
+# terminal
 cmd - return: /Applications/Alacritty.app/Contents/MacOS/alacritty
+
+# editor
+fn + cmd - e: ~/.bin/editor
 
 # music
 fn + cmd - f1: mpc play
