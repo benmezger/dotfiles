@@ -1,5 +1,4 @@
 ---
-- import_tasks: brew.yml
 - import_tasks: mas.yml
   when: lookup('env', 'CI') == ''
 - import_tasks: defaults.yml
