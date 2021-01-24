@@ -1,7 +1,0 @@
----
-- name: Tap Bundle
-  poll: 0
-  async: 45
-  homebrew_tap:
-    name: homebrew/bundle
-    state: present
