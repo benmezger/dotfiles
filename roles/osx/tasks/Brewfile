@@ -5,7 +5,7 @@ tap "git-chglog/git-chglog"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-
+tap "mopidy/mopidy"
 
 # brew install
 brew "ack"
@@ -123,6 +123,10 @@ brew "htop"
 brew "xclip"
 brew "terminal-notifier"
 brew "bitwarden-cli"
+brew "mopidy", restart_service: true
+brew "mopidy-spotify"
+brew "mopidy-mpd"
+brew "ncmpcpp"
 cask "bitwarden"
 cask "activitywatch"
 cask "alacritty"

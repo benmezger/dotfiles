@@ -176,3 +176,5 @@ weechat
 calc
 python-notify2
 neovim
+ncmpcpp
+mopidy

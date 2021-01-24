@@ -55,6 +55,6 @@ config/pgcli/history
 .ssh/id_rsa
 .weechat/sec.conf
 .weechat/weechat.conf
-
+.config/mopidy/mopidy.conf
 Library/
 {{- end }}
