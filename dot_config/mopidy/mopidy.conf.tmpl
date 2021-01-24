@@ -13,3 +13,6 @@ client_id = {{ (index (bitwarden "item" "64c5ef38-cb4b-4ae7-961d-acba0047e94b").
 client_secret = {{ (bitwarden "item" "64c5ef38-cb4b-4ae7-961d-acba0047e94b").login.password}}
 bitrate = 320
 allow_cache = true
+
+[audio]
+output = tee name=t t. ! queue ! autoaudiosink t. ! queue ! audioresample ! audioconvert ! audio/x-raw,rate=44100,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/mpd.fifo

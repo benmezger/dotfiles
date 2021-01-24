@@ -17,7 +17,7 @@
 mpd_port = 6600
 
 visualizer_in_stereo = yes
-visualizer_type = ellipse
+visualizer_type = spectrum
 visualizer_look = "+|"
 
 display_remaining_time = yes
