@@ -44,6 +44,7 @@ config/pgcli/history
 {{- if ne .chezmoi.os "darwin" }}
 .weechat/ruby/terminal_notifier.rb
 .weechat/ruby/autoload/terminal_notifier.rb
+.skhdrc
 {{- end }}
 
 {{- if or (eq (env "CI") "1") (not .secrets) }}
