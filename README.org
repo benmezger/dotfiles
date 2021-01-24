@@ -283,6 +283,18 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 #+END_SRC
 
 
+* Keybindings
+** OSX
+*** MPC
+- =cmd + return= - =opens alacritty=
+- =fn + cmd - f1= - =mpc play=
+- =fn + cmd - f2= - =mpc pause=
+- =fn + cmd - f3= - =mpc prev=
+- =fn + cmd - f4= - =mpc next=
+- =fn + cmd - f5= - =mpc volume -10=
+- =fn + cmd - f6= - =mpc volume +10=
+
+
 * Troubleshooting
 ** Chezmoi does not seem to reload the configuration
 Run =chezmoi init <dotfiles-path>= again. This should reload the configuration
