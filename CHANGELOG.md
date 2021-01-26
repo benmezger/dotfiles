@@ -10,13 +10,22 @@
 - Add bashrc
 
 ### Bin
+- Remove encrypted offlineimap
+- Add terminal colors script
 - Fix bad maildir
 - Add clean cache script
 - Start emacs with empty alternative
 - Add editor script for handling $EDITOR
 - Update geoip script
 
+### Chezmoi
+- Ignore __pycache__ files
+
 ### Chore
+- Remove problematic 2to3 bin
+- Unlink default Python 3.9
+- Update python 3.9 before installing Ansible
+- Don't copy picom.conf on OSX
 - Check if .ssh and file exists before chmod
 - Ignore OSX DS_Store files
 - Add initial dependencies installer
@@ -89,11 +98,17 @@
 - Use gruvbox dircolors
 
 ### Dmenu
+- Use DMENU_CMD instead of repeating cmds
+- Run itself for dmenu options
 - Add locate file command
 - Add calculate command
 - Set switch command to case
 
 ### Docs
+- Add OSX keybindings on MPC
+- Update README todos
+- Update documentation to reflect the bitwarden migration
+- Update CHANGELOG
 - Update README
 - Update CHANGELOG
 - Remove OSX emacs install with jansson as this is the default now
@@ -129,6 +144,9 @@
 - Add app name to notification
 
 ### Emacs
+- Enable activity-watch-mode
+- Set mode-line face attributes
+- Remove custom modeline face
 - Add custom org-ref keybindings
 - Customize modeline font size
 - Add org-ref notes and pdf files
@@ -201,6 +219,10 @@
 - Use Hack font globally
 
 ### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Git
+- Use global template for post-commit
 - Add global gitignore file
 - Add gitlab username for Emacs Forge
 - Create default main branch instead of master
@@ -210,11 +232,14 @@
 - Changed PGP signing key
 - Cleaned repository with unused files
 
-### Git
-- Use osxkeychain for OSX instead of Gnome-key.
-
 ### Greenclip
 - Add greenclip configuration
+
+### I3
+- enable mod + o for dmenu options
+- Set wallpaper on I3 instead of xinitrc
+- Add Rofi's greenclip shortcut
+- Add autodisplay configuration
 
 ### I3
 - Use dmenu instead of rofi
@@ -231,11 +256,6 @@
 - Remove pulseaudio from polybar
 - set 1920x1080 resolution
 - Use polybar and refactor configuration
-
-### I3
-- Set wallpaper on I3 instead of xinitrc
-- Add Rofi's greenclip shortcut
-- Add autodisplay configuration
 
 ### IPython
 - Load grasp on start
@@ -260,7 +280,12 @@
 ### Misc
 - Set html/css indentation rule
 
+### Mopidy
+- Use gstreamer fifo filesink
+- Add ncmpcpp and mopidy support
+
 ### Neomutt
+- Update keybindings
 - Set sendmail path according to the current OS
 - Skip pipe bar
 - View headers on email and set foward fmt
@@ -268,11 +293,14 @@
 - Handle multiple email accounts
 - Add Neomutt with MSMTP
 
-### Playbooks
-- Updated playbook submodule
+### PGCli
+- Add pgcli initial config
 
 ### Playbooks
 - Updated submodule
+
+### Playbooks
+- Updated playbook submodule
 
 ### Polybar
 - Add initial polybar configuration
@@ -284,10 +312,14 @@
 - Updated readme
 
 ### Refactor
+- Use Bitwarden instead of 1Password
 - Refactor ansible roles and CI
 - Remove dotfiles
 - Remove vim-fish
 - Removed virtualenv as we use pyenv now.
+
+### RescueTime
+- Delete RescueTime files and hooks
 
 ### Ripgrep
 - Use rg to grep and find files with Denite and keep it config in env
@@ -305,18 +337,30 @@
 ### Scripts
 - Run tmux session on boot (OSX only)
 
-### Tmux
-- xterm seems to make vim faster when scrolling
-- disable mouse support.
+### Skhd
+- Add skhd for OSX key-bind management
+
+### Skhrd
+- Add editor keybinding
 
 ### Tmux
+- Add tmux-open plugin
+- Add tmux-resurrect
 - Use tmux-256color instead of xterm
 - set escape-time to 0 because of Weechat
 - Refactor Tmux theme
 - Use gruvbox theme and use gitmux
 - Better mouse mode with plugin enabled.
 
+### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
 ### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Add nvim configuration
 - Cleanup plugins
 - Remove vim-startify config
 - Use base16-vim fork due to unupdated repo.
@@ -341,13 +385,26 @@
 - Cleaned unused plugs
 - Use different rainbow parentheses with better colors.
 
-### Vim
-- keep vim-fugitive enabled by default.
-
 ### Wakatime
 - Add wakatime config
 
 ### Weechat
+- Use homedir provided by Chezmoi
+- Share input across all window/buffers
+- Close buffer on part and change part message
+- Add /msg nickserv alias to nickserv
+- Delete notification_center script
+- add autoaway and screen_away scripts
+- Fix bad symlinks
+- Install anotify script for linux
+- Remove iset script
+- Don't instantiate Config on Mail's __init__
+- Add terminal_notifier script (OSX)
+- Update check_mail script with weechat register
+- add check_mail script
+- Enable autohide buffer script
+- Move highmon to bar instead of buffer
+- Change separator symbol and color
 - Add ZNC aliases
 - Disable go auto_jump
 - Realign default layout
@@ -378,6 +435,22 @@
 - Add XDG default directories
 
 ### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
+
+### Zsh
+- Enable shell support for ActivityWatch
+- Add brewfile alias
+- Add dotfiles-update function
+- Add bitwarden zsh completion
+- Add Hugo zsh completion
+- Check if doom directory exists and set alias
+- Check message on antibody bundle execution
+- Enable ^W for backward kill word
+- Update zsh history configuration
+- Update stack configuration
+- Add cd aliases
+- Move git aliases to git_aliases.zsh instead
 - Alias weechat to run with screen-256color
 - Use legacy version of slimline
 - Update slimline RPROMPT section
@@ -416,10 +489,6 @@
 - Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
 - Defer syntax highlight.
 - Updated zplug syntax
-
-### Zsh
-- Load rbenv module from zprezto
-- Function to open up daily logbooks
 
 
 <a name="v3.1"></a>
