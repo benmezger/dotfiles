@@ -6,5 +6,5 @@ ignore =
     PULLREQ_EDITMSG$
     MERGE_MSG$
     TAG_EDITMSG$
-api_key={{ (bitwarden "item" "806af555-54de-44cc-a857-acb500c08fff").login.password }}
+api_key={{ (bitwarden "item" .bitwarden.wakatime_api).login.password }}
 hostname={{ .hostname }}
