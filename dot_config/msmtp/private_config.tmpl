@@ -7,7 +7,7 @@ host           {{ .smtp_host }}
 port           {{ .smtp_port }}
 from           {{ .email }}
 user           {{ .email }}
-password       {{ (bitwarden "item" "c553f8b1-f4a3-4220-8b0b-acb500c08fff").login.password }}
+password       {{ (bitwarden "item" .bitwarden.personal_mail).login.password }}
 
 # work
 account        work
@@ -18,6 +18,6 @@ host           {{ .work.smtp_host }}
 port           {{ .work.smtp_port }}
 from           {{ .work.workmail }}
 user           {{ .work.workmail }}
-password       {{ (bitwarden "item" "aeff6fce-4245-4fea-80a6-acb500c08fff").login.password }}
+password       {{ (bitwarden "item" .bitwarden.work_mail).login.password }}
 
 account default: personal
