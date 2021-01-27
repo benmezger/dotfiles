@@ -1,7 +1,7 @@
 [user]
     name = Ben Mezger
-    email = me@benmezger.nl
-    signingkey = 0xAC7A30843ADC0D65
+    email = {{ .email }}
+    signingkey = {{ .gpg_keyid }}
 [core]
     excludesfile = ~/.gitignore_global
     editor = ~/.bin/editor
@@ -82,7 +82,7 @@
 [diff "bin"]
     textconv = hexdump -v -C
 [github]
-    user = benmezger
+    user = {{ .github_user }}
 [gitlab]
     user = seds
 [flake8]
