@@ -37,7 +37,7 @@ continuation_indent_size = 2
 [Makefile]
 indent_style = tab
 
-[*.{json,yml}]
+[*.{json,yml,yaml}]
 indent_style = space
 indent_size = 2
 insert_final_newline = ignore
