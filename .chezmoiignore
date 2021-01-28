@@ -57,5 +57,5 @@ config/pgcli/history
 .weechat/sec.conf
 .weechat/weechat.conf
 .config/mopidy/mopidy.conf
-Library/
+.config/rclone/rclone.conf
 {{- end }}

@@ -130,6 +130,7 @@ brew "ncmpcpp"
 brew "mpc"
 brew "gstreamer"
 brew "koekeishiya/formulae/skhd", restart_service: true
+brew "rclone"
 cask "bitwarden"
 cask "activitywatch"
 cask "alacritty"
