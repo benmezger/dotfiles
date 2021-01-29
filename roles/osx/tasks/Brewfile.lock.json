@@ -21,6 +21,9 @@
       },
       "mopidy/mopidy": {
         "revision": "5042dec735b2ddf22fbcbfe0c2dcf6e8319a703a"
+      },
+      "discoteq/discoteq": {
+        "revision": "fcb37d0d1ddbd537c71de774534beff10cf9834f"
       }
     },
     "brew": {
@@ -1276,7 +1279,7 @@
         }
       },
       "gnupg": {
-        "version": "2.2.26",
+        "version": "2.2.27",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
@@ -3051,6 +3054,10 @@
             }
           }
         }
+      },
+      "flock": {
+        "version": "0.4.0",
+        "bottle": false
       }
     },
     "cask": {

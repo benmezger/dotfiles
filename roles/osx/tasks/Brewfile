@@ -6,7 +6,7 @@ tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "mopidy/mopidy"
-
+tap "discoteq/discoteq"
 # brew install
 brew "ack"
 brew "libyaml"
@@ -131,6 +131,8 @@ brew "mpc"
 brew "gstreamer"
 brew "koekeishiya/formulae/skhd", restart_service: true
 brew "rclone"
+brew "flock"
+
 cask "bitwarden"
 cask "activitywatch"
 cask "alacritty"
