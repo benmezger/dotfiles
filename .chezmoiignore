@@ -47,7 +47,7 @@ config/pgcli/history
 .skhdrc
 {{- end }}
 
-{{- if or (eq (env "CI") "1") (not .secrets) }}
+{{- if .secrets }}
 .mbsyncrc
 .config/msmtp
 .wakatime.cfg
