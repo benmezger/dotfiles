@@ -1,6 +1,6 @@
 set my_user={{ .work.workmail }}
 
-{{- if or (eq (env "CI") "0") (.secrets) }}
+{{- if .secrets }}
 set my_pass={{ (bitwarden "item" .bitwarden.work_mail).login.password }}
 {{- end }}
 
@@ -8,7 +8,7 @@ set realname = 'Ben Mezger'
 set from = {{ .work.workmail }}
 set use_from = yes
 
-{{- if or (eq (env "CI") "0") (.secrets) }}
+{{- if .secrets }}
 set smtp_pass = $my_pass
 set smtp_url=smtps://$my_user@{{ .work.smtp_host }}
 set ssl_force_tls = yes
