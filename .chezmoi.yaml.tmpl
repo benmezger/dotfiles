@@ -1,7 +1,18 @@
+{{- $headless := false -}}
+{{- $secrets := true -}}
+
+{{- if (env "CI") -}}
+{{- $headless = true -}}
+{{- $secrets = false -}}
+{{- else -}}
+{{- $secrets := promptBool "secrets" -}}
+{{- end -}}
+
 sourceDir: {{ .chezmoi.sourceDir }}
 
 data:
-  secrets: false
+  secrets: {{ $secrets }}
+  headless: {{ $headless }}
   email: me@benmezger.nl
   smtp_host: smtp.gmail.com
   smtp_port: 587
@@ -14,6 +25,7 @@ data:
     imap_host: imap.gmail.com
     smtp_host: smtp.gmail.com
     smtp_port: 587
+{{- if $secrets }}
   bitwarden:
     jira: 8c7e36c5-a859-4fe6-a0c2-acb500c08fff
     i3rs: 1f13be62-1f5e-40fb-9b60-acb500c08fff
@@ -29,3 +41,4 @@ data:
   onepassword:
     ssh_priv: e2ckm7v6g2rqo5hdswupjvotl4
     ssh_pub: estziwafcem6w5svladjy2cwk4
+{{- end -}}
