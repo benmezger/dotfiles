@@ -4,7 +4,7 @@ set my_user={{ .work.workmail }}
 set my_pass={{ (bitwarden "item" .bitwarden.work_mail).login.password }}
 {{- end }}
 
-set realname = 'Ben Mezger'
+set realname = {{ .name | quote }}
 set from = {{ .work.workmail }}
 set use_from = yes
 
