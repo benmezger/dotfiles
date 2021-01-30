@@ -47,7 +47,7 @@ config/pgcli/history
 .skhdrc
 {{- end }}
 
-{{- if .secrets }}
+{{- if not .secrets }}
 .mbsyncrc
 .config/msmtp
 .wakatime.cfg
