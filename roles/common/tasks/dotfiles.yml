@@ -5,7 +5,6 @@
   ignore_errors: yes
   tags:
     - chezmoi
-    - dotfiles
 
 - name: Create temporary bin directory for chezmoi
   tempfile:
@@ -15,12 +14,12 @@
   register: chezmoi_bin
   tags:
     - chezmoi
-    - dotfiles
 
 - name: Install Chezmoi
-  shell: curl -sfL https://git.io/chezmoi | sh
+  ansible.builtin.command: curl -sfL https://git.io/chezmoi | sh
   when: chezmoi_exists.rc > 0
   async: 60
+  poll: 0
   register: chezmoi_result
   environment:
     - BINDIR: "{{ chezmoi_bin.path }}"
@@ -28,18 +27,21 @@
     warn: no
   tags:
     - chezmoi
-    - dotfiles
 
 - name: Wait for async tasks
+  when: chezmoi_exists.rc > 0
+  tags:
+    - chezmoi
   async_status:
     jid: "{{ chezmoi_result.ansible_job_id }}"
+  register: job_result
   until: job_result.finished
   delay: 10
   retries: 10
 
 - name: Initialize dotfiles
   when: chezmoi_exists.rc == 0 or (chezmoi_results is defined and chezmoi_results.rc == 0)
-  shell: chezmoi -S ~/dotfiles init
+  shell: chezmoi init -S ~/dotfiles
   args:
     chdir: ~/
   environment:
@@ -49,7 +51,6 @@
     - BW_SESSION: "{{ lookup('env', 'BW_SESSION') }}"
   tags:
     - chezmoi
-    - dotfiles
 
 - name: Install dotfiles
   shell: chezmoi -v apply
@@ -60,4 +61,3 @@
     - CI: "{{ lookup('env', 'CI') }}"
   tags:
     - chezmoi
-    - dotfiles

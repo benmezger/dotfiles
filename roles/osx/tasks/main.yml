@@ -4,13 +4,6 @@
 - import_tasks: defaults.yml
   tags: [osx-defaults]
 
-- name: Ensure vim directories exist
-  poll: 0
-  async: 45
-  file:
-      path: ~/.vim/autoload
-      state: directory
-
 - name: Copy Tmux launchd daemon
   poll: 0
   async: 45

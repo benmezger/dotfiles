@@ -1,15 +1,10 @@
 ---
+- tags: [pacman]
+
 - name: Sync Pacman
   become: true
   pacman:
     update_cache: yes
-  tags:
-    - deps
-
-- name: Install Pacman packages
-  become: true
-  shell: pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
-    --noconfirm --needed
   tags:
     - deps
 
@@ -21,6 +16,13 @@
     line: "Color"
   tags:
     - config
+
+- name: Install Pacman packages
+  become: true
+  shell: pacman -S $(< {{ playbook_dir }}/roles/archlinux/tasks/pkgs.pacman) \
+    --noconfirm --needed
+  tags:
+    - deps
 
 - name: Enable Pacman Total download in pacman.conf
   become: true
