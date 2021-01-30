@@ -4,7 +4,9 @@
 {{- if (env "CI") -}}
 {{- $headless = true -}}
 {{- $secrets = false -}}
-{{- else -}}
+{{- end -}}
+
+{{- if (env "ASK") }}
 {{- $secrets := promptBool "secrets" -}}
 {{- end -}}
 

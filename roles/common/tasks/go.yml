@@ -1,0 +1,31 @@
+---
+- name: Install Gitmux
+  shell: go get -u github.com/arl/gitmux
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
+  tags:
+    - deps
+    - go
+
+- name: Install Go LSP
+  shell: go get -u golang.org/x/tools/gopls
+  environment:
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
+  tags:
+    - deps
+    - go
+
+- name: Install Git Changelog generator
+  shell: go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
+  environment:
+    - GO111MODULE: "on"
+    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
+  args:
+    warn: no
+  tags:
+    - deps
+    - go
