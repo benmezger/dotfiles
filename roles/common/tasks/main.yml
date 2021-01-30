@@ -9,8 +9,7 @@
     repo: https://github.com/zplug/zplug
     dest: ~/.zplug
   tags:
-    - git
-    - zsh
+    - remote
 
 - name: Clone TPM (for Tmux)
   async: 60
@@ -19,15 +18,14 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
   tags:
-    - git
-    - tmux
+    - remote
 
 - name: Ensure vim directories exist
   file:
     path: ~/.vim/autoload
     state: directory
   tags:
-    - vim
+    - remote
 
 - name: Install Vim-Plug
   poll: 0
@@ -37,7 +35,7 @@
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: ~/.vim/autoload/plug.vim
   tags:
-    - vim
+    - remote
 
 - name: Clone base16-shell
   poll: 0
@@ -47,7 +45,7 @@
     repo: https://github.com/chriskempson/base16-shell
     dest: ~/.config/base16-shell
   tags:
-    - git
+    - remote
 
 - name: Clone Emacs doom
   poll: 0
@@ -57,39 +55,41 @@
     repo: https://github.com/hlissner/doom-emacs
     dest: ~/.emacs.d
   tags:
-    - git
-    - emacs
-
-- name: Wait for async tasks
-  async_status:
-    jid: "{{ item.ansible_job_id }}"
-  until: job_result.finished
-  delay: 10
-  retries: 10
-  with_items:
-    - "{{ sql_query_output.results }}"
-    - "{{ zplug_result.ansible_job_id }}"
-    - "{{ tpm_result.ansible_job_id }}"
-    - "{{ vimplug_result.ansible_job_id }}"
-    - "{{ base16_result.ansible_job_id }}"
-
-- name: Install Emacs doom packages
-  command: "~/.emacs.d/bin/doom -y install"
-  tags:
-    - dotfiles
-    - emacs
+    - remote
 
 - name: Clone wallpapers
+  poll: 0
+  async: 45
+  register: wallpaper_result
   git:
     repo: https://gitlab.com/benmezger/wallpapers.git
     dest: ~/workspace/wallpapers
     force: yes
   tags:
-    - git
+    - remote
+
+- name: Wait for async tasks
+  tags:
+    - remote
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: result
+  until: result.finished
+  delay: 5
+  retries: 10
+  with_items:
+    - "{{ zplug_result }}"
+    - "{{ tpm_result }}"
+    - "{{ vimplug_result }}"
+    - "{{ base16_result }}"
+    - "{{ wallpaper_result }}"
+
+- name: Install Emacs doom packages
+  command: "~/.emacs.d/bin/doom -y install"
+  tags:
+    - remote
 
 - name: Install vim plugins
   shell: nvim +PlugInstall +qall --headless
   tags:
-    - vim
-    - deps
-    - dotfiles
+    - remote
