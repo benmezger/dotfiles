@@ -1,41 +1,10 @@
 ---
-- name: Check if chezmoi is installed
-  shell: type chezmoi &>/dev/null
-  register: chezmoi_exists
-  ignore_errors: yes
-
-- name: Create temporary bin directory for chezmoi
-  tempfile:
-    state: directory
-    suffix: bin
-  when: chezmoi_exists.rc > 0
-  register: chezmoi_bin
-
-- name: Install Chezmoi
-  shell: curl -sfL https://git.io/chezmoi | sh
-  when: chezmoi_exists.rc > 0
-  environment:
-    - BINDIR: "{{ chezmoi_bin.path }}"
-  args:
-    warn: no
-
-- name: Initialize dotfiles
-  shell: chezmoi -S ~/dotfiles init
-  args:
-    chdir: ~/
-  environment:
-    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
-    - CI: "{{ lookup('env', 'CI') }}"
-
-- name: Install dotfiles
-  shell: chezmoi -v apply
-  args:
-    chdir: ~/
-  environment:
-    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
-    - CI: "{{ lookup('env', 'CI') }}"
+- import_tasks: dotfiles.yml
+- import_tasks: go.yml
 
 - name: Install zplug
+  async: 60
+  register: zplug_result
   git:
     repo: https://github.com/zplug/zplug
     dest: ~/.zplug
@@ -44,6 +13,8 @@
     - zsh
 
 - name: Clone TPM (for Tmux)
+  async: 60
+  register: tpm_result
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
@@ -61,6 +32,7 @@
 - name: Install Vim-Plug
   poll: 0
   async: 45
+  register: vimplug_result
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: ~/.vim/autoload/plug.vim
@@ -68,6 +40,9 @@
     - vim
 
 - name: Clone base16-shell
+  poll: 0
+  async: 45
+  register: base16_result
   git:
     repo: https://github.com/chriskempson/base16-shell
     dest: ~/.config/base16-shell
@@ -75,12 +50,28 @@
     - git
 
 - name: Clone Emacs doom
+  poll: 0
+  async: 45
+  register: doom_result
   git:
     repo: https://github.com/hlissner/doom-emacs
     dest: ~/.emacs.d
   tags:
     - git
     - emacs
+
+- name: Wait for async tasks
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  until: job_result.finished
+  delay: 10
+  retries: 10
+  with_items:
+    - "{{ sql_query_output.results }}"
+    - "{{ zplug_result.ansible_job_id }}"
+    - "{{ tpm_result.ansible_job_id }}"
+    - "{{ vimplug_result.ansible_job_id }}"
+    - "{{ base16_result.ansible_job_id }}"
 
 - name: Install Emacs doom packages
   command: "~/.emacs.d/bin/doom -y install"
@@ -95,37 +86,6 @@
     force: yes
   tags:
     - git
-
-- name: Install Gitmux
-  shell: go get -u github.com/arl/gitmux
-  environment:
-    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
-  args:
-    warn: no
-  tags:
-    - deps
-    - go
-
-- name: Install Go LSP
-  shell: go get -u golang.org/x/tools/gopls
-  environment:
-    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
-  args:
-    warn: no
-  tags:
-    - deps
-    - go
-
-- name: Install Git Changelog generator
-  shell: go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
-  environment:
-    - GO111MODULE: "on"
-    - GOPATH: "{{ ansible_env.HOME }}/workspace/go"
-  args:
-    warn: no
-  tags:
-    - deps
-    - go
 
 - name: Install vim plugins
   shell: nvim +PlugInstall +qall --headless

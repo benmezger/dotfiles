@@ -1,0 +1,63 @@
+---
+- name: Check if chezmoi is installed
+  shell: type chezmoi &>/dev/null
+  register: chezmoi_exists
+  ignore_errors: yes
+  tags:
+    - chezmoi
+    - dotfiles
+
+- name: Create temporary bin directory for chezmoi
+  tempfile:
+    state: directory
+    suffix: bin
+  when: chezmoi_exists.rc > 0
+  register: chezmoi_bin
+  tags:
+    - chezmoi
+    - dotfiles
+
+- name: Install Chezmoi
+  shell: curl -sfL https://git.io/chezmoi | sh
+  when: chezmoi_exists.rc > 0
+  async: 60
+  register: chezmoi_result
+  environment:
+    - BINDIR: "{{ chezmoi_bin.path }}"
+  args:
+    warn: no
+  tags:
+    - chezmoi
+    - dotfiles
+
+- name: Wait for async tasks
+  async_status:
+    jid: "{{ chezmoi_result.ansible_job_id }}"
+  until: job_result.finished
+  delay: 10
+  retries: 10
+
+- name: Initialize dotfiles
+  when: chezmoi_exists.rc == 0 or (chezmoi_results is defined and chezmoi_results.rc == 0)
+  shell: chezmoi -S ~/dotfiles init
+  args:
+    chdir: ~/
+  environment:
+    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
+    - CI: "{{ lookup('env', 'CI') }}"
+    - PROMPT: "{{ lookup('env', 'PROMPT') }}"
+    - BW_SESSION: "{{ lookup('env', 'BW_SESSION') }}"
+  tags:
+    - chezmoi
+    - dotfiles
+
+- name: Install dotfiles
+  shell: chezmoi -v apply
+  args:
+    chdir: ~/
+  environment:
+    - PATH: "{{ chezmoi_bin.path|d('') }}:{{ ansible_env.PATH }}"
+    - CI: "{{ lookup('env', 'CI') }}"
+  tags:
+    - chezmoi
+    - dotfiles
