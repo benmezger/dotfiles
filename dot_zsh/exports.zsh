@@ -1,5 +1,4 @@
 # general exports
-export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/workspace
 export EDITOR=$HOME/.bin/editor
 export VISUAL=$HOME/.bin/editor
@@ -9,24 +8,33 @@ export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
 export GPGKEY=0xAC7A30843ADC0D65
-export PATH="${PATH}:$HOME/.bin:/usr/local/bin"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
-# Go path
-export GOPATH=$HOME/workspace/go
-export PATH="$GOPATH/bin:$PATH"
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+if [[ ${OSTYPE} == darwin* ]]; then
+    export HOMEBREW_NO_AUTO_UPDATE=1
+    # fzf
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+    source /usr/local/opt/fzf/shell/completion.zsh
+else
+    # fzf
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
+
+export PATH="$HOME/.bin:$PATH"
 
 ### Plugins
 
 ## Slimline
 export SLIMLINE_ENABLE_ASYNC_AUTOLOAD=0
 
-## Homebrew
-if [[ ${OSTYPE} == darwin* ]]; then
-    export HOMEBREW_NO_AUTO_UPDATE=1
-fi
+# Go path
+export GOPATH=$HOME/workspace/go
+export PATH=$GOPATH/bin:$PATH
 
 ## Autoenv
 export AUTOENV_FILE_ENTER=".hi"
@@ -50,6 +58,7 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export WORKON_HOME=$HOME/.virtualenvs
 
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
