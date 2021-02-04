@@ -1,9 +1,3 @@
-if [[ ${OSTYPE} == darwin* ]]; then
-    export PATH=/usr/local/bin:$PATH
-else
-    export PATH=/usr/bin/antibody:$PATH
-fi
-
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
     source $HOME/.zsh_plugins.sh
 else
@@ -19,15 +13,7 @@ source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
 source $HOME/.zsh/aw-watcher-shell.zsh 
+source $HOME/.zsh/exports.zsh
 
 # base16 theme
 base16_gruvbox-dark-hard
-
-if [[ ${OSTYPE} == linux* ]]; then
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
-else
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-    source /usr/local/opt/fzf/shell/completion.zsh
-fi
-    
