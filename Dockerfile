@@ -2,7 +2,6 @@ FROM archlinux:base-devel
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
 RUN pacman -Syu --noconfirm
-RUN pacman-db-upgrade
 RUN pacman -S reflector rsync --noconfirm
 
 RUN reflector --latest 5 \
