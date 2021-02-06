@@ -24,7 +24,7 @@
 documentation./
 
 * Features
-- Auto install all system dependencies with Ansible
+- Auto install all system dependencies
 - Applies secrets and password with =bitwarden=
 - Custom scripts in =.bin=
 - =Alacritty= config based on OS
@@ -85,19 +85,13 @@ documentation./
 
 
 * Auto installer
-Run =bash install.sh=, which installs the required dependencies for running the
-ansible playbooks
+Run =bash install.sh=, which installs the required dependencies for running the system
 
-* Installing manually with Ansible
+* Installing manually with Makefile
 ** Requirements
-- [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][Ansible]]
+- [[https://www.gnu.org/software/make/manual/make.html][Make]]
 
-Install Ansible galaxy requirements with =ansible-galaxy install -r
-requirements.yml=
-** OSX
-For MacOS, run =ansible-playbook -i inventory osx.yml=
-** Archlinux
-For Linux, run =ansible-playbook -i inventory archlinux.yml=
+See =make help= for all available options
 
 * Installing manually with Chezmoi
 ** Requirements
@@ -107,10 +101,6 @@ For Linux, run =ansible-playbook -i inventory archlinux.yml=
 Run =chezmoi init https://github.com/benmezger/dotfiles.git= (see [[https://www.chezmoi.io/docs/reference/][reference]] for
 more options) to checkout the repository and any submodules. Finally, run
 =chezmoi apply= to move changes to your home directory.
-
-When installing without Ansible, =chezmoi= wont install any external
-dependencies, so make sure you have all the required dependencies before running
-=chezmoi apply=.
 
 Chezmoi will try to apply bitwarden in [[file:dot_env-secrets.tmpl][env-secrets]] if =CI= env is not set or
 =secrets= is set to =true= in =chezmoi.yaml= (defaults to =false=). Make sure
@@ -300,15 +290,6 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 ** Chezmoi does not seem to reload the configuration
 Run =chezmoi init <dotfiles-path>= again. This should reload the configuration
 by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/chezmoi.yaml=.
-** Ansible fails due to required administration password
-Run =ansible= with =-K= flag before executing for prompting for the root
-password before executing tasks.
-** =You are not currently signed in. Please run `op signin --help` for instructions=
-This is because =chezmoi= requires =bitwarden= to be logged in for filling any
-secrets. Make sure your bitwarden's UUIDS are up to date, see [[https://github.com/twpayne/chezmoi/blob/master/docs/HOWTO.md#use-bitwarden-to-keep-your-secrets][this]] for more
-information. After setting all your UUIDS, login with =bw= and
-finally run =chezmoi apply=.
-
 
 * TODOS
 ** TODO Remove 1Password documents from the configuration file
