@@ -14,10 +14,10 @@ help:
 	@echo '    make chezmoi-apply      Apply chezmoi files (runs all scripts).'
 	@echo '    make post-chezmoi       Run post chezmoi scripts.'
 	@echo '    make homebrew-install   Install Homebrew.'
-	@echo '    make run		   Ensure deps and apply chezmoi'
-	@echo '    make all		   Run all.'
+	@echo '    make run                Ensure deps and apply chezmoi'
+	@echo '    make all                Run all.'
 	@echo ''
-	@echo '    Author   		   Ben Mezger (github.com/benmezger)'
+	@echo '    Author                  Ben Mezger (github.com/benmezger)'
 	@echo
 
 start-services:
