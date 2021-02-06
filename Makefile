@@ -20,28 +20,36 @@ help:
 	@echo
 
 start-services:
+	@echo "Starting services.."
 	bash ./scripts/run_once_0003_start_services.sh
 
 git-repos:
+	@echo "Cloning Git repos.."
 	bash ./scripts/run_once_0004_install_git_repos.sh
 
 conf-sys:
+	@echo "Configuring system.."
 	bash ./scripts/run_once_0005_configure_sys.sh
 
 ssh-perms:
+	@echo "Setting SSH permissions.."
 	bash ./scripts/run_once_0006_set_ssh_perms.sh
 
 pyenv:
+	@echo "Installing pyenv.."
 	bash ./scripts/run_once_0007_install_pyenv.sh
 
 ensure-deps:
+	@echo "Ensuring dependencies.."
 	bash ./scripts/0001_install_chezmoi.sh
 	bash ./scripts/run_once_0002_install_deps.sh
 
 chezmoi-init: 
+	@echo "Initializing chezmoi.."
 	chezmoi init -S ${CURDIR} -v
 
 chezmoi-apply: 
+	@echo "Applying chezmoi.."
 	chezmoi apply -v
 
 all: ensure-deps \
@@ -60,5 +68,4 @@ post-chezmoi: start-services \
 	git-repos \
 	conf-sys \
 	ssh-perms
-
-	echo "Done"
+	@echo "Done"
