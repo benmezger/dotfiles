@@ -30,4 +30,17 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
     sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
 
+    sudo systemctl enable pcscd
+
+    mkdir -p $HOME/.config/systemd/user/
+
+    if [ -f "$HOME/.config/systemd/user/greenclip.service" ]; then
+        systemctl --user enable greenclip.services
+    fi
+
+    if [ -f "$HOME/.config/systemd/user/mbsync.service" ]; then
+        systemctl --user enable mbsync.services
+        systemctl --user enable mbsync.timer
+    fi
+
 fi

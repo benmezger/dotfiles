@@ -40,6 +40,7 @@ Brewfile.lock.json
 .xinitrc
 .xsession
 .config/picom.conf
+.config/systemd
 
 .weechat/python/anotify.py
 .weechat/python/autoload/anotify.py
