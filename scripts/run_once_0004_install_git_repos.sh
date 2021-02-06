@@ -31,11 +31,11 @@ if [ ! -d "$BASE16_PATH" ]; then
     git clone https://github.com/chriskempson/base16-shell "$BASE16_PATH"
 fi
 
-DOOM_EMACS_PATH="$HOME/.emacs.d"
-if [ ! -d "$DOOM_EMACS_PATH" ]; then
-    mkdir -p "$DOOM_EMACS_PATH"
-    git clone --depth 1 https://github.com/hlissner/doom-emacs "$DOOM_EMACS_PATH"
-    "$HOME"/emacs.d/bin/doom -y install
+EMACS_PATH="$HOME/.emacs.d"
+if [ ! -d "$EMACS_PATH" ]; then
+    mkdir -p "$EMACS_PATH"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs "$EMACS_PATH"
+    "$EMACS_PATH"/bin/doom -y install
 else
-    "$HOME"/emacs.d/bin/doom -y sync -e
+    "$EMACS_PATH"/bin/doom -y sync -e
 fi
