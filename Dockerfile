@@ -1,4 +1,4 @@
-FROM archlinux
+FROM archlinux:base-devel
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
 RUN pacman -Syu --noconfirm
