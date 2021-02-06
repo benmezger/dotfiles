@@ -2,22 +2,22 @@
 set -euo pipefail
 
 
-SOURCE_DIR="${SOURCE_DIR:-$(dirname `pwd`)}"
-. $SOURCE_DIR/scripts/buildcheck.sh 
+SOURCE_DIR="${SOURCE_DIR:-$(dirname "$(pwd)")}"
+. "$SOURCE_DIR/scripts/buildcheck.sh"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     TMUX_PLIST=$HOME/Library/LaunchAgents/com.tmux.plist
     if [ -f "$TMUX_PLIST" ]; then
         echo "Loading tmux.plist..."
-        launchctl load -w ~/Library/LaunchAgents/com.tmux.plist
+        launchctl load -w "$TMUX_PLIST"
     else
         echo "Skipping launchctl of tmux.plist"
     fi
 
-    SYNCMAIL_PLIST=$HOME/Library/LaunchAgents/com.syncmail.plist
+    SYNCMAIL_PLIST="$HOME/Library/LaunchAgents/com.syncmail.plist"
     if [ -f "$SYNCMAIL_PLIST" ]; then
         echo "Loading syncmail.plist..."
-        launchctl load -w $SYNCMAIL_PLIST
+        launchctl load -w "$SYNCMAIL_PLIST"
     else
         echo "Skipping launchctl of syncmail.plist"
     fi
@@ -32,7 +32,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     sudo systemctl enable pcscd
 
-    mkdir -p $HOME/.config/systemd/user/
+    mkdir -p "$HOME/.config/systemd/user/"
 
     if [ -f "$HOME/.config/systemd/user/greenclip.service" ]; then
         systemctl --user enable greenclip.services
