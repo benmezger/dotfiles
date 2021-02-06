@@ -5,6 +5,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     TMUX_PLIST=$HOME/Library/LaunchAgents/com.tmux.plist
     if [ -f "$TMUX_PLIST" ]; then
         echo "Loading tmux.plist..."
+        (launchctl list | grep --silent tmux) && launchctl unload $TMUX_PLIST
         launchctl load -w "$TMUX_PLIST"
     else
         echo "Skipping launchctl of tmux.plist"
@@ -13,6 +14,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     SYNCMAIL_PLIST="$HOME/Library/LaunchAgents/com.syncmail.plist"
     if [ -f "$SYNCMAIL_PLIST" ]; then
         echo "Loading syncmail.plist..."
+        (launchctl list | grep --silent syncmail) && launchctl unload $SYNCMAIL_PLIST
         launchctl load -w "$SYNCMAIL_PLIST"
     else
         echo "Skipping launchctl of syncmail.plist"
