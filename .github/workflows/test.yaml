@@ -41,8 +41,6 @@ jobs:
             $HOME/Library/Caches/Homebrew
             /Library/Caches/Homebrew
             $HOME/.pyenv
-            $HOME/.ansible
-            $HOME/Library/Caches/pip
           key: homebrew-${{ runner.os }}
           restore-keys: |
             homebrew-${{ runner.os }}
@@ -50,9 +48,5 @@ jobs:
         run: cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
       - name: Remove problematic 2to3 bin
         run: rm /usr/local/bin/2to3
-      - name: Install Ansible
-        run: brew install ansible
-      - name: Install Ansible galaxies
-        run: ansible-galaxy install -r requirements.yml
-      - name: Run Ansible
-        run: ansible-playbook -i inventory osx.yml
+      - name: Run install.sh
+        run: ./install.sh
