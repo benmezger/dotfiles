@@ -13,6 +13,7 @@ help:
 	@echo '    make chezmoi-init       Initialize chezmoi.'
 	@echo '    make chezmoi-apply      Apply chezmoi files (runs all scripts).'
 	@echo '    make post-chezmoi       Run post chezmoi scripts.'
+	@echo '    make homebrew-install   Install Homebrew.'
 	@echo '    make run		   Ensure deps and apply chezmoi'
 	@echo '    make all		   Run all.'
 	@echo ''
@@ -69,3 +70,7 @@ post-chezmoi: start-services \
 	conf-sys \
 	ssh-perms
 	@echo "Done"
+
+homebrew-install:
+	@echo "Installing homebrew.."
+	bash ./scripts/0008_install_homebrew.sh

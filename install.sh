@@ -8,9 +8,7 @@ isavailable() {
 
 echo "Installing required dependencies"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    isavailable brew || \
-        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
-    isavailable chezmoi || brew install chezmoi
+    make homebrew-install
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     isavailable chezmoi || sudo pacman -S chezmoi --noconfirm
 fi
