@@ -1,16 +1,15 @@
 FROM archlinux:base-devel
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
+RUN mkdir -p /var/lib/pacman/
+
 RUN pacman -Syu --noconfirm
-RUN pacman -S reflector rsync --noconfirm
+RUN pacman -S sudo git file awk gcc base-devel reflector --noconfirm
 
 RUN reflector --latest 5 \
         --save "/etc/pacman.d/mirrorlist" \
         --sort rate \
         --verbose
-
-RUN pacman -Syu --noconfirm
-RUN pacman -S sudo git file awk gcc base-devel --noconfirm
 
 RUN useradd -ms /bin/bash archie
 RUN gpasswd -a archie wheel
