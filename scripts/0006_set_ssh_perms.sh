@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SOURCE_DIR="${SOURCE_DIR:-"$(pwd)"}"
+. "$SOURCE_DIR/scripts/buildcheck.sh"
+
 if [[ -d "$HOME/.ssh" ]]; then
         echo "SSH file chmod..."
 
