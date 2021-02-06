@@ -2,7 +2,7 @@ FROM archlinux
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S sudo git file awk gcc ansible base-devel --noconfirm
+RUN pacman -S sudo git file awk gcc base-devel --noconfirm
 
 RUN useradd -ms /bin/bash archie
 RUN gpasswd -a archie wheel
