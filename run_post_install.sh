@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ "${CI:-0}" = "1" ]; then
-    echo "Skipping post_install due to CI variable set to 1"
-    exit 0
-fi
+export SOURCE_DIR=$(chezmoi source-path)
 
-if [[ -d "$HOME/.ssh" ]]; then
-        echo "SSH file chmod..."
+. $SOURCE_DIR/scripts/buildcheck.sh
 
-        chmod 755 $HOME/.ssh
-        [[ -f $HOME/.ssh/id_rsa ]] && chmod 600 $HOME/.ssh/id_rsa
-        [[ -f $HOME/.ssh/id_rsa.pub ]] && chmod 600 $HOME/.ssh/id_rsa.pub 
-fi
+. $SOURCE_DIR/scripts/run_once_0002_install_deps.sh  
+. $SOURCE_DIR/scripts/run_once_0003_start_services.sh 
 
+. $SOURCE_DIR/scripts/run_once_0004_install_git_repos.sh 
+. $SOURCE_DIR/scripts/run_once_0005_configure_sys.sh 
+
+. $SOURCE_DIR/scripts/run_once_0006_set_ssh_perms.sh 
 echo "Done"

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+SOURCE_DIR="${SOURCE_DIR:-$(dirname `pwd`)}"
+. $SOURCE_DIR/scripts/buildcheck.sh 
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    TMUX_PLIST=$HOME/Library/LaunchAgents/com.tmux.plist
+    if [ -f "$TMUX_PLIST" ]; then
+        echo "Loading tmux.plist..."
+        launchctl load -w ~/Library/LaunchAgents/com.tmux.plist
+    else
+        echo "Skipping launchctl of tmux.plist"
+    fi
+
+    SYNCMAIL_PLIST=$HOME/Library/LaunchAgents/com.syncmail.plist
+    if [ -f "$SYNCMAIL_PLIST" ]; then
+        echo "Loading syncmail.plist..."
+        launchctl load -w $SYNCMAIL_PLIST
+    else
+        echo "Skipping launchctl of syncmail.plist"
+    fi
+
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+    echo "Updating pacman.conf.."
+    sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+
+fi

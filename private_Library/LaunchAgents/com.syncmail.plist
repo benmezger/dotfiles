@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.syncmail</string>
+    <key>OnDemand</key>
+    <true />
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>-c</string>
+      <string>$HOME/.bin/syncmail</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>300</integer>
+    <key>StandardOutPath</key>
+    <string>/tmp/syncmail.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/syncmail.stderr</string>
+    <key>InitGroups</key>
+    <true />
+  </dict>
+</plist>

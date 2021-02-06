@@ -18,6 +18,11 @@ install.sh
 .weechat/logs
 .weechat/python/__pycache__/
 config/pgcli/history
+scripts/
+Brewfile
+Pacfile
+Aurfile
+Brewfile.lock.json
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
