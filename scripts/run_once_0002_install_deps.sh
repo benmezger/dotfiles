@@ -11,5 +11,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Using $HOMEBREW_BUNDLE_FILE bundle file"
     brew bundle
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    sudo pacman -S $(< $PACMAN_BUNDLE_FILE)
+    sudo pacman -S $(< $PACMAN_BUNDLE_FILE) --noconfirm
 fi
