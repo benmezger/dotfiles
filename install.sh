@@ -6,7 +6,6 @@ isavailable() {
     type "$1" &>/dev/null
 }
 
-
 echo "Installing required dependencies"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     isavailable brew || \
@@ -16,6 +15,4 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     isavailable chezmoi || sudo pacman -S chezmoi --noconfirm
 fi
 
-echo "Running chezmoi for $OSTYPE"
-chezmoi -S "$(pwd)" init --verbose && \
-    chezmoi apply --verbose
+make all

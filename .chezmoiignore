@@ -23,6 +23,7 @@ Brewfile
 Pacfile
 Aurfile
 Brewfile.lock.json
+Makefile
 
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}

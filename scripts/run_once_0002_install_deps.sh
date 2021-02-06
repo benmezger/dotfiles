@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SOURCE_DIR="${SOURCE_DIR:-$(dirname $(pwd))}"
+SOURCE_DIR="${SOURCE_DIR-$(pwd)}"
 
 export HOMEBREW_BUNDLE_FILE="$SOURCE_DIR/Brewfile"
 PACMAN_BUNDLE_FILE="$SOURCE_DIR/Pacfile"
