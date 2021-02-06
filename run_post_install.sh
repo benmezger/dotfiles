@@ -11,4 +11,5 @@ export SOURCE_DIR
 . "$SOURCE_DIR/scripts/run_once_0005_configure_sys.sh"
 
 . "$SOURCE_DIR/scripts/run_once_0006_set_ssh_perms.sh"
+. "$SOURCE_DIR/scripts/run_once_0007_install_pyenv.sh"
 echo "Done"
