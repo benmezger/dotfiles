@@ -4,8 +4,6 @@ set -euo pipefail
 SOURCE_DIR=$(chezmoi source-path)
 export SOURCE_DIR
 
-. "$SOURCE_DIR/scripts/buildcheck.sh"
-
 . "$SOURCE_DIR/scripts/run_once_0002_install_deps.sh"
 . "$SOURCE_DIR/scripts/run_once_0003_start_services.sh"
 

@@ -17,4 +17,5 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 fi
 
 echo "Running chezmoi for $OSTYPE"
-chezmoi -S "$(pwd)" init --verbose
+chezmoi -S "$(pwd)" init --verbose && \
+    chezmoi apply --verbose
