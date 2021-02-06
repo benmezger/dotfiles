@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SOURCE_DIR="${SOURCE_DIR:-$(dirname $(pwd))}"
-. "$SOURCE_DIR"/scripts/buildcheck.sh 
-
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # from: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 

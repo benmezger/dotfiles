@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SOURCE_DIR="${SOURCE_DIR:-$(dirname "$(pwd)")}"
-. "$SOURCE_DIR/scripts/buildcheck.sh"
-
 ZPLUG_PATH="$HOME/.zplug"
 if [ ! -d "$ZPLUG_PATH" ]; then
     git clone https://github.com/zplug/zplug "$ZPLUG_PATH"

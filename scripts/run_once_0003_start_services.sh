@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
-SOURCE_DIR="${SOURCE_DIR:-$(dirname "$(pwd)")}"
-. "$SOURCE_DIR/scripts/buildcheck.sh"
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     TMUX_PLIST=$HOME/Library/LaunchAgents/com.tmux.plist
     if [ -f "$TMUX_PLIST" ]; then
