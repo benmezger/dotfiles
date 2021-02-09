@@ -45,6 +45,10 @@ osx-defaults:
 	@echo "Applying OSX defaults.."
 	bash ./scripts/0009_set_osx_defaults.sh
 
+archlinux-defaults: 
+	@echo "Applying Archlinux defaults.."
+	bash ./scripts/0009_set_osx_defaults.sh
+
 ensure-deps:
 	@echo "Ensuring dependencies.."
 	bash ./scripts/0001_install_chezmoi.sh
