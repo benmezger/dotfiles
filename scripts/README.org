@@ -1,0 +1,25 @@
+#+TITLE: README
+#+AUTHOR: Ben Mezger
+#+EMAIL: me@benmezger.nl
+#+DATE: <2021-02-09 Tue 00:19>
+
+#+HTML_DOCTYPE: xhtml5
+#+HTML_HTML5_FANCY:
+
+These scripts are ran by =chezmoi= on =apply=, but it may be used independently by
+either running them with the provided [[https://github.com/benmezger/dotfiles/blob/main/Makefile][Makefile]] or by executing them with =bash=.
+
+#+BEGIN_SRC sh :results table
+exa --ignore-glob "buildcheck.sh|README.org"
+#+END_SRC
+
+| 0001_install_chezmoi.sh        |
+| 0002_install_deps.sh           |
+| 0003_start_services.sh         |
+| 0004_install_git_repos.sh      |
+| 0005_configure_sys.sh          |
+| 0006_set_ssh_perms.sh          |
+| 0007_install_pyenv.sh          |
+| 0008_install_homebrew.sh       |
+| 0009_set_osx_defaults.sh       |
+| 0010_set_archlinux_defaults.sh |
