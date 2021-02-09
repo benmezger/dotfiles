@@ -1,6 +1,21 @@
 {{- $headless := false -}}
 {{- $secrets := true -}}
 
+{{- $name := "Ben Mezger" -}}
+{{- $email := "me@benmezger.nl" -}}
+{{- $hostname := "seds" -}}
+{{- $gpg_keyid := "0x1F7A0BF6A858FB3B" -}}
+{{- $github_user := "benmezger" -}}
+
+{{- $personal_smtp_host := "smtp.gmail.com" -}}
+{{- $personal_smtp_port := 587 -}}
+{{- $personal_imap_host := "imap.gmail.com" -}}
+
+{{- $work_email := "ben@ckl.io" -}}
+{{- $work_smtp_host := "smtp.gmail.com" -}}
+{{- $work_smtp_port := 587 -}}
+{{- $work_imap_host := "imap.gmail.com" -}}
+
 {{- if (env "CI") -}}
 {{- $headless = true -}}
 {{- $secrets = false -}}
@@ -8,6 +23,21 @@
 
 {{- if (env "ASK") }}
 {{- $secrets := promptBool "secrets" -}}
+
+{{- $name := promptString "full name" -}}
+{{- $email := promptString "personal email" -}}
+{{- $hostname := promptString "computer hostname" -}}
+{{- $gpg_keyid := promptString "PGP key id" -}}
+{{- $github_user := promptString "github username" -}}
+
+{{- $personal_smtp_host := promptString "personal email's smtp host" -}}
+{{- $personal_smtp_port := promptInt "personal email's smtp port" -}}
+{{- $personal_imap_host := promptString "personal email's imap host" -}}
+
+{{- $work_email := promptString "work email" -}}
+{{- $work_smtp_host := promptString "work email's smtp host" -}}
+{{- $work_smtp_port := promptString "work email's smtp port" -}}
+{{- $work_imap_port := promptString "work email's imap host" -}}
 {{- end -}}
 
 sourceDir: {{ .chezmoi.sourceDir }}
@@ -15,19 +45,19 @@ sourceDir: {{ .chezmoi.sourceDir }}
 data:
   secrets: {{ $secrets }}
   headless: {{ $headless }}
-  email: me@benmezger.nl
-  name: Ben Mezger
-  smtp_host: smtp.gmail.com
-  smtp_port: 587
-  imap_host: imap.gmail.com
-  hostname: seds
-  gpg_keyid: 0x1F7A0BF6A858FB3B
-  github_user: benmezger
+  email: {{ $email }}
+  name: {{ $name }}
+  smtp_host: {{ $personal_smtp_host }}
+  smtp_port: {{ $personal_smtp_port }}
+  imap_host: {{ $personal_imap_host }}
+  hostname: {{ $hostname }}
+  gpg_keyid: {{ $gpg_keyid }}
+  github_user: {{ $github_user }}
   work:
-    workmail: ben@ckl.io
-    imap_host: imap.gmail.com
-    smtp_host: smtp.gmail.com
-    smtp_port: 587
+    workmail: {{ $work_email }}
+    imap_host: {{ $work_imap_host }}
+    smtp_host: {{ $work_smtp_host }}
+    smtp_port: {{ $work_smtp_port }}
 {{- if $secrets }}
   bitwarden:
     jira: 8c7e36c5-a859-4fe6-a0c2-acb500c08fff
