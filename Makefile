@@ -9,6 +9,7 @@ help:
 	@echo '    make conf-sys           Configure system files.'
 	@echo '    make ssh-perms          Set SSH permissions.'
 	@echo '    make pyenv              Install pyenv.'
+	@echo '    make osx-defaults       Configure defaults for OSX'
 	@echo '    make ensure-deps        Install dependencies.'
 	@echo '    make chezmoi-init       Initialize chezmoi.'
 	@echo '    make chezmoi-apply      Apply chezmoi files (runs all scripts).'
@@ -40,6 +41,10 @@ pyenv:
 	@echo "Installing pyenv.."
 	bash ./scripts/0007_install_pyenv.sh
 
+osx-defaults: 
+	@echo "Applying OSX defaults.."
+	bash ./scripts/0009_set_osx_defaults.sh
+
 ensure-deps:
 	@echo "Ensuring dependencies.."
 	bash ./scripts/0001_install_chezmoi.sh
@@ -59,6 +64,7 @@ all: ensure-deps \
 	conf-sys \
 	ssh-perms \
 	chezmoi-init \
+	osx-defaults \
 	chezmoi-apply
 
 run: ensure-deps \
