@@ -11,5 +11,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
     isavailable chezmoi || brew install chezmoi
 else
-    echo "Homebrew exists. Skipping"
+	echo "Not a darwin platform. Skipping"
 fi
