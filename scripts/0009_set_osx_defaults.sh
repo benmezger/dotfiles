@@ -51,3 +51,36 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 echo "Avoid creating .DS_Store files on network or USB volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+echo "Set to check daily instead of weekly"
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+echo "Set default clock format"
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM h:mm:ss a"
+
+echo "Set Default Finder Location to Home Folder"
+defaults write com.apple.finder NewWindowTarget -string "PfLo" &&
+	defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+echo "Killing Finder.."
+killall Finder
+
+echo "Killing SystemUIServer"
+killall SystemUIServer
+
+if [ "${CI:-0}" = "1" ]; then
+	echo "Skipping sudo required commands"
+	exit 0
+fi
+
+echo "Build Locate Database"
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+echo "Enable firewall"
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+
+echo "Set Clock Using Network Time"
+sudo systemsetup setusingnetworktime on
+
+echo "Killing SystemUIServer"
+killall SystemUIServer
