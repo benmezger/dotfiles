@@ -10,11 +10,13 @@
 {{- $personal_smtp_host := "smtp.gmail.com" -}}
 {{- $personal_smtp_port := 587 -}}
 {{- $personal_imap_host := "imap.gmail.com" -}}
+{{- $personal_imap_port := 443 -}}
 
 {{- $work_email := "ben@ckl.io" -}}
 {{- $work_smtp_host := "smtp.gmail.com" -}}
 {{- $work_smtp_port := 587 -}}
 {{- $work_imap_host := "imap.gmail.com" -}}
+{{- $work_imap_port := 443 -}}
 
 {{- $podcast_opml := "https://www.listennotes.com/listen/podcast-list-McKCI8sZ0v2/opml/" -}}
 
@@ -35,11 +37,13 @@
 {{- $personal_smtp_host := promptString "personal email's smtp host" -}}
 {{- $personal_smtp_port := promptInt "personal email's smtp port" -}}
 {{- $personal_imap_host := promptString "personal email's imap host" -}}
+{{- $personal_imap_port := promptInt "personal email's imap port" -}}
 
 {{- $work_email := promptString "work email" -}}
 {{- $work_smtp_host := promptString "work email's smtp host" -}}
 {{- $work_smtp_port := promptString "work email's smtp port" -}}
-{{- $work_imap_port := promptString "work email's imap host" -}}
+{{- $work_imap_host := promptString "work email's imap host" -}}
+{{- $work_imap_port := promptString "work email's imap port" -}}
 
 {{- $podcast_opml := promptString "podcast opml url" -}}
 {{- end -}}
@@ -54,6 +58,7 @@ data:
   smtp_host: {{ $personal_smtp_host }}
   smtp_port: {{ $personal_smtp_port }}
   imap_host: {{ $personal_imap_host }}
+  imap_port: {{ $personal_imap_port }}
   hostname: {{ $hostname }}
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
@@ -61,6 +66,7 @@ data:
   work:
     workmail: {{ $work_email }}
     imap_host: {{ $work_imap_host }}
+    imap_port: {{ $work_imap_port }}
     smtp_host: {{ $work_smtp_host }}
     smtp_port: {{ $work_smtp_port }}
 {{- if $secrets }}

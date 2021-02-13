@@ -76,4 +76,5 @@ themes
 .gnupg/trustdb.gpg
 .gnupg/private-keys-v1.d/1A1454B27AB014B0F46B4914A48CD9D408232BDB.key
 .gnupg/private-keys-v1.d/93EF471D0D148D56E50AD95AE4F7402EB65DFD26.key
+.authinfo
 {{- end }}

@@ -1,0 +1,2 @@
+machine {{ .imap_host }} login {{ .email }} password {{ (bitwarden "item" .bitwarden.personal_mail).login.password }} port {{ .imap_port }}
+machine {{ .smtp_host }} login {{ .email }} password {{ (bitwarden "item" .bitwarden.personal_mail).login.password }} port {{ .smtp_port }}
