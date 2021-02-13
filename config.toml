@@ -1,0 +1,18 @@
+baseURL = "https://benmezger.github.io/dotfiles"
+languageCode = "en-us"
+title = "dotfiles"
+publishDir = "docs"
+theme = "terminal"
+contentDir = ".content/"
+
+[markup]
+defaultMarkdownHandler = "org"
+
+[params]
+fullWidthTheme = false
+centerTheme = true
+
+[params.logo]
+logoText = "dotfiles"
+logoHomeLink = "/"
+

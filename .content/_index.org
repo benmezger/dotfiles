@@ -1,20 +1,10 @@
+# Created 2021-02-13 Sat 17:25
 #+TITLE: README
-#+SUBTITLE: My personal dotfiles
-#+AUTHOR: Ben Mezger
 #+DATE: <2020-08-06 Thu>
-
-#+INFOJS_OPT: view:t toc:t ltoc:t mouse:underline
-#+EXPORT_FILE_NAME: ./.content/_index.org
-
-#+BEGIN_EXPORT HTML
-<p>
-  <a
-    href="https://github.com/benmezger/dotfiles/actions"><img
-    src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
-    alt="Build Status">
-  </a>
-</p>
-#+END_EXPORT
+#+AUTHOR: Ben Mezger
+#+subtitle: My personal dotfiles
+#+infojs_opt: view:t toc:t ltoc:t mouse:underline
+#+export_file_name: ./.content/_index.org
 
 /Github does not render orgmode files properly, [[https://benmezger.github.io/dotfiles][see]] for a better view of this
 documentation./
@@ -31,22 +21,22 @@ documentation./
 - Custom =curl= configuration
 - Custom =dircolors= (Gruvbox-dark colorscheme)
 - Custom =gitconfig=
-  + Custom =git= templates for commit messages
+  - Custom =git= templates for commit messages
 - Custom =tmux= configuration
-  + =Gitmux= configuration
-  + =Gruvbox= colorscheme
+  - =Gitmux= configuration
+  - =Gruvbox= colorscheme
 - Custom =zsh= configuration
-  + Auto attach a =tmux= session when running on OSX
-  + Sources a custom =env= file for secret keys
-  + Fast =zsh= prompt with =git= =RPROMPT= enabled
-  + Custom completion files enabled
-  + =fzf= enabled for reverse search
-  + =pyenv= support
-  + =wakatime= support
+  - Auto attach a =tmux= session when running on OSX
+  - Sources a custom =env= file for secret keys
+  - Fast =zsh= prompt with =git= =RPROMPT= enabled
+  - Custom completion files enabled
+  - =fzf= enabled for reverse search
+  - =pyenv= support
+  - =wakatime= support
 - Custom =bash= configuration
 - Custom =emacs doom= configuration
-  + =wakatime= support
-  + =mu4e= enabled
+  - =wakatime= support
+  - =mu4e= enabled
 - Custom =gnupg= configuration
 - Custom =inputrc= configuration
 - Custom =pythonrc= configuration
@@ -64,20 +54,18 @@ documentation./
 - Run =isync= and =mu= with =systemd= every 5min
 - =i3-display= support for handling multi-monitor
 - Custom =i3wm= configuration
-  + Custom =i3status-rs= support with Gruvbox colorscheme
-  + =polybar= support
+  - Custom =i3status-rs= support with Gruvbox colorscheme
+  - =polybar= support
 - =picom= support
 - =rofi= support with clipboard manager
 - Minimal =dunst= notification manager
 - Custom =user-dirs= configuration
 * Screenshots
 ** Archlinux
-#+ATTR_HTML: :alt archlinux-screenshot :align center :width 850px
-[[./arch-screenshot.png]]
+[[file:./arch-screenshot.png]]
 
 ** OSX
-#+ATTR_HTML: :alt osx-screenshot :align center :width 850px
-[[./osx-screenshot.png]]
+[[file:./osx-screenshot.png]]
 
 
 * Auto installer
@@ -137,113 +125,113 @@ terminal.
 ** Chezmoi :dotfiles:chezmoi:
 
 - Apply dotfile changes with Chezmoi.
-  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-  cd $dir
-  chezmoi apply -v
-  #+END_SRC
+  #+begin_src shell
+    cd $dir
+    chezmoi apply -v
+  #+end_src
 - View difference between dotfiles and restores files.
-  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-  cd $dir
-  chezmoi diff
-  #+END_SRC
+  #+begin_src shell
+    cd $dir
+    chezmoi diff
+  #+end_src
 
 - Initialize chezmoi repository, reloading =$HOME/.config/chezmoi/chezmoi.[yaml|toml]=
-  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-  cd $dir
-  chezmoi init ~/dotfiles
-  #+END_SRC
+  #+begin_src shell
+    cd $dir
+    chezmoi init ~/dotfiles
+  #+end_src
 
 - Bitwarden integration
   Chezmoi applies Bitwarden's in every file which requires a secret.
 
   As a result, it requires Bitwarden installed and logged with =bw login
-  <email>=. Make sure you change my Bitwarden's UUID to match yours.
+    <email>=. Make sure you change my Bitwarden's UUID to match yours.
 
   You can test your UUID with:
-  #+BEGIN_SRC shell
-  bw get item <uuid> | jq .login.password
-  #+END_SRC
+  #+begin_src shell
+    bw get item <uuid> | jq .login.password
+  #+end_src
 
   Chezmoi will only run Bitwarden against these files if:
-    + Environment is not set to =CI=
-    + =chezmoi.yaml= has =secrets= set to =true=.
+  - Environment is not set to =CI=
+  - =chezmoi.yaml= has =secrets= set to =true=.
 
 ** Emacs :emacs:
 General Emacs maintenance.
 
 *** Doom emacs
 - Doom compile core and private modules
-  #+BEGIN_SRC shell :dir ~/ :cache no :results replace code
-  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
-  #+END_SRC
+  #+begin_src shell
+    .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
+  #+end_src
 
 *** Required =authinfo= entries
 Email and Forge requires the following entries to be set in your
 =$HOME/.authinfo=. Make sure you encrypt =.authinfo= with PGP.
 
-#+BEGIN_SRC org :results file :file .authinfo :output-dir ~/
+#+begin_src org
 machine api.github.com login <gh-user>^forge password <password>
 machine irc.freenode.net login <user> password <passord> port 6667
 machine imap.gmail.com login <email> password <password> port 443
 machine smtp.gmail.com login <email> password <password> port 587
-#+END_SRC
+#+end_src
 
 ** Linux :linux:
 General Linux commands
 
 - Speed up keyboard
-  #+BEGIN_SRC :cache no
-  xset r rate 180 40
-  #+END_SRC
+  #+begin_src :cache
+    xset r rate 180 40
+  #+end_src
 
 *** Archlinux :archlinux:
 - List =pacman= packages ignoring foreing packages (AUR, etc).
-  #+BEGIN_SRC sh :results file :file pkgs.pacman :output-dir ./roles/archlinux/tasks/
-  pacman -Qqen
-  #+END_SRC
+  #+begin_src sh
+    pacman -Qqen
+  #+end_src
 
-  #+RESULTS: Pacman list installed packages without AUR
+  #+results: Pacman list installed packages without AUR
   [[file:./roles/archlinux/tasks/pkgs.pacman]]
 
 - Get list of foreing (AUR, etc) packages with =pacman=.
-  #+BEGIN_SRC sh :results file :file pkgs.aur :output-dir ./roles/archlinux/tasks/
-  pacman -Qqem
-  #+END_SRC
+  #+begin_src sh
+    pacman -Qqem
+  #+end_src
 
-  #+RESULTS: Pacman list AUR packages
+  #+results: Pacman list AUR packages
   [[file:./roles/archlinux/tasks/pkgs.aur]]
 
 - Enable color, total download, check space and verbose pkg list when running
   =pacman=.
-  #+BEGIN_SRC shell :dir "/sudo::" :cache no
-  sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
-  sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
-  sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
-  sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
-  #+END_SRC
+  #+begin_src shell
+    sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
+    sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+  #+end_src
 - Find all =*.pacnew= files in =/etc=
-  #+BEGIN_SRC shell :cache no :dir "/sudo::" :results output
-  find /etc -regextype posix-extended -regex ".+\.pac(new|save)"
-  #+END_SRC
+  #+begin_src shell
+    find /etc -regextype posix-extended -regex ".+\.pac(new|save)"
+  #+end_src
 
 **** Docker :docker:
 - Allow Docker runs with non-root user.
-  #+BEGIN_SRC shell
-  sudo usermod -aG docker $USER
-  newgrp docker
-  #+END_SRC
+  #+begin_src shell
+    sudo usermod -aG docker $USER
+    newgrp docker
+  #+end_src
 
 *** Sourcing env with i3
 - For some reason, i3 is sourcing =.xprofile= instead of =xinitrc=, so for
   getting Github plugin for the [[file:dot_config/i3/status.toml][i3status-rust]] you need to set up a variable in
   your =.xprofile=
-  #+BEGIN_SRC shell
-  export I3RS_GITHUB_TOKEN="your-github-token"
-  #+END_SRC
+  #+begin_src shell
+    export I3RS_GITHUB_TOKEN="your-github-token"
+  #+end_src
 
 ** OSX
 *** Set OSX defaults
-#+BEGIN_SRC shell
+#+begin_src shell
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
@@ -266,7 +254,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
-#+END_SRC
+#+end_src
 
 
 * Keybindings
@@ -289,52 +277,17 @@ by copying [[file:.chezmoi.yaml.tmpl][chezmoi.yaml]] to =$HOME/.config/chezmoi/c
 
 * TODOS
 ** TODO Remove 1Password documents from the configuration file
-:LOGBOOK:
-- State "TODO"       from              [2021-01-21 Thu 22:34]
-:END:
 1Password Documents are currently kept as I am slowly migrating to Bitwarden
 ** TODO Update README on how to install individual configs
 ** CANCELED Create multi-os support in travis
-CLOSED: [2020-08-09 Sun 11:46]
-:LOGBOOK:
-- State "CANCELED"   from "TODO"       [2020-08-09 Sun 11:46]
-  Using github workflow instead of Travis
-- State "TODO"       from "DONE"       [2020-08-07 Fri 21:22]
-- State "DONE"       from "TODO"       [2020-08-07 Fri 09:09]
-:END:
 - [X] OSX support
 - [X] Linux support
 - [X] Get linux to run
 - [X] How to handle AUR packages?
 ** DONE Verify if Github Workflow is caching packages property
-CLOSED: [2020-12-04 Fri 09:44]
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2020-12-04 Fri 09:44]
-- State "TODO"       from              [2020-08-09 Sun 11:47]
-:END:
 
 ** DONE Fix issue with tmux not correctly searching text through panes
-CLOSED: [2020-12-04 Fri 09:44]
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2020-12-04 Fri 09:44]
-:END:
 ** TODO Add Archlinux AUR packages
 ** DONE Figure out how to handle 1password-cli with Chezmoi when running Ansible
-CLOSED: [2020-08-24 Mon 23:43]
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2020-08-24 Mon 23:43]
-- State "TODO"       from              [2020-08-21 Fri 07:57]
-:END:
 
 ** DONE Switch to =Brewfile=
-CLOSED: [2020-08-24 Mon 23:43]
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2020-08-24 Mon 23:43]
-- State "TODO"       from              [2020-08-22 Sat 00:32]
-:END:
-
-
-* Comment :noexport:
-# Local variables:
-# eval: (add-hook 'after-save-hook 'org-org-export-to-org t t)
-# end:

@@ -1,1135 +1,868 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html lang="en">
 <head>
-  <!-- 2021-02-06 Sat 12:12 -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content=
-  "width=device-width, initial-scale=1" />
-  <title>README</title>
-  <meta name="generator" content="Org mode" />
-  <meta name="author" content="Ben Mezger" />
-  <style type="text/css">
-  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+	<meta name="generator" content="Hugo 0.80.0" />
+  
+    <title>dotfiles</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://benmezger.github.io/dotfiles/" />
 
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-  </style>
-  <link rel="stylesheet" type="text/css" href=
-  "https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
 
-  <script type="text/javascript" src=
-  "https://thomasf.github.io/solarized-css/org-info.min.js">
-  //<![CDATA[
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  // @license-end
-  //]]>
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-  <!--/*--><![CDATA[/*><!--*/
-  org_html_manager.set("TOC_DEPTH", "3");
-  org_html_manager.set("LINK_HOME", "");
-  org_html_manager.set("LINK_UP", "");
-  org_html_manager.set("LOCAL_TOC", "1");
-  org_html_manager.set("VIEW_BUTTONS", "0");
-  org_html_manager.set("MOUSE_HINT", "underline");
-  org_html_manager.set("FIXED_TOC", "0");
-  org_html_manager.set("TOC", "1");
-  org_html_manager.set("VIEW", "1");
-  org_html_manager.setup();  // activate after the parameters are set
-  /*]]>*///-->
-  // @license-end
-  </script>
-  <script type="text/javascript">
-  // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-  <!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-  // @license-end
-  </script>
+
+
+<link rel="stylesheet" href="https://benmezger.github.io/dotfiles/assets/style.css">
+
+  <link rel="stylesheet" href="assets/%25!s%28%3cnil%3e%29.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://benmezger.github.io/dotfiles/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://benmezger.github.io/dotfiles/img/favicon/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="dotfiles">
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://benmezger.github.io/dotfiles/" />
+<meta property="og:site_name" content="dotfiles" />
+
+  
+    <meta property="og:image" content="img/favicon/%!s().png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+
+
+
+  <link href="/dotfiles/index.xml" rel="alternate" type="application/rss+xml" title="dotfiles" />
+
+
+
+
+
+
+
+
+
 </head>
-<body>
-  <div id="content">
-    <h1 class="title">README<br />
-    <span class="subtitle">My personal dotfiles</span></h1>
-    <div id="table-of-contents">
-      <h2>Table of Contents</h2>
-      <div id="text-table-of-contents">
-        <ul>
-          <li>
-            <a href="#orgf45c976">1. Features</a>
-            <ul>
-              <li>
-                <a href="#orgca874a6">1.1. OSX features</a>
-              </li>
-              <li>
-                <a href="#org6386950">1.2. Archlinux features</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org0f66313">2. Screenshots</a>
-            <ul>
-              <li>
-                <a href="#orgac5679d">2.1. Archlinux</a>
-              </li>
-              <li>
-                <a href="#orgdf3d7f6">2.2. OSX</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org94a01a9">3. Auto installer</a>
-          </li>
-          <li>
-            <a href="#org3760a97">4. Installing manually with
-            Makefile</a>
-            <ul>
-              <li>
-                <a href="#orga9d13c5">4.1. Requirements</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orgd216e8e">5. Installing manually with
-            Chezmoi</a>
-            <ul>
-              <li>
-                <a href="#orgc20eab3">5.1. Requirements</a>
-              </li>
-              <li>
-                <a href="#orgd508718">5.2. Installing</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org2ff93b0">6. Dependencies</a>
-          </li>
-          <li>
-            <a href="#orgcc5d0eb">7. Commands</a>
-            <ul>
-              <li>
-                <a href="#org3fc490e">7.1.
-                Chezmoi&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class=
-                "dotfiles">dotfiles</span>&nbsp;<span class=
-                "chezmoi">chezmoi</span></span></a>
-              </li>
-              <li>
-                <a href="#orga4db19b">7.2.
-                Emacs&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class="emacs">emacs</span></span></a>
-                <ul>
-                  <li>
-                    <a href="#orgabd1821">7.2.1. Doom emacs</a>
-                  </li>
-                  <li>
-                    <a href="#orgfb3ee53">7.2.2. Required
-                    <code>authinfo</code> entries</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#org360bb11">7.3.
-                Linux&nbsp;&nbsp;&nbsp;<span class=
-                "tag"><span class="linux">linux</span></span></a>
-                <ul>
-                  <li>
-                    <a href="#org920d5ed">7.3.1.
-                    Archlinux&nbsp;&nbsp;&nbsp;<span class=
-                    "tag"><span class=
-                    "archlinux">archlinux</span></span></a>
-                  </li>
-                  <li>
-                    <a href="#org43f5412">7.3.2. Sourcing env with
-                    i3</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#org27a20ec">7.4. OSX</a>
-                <ul>
-                  <li>
-                    <a href="#org2629ad8">7.4.1. Set OSX
-                    defaults</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org07cf5b0">8. Keybindings</a>
-            <ul>
-              <li>
-                <a href="#orgfd474f1">8.1. OSX</a>
-                <ul>
-                  <li>
-                    <a href="#orgb1789b2">8.1.1. MPC</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#org158e03e">9. Troubleshooting</a>
-            <ul>
-              <li>
-                <a href="#org1c5c9f4">9.1. Chezmoi does not seem to
-                reload the configuration</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#orgadfd0cf">10. TODOS</a>
-            <ul>
-              <li>
-                <a href="#org0d00674">10.1. <span class=
-                "todo TODO">TODO</span> Remove 1Password documents
-                from the configuration file</a>
-              </li>
-              <li>
-                <a href="#org685815b">10.2. <span class=
-                "todo TODO">TODO</span> Update README on how to
-                install individual configs</a>
-              </li>
-              <li>
-                <a href="#orgb125f1d">10.3. <span class=
-                "done CANCELED">CANCELED</span> Create multi-os
-                support in travis</a>
-              </li>
-              <li>
-                <a href="#org53851b3">10.4. <span class=
-                "done DONE">DONE</span> Verify if Github Workflow
-                is caching packages property</a>
-              </li>
-              <li>
-                <a href="#org646dcca">10.5. <span class=
-                "done DONE">DONE</span> Fix issue with tmux not
-                correctly searching text through panes</a>
-              </li>
-              <li>
-                <a href="#org540a533">10.6. <span class=
-                "todo TODO">TODO</span> Add Archlinux AUR
-                packages</a>
-              </li>
-              <li>
-                <a href="#org63729d0">10.7. <span class=
-                "done DONE">DONE</span> Figure out how to handle
-                1password-cli with Chezmoi when running Ansible</a>
-              </li>
-              <li>
-                <a href="#org622dc5a">10.8. <span class=
-                "done DONE">DONE</span> Switch to
-                <code>Brewfile</code></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    dotfiles
+  </div>
+</a>
+
     </div>
-    <p><a href=
-    "https://github.com/benmezger/dotfiles/actions"><img src=
-    "https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
-    alt="Build Status" /></a></p>
-    <p><i>Github does not render orgmode files properly, <a href=
-    "https://benmezger.github.io/dotfiles">see</a> for a better
-    view of this documentation.</i></p>
-    <div id="outline-container-orgf45c976" class="outline-2">
-      <h2 id="orgf45c976"><span class="section-number-2">1</span>
-      Features</h2>
-      <div class="outline-text-2" id="text-1">
-        <ul class="org-ul">
-          <li>Auto install all system dependencies</li>
-          <li>Applies secrets and password with
-          <code>bitwarden</code></li>
-          <li>Custom scripts in <code>.bin</code></li>
-          <li><code>Alacritty</code> config based on OS</li>
-          <li><code>fish</code> configuration</li>
-          <li><code>neomutt</code> support with multiple
-          accounts</li>
-          <li><code>msmtp</code> for sending emails with multiple
-          account support</li>
-          <li><code>mbsync</code> for syncing emails with multiple
-          account support</li>
-          <li>Custom <code>curl</code> configuration</li>
-          <li>Custom <code>dircolors</code> (Gruvbox-dark
-          colorscheme)</li>
-          <li>Custom <code>gitconfig</code>
-            <ul class="org-ul">
-              <li>Custom <code>git</code> templates for commit
-              messages</li>
-            </ul>
-          </li>
-          <li>Custom <code>tmux</code> configuration
-            <ul class="org-ul">
-              <li><code>Gitmux</code> configuration</li>
-              <li><code>Gruvbox</code> colorscheme</li>
-            </ul>
-          </li>
-          <li>Custom <code>zsh</code> configuration
-            <ul class="org-ul">
-              <li>Auto attach a <code>tmux</code> session when
-              running on OSX</li>
-              <li>Sources a custom <code>env</code> file for secret
-              keys</li>
-              <li>Fast <code>zsh</code> prompt with
-              <code>git</code> <code>RPROMPT</code> enabled</li>
-              <li>Custom completion files enabled</li>
-              <li><code>fzf</code> enabled for reverse search</li>
-              <li><code>pyenv</code> support</li>
-              <li><code>wakatime</code> support</li>
-            </ul>
-          </li>
-          <li>Custom <code>bash</code> configuration</li>
-          <li>Custom <code>emacs doom</code> configuration
-            <ul class="org-ul">
-              <li><code>wakatime</code> support</li>
-              <li><code>mu4e</code> enabled</li>
-            </ul>
-          </li>
-          <li>Custom <code>gnupg</code> configuration</li>
-          <li>Custom <code>inputrc</code> configuration</li>
-          <li>Custom <code>pythonrc</code> configuration</li>
-          <li>Clean <code>vim</code> configuration</li>
-          <li>Custom <code>editorconfig</code> configuration</li>
-          <li>Custom <code>weechat</code> configuration</li>
-        </ul>
-      </div>
-      <div id="outline-container-orgca874a6" class="outline-3">
-        <h3 id="orgca874a6"><span class=
-        "section-number-3">1.1</span> OSX features</h3>
-        <div class="outline-text-3" id="text-1-1">
-          <ul class="org-ul">
-            <li>Auto start a <code>tmux</code> session with
-            <code>launchctl</code></li>
-            <li>Custom OSX preference setup</li>
-            <li>Run <code>isync</code> and <code>mu</code> with
-            <code>launchctl</code> every 5min</li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org6386950" class="outline-3">
-        <h3 id="org6386950"><span class=
-        "section-number-3">1.2</span> Archlinux features</h3>
-        <div class="outline-text-3" id="text-1-2">
-          <ul class="org-ul">
-            <li>Auto start <code>greenclip</code> with
-            <code>systemd</code></li>
-            <li>Run <code>isync</code> and <code>mu</code> with
-            <code>systemd</code> every 5min</li>
-            <li><code>i3-display</code> support for handling
-            multi-monitor</li>
-            <li>Custom <code>i3wm</code> configuration
-              <ul class="org-ul">
-                <li>Custom <code>i3status-rs</code> support with
-                Gruvbox colorscheme</li>
-                <li><code>polybar</code> support</li>
-              </ul>
-            </li>
-            <li><code>picom</code> support</li>
-            <li><code>rofi</code> support with clipboard
-            manager</li>
-            <li>Minimal <code>dunst</code> notification
-            manager</li>
-            <li>Custom <code>user-dirs</code> configuration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org0f66313" class="outline-2">
-      <h2 id="org0f66313"><span class="section-number-2">2</span>
-      Screenshots</h2>
-      <div class="outline-text-2" id="text-2"></div>
-      <div id="outline-container-orgac5679d" class="outline-3">
-        <h3 id="orgac5679d"><span class=
-        "section-number-3">2.1</span> Archlinux</h3>
-        <div class="outline-text-3" id="text-2-1">
-          <div id="orgc351219" class="figure">
-            <p><img src="./arch-screenshot.png" alt=
-            "archlinux-screenshot" align="center" width=
-            "850px" /></p>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-orgdf3d7f6" class="outline-3">
-        <h3 id="orgdf3d7f6"><span class=
-        "section-number-3">2.2</span> OSX</h3>
-        <div class="outline-text-3" id="text-2-2">
-          <div id="org6a11e0f" class="figure">
-            <p><img src="./osx-screenshot.png" alt="osx-screenshot"
-            align="center" width="850px" /></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org94a01a9" class="outline-2">
-      <h2 id="org94a01a9"><span class="section-number-2">3</span>
-      Auto installer</h2>
-      <div class="outline-text-2" id="text-3">
-        <p>Run <code>bash install.sh</code>, which installs the
-        required dependencies for running the system</p>
-      </div>
-    </div>
-    <div id="outline-container-org3760a97" class="outline-2">
-      <h2 id="org3760a97"><span class="section-number-2">4</span>
-      Installing manually with Makefile</h2>
-      <div class="outline-text-2" id="text-4"></div>
-      <div id="outline-container-orga9d13c5" class="outline-3">
-        <h3 id="orga9d13c5"><span class=
-        "section-number-3">4.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-4-1">
-          <ul class="org-ul">
-            <li>
-              <a href=
-              "https://www.gnu.org/software/make/manual/make.html">Make</a>
-            </li>
-          </ul>
-          <p>See <code>make help</code> for all available
-          options</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orgd216e8e" class="outline-2">
-      <h2 id="orgd216e8e"><span class="section-number-2">5</span>
-      Installing manually with Chezmoi</h2>
-      <div class="outline-text-2" id="text-5"></div>
-      <div id="outline-container-orgc20eab3" class="outline-3">
-        <h3 id="orgc20eab3"><span class=
-        "section-number-3">5.1</span> Requirements</h3>
-        <div class="outline-text-3" id="text-5-1">
-          <ul class="org-ul">
-            <li>
-              <a href="https://www.chezmoi.io/">Chezmoi</a>
-            </li>
-            <li>
-              <a href=
-              "https://bitwarden.com/help/article/cli/#quick-start">
-              Bitwarden-cli</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-orgd508718" class="outline-3">
-        <h3 id="orgd508718"><span class=
-        "section-number-3">5.2</span> Installing</h3>
-        <div class="outline-text-3" id="text-5-2">
-          <p>Run <code>chezmoi init
-          https://github.com/benmezger/dotfiles.git</code> (see
-          <a href=
-          "https://www.chezmoi.io/docs/reference/">reference</a>
-          for more options) to checkout the repository and any
-          submodules. Finally, run <code>chezmoi apply</code> to
-          move changes to your home directory.</p>
-          <p>Chezmoi will try to apply bitwarden in <a href=
-          "dot_env-secrets.tmpl">env-secrets</a> if <code>CI</code>
-          env is not set or <code>secrets</code> is set to
-          <code>true</code> in <code>chezmoi.yaml</code> (defaults
-          to <code>false</code>). Make sure the UUID are correct
-          with your password’s UUID, <a href=
-          "https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid">
-          see</a> for more information or set a <code>CI</code> env
-          variable before running to skip this step.</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org2ff93b0" class="outline-2">
-      <h2 id="org2ff93b0"><span class="section-number-2">6</span>
-      Dependencies</h2>
-      <div class="outline-text-2" id="text-6">
-        <ul class="org-ul">
-          <li>Fonts
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">
-                Inconsolata-DZ</a>
-              </li>
-              <li>
-                <a href="https://sourcefoundry.org/hack/">Hack</a>
-              </li>
-              <li>
-                <a href="https://fontawesome.com/">FontAwesome</a>
-              </li>
-            </ul>
-          </li>
-          <li>ZSH
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/getantibody/antibody">Antibody</a>
-              </li>
-              <li>
-                <a href="https://github.com/junegunn/fzf">FZF</a>
-              </li>
-            </ul>
-          </li>
-          <li>Emacs
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/hlissner/doom-emacs">Doom
-                Emacs</a>
-              </li>
-              <li>Emacs &gt;= 27</li>
-            </ul>
-          </li>
-          <li>System utilities
-            <ul class="org-ul">
-              <li>
-                <a href=
-                "https://github.com/wakatime/wakatime">Wakatime</a>
-              </li>
-              <li>
-                <a href=
-                "https://www.gnu.org/software/emacs/">Emacs</a>
-              </li>
-              <li>
-                <a href="https://www.chezmoi.io/">Chezmoi</a>
-              </li>
-              <li>
-                <a href=
-                "https://github.com/BurntSushi/ripgrep">Ripgrep</a>
-              </li>
-              <li>
-                <a href="https://github.com/pyenv/pyenv">pyenv</a>
-              </li>
-              <li>
-                <a href="https://gohugo.io/">Hugo</a>
-              </li>
-              <li>
-                <a href=
-                "https://bitwarden.com/help/article/cli/#quick-start">
-                Bitwarden-cli</a>
-              </li>
-            </ul>
-          </li>
-          <li>OSX
-            <ul class="org-ul">
-              <li>
-                <a href="https://brew.sh/">Homebrew</a>
-              </li>
-              <li>
-                <a href="https://github.com/mas-cli/mas">Mas</a>
-              </li>
-            </ul>
-          </li>
-          <li>Linux
-            <ul class="org-ul">
-              <li>
-                <a href="https://i3wm.org/">i3wm</a>
-              </li>
-              <li>
-                <a href="https://github.com/fosskers/aura">Aura
-                (Archlinux)</a>
-              </li>
-              <li>
-                <a href=
-                "https://github.com/greshake/i3status-rust">i3status-rust</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="outline-container-orgcc5d0eb" class="outline-2">
-      <h2 id="orgcc5d0eb"><span class="section-number-2">7</span>
-      Commands</h2>
-      <div class="outline-text-2" id="text-7">
-        <p>These are general commands I use while managing my
-        <code>dotfiles</code> and my system . I run them in orgmode
-        itself, but you can simply copy and paste it to your
-        terminal.</p>
-      </div>
-      <div id="outline-container-org3fc490e" class="outline-3">
-        <h3 id="org3fc490e"><span class=
-        "section-number-3">7.1</span>
-        Chezmoi&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "dotfiles">dotfiles</span>&nbsp;<span class=
-        "chezmoi">chezmoi</span></span></h3>
-        <div class="outline-text-3" id="text-7-1">
-          <ul class="org-ul">
-            <li>
-              <p>Apply dotfile changes with Chezmoi.</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
-  chezmoi apply -v
-</pre>
-              </div>
-            </li>
-            <li>
-              <p>View difference between dotfiles and restores
-              files.</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
-  chezmoi diff
-</pre>
-              </div>
-            </li>
-            <li>
-              <p>Initialize chezmoi repository, reloading
-              <code>$HOME/.config/chezmoi/chezmoi.[yaml|toml]</code></p>
-              <div class="org-src-container">
-                <pre class="src src-shell">  <span style=
-                "color: #5ad4e6;">cd</span> $<span style=
-                "color: #f7f1ff;">dir</span>
-  chezmoi init ~/dotfiles
-</pre>
-              </div>
-            </li>
-            <li>
-              <p>Bitwarden integration Chezmoi applies Bitwarden’s
-              in every file which requires a secret.</p>
-              <p>As a result, it requires Bitwarden installed and
-              logged with <code>bw login &lt;email&gt;</code>. Make
-              sure you change my Bitwarden’s UUID to match
-              yours.</p>
-              <p>You can test your UUID with:</p>
-              <div class="org-src-container">
-                <pre class="src src-shell">
-                bw get item &lt;uuid&gt; | jq .login.password
-</pre>
-              </div>
-              <p>Chezmoi will only run Bitwarden against these
-              files if:</p>
-              <ul class="org-ul">
-                <li>Environment is not set to <code>CI</code></li>
-                <li><code>chezmoi.yaml</code> has
-                <code>secrets</code> set to <code>true</code>.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-orga4db19b" class="outline-3">
-        <h3 id="orga4db19b"><span class=
-        "section-number-3">7.2</span>
-        Emacs&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "emacs">emacs</span></span></h3>
-        <div class="outline-text-3" id="text-7-2">
-          <p>General Emacs maintenance.</p>
-        </div>
-        <div id="outline-container-orgabd1821" class="outline-4">
-          <h4 id="orgabd1821"><span class=
-          "section-number-4">7.2.1</span> Doom emacs</h4>
-          <div class="outline-text-4" id="text-7-2-1">
-            <ul class="org-ul">
-              <li>
-                <p>Doom compile core and private modules</p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">
-                  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp
-</pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div id="outline-container-orgfb3ee53" class="outline-4">
-          <h4 id="orgfb3ee53"><span class=
-          "section-number-4">7.2.2</span> Required
-          <code>authinfo</code> entries</h4>
-          <div class="outline-text-4" id="text-7-2-2">
-            <p>Email and Forge requires the following entries to be
-            set in your <code>$HOME/.authinfo</code>. Make sure you
-            encrypt <code>.authinfo</code> with PGP.</p>
-            <div class="org-src-container">
-              <pre class="src src-org">
-              machine api.github.com login &lt;gh-user&gt;^forge password &lt;password&gt;
-machine irc.freenode.net login &lt;user&gt; password &lt;passord&gt; port 6667
-machine imap.gmail.com login &lt;email&gt; password &lt;password&gt; port 443
-machine smtp.gmail.com login &lt;email&gt; password &lt;password&gt; port 587
-</pre>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-org360bb11" class="outline-3">
-        <h3 id="org360bb11"><span class=
-        "section-number-3">7.3</span>
-        Linux&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-        "linux">linux</span></span></h3>
-        <div class="outline-text-3" id="text-7-3">
-          <p>General Linux commands</p>
-          <ul class="org-ul">
-            <li>
-              <p>Speed up keyboard</p>
-              <div class="org-src-container">
-                <pre class="src src-:cache">  xset r rate 180 40
-</pre>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div id="outline-container-org920d5ed" class="outline-4">
-          <h4 id="org920d5ed"><span class=
-          "section-number-4">7.3.1</span>
-          Archlinux&nbsp;&nbsp;&nbsp;<span class="tag"><span class=
-          "archlinux">archlinux</span></span></h4>
-          <div class="outline-text-4" id="text-7-3-1">
-            <ul class="org-ul">
-              <li>
-                <p>List <code>pacman</code> packages ignoring
-                foreing packages (AUR, etc).</p>
-                <div class="org-src-container">
-                  <pre class="src src-sh">  pacman -Qqen
-</pre>
-                </div>
-                <p><a href=
-                "./roles/archlinux/tasks/pkgs.pacman">./roles/archlinux/tasks/pkgs.pacman</a></p>
-              </li>
-              <li>
-                <p>Get list of foreing (AUR, etc) packages with
-                <code>pacman</code>.</p>
-                <div class="org-src-container">
-                  <pre class="src src-sh">  pacman -Qqem
-</pre>
-                </div>
-                <p><a href=
-                "./roles/archlinux/tasks/pkgs.aur">./roles/archlinux/tasks/pkgs.aur</a></p>
-              </li>
-              <li>
-                <p>Enable color, total download, check space and
-                verbose pkg list when running
-                <code>pacman</code>.</p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #5ad4e6;">sudo</span> sed -i <span style=
-                  "color: #fce566;">'/Color$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/TotalDownload$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/CheckSpace$/s/^#//g'</span> /etc/pacman.conf
-  <span style="color: #5ad4e6;">sudo</span> sed -i <span style=
-"color: #fce566;">'/VerbosePkgLists$/s/^#//g'</span> /etc/pacman.conf
-</pre>
-                </div>
-              </li>
-              <li>
-                <p>Find all <code>*.pacnew</code> files in
-                <code>/etc</code></p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #5ad4e6;">find</span> /etc -regextype posix-extended -regex <span style="color: #fce566;">".+\.pac(new|save)"</span>
-</pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <ol class="org-ol">
-            <li>
-              <a id=
-              "orgee8fd06"></a>Docker&nbsp;&nbsp;&nbsp;<span class=
-              "tag"><span class="docker">docker</span></span><br />
-              <div class="outline-text-5" id="text-7-3-1-1">
-                <ul class="org-ul">
-                  <li>
-                    <p>Allow Docker runs with non-root user.</p>
-                    <div class="org-src-container">
-                      <pre class="src src-shell">  <span style=
-                      "color: #5ad4e6;">sudo</span> usermod -aG docker $<span style=
-                      "color: #f7f1ff;">USER</span>
-  <span style="color: #948ae3;">newgrp</span> docker
-</pre>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ol>
-        </div>
-        <div id="outline-container-org43f5412" class="outline-4">
-          <h4 id="org43f5412"><span class=
-          "section-number-4">7.3.2</span> Sourcing env with i3</h4>
-          <div class="outline-text-4" id="text-7-3-2">
-            <ul class="org-ul">
-              <li>
-                <p>For some reason, i3 is sourcing
-                <code>.xprofile</code> instead of
-                <code>xinitrc</code>, so for getting Github plugin
-                for the <a href=
-                "dot_config/i3/status.toml">i3status-rust</a> you
-                need to set up a variable in your
-                <code>.xprofile</code></p>
-                <div class="org-src-container">
-                  <pre class="src src-shell">  <span style=
-                  "color: #948ae3;">export</span> <span style=
-                  "color: #f7f1ff;">I3RS_GITHUB_TOKEN</span>=<span style=
-                  "color: #fce566;">"your-github-token"</span>
-</pre>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-org27a20ec" class="outline-3">
-        <h3 id="org27a20ec"><span class=
-        "section-number-3">7.4</span> OSX</h3>
-        <div class="outline-text-3" id="text-7-4"></div>
-        <div id="outline-container-org2629ad8" class="outline-4">
-          <h4 id="org2629ad8"><span class=
-          "section-number-4">7.4.1</span> Set OSX defaults</h4>
-          <div class="outline-text-4" id="text-7-4-1">
-            <div class="org-src-container">
-              <pre class="src src-shell"><span style=
-              "color: #69676c;"># </span><span style=
-              "color: #69676c;">Turn on app auto-update</span>
+    
+  </div>
+  
+</header>
+
+
+  <div class="content">
+    
+  
+    <div class="index-content ">
+      <h1 class="title"><p>README</p>
+</h1>
+
+<p>
+<em>Github does not render orgmode files properly, <a href="https://benmezger.github.io/dotfiles">see</a> for a better view of this
+documentation.</em></p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Features
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<ul>
+<li>
+<p>Auto install all system dependencies</p>
+</li>
+<li>
+<p>Applies secrets and password with <code class="verbatim">bitwarden</code></p>
+</li>
+<li>
+<p>Custom scripts in <code class="verbatim">.bin</code></p>
+</li>
+<li>
+<p><code class="verbatim">Alacritty</code> config based on OS</p>
+</li>
+<li>
+<p><code class="verbatim">fish</code> configuration</p>
+</li>
+<li>
+<p><code class="verbatim">neomutt</code> support with multiple accounts</p>
+</li>
+<li>
+<p><code class="verbatim">msmtp</code> for sending emails with multiple account support</p>
+</li>
+<li>
+<p><code class="verbatim">mbsync</code> for syncing emails with multiple account support</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">curl</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">dircolors</code> (Gruvbox-dark colorscheme)</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">gitconfig</code></p>
+<ul>
+<li>
+<p>Custom <code class="verbatim">git</code> templates for commit messages</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Custom <code class="verbatim">tmux</code> configuration</p>
+<ul>
+<li>
+<p><code class="verbatim">Gitmux</code> configuration</p>
+</li>
+<li>
+<p><code class="verbatim">Gruvbox</code> colorscheme</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Custom <code class="verbatim">zsh</code> configuration</p>
+<ul>
+<li>
+<p>Auto attach a <code class="verbatim">tmux</code> session when running on OSX</p>
+</li>
+<li>
+<p>Sources a custom <code class="verbatim">env</code> file for secret keys</p>
+</li>
+<li>
+<p>Fast <code class="verbatim">zsh</code> prompt with <code class="verbatim">git</code> <code class="verbatim">RPROMPT</code> enabled</p>
+</li>
+<li>
+<p>Custom completion files enabled</p>
+</li>
+<li>
+<p><code class="verbatim">fzf</code> enabled for reverse search</p>
+</li>
+<li>
+<p><code class="verbatim">pyenv</code> support</p>
+</li>
+<li>
+<p><code class="verbatim">wakatime</code> support</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Custom <code class="verbatim">bash</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">emacs doom</code> configuration</p>
+<ul>
+<li>
+<p><code class="verbatim">wakatime</code> support</p>
+</li>
+<li>
+<p><code class="verbatim">mu4e</code> enabled</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Custom <code class="verbatim">gnupg</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">inputrc</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">pythonrc</code> configuration</p>
+</li>
+<li>
+<p>Clean <code class="verbatim">vim</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">editorconfig</code> configuration</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">weechat</code> configuration</p>
+</li>
+</ul>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+OSX features
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<ul>
+<li>
+<p>Auto start a <code class="verbatim">tmux</code> session with <code class="verbatim">launchctl</code></p>
+</li>
+<li>
+<p>Custom OSX preference setup</p>
+</li>
+<li>
+<p>Run <code class="verbatim">isync</code> and <code class="verbatim">mu</code> with <code class="verbatim">launchctl</code> every 5min</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Archlinux features
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<ul>
+<li>
+<p>Auto start <code class="verbatim">greenclip</code> with <code class="verbatim">systemd</code></p>
+</li>
+<li>
+<p>Run <code class="verbatim">isync</code> and <code class="verbatim">mu</code> with <code class="verbatim">systemd</code> every 5min</p>
+</li>
+<li>
+<p><code class="verbatim">i3-display</code> support for handling multi-monitor</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">i3wm</code> configuration</p>
+<ul>
+<li>
+<p>Custom <code class="verbatim">i3status-rs</code> support with Gruvbox colorscheme</p>
+</li>
+<li>
+<p><code class="verbatim">polybar</code> support</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code class="verbatim">picom</code> support</p>
+</li>
+<li>
+<p><code class="verbatim">rofi</code> support with clipboard manager</p>
+</li>
+<li>
+<p>Minimal <code class="verbatim">dunst</code> notification manager</p>
+</li>
+<li>
+<p>Custom <code class="verbatim">user-dirs</code> configuration</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Screenshots
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+Archlinux
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p><img src="./arch-screenshot.png" alt="./arch-screenshot.png" title="./arch-screenshot.png" /></p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+OSX
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p><img src="./osx-screenshot.png" alt="./osx-screenshot.png" title="./osx-screenshot.png" /></p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+Auto installer
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<p>Run <code class="verbatim">bash install.sh</code>, which installs the required dependencies for running the system</p>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-2">
+<h2 id="headline-8">
+Installing manually with Makefile
+</h2>
+<div id="outline-text-headline-8" class="outline-text-2">
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+Requirements
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<ul>
+<li>
+<p><a href="https://www.gnu.org/software/make/manual/make.html">Make</a></p>
+</li>
+</ul>
+<p>See <code class="verbatim">make help</code> for all available options</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-2">
+<h2 id="headline-10">
+Installing manually with Chezmoi
+</h2>
+<div id="outline-text-headline-10" class="outline-text-2">
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+Requirements
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<ul>
+<li>
+<p><a href="https://www.chezmoi.io/">Chezmoi</a></p>
+</li>
+<li>
+<p><a href="https://bitwarden.com/help/article/cli/#quick-start">Bitwarden-cli</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Installing
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<p>Run <code class="verbatim">chezmoi init https://github.com/benmezger/dotfiles.git</code> (see <a href="https://www.chezmoi.io/docs/reference/">reference</a> for
+more options) to checkout the repository and any submodules. Finally, run
+<code class="verbatim">chezmoi apply</code> to move changes to your home directory.</p>
+<p>
+Chezmoi will try to apply bitwarden in <a href="dot_env-secrets.tmpl">env-secrets</a> if <code class="verbatim">CI</code> env is not set or
+<code class="verbatim">secrets</code> is set to <code class="verbatim">true</code> in <code class="verbatim">chezmoi.yaml</code> (defaults to <code class="verbatim">false</code>). Make sure
+the UUID are correct with your password&#39;s UUID, <a href="https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid">see</a> for more information or set
+a <code class="verbatim">CI</code> env variable before running to skip this step.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-2">
+<h2 id="headline-13">
+Dependencies
+</h2>
+<div id="outline-text-headline-13" class="outline-text-2">
+<ul>
+<li>
+<p>Fonts</p>
+<ul>
+<li>
+<p><a href="https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">Inconsolata-DZ</a></p>
+</li>
+<li>
+<p><a href="https://sourcefoundry.org/hack/">Hack</a></p>
+</li>
+<li>
+<p><a href="https://fontawesome.com/">FontAwesome</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>ZSH</p>
+<ul>
+<li>
+<p><a href="https://github.com/getantibody/antibody">Antibody</a></p>
+</li>
+<li>
+<p><a href="https://github.com/junegunn/fzf">FZF</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Emacs</p>
+<ul>
+<li>
+<p><a href="https://github.com/hlissner/doom-emacs">Doom Emacs</a></p>
+</li>
+<li>
+<p>Emacs &gt;= 27</p>
+</li>
+</ul>
+</li>
+<li>
+<p>System utilities</p>
+<ul>
+<li>
+<p><a href="https://github.com/wakatime/wakatime">Wakatime</a></p>
+</li>
+<li>
+<p><a href="https://www.gnu.org/software/emacs/">Emacs</a></p>
+</li>
+<li>
+<p><a href="https://www.chezmoi.io/">Chezmoi</a></p>
+</li>
+<li>
+<p><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a></p>
+</li>
+<li>
+<p><a href="https://github.com/pyenv/pyenv">pyenv</a></p>
+</li>
+<li>
+<p><a href="https://gohugo.io/">Hugo</a></p>
+</li>
+<li>
+<p><a href="https://bitwarden.com/help/article/cli/#quick-start">Bitwarden-cli</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>OSX</p>
+<ul>
+<li>
+<p><a href="https://brew.sh/">Homebrew</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mas-cli/mas">Mas</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Linux</p>
+<ul>
+<li>
+<p><a href="https://i3wm.org/">i3wm</a></p>
+</li>
+<li>
+<p><a href="https://github.com/fosskers/aura">Aura (Archlinux)</a></p>
+</li>
+<li>
+<p><a href="https://github.com/greshake/i3status-rust">i3status-rust</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-2">
+<h2 id="headline-14">
+Commands
+</h2>
+<div id="outline-text-headline-14" class="outline-text-2">
+<p>These are general commands I use while managing my <code class="verbatim">dotfiles</code> and my system . I
+run them in orgmode itself, but you can simply copy and paste it to your
+terminal.</p>
+<div id="outline-container-headline-15" class="outline-3">
+<h3 id="headline-15">
+Chezmoi&#xa0;&#xa0;&#xa0;<span class="tags"><span>dotfiles</span>&#xa0;<span>chezmoi</span></span>
+</h3>
+<div id="outline-text-headline-15" class="outline-text-3">
+<ul>
+<li>
+<p>Apply dotfile changes with Chezmoi.</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
+  chezmoi apply -v</code></pre></div>
+</div>
+</li>
+<li>
+<p>View difference between dotfiles and restores files.</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
+  chezmoi diff</code></pre></div>
+</div>
+</li>
+<li>
+<p>Initialize chezmoi repository, reloading <code class="verbatim">$HOME/.config/chezmoi/chezmoi.[yaml|toml]</code></p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
+  chezmoi init ~/dotfiles</code></pre></div>
+</div>
+</li>
+<li>
+<p>Bitwarden integration
+Chezmoi applies Bitwarden&#39;s in every file which requires a secret.</p>
+<p>
+As a result, it requires Bitwarden installed and logged with <code class="verbatim">bw login
+  &lt;email&gt;</code>. Make sure you change my Bitwarden&#39;s UUID to match yours.</p>
+<p>
+You can test your UUID with:</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  bw get item &lt;uuid&gt; | jq .login.password</code></pre></div>
+</div>
+<p>
+Chezmoi will only run Bitwarden against these files if:</p>
+<ul>
+<li>
+<p>Environment is not set to <code class="verbatim">CI</code></p>
+</li>
+<li>
+<p><code class="verbatim">chezmoi.yaml</code> has <code class="verbatim">secrets</code> set to <code class="verbatim">true</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-16" class="outline-3">
+<h3 id="headline-16">
+Emacs&#xa0;&#xa0;&#xa0;<span class="tags"><span>emacs</span></span>
+</h3>
+<div id="outline-text-headline-16" class="outline-text-3">
+<p>General Emacs maintenance.</p>
+<div id="outline-container-headline-17" class="outline-4">
+<h4 id="headline-17">
+Doom emacs
+</h4>
+<div id="outline-text-headline-17" class="outline-text-4">
+<ul>
+<li>
+<p>Doom compile core and private modules</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp</code></pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-18" class="outline-4">
+<h4 id="headline-18">
+Required <code class="verbatim">authinfo</code> entries
+</h4>
+<div id="outline-text-headline-18" class="outline-text-4">
+<p>Email and Forge requires the following entries to be set in your
+<code class="verbatim">$HOME/.authinfo</code>. Make sure you encrypt <code class="verbatim">.authinfo</code> with PGP.</p>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">machine api.github.com login &lt;<span style="color:#e6db74">gh-user</span>&gt;^forge password &lt;<span style="color:#e6db74">password</span>&gt;
+machine irc.freenode.net login &lt;<span style="color:#e6db74">user</span>&gt; password &lt;<span style="color:#e6db74">passord</span>&gt; port 6667
+machine imap.gmail.com login &lt;<span style="color:#e6db74">email</span>&gt; password &lt;<span style="color:#e6db74">password</span>&gt; port 443
+machine smtp.gmail.com login &lt;<span style="color:#e6db74">email</span>&gt; password &lt;<span style="color:#e6db74">password</span>&gt; port 587</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-19" class="outline-3">
+<h3 id="headline-19">
+Linux&#xa0;&#xa0;&#xa0;<span class="tags"><span>linux</span></span>
+</h3>
+<div id="outline-text-headline-19" class="outline-text-3">
+<p>General Linux commands</p>
+<ul>
+<li>
+<p>Speed up keyboard</p>
+<div class="src src-:cache">
+<pre><code class="language-:cache" data-lang=":cache">  xset r rate 180 40</code></pre>
+</div>
+</li>
+</ul>
+<div id="outline-container-headline-20" class="outline-4">
+<h4 id="headline-20">
+Archlinux&#xa0;&#xa0;&#xa0;<span class="tags"><span>archlinux</span></span>
+</h4>
+<div id="outline-text-headline-20" class="outline-text-4">
+<ul>
+<li>
+<p>List <code class="verbatim">pacman</code> packages ignoring foreing packages (AUR, etc).</p>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  pacman -Qqen</code></pre></div>
+</div>
+<p><a href="./roles/archlinux/tasks/pkgs.pacman">./roles/archlinux/tasks/pkgs.pacman</a></p>
+</li>
+<li>
+<p>Get list of foreing (AUR, etc) packages with <code class="verbatim">pacman</code>.</p>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  pacman -Qqem</code></pre></div>
+</div>
+<p><a href="./roles/archlinux/tasks/pkgs.aur">./roles/archlinux/tasks/pkgs.aur</a></p>
+</li>
+<li>
+<p>Enable color, total download, check space and verbose pkg list when running
+<code class="verbatim">pacman</code>.</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo sed -i <span style="color:#e6db74">&#39;/Color$/s/^#//g&#39;</span> /etc/pacman.conf
+  sudo sed -i <span style="color:#e6db74">&#39;/TotalDownload$/s/^#//g&#39;</span> /etc/pacman.conf
+  sudo sed -i <span style="color:#e6db74">&#39;/CheckSpace$/s/^#//g&#39;</span> /etc/pacman.conf
+  sudo sed -i <span style="color:#e6db74">&#39;/VerbosePkgLists$/s/^#//g&#39;</span> /etc/pacman.conf</code></pre></div>
+</div>
+</li>
+<li>
+<p>Find all <code class="verbatim">*.pacnew</code> files in <code class="verbatim">/etc</code></p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  find /etc -regextype posix-extended -regex <span style="color:#e6db74">&#34;.+\.pac(new|save)&#34;</span></code></pre></div>
+</div>
+</li>
+</ul>
+<div id="outline-container-headline-21" class="outline-5">
+<h5 id="headline-21">
+Docker&#xa0;&#xa0;&#xa0;<span class="tags"><span>docker</span></span>
+</h5>
+<div id="outline-text-headline-21" class="outline-text-5">
+<ul>
+<li>
+<p>Allow Docker runs with non-root user.</p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo usermod -aG docker $USER
+  newgrp docker</code></pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-22" class="outline-4">
+<h4 id="headline-22">
+Sourcing env with i3
+</h4>
+<div id="outline-text-headline-22" class="outline-text-4">
+<ul>
+<li>
+<p>For some reason, i3 is sourcing <code class="verbatim">.xprofile</code> instead of <code class="verbatim">xinitrc</code>, so for
+getting Github plugin for the <a href="dot_config/i3/status.toml">i3status-rust</a> you need to set up a variable in
+your <code class="verbatim">.xprofile</code></p>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  export I3RS_GITHUB_TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;your-github-token&#34;</span></code></pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-23" class="outline-3">
+<h3 id="headline-23">
+OSX
+</h3>
+<div id="outline-text-headline-23" class="outline-text-3">
+<div id="outline-container-headline-24" class="outline-4">
+<h4 id="headline-24">
+Set OSX defaults
+</h4>
+<div id="outline-text-headline-24" class="outline-text-4">
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Turn on app auto-update</span>
 defaults write com.apple.commerce AutoUpdate -bool true
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Install System data files &amp; security updates</span>
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int <span style="color: #948ae3; font-weight: bold;">1</span>
+<span style="color:#75715e"># Install System data files &amp; security updates</span>
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int <span style="color:#ae81ff">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Download newly available updates in background</span>
-defaults write com.apple.SoftwareUpdate AutomaticDownload -int <span style="color: #948ae3; font-weight: bold;">1</span>
+<span style="color:#75715e"># Download newly available updates in background</span>
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int <span style="color:#ae81ff">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Check for software updates daily, not just once per week</span>
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int <span style="color: #948ae3; font-weight: bold;">1</span>
+<span style="color:#75715e"># Check for software updates daily, not just once per week</span>
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int <span style="color:#ae81ff">1</span>
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Don’t show recent applications in Dock</span>
+<span style="color:#75715e"># Don’t show recent applications in Dock</span>
 defaults write com.apple.dock show-recents -bool false
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Automatically hide and show the Dock</span>
+<span style="color:#75715e"># Automatically hide and show the Dock</span>
 defaults write com.apple.dock autohide -bool true
 
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Remove the auto-hiding Dock delay</span>
-defaults write com.apple.dock autohide-delay -float <span style=
-"color: #948ae3; font-weight: bold;">0</span>
-<span style="color: #69676c;"># </span><span style=
-"color: #69676c;">Remove the animation when hiding/showing the Dock</span>
-defaults write com.apple.dock autohide-time-modifier -float <span style="color: #948ae3; font-weight: bold;">0</span>
-</pre>
-            </div>
-          </div>
-        </div>
-      </div>
+<span style="color:#75715e"># Remove the auto-hiding Dock delay</span>
+defaults write com.apple.dock autohide-delay -float <span style="color:#ae81ff">0</span>
+<span style="color:#75715e"># Remove the animation when hiding/showing the Dock</span>
+defaults write com.apple.dock autohide-time-modifier -float <span style="color:#ae81ff">0</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-25" class="outline-2">
+<h2 id="headline-25">
+Keybindings
+</h2>
+<div id="outline-text-headline-25" class="outline-text-2">
+<div id="outline-container-headline-26" class="outline-3">
+<h3 id="headline-26">
+OSX
+</h3>
+<div id="outline-text-headline-26" class="outline-text-3">
+<div id="outline-container-headline-27" class="outline-4">
+<h4 id="headline-27">
+MPC
+</h4>
+<div id="outline-text-headline-27" class="outline-text-4">
+<ul>
+<li>
+<p><code class="verbatim">fn + cmd - e</code> - <code class="verbatim">opens editor</code></p>
+</li>
+<li>
+<p><code class="verbatim">cmd + return</code> - <code class="verbatim">opens alacritty</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f1</code> - <code class="verbatim">mpc play</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f2</code> - <code class="verbatim">mpc pause</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f3</code> - <code class="verbatim">mpc prev</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f4</code> - <code class="verbatim">mpc next</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f5</code> - <code class="verbatim">mpc volume -10</code></p>
+</li>
+<li>
+<p><code class="verbatim">fn + cmd - f6</code> - <code class="verbatim">mpc volume +10</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-28" class="outline-2">
+<h2 id="headline-28">
+Troubleshooting
+</h2>
+<div id="outline-text-headline-28" class="outline-text-2">
+<div id="outline-container-headline-29" class="outline-3">
+<h3 id="headline-29">
+Chezmoi does not seem to reload the configuration
+</h3>
+<div id="outline-text-headline-29" class="outline-text-3">
+<p>Run <code class="verbatim">chezmoi init &lt;dotfiles-path&gt;</code> again. This should reload the configuration
+by copying <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to <code class="verbatim">$HOME/.config/chezmoi/chezmoi.yaml</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-30" class="outline-2">
+<h2 id="headline-30">
+TODOS
+</h2>
+<div id="outline-text-headline-30" class="outline-text-2">
+<div id="outline-container-headline-31" class="outline-3">
+<h3 id="headline-31">
+<span class="todo">TODO</span>
+Remove 1Password documents from the configuration file
+</h3>
+<div id="outline-text-headline-31" class="outline-text-3">
+<p>1Password Documents are currently kept as I am slowly migrating to Bitwarden</p>
+</div>
+</div>
+<div id="outline-container-headline-32" class="outline-3">
+<h3 id="headline-32">
+<span class="todo">TODO</span>
+Update README on how to install individual configs
+</h3>
+</div>
+<div id="outline-container-headline-33" class="outline-3">
+<h3 id="headline-33">
+CANCELED Create multi-os support in travis
+</h3>
+<div id="outline-text-headline-33" class="outline-text-3">
+<ul>
+<li class="checked">
+<p>OSX support</p>
+</li>
+<li class="checked">
+<p>Linux support</p>
+</li>
+<li class="checked">
+<p>Get linux to run</p>
+</li>
+<li class="checked">
+<p>How to handle AUR packages?</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-34" class="outline-3">
+<h3 id="headline-34">
+<span class="todo">DONE</span>
+Verify if Github Workflow is caching packages property
+</h3>
+</div>
+<div id="outline-container-headline-35" class="outline-3">
+<h3 id="headline-35">
+<span class="todo">DONE</span>
+Fix issue with tmux not correctly searching text through panes
+</h3>
+</div>
+<div id="outline-container-headline-36" class="outline-3">
+<h3 id="headline-36">
+<span class="todo">TODO</span>
+Add Archlinux AUR packages
+</h3>
+</div>
+<div id="outline-container-headline-37" class="outline-3">
+<h3 id="headline-37">
+<span class="todo">DONE</span>
+Figure out how to handle 1password-cli with Chezmoi when running Ansible
+</h3>
+</div>
+<div id="outline-container-headline-38" class="outline-3">
+<h3 id="headline-38">
+<span class="todo">DONE</span>
+Switch to <code class="verbatim">Brewfile</code>
+</h3>
+</div>
+</div>
+</div>
+
     </div>
-    <div id="outline-container-org07cf5b0" class="outline-2">
-      <h2 id="org07cf5b0"><span class="section-number-2">8</span>
-      Keybindings</h2>
-      <div class="outline-text-2" id="text-8"></div>
-      <div id="outline-container-orgfd474f1" class="outline-3">
-        <h3 id="orgfd474f1"><span class=
-        "section-number-3">8.1</span> OSX</h3>
-        <div class="outline-text-3" id="text-8-1"></div>
-        <div id="outline-container-orgb1789b2" class="outline-4">
-          <h4 id="orgb1789b2"><span class=
-          "section-number-4">8.1.1</span> MPC</h4>
-          <div class="outline-text-4" id="text-8-1-1">
-            <ul class="org-ul">
-              <li><code>fn + cmd - e</code> - <code>opens
-              editor</code></li>
-              <li><code>cmd + return</code> - <code>opens
-              alacritty</code></li>
-              <li><code>fn + cmd - f1</code> - <code>mpc
-              play</code></li>
-              <li><code>fn + cmd - f2</code> - <code>mpc
-              pause</code></li>
-              <li><code>fn + cmd - f3</code> - <code>mpc
-              prev</code></li>
-              <li><code>fn + cmd - f4</code> - <code>mpc
-              next</code></li>
-              <li><code>fn + cmd - f5</code> - <code>mpc volume
-              -10</code></li>
-              <li><code>fn + cmd - f6</code> - <code>mpc volume
-              +10</code></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-org158e03e" class="outline-2">
-      <h2 id="org158e03e"><span class="section-number-2">9</span>
-      Troubleshooting</h2>
-      <div class="outline-text-2" id="text-9"></div>
-      <div id="outline-container-org1c5c9f4" class="outline-3">
-        <h3 id="org1c5c9f4"><span class=
-        "section-number-3">9.1</span> Chezmoi does not seem to
-        reload the configuration</h3>
-        <div class="outline-text-3" id="text-9-1">
-          <p>Run <code>chezmoi init &lt;dotfiles-path&gt;</code>
-          again. This should reload the configuration by copying
-          <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to
-          <code>$HOME/.config/chezmoi/chezmoi.yaml</code>.</p>
-        </div>
-      </div>
-    </div>
-    <div id="outline-container-orgadfd0cf" class="outline-2">
-      <h2 id="orgadfd0cf"><span class="section-number-2">10</span>
-      TODOS</h2>
-      <div class="outline-text-2" id="text-10"></div>
-      <div id="outline-container-org0d00674" class="outline-3">
-        <h3 id="org0d00674"><span class=
-        "section-number-3">10.1</span> <span class=
-        "todo TODO">TODO</span> Remove 1Password documents from the
-        configuration file</h3>
-        <div class="outline-text-3" id="text-10-1">
-          <p>1Password Documents are currently kept as I am slowly
-          migrating to Bitwarden</p>
-        </div>
-      </div>
-      <div id="outline-container-org685815b" class="outline-3">
-        <h3 id="org685815b"><span class=
-        "section-number-3">10.2</span> <span class=
-        "todo TODO">TODO</span> Update README on how to install
-        individual configs</h3>
-      </div>
-      <div id="outline-container-orgb125f1d" class="outline-3">
-        <h3 id="orgb125f1d"><span class=
-        "section-number-3">10.3</span> <span class=
-        "done CANCELED">CANCELED</span> Create multi-os support in
-        travis</h3>
-        <div class="outline-text-3" id="text-10-3">
-          <ul class="org-ul">
-            <li class="on"><code>[X]</code> OSX support</li>
-            <li class="on"><code>[X]</code> Linux support</li>
-            <li class="on"><code>[X]</code> Get linux to run</li>
-            <li class="on"><code>[X]</code> How to handle AUR
-            packages?</li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org53851b3" class="outline-3">
-        <h3 id="org53851b3"><span class=
-        "section-number-3">10.4</span> <span class=
-        "done DONE">DONE</span> Verify if Github Workflow is
-        caching packages property</h3>
-        <div class="outline-text-3" id="text-10-4"></div>
-      </div>
-      <div id="outline-container-org646dcca" class="outline-3">
-        <h3 id="org646dcca"><span class=
-        "section-number-3">10.5</span> <span class=
-        "done DONE">DONE</span> Fix issue with tmux not correctly
-        searching text through panes</h3>
-        <div class="outline-text-3" id="text-10-5"></div>
-      </div>
-      <div id="outline-container-org540a533" class="outline-3">
-        <h3 id="org540a533"><span class=
-        "section-number-3">10.6</span> <span class=
-        "todo TODO">TODO</span> Add Archlinux AUR packages</h3>
-      </div>
-      <div id="outline-container-org63729d0" class="outline-3">
-        <h3 id="org63729d0"><span class=
-        "section-number-3">10.7</span> <span class=
-        "done DONE">DONE</span> Figure out how to handle
-        1password-cli with Chezmoi when running Ansible</h3>
-        <div class="outline-text-3" id="text-10-7"></div>
-      </div>
-      <div id="outline-container-org622dc5a" class="outline-3">
-        <h3 id="org622dc5a"><span class=
-        "section-number-3">10.8</span> <span class=
-        "done DONE">DONE</span> Switch to
-        <code>Brewfile</code></h3>
-        <div class="outline-text-3" id="text-10-8"></div>
-      </div>
-    </div>
+  
+  <div class="posts">
+    
+    
+
+    
+    
+      
+    
+    
+
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+    
   </div>
-  <div id="postamble" class="status">
-    <p class="date">Date: 2020-08-06 Thu 00:00</p>
-    <p class="author">Author: Ben Mezger</p>
-    <p class="date">Created: 2021-02-06 Sat 12:12</p>
+</div>
+
   </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://benmezger.github.io/dotfiles/assets/main.js"></script>
+<script src="https://benmezger.github.io/dotfiles/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
 </body>
 </html>
