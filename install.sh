@@ -3,14 +3,18 @@ set -euo pipefail
 
 # Test if $1 is available
 isavailable() {
-    type "$1" &>/dev/null
+	type "$1" &>/dev/null
 }
 
-echo "Installing required dependencies"
+LOGFILE="/tmp/dotfiles.log"
+
+echo "Running '$0' $(date)" | tee -a $LOGFILE
+
+echo "Installing required dependencies" | tee -a $LOGFILE
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    make homebrew-install
+	make homebrew-install | tee -a $LOGFILE
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    isavailable chezmoi || sudo pacman -S chezmoi --noconfirm
+	isavailable chezmoi || (sudo pacman -S chezmoi --noconfirm | tee -a $LOGFILE)
 fi
 
 make all

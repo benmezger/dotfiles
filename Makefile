@@ -1,5 +1,6 @@
-default: run
+LOGFILE="/tmp/dotfiles.log"
 
+default: run
 help:
 	@echo 'Management commands for dotfiles:'
 	@echo
@@ -23,57 +24,63 @@ help:
 
 start-services:
 	@echo "Starting services.."
-	bash ./scripts/0003_start_services.sh
+	bash ./scripts/0003_start_services.sh | tee -a $(LOGFILE)
 
 git-repos:
 	@echo "Cloning Git repos.."
-	bash ./scripts/0004_install_git_repos.sh
+	bash ./scripts/0004_install_git_repos.sh | tee -a $(LOGFILE)
 
 conf-sys:
 	@echo "Configuring system.."
-	bash ./scripts/0005_configure_sys.sh
+	bash ./scripts/0005_configure_sys.sh | tee -a $(LOGFILE)
 
 ssh-perms:
 	@echo "Setting SSH permissions.."
-	bash ./scripts/0006_set_ssh_perms.sh
+	bash ./scripts/0006_set_ssh_perms.sh | tee -a $(LOGFILE)
 
 pyenv:
 	@echo "Installing pyenv.."
-	bash ./scripts/0007_install_pyenv.sh
+	bash ./scripts/0007_install_pyenv.sh | tee -a $(LOGFILE)
 
 osx-defaults: 
 	@echo "Applying OSX defaults.."
-	bash ./scripts/0009_set_osx_defaults.sh
+	bash ./scripts/0009_set_osx_defaults.sh | tee -a $(LOGFILE)
 
 archlinux-defaults: 
 	@echo "Applying Archlinux defaults.."
-	bash ./scripts/0009_set_osx_defaults.sh
+	bash ./scripts/0009_set_osx_defaults.sh | tee -a $(LOGFILE)
 
 ensure-deps:
 	@echo "Ensuring dependencies.."
-	bash ./scripts/0001_install_chezmoi.sh
-	bash ./scripts/0002_install_deps.sh
+	bash ./scripts/0001_install_chezmoi.sh | tee -a $(LOGFILE)
+	bash ./scripts/0002_install_deps.sh | tee -a $(LOGFILE)
 
 chezmoi-init: 
 	@echo "Initializing chezmoi.."
-	chezmoi init -S ${CURDIR} -v
+	chezmoi init -S ${CURDIR} -v 
 
 chezmoi-apply: 
 	@echo "Applying chezmoi.."
-	chezmoi apply -v
+	chezmoi apply -v 
 
-all: ensure-deps \
-	start-services \
-	git-repos \
-	conf-sys \
-	ssh-perms \
-	chezmoi-init \
-	osx-defaults \
-	chezmoi-apply
+homebrew-install:
+	@echo "Installing homebrew.."
+	bash ./scripts/0008_install_homebrew.sh | tee -a $(LOGFILE)
 
-run: ensure-deps \
-	chezmoi-init \
-	chezmoi-apply
+all:
+	$(MAKE) ensure-deps
+	$(MAKE) start-services
+	$(MAKE) git-repos
+	$(MAKE) conf-sys
+	$(MAKE) ssh-perms
+	$(MAKE) chezmoi-init
+	$(MAKE) osx-defaults
+	$(MAKE) chezmoi-apply
+
+run:
+	$(MAKE) ensure-deps 
+	$(MAKE) chezmoi-init 
+	$(MAKE) chezmoi-apply
 
 post-chezmoi:
 	$(MAKE) start-services
@@ -81,7 +88,3 @@ post-chezmoi:
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
 	@echo "Done"
-
-homebrew-install:
-	@echo "Installing homebrew.."
-	bash ./scripts/0008_install_homebrew.sh
