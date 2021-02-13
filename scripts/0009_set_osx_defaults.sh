@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+. "$DIR/base.sh"
+. "$DIR/ansi"
+
 if [[ "$OSTYPE" != "darwin"* ]]; then
 	ansi --green "Not a darwin platform. Skipping."
 	exit 0
 fi
-
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-. "$DIR/base.sh"
-. "$DIR/ansi"
 
 # mostly from: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
