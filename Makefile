@@ -9,6 +9,7 @@ help:
 	@echo '    make git-repos          Clone Git repos.'
 	@echo '    make conf-sys           Configure system files.'
 	@echo '    make ssh-perms          Set SSH permissions.'
+	@echo '    make gnupg-perms        Set GnuPG permissions.'
 	@echo '    make pyenv              Install pyenv.'
 	@echo '    make osx-defaults       Configure defaults for OSX'
 	@echo '    make ensure-deps        Install all dependencies.'
@@ -41,6 +42,10 @@ conf-sys:
 ssh-perms:
 	@echo "Setting SSH permissions.."
 	bash ./scripts/0006_set_ssh_perms.sh | tee -a $(LOGFILE)
+
+gnupg-perms:
+	@echo "Setting GnuPG permissions.."
+	bash ./scripts/0012_fix_gnupg_perms.sh | tee -a $(LOGFILE)
 
 pyenv:
 	@echo "Installing pyenv.."
@@ -91,6 +96,7 @@ all:
 	$(MAKE) git-repos
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
+	$(MAKE) gnupg-perms
 	$(MAKE) chezmoi-init
 	$(MAKE) osx-defaults
 	$(MAKE) chezmoi-apply
@@ -105,6 +111,7 @@ post-chezmoi:
 	$(MAKE) git-repos
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
+	$(MAKE) gnupg-perms
 	@echo "Done"
 
 hugo-build:
