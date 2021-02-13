@@ -19,6 +19,7 @@ help:
 	@echo '    make install-chezmoi    Install chezmoi.'
 	@echo '    make install-aur        Install AUR packages .'
 	@echo '    make install-deps       Install system dependencies.'
+	@echo '    make hugo-build         Update documentation'
 	@echo '    make run                Ensure deps and apply chezmoi'
 	@echo '    make all                Run all.'
 	@echo ''
@@ -105,3 +106,8 @@ post-chezmoi:
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
 	@echo "Done"
+
+hugo-build:
+	@echo "Running hugo build.."
+	git submodule update --init
+	hugo 
