@@ -77,6 +77,9 @@ if [ "${CI:-0}" = "1" ]; then
 	exit 0
 fi
 
+# ask sudo upfront
+sudo -v
+
 ansi --green "Build Locate Database"
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 

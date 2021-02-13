@@ -13,6 +13,9 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
+# ask sudo upfront
+sudo -v
+
 ansi --green "Updating pacman.conf.."
 sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf

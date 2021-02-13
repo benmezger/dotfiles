@@ -25,6 +25,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	fi
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	# ask sudo upfront
+	sudo -v
+
 	sudo systemctl enable pcscd
 
 	mkdir -p "$HOME/.config/systemd/user/"

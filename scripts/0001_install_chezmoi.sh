@@ -15,7 +15,7 @@ if ! [ -x "$(command -v chezmoi)" ]; then
 		isavailable brew || curl -sfL https://git.io/chezmoi | sh
 		isavailable brew && brew install chezmoi
 	elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-		isavailable chezmoi || sudo pacman -S chezmoi --noconfirm
+		isavailable chezmoi || sudo -v || sudo pacman -S chezmoi --noconfirm
 	fi
 else
 	ansi --yellow "Chezmoi exists, skipping."

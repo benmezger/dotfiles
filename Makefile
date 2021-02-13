@@ -75,10 +75,11 @@ run: ensure-deps \
 	chezmoi-init \
 	chezmoi-apply
 
-post-chezmoi: start-services \
-	git-repos \
-	conf-sys \
-	ssh-perms
+post-chezmoi:
+	$(MAKE) start-services
+	$(MAKE) git-repos
+	$(MAKE) conf-sys
+	$(MAKE) ssh-perms
 	@echo "Done"
 
 homebrew-install:
