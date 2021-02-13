@@ -14,7 +14,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# ask sudo upfront
 	sudo -v
-
+	sudo pacman -Syy
 	ansi --green "Using $PACMAN_BUNDLE_FILE bundle file"
-	sudo pacman -S "$(<"$PACMAN_BUNDLE_FILE")" --noconfirm
+	sudo pacman -S --noconfirm --needed - <"$PACMAN_BUNDLE_FILE"
 fi
