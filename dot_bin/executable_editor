@@ -1,6 +1,8 @@
 #!/usr/local/bin/zsh
 
-if (( ${+commands[emacs]} )); then
+if (( ${+commands[nvim]} )); then
+    export EDITOR=nvim
+elif (( ${+commands[emacs]} )); then
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         emacsclient=/usr/bin/emacsclient
         emacs=/usr/bin/emacs
@@ -8,9 +10,7 @@ if (( ${+commands[emacs]} )); then
         emacsclient=/usr/local/bin/emacsclient
         emacs=/usr/local/bin/emacs
     fi
-
     export EDITOR='$emacsclient -c -a ""'
-
 else
     export EDITOR=vim
 fi
