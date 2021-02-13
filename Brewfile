@@ -132,6 +132,7 @@ brew "gstreamer"
 brew "koekeishiya/formulae/skhd", restart_service: true
 brew "rclone"
 brew "flock"
+brew "mopidy-podcast"
 
 cask "bitwarden"
 cask "activitywatch"

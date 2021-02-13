@@ -16,6 +16,8 @@
 {{- $work_smtp_port := 587 -}}
 {{- $work_imap_host := "imap.gmail.com" -}}
 
+{{- $podcast_opml := "https://www.listennotes.com/listen/podcast-list-McKCI8sZ0v2/opml/" -}}
+
 {{- if (env "CI") -}}
 {{- $headless = true -}}
 {{- $secrets = false -}}
@@ -38,6 +40,8 @@
 {{- $work_smtp_host := promptString "work email's smtp host" -}}
 {{- $work_smtp_port := promptString "work email's smtp port" -}}
 {{- $work_imap_port := promptString "work email's imap host" -}}
+
+{{- $podcast_opml := promptString "podcast opml url" -}}
 {{- end -}}
 
 sourceDir: {{ .chezmoi.sourceDir }}
@@ -53,6 +57,7 @@ data:
   hostname: {{ $hostname }}
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
+  podcast_opml: {{ $podcast_opml }}
   work:
     workmail: {{ $work_email }}
     imap_host: {{ $work_imap_host }}

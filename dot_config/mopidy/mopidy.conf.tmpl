@@ -16,3 +16,12 @@ allow_cache = true
 
 [audio]
 output = autoaudiosink
+
+[podcast]
+enabled = true
+browse_root = {{ .podcast_opml }}
+browse_order = desc
+lookup_order = asc
+cache_size = 64
+cache_ttl = 86400
+timeout = 10
