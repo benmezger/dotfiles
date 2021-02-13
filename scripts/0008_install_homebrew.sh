@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Test if $1 is available
-isavailable() {
-	type "$1" &>/dev/null
-}
-
 DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
 . "$DIR/scripts/base.sh"
 . "$DIR/scripts/ansi"

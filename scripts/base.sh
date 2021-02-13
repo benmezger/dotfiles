@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Test if $1 is available
+isavailable() {
+	type "$1" &>/dev/null
+}
+
 # from: https://stackoverflow.com/a/21320645
 function red_stderr() {
 	export COLOR_RED="$(tput setaf 1)"
