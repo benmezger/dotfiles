@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
-export GPGKEY=0xAC7A30843ADC0D65
+export GPGKEY=0x7357E344D6C3C795
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
@@ -15,14 +15,14 @@ export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 if [[ ${OSTYPE} == darwin* ]]; then
-    export HOMEBREW_NO_AUTO_UPDATE=1
-    # fzf
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-    source /usr/local/opt/fzf/shell/completion.zsh
+	export HOMEBREW_NO_AUTO_UPDATE=1
+	# fzf
+	source /usr/local/opt/fzf/shell/key-bindings.zsh
+	source /usr/local/opt/fzf/shell/completion.zsh
 else
-    # fzf
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
+	# fzf
+	source /usr/share/fzf/key-bindings.zsh
+	source /usr/share/fzf/completion.zsh
 fi
 
 export PATH="$HOME/.bin:$PATH"
@@ -46,13 +46,13 @@ export AUTOENV_FILE_LEAVE=".bye"
 
 # Make sure we are not sshing to this shell or running within an i3 session
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$I3SOCK" ]; then
-    export TMUX_AUTOSTART="false"
+	export TMUX_AUTOSTART="false"
 else
-    export TMUX_AUTOSTART="true"
+	export TMUX_AUTOSTART="true"
 fi
 
 if [ -f "$HOME/.env-secrets" ]; then
-    source "$HOME/.env-secrets"
+	source "$HOME/.env-secrets"
 fi
 
 # pyenv
@@ -63,9 +63,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
 
-
 if [ -f "$HOME/.poetry/bin/poetry" ]; then
-    export PATH="$HOME/.poetry/bin:${PATH}"
+	export PATH="$HOME/.poetry/bin:${PATH}"
 fi
 
 export GITLINE_REPO_INDICATOR='${reset}ᚴ'
