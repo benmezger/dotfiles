@@ -54,6 +54,7 @@ ensure-deps:
 	@echo "Ensuring dependencies.."
 	bash ./scripts/0001_install_chezmoi.sh | tee -a $(LOGFILE)
 	bash ./scripts/0002_install_deps.sh | tee -a $(LOGFILE)
+	bash ./scripts/0011_install_aur_packages.sh | tee -a $(LOGFILE)
 
 chezmoi-init: 
 	@echo "Initializing chezmoi.."
