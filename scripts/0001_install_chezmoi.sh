@@ -8,6 +8,7 @@ isavailable() {
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/ansi"
+. "$DIR/base.sh"
 
 if ! [ -x "$(command -v chezmoi)" ]; then
 	if [[ "$OSTYPE" == "darwin"* ]]; then

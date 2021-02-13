@@ -7,6 +7,7 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+. "$DIR/base.sh"
 . "$DIR/ansi"
 
 # mostly from: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
