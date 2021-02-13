@@ -12,6 +12,7 @@ RUN pacman -S sudo git file awk gcc base-devel reflector --noconfirm
 RUN reflector --latest 5 \
         --save "/etc/pacman.d/mirrorlist" \
         --sort rate \
+        --protocol https \ 
         --verbose
 
 RUN useradd -ms /bin/bash archie
