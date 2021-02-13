@@ -11,11 +11,14 @@ help:
 	@echo '    make ssh-perms          Set SSH permissions.'
 	@echo '    make pyenv              Install pyenv.'
 	@echo '    make osx-defaults       Configure defaults for OSX'
-	@echo '    make ensure-deps        Install dependencies.'
+	@echo '    make ensure-deps        Install all dependencies.'
 	@echo '    make chezmoi-init       Initialize chezmoi.'
 	@echo '    make chezmoi-apply      Apply chezmoi files (runs all scripts).'
 	@echo '    make post-chezmoi       Run post chezmoi scripts.'
-	@echo '    make homebrew-install   Install Homebrew.'
+	@echo '    make install-homebrew   Install Homebrew.'
+	@echo '    make install-chezmoi    Install chezmoi.'
+	@echo '    make install-aur        Install AUR packages .'
+	@echo '    make install-deps       Install system dependencies.'
 	@echo '    make run                Ensure deps and apply chezmoi'
 	@echo '    make all                Run all.'
 	@echo ''
@@ -50,11 +53,28 @@ archlinux-defaults:
 	@echo "Applying Archlinux defaults.."
 	bash ./scripts/0009_set_osx_defaults.sh | tee -a $(LOGFILE)
 
+install-chezmoi:
+	@echo "Installing chezmoi.."
+	bash ./scripts/0001_install_chezmoi.sh | tee -a $(LOGFILE)
+
+install-deps:
+	@echo "Installing dependencies.."
+	bash ./scripts/0002_install_deps.sh | tee -a $(LOGFILE)
+
+install-aur:
+	@echo "Installing AUR packages.."
+	bash ./scripts/0011_install_aur_packages.sh | tee -a $(LOGFILE)
+
+install-homebrew:
+	@echo "Installing homebrew.."
+	bash ./scripts/0008_install_homebrew.sh | tee -a $(LOGFILE)
+
 ensure-deps:
 	@echo "Ensuring dependencies.."
-	bash ./scripts/0001_install_chezmoi.sh | tee -a $(LOGFILE)
-	bash ./scripts/0002_install_deps.sh | tee -a $(LOGFILE)
-	bash ./scripts/0011_install_aur_packages.sh | tee -a $(LOGFILE)
+	$(MAKE) install-homebrew
+	$(MAKE) install-chezmoi
+	$(MAKE) install-deps
+	$(MAKE) install-aur
 
 chezmoi-init: 
 	@echo "Initializing chezmoi.."
@@ -63,10 +83,6 @@ chezmoi-init:
 chezmoi-apply: 
 	@echo "Applying chezmoi.."
 	chezmoi apply -v 
-
-homebrew-install:
-	@echo "Installing homebrew.."
-	bash ./scripts/0008_install_homebrew.sh | tee -a $(LOGFILE)
 
 all:
 	$(MAKE) ensure-deps
