@@ -1,4 +1,4 @@
-FROM archlinux:base-devel
+FROM archlinux
 MAINTAINER Ben Mezger <me@benmezger.nl>
 
 # TEMP-FIX for pacman issue
