@@ -7,6 +7,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "mopidy/mopidy"
 tap "discoteq/discoteq"
+
 # brew install
 brew "ack"
 brew "libyaml"
@@ -152,3 +153,4 @@ cask "spotify"
 cask "telegram"
 cask "transmission"
 cask "firefox"
+cask "numi"
