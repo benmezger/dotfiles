@@ -1,10 +1,12 @@
-# Created 2021-02-13 Sat 17:25
+# Created 2021-02-16 Tue 10:23
 #+TITLE: README
 #+DATE: <2020-08-06 Thu>
 #+AUTHOR: Ben Mezger
 #+subtitle: My personal dotfiles
 #+infojs_opt: view:t toc:t ltoc:t mouse:underline
 #+export_file_name: ./.content/_index.org
+
+[[https://github.com/benmezger/dotfiles/actions][https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg]]
 
 /Github does not render orgmode files properly, [[https://benmezger.github.io/dotfiles][see]] for a better view of this
 documentation./

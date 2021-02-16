@@ -6,15 +6,7 @@
 #+INFOJS_OPT: view:t toc:t ltoc:t mouse:underline
 #+EXPORT_FILE_NAME: ./.content/_index.org
 
-#+BEGIN_EXPORT HTML
-<p>
-  <a
-    href="https://github.com/benmezger/dotfiles/actions"><img
-    src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"
-    alt="Build Status">
-  </a>
-</p>
-#+END_EXPORT
+[[https://github.com/benmezger/dotfiles/actions][https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg]]
 
 /Github does not render orgmode files properly, [[https://benmezger.github.io/dotfiles][see]] for a better view of this
 documentation./
