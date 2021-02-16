@@ -23,6 +23,7 @@ Pacfile
 Aurfile
 Brewfile.lock.json
 Makefile
+projectile
 
 # hugo
 docs/
