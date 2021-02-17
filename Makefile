@@ -22,11 +22,16 @@ help:
 	@echo '    make install-deps       Install system dependencies.'
 	@echo '    make hugo-build         Update documentation'
 	@echo '    make ensure-dirs        Creates required directories'
+	@echo '    make install-riscv      Install RISC-V toolchain and dependencies'
 	@echo '    make run                Ensure deps and apply chezmoi'
 	@echo '    make all                Run all.'
 	@echo ''
 	@echo '    Author                  Ben Mezger (github.com/benmezger)'
 	@echo
+
+install-riscv:
+	@echo "Installing RISCV dependencies.."
+	bash ./scripts/0014_install_riscv.sh | tee -a $(LOGFILE)
 
 start-services:
 	@echo "Starting services.."
