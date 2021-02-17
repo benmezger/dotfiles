@@ -24,6 +24,7 @@ Aurfile
 Brewfile.lock.json
 Makefile
 projectile
+resources
 
 # hugo
 docs/
