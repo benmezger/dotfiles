@@ -21,6 +21,7 @@ help:
 	@echo '    make install-aur        Install AUR packages .'
 	@echo '    make install-deps       Install system dependencies.'
 	@echo '    make hugo-build         Update documentation'
+	@echo '    make ensure-dirs        Creates required directories'
 	@echo '    make run                Ensure deps and apply chezmoi'
 	@echo '    make all                Run all.'
 	@echo ''
@@ -75,6 +76,10 @@ install-homebrew:
 	@echo "Installing homebrew.."
 	bash ./scripts/0008_install_homebrew.sh | tee -a $(LOGFILE)
 
+ensure-dirs:
+	@echo "Ensuring directories.."
+	bash ./scripts/0013_ensure_directories.sh | tee -a $(LOGFILE)
+
 ensure-deps:
 	@echo "Ensuring dependencies.."
 	$(MAKE) install-homebrew
@@ -99,6 +104,7 @@ all:
 	$(MAKE) gnupg-perms
 	$(MAKE) chezmoi-init
 	$(MAKE) osx-defaults
+	$(MAKE) ensure-dirs
 	$(MAKE) chezmoi-apply
 
 run:
@@ -112,6 +118,7 @@ post-chezmoi:
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
 	$(MAKE) gnupg-perms
+	$(MAKE) ensure-dirs
 	@echo "Done"
 
 hugo-build:
