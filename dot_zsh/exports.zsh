@@ -27,6 +27,13 @@ fi
 
 export PATH="$HOME/.bin:$PATH"
 
+export WORKSPACE="$HOME/workspace"
+export RISCV_PATH="$WORKSPACE/opt/riscv64gc"
+
+if [[ -d $RISCV_PATH ]]; then
+	export PATH="$RISCV_PATH/bin:$PATH"
+fi
+
 ### Plugins
 
 ## Slimline
