@@ -134,6 +134,7 @@ brew "koekeishiya/formulae/skhd", restart_service: true
 brew "rclone"
 brew "flock"
 brew "mopidy-podcast"
+brew "neofetch"
 
 cask "bitwarden"
 cask "activitywatch"
