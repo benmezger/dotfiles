@@ -20,10 +20,11 @@ help:
 	@echo '    make install-chezmoi    Install chezmoi.'
 	@echo '    make install-aur        Install AUR packages .'
 	@echo '    make install-deps       Install system dependencies.'
-	@echo '    make hugo-build         Update documentation'
-	@echo '    make ensure-dirs        Creates required directories'
-	@echo '    make install-riscv      Install RISC-V toolchain and dependencies'
-	@echo '    make run                Ensure deps and apply chezmoi'
+	@echo '    make hugo-build         Update documentation.'
+	@echo '    make ensure-dirs        Creates required directories.'
+	@echo '    make install-riscv      Install RISC-V toolchain and dependencies.'
+	@echo '    make install-rust       Install Rust.'
+	@echo '    make run                Ensure deps and apply chezmoi.'
 	@echo '    make all                Run all.'
 	@echo ''
 	@echo '    Author                  Ben Mezger (github.com/benmezger)'
@@ -125,6 +126,9 @@ post-chezmoi:
 	$(MAKE) gnupg-perms
 	$(MAKE) ensure-dirs
 	@echo "Done"
+
+install-rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 hugo-build:
 	@echo "Running hugo build.."
