@@ -2,28 +2,6 @@ name: dotfiles
 on: push
 
 jobs:
-  archlinux:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.4.1
-        with:
-          access_token: ${{ github.token }}
-      - uses: actions/checkout@v2
-      - name: Pull docker image
-        run: docker-compose pull
-
-      - name: Run installer on Archlinux
-        run: docker-compose up --build --exit-code-from dotfiles
-
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: benmezger/dotfiles/arch-dotfiles
-          tag_with_ref: true
   osx:
     runs-on: macos-latest
     steps:
