@@ -53,3 +53,7 @@ indent_size = 2
 [*.rs]
 indent_size = 4
 indent_style = space
+
+[*.{sh,zsh,bash}]
+indent_size = 8
+indent_style = tab
