@@ -21,3 +21,12 @@ sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+
+ansi --green "Enable timedatectl and set up timezone"
+sudo timedatectl set-ntp true
+sudo ln -sf /usr/share/zoneinfo/Ameriaca/Sao_Paulo /etc/localtime
+sudo hwclock --systohc
+
+ansi-green "Setup locale"
+sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
+sudo locale-gen
