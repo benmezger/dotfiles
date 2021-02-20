@@ -25,7 +25,7 @@ _approximate # enable approximate matches for completion
 ## Tmux
 function _tmux_autostart(){
     if [[ "$TMUX_AUTOSTART" == "true" && -z "$TMUX" ]]; then
-        tmux attach || TERM=xterm-256color tmux new
+        tmux attach || tmux new
         exit 0
     fi
   precmd_functions=(${precmd_functions#_tmux_autostart})

@@ -7,7 +7,7 @@ alias fucking='sudo'
 alias vi="vim"
 alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 alias lessf="less +F"
-alias tmux="TERM=xterm-256color tmux"
+#alias tmux="TERM=xterm-256color tmux"
 
 alias c=clear
 
@@ -75,8 +75,6 @@ if (( $+commands[ggrep] )); then
     export GREP_OPTIONS='-rnIi --color'
     alias ggrep="ggrep $GREP_OPTIONS"
 fi
-
-alias weechat="TERM=screen-256color weechat"
 
 alias ..="cd .."
 alias ...="cd ../../"
