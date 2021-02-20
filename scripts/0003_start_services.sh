@@ -30,6 +30,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	sudo systemctl enable pcscd
 
+	ansi --green "Setting up UFW service"
+	sudo systemctl enable ufw.service
+	sudo systemctl restart ufw.service
+	sudo ufw enable
+
 	mkdir -p "$HOME/.config/systemd/user/"
 
 	if [ -f "$HOME/.config/systemd/user/greenclip.service" ]; then

@@ -34,6 +34,10 @@ install-riscv:
 	@echo "Installing RISCV dependencies.."
 	bash ./scripts/0014_install_riscv.sh | tee -a $(LOGFILE)
 
+archlinux-firewall:
+	@echo "Setting up firewall.."
+	bash ./scripts/0015_set_firewall_rules.sh | tee -a $(LOGFILE)
+
 start-services:
 	@echo "Starting services.."
 	bash ./scripts/0003_start_services.sh | tee -a $(LOGFILE)
