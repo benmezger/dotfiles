@@ -1,3 +1,5 @@
+source $HOME/.zsh/exports.zsh
+
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
 	source $HOME/.zsh_plugins.sh
 else
@@ -13,7 +15,6 @@ source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
 source $HOME/.zsh/aw-watcher-shell.zsh
-source $HOME/.zsh/exports.zsh
 
 if [ -f "$HOME/.cargo/env" ]; then
 	source $HOME/.cargo/env
