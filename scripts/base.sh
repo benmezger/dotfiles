@@ -6,6 +6,8 @@ isavailable() {
 	type "$1" &>/dev/null
 }
 
+export TERM=xterm-256color
+
 # from: https://stackoverflow.com/a/21320645
 function red_stderr() {
 	export COLOR_RED="$(tput setaf 1)"
