@@ -135,6 +135,7 @@ brew "rclone"
 brew "flock"
 brew "mopidy-podcast"
 brew "neofetch"
+brew "tmuxinator"
 
 cask "bitwarden"
 cask "activitywatch"
