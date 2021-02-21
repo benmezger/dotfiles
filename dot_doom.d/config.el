@@ -378,8 +378,3 @@
           "c" #'org-ref-insert-cite-with-completion))
 
   (citeproc-org-setup))
-
-(use-package! activity-watch-mode
-  :defer t
-  :config
-  (global-activity-watch-mode))

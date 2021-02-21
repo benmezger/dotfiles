@@ -14,7 +14,6 @@ source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
-source $HOME/.zsh/aw-watcher-shell.zsh
 
 if [ -f "$HOME/.cargo/env" ]; then
 	source $HOME/.cargo/env

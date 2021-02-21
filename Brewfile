@@ -139,7 +139,6 @@ brew "neofetch"
 brew "tmuxinator"
 
 cask "bitwarden"
-cask "activitywatch"
 cask "alacritty"
 cask "basictex"
 cask "docker"
