@@ -25,3 +25,7 @@ lookup_order = asc
 cache_size = 64
 cache_ttl = 86400
 timeout = 10
+
+[scrobbler]
+username = {{ (bitwarden "item" .bitwarden.lastfm).login.username }}
+password = {{ (bitwarden "item" .bitwarden.lastfm).login.password }}

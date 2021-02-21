@@ -30,4 +30,5 @@ activitywatch-bin
 mopidy-mpd
 mopidy-spotify
 mopidy-podcast
+mopidy-scrobbler
 tmuxinator

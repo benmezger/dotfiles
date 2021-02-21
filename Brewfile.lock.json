@@ -3349,6 +3349,10 @@
             }
           }
         }
+      },
+      "mopidy-scrobbler": {
+        "version": "2.0.1",
+        "bottle": false
       }
     },
     "cask": {

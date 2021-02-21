@@ -127,6 +127,7 @@ brew "bitwarden-cli"
 brew "mopidy", restart_service: true
 brew "mopidy-spotify"
 brew "mopidy-mpd"
+brew "mopidy-scrobbler"
 brew "ncmpcpp"
 brew "mpc"
 brew "gstreamer"
