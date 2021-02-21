@@ -3469,6 +3469,12 @@
         "options": {
           "full_name": "numi"
         }
+      },
+      "staruml": {
+        "version": "4.0.0",
+        "options": {
+          "full_name": "staruml"
+        }
       }
     }
   },
