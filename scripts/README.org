@@ -10,16 +10,22 @@ These scripts are ran by =chezmoi= on =apply=, but it may be used independently 
 either running them with the provided [[https://github.com/benmezger/dotfiles/blob/main/Makefile][Makefile]] or by executing them with =bash=.
 
 #+BEGIN_SRC sh :results table
-exa --ignore-glob "buildcheck.sh|README.org"
+exa --ignore-glob "buildcheck.sh|README.org|ansi|base.sh"
 #+END_SRC
 
-| 0001_install_chezmoi.sh        |
-| 0002_install_deps.sh           |
-| 0003_start_services.sh         |
-| 0004_install_git_repos.sh      |
-| 0005_configure_sys.sh          |
-| 0006_set_ssh_perms.sh          |
-| 0007_install_pyenv.sh          |
-| 0008_install_homebrew.sh       |
-| 0009_set_osx_defaults.sh       |
-| 0010_set_archlinux_defaults.sh |
+#+RESULTS:
+| configure_sys.sh          |
+| ensure_directories.sh     |
+| fix_gnupg_perms.sh        |
+| install_aur_packages.sh   |
+| install_chezmoi.sh        |
+| install_deps.sh           |
+| install_git_repos.sh      |
+| install_homebrew.sh       |
+| install_pyenv.sh          |
+| install_riscv.sh          |
+| set_archlinux_defaults.sh |
+| set_firewall_rules.sh     |
+| set_osx_defaults.sh       |
+| set_ssh_perms.sh          |
+| start_services.sh         |
