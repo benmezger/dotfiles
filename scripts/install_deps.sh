@@ -18,7 +18,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 		-L -o /tmp/muteme.zip
 
 	unzip -o /tmp/muteme.zip -d /tmp/
-	mv "/tmp/Mute Me.app" "$HOME/Applications/Mute Me.app"
+	rm -rf "$HOME/Applications/Mute Me.app/"
+	mv "/tmp/Mute Me.app" "$HOME/Applications"
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# ask sudo upfront
