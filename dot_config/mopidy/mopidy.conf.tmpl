@@ -29,3 +29,8 @@ timeout = 10
 [scrobbler]
 username = {{ (bitwarden "item" .bitwarden.lastfm).login.username }}
 password = {{ (bitwarden "item" .bitwarden.lastfm).login.password }}
+
+[internetarchive]
+enabled = true
+base_url = http://archive.org
+browse_limit = 50

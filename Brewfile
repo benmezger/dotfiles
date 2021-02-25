@@ -130,6 +130,7 @@ brew "mopidy-mpd"
 brew "mopidy-scrobbler"
 brew "ncmpcpp"
 brew "mpc"
+brew "mopidy-internetarchive"
 brew "gstreamer"
 brew "koekeishiya/formulae/skhd", restart_service: true
 brew "rclone"
