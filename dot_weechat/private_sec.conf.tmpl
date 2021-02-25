@@ -20,3 +20,5 @@ __passphrase__ = on
 freenode_pass = {{ (bitwarden "item" .bitwarden.freenode).login.password }}
 ircseds_pass = {{ (bitwarden "item" .bitwarden.ircseds).login.password }}
 bnc_server = {{ (bitwarden "item" .bitwarden.bnc).login.password }}
+slack_work_api_token = {{ (bitwarden "item" .bitwarden.slack_work_api_token).login.password }}
+
