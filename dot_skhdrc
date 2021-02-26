@@ -5,9 +5,10 @@ cmd - return: /Applications/Alacritty.app/Contents/MacOS/alacritty
 fn + cmd - e: ~/.bin/editor
 
 # music
-fn + cmd - f1: mpc play
-fn + cmd - f2: mpc pause
-fn + cmd - f3: mpc prev
-fn + cmd - f4: mpc next
-fn + cmd - f5: mpc volume -10
-fn + cmd - f6: mpc volume +10
+fn + cmd - f1: mpc toggle
+fn + cmd - f2: mpc play
+fn + cmd - f3: mpc pause
+fn + cmd - f4: mpc prev
+fn + cmd - f5: mpc next
+fn + cmd - f6: mpc volume -10
+fn + cmd - f7: mpc volume +10
