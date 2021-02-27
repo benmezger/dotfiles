@@ -292,6 +292,10 @@ shell:
   {{- else }}
   program: /usr/bin/zsh
   {{- end }}
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 
 #  args:
 #    - --login

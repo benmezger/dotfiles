@@ -6,15 +6,6 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/ansi"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	TMUX_PLIST=$HOME/Library/LaunchAgents/com.tmux.plist
-	if [ -f "$TMUX_PLIST" ]; then
-		ansi --green "Loading tmux.plist..."
-		(launchctl list | grep --silent tmux) && launchctl unload "$TMUX_PLIST"
-		launchctl load -w "$TMUX_PLIST"
-	else
-		ansi --yellow "Skipping launchctl of tmux.plist"
-	fi
-
 	SYNCMAIL_PLIST="$HOME/Library/LaunchAgents/com.syncmail.plist"
 	if [ -f "$SYNCMAIL_PLIST" ]; then
 		ansi --green "Loading syncmail.plist..."
