@@ -29,11 +29,23 @@ set_dircolors(){
     async_job dircolors_worker sleep 0.1
 }
 
+set_tmuxenv(){
+    _set_tmuxenv() {
+        if (( $+commands[tmux] )); then
+	    tmux set-environment -g PATH $PATH
+        fi
+    }
+    async_start_worker tmux_worker -n
+    async_register_callback tmux_worker _set_tmuxenv
+    async_job tmux_worker sleep 0.1
+}
+
 init_jobs() {
     async_init
 
     set_pyenv
     set_dircolors
+    set_tmuxenv
 }
 
 init_jobs
