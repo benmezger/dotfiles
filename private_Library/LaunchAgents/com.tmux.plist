@@ -24,9 +24,9 @@
     <key>LaunchOnlyOnce</key>
     <false />
     <key>StandardOutPath</key>
-    <string>/tmp/startup.stdout</string>
+    <string>/tmp/tmux_startup.stdout</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/startup.stderr</string>
+    <string>/tmp/tmux_startup.stderr</string>
     <key>InitGroups</key>
     <true />
   </dict>
