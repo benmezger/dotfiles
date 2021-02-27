@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 source $HOME/.zsh/exports.zsh
 
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
