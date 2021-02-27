@@ -118,52 +118,48 @@ debug:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Gruvbox dark)
+# Base16 Gruvbox dark, hard 256 - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 colors:
+  # Default colors
+  primary:
+    background: "0x1d2021"
+    foreground: "0xd5c4a1"
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: "0x1d2021"
+    cursor: "0xd5c4a1"
+
   # Normal colors
   normal:
-    black: "0x282828"
-    red: "0xcc241d"
-    green: "0x98971a"
-    yellow: "0xd79921"
-    blue: "0x458588"
-    magenta: "0xb16286"
-    cyan: "0x689d6a"
-    white: "0xa89984"
-
-  # Bright colors
-  bright:
-    black: "0x928374"
+    black: "0x1d2021"
     red: "0xfb4934"
     green: "0xb8bb26"
     yellow: "0xfabd2f"
     blue: "0x83a598"
     magenta: "0xd3869b"
     cyan: "0x8ec07c"
-    white: "0xebdbb2"
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
+    white: "0xd5c4a1"
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  indexed_colors: []
+  # Bright colors
+  bright:
+    black: "0x665c54"
+    red: "0xfb4934"
+    green: "0xb8bb26"
+    yellow: "0xfabd2f"
+    blue: "0x83a598"
+    magenta: "0xd3869b"
+    cyan: "0x8ec07c"
+    white: "0xfbf1c7"
+
+  indexed_colors:
+    - { index: 16, color: "0xfe8019" }
+    - { index: 17, color: "0xd65d0e" }
+    - { index: 18, color: "0x3c3836" }
+    - { index: 19, color: "0x504945" }
+    - { index: 20, color: "0xbdae93" }
+    - { index: 21, color: "0xebdbb2" }
 
 # Visual Bell
 #
