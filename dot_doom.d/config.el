@@ -378,3 +378,12 @@
           "c" #'org-ref-insert-cite-with-completion))
 
   (citeproc-org-setup))
+
+
+(after! plantuml
+  :config
+  (setq plantuml-default-exec-mode 'executable)
+  (cond ((string-equal system-type "gnu/linux")
+    (setq plantum-executable-path "/usr/bin/plantuml"))
+    ((string-equal system-type "darwin")
+      (setq plantuml-executable-path "/usr/local/bin/plantuml"))))

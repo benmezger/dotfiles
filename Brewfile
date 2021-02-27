@@ -138,6 +138,7 @@ brew "flock"
 brew "mopidy-podcast"
 brew "neofetch"
 brew "tmuxinator"
+brew "plantuml"
 
 cask "bitwarden"
 cask "alacritty"
