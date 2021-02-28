@@ -1,0 +1,11 @@
+name: personal
+root: ~/
+
+windows:
+  - shell:
+      layout: even-vertical
+      panes:
+        - clear
+        - clear
+  - weechat: weechat
+  - ncmpcpp: ncmpcpp

@@ -1,0 +1,10 @@
+name: dotfiles
+root: ~/dotfiles
+
+windows:
+  - shell:
+      layout: even-vertical
+      panes:
+        - clear
+        - chezmoi diff
+  - hugo: hugo serve
