@@ -88,5 +88,11 @@ fi
 dotfiles-update() { cd "$HOME/dotfiles" && ./install.sh; }
 
 if (( $+commands[brew] )); then
-    alias brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
+    brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
+fi
+
+
+if (( $+commands[tmuxinator] )); then
+	alias mux="tmuxinator"
+	alias m="tmuxinator"
 fi
