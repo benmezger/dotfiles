@@ -1,6 +1,166 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Alacrity
+- Name default session to 'main'
+- Let tmux/shell handle all colors
+- Let Tmux/shell handle the primary colors
+
+### Authinfo
+- Add authinfo file
+
+### Bin
+- Convert syncmail to a Chezmoi template
+- Try nvim before using Emacs as $EDITOR
+
+### Chore
+- Delete Mute App before copying
+- Remove script numbering
+- Remove ActivityWatch from all dependencies
+- Install staruml
+- Install muteme app
+- Add firewall rules script
+- Update Archlinux defaults
+- Set ensure TERM is set to xterm on scripts
+- Temporary disable Archlinux build
+- Remove patched glibc temporary fix
+- Install neofetch
+- Add Rust install
+- Ignore Hugo's resource on Chezmoi
+- Make all scripts executable
+- Add RISC-V toolchain install script
+- Add script for creating required dirs
+- Add Emacs projectile ignore attributes
+- Add GnuPG permissions fixer
+- Add hugo-build task
+- Separate dependency installer
+- Source ansi on buildcheck
+- dirname the current dir in homebrew install
+- Add Aur package installer
+- Move isavailable to base.sh
+- Fix wrong script path on Homebrew install
+- Fix pacman bundle command
+- Import ansi before OSTYPE check
+- Use https only on reflector
+- Use archlinux image instead of base-devel
+- Don't skip configure_sys on CI
+- Don't check for CI on install_deps
+- Temporary fix for glibc
+- Log stdout/stderr to $LOGFILE
+- Run sequentially and prompt sudo passwd
+- Colorfy stderr
+- Add colored ansi echo
+- Get correct script run path
+- Add more OSX defaults
+- quote constants
+- Move archlinux conf to its own file
+- Fix wrong return message when not darwin
+- Allow user to change personal information
+- Fix Docker image pacman missing directory
+- Don't run SSH perms on CI
+- Fix Makefile indentation
+- Stop service if exists
+- Update chezmoi install script
+- Remove run_once from scripts
+- Add homebrew install script
+- echo actions on Makefile
+- Use base-devel Docker image
+- Update pacman-db before installing packages
+- Install pyenv script
+- Use reflector for the best mirror
+- Fixes related to shellcheck report
+- Don't exit on CI
+- Apply chezmoi and don't run buildcheck.sh initially
+- Remove Ansible from .github workflow
+- Update Dockerfile
+- Update install script
+
+### Docs
+- Add Github actions badge
+- Generate Docs with hugo
+- Add scripts README
+- Update documentation on installing this repo
+
+### Editorconfig
+- Add shell indent size and style
+- Add Rust indent size and style
+
+### Emacs
+- Start Emacs in $HOME by default
+- Enable plantuml plugin
+- Add rust support
+
+### Feat
+- Add OSX default scripts
+- Handle install with a Makefile
+- Add Systemd user services
+- Add initial install scripts
+
+### Fix
+- Remove redundant scripts dir to SOURCE_DIR
+- No confirm on pacman install
+- Wrong emacs.d path
+
+### GnuPG
+- Add pgp keys from BW
+
+### Mopidy
+- Enable Internet Archive plugin
+- Add lastfm scrobbler support
+- Add podcast support
+
+### Pacman
+- Remove intellij dependency
+
+### Refactor
+- Run against shellcheck
+- Remove Ansible roles
+
+### SSH
+- Remove private SSH flag
+
+### Skhdrc
+- Add toggle support to F1
+
+### Tmux
+- Update mux sessions
+- Add bitwarden support
+- Remove gruvbox-dark theme and use base16 plugin
+- Let Alacritty handle tmux sessions
+- Disable gruvbox background
+- Rename tmux launchtl stderr/stdout log
+- Refactor start_tmux script
+- Add mail counter
+- Use screen-256color by default
+- Add tmuxinator support
+
+### Weechat
+- Change url_log path and enable highmon log
+- Add OFTC server
+- Add ClearAllQuery and Channel buffers
+- Don't notify on *status buffer
+- Improve /go colors
+- Add Slack support
+- Save irclogs in $HOME/irclogs
+
+### Zsh
+- Remove unused OP_SESSION_my variable
+- Add weechat passphrase to secret-env
+- Set tmuxinator alias
+- Update brewfile path
+- Set tmux env automatically
+- Source plugins after bundling
+- Add shebang to zshr
+- Remove -rnI flags from grep options
+- Reorder zshrc sources
+- Let Tmux handle $TERM
+- Add Cargo and rustup completion
+- Add RISC_PATH to PATHs
+- Source rust env if available
+
+
+<a name="v4.0"></a>
+## [v4.0] - 2021-02-04
 ### Alacritty
 - Enable background opacity
 - Start in Windowed mode in Linux
@@ -19,9 +179,19 @@
 - Update geoip script
 
 ### Chezmoi
+- Add ssh key ID
+- Move onepassword UUIDs to chezmoid data
+- Move bitwarden UUIDs to global config
 - Ignore __pycache__ files
 
 ### Chore
+- Use bitwardenAttachment instead of 1Pass
+- Fix offending pacman tag line
+- Fix chezmoiignore secret logic
+- Refactor ansible tasks
+- Separete dotfiles and run tasks async
+- Set 'name' variable to Chezmoi's data
+- Set headless if running on CI or prompt for secret
 - Remove problematic 2to3 bin
 - Unlink default Python 3.9
 - Update python 3.9 before installing Ansible
@@ -105,6 +275,7 @@
 - Set switch command to case
 
 ### Docs
+- Update CHANGELOG
 - Add OSX keybindings on MPC
 - Update README todos
 - Update documentation to reflect the bitwarden migration
@@ -142,6 +313,9 @@
 
 ### Dunst
 - Add app name to notification
+
+### Editorconfig
+- Add yaml filetype support
 
 ### Emacs
 - Enable activity-watch-mode
@@ -218,10 +392,11 @@
 - Use Hack font globally
 - Use Hack font globally
 
-### Git
-- Use osxkeychain for OSX instead of Gnome-key.
+### GPG
+- Move gpg.conf to a template
 
 ### Git
+- Move git config to a template
 - Use global template for post-commit
 - Add global gitignore file
 - Add gitlab username for Emacs Forge
@@ -232,14 +407,11 @@
 - Changed PGP signing key
 - Cleaned repository with unused files
 
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
 ### Greenclip
 - Add greenclip configuration
-
-### I3
-- enable mod + o for dmenu options
-- Set wallpaper on I3 instead of xinitrc
-- Add Rofi's greenclip shortcut
-- Add autodisplay configuration
 
 ### I3
 - Use dmenu instead of rofi
@@ -256,6 +428,12 @@
 - Remove pulseaudio from polybar
 - set 1920x1080 resolution
 - Use polybar and refactor configuration
+
+### I3
+- enable mod + o for dmenu options
+- Set wallpaper on I3 instead of xinitrc
+- Add Rofi's greenclip shortcut
+- Add autodisplay configuration
 
 ### IPython
 - Load grasp on start
@@ -285,6 +463,7 @@
 - Add ncmpcpp and mopidy support
 
 ### Neomutt
+- Check if secrets instead of env
 - Update keybindings
 - Set sendmail path according to the current OS
 - Skip pipe bar
@@ -307,6 +486,9 @@
 
 ### Python
 - Add custom Ipython config with start.py
+
+### Rclone
+- Add rclone configuration
 
 ### Readme
 - Updated readme
@@ -357,9 +539,6 @@
 - disable mouse support.
 
 ### Vim
-- keep vim-fugitive enabled by default.
-
-### Vim
 - Add nvim configuration
 - Cleanup plugins
 - Remove vim-startify config
@@ -384,6 +563,9 @@
 - Fish-shell syntax
 - Cleaned unused plugs
 - Use different rainbow parentheses with better colors.
+
+### Vim
+- keep vim-fugitive enabled by default.
 
 ### Wakatime
 - Add wakatime config
@@ -439,6 +621,7 @@
 - Function to open up daily logbooks
 
 ### Zsh
+- Move .zshenv code to exports.zsh
 - Enable shell support for ActivityWatch
 - Add brewfile alias
 - Add dotfiles-update function
@@ -489,6 +672,16 @@
 - Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
 - Defer syntax highlight.
 - Updated zplug syntax
+
+### Reverts
+- Tmux: Use tmux-256color instead of xterm
+- Zsh: Use legacy version of slimline
+- Neomutt: Enable Vi keybindings
+- Chore: Disable Docker layer-caching and use GH registry
+- Chore: Fix Docker's GH name requirement
+- Chore: Manually build and push docker image
+- Fix: Push docker image to Github with correct tag
+- Chore: Pull from specified docker tag and repo owner
 
 
 <a name="v3.1"></a>
@@ -1193,8 +1386,62 @@
 
 <a name="v1.6-LINUX"></a>
 ## [v1.6-LINUX] - 2018-05-27
+### Kernel
+- RANDOMIZE_MEMORY & RANDOMIZE_BASE enabled.
+- Enable Tux logo upon boot.
+- New configs enables and disabled:
+- A few enables and disables:
+- my .config for the Linux kernel.
+
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Tmux
+- disable mouse support.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
 ### Zsh
 - Load rbenv module from zprezto
+- Function to open up daily logbooks
+
+
+<a name="v1.5-OSX"></a>
+## [v1.5-OSX] - 2018-01-22
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Playbooks
+- Updated playbook submodule
+
+### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
+### Tmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Use different rainbow parentheses with better colors.
+
+### Weechat
+- Weechat has been removed due to the lack of use.
+
+### Zsh
+- Function to open up daily logbooks
 
 
 <a name="v1.5-Linux"></a>
@@ -1223,18 +1470,6 @@
 
 ### Weechat
 - Weechat has been removed due to the lack of use.
-
-### Zsh
-- Function to open up daily logbooks
-
-
-<a name="v1.5-OSX"></a>
-## [v1.5-OSX] - 2018-01-22
-### Git
-- Use osxkeychain for OSX instead of Gnome-key.
-
-### Tmux
-- xterm seems to make vim faster when scrolling
 
 ### Zsh
 - Function to open up daily logbooks
@@ -1332,7 +1567,8 @@
 <a name="v1.1-OSX"></a>
 ## v1.1-OSX - 2017-04-15
 
-[Unreleased]: https://github.com/benmezger/dotfiles/compare/v3.1...HEAD
+[Unreleased]: https://github.com/benmezger/dotfiles/compare/v4.0...HEAD
+[v4.0]: https://github.com/benmezger/dotfiles/compare/v3.1...v4.0
 [v3.1]: https://github.com/benmezger/dotfiles/compare/v3.0...v3.1
 [v3.0]: https://github.com/benmezger/dotfiles/compare/v2.1...v3.0
 [v2.1]: https://github.com/benmezger/dotfiles/compare/v1.0...v2.1
@@ -1341,9 +1577,9 @@
 [v1.7-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.7-OSX...v1.7-LINUX
 [v1.7-OSX]: https://github.com/benmezger/dotfiles/compare/v1.6-OSX...v1.7-OSX
 [v1.6-OSX]: https://github.com/benmezger/dotfiles/compare/v1.6-LINUX...v1.6-OSX
-[v1.6-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.5-Linux...v1.6-LINUX
-[v1.5-Linux]: https://github.com/benmezger/dotfiles/compare/v1.5-OSX...v1.5-Linux
-[v1.5-OSX]: https://github.com/benmezger/dotfiles/compare/v1.4-OSX...v1.5-OSX
+[v1.6-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.5-OSX...v1.6-LINUX
+[v1.5-OSX]: https://github.com/benmezger/dotfiles/compare/v1.5-Linux...v1.5-OSX
+[v1.5-Linux]: https://github.com/benmezger/dotfiles/compare/v1.4-OSX...v1.5-Linux
 [v1.4-OSX]: https://github.com/benmezger/dotfiles/compare/v1.4-LINUX...v1.4-OSX
 [v1.4-LINUX]: https://github.com/benmezger/dotfiles/compare/v1.3-OSX...v1.4-LINUX
 [v1.3-OSX]: https://github.com/benmezger/dotfiles/compare/v1.3-LINUX...v1.3-OSX
