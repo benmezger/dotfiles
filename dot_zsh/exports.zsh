@@ -77,3 +77,7 @@ fi
 export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
 export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
+
+if [[ -d "/Library/TeX/texbin" ]]; then
+	export PATH="$PATH:/Library/TeX/texbin"
+fi
