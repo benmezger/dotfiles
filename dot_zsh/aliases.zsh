@@ -88,5 +88,5 @@ fi
 dotfiles-update() { cd "$HOME/dotfiles" && ./install.sh; }
 
 if (( $+commands[brew] )); then
-    alias brewfile() {cd $HOME/dotfiles/roles/osx/tasks && brew bundle "$1" }
+    alias brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
 fi
