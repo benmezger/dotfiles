@@ -1,0 +1,9 @@
+name: work
+root: ~/
+
+windows:
+  - editor:
+      layout: even-vertical
+      panes:
+        - clear
+        - clear
