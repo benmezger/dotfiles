@@ -1,1 +1,0 @@
-../terminal_notifier.rb

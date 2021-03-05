@@ -57,8 +57,6 @@ themes
 
 # Don't copy the following files if OS is Linux
 {{- if ne .chezmoi.os "darwin" }}
-.weechat/ruby/terminal_notifier.rb
-.weechat/ruby/autoload/terminal_notifier.rb
 .skhdrc
 {{- end }}
 
