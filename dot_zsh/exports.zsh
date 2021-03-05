@@ -28,7 +28,7 @@ fi
 export PATH="$HOME/.bin:$PATH"
 
 export WORKSPACE="$HOME/workspace"
-export RISCV_PATH="$WORKSPACE/opt/riscv64gc"
+export RISCV_PATH="$WORKSPACE/riscv64-toolchain"
 
 if [[ -d $RISCV_PATH ]]; then
 	export PATH="$RISCV_PATH/bin:$PATH"
