@@ -242,23 +242,6 @@
         (when (s-contains? "SETUPFILE" (buffer-string))
           (org-hugo-export-wim-to-md)))))
 
-  (defun benmezger/org-roam--backlinks-list (file)
-    (when (org-roam--org-roam-file-p file)
-      (mapcar #'car (org-roam-db-query
-                      [:select :distinct [from]
-                        :from links
-                        :where (= to $s1)
-                        :and from :not :like $s2] file "%private%"))))
-
-  (defun benmezger/org-export-preprocessor (_backend)
-    (when-let ((links (benmezger/org-roam--backlinks-list (buffer-file-name))))
-      (insert "\n** Backlinks\n")
-      (dolist (link links)
-        (insert (format "- [[file:%s][%s]]\n"
-                  (file-relative-name link org-roam-directory)
-                  (org-roam--get-title-or-slug link))))))
-
-  (add-hook 'org-export-before-processing-hook #'benmezger/org-export-preprocessor)
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
 (after! (org ox-hugo)
