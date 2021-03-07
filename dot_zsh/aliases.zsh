@@ -91,8 +91,17 @@ if (( $+commands[brew] )); then
     brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
 fi
 
+if [[ $+commands[emacs] && -f "$HOME/workspace/blog/org_to_hugo.el" ]]; then
+    blog-gen() {
+        cd $HOME/workspace/blog/ && emacs \
+            --batch \
+            -l ~/.emacs.d/init.el \
+            -l $HOME/workspace/blog/org_to_hugo.el \
+            --eval "(benmezger/org-roam-export-all)"
+    }
+fi
 
 if (( $+commands[tmuxinator] )); then
-	alias mux="tmuxinator"
-	alias m="tmuxinator"
+    alias mux="tmuxinator"
+    alias m="tmuxinator"
 fi
