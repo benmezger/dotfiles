@@ -25,6 +25,10 @@
 {{- $secrets = false -}}
 {{- end -}}
 
+{{- if (env "SECRETS_OFF") -}}
+{{- $secrets = false -}}
+{{- end -}}
+
 {{- if (env "ASK") }}
 {{- $secrets := promptBool "secrets" -}}
 
