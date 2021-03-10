@@ -181,6 +181,8 @@
     '(
        ("c" "Code" entry (file "~/workspace/org/code.org")
          (file "~/workspace/org/templates/code-snippet.capture"))
+       ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
+         (file "~/workspace/org/templates/blog-post.capture"))
        ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
          "* %?\nEntered on %U\n  %i\n  %a")
        ("t" "Todo" entry (file "~/workspace/org/todos.org")
