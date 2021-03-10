@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Ben Mezger"
-  user-mail-address "me@benmezger.nl")
+      user-mail-address "me@benmezger.nl")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -108,47 +108,47 @@
   ;; enable this if you want `swiper' to use it
   (setq search-default-mode #'char-fold-to-regexp)
   (setq ivy-re-builders-alist
-    '((swiper . ivy--regex-plus)
-       (counsel-rg . ivy--regex-plus)
-       (t      . ivy--regex-fuzzy)))
+        '((swiper . ivy--regex-plus)
+          (counsel-rg . ivy--regex-plus)
+          (t      . ivy--regex-fuzzy)))
 
   (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
 
   (defun eh-ivy-return-recentf-index (dir)
     (when (and (boundp 'recentf-list)
-            recentf-list)
+               recentf-list)
       (let ((files-list
-              (cl-subseq recentf-list
-                0 (min (- (length recentf-list) 1) 20)))
-             (index 0))
+             (cl-subseq recentf-list
+                        0 (min (- (length recentf-list) 1) 20)))
+            (index 0))
         (while files-list
           (if (string-match-p dir (car files-list))
-            (setq files-list nil)
+              (setq files-list nil)
             (setq index (+ index 1))
             (setq files-list (cdr files-list))))
         index)))
 
   (defun eh-ivy-sort-file-function (x y)
     (let* ((x (concat ivy--directory x))
-            (y (concat ivy--directory y))
-            (x-mtime (nth 5 (file-attributes x)))
-            (y-mtime (nth 5 (file-attributes y))))
+           (y (concat ivy--directory y))
+           (x-mtime (nth 5 (file-attributes x)))
+           (y-mtime (nth 5 (file-attributes y))))
       (if (file-directory-p x)
+          (if (file-directory-p y)
+              (let ((x-recentf-index (eh-ivy-return-recentf-index x))
+                    (y-recentf-index (eh-ivy-return-recentf-index y)))
+                (if (and x-recentf-index y-recentf-index)
+                    ;; Directories is sorted by `recentf-list' index
+                    (< x-recentf-index y-recentf-index)
+                  (string< x y)))
+            t)
         (if (file-directory-p y)
-          (let ((x-recentf-index (eh-ivy-return-recentf-index x))
-                 (y-recentf-index (eh-ivy-return-recentf-index y)))
-            (if (and x-recentf-index y-recentf-index)
-              ;; Directories is sorted by `recentf-list' index
-              (< x-recentf-index y-recentf-index)
-              (string< x y)))
-          t)
-        (if (file-directory-p y)
-          nil
+            nil
           ;; Files is sorted by mtime
           (time-less-p y-mtime x-mtime)))))
 
   (add-to-list 'ivy-sort-functions-alist
-    '(read-file-name-internal . eh-ivy-sort-file-function)))
+               '(read-file-name-internal . eh-ivy-sort-file-function)))
 
 
 (after! org
@@ -166,16 +166,16 @@
   (setq bibtex-completion-bibliography (concat org-directory "/bibliography.bib"))
 
   (setq org-todo-keywords
-    '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
-       (sequence "READ(!)")
-       (sequence "|" "DONE(d!)" "CANCELED(c!)"))
-    org-todo-keyword-faces
-    '(("CURRENT"  . "orange")
-       ("TODO" . "systemRedColor")
-       ("READ" . "systemOrangeColor")
-       ("HOLD"  . "indianRed")
-       ("WAIT" . "salmon1")
-       ("PROJ" . "systemYellowColor")))
+        '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+          (sequence "READ(!)")
+          (sequence "|" "DONE(d!)" "CANCELED(c!)"))
+        org-todo-keyword-faces
+        '(("CURRENT"  . "orange")
+          ("TODO" . "systemRedColor")
+          ("READ" . "systemOrangeColor")
+          ("HOLD"  . "indianRed")
+          ("WAIT" . "salmon1")
+          ("PROJ" . "systemYellowColor")))
 
   (setq org-capture-template-dir (concat doom-private-dir "org-captures/"))
   (setq org-capture-templates
@@ -204,10 +204,10 @@
   (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
 
   (setq org-roam-capture-templates
-    '(("d" "default" plain (function org-roam-capture--get-point)
-        "%?"
-        :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
-        :head "#+TITLE: ${title}
+        '(("d" "default" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+           :head "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: %^G
 #+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
@@ -215,25 +215,25 @@
 #+HUGO_TAGS: %^{Hugo tags}
 
 - tags :: "
-        :unnarrowed t)
-       ("p" "private" plain (function org-roam-capture--get-point)
-         "%?"
-         :file-name "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
-         :head "#+TITLE: ${title}
+           :unnarrowed t)
+          ("p" "private" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
+           :head "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: :personal:%^G
 #+HUGO_SLUG: ${slug}
 "
-         :unnarrowed t)))
+           :unnarrowed t)))
 
   (defun custom-org-protocol-focus-advice (orig &rest args)
     (x-focus-frame nil)
     (apply orig args))
 
   (advice-add 'org-roam-protocol-open-ref :around
-    #'custom-org-protocol-focus-advice)
+              #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around
-    #'custom-org-protocol-focus-advice))
+              #'custom-org-protocol-focus-advice))
 
 (after! (org org-roam)
   :defer t
@@ -252,7 +252,7 @@
   (defun benmezger/conditional-hugo-enable ()
     (save-excursion
       (if (cdr (assoc "SETUPFILE" (org-roam--extract-global-props '("SETUPFILE"))))
-        (org-hugo-auto-export-mode +1)
+          (org-hugo-auto-export-mode +1)
         (org-hugo-auto-export-mode -1))))
   (add-hook 'org-mode-hook #'benmezger/conditional-hugo-enable))
 
@@ -273,14 +273,14 @@
 (after! doom-modeline
   :config
   (setq doom-modeline-continuous-word-count-modes
-    '(markdown-mode gfm-mod)))
+        '(markdown-mode gfm-mod)))
 
 (use-package! wakatime-mode
   :init
   (cond ((string-equal system-type "gnu/linux")
-    (setq wakatime-cli-path "/usr/bin/wakatime"))
-    ((string-equal system-type "darwin")
-      (setq wakatime-cli-path "/usr/local/bin/wakatime")))
+         (setq wakatime-cli-path "/usr/bin/wakatime"))
+        ((string-equal system-type "darwin")
+         (setq wakatime-cli-path "/usr/local/bin/wakatime")))
   :config
   (global-wakatime-mode))
 
@@ -304,39 +304,39 @@
   :defer t
   :config
   (cond ((string-equal system-type "gnu/linux")
-          (setq sendmail-program "/usr/bin/msmtp"
-            send-mail-function 'smtpmail-send-it
-            message-sendmail-f-is-evil t
-            message-sendmail-extra-arguments '("--read-envelope-from"))
-          message-send-mail-function 'message-send-mail-with-sendmail)
-    ((string-equal system-type "darwin")
-      (setq sendmail-program "/usr/local/bin/msmtp"
-        send-mail-function 'smtpmail-send-it
-        message-sendmail-f-is-evil t
-        message-sendmail-extra-arguments '("--read-envelope-from")
-        message-send-mail-function 'message-send-mail-with-sendmail)))
+         (setq sendmail-program "/usr/bin/msmtp"
+               send-mail-function 'smtpmail-send-it
+               message-sendmail-f-is-evil t
+               message-sendmail-extra-arguments '("--read-envelope-from"))
+         message-send-mail-function 'message-send-mail-with-sendmail)
+        ((string-equal system-type "darwin")
+         (setq sendmail-program "/usr/local/bin/msmtp"
+               send-mail-function 'smtpmail-send-it
+               message-sendmail-f-is-evil t
+               message-sendmail-extra-arguments '("--read-envelope-from")
+               message-send-mail-function 'message-send-mail-with-sendmail)))
 
   (set-email-account! "personal"
-    '((mu4e-sent-folder       . "/personal/sent")
-       (mu4e-drafts-folder     . "/personal/drafts")
-       (mu4e-trash-folder      . "/personal/trash")
-       (mu4e-refile-folder     . "/personal/archives")
-       (user-mail-address . "me@benmezger.nl")
-       (smtpmail-smtp-user     . "me@benmezger.nl")
-       (smtpmail-smtp-server     . "smtp.gmail.com")
-       (smtpmail-smtp-service . 587)
-       (mu4e-compose-signature . "---\nBen Mezger")))
+                      '((mu4e-sent-folder       . "/personal/sent")
+                        (mu4e-drafts-folder     . "/personal/drafts")
+                        (mu4e-trash-folder      . "/personal/trash")
+                        (mu4e-refile-folder     . "/personal/archives")
+                        (user-mail-address . "me@benmezger.nl")
+                        (smtpmail-smtp-user     . "me@benmezger.nl")
+                        (smtpmail-smtp-server     . "smtp.gmail.com")
+                        (smtpmail-smtp-service . 587)
+                        (mu4e-compose-signature . "---\nBen Mezger")))
 
   (set-email-account! "work"
-    '((mu4e-sent-folder       . "/work/sent")
-       (mu4e-drafts-folder     . "/work/drafts")
-       (mu4e-trash-folder      . "/work/trash")
-       (mu4e-refile-folder     . "/work/all")
-       (smtpmail-smtp-user     . "ben@ckl.io")
-       (user-mail-address . "ben@ckl.io")
-       (smtpmail-smtp-server     . "smtp.gmail.com")
-       (smtpmail-smtp-service . 587)
-       (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
+                      '((mu4e-sent-folder       . "/work/sent")
+                        (mu4e-drafts-folder     . "/work/drafts")
+                        (mu4e-trash-folder      . "/work/trash")
+                        (mu4e-refile-folder     . "/work/all")
+                        (smtpmail-smtp-user     . "ben@ckl.io")
+                        (user-mail-address . "ben@ckl.io")
+                        (smtpmail-smtp-server     . "smtp.gmail.com")
+                        (smtpmail-smtp-service . 587)
+                        (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
 
 (after! org-ref
   :config
@@ -349,10 +349,10 @@
 
 (after! bibtex-completion
   (setq bibtex-completion-format-citation-functions
-    '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)
-       (latex-mode    . bibtex-completion-format-citation-cite)
-       (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-       (default       . bibtex-completion-format-citation-default))))
+        '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)
+          (latex-mode    . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (default       . bibtex-completion-format-citation-default))))
 
 (use-package! citeproc-org
   :after org
@@ -360,10 +360,10 @@
   (map! :map org-mode-map
         :localleader
         (:prefix ("-" . "bibliography")
-          "i" #'org-ref-insert-link
-          "r" #'org-ref-insert-ref-link
-          "l" #'org-ref-insert-bibliography-link
-          "c" #'org-ref-insert-cite-with-completion))
+         "i" #'org-ref-insert-link
+         "r" #'org-ref-insert-ref-link
+         "l" #'org-ref-insert-bibliography-link
+         "c" #'org-ref-insert-cite-with-completion))
 
   (citeproc-org-setup))
 
@@ -372,6 +372,6 @@
   :config
   (setq plantuml-default-exec-mode 'executable)
   (cond ((string-equal system-type "gnu/linux")
-    (setq plantum-executable-path "/usr/bin/plantuml"))
-    ((string-equal system-type "darwin")
-      (setq plantuml-executable-path "/usr/local/bin/plantuml"))))
+         (setq plantum-executable-path "/usr/bin/plantuml"))
+        ((string-equal system-type "darwin")
+         (setq plantuml-executable-path "/usr/local/bin/plantuml"))))
