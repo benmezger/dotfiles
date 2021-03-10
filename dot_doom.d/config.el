@@ -177,22 +177,23 @@
        ("WAIT" . "salmon1")
        ("PROJ" . "systemYellowColor")))
 
+  (setq org-capture-template-dir (concat doom-private-dir "org-captures/"))
   (setq org-capture-templates
-    '(
-       ("c" "Code" entry (file "~/workspace/org/code.org")
-         (file "~/workspace/org/templates/code-snippet.capture"))
-       ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
-         (file "~/workspace/org/templates/blog-post.capture"))
-       ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
-         "* %?\nEntered on %U\n  %i\n  %a")
-       ("t" "Todo" entry (file "~/workspace/org/todos.org")
-         "* TODO %?\n %i\n  %a")
-       ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
-         (file "~/workspace/org/templates/new-book.capture"))
-       ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
-         (file "~/workspace/org/templates/decision.capture"))
-       ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
-         (file "~/workspace/org/templates/weekly-journal.capture") :tree-type week)))
+        `(
+          ("c" "Code" entry (file "~/workspace/org/code.org")
+           (file ,(concat org-capture-template-dir "code-snippet.capture")))
+          ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
+           (file ,(concat org-capture-template-dir "blog-post.capture")))
+          ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ("t" "Todo" entry (file "~/workspace/org/todos.org")
+           "* TODO %?\n %i\n  %a")
+          ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
+           (file ,(concat org-capture-template-dir "new-book.capture")))
+          ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
+           (file ,(concat org-capture-template-dir "decision.capture")))
+          ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
+           (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week)))
 
 
   (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
