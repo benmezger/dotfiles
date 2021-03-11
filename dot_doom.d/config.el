@@ -1,17 +1,16 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Ben Mezger"
-      user-mail-address "me@benmezger.nl")
-(setq doom-font (font-spec :family "Hack" :size 14))
-(setq doom-theme 'doom-monokai-spectrum)
-(setq display-line-numbers-type t)
+      user-mail-address "me@benmezger.nl"
+      doom-font (font-spec :family "Hack" :size 14)
+      doom-theme 'doom-monokai-spectrum
+      display-line-numbers-type t
+      default-directory "~/"
+      command-line-default-directory "~/")
 
 (display-time-mode 1)
 (display-battery-mode 1)
 (toggle-frame-maximized)
-
-(setq default-directory "~/")
-(setq command-line-default-directory "~/")
 
 (after! lsp-mode
   :config
