@@ -12,6 +12,10 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
+# Print a carriage return just before printing a prompt in the line editor
+# and try to preserve a partial line.
+setopt promptcr promptsp
+
 # disable keyboard beep
 unsetopt BEEP
 
