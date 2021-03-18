@@ -1,2 +1,3 @@
 machine {{ .imap_host }} login {{ .email }} password {{ (bitwarden "item" .bitwarden.personal_mail).login.password }} port {{ .imap_port }}
 machine {{ .smtp_host }} login {{ .email }} password {{ (bitwarden "item" .bitwarden.personal_mail).login.password }} port {{ .smtp_port }}
+machine api.github.com login {{ .github_user }}^forge password {{ (bitwarden "item" .bitwarden.github_repo_token).login.password }}
