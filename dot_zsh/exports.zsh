@@ -81,3 +81,5 @@ export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 if [[ -d "/Library/TeX/texbin" ]]; then
 	export PATH="$PATH:/Library/TeX/texbin"
 fi
+
+export ORGANIZE_CONFIG=$HOME/.config/organize-tool/config.yaml

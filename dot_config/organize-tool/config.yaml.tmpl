@@ -1,0 +1,50 @@
+extensions: &all_exts
+    - pdf
+    - docx
+    - png
+    - jpeg
+    - zip
+    - gz
+    - tar
+    - tgz
+    - csv
+    - md
+    - json
+    - svg
+    - dmg
+    - torrent
+
+rules:
+{{- if eq .chezmoi.os "darwin" }}
+  - folders: ~/Downloads
+    filters:
+      - extension: *all_exts
+    actions:
+      - move: "~/Downloads/{extension.lower}s/"
+
+  - folders: ~/Desktop
+    filters:
+      - filename:
+          startswith: "Screen Shot"
+    actions:
+      - move: ~/Desktop/screenshots/
+{{- else -}}
+  - folders: ~/downloads
+    filters:
+      - extension: *all_exts
+    actions:
+      - move: "~/downloads/{extension.lower}s/"
+
+  - folders: ~/desktop
+    filters:
+      - filename:
+          startswith: "Screen Shot"
+    actions:
+      - move: ~/desktop/screenshots/
+{{ end }}
+
+  - folders: ~/.weechat/
+    filters:
+      - extension: log
+    actions:
+      - move: "~/irclogs/"
