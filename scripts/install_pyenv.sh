@@ -22,3 +22,4 @@ fi
 eval "$(pyenv init -)"
 pyenv local $PYTHON_VERSION
 pip install --upgrade -r $PYTHON_REQUIREMENTS
+mv $DIR/../.python-version $HOME
