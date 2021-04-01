@@ -21,21 +21,21 @@ Path ~/mail/personal/
 Inbox ~/mail/personal/inbox
 
 Channel personal-inbox
-Master :personal-remote:
-Slave :personal-local:
+Far :personal-remote:
+Near :personal-local:
 Patterns "INBOX"
 
 Channel personal-sent
-Master :personal-remote:"[Gmail]/Sent Mail"
-Slave :personal-local:sent
+Far :personal-remote:"[Gmail]/Sent Mail"
+Near :personal-local:sent
 
 Channel personal-archives
-Master :personal-remote:"[Gmail]/All Mail"
-Slave :personal-local:archives
+Far :personal-remote:"[Gmail]/All Mail"
+Near :personal-local:archives
 
 Channel personal-trash
-Master :personal-remote:"[Gmail]/Bin"
-Slave :personal-local:trash
+Far :personal-remote:"[Gmail]/Bin"
+Near :personal-local:trash
 
 Group personal
 Channel personal-inbox
@@ -60,17 +60,17 @@ Path ~/mail/personal/
 Inbox ~/mail/work/inbox
 
 Channel work-inbox
-Master :work-remote:
-Slave :work-local:
+Far :work-remote:
+Near :work-local:
 Patterns "INBOX"
 
 Channel work-sent
-Master :work-remote:"[Gmail]/Sent Mail"
-Slave :work-local:sent
+Far :work-remote:"[Gmail]/Sent Mail"
+Near :work-local:sent
 
 Channel work-trash
-Master :work-remote:"[Gmail]/Trash"
-Slave :work-local:trash
+Far :work-remote:"[Gmail]/Trash"
+Near :work-local:trash
 
 Group work
 Channel work-inbox
