@@ -129,6 +129,7 @@ post-chezmoi:
 	$(MAKE) ssh-perms
 	$(MAKE) gnupg-perms
 	$(MAKE) ensure-dirs
+	$(MAKE) pyenv
 	@echo "Done"
 
 install-rust:
