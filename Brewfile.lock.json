@@ -3445,6 +3445,12 @@
         "options": {
           "full_name": "brave-browser"
         }
+      },
+      "whatsapp": {
+        "version": "2.2108.8",
+        "options": {
+          "full_name": "whatsapp"
+        }
       }
     }
   },
