@@ -135,6 +135,7 @@ post-chezmoi:
 install-rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	rustup component add rust-src
+	cargo +nightly install racer
 
 hugo-build:
 	@echo "Running hugo build.."
