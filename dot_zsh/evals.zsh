@@ -40,12 +40,24 @@ set_tmuxenv(){
     async_job tmux_worker sleep 0.1
 }
 
+set_rustsrc(){
+    _set_rustsrc() {
+	if (( $+commands[rustc] )); then
+	    export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
+        fi
+    }
+    async_start_worker rustsrc_worker -n
+    async_register_callback rustsrc_worker _set_rustsrc
+    async_job rustsrc_worker sleep 0.1
+}
+
 init_jobs() {
     async_init
 
     set_pyenv
     set_dircolors
     set_tmuxenv
+    set_rustsrc
 }
 
 init_jobs
