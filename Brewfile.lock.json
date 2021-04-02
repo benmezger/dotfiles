@@ -3317,6 +3317,56 @@
       "plantuml": {
         "version": "1.2021.3",
         "bottle": false
+      },
+      "shfmt": {
+        "version": "3.2.4",
+        "bottle": {
+          "rebuild": 0,
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "root_url": "https://homebrew.bintray.com/bottles",
+          "files": {
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/shfmt-3.2.4.arm64_big_sur.bottle.tar.gz",
+              "sha256": "7b494228f9839518b1cbdfc997fbe2a532be09455c2015cd0d943009fc9e5059"
+            },
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/shfmt-3.2.4.big_sur.bottle.tar.gz",
+              "sha256": "358a7e5a10551dd48ded79d50e587d41ae2910eb700241cba5e1272759923f82"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/shfmt-3.2.4.catalina.bottle.tar.gz",
+              "sha256": "c317ad8439c40c66664c00fb4a3b30ed945c86712381ce29b842a2c9bf64ad0d"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/shfmt-3.2.4.mojave.bottle.tar.gz",
+              "sha256": "08ad18eec7fb8b813b03b3b9e19d0557edd17bcdb2b373bd80087769efd619f7"
+            }
+          }
+        }
+      },
+      "shellcheck": {
+        "version": "0.7.1_1",
+        "bottle": {
+          "rebuild": 0,
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "root_url": "https://homebrew.bintray.com/bottles",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/shellcheck-0.7.1_1.big_sur.bottle.tar.gz",
+              "sha256": "5ba3cfe883216a700c133e35c3f1612ab70eaca07cfb43bf6ed427b72dd7d552"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/shellcheck-0.7.1_1.catalina.bottle.tar.gz",
+              "sha256": "bd66df0992ced04f98883eada3f14e620f6c76f268cae2adb182b52d3bba1858"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/shellcheck-0.7.1_1.mojave.bottle.tar.gz",
+              "sha256": "bcb393cf5a259c69fdf7ef1725243b48c5653b9db17d2cd51ad140ab2d7de9c1"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -3450,6 +3500,12 @@
         "version": "2.2108.8",
         "options": {
           "full_name": "whatsapp"
+        }
+      },
+      "google-backup-and-sync": {
+        "version": "3.54.3529.0458",
+        "options": {
+          "full_name": "google-backup-and-sync"
         }
       }
     }
