@@ -11,6 +11,7 @@
 (display-time-mode 1)
 (display-battery-mode 1)
 (toggle-frame-maximized)
+(setq auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc"))
 
 (after! lsp-mode
   :config
