@@ -141,6 +141,10 @@ install-rust:
 	rustup target add riscv32imac-unknown-none-elf
 	rustup target add riscv64imac-unknown-none-elf
 
+install-osx-apps:
+	@echo "Installing Amphetamine"
+	mas install 937984704
+
 hugo-build:
 	@echo "Running hugo build.."
 	git submodule update --init
