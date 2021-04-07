@@ -57,3 +57,7 @@ indent_style = space
 [*.{sh,zsh,bash}]
 indent_size = 8
 indent_style = tab
+
+[*.go]
+indent_size = 8
+indent_style = tab
