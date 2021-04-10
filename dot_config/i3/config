@@ -13,10 +13,10 @@ bindsym $mod+Return exec --no-startup-id $HOME/.bin/open-terminal.sh
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id bash -c "$HOME/.bin/dmenu launcher"
-bindsym $mod+p exec --no-startup-id bash -c "$HOME/.bin/dmenu clipboard"
-bindsym $mod+o exec --no-startup-id bash -c "$HOME/.bin/dmenu"
+# start run-dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id bash -c "$HOME/.bin/run-dmenu launcher"
+bindsym $mod+p exec --no-startup-id bash -c "$HOME/.bin/run-dmenu clipboard"
+bindsym $mod+o exec --no-startup-id bash -c "$HOME/.bin/run-dmenu"
 
 # change focus
 bindsym $mod+j focus left
