@@ -278,16 +278,15 @@ live_config_reload: true
 shell:
   {{- if eq .chezmoi.os "darwin" }}
   program: /usr/local/bin/zsh
-  {{- else }}
-  program: /usr/bin/zsh
-  {{- end }}
   args:
     - -l
     - -c
     - "tmux attach -t main || tmux new -s main"
-
-#  args:
-#    - --login
+  {{- else }}
+  program: /usr/bin/zsh
+  args:
+    - -l
+  {{- end }}
 
 # Windows 10 ConPTY backend (Windows only)
 #
