@@ -20,7 +20,7 @@ if ! isavailable paru; then
 	PARU_PATH=/tmp/paru
 
 	git clone https://aur.archlinux.org/paru.git $PARU_PATH
-	(cd $PARU_PATH && makepkg -si)
+	(cd $PARU_PATH && makepkg -si && rm -rf $PARU_PATH)
 fi
 
 AUR_BUNDLE_FILE="$DIR/Aurfile"
