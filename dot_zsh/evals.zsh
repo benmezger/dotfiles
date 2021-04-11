@@ -56,7 +56,11 @@ init_jobs() {
 
     set_pyenv
     set_dircolors
-    set_tmuxenv
+
+    if [ -n "${TMUX+1}" ]; then
+        set_tmuxenv
+    fi
+
     set_rustsrc
 }
 
