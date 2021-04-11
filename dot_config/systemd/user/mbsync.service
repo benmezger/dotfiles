@@ -5,3 +5,6 @@ Description=Mailbox synchronization service
 Type=oneshot
 ExecStart=/usr/bin/mbsync -Va
 ExecStartPost=/usr/bin/mu index
+
+[Install]
+WantedBy=default.target

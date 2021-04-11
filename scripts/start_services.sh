@@ -28,12 +28,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	mkdir -p "$HOME/.config/systemd/user/"
 
-	if [ -f "$HOME/.config/systemd/user/greenclip.service" ]; then
-		systemctl --user enable greenclip.services
-	fi
-
 	if [ -f "$HOME/.config/systemd/user/mbsync.service" ]; then
-		systemctl --user enable mbsync.services
+		systemctl --user enable mbsync.service
 		systemctl --user enable mbsync.timer
 	fi
 
