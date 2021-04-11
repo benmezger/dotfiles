@@ -157,7 +157,6 @@ xorg-xev
 xorg-xinit
 xorg-xinput
 zsh
-emacs
 i3status-rust
 papirus-icon-theme
 texlive-core
@@ -174,7 +173,6 @@ picom
 weechat
 calc
 python-notify2
-neovim
 ncmpcpp
 mopidy
 rclone
