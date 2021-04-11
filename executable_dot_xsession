@@ -3,5 +3,7 @@
 . $HOME/.xinitrc
 
 if [ -f /usr/bin/i3 ]; then
-    exec i3
+	exec i3
+elif [ -f /usr/local/bin/dwm ]; then
+	. $HOME/.bin/startdwm
 fi
