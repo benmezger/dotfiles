@@ -37,4 +37,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		systemctl --user enable mbsync.timer
 	fi
 
+	if [ -f "$HOME/.config/systemd/user/mopidy.service" ]; then
+		systemctl --user enable mopidy.service
+		systemctl --user start mopidy.service
+	fi
+
 fi
