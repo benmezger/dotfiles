@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
+DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 . "$DIR/base.sh"
 . "$DIR/ansi"
 
@@ -27,6 +27,6 @@ sudo timedatectl set-ntp true
 sudo ln -sf /usr/share/zoneinfo/Ameriaca/Sao_Paulo /etc/localtime
 sudo hwclock --systohc
 
-ansi-green "Setup locale"
+ansi --green "Setup locale"
 sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
 sudo locale-gen
