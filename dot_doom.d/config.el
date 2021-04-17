@@ -336,3 +336,8 @@
          (setq plantum-executable-path "/usr/bin/plantuml"))
         ((string-equal system-type "darwin")
          (setq plantuml-executable-path "/usr/local/bin/plantuml"))))
+
+(defadvice! +editorconfig--inhibit-in-org-exports-a (orig-fn &rest args)
+  :around '(org-export-to-file org-babel-tangle)
+  (let ((editorconfig-exclude-regexps '(".")))
+    (apply orig-fn args)))
