@@ -58,6 +58,10 @@ themes
 # Don't copy the following files if OS is Linux
 {{- if ne .chezmoi.os "darwin" }}
 .skhdrc
+
+# I don't use tmux on i3wm
+.weechat/python/tmuxnotify.py
+.weechat/python/autoload/tmuxnotify.py
 {{- end }}
 
 {{- if not .secrets }}
