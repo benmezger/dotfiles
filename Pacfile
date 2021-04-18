@@ -180,3 +180,6 @@ neofetch
 ufw
 plantuml
 python-websocket-client
+aspell
+aspell-pt
+aspell-en
