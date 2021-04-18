@@ -236,7 +236,11 @@ max_visited_buffers = 50
 
 [network]
 connection_timeout = 60
+{{- if eq .chezmoi.os "darwin" }}
 gnutls_ca_file = "/usr/local/etc/gnutls/cert.pem"
+{{- else }}
+gnutls_ca_file = "/etc/ssl/certs/ca-certificates.crt"
+{{- end }}
 gnutls_handshake_timeout = 30
 proxy_curl = ""
 
