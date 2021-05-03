@@ -140,6 +140,7 @@ brew "tmuxinator"
 brew "plantuml"
 brew "shfmt"
 brew "shellcheck"
+brew "git-delta"
 
 cask "bitwarden"
 cask "alacritty"

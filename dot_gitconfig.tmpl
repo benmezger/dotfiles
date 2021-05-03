@@ -6,6 +6,7 @@
     excludesfile = ~/.gitignore_global
     editor = ~/.bin/editor
     whitespace = trailing-space,space-before-tab
+    pager = delta
 [filter "media"]
     required = true
     clean = git media clean %f
@@ -100,3 +101,10 @@
     prune = true
 [pull]
     rebase = true
+[delta]
+    syntax-theme = gruvbox-dark
+    features = unobtrusive-line-numbers decorations
+    line-numbers = true
+    navigate = true
+[interactive]
+    diffFilter = delta --color-only
