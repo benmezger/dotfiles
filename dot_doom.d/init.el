@@ -40,6 +40,7 @@
        :checkers
        spell
        grammar
+       syntax
 
        :tools
        debugger
