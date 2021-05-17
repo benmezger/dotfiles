@@ -73,7 +73,7 @@
        plantuml
        (python +pyenv)
        rest
-       rust
+       (rust +eglot)
        (sh +lsp)
 
        :email
