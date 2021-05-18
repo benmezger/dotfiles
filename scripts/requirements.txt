@@ -2,3 +2,4 @@ pip
 python-language-server
 black
 organize-tool
+pygments
