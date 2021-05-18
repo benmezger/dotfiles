@@ -36,6 +36,9 @@ import struct
 import traceback
 from io import open
 
+# RISC-V registers
+EXCLUDE_REGISTERS = ("dscratch","mucounteren",)
+
 # Common attributes ------------------------------------------------------------
 
 class R():
@@ -2020,7 +2023,8 @@ The empty list (default) causes to show all the available registers.''',
                 if group in (match_groups or ('general',)):
                     names.append(name)
                     break
-        return names
+
+        return filter(lambda reg: reg not in EXCLUDE_REGISTERS, names)
 
 class Threads(Dashboard.Module):
     '''List the currently available threads.'''
