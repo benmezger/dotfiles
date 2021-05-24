@@ -17,7 +17,10 @@ salt = on
 [data]
 __passphrase__ = on
 freenode_pass = {{ (bitwarden "item" .bitwarden.freenode).login.password }}
-ircseds_pass = {{ (bitwarden "item" .bitwarden.ircseds).login.password }}
-bnc_server = {{ (bitwarden "item" .bitwarden.bnc).login.password }}
 slack_work_api_token = {{ (bitwarden "item" .bitwarden.slack_work_api_token).login.password }}
-
+bnc_server = {{ (bitwarden "item" .bitwarden.bnc).login.password }}
+bnc_liberachat_pass = {{ (bitwarden "item" .bitwarden.bnc_liberachat_pass).login.password }}
+bnc_2600_pass = {{ (bitwarden "item" .bitwarden.bnc_2600_pass).login.password }}
+bnc_freenode_pass = {{ (bitwarden "item" .bitwarden.bnc_freenode_pass).login.password }}
+bnc_oftc_pass = {{ (bitwarden "item" .bitwarden.bnc_oftc_pass).login.password }}
+bnc_darkscience_pass = {{ (bitwarden "item" .bitwarden.bnc_darkscience_pass).login.password }}
