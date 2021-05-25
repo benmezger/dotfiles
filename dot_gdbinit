@@ -2281,6 +2281,14 @@ python Dashboard.start()
 
 # File variables ---------------------------------------------------------------
 
+define kernel
+    set logging file gdb.log
+    set logging overwrite on
+    set logging redirect on
+    set logging on
+    set pagination off
+end
+
 # vim: filetype=python
 # Local Variables:
 # mode: python
