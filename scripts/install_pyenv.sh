@@ -3,6 +3,7 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
+. "$DIR/minimalcheck.sh"
 
 PYTHON_REQUIREMENTS="$DIR/requirements.txt"
 PYTHON_VERSION=3.8.5

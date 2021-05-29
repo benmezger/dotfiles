@@ -9,6 +9,8 @@ ansi --yellow "Ensuring required directories exist.."
 mkdir -pv $HOME/workspace/opt
 mkdir -pv $HOME/workspace/go
 
+. "$DIR/minimalcheck.sh"
+
 mkdir -pv $HOME/mail/personal
 mkdir -pv $HOME/mail/work
 mkdir -pv $HOME/mail/.attachments
