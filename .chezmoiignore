@@ -33,6 +33,25 @@ static
 config.toml
 themes
 
+{{- if .minimal }}
+*
+.env-secrets
+!.zsh/*
+!.zshrc
+
+!.vim
+!.doom.d
+!.tmux.conf
+!.gitconfig
+!.gitignore_global
+!.dircolors
+!.editorconfig
+!.curlrc
+!.config/alacritty
+!.config/nvim
+!.config/user-dirs
+
+{{- else }}
 # Don't copy the following files if OS is OSX
 {{- if ne .chezmoi.os "linux" }}
 .config/dunst
@@ -81,4 +100,5 @@ themes
 .gnupg/private-keys-v1.d/1A1454B27AB014B0F46B4914A48CD9D408232BDB.key
 .gnupg/private-keys-v1.d/93EF471D0D148D56E50AD95AE4F7402EB65DFD26.key
 .authinfo
+{{- end }}
 {{- end }}
