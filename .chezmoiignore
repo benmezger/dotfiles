@@ -25,6 +25,7 @@ Brewfile.lock.json
 Makefile
 projectile
 resources
+notes.org
 
 # hugo
 docs/

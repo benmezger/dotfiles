@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.80.0" />
+	<meta name="generator" content="Hugo 0.83.1" />
   
     <title>dotfiles</title>
   
@@ -49,6 +49,8 @@
 <meta property="og:image:height" content="1024">
 
 
+  <meta property="article:published_time" content="2020-08-06 00:00:00 -0300 -03" />
+
 
 
 
@@ -88,736 +90,104 @@
     
   
     <div class="index-content ">
-      <h1 class="title"><p>README</p>
-</h1>
+      <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#installing-this-configuration">Installing this configuration</a>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installing">Installing</a>
+<ul>
+<li><a href="#full-version">Full version</a></li>
+<li><a href="#minimal-version">Minimal version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#keybindings">Keybindings</a>
+<ul>
+<li><a href="#osx">OSX</a>
+<ul>
+<li><a href="#mpc">MPC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#chezmoi-does-not-seem-to-reload-the-configuration">Chezmoi does not seem to reload the configuration</a></li>
+<li><a href="#sourcing-env-with-i3">Sourcing env with i3</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
 
-<p>
-<a href="https://github.com/benmezger/dotfiles/actions"><img src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg" alt="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg" /></a></p>
-<p>
-<em>Github does not render orgmode files properly, <a href="https://benmezger.github.io/dotfiles">see</a> for a better view of this
-documentation.</em></p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-Features
-</h2>
-<div id="outline-text-headline-1" class="outline-text-2">
+  <figure class="left" >
+    <img src="https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg"   />
+    
+  </figure>
+
+
+<h2 id="installing-this-configuration">Installing this configuration</h2>
+<h3 id="requirements">Requirements</h3>
 <ul>
-<li>
-<p>Auto install all system dependencies</p>
-</li>
-<li>
-<p>Applies secrets and password with <code class="verbatim">bitwarden</code></p>
-</li>
-<li>
-<p>Custom scripts in <code class="verbatim">.bin</code></p>
-</li>
-<li>
-<p><code class="verbatim">Alacritty</code> config based on OS</p>
-</li>
-<li>
-<p><code class="verbatim">fish</code> configuration</p>
-</li>
-<li>
-<p><code class="verbatim">neomutt</code> support with multiple accounts</p>
-</li>
-<li>
-<p><code class="verbatim">msmtp</code> for sending emails with multiple account support</p>
-</li>
-<li>
-<p><code class="verbatim">mbsync</code> for syncing emails with multiple account support</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">curl</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">dircolors</code> (Gruvbox-dark colorscheme)</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">gitconfig</code></p>
-<ul>
-<li>
-<p>Custom <code class="verbatim">git</code> templates for commit messages</p>
-</li>
+<li>Chezmoi</li>
+<li>Archlinux or OSX</li>
 </ul>
-</li>
-<li>
-<p>Custom <code class="verbatim">tmux</code> configuration</p>
+<h3 id="installing">Installing</h3>
+<p><strong>Note:</strong> You are required to use the <code>env</code> variable <code>SECRETS_OFF=1</code>, as not passing will
+make chezmoi fail when connecting to my bitwarden&rsquo;s account.</p>
+<p>The following environment variables can be set to configure Chezmoi on runtime:</p>
 <ul>
-<li>
-<p><code class="verbatim">Gitmux</code> configuration</p>
-</li>
-<li>
-<p><code class="verbatim">Gruvbox</code> colorscheme</p>
-</li>
+<li><code>ASK</code>: Set to <code>1</code> if you want to enable chezmoi prompt</li>
+<li><code>SECRETS_OFF</code>: Set to <code>1</code> to enable Bitwarden (uses my personal secrets set in
+.chezmoi.yaml)</li>
+<li><code>DOTFILES_MINIMAL</code>: Set to <code>1</code> if you want to install the minimal version</li>
 </ul>
-</li>
-<li>
-<p>Custom <code class="verbatim">zsh</code> configuration</p>
+<p>Chezmoi allows easy install of this configuration by running the following
+command:</p>
+<h4 id="full-version">Full version</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SECRETS_OFF<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
+</code></pre></div><h4 id="minimal-version">Minimal version</h4>
+<p>The minimal version installs only the essentials.</p>
 <ul>
-<li>
-<p>Auto attach a <code class="verbatim">tmux</code> session when running on OSX</p>
-</li>
-<li>
-<p>Sources a custom <code class="verbatim">env</code> file for secret keys</p>
-</li>
-<li>
-<p>Fast <code class="verbatim">zsh</code> prompt with <code class="verbatim">git</code> <code class="verbatim">RPROMPT</code> enabled</p>
-</li>
-<li>
-<p>Custom completion files enabled</p>
-</li>
-<li>
-<p><code class="verbatim">fzf</code> enabled for reverse search</p>
-</li>
-<li>
-<p><code class="verbatim">pyenv</code> support</p>
-</li>
-<li>
-<p><code class="verbatim">wakatime</code> support</p>
-</li>
+<li>zsh</li>
+<li>git</li>
+<li>vim</li>
+<li>emacs</li>
+<li>tmux</li>
+<li>curl</li>
+<li>alacritty</li>
+<li>neovim</li>
+<li>user-dirs</li>
+<li>editorconfig</li>
+<li>dircolors</li>
 </ul>
-</li>
-<li>
-<p>Custom <code class="verbatim">bash</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">emacs doom</code> configuration</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SECRETS_OFF<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> DOTFILES_MINIMAL<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
+</code></pre></div><h2 id="keybindings">Keybindings</h2>
+<h3 id="osx">OSX</h3>
+<h4 id="mpc">MPC</h4>
 <ul>
-<li>
-<p><code class="verbatim">wakatime</code> support</p>
-</li>
-<li>
-<p><code class="verbatim">mu4e</code> enabled</p>
-</li>
+<li><code>fn + cmd - e</code> - <code>opens editor</code></li>
+<li><code>cmd + return</code> - <code>opens alacritty</code></li>
+<li><code>fn + cmd - f1</code> - <code>mpc play</code></li>
+<li><code>fn + cmd - f2</code> - <code>mpc pause</code></li>
+<li><code>fn + cmd - f3</code> - <code>mpc prev</code></li>
+<li><code>fn + cmd - f4</code> - <code>mpc next</code></li>
+<li><code>fn + cmd - f5</code> - <code>mpc volume -10</code></li>
+<li><code>fn + cmd - f6</code> - <code>mpc volume +10</code></li>
 </ul>
-</li>
-<li>
-<p>Custom <code class="verbatim">gnupg</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">inputrc</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">pythonrc</code> configuration</p>
-</li>
-<li>
-<p>Clean <code class="verbatim">vim</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">editorconfig</code> configuration</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">weechat</code> configuration</p>
-</li>
-</ul>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-OSX features
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<ul>
-<li>
-<p>Auto start a <code class="verbatim">tmux</code> session with <code class="verbatim">launchctl</code></p>
-</li>
-<li>
-<p>Custom OSX preference setup</p>
-</li>
-<li>
-<p>Run <code class="verbatim">isync</code> and <code class="verbatim">mu</code> with <code class="verbatim">launchctl</code> every 5min</p>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
-Archlinux features
-</h3>
-<div id="outline-text-headline-3" class="outline-text-3">
-<ul>
-<li>
-<p>Auto start <code class="verbatim">greenclip</code> with <code class="verbatim">systemd</code></p>
-</li>
-<li>
-<p>Run <code class="verbatim">isync</code> and <code class="verbatim">mu</code> with <code class="verbatim">systemd</code> every 5min</p>
-</li>
-<li>
-<p><code class="verbatim">i3-display</code> support for handling multi-monitor</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">i3wm</code> configuration</p>
-<ul>
-<li>
-<p>Custom <code class="verbatim">i3status-rs</code> support with Gruvbox colorscheme</p>
-</li>
-<li>
-<p><code class="verbatim">polybar</code> support</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code class="verbatim">picom</code> support</p>
-</li>
-<li>
-<p><code class="verbatim">rofi</code> support with clipboard manager</p>
-</li>
-<li>
-<p>Minimal <code class="verbatim">dunst</code> notification manager</p>
-</li>
-<li>
-<p>Custom <code class="verbatim">user-dirs</code> configuration</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-2">
-<h2 id="headline-4">
-Screenshots
-</h2>
-<div id="outline-text-headline-4" class="outline-text-2">
-<div id="outline-container-headline-5" class="outline-3">
-<h3 id="headline-5">
-Archlinux
-</h3>
-<div id="outline-text-headline-5" class="outline-text-3">
-<p><img src="./arch-screenshot.png" alt="./arch-screenshot.png" title="./arch-screenshot.png" /></p>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-3">
-<h3 id="headline-6">
-OSX
-</h3>
-<div id="outline-text-headline-6" class="outline-text-3">
-<p><img src="./osx-screenshot.png" alt="./osx-screenshot.png" title="./osx-screenshot.png" /></p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-7" class="outline-2">
-<h2 id="headline-7">
-Auto installer
-</h2>
-<div id="outline-text-headline-7" class="outline-text-2">
-<p>Run <code class="verbatim">bash install.sh</code>, which installs the required dependencies for running the system</p>
-</div>
-</div>
-<div id="outline-container-headline-8" class="outline-2">
-<h2 id="headline-8">
-Installing manually with Makefile
-</h2>
-<div id="outline-text-headline-8" class="outline-text-2">
-<div id="outline-container-headline-9" class="outline-3">
-<h3 id="headline-9">
-Requirements
-</h3>
-<div id="outline-text-headline-9" class="outline-text-3">
-<ul>
-<li>
-<p><a href="https://www.gnu.org/software/make/manual/make.html">Make</a></p>
-</li>
-</ul>
-<p>See <code class="verbatim">make help</code> for all available options</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-10" class="outline-2">
-<h2 id="headline-10">
-Installing manually with Chezmoi
-</h2>
-<div id="outline-text-headline-10" class="outline-text-2">
-<div id="outline-container-headline-11" class="outline-3">
-<h3 id="headline-11">
-Requirements
-</h3>
-<div id="outline-text-headline-11" class="outline-text-3">
-<ul>
-<li>
-<p><a href="https://www.chezmoi.io/">Chezmoi</a></p>
-</li>
-<li>
-<p><a href="https://bitwarden.com/help/article/cli/#quick-start">Bitwarden-cli</a></p>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-12" class="outline-3">
-<h3 id="headline-12">
-Installing
-</h3>
-<div id="outline-text-headline-12" class="outline-text-3">
-<p>Run <code class="verbatim">chezmoi init https://github.com/benmezger/dotfiles.git</code> (see <a href="https://www.chezmoi.io/docs/reference/">reference</a> for
-more options) to checkout the repository and any submodules. Finally, run
-<code class="verbatim">chezmoi apply</code> to move changes to your home directory.</p>
-<p>
-Chezmoi will try to apply bitwarden in <a href="dot_env-secrets.tmpl">env-secrets</a> if <code class="verbatim">CI</code> env is not set or
-<code class="verbatim">secrets</code> is set to <code class="verbatim">true</code> in <code class="verbatim">chezmoi.yaml</code> (defaults to <code class="verbatim">false</code>). Make sure
-the UUID are correct with your password&#39;s UUID, <a href="https://www.chezmoi.io/docs/reference/#onepassword-uuid-vault-uuid">see</a> for more information or set
-a <code class="verbatim">CI</code> env variable before running to skip this step.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-13" class="outline-2">
-<h2 id="headline-13">
-Dependencies
-</h2>
-<div id="outline-text-headline-13" class="outline-text-2">
-<ul>
-<li>
-<p>Fonts</p>
-<ul>
-<li>
-<p><a href="https://github.com/chrissimpkins/codeface/tree/master/fonts/inconsolata-dz">Inconsolata-DZ</a></p>
-</li>
-<li>
-<p><a href="https://sourcefoundry.org/hack/">Hack</a></p>
-</li>
-<li>
-<p><a href="https://fontawesome.com/">FontAwesome</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>ZSH</p>
-<ul>
-<li>
-<p><a href="https://github.com/getantibody/antibody">Antibody</a></p>
-</li>
-<li>
-<p><a href="https://github.com/junegunn/fzf">FZF</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Emacs</p>
-<ul>
-<li>
-<p><a href="https://github.com/hlissner/doom-emacs">Doom Emacs</a></p>
-</li>
-<li>
-<p>Emacs &gt;= 27</p>
-</li>
-</ul>
-</li>
-<li>
-<p>System utilities</p>
-<ul>
-<li>
-<p><a href="https://github.com/wakatime/wakatime">Wakatime</a></p>
-</li>
-<li>
-<p><a href="https://www.gnu.org/software/emacs/">Emacs</a></p>
-</li>
-<li>
-<p><a href="https://www.chezmoi.io/">Chezmoi</a></p>
-</li>
-<li>
-<p><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a></p>
-</li>
-<li>
-<p><a href="https://github.com/pyenv/pyenv">pyenv</a></p>
-</li>
-<li>
-<p><a href="https://gohugo.io/">Hugo</a></p>
-</li>
-<li>
-<p><a href="https://bitwarden.com/help/article/cli/#quick-start">Bitwarden-cli</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>OSX</p>
-<ul>
-<li>
-<p><a href="https://brew.sh/">Homebrew</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mas-cli/mas">Mas</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Linux</p>
-<ul>
-<li>
-<p><a href="https://i3wm.org/">i3wm</a></p>
-</li>
-<li>
-<p><a href="https://github.com/fosskers/aura">Aura (Archlinux)</a></p>
-</li>
-<li>
-<p><a href="https://github.com/greshake/i3status-rust">i3status-rust</a></p>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-14" class="outline-2">
-<h2 id="headline-14">
-Commands
-</h2>
-<div id="outline-text-headline-14" class="outline-text-2">
-<p>These are general commands I use while managing my <code class="verbatim">dotfiles</code> and my system . I
-run them in orgmode itself, but you can simply copy and paste it to your
-terminal.</p>
-<div id="outline-container-headline-15" class="outline-3">
-<h3 id="headline-15">
-Chezmoi&#xa0;&#xa0;&#xa0;<span class="tags"><span>dotfiles</span>&#xa0;<span>chezmoi</span></span>
-</h3>
-<div id="outline-text-headline-15" class="outline-text-3">
-<ul>
-<li>
-<p>Apply dotfile changes with Chezmoi.</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
-  chezmoi apply -v</code></pre></div>
-</div>
-</li>
-<li>
-<p>View difference between dotfiles and restores files.</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
-  chezmoi diff</code></pre></div>
-</div>
-</li>
-<li>
-<p>Initialize chezmoi repository, reloading <code class="verbatim">$HOME/.config/chezmoi/chezmoi.[yaml|toml]</code></p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  cd $dir
-  chezmoi init ~/dotfiles</code></pre></div>
-</div>
-</li>
-<li>
-<p>Bitwarden integration
-Chezmoi applies Bitwarden&#39;s in every file which requires a secret.</p>
-<p>
-As a result, it requires Bitwarden installed and logged with <code class="verbatim">bw login
-  &lt;email&gt;</code>. Make sure you change my Bitwarden&#39;s UUID to match yours.</p>
-<p>
-You can test your UUID with:</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  bw get item &lt;uuid&gt; | jq .login.password</code></pre></div>
-</div>
-<p>
-Chezmoi will only run Bitwarden against these files if:</p>
-<ul>
-<li>
-<p>Environment is not set to <code class="verbatim">CI</code></p>
-</li>
-<li>
-<p><code class="verbatim">chezmoi.yaml</code> has <code class="verbatim">secrets</code> set to <code class="verbatim">true</code>.</p>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-16" class="outline-3">
-<h3 id="headline-16">
-Emacs&#xa0;&#xa0;&#xa0;<span class="tags"><span>emacs</span></span>
-</h3>
-<div id="outline-text-headline-16" class="outline-text-3">
-<p>General Emacs maintenance.</p>
-<div id="outline-container-headline-17" class="outline-4">
-<h4 id="headline-17">
-Doom emacs
-</h4>
-<div id="outline-text-headline-17" class="outline-text-4">
-<ul>
-<li>
-<p>Doom compile core and private modules</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  .emacs.d/bin/doom compile :core :private lang/org lang/python tools lang/yaml tools/lsp</code></pre></div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-18" class="outline-4">
-<h4 id="headline-18">
-Required <code class="verbatim">authinfo</code> entries
-</h4>
-<div id="outline-text-headline-18" class="outline-text-4">
-<p>Email and Forge requires the following entries to be set in your
-<code class="verbatim">$HOME/.authinfo</code>. Make sure you encrypt <code class="verbatim">.authinfo</code> with PGP.</p>
-<div class="src src-org">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">machine api.github.com login &lt;<span style="color:#e6db74">gh-user</span>&gt;^forge password &lt;<span style="color:#e6db74">password</span>&gt;
-machine irc.freenode.net login &lt;<span style="color:#e6db74">user</span>&gt; password &lt;<span style="color:#e6db74">passord</span>&gt; port 6667
-machine imap.gmail.com login &lt;<span style="color:#e6db74">email</span>&gt; password &lt;<span style="color:#e6db74">password</span>&gt; port 443
-machine smtp.gmail.com login &lt;<span style="color:#e6db74">email</span>&gt; password &lt;<span style="color:#e6db74">password</span>&gt; port 587</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-19" class="outline-3">
-<h3 id="headline-19">
-Linux&#xa0;&#xa0;&#xa0;<span class="tags"><span>linux</span></span>
-</h3>
-<div id="outline-text-headline-19" class="outline-text-3">
-<p>General Linux commands</p>
-<ul>
-<li>
-<p>Speed up keyboard</p>
-<div class="src src-:cache">
-<pre><code class="language-:cache" data-lang=":cache">  xset r rate 180 40</code></pre>
-</div>
-</li>
-</ul>
-<div id="outline-container-headline-20" class="outline-4">
-<h4 id="headline-20">
-Archlinux&#xa0;&#xa0;&#xa0;<span class="tags"><span>archlinux</span></span>
-</h4>
-<div id="outline-text-headline-20" class="outline-text-4">
-<ul>
-<li>
-<p>List <code class="verbatim">pacman</code> packages ignoring foreing packages (AUR, etc).</p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  pacman -Qqen</code></pre></div>
-</div>
-<p><a href="./roles/archlinux/tasks/pkgs.pacman">./roles/archlinux/tasks/pkgs.pacman</a></p>
-</li>
-<li>
-<p>Get list of foreing (AUR, etc) packages with <code class="verbatim">pacman</code>.</p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  pacman -Qqem</code></pre></div>
-</div>
-<p><a href="./roles/archlinux/tasks/pkgs.aur">./roles/archlinux/tasks/pkgs.aur</a></p>
-</li>
-<li>
-<p>Enable color, total download, check space and verbose pkg list when running
-<code class="verbatim">pacman</code>.</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo sed -i <span style="color:#e6db74">&#39;/Color$/s/^#//g&#39;</span> /etc/pacman.conf
-  sudo sed -i <span style="color:#e6db74">&#39;/TotalDownload$/s/^#//g&#39;</span> /etc/pacman.conf
-  sudo sed -i <span style="color:#e6db74">&#39;/CheckSpace$/s/^#//g&#39;</span> /etc/pacman.conf
-  sudo sed -i <span style="color:#e6db74">&#39;/VerbosePkgLists$/s/^#//g&#39;</span> /etc/pacman.conf</code></pre></div>
-</div>
-</li>
-<li>
-<p>Find all <code class="verbatim">*.pacnew</code> files in <code class="verbatim">/etc</code></p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  find /etc -regextype posix-extended -regex <span style="color:#e6db74">&#34;.+\.pac(new|save)&#34;</span></code></pre></div>
-</div>
-</li>
-</ul>
-<div id="outline-container-headline-21" class="outline-5">
-<h5 id="headline-21">
-Docker&#xa0;&#xa0;&#xa0;<span class="tags"><span>docker</span></span>
-</h5>
-<div id="outline-text-headline-21" class="outline-text-5">
-<ul>
-<li>
-<p>Allow Docker runs with non-root user.</p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo usermod -aG docker $USER
-  newgrp docker</code></pre></div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-22" class="outline-4">
-<h4 id="headline-22">
-Sourcing env with i3
-</h4>
-<div id="outline-text-headline-22" class="outline-text-4">
-<ul>
-<li>
-<p>For some reason, i3 is sourcing <code class="verbatim">.xprofile</code> instead of <code class="verbatim">xinitrc</code>, so for
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="chezmoi-does-not-seem-to-reload-the-configuration">Chezmoi does not seem to reload the configuration</h3>
+<p>Run <code>chezmoi init &lt;dotfiles-path&gt;</code> again. This should reload the configuration
+by copying <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to <code>$HOME/.config/chezmoi/chezmoi.yaml</code>.</p>
+<h3 id="sourcing-env-with-i3">Sourcing env with i3</h3>
+<p>For some reason, i3 is sourcing <code>.xprofile</code> instead of <code>xinitrc</code>, so for
 getting Github plugin for the <a href="dot_config/i3/status.toml">i3status-rust</a> you need to set up a variable in
-your <code class="verbatim">.xprofile</code></p>
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  export I3RS_GITHUB_TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;your-github-token&#34;</span></code></pre></div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-23" class="outline-3">
-<h3 id="headline-23">
-OSX
-</h3>
-<div id="outline-text-headline-23" class="outline-text-3">
-<div id="outline-container-headline-24" class="outline-4">
-<h4 id="headline-24">
-Set OSX defaults
-</h4>
-<div id="outline-text-headline-24" class="outline-text-4">
-<div class="src src-shell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Turn on app auto-update</span>
-defaults write com.apple.commerce AutoUpdate -bool true
-
-<span style="color:#75715e"># Install System data files &amp; security updates</span>
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e"># Download newly available updates in background</span>
-defaults write com.apple.SoftwareUpdate AutomaticDownload -int <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e"># Check for software updates daily, not just once per week</span>
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e"># Don’t show recent applications in Dock</span>
-defaults write com.apple.dock show-recents -bool false
-
-<span style="color:#75715e"># Automatically hide and show the Dock</span>
-defaults write com.apple.dock autohide -bool true
-
-<span style="color:#75715e"># Remove the auto-hiding Dock delay</span>
-defaults write com.apple.dock autohide-delay -float <span style="color:#ae81ff">0</span>
-<span style="color:#75715e"># Remove the animation when hiding/showing the Dock</span>
-defaults write com.apple.dock autohide-time-modifier -float <span style="color:#ae81ff">0</span></code></pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-25" class="outline-2">
-<h2 id="headline-25">
-Keybindings
-</h2>
-<div id="outline-text-headline-25" class="outline-text-2">
-<div id="outline-container-headline-26" class="outline-3">
-<h3 id="headline-26">
-OSX
-</h3>
-<div id="outline-text-headline-26" class="outline-text-3">
-<div id="outline-container-headline-27" class="outline-4">
-<h4 id="headline-27">
-MPC
-</h4>
-<div id="outline-text-headline-27" class="outline-text-4">
-<ul>
-<li>
-<p><code class="verbatim">fn + cmd - e</code> - <code class="verbatim">opens editor</code></p>
-</li>
-<li>
-<p><code class="verbatim">cmd + return</code> - <code class="verbatim">opens alacritty</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f1</code> - <code class="verbatim">mpc play</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f2</code> - <code class="verbatim">mpc pause</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f3</code> - <code class="verbatim">mpc prev</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f4</code> - <code class="verbatim">mpc next</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f5</code> - <code class="verbatim">mpc volume -10</code></p>
-</li>
-<li>
-<p><code class="verbatim">fn + cmd - f6</code> - <code class="verbatim">mpc volume +10</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-28" class="outline-2">
-<h2 id="headline-28">
-Troubleshooting
-</h2>
-<div id="outline-text-headline-28" class="outline-text-2">
-<div id="outline-container-headline-29" class="outline-3">
-<h3 id="headline-29">
-Chezmoi does not seem to reload the configuration
-</h3>
-<div id="outline-text-headline-29" class="outline-text-3">
-<p>Run <code class="verbatim">chezmoi init &lt;dotfiles-path&gt;</code> again. This should reload the configuration
-by copying <a href=".chezmoi.yaml.tmpl">chezmoi.yaml</a> to <code class="verbatim">$HOME/.config/chezmoi/chezmoi.yaml</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-30" class="outline-2">
-<h2 id="headline-30">
-TODOS
-</h2>
-<div id="outline-text-headline-30" class="outline-text-2">
-<div id="outline-container-headline-31" class="outline-3">
-<h3 id="headline-31">
-<span class="todo">TODO</span>
-Remove 1Password documents from the configuration file
-</h3>
-<div id="outline-text-headline-31" class="outline-text-3">
-<p>1Password Documents are currently kept as I am slowly migrating to Bitwarden</p>
-</div>
-</div>
-<div id="outline-container-headline-32" class="outline-3">
-<h3 id="headline-32">
-<span class="todo">TODO</span>
-Update README on how to install individual configs
-</h3>
-</div>
-<div id="outline-container-headline-33" class="outline-3">
-<h3 id="headline-33">
-CANCELED Create multi-os support in travis
-</h3>
-<div id="outline-text-headline-33" class="outline-text-3">
-<ul>
-<li class="checked">
-<p>OSX support</p>
-</li>
-<li class="checked">
-<p>Linux support</p>
-</li>
-<li class="checked">
-<p>Get linux to run</p>
-</li>
-<li class="checked">
-<p>How to handle AUR packages?</p>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-34" class="outline-3">
-<h3 id="headline-34">
-<span class="todo">DONE</span>
-Verify if Github Workflow is caching packages property
-</h3>
-</div>
-<div id="outline-container-headline-35" class="outline-3">
-<h3 id="headline-35">
-<span class="todo">DONE</span>
-Fix issue with tmux not correctly searching text through panes
-</h3>
-</div>
-<div id="outline-container-headline-36" class="outline-3">
-<h3 id="headline-36">
-<span class="todo">TODO</span>
-Add Archlinux AUR packages
-</h3>
-</div>
-<div id="outline-container-headline-37" class="outline-3">
-<h3 id="headline-37">
-<span class="todo">DONE</span>
-Figure out how to handle 1password-cli with Chezmoi when running Ansible
-</h3>
-</div>
-<div id="outline-container-headline-38" class="outline-3">
-<h3 id="headline-38">
-<span class="todo">DONE</span>
-Switch to <code class="verbatim">Brewfile</code>
-</h3>
-</div>
-</div>
-</div>
-
+your <code>.xprofile</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export I3RS_GITHUB_TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;your-github-token&#34;</span>
+</code></pre></div>
     </div>
   
   <div class="posts">
