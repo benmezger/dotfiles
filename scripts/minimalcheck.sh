@@ -6,7 +6,7 @@ set -euo pipefail
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$dir/ansi"
 
-minimal=$(grep -q 'minimal: true' $HOME/.config/chezmoi/chezmoi.yaml)
+minimal=$(grep -ci 'minimal: true' "$HOME/.config/chezmoi/chezmoi.yaml" || true)
 
 if ! [[ $minimal ]]; then
 	ansi --yellow "Skipping post_install due to minimal version"
