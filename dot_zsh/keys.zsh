@@ -20,4 +20,5 @@ bindkey '^?' backward-delete-char
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
-bindkey '^W' backward-kill-word 
+bindkey '^W' backward-kill-word
+bindkey '^ ' autosuggest-accept
