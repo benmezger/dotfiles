@@ -341,3 +341,17 @@
   :around '(org-export-to-file org-babel-tangle)
   (let ((editorconfig-exclude-regexps '(".")))
     (apply orig-fn args)))
+
+
+(use-package! code-stats
+  :defer t
+  :config
+  (setq code-stats-token
+        (auth-source-pick-first-password :host "codestats.net"))
+  (add-hook 'prog-mode-hook #'code-stats-mode)
+  (run-with-idle-timer 30 t #'code-stats-sync)
+  (add-hook 'kill-emacs-hook (lambda () (code-stats-sync :wait))))
+
+(define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
+  (lambda () (code-stats-mode 1)))
+(my-global-code-stats-mode)

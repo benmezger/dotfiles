@@ -9,3 +9,4 @@
 (package! citeproc-org)
 (package! helm
   :disable t)
+(package! code-stats)
