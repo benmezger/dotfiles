@@ -1,47 +1,92 @@
-extensions: &all_exts
-    - pdf
-    - docx
+{{ $downloadDir := "" }}
+{{ $desktopDir := "" }}
+
+{{- if eq .chezmoi.os "darwin" }}
+{{ $downloadDir = "~/Downloads" }}
+{{ $desktopDir = "~/Desktop" }}
+{{- else }}
+{{ $downloadDir = "~/downloads" }}
+{{ $desktopDir = "~/desktop" }}
+{{- end }}
+
+images_ext: &imgs
     - png
     - jpeg
+    - svg
+    - jpg
+
+archives_ext: &archives
     - zip
     - gz
     - tar
     - tgz
-    - csv
+    - 7z
+    - iso
+
+docs_ext: &docs
+    - pdf
+    - docx
+    - doc
     - md
-    - json
-    - svg
+    - pptx
+    - xlsx
+    - org
+    - bib
+    - epub
+
+installers_ext: &installers
     - dmg
+    - pkg
+    - app
+
+misc: &misc
+    - csv
+    - json
     - torrent
+    - log
 
 rules:
-{{- if eq .chezmoi.os "darwin" }}
-  - folders: ~/Downloads
+  - folders: {{ $downloadDir }}
     filters:
-      - extension: *all_exts
+      - extension:
+        - *imgs
     actions:
-      - move: "~/Downloads/{extension.lower}s/"
+      - move: "{{ $downloadDir }}/images/"
 
-  - folders: ~/Desktop
+  - folders: {{ $downloadDir }}
+    filters:
+      - extension:
+        - *archives
+    actions:
+      - move: "{{ $downloadDir }}/archives/"
+
+  - folders: {{ $downloadDir }}
+    filters:
+      - extension:
+        - *docs
+    actions:
+      - move: "{{ $downloadDir }}/docs/"
+
+  - folders: {{ $downloadDir }}
+    filters:
+      - extension:
+        - *installers
+    actions:
+      - move: "{{ $downloadDir }}/installers/"
+
+  - folders: {{ $downloadDir }}
+    filters:
+      - extension:
+        - *misc
+    actions:
+      - move: "{{ $downloadDir }}/misc/"
+
+  - folders: {{ $desktopDir }}
     filters:
       - filename:
           startswith: "Screen Shot"
     actions:
-      - move: ~/Desktop/screenshots/
-{{- else -}}
-  - folders: ~/downloads
-    filters:
-      - extension: *all_exts
-    actions:
-      - move: "~/downloads/{extension.lower}s/"
-
-  - folders: ~/desktop
-    filters:
-      - filename:
-          startswith: "Screen Shot"
-    actions:
-      - move: ~/desktop/screenshots/
-{{ end }}
+      - move: "{{ $desktopDir }}/screenshots/"
 
   - folders: ~/.weechat/
     filters:
