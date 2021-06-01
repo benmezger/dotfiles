@@ -90,12 +90,17 @@ ensure-dirs:
 	@echo "Ensuring directories.."
 	bash ./scripts/ensure_directories.sh | tee -a $(LOGFILE)
 
+install-go-deps:
+	@echo "Installing go packages.."
+	bash ./scripts/install_go_packages.sh | tee -a $(LOGFILE)
+
 ensure-deps:
 	@echo "Ensuring dependencies.."
 	$(MAKE) install-homebrew
 	$(MAKE) install-chezmoi
 	$(MAKE) install-deps
 	$(MAKE) install-aur
+	$(MAKE) install-go-deps
 
 chezmoi-init: 
 	@echo "Initializing chezmoi.."
