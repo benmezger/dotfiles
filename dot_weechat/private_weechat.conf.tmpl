@@ -301,7 +301,7 @@ input.color_bg = default
 input.color_bg_inactive = default
 input.color_delim = cyan
 input.color_fg = default
-input.conditions = "${name} != highmon"
+input.conditions = "${name} != highmon && ${name} != chanmon"
 input.filling_left_right = vertical
 input.filling_top_bottom = horizontal
 input.hidden = off
@@ -331,7 +331,7 @@ status.color_bg = black
 status.color_bg_inactive = 235
 status.color_delim = cyan
 status.color_fg = default
-status.conditions = "${name} != highmon"
+status.conditions = "${name} != highmon && ${name} != chanmon"
 status.filling_left_right = vertical
 status.filling_top_bottom = horizontal
 status.hidden = off
@@ -374,49 +374,15 @@ vi_line_numbers.size_max = 0
 vi_line_numbers.type = window
 
 [layout]
-next.buffer = "core;weechat;1"
-next.buffer = "perl;highmon;2"
-next.buffer = "irc;server.bnc_2600;3"
-next.buffer = "irc;bnc_2600.#2600;4"
-next.buffer = "irc;bnc_2600.#help;5"
-next.buffer = "irc;server.bnc_darkscience;6"
-next.buffer = "irc;bnc_darkscience.#darkscience;7"
-next.buffer = "irc;server.bnc_freenode;8"
-next.buffer = "irc;bnc_freenode.#bar-br;9"
-next.buffer = "irc;bnc_freenode.##C;10"
-next.buffer = "irc;bnc_freenode.#distrotube;11"
-next.buffer = "irc;bnc_freenode.#garoa;12"
-next.buffer = "irc;bnc_freenode.#irccloud;13"
-next.buffer = "irc;bnc_freenode.#latex;14"
-next.buffer = "irc;bnc_freenode.#org-mode;15"
-next.buffer = "irc;bnc_freenode.##osdev;16"
-next.buffer = "irc;bnc_freenode.#python;17"
-next.buffer = "irc;bnc_freenode.#python-forum;18"
-next.buffer = "irc;bnc_freenode.##rust;19"
-next.buffer = "irc;bnc_freenode.#rust-embedded;20"
-next.buffer = "irc;bnc_freenode.#tarrafa;21"
-next.buffer = "irc;bnc_freenode.#tmux;22"
-next.buffer = "irc;bnc_freenode.#weechat-offtopic;23"
-next.buffer = "irc;server.bnc_libera;24"
-next.buffer = "irc;bnc_libera.#archlinux;25"
-next.buffer = "irc;bnc_libera.#archlinux-br;26"
-next.buffer = "irc;bnc_libera.#codestats;27"
-next.buffer = "irc;bnc_libera.#dotfiles;28"
-next.buffer = "irc;bnc_libera.#emacs;29"
-next.buffer = "irc;bnc_libera.#go-nuts;30"
-next.buffer = "irc;bnc_libera.##kernel;31"
-next.buffer = "irc;bnc_libera.#osdev;32"
-next.buffer = "irc;bnc_libera.#python;33"
-next.buffer = "irc;bnc_libera.##python-forum;34"
-next.buffer = "irc;bnc_libera.#riscv;35"
-next.buffer = "irc;bnc_libera.##rust;36"
-next.buffer = "irc;bnc_libera.#systemcrafters;37"
-next.buffer = "irc;bnc_libera.#weechat;38"
-next.buffer = "irc;server.bnc_oftc;39"
-next.window = "1;0;25;1;-;-"
-next.window = "2;1;0;0;core;weechat"
-next.window = "3;1;0;0;perl;highmon"
-next.current = on
+default.buffer = "core;weechat;1"
+default.buffer = "perl;chanmon;2"
+default.buffer = "perl;highmon;3"
+default.window = "1;0;22;1;-;-"
+default.window = "2;1;40;1;-;-"
+default.window = "3;2;0;0;core;weechat"
+default.window = "4;2;0;0;perl;chanmon"
+default.window = "5;1;0;0;perl;highmon"
+default.current = on
 
 [notify]
 perl.highmon = none
@@ -671,7 +637,7 @@ meta-j99 = "/buffer *99"
 meta-k = "/input grab_key_command"
 meta-l = "/window bare"
 meta-m = "/mute mouse toggle"
-meta-n = "/window scroll_next_highlight"
+meta-n = "/mute toggle_fullnick"
 meta-p = "/window scroll_previous_highlight"
 meta-r = "/input delete_line"
 meta-s = "/mute spell toggle"
