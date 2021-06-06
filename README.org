@@ -56,15 +56,17 @@ SECRETS_OFF=1 DOTFILES_MINIMAL=1 chezmoi init https://github.com/benmezger/dotfi
 
 * Keybindings
 ** OSX
+- =fn + cmd - e= - opens emacs
+- =fn + cmd - i= - opens firefox
+- =fn + cmd - f= - opens finder in $HOME
+- =cmd + return= - opens alacritty
 *** MPC
-- =fn + cmd - e= - =opens editor=
-- =cmd + return= - =opens alacritty=
-- =fn + cmd - f1= - =mpc play=
-- =fn + cmd - f2= - =mpc pause=
-- =fn + cmd - f3= - =mpc prev=
-- =fn + cmd - f4= - =mpc next=
-- =fn + cmd - f5= - =mpc volume -10=
-- =fn + cmd - f6= - =mpc volume +10=
+- =fn + cmd - f1= - mpc play
+- =fn + cmd - f2= - mpc pause
+- =fn + cmd - f3= - mpc prev
+- =fn + cmd - f4= - mpc next
+- =fn + cmd - f5= - mpc volume -10
+- =fn + cmd - f6= - mpc volume +10
 
 * Troubleshooting
 ** Chezmoi does not seem to reload the configuration

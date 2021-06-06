@@ -2,7 +2,9 @@
 cmd - return: /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # editor
-fn + cmd - e: ~/.bin/editor
+fn + cmd - e: emacsclient -c -a ""
+fn + cmd - i: /Applications/Firefox.app/Contents/MacOS/firefox
+fn + cmd - f: open .
 
 # music
 fn + cmd - f1: mpc toggle
