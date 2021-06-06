@@ -96,3 +96,7 @@ export I3RS_GITHUB_TOKEN="your-github-token"
 ### Weechat IRC
 
 ![](./static/weechat.png)
+
+### Emacs
+
+![](./static/emacs.png)
