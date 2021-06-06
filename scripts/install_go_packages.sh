@@ -16,3 +16,6 @@ go get -u github.com/arl/gitmux
 
 ansi --green "Installing gopls.."
 GO111MODULE=on go get golang.org/x/tools/gopls@latest
+
+ansi --green "Installing Chezmoi"
+go install github.com/twpayne/chezmoi@latest
