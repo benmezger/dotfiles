@@ -1,4 +1,4 @@
-LOGFILE="/tmp/dotfiles.log"
+LOGFILE=/tmp/dotfiles.log
 
 default: run
 help:
@@ -25,11 +25,13 @@ help:
 	@echo '    make install-riscv      Install RISC-V toolchain and dependencies.'
 	@echo '    make install-rust       Install Rust.'
 	@echo '    make install-go-deps    Install go dependencies.'
+	@echo
 	@echo '    make run                Ensure deps and apply chezmoi.'
 	@echo '    make all                Run all.'
-	@echo ''
-	@echo '    Author                  Ben Mezger (github.com/benmezger)'
 	@echo
+	@echo '    Logs are stored in      $(LOGFILE)'
+	@echo
+	@echo '    Author                  Ben Mezger (github.com/benmezger)'
 
 install-riscv:
 	@echo "Installing RISCV dependencies.."
