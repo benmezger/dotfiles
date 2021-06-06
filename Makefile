@@ -25,6 +25,8 @@ help:
 	@echo '    make install-riscv      Install RISC-V toolchain and dependencies.'
 	@echo '    make install-rust       Install Rust.'
 	@echo '    make install-go-deps    Install go dependencies.'
+	@echo '    make install-osx-app    Install MacOS applications (requires mas).'
+
 	@echo
 	@echo '    make run                Ensure deps and apply chezmoi.'
 	@echo '    make all                Run all.'
