@@ -20,7 +20,6 @@ help:
 	@echo '    make install-chezmoi    Install chezmoi.'
 	@echo '    make install-aur        Install AUR packages .'
 	@echo '    make install-deps       Install system dependencies.'
-	@echo '    make hugo-build         Update documentation.'
 	@echo '    make ensure-dirs        Creates required directories.'
 	@echo '    make install-riscv      Install RISC-V toolchain and dependencies.'
 	@echo '    make install-rust       Install Rust.'
@@ -154,8 +153,3 @@ install-rust:
 install-osx-apps:
 	@echo "Installing Amphetamine"
 	mas install 937984704
-
-hugo-build:
-	@echo "Running hugo build.."
-	git submodule update --init
-	hugo 
