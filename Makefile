@@ -24,6 +24,7 @@ help:
 	@echo '    make ensure-dirs        Creates required directories.'
 	@echo '    make install-riscv      Install RISC-V toolchain and dependencies.'
 	@echo '    make install-rust       Install Rust.'
+	@echo '    make install-go-deps    Install go dependencies.'
 	@echo '    make run                Ensure deps and apply chezmoi.'
 	@echo '    make all                Run all.'
 	@echo ''
