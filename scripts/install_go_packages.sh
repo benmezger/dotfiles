@@ -19,3 +19,6 @@ GO111MODULE=on go get golang.org/x/tools/gopls@latest
 
 ansi --green "Installing Chezmoi"
 go install github.com/twpayne/chezmoi@latest
+
+ansi --green "Install assembly formatter"
+go get -u github.com/klauspost/asmfmt/cmd/asmfmt
