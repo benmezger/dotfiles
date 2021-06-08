@@ -15,6 +15,7 @@ ansible.cfg
 CHANGELOG.md
 install.sh
 .weechat/logs
+.weechat/weechat.log
 .weechat/python/__pycache__/
 config/pgcli/history
 scripts/
