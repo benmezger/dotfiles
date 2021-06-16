@@ -1,6 +1,7 @@
 {{- $minimal := false -}}
 {{- $headless := false -}}
 {{- $secrets := true -}}
+{{- $workconf := false -}}
 
 {{- $name := "Ben Mezger" -}}
 {{- $email := "me@benmezger.nl" -}}
@@ -35,8 +36,13 @@
 {{- $secrets = false -}}
 {{- end }}
 
+{{- if (env "WORKCONF") -}}
+{{- $workconf = true -}}
+{{- end -}}
+
 {{- if (env "ASK") }}
 {{- $minimal = promptBool "minimal" -}}
+{{- $workconf = promptBool "work config" -}}
 
 {{- if $minimal -}}
 {{- $secrets = false -}}
@@ -77,18 +83,21 @@ data:
   hostname: {{ $hostname }}
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
+  workconf: {{ $workconf }}
 {{- if not $minimal }}
   smtp_host: {{ $personal_smtp_host }}
   smtp_port: {{ $personal_smtp_port }}
   imap_host: {{ $personal_imap_host }}
   imap_port: {{ $personal_imap_port }}
   podcast_opml: {{ $podcast_opml }}
+{{- if $workconf }}
   work:
     workmail: {{ $work_email }}
     imap_host: {{ $work_imap_host }}
     imap_port: {{ $work_imap_port }}
     smtp_host: {{ $work_smtp_host }}
     smtp_port: {{ $work_smtp_port }}
+{{- end }}
 {{- end }}
 {{- if $secrets }}
   bitwarden:
@@ -99,7 +108,9 @@ data:
     spotify_api: 64c5ef38-cb4b-4ae7-961d-acba0047e94b
     wakatime_api: 806af555-54de-44cc-a857-acb500c08fff
     personal_mail: c553f8b1-f4a3-4220-8b0b-acb500c08fff
+{{- if $workconf }}
     work_mail: aeff6fce-4245-4fea-80a6-acb500c08fff
+{{- end }}
     rclone_gdrive: 34d2c72b-c33d-44ad-883e-acbe01020aef
     ssh_pub: 98ebec3b-3a9f-4220-9ae2-acc300fee77f
     ssh_priv: 0572f760-a184-40f9-bfa2-acc300d9ec5c

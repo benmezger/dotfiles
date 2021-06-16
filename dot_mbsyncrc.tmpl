@@ -43,6 +43,7 @@ Channel personal-sent
 Channel personal-trash
 Channel personal-archives
 
+{{- if .workconf }}
 IMAPAccount work
 Host {{ .work.imap_host }}
 User {{ .work.workmail }}
@@ -76,3 +77,4 @@ Group work
 Channel work-inbox
 Channel work-sent
 Channel work-trash
+{{- end }}

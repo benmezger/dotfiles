@@ -9,6 +9,7 @@ from           {{ .email }}
 user           {{ .email }}
 password       {{ (bitwarden "item" .bitwarden.personal_mail).login.password }}
 
+{{- if .workconf }}
 # work
 account        work
 tls_starttls on
@@ -19,5 +20,6 @@ port           {{ .work.smtp_port }}
 from           {{ .work.workmail }}
 user           {{ .work.workmail }}
 password       {{ (bitwarden "item" .bitwarden.work_mail).login.password }}
+{{- end }}
 
 account default: personal

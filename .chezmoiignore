@@ -104,3 +104,7 @@ themes
 .authinfo
 {{- end }}
 {{- end }}
+
+{{- if not .workconf }}
+.config/neomutt/work.neomuttrc
+{{- end }}
