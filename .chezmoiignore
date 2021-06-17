@@ -2,7 +2,7 @@ roles
 .github/
 Dockerfile
 LICENSE.md
-README.org
+README.md
 TODO.org
 archlinux.yml
 docker-compose.yml
