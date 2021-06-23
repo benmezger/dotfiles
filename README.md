@@ -49,6 +49,16 @@ The minimal version installs only the essentials.
 SECRETS_OFF=1 DOTFILES_MINIMAL=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
 ```
 
+## Scripts
+
+All the system dependencies are installed either by running the
+[Makefile](./Makefile) (see `make help`) or by running `chezmoi apply`. All
+scripts are located in the [scripts](./scripts/) directory. Two files are of
+importance: [buildcheck.sh](./scripts/buildcheck.sh) and
+[minimalcheck.sh](./scripts/minimalcheck.sh). The first checks if the scripts is
+running in a `CI` environment while the latter checks if the install profile is
+equal to minimal.
+
 ## Keybindings
 
 ### OSX
