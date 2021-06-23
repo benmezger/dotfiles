@@ -20,6 +20,9 @@ The following environment variables can be set to configure Chezmoi on runtime:
 - `DOTFILES_MINIMAL`: Set to `1` if you want to install the minimal version
 - `WORKCONF`: Set to `1` to enable work configuration (work email, etc)
 
+For example, you can enable `ASK` by running `ASK=1 chezmoi apply` or enable a
+minimal version of the dotfiles with `DOTFILES_MINIMAL=1 chezmoi apply`
+
 Chezmoi allows easy install of this configuration by running the following
 command:
 
