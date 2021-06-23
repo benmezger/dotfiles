@@ -3,6 +3,24 @@
 {{- $secrets := true -}}
 {{- $workconf := false -}}
 
+{{- if (env "CI") -}}
+{{- $headless = true -}}
+{{- $secrets = false -}}
+{{- end -}}
+
+{{- if (env "SECRETS_OFF") -}}
+{{- $secrets = false -}}
+{{- end -}}
+
+{{- if (env "DOTFILES_MINIMAL") -}}
+{{- $minimal = true -}}
+{{- $secrets = false -}}
+{{- end }}
+
+{{- if (env "WORKCONF") -}}
+{{- $workconf = true -}}
+{{- end -}}
+
 {{- $name := "Ben Mezger" -}}
 {{- $email := "me@benmezger.nl" -}}
 {{- $hostname := "seds" -}}
@@ -21,24 +39,6 @@
 {{- $work_imap_port := 443 -}}
 
 {{- $podcast_opml := "https://www.listennotes.com/listen/podcast-list-McKCI8sZ0v2/opml/" -}}
-
-{{- if (env "CI") -}}
-{{- $headless = true -}}
-{{- $secrets = false -}}
-{{- end -}}
-
-{{- if (env "SECRETS_OFF") -}}
-{{- $secrets = false -}}
-{{- end -}}
-
-{{- if (env "DOTFILES_MINIMAL") -}}
-{{- $minimal = true -}}
-{{- $secrets = false -}}
-{{- end }}
-
-{{- if (env "WORKCONF") -}}
-{{- $workconf = true -}}
-{{- end -}}
 
 {{- if (env "ASK") }}
 {{- $minimal = promptBool "minimal" -}}
