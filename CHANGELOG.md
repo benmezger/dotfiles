@@ -1,19 +1,98 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Brew
+- Add libmagic dependency and update Brew lock
+- Update Brew lock file
+- Update brew lock file
+
+### Chezmoi
+- Reorder env checks
+- Ignore README.md
+- Allow enabling work configuration
+- Ignore weechat.log file
+
+### Docs
+- Add examples on enabling envs with Chezmoi
+- Update README
+- Remove scripts README file
+
+### Fish
+- Remove old unused fish configuration
+
+### Mbsync
+- Fix bad work mail path
+
+### Weechat
+- Update /go script configuration
+- Add bitlbee server
+- Upgrade plugins
+- Disable unrecogonised +Z mode
+- Upstream update scripts and configuration
+- Don't quote "on" on freenode
+- Disable alternative nicks
+- Run identify command again to regain user
+- Don't connect to bnc's freenode server
+
+### Zsh
+- Remove Jira zsh configuration
+
+
+<a name="v5.0"></a>
+## [v5.0] - 2021-06-07
+### Alacritty
+- Add ANSI keymap
+- Enable alt-t (for weechat timestamp toggle)
+
 ### Alacrity
 - Name default session to 'main'
 - Let tmux/shell handle all colors
 - Let Tmux/shell handle the primary colors
 
 ### Authinfo
+- Add Github Emacs's forge API key
 - Add authinfo file
 
 ### Bin
+- Rename dmenu script to run-dmenu
 - Convert syncmail to a Chezmoi template
 - Try nvim before using Emacs as $EDITOR
+- Remove encrypted offlineimap
+- Add terminal colors script
+- Fix bad maildir
+- Add clean cache script
+- Start emacs with empty alternative
+- Add editor script for handling $EDITOR
+- Update geoip script
+
+### Brew
+- Update brew lockfile
+- Update Brewfile lock
+- Add shellcheck, shfmt google-drive and remove rust
+- Install whatsapp
+- Install brave-browser
+
+### Chezmoi
+- Add minimal support
+- Don't copy tmuxnotify on linux
+- Add ssh key ID
+- Move onepassword UUIDs to chezmoid data
+- Move bitwarden UUIDs to global config
+- Ignore __pycache__ files
 
 ### Chore
+- Remove hugo task
+- Add install-osx-app to make help
+- Add log info to make help
+- Add go deps to make help
+- Add Go package install script
+- Install Amphetamine for OSX in Makefile
+- Install racer and enable riscv target
+- Install rust racer completion
+- Add rust-src component
+- Run pyenv on chezmoi post apply
+- Install python dependencies after pyenv
+- Get Chezmoi to check the SECRETS_OFF env
 - Delete Mute App before copying
 - Remove script numbering
 - Remove ActivityWatch from all dependencies
@@ -74,55 +153,286 @@
 - Remove Ansible from .github workflow
 - Update Dockerfile
 - Update install script
+- Use bitwardenAttachment instead of 1Pass
+- Fix offending pacman tag line
+- Fix chezmoiignore secret logic
+- Refactor ansible tasks
+- Separete dotfiles and run tasks async
+- Set 'name' variable to Chezmoi's data
+- Set headless if running on CI or prompt for secret
+- Remove problematic 2to3 bin
+- Unlink default Python 3.9
+- Update python 3.9 before installing Ansible
+- Don't copy picom.conf on OSX
+- Check if .ssh and file exists before chmod
+- Ignore OSX DS_Store files
+- Add initial dependencies installer
+- Update chezmoi sourceDir
+- Use gitlab repo for wallpapers
+- Add Ansible tags for tasks
+- Install git-lfs both for Archlinux and OSX
+
+### Dmenu
+- Use DMENU_CMD instead of repeating cmds
+- Run itself for dmenu options
+- Add locate file command
+- Add calculate command
+- Set switch command to case
 
 ### Docs
+- Add Emacs screenshot
+- Remove docs directory
+- Update documentation and remove Hugo
+- Update README
+- Update README
+- Update CHANGELOG
 - Add Github actions badge
 - Generate Docs with hugo
 - Add scripts README
 - Update documentation on installing this repo
+- Update CHANGELOG
+- Add OSX keybindings on MPC
+- Update README todos
+- Update documentation to reflect the bitwarden migration
+- Update CHANGELOG
+- Update README
+- Update CHANGELOG
+- Remove OSX emacs install with jansson as this is the default now
+- Update README
+- Merge COMMANDS and TODO with README.md
+- Add OSX screenshot
+- Add Archlinux screenshot
+- Update README with feature list
+- Update CHANGELOG
 
 ### Editorconfig
+- Add golang indent size and style
+- Use 4 space indent style for C/C++
 - Add shell indent size and style
 - Add Rust indent size and style
+- Add yaml filetype support
 
 ### Emacs
+- Add codestats integration
+- Enable syntax checker
+- Enable eglot for Rust mode
+- Add exlude to editorconfig on export
+- Add authinfo to auth-sources list
+- Refactor global setqs
+- Remove package.el comments
+- Remove config.el base comments
+- Remove comments
+- Disable macos :os plugin and lint file
+- Format config.el
+- Move org-capture templates to doom
+- Add blog post capture template
+- Remove deprecated org-roam-backlinks and preprocessor
 - Start Emacs in $HOME by default
 - Enable plantuml plugin
 - Add rust support
+- Enable activity-watch-mode
+- Set mode-line face attributes
+- Remove custom modeline face
+- Add custom org-ref keybindings
+- Customize modeline font size
+- Add org-ref notes and pdf files
+- Enable org-ref and citeproc-org
+- Enable biblio for managing bibliography
+- Disable lsp for python-mode
+- Use Eglot instead of lsp-mode
+- Enable docker mode
+- Add decision note org template
+- Disable org-projectile
+- Disable ivy-virtual-buffers
+- Enable Forge
+- Remove duplicate recentf-mode
+- Add python new file header snippet
+- Use msmtp as sendmail program
 
 ### Feat
 - Add OSX default scripts
 - Handle install with a Makefile
 - Add Systemd user services
 - Add initial install scripts
+- Make zsh source work stuff
+- Install pdb++
+- Backup virtualenv files
+
+### Fish
+- Set EDITOR and VISUAL to nvim
+- Don't set _JAVA_OPTIONS.
+- Treat ambiguous unicode character as width 1
+- Add spaces to gitline so RPROMPT don't get mingled.
+- Update fishfile with new dependencies
+- Added gitline to repo.
+- Disable Homebrew analytics and autoupdate for OSX
+- Removed unused aliases and allow bad fortunes.
+- Install nvm plugin
+- Updated alias syntax
+- Alias to nvim
+- Colorful man pages
+- Set pyenv's variable
+- Install Z and remove pisces since it doesn't work well.
+- Set environment variables
+- Added fast_cd, system-specific variables and removed unused alias.
+- Ignore any other module
+- Auto start tmux script
+- Moved tmux start to functions/
+- Moved files due to stow
+
+### Fishe
+- Git ignore fish config files
 
 ### Fix
 - Remove redundant scripts dir to SOURCE_DIR
 - No confirm on pacman install
 - Wrong emacs.d path
+- Check if variable CI exists or set a default
+- Use personal Github for slimfish.
+- Keep a gitignore for each software.
+
+### GPG
+- Move gpg.conf to a template
+
+### Gdb
+- Define kernel configuration
+- Exclude RISC-V registers from fetch_registers
+- Add initial gdbinit from gdb-dashboard
+
+### Git
+- Use osxkeychain for OSX instead of Gnome-key.
+
+### Git
+- Add git-delta to gitconfig
+- Remove Git hooksPath
+- Move git config to a template
+- Use global template for post-commit
+- Add global gitignore file
+- Add gitlab username for Emacs Forge
+- Create default main branch instead of master
+- Git LFS filter and ignore mypy cache
+- undo-commit alias.
+- Changed PGP signing key
+- Cleaned repository with unused files
 
 ### GnuPG
 - Add pgp keys from BW
 
+### Homebrew
+- Remove font-source-code-pro font
+- Install slack/discord
+
+### I3
+- enable mod + o for dmenu options
+- Set wallpaper on I3 instead of xinitrc
+
+### I3
+- Use dmenu instead of rofi
+- Set bar mode to dock instead of hide
+- Open terminal in pwd of the focused window
+
+### IPython
+- Load grasp on start
+
+### ISync
+- add smtp and imap host to chezmoi config
+
+### Mbsync
+- Use far/near instead of master/slave
+- Set AuthMechs to PLAIN
+
+### Misc
+- Set html/css indentation rule
+
 ### Mopidy
+- Add systemd user service
 - Enable Internet Archive plugin
 - Add lastfm scrobbler support
 - Add podcast support
+- Use gstreamer fifo filesink
+- Add ncmpcpp and mopidy support
+
+### Neomutt
+- Check if secrets instead of env
+- Update keybindings
+- Set sendmail path according to the current OS
+- Skip pipe bar
+- View headers on email and set foward fmt
+- Enable Vi keybindings
+- Handle multiple email accounts
+- Add Neomutt with MSMTP
+
+### PGCli
+- Add pgcli initial config
 
 ### Pacman
+- Install aspell for Weechat
+- Remove jdk10-openjdk dependency
+- Don't install emacs/neovim as these are installed from AUR
+- Add missing wee-slack dependency
 - Remove intellij dependency
+
+### Playbooks
+- Updated playbook submodule
+
+### Playbooks
+- Updated submodule
+
+### Python
+- Add custom Ipython config with start.py
+
+### Rclone
+- Add rclone configuration
+
+### Readme
+- Updated readme
 
 ### Refactor
 - Run against shellcheck
 - Remove Ansible roles
+- Use Bitwarden instead of 1Password
+- Remove vim-fish
+- Removed virtualenv as we use pyenv now.
+
+### RescueTime
+- Delete RescueTime files and hooks
+
+### Ripgrep
+- Use rg to grep and find files with Denite and keep it config in env
 
 ### SSH
 - Remove private SSH flag
+- Add public/private SSH keys
+
+### Scripts
+- Install asmfmt for ASM format
+- Install or update Chezmoi
+- Fix grep exiting when checking if minimal is enabled
+- Check if Chezmoi's profile is set to minimal
+- Fix service typo and missing WantedBy rule
+- Remove paru after installing
+- Correctly configure date
+- Fix bad DIR variable and not found ansi --green
+- move created .python-version to $HOME
+- Create personal and work mail directory
+- Run tmux session on boot (OSX only)
+
+### Skhd
+- Add skhd for OSX key-bind management
 
 ### Skhdrc
+- Add emacsclient, firefox and Finder keybind
 - Add toggle support to F1
 
+### Skhrd
+- Add editor keybinding
+
 ### Tmux
+- xterm seems to make vim faster when scrolling
+- disable mouse support.
+
+### Tmux
+- Add work tmuxinator configuration
 - Update mux sessions
 - Add bitwarden support
 - Remove gruvbox-dark theme and use base16 plugin
@@ -133,8 +443,102 @@
 - Add mail counter
 - Use screen-256color by default
 - Add tmuxinator support
+- Add tmux-open plugin
+- Add tmux-resurrect
+- Use tmux-256color instead of xterm
+- set escape-time to 0 because of Weechat
+- Refactor Tmux theme
+- Use gruvbox theme and use gitmux
+- Better mouse mode with plugin enabled.
+
+### Vim
+- keep vim-fugitive enabled by default.
+
+### Vim
+- Add nvim configuration
+- Remove vim-startify config
+- Use base16-vim fork due to unupdated repo.
+- Enable semshi only for Python; Removed unused tabline plugin
+- Better Python syntax
+- Removed unused plugins
+- Neomake mypy and Flake8 makers.
+- Remove JS linter and re-add python version checker.
+- No need to check Python version.
+- Close NeoMake buffer on closing vim.
+- Set indentLine colours.
+- Denite custom binding
+- New plug configs
+- Autoindent, enable cursorline, hybrid numbers, remove encryption,     disabled arrow keys.
+- Find python host program dynamically
+- Added python version
+- Deoplet options
+- Remove YouComplete me and use Deoplet.
+- Renamed bookmarks
+- Set clipboard
+- Fish-shell syntax
+- Cleaned unused plugs
+- Use different rainbow parentheses with better colors.
+
+### Wakatime
+- Add wakatime config
 
 ### Weechat
+- Redraw every half hour
+- Don't monitor ##news
+- Add urlbar and nicklist support
+- Add chanmon support
+- Set highmon as buffer
+- Ignore away_info tag
+- Format Markdown's backticks
+- Update Bitwarden secrets
+- Upgrade scripts
+- Update autoloads
+- Add libera.chat account
+- Remove deprecated passphrase_file attr
+- Use weechat.conf as template and set SSL per system
+- Add tmuxnotify script
+- Use :: as prefix_suffix and set colours
+- Hide *status bar by default
+- Hide/Show vi line number on width resize
+- hide highmon and highmon_title on height resize
+- Refactor chat nick suffixes/prefixes
+- Use buflist instead of the deprecated buffers.pl
+- Add chezmoi-add alias
+- Update colorize_nicks
+- Run /clearquerybuff every 8 hours
+- Run /clearhighmon every 8 hours
+- Run /clearchanbuff every 8 hours
+- Save configuration every hour
+- Highlight 'chezmoi'
+- Add resize trigger
+- Add no_log trigger to ZNC's *status buffer
+- Display channel shortname in highmon
+- Don't log to highmon if buffer is ZNC's *status
+- add highmon clear alias
+- Create toggle timestamp alias
+- Enable shortnames on /go
+- Change buffer list max size
+- Update plugins.xml
+- Add darkscience network
+- Add 2600 IRC network
+- Rename bnc -> bnc_freenode
+- Add anti_password script
+- Realign nick and message
+- Switch to buffer on join
+- Use pbpaste as vimode clipboard
+- Display line number
+- Disable buffer_nicklist_count and highlights
+- Align prefix right and remove sufix/max
+- highlight dotfiles by default
+- Change logger mask format
+- Enable sysinfo and unwanted_msg script
+- Don't notify on day change
+- Use '-' as read marker
+- Align prefix to 8 characters
+- Disable auto switch on join
+- Disable slack autoload
+- Show buffers left instead of top position
+- Remove terminal_notifier
 - Change url_log path and enable highmon log
 - Add OFTC server
 - Add ClearAllQuery and Channel buffers
@@ -142,8 +546,60 @@
 - Improve /go colors
 - Add Slack support
 - Save irclogs in $HOME/irclogs
+- Use homedir provided by Chezmoi
+- Share input across all window/buffers
+- Close buffer on part and change part message
+- Add /msg nickserv alias to nickserv
+- Delete notification_center script
+- add autoaway and screen_away scripts
+- Fix bad symlinks
+- Install anotify script for linux
+- Remove iset script
+- Don't instantiate Config on Mail's __init__
+- Add terminal_notifier script (OSX)
+- Update check_mail script with weechat register
+- add check_mail script
+- Enable autohide buffer script
+- Move highmon to bar instead of buffer
+- Change separator symbol and color
+- Add ZNC aliases
+- Disable go auto_jump
+- Realign default layout
+- Disable status and input from highmon
+- Update default layout
+- Add new scripts and fix chat suffix
+- Add personal BNC
+- Add highmon, go plugins
+- Add BNC server
+- Fix vi keybinding conflict
+- Update theme and enable vim-mode
+- Add weechat config
+- Weechat has been removed due to the lack of use.
+
+### X
+- Add dwm support
+- Use Xsession for starting i3wm
+- Use bg-scale when setting wallaper
+- Use picom instead of xcompmgr
+- Start unclutter on .xinitrc
+- Run Feh on X start for setting a wallpaper
 
 ### Zsh
+- Load rbenv module from zprezto
+- Function to open up daily logbooks
+
+### Zsh
+- Update chezmoi completion file
+- Add codestats support
+- Enable autosuggestions plugin
+- Don't set tmuxenv when not in Tmux
+- Export RUST_SRC_PATH asynced
+- Show Homebrew dots every minute
+- Fix no-newline been eaten by zsh
+- Add github repo token variable
+- Add blog-gen function to generate roam to hugo
+- Update RISCV_PATH
+- Add basictex path if available
 - Remove unused OP_SESSION_my variable
 - Add weechat passphrase to secret-env
 - Set tmuxinator alias
@@ -157,6 +613,50 @@
 - Add Cargo and rustup completion
 - Add RISC_PATH to PATHs
 - Source rust env if available
+- Move .zshenv code to exports.zsh
+- Enable shell support for ActivityWatch
+- Add brewfile alias
+- Add dotfiles-update function
+- Add bitwarden zsh completion
+- Add Hugo zsh completion
+- Check if doom directory exists and set alias
+- Check message on antibody bundle execution
+- Enable ^W for backward kill word
+- Update zsh history configuration
+- Update stack configuration
+- Add cd aliases
+- Move git aliases to git_aliases.zsh instead
+- Alias weechat to run with screen-256color
+- Use legacy version of slimline
+- Update slimline RPROMPT section
+- Use z.lua instead of robbyrussell/z
+- Move evals to evals.zsh with async support
+- Set gitline repo indicator and branch
+- Add keybase completion
+- Move CI/secrets check to .chezmoiignore
+- Move heavy weight functions to init.zsh
+- Use z.lua instead of fasd
+- Source pyenv zsh completion on start
+- Alias ggrep and set GREP_OPTIONS
+- Add 1pass-cli completion
+- Add poetry completion and PATH
+- Update zsh aliases for editor
+- Add docker-compose completion
+- Add Github 'gh' command completion
+- Use FZF completion from opt/ if on OSX
+- Source FZF completion/binding on Linux
+- Add HEROKU autocomplete path
+- Add 'c' as in clear for alias
+- Don't export VIRTUALENVWRAPPER_PYTHON due to pyenv Zsh: Removed rbenv.
+- Defer syntax highlight.
+- Updated zplug syntax
+
+### Reverts
+- Chore: Temporary disable Archlinux build
+- Chore: Update pacman-db before installing packages
+- Tmux: Use tmux-256color instead of xterm
+- Zsh: Use legacy version of slimline
+- Neomutt: Enable Vi keybindings
 
 
 <a name="v4.0"></a>
@@ -1567,7 +2067,8 @@
 <a name="v1.1-OSX"></a>
 ## v1.1-OSX - 2017-04-15
 
-[Unreleased]: https://github.com/benmezger/dotfiles/compare/v4.0...HEAD
+[Unreleased]: https://github.com/benmezger/dotfiles/compare/v5.0...HEAD
+[v5.0]: https://github.com/benmezger/dotfiles/compare/v4.0...v5.0
 [v4.0]: https://github.com/benmezger/dotfiles/compare/v3.1...v4.0
 [v3.1]: https://github.com/benmezger/dotfiles/compare/v3.0...v3.1
 [v3.0]: https://github.com/benmezger/dotfiles/compare/v2.1...v3.0
