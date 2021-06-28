@@ -141,6 +141,7 @@ brew "plantuml"
 brew "shfmt"
 brew "shellcheck"
 brew "git-delta"
+brew "libmagic"
 
 cask "bitwarden"
 cask "alacritty"
