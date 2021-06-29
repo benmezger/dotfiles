@@ -142,6 +142,7 @@ brew "shfmt"
 brew "shellcheck"
 brew "git-delta"
 brew "libmagic"
+brew "fortune"
 
 cask "bitwarden"
 cask "alacritty"
