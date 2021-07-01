@@ -21,6 +21,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	rm -rf "$HOME/Applications/Mute Me.app/"
 	mv "/tmp/Mute Me.app" "$HOME/Applications"
 
+	ansi --green "Installing Itsycal"
+	curl https://itsycal.s3.amazonaws.com/Itsycal.zip \
+		-L -o /tmp/itsycal.zip
+
+	unzip -o /tmp/itsycal.zip -d /tmp/
+	rm -rf "$HOME/Applications/Itsycal.app/"
+	mv "/tmp/Itsycal.app" "$HOME/Applications"
+
+
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# ask sudo upfront
 	sudo -v
