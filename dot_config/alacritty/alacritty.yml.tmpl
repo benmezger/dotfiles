@@ -280,6 +280,7 @@ shell:
   program: /usr/local/bin/zsh
   args:
     - -l
+    - -i
     - -c
     - "tmux attach -t main || tmux new -s main"
   {{- else }}
