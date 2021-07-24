@@ -89,6 +89,7 @@ dotfiles-update() { cd "$HOME/dotfiles" && ./install.sh; }
 
 if (( $+commands[brew] )); then
     brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
+    alias tailf="tail -f"
 fi
 
 if [[ $+commands[emacs] && -f "$HOME/workspace/blog/org_to_hugo.el" ]]; then
