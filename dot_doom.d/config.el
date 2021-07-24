@@ -282,10 +282,10 @@
                         (mu4e-drafts-folder     . "/personal/drafts")
                         (mu4e-trash-folder      . "/personal/trash")
                         (mu4e-refile-folder     . "/personal/archives")
-                        (user-mail-address . "me@benmezger.nl")
+                        (user-mail-address      . "me@benmezger.nl")
                         (smtpmail-smtp-user     . "me@benmezger.nl")
-                        (smtpmail-smtp-server     . "smtp.gmail.com")
-                        (smtpmail-smtp-service . 587)
+                        (smtpmail-smtp-server   . "smtp.gmail.com")
+                        (smtpmail-smtp-service  . 587)
                         (mu4e-compose-signature . "---\nBen Mezger")))
 
   (set-email-account! "work"
@@ -293,10 +293,10 @@
                         (mu4e-drafts-folder     . "/work/drafts")
                         (mu4e-trash-folder      . "/work/trash")
                         (mu4e-refile-folder     . "/work/all")
-                        (smtpmail-smtp-user     . "ben@ckl.io")
-                        (user-mail-address . "ben@ckl.io")
-                        (smtpmail-smtp-server     . "smtp.gmail.com")
-                        (smtpmail-smtp-service . 587)
+                        (smtpmail-smtp-user     . "benjamin@nook.io")
+                        (user-mail-address      . "benjamin@nook.io")
+                        (smtpmail-smtp-server   . "smtp.gmail.com")
+                        (smtpmail-smtp-service  . 587)
                         (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
 
 (after! org-ref
