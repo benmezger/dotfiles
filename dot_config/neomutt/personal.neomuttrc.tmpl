@@ -20,6 +20,8 @@ set spoolfile = +inbox
 set postponed = "+drafts"
 set header_cache = ~/.cache/mutt/personal/headers
 set message_cachedir= ~/.cache/mutt/personal/bodies
+set smtp_authenticators = 'gssapi:login'
+
 unset record
 
 unset move # gmail handles that
