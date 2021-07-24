@@ -144,6 +144,7 @@ brew "git-delta"
 brew "libmagic"
 brew "fortune"
 brew "poetry"
+brew "w3m"
 
 cask "bitwarden"
 cask "alacritty"
