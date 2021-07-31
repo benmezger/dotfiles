@@ -35,7 +35,11 @@ function _tmux_autostart(){
   precmd_functions=(${precmd_functions#_tmux_autostart})
 }
 
-precmd_functions+=( _tmux_autostart )
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+
+precmd_functions+=(_tmux_autostart, _fix_cursor)
 
 # from: http://www.zsh.org/mla/users/2001/msg00870.html
 custom-backward-delete-word() {
