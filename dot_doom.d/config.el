@@ -355,3 +355,8 @@
 (define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
   (lambda () (code-stats-mode 1)))
 (my-global-code-stats-mode)
+
+
+(after! org-msg
+  :config
+  (setq org-msg-default-alternatives '(text)))
