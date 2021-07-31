@@ -49,7 +49,7 @@
        (eval +overlay)
        (lookup
         +docsets)
-       (lsp +eglot)
+       (lsp)
        (magit +forge)
        make
        terraform
@@ -72,7 +72,7 @@
         +dragndrop
         +journal)
        plantuml
-       (python +pyenv)
+       (python +pyenv +lsp)
        rest
        (rust +eglot)
        (sh +lsp)
