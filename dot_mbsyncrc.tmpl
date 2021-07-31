@@ -43,7 +43,7 @@ Channel personal-sent
 Channel personal-trash
 Channel personal-archives
 
-{{- if .workconf }}
+{{ if .workconf -}}
 IMAPAccount work
 Host {{ .work.imap_host }}
 User {{ .work.workmail }}
