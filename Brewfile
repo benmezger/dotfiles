@@ -145,6 +145,7 @@ brew "libmagic"
 brew "fortune"
 brew "poetry"
 brew "w3m"
+brew "gist"
 
 cask "bitwarden"
 cask "alacritty"

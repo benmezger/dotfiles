@@ -96,6 +96,7 @@ themes
 .weechat/weechat.conf
 .config/mopidy/mopidy.conf
 .config/rclone/rclone.conf
+.gist
 
 .gnupg/pubring.kbx
 .gnupg/trustdb.gpg

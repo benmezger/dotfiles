@@ -107,3 +107,8 @@ if (( $+commands[tmuxinator] )); then
     alias mux="tmuxinator"
     alias m="tmuxinator"
 fi
+
+
+if (( $+commands[gist] )); then
+    alias gist="gist -p"
+fi
