@@ -62,6 +62,31 @@ importance: [buildcheck.sh](./scripts/buildcheck.sh) and
 running in a `CI` environment while the latter checks if the install profile is
 equal to minimal.
 
+| Command               | Description                                 |
+| --------------------- | ------------------------------------------- |
+| make start-services   | Starts services (systemd, brew services..). |
+| make git-repos        | Clone Git repos.                            |
+| make conf-sys         | Configure system files.                     |
+| make ssh-perms        | Set SSH permissions.                        |
+| make gnupg-perms      | Set GnuPG permissions.                      |
+| make pyenv            | Install pyenv.                              |
+| make osx-defaults     | Configure defaults for OSX.                 |
+| make ensure-deps      | Install all dependencies.                   |
+| make chezmoi-init     | Initialize chezmoi.                         |
+| make chezmoi-apply    | Apply chezmoi files (runs all scripts).     |
+| make post-chezmoi     | Run post chezmoi scripts.                   |
+| make install-homebrew | Install Homebrew.                           |
+| make install-chezmoi  | Install chezmoi.                            |
+| make install-aur      | Install AUR packages .                      |
+| make install-deps     | Install system dependencies.                |
+| make ensure-dirs      | Creates required directories.               |
+| make install-riscv    | Install RISC-V toolchain and dependencies.  |
+| make install-rust     | Install Rust.                               |
+| make install-go-deps  | Install go dependencies.                    |
+| make install-osx-app  | Install MacOS applications (requires mas).  |
+| make run              | Ensure deps and apply chezmoi.              |
+| make all              | Run all.                                    |
+
 ## Keybindings
 
 ### OSX
