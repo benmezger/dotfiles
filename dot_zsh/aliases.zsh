@@ -2,6 +2,7 @@
 
 source $HOME/.zsh/git_aliases.zsh 
 
+alias init-completion="rm -f $HOME/.zcompdump; compinit"
 alias dotfiles="cd ~/dotfiles"
 alias fucking='sudo'
 alias vi="vim"
