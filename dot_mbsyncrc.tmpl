@@ -37,11 +37,16 @@ Channel personal-trash
 Far :personal-remote:"[Gmail]/Bin"
 Near :personal-local:trash
 
+Channel personal-drafts
+Far :personal-remote:"[Gmail]/Drafts"
+Near :personal-local:drafts
+
 Group personal
 Channel personal-inbox
 Channel personal-sent
 Channel personal-trash
 Channel personal-archives
+Channel personal-drafts
 
 {{ if .workconf -}}
 IMAPAccount work
@@ -65,16 +70,26 @@ Far :work-remote:
 Near :work-local:
 Patterns "INBOX"
 
+Channel work-archives
+Far :work-remote:"[Gmail]/All Mail"
+Near :work-local:archives
+
 Channel work-sent
 Far :work-remote:"[Gmail]/Sent Mail"
 Near :work-local:sent
 
 Channel work-trash
-Far :work-remote:"[Gmail]/Trash"
+Far :work-remote:"[Gmail]/Bin"
 Near :work-local:trash
+
+Channel work-drafts
+Far :work-remote:"[Gmail]/Drafts"
+Near :work-local:drafts
 
 Group work
 Channel work-inbox
 Channel work-sent
 Channel work-trash
+Channel work-drafts
+
 {{- end }}
