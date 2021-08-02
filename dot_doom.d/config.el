@@ -292,7 +292,7 @@
                       '((mu4e-sent-folder       . "/work/sent")
                         (mu4e-drafts-folder     . "/work/drafts")
                         (mu4e-trash-folder      . "/work/trash")
-                        (mu4e-refile-folder     . "/work/all")
+                        (mu4e-refile-folder     . "/work/archives")
                         (smtpmail-smtp-user     . "benjamin@nook.io")
                         (user-mail-address      . "benjamin@nook.io")
                         (smtpmail-smtp-server   . "smtp.gmail.com")
