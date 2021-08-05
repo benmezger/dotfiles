@@ -286,7 +286,9 @@
                         (smtpmail-smtp-user     . "me@benmezger.nl")
                         (smtpmail-smtp-server   . "smtp.gmail.com")
                         (smtpmail-smtp-service  . 587)
-                        (mu4e-compose-signature . "---\nBen Mezger")))
+                        (mu4e-compose-signature . (with-temp-buffer
+                                                    (insert-file-contents "~/.config/neomutt/signature.personal")
+                                                    (buffer-string)))))
 
   (set-email-account! "work"
                       '((mu4e-sent-folder       . "/work/sent")
