@@ -1,23 +1,49 @@
-; -*- mode: emacs-lisp;-*-
-;;; $DOOMDIR/mu4e.el -*- lexical-binding: t; -*-
+;; -*- mode: emacs-lisp;-*-
+;;; $DOOMDIR/chezmoi.el -*- lexical-binding: t; -*-
 
-{{- if not .minimal }}
+(setq user-full-name "{{ .name }}"
+      user-mail-address "{{ .email }}")
+
+{{ if or (not .minimal) (and .secrets) -}}
+(use-package! wakatime-mode
+  :init
+  {{ if eq .chezmoi.os "darwin" -}}
+  (setq wakatime-cli-path "/usr/local/bin/wakatime")
+  {{ else -}}
+  (setq wakatime-cli-path "/usr/bin/wakatime")
+  {{ end -}}
+
+  :config
+  (global-wakatime-mode))
+
+(use-package! code-stats
+  :defer t
+  :config
+  (setq code-stats-token (auth-source-pick-first-password :host "codestats.net"))
+  (add-hook 'prog-mode-hook #'code-stats-mode)
+  (run-with-idle-timer 30 t #'code-stats-sync)
+  (add-hook 'kill-emacs-hook (lambda () (code-stats-sync :wait))))
+
+(define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
+  (lambda () (code-stats-mode 1)))
+(my-global-code-stats-mode)
+
 (after! mu4e
   :defer t
   :config
-  (cond ((string-equal system-type "gnu/linux")
-         (setq sendmail-program "/usr/bin/msmtp"
-               send-mail-function 'smtpmail-send-it
-               message-sendmail-f-is-evil t
-               message-sendmail-extra-arguments '("--read-envelope-from"))
-         message-send-mail-function 'message-send-mail-with-sendmail)
-        ((string-equal system-type "darwin")
-         (setq sendmail-program "/usr/local/bin/msmtp"
-               send-mail-function 'smtpmail-send-it
-               message-sendmail-f-is-evil t
-               message-sendmail-extra-arguments '("--read-envelope-from")
-               message-send-mail-function 'message-send-mail-with-sendmail)))
-
+  {{ if eq .chezmoi.os "darwin" -}}
+  (setq sendmail-program "/usr/local/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail)
+  {{ else -}}
+  (setq sendmail-program "/usr/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail)
+  {{- end }}
   (set-email-account! "personal"
                       '((mu4e-sent-folder       . "/personal/sent")
                         (mu4e-drafts-folder     . "/personal/drafts")
@@ -67,4 +93,4 @@
   (setq +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
                                {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})))
 
-{{- end }}
+{{ end -}}

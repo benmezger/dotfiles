@@ -1,8 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq user-full-name "Ben Mezger"
-      user-mail-address "me@benmezger.nl"
-      doom-font (font-spec :family "Hack" :size 14)
+(setq doom-font (font-spec :family "Hack" :size 14)
       doom-theme 'doom-monokai-spectrum
       display-line-numbers-type t
       default-directory "~/"
@@ -293,16 +291,8 @@
   (let ((editorconfig-exclude-regexps '(".")))
     (apply orig-fn args)))
 
-
-(define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
-  (lambda () (code-stats-mode 1)))
-(my-global-code-stats-mode)
-
-
 (after! org-msg
   :config
   (setq org-msg-default-alternatives '(text)))
 
-(load "~/.doom.d/mu4e")
-(load "~/.doom.d/codestats")
-(load "~/.doom.d/wakatime")
+(load "~/.doom.d/chezmoi")
