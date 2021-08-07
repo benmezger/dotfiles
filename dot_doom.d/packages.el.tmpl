@@ -1,7 +1,7 @@
-;; -*- no-byte-compile: t; -*-
+; -*- mode: emacs-lisp;-*-
+;; no-byte-compile: t; -*-
 
 (package! pyenv-mode-auto)
-(package! wakatime-mode)
 (package! ob-mermaid)
 (package! org-roam-server)
 (package! yasnippet-snippets)
@@ -9,4 +9,7 @@
 (package! citeproc-org)
 (package! helm
   :disable t)
+{{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
+(package! wakatime-mode)
+{{- end }}
