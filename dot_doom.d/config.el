@@ -260,71 +260,6 @@
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
 
-
-(after! mu4e
-  :defer t
-  :config
-  (cond ((string-equal system-type "gnu/linux")
-         (setq sendmail-program "/usr/bin/msmtp"
-               send-mail-function 'smtpmail-send-it
-               message-sendmail-f-is-evil t
-               message-sendmail-extra-arguments '("--read-envelope-from"))
-         message-send-mail-function 'message-send-mail-with-sendmail)
-        ((string-equal system-type "darwin")
-         (setq sendmail-program "/usr/local/bin/msmtp"
-               send-mail-function 'smtpmail-send-it
-               message-sendmail-f-is-evil t
-               message-sendmail-extra-arguments '("--read-envelope-from")
-               message-send-mail-function 'message-send-mail-with-sendmail)))
-
-  (set-email-account! "personal"
-                      '((mu4e-sent-folder       . "/personal/sent")
-                        (mu4e-drafts-folder     . "/personal/drafts")
-                        (mu4e-trash-folder      . "/personal/trash")
-                        (mu4e-refile-folder     . "/personal/archives")
-                        (user-mail-address      . "me@benmezger.nl")
-                        (smtpmail-smtp-user     . "me@benmezger.nl")
-                        (smtpmail-smtp-server   . "smtp.gmail.com")
-                        (smtpmail-smtp-service  . 587)
-                        (mu4e-compose-signature . (with-temp-buffer
-                                                    (insert-file-contents "~/.config/neomutt/signature.personal")
-                                                    (buffer-string)))))
-
-  (set-email-account! "work"
-                      '((mu4e-sent-folder       . "/work/sent")
-                        (mu4e-drafts-folder     . "/work/drafts")
-                        (mu4e-trash-folder      . "/work/trash")
-                        (mu4e-refile-folder     . "/work/archives")
-                        (smtpmail-smtp-user     . "benjamin@nook.io")
-                        (user-mail-address      . "benjamin@nook.io")
-                        (smtpmail-smtp-server   . "smtp.gmail.com")
-                        (smtpmail-smtp-service  . 587)
-                        (mu4e-compose-signature . "---\nBen Mezger, Backend developer")))
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "University"
-                  :query "maildir:'/personal/archives' AND univali OR UNIVALI"
-                  :key   ?x) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Sent"
-                  :query "maildir:/personal/sent"
-                  :key   ?s) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name "Messages with pdfs"
-                  :query "mime:application/pdf"
-                  :key ?a) t)
-
-  ;; don't need to run cleanup after indexing for gmail
-  (setq mu4e-index-cleanup nil
-        ;; because gmail uses labels as folders we can use lazy check since
-        ;; messages don't really "move"
-        mu4e-index-lazy-check t)
-
-  (setq +mu4e-gmail-accounts '(("me@benmezger.nl" . "personal")
-                               ("benjamin@nook.io" . "work"))))
-
 (after! org-ref
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite)
@@ -386,3 +321,5 @@
 (after! org-msg
   :config
   (setq org-msg-default-alternatives '(text)))
+
+(load "~/.doom.d/mu4e")
