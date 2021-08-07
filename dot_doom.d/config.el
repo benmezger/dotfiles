@@ -299,7 +299,31 @@
                         (user-mail-address      . "benjamin@nook.io")
                         (smtpmail-smtp-server   . "smtp.gmail.com")
                         (smtpmail-smtp-service  . 587)
-                        (mu4e-compose-signature . "---\nBen Mezger, Backend developer"))))
+                        (mu4e-compose-signature . "---\nBen Mezger, Backend developer")))
+
+  (add-to-list 'mu4e-bookmarks
+               '( :name  "University"
+                  :query "maildir:'/personal/archives' AND univali OR UNIVALI"
+                  :key   ?x) t)
+
+  (add-to-list 'mu4e-bookmarks
+               '( :name  "Sent"
+                  :query "maildir:/personal/sent"
+                  :key   ?s) t)
+
+  (add-to-list 'mu4e-bookmarks
+               '( :name "Messages with pdfs"
+                  :query "mime:application/pdf"
+                  :key ?a) t)
+
+  ;; don't need to run cleanup after indexing for gmail
+  (setq mu4e-index-cleanup nil
+        ;; because gmail uses labels as folders we can use lazy check since
+        ;; messages don't really "move"
+        mu4e-index-lazy-check t)
+
+  (setq +mu4e-gmail-accounts '(("me@benmezger.nl" . "personal")
+                               ("benjamin@nook.io" . "work"))))
 
 (after! org-ref
   :config
