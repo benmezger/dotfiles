@@ -38,6 +38,7 @@ themes
 {{- if .minimal }}
 *
 .env-secrets
+.mailrc
 !.zsh/*
 !.zshrc
 
