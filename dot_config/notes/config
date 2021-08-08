@@ -1,0 +1,4 @@
+EDITOR=emacsclient
+QUICKNOTE_FORMAT="%Y%m%d"
+NOTES_EXT="org"
+NOTES_DIRECTORY=~/workspace/org/journal

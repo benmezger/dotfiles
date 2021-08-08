@@ -39,3 +39,8 @@ if [ ! -d "$EMACS_PATH" ]; then
 else
 	"$EMACS_PATH"/bin/doom -y sync -e
 fi
+
+NOTES_PATH="/usr/local/bin/notes"
+if [ ! -f "$NOTES_PATH" ]; then
+	curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | bash
+fi
