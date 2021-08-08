@@ -218,6 +218,11 @@
 (use-package! org-roam-server
   :defer t)
 
+(after! org-journal
+  :defer t
+  :config
+  (setq org-journal-file-format "%Y%m%d.org"))
+
 (after! deft
   :defer t
   :config
