@@ -85,6 +85,11 @@
                   :key   ?s) t)
 
   (add-to-list 'mu4e-bookmarks
+               '( :name  "Drafts"
+                  :query "maildir:/personal/drafts"
+                  :key   ?d) t)
+
+  (add-to-list 'mu4e-bookmarks
                '( :name "Messages with pdfs"
                   :query "mime:application/pdf"
                   :key ?a) t)
