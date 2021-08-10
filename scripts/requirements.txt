@@ -3,3 +3,4 @@ python-language-server
 black
 organize-tool
 pygments
+pynvim
