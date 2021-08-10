@@ -70,8 +70,13 @@
   {{- end }}
 
   (add-to-list 'mu4e-bookmarks
+               '( :name  "Notes"
+                  :query "maildir:/personal/notes from:{{ .email }}"
+                  :key   ?b) t)
+
+  (add-to-list 'mu4e-bookmarks
                '( :name  "University"
-                  :query "maildir:'/personal/archives' AND univali OR UNIVALI"
+                  :query "maildir:/personal/archives AND univali OR UNIVALI"
                   :key   ?x) t)
 
   (add-to-list 'mu4e-bookmarks
