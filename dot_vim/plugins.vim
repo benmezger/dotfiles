@@ -16,6 +16,8 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'} " Better
 Plug 'wakatime/vim-wakatime' " Code tracking
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+
 
 " Add plugins to &runtimepath
 call plug#end()
