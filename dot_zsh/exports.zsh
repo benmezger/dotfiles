@@ -86,3 +86,4 @@ fi
 export ORGANIZE_CONFIG=$HOME/.config/organize-tool/config.yaml
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export HTML_TIDY="$HOME/.config/tidyrc"

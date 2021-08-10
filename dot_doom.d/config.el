@@ -58,7 +58,8 @@
 
 (after! flycheck
   :config
-  (setq flycheck-check-syntax-automatically '(save mode-enable)))
+  (setq flycheck-check-syntax-automatically '(save mode-enable))
+  (setq flycheck-tidyrc "~/.config/tidyrc"))
 
 (after! ivy
   :config
@@ -299,5 +300,9 @@
 (after! org-msg
   :config
   (setq org-msg-default-alternatives '(text)))
+
+(set-formatter! 'html-tidy
+  "tidy -config ~/.config/tidyrc"
+  :modes '(html-mode web-mode))
 
 (load "~/.doom.d/chezmoi")

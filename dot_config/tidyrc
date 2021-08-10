@@ -1,0 +1,6 @@
+indent: auto
+indent-spaces: 2
+wrap: 72
+markup: yes
+tidy-mark: no
+quiet: yes
