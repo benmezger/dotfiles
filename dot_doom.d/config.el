@@ -142,6 +142,8 @@
         `(
           ("c" "Code" entry (file "~/workspace/org/code.org")
            (file ,(concat org-capture-template-dir "code-snippet.capture")))
+          ("i" "Inbox" entry (file "~/workspace/org/inbox.org")
+           (file ,(concat org-capture-template-dir "inbox-snippet.capture")))
           ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
            (file ,(concat org-capture-template-dir "blog-post.capture")))
           ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
