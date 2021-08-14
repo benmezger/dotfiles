@@ -303,6 +303,11 @@
   :config
   (setq org-msg-default-alternatives '(text)))
 
+(after! org-id
+  :defer t
+  :config
+  (setq org-id-locations-file (concat org-directory "/.orgid")))
+
 (set-formatter! 'html-tidy
   "tidy -config ~/.config/tidyrc"
   :modes '(html-mode web-mode))
