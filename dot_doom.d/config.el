@@ -221,7 +221,7 @@
 (after! deft
   :defer t
   :config
-  (setq deft-directory org-directory)
+  (setq deft-directory "~/workspace/org")
   (setq deft-extensions '("org" "md" "txt"))
   (setq deft-default-extension "org")
   (setq deft-recursive t)
