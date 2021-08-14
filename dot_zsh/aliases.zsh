@@ -112,3 +112,7 @@ fi
 if (( $+commands[gist] )); then
     alias gist="gist -p"
 fi
+
+function dotf {
+	(cd $HOME/dotfiles && make "$1")
+}
