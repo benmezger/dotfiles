@@ -154,7 +154,7 @@
            (file ,(concat org-capture-template-dir "new-book.capture")))
           ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
            (file ,(concat org-capture-template-dir "decision.capture")))
-          ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/journal/weekly.org" "Weekly notes")
+          ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
            (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week)))
 
 
@@ -214,9 +214,7 @@
 (after! org-journal
   :defer t
   :config
-  (setq org-journal-dir "~/workspace/journal")
-  (setq org-journal-file-format "%Y%m%d.org")
-  (push org-journal-dir org-agenda-files))
+  (setq org-journal-file-format "%Y%m%d.org"))
 
 (after! deft
   :defer t
