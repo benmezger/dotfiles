@@ -117,7 +117,7 @@
   (setq org-clock-persist 'history)
   (setq org-directory "~/workspace/org")
   (setq org-archive-location "archives/%s_archive::")
-  (setq org-agenda-files (list org-directory org-roam-directory))
+  (setq org-agenda-files (list org-directory))
   (org-clock-persistence-insinuate)
   (setq-default org-catch-invisible-edits 'smart)
   (setq org-log-into-drawer t)
@@ -197,6 +197,7 @@
 
 (after! (org org-roam)
   :defer t
+  (push org-roam-directory org-agenda-files)
   (defun benmezger/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
     (interactive)
