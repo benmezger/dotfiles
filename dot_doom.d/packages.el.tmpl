@@ -1,4 +1,4 @@
-; -*- mode: emacs-lisp;-*-
+;; -*- mode: emacs-lisp;-*-
 ;; no-byte-compile: t; -*-
 
 (package! pyenv-mode-auto)
@@ -9,6 +9,9 @@
 (package! citeproc-org)
 (package! helm
   :disable t)
+(package! ox-hugo
+  :recipe (:host github :repo "kaushalmodi/ox-hugo" :nonrecursive t)
+  :pin "6ec3d054ddadbca1f5effb961c1db583e377ca35")
 {{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
 (package! wakatime-mode)

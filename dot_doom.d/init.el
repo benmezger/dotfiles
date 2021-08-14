@@ -64,7 +64,7 @@
        latex
        markdown
        (org
-        +roam
+        +roam2
         +hugo
         +journal
         +gnuplot

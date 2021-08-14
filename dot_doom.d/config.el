@@ -166,26 +166,24 @@
   (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
 
   (setq org-roam-capture-templates
-        '(("d" "default" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
-           :head "#+TITLE: ${title}
+        '(("d" "default" plain "%?"
+           :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                              "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: %^G
 #+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
 
-- tags :: "
+- tags :: ")
            :unnarrowed t)
-          ("p" "private" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)"
-           :head "#+TITLE: ${title}
+          ("p" "private" plain "%?"
+           :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                              "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: :personal:%^G
 #+HUGO_SLUG: ${slug}
-"
+")
            :unnarrowed t)))
 
   (defun custom-org-protocol-focus-advice (orig &rest args)
@@ -208,15 +206,6 @@
           (org-hugo-export-wim-to-md)))))
 
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
-
-(after! (org ox-hugo)
-  :defer t
-  (defun benmezger/conditional-hugo-enable ()
-    (save-excursion
-      (if (cdr (assoc "SETUPFILE" (org-roam--extract-global-props '("SETUPFILE"))))
-          (org-hugo-auto-export-mode +1)
-        (org-hugo-auto-export-mode -1))))
-  (add-hook 'org-mode-hook #'benmezger/conditional-hugo-enable))
 
 (use-package! org-roam-server
   :defer t)
@@ -312,8 +301,9 @@
     "Update all org ids."
     (interactive)
     (org-id-update-id-locations
-      (directory-files-recursively
-        org-roam-directory ".org$\\|.org.gpg$"))))
+     (directory-files-recursively
+      org-roam-directory ".org$\\|.org.gpg$")))
+  )
 
 (set-formatter! 'html-tidy
   "tidy -config ~/.config/tidyrc"
