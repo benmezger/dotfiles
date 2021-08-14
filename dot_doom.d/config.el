@@ -306,7 +306,14 @@
 (after! org-id
   :defer t
   :config
-  (setq org-id-locations-file (concat org-directory "/.orgid")))
+  (setq org-id-locations-file (concat org-directory "/.orgid"))
+
+  (defun benmezger/org-update-org-ids ()
+    "Update all org ids."
+    (interactive)
+    (org-id-update-id-locations
+      (directory-files-recursively
+        org-roam-directory ".org$\\|.org.gpg$"))))
 
 (set-formatter! 'html-tidy
   "tidy -config ~/.config/tidyrc"
