@@ -48,7 +48,7 @@
        editorconfig
        (eval +overlay)
        (lookup
-        +docsets)
+        +docsets +dictionary)
        (lsp)
        (magit +forge)
        make
