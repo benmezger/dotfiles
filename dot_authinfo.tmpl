@@ -2,3 +2,4 @@ machine {{ .imap_host }} login {{ .email }} password {{ (bitwarden "item" .bitwa
 machine {{ .smtp_host }} login {{ .email }} password {{ (bitwarden "item" .bitwarden.personal_mail).login.password }} port {{ .smtp_port }}
 machine api.github.com login {{ .github_user }}^forge password {{ (bitwarden "item" .bitwarden.github_repo_token).login.password }}
 machine codestats.net password {{ (bitwarden "item" .bitwarden.codestats_api_key).login.password }}
+machine {{ (index (bitwarden "item" .bitwarden.liberachat).login.uris 0).uri }} login seds password {{ (bitwarden "item" .bitwarden.liberachat).login.password }} port 6697

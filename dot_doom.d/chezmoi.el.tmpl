@@ -103,4 +103,31 @@
   (setq +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
                                {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})))
 
+
+(after! circe
+  :defer t
+  :config
+
+  (defun benmezger-fetch-password (&rest params)
+    (require 'auth-source)
+    (let ((match (car (apply #'auth-source-search params))))
+      (if match
+          (let ((secret (plist-get match :secret)))
+            (if (functionp secret)
+                (funcall secret)
+              secret))
+        (error "Password not found for %S" params))))
+
+  (defun benmezger-nickserv-password (server)
+    (benmezger-fetch-password
+     :user "seds"
+     :host "{{ (index (bitwarden "item" .bitwarden.liberachat).login.uris 0).uri }}"))
+
+  (set-irc-server! "{{ (index (bitwarden "item" .bitwarden.liberachat).login.uris 0).uri }}"
+                   '(:tls t
+                     :port 6697
+                     :nick "seds"
+                     :pass benmezger-nickserv-password
+                     :channels ("#emacs" "#osdev"))))
+
 {{ end -}}

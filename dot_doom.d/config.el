@@ -48,7 +48,7 @@
   (setq doom-modeline-indent-info t)
 
   (setq doom-modeline-mu4e nil)
-  (setq doom-modeline-irc nil)
+  (setq doom-modeline-irc t)
 
   (setq doom-modeline-env-version t)
   (setq doom-modeline-env-load-string "...")
