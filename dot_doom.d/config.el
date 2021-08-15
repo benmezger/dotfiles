@@ -47,7 +47,7 @@
   (setq doom-modeline-buffer-encoding t)
   (setq doom-modeline-indent-info t)
 
-  (setq doom-modeline-mu4e nil)
+  (setq doom-modeline-mu4e t)
   (setq doom-modeline-irc t)
 
   (setq doom-modeline-env-version t)
