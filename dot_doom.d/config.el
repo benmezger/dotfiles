@@ -175,7 +175,10 @@
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
 
-- tags :: ")
+- Related pages
+  -
+
+------ ")
            :unnarrowed t)
           ("p" "private" plain "%?"
            :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
