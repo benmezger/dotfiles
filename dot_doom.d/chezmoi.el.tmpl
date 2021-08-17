@@ -4,7 +4,7 @@
 (setq user-full-name "{{ .name }}"
       user-mail-address "{{ .email }}")
 
-{{ if or (not .minimal) (and .secrets) -}}
+{{ if and (not .minimal) (and .secrets) -}}
 (use-package! wakatime-mode
   :init
   {{ if eq .chezmoi.os "darwin" -}}
