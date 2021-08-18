@@ -308,8 +308,7 @@
     (interactive)
     (org-id-update-id-locations
      (directory-files-recursively
-      org-roam-directory ".org$\\|.org.gpg$")))
-  )
+      org-roam-directory ".org$\\|.org.gpg$"))))
 
 (set-formatter! 'html-tidy
   "tidy -config ~/.config/tidyrc"
