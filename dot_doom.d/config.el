@@ -10,6 +10,7 @@
 (display-battery-mode 1)
 (toggle-frame-maximized)
 (setq auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc"))
+(setq-default enable-local-variables t)
 
 (after! lsp-mode
   :config
