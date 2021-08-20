@@ -42,8 +42,9 @@ class EnsureLower(CommitRule):
     def validate(self, commit):
         return (
             None
-            if not all(
-                (x.islower() or x.isspace() or x == ":") for x in commit.message.title
+            if all(
+                (x.islower() or x.isspace() or x == ":" or x.isdigit())
+                for x in commit.message.title
             )
             else [
                 RuleViolation(
