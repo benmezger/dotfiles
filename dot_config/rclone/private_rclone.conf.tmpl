@@ -1,7 +1,7 @@
 [google-drive]
 type = drive
-client_id = {{ (index (bitwarden "item" .bitwarden.rclone_gdrive).fields 0).value }} 
-client_secret = {{ (bitwarden "item" .bitwarden.rclone_gdrive).login.password }}
+client_id = {{ (index (bitwarden "item" .bitwarden.googleapi).fields 0).value }} 
+client_secret = {{ (bitwarden "item" .bitwarden.googleapi).login.password }}
 scope = drive
-token = {{ (index (bitwarden "item" .bitwarden.rclone_gdrive).fields 1).value }}
+token = {{ (index (bitwarden "item" .bitwarden.googleapi).fields 1).value }}
 

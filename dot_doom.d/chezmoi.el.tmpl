@@ -131,4 +131,11 @@
                      :pass benmezger-nickserv-password
                      :channels ("#emacs" "#osdev"))))
 
+(after! org-gcal
+  :defer t
+  :config
+  (setq org-gcal-client-id "{{ (index (bitwarden "item" .bitwarden.googleapi).fields 0).value }}"
+        org-gcal-client-secret "{{ (bitwarden "item" .bitwarden.googleapi).login.password }}"
+        org-gcal-fetch-file-alist '(("{{ .email }}" . "~/workspace/org/schedule.org"))))
+
 {{ end -}}
