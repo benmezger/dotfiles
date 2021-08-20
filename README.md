@@ -139,3 +139,10 @@ export I3RS_GITHUB_TOKEN="your-github-token"
 ### Emacs
 
 ![](./static/emacs.png)
+
+## Contributing
+
+1. Ensure you have linted the commits before committing:
+   1. Install [pre-commit](https://pre-commit.com/)
+   1. Install the hook: `pre-commit install --hook-type commit-msg`
+1. Make the contribution and open a pull request

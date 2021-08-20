@@ -1,4 +1,4 @@
-roles
+rules/
 .github/
 Dockerfile
 LICENSE.md
