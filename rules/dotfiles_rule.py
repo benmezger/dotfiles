@@ -4,7 +4,7 @@ import pathlib
 from gitlint.rules import CommitRule, RuleViolation
 
 
-REMAPS = {"emacs": True, "chezmoi": True}
+REMAPS = {"emacs": True, "chezmoi": True, "osx": True, "archlinux": True}
 
 
 class DotfileStart(CommitRule):
