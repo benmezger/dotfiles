@@ -4,7 +4,13 @@ import pathlib
 from gitlint.rules import CommitRule, RuleViolation
 
 
-REMAPS = {"emacs": True, "chezmoi": True, "osx": True, "archlinux": True}
+REMAPS = {
+    "emacs": True,
+    "chezmoi": True,
+    "osx": True,
+    "archlinux": True,
+    "mbsync": True,
+}
 
 
 class DotfileStart(CommitRule):
@@ -13,7 +19,7 @@ class DotfileStart(CommitRule):
 
     def exists(self, config_name):
         for f in pathlib.Path().absolute().iterdir():
-            filename = f.name.lstrip("dot_").lstrip(".")
+            filename = f.name.lstrip("dot_").lstrip(".tmpl")
             if (f.is_dir() or f.is_file()) and (
                 filename == config_name or REMAPS.get(config_name, False)
             ):
