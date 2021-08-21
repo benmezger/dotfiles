@@ -52,7 +52,7 @@ class EnsureLower(CommitRule):
                 (
                     x.islower()
                     or x.isspace()
-                    or x in (":", "-", "/", "_", "!")
+                    or x in (":", "-", "/", "_", "!", "'", '"')
                     or x.isdigit()
                 )
                 for x in commit.message.title
