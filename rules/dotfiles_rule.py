@@ -43,7 +43,12 @@ class EnsureLower(CommitRule):
         return (
             None
             if all(
-                (x.islower() or x.isspace() or x == ":" or x.isdigit())
+                (
+                    x.islower()
+                    or x.isspace()
+                    or x in (":", "-", "/", "_", "!")
+                    or x.isdigit()
+                )
                 for x in commit.message.title
             )
             else [
