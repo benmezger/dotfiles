@@ -12,6 +12,7 @@
        modeline
        nav-flash
        ophints
+       doom-dashboard
        (popup
         +all
         +defaults)
