@@ -33,6 +33,13 @@
   :config
   (setq mu4e-hide-index-messages nil)
   (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-org-contacts-file "~/workspace/org/contacts.org")
+
+  (add-to-list 'mu4e-headers-actions
+               '("org-contact-add" . mu4e-action-add-org-contact) t)
+  (add-to-list 'mu4e-view-actions
+               '("org-contact-add" . mu4e-action-add-org-contact) t)
+
   ;; call syncmail script from $HOME/.bin/syncmail
   (setq mu4e-get-mail-command "syncmail --noindex")
 
