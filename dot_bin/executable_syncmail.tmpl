@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+. "$DIR/helpers/flock.sh"
+
+exlock_now || exit 0
+
 mkdir -p $HOME/mail/{work,personal}
 
 MAILDIR=$HOME/mail
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    mbsync=/usr/bin/mbsync
-    mu=/usr/bin/mu
+        mbsync=/usr/bin/mbsync
+        mu=/usr/bin/mu
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    mbsync=/usr/local/bin/mbsync
-    mu=/usr/local/bin/mu
+        mbsync=/usr/local/bin/mbsync
+        mu=/usr/local/bin/mu
 fi
 
 echo "Syncing mailboxes with '$mbsync'"
