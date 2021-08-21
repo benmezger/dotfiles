@@ -13,8 +13,14 @@
 LOCKFILE="/tmp/$(basename $0)"
 LOCKFD=99
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	flock=/usr/bin/flock
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	flock=/usr/local/bin/flock
+fi
+
 # PRIVATE
-_lock() { flock -$1 $LOCKFD; }
+_lock() { $flock -$1 $LOCKFD; }
 _no_more_locking() {
 	_lock u
 	_lock xn && rm -f $LOCKFILE
