@@ -13,6 +13,7 @@
   :recipe (:host github :repo "kaushalmodi/ox-hugo" :nonrecursive t)
   :pin "6ec3d054ddadbca1f5effb961c1db583e377ca35")
 (package! powerthesaurus :pin "93036d3b111925ebc34f747ff846cb0b8669b92e")
+(package! org-mime)
 {{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
 (package! wakatime-mode)

@@ -315,6 +315,35 @@
   "tidy -config ~/.config/tidyrc"
   :modes '(html-mode web-mode))
 
+(after! org-mime
+  :config
+  :defer t
+
+  (setq org-mime-export-options '(:section-numbers nil
+                                  :with-author nil
+                                  :with-toc nil))
+  (add-hook 'message-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
+  (add-hook 'mu4e-compose-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
+  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
+  (add-hook 'org-mime-html-hook
+            (lambda ()
+              (org-mime-change-element-style
+               "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
+                             "#E6E1DC" "#232323"))))
+
+  ;; the following can be used to nicely offset block quotes in email bodies
+  (add-hook 'org-mime-html-hook
+            (lambda ()
+              (org-mime-change-element-style
+               "blockquote" "border-left: 2px solid gray; padding-left: 4px;"))))
+
 (defun doom-dashboard-widget-footer ()
   (insert
    "\n"
