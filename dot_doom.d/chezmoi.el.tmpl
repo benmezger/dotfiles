@@ -33,6 +33,9 @@
   :config
   (setq mu4e-hide-index-messages nil)
   (setq mu4e-update-interval (* 10 60))
+  ;; call syncmail script from $HOME/.bin/syncmail
+  (setq mu4e-get-mail-command "syncmail --noindex")
+
   {{ if eq .chezmoi.os "darwin" -}}
   (setq sendmail-program "/usr/local/bin/msmtp"
         send-mail-function 'smtpmail-send-it

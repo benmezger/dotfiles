@@ -5,6 +5,21 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 exlock_now || exit 0
 
+noindex=false
+
+while [[ "$#" -gt 0 ]]; do
+        case $1 in
+                -n | --noindex) noindex=true ;;
+                *)
+                        echo "Unknown parameter passed: $1"
+                        echo "Available parameters"
+                        echo "-n/--noindex (default 0): disables mu indexing"
+                        exit 1
+                        ;;
+        esac
+        shift
+done
+
 mkdir -p $HOME/mail/{work,personal}
 
 MAILDIR=$HOME/mail
@@ -20,8 +35,12 @@ fi
 echo "Syncing mailboxes with '$mbsync'"
 $mbsync -Va
 
-echo "Ensuring 'mu' is initialized.."
-$mu init --my-address={{ .email }} {{ if .workconf }}--my-address={{ .work.workmail }}{{ end }} --maildir=$MAILDIR
+if $noindex; then
+        exit 0
+else
+        echo "Ensuring 'mu' is initialized.."
+        $mu init --my-address={{ .email }} {{ if .workconf }}--my-address={{ .work.workmail }}{{ end }} --maildir=$MAILDIR
 
-echo "Indexing emails with '$mu'"
-$mu index
+        echo "Indexing emails with '$mu'"
+        $mu index
+fi
