@@ -35,6 +35,10 @@
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-org-contacts-file "~/workspace/org/contacts.org")
 
+  (defun benmezger/mu4e-mode-hook ()
+    (company-mode -1))
+  (add-hook 'mu4e-compose-mode-hook 'benmezger/mu4e-mode-hook)
+
   (add-to-list 'mu4e-headers-actions
                '("org-contact-add" . mu4e-action-add-org-contact) t)
   (add-to-list 'mu4e-view-actions
