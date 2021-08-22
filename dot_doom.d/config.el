@@ -315,7 +315,7 @@
   "tidy -config ~/.config/tidyrc"
   :modes '(html-mode web-mode))
 
-(after! org-mime
+(after! (:or mu4e org-mime)
   :config
   :defer t
 
