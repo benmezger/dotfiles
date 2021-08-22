@@ -1,46 +1,134 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-. "$DIR/helpers/flock.sh"
+# Author: Ben Mezger <me@benmezger.nl>
+# Created at <2021-08-21 Sat 19:30>
 
-exlock_now || exit 0
+import pathlib
+import subprocess
+import logging
+import sys
+import os
+import fcntl
+from typing import List
 
-noindex=false
 
-while [[ "$#" -gt 0 ]]; do
-        case $1 in
-                -n | --noindex) noindex=true ;;
-                *)
-                        echo "Unknown parameter passed: $1"
-                        echo "Available parameters"
-                        echo "-n/--noindex (default 0): disables mu indexing"
-                        exit 1
-                        ;;
-        esac
-        shift
-done
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
 
-mkdir -p $HOME/mail/{work,personal}
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+root.addHandler(handler)
 
-MAILDIR=$HOME/mail
+# PERSONAL_EMAIL and WORK_EMAIL is automatically by 'chezmoi apply'.
+# The variables '.email', '.workconf' and '.work.workmail' is located in dotfiles/.chezmoi.yaml.tmpl
+PERSONAL_EMAIL = "{{ .email }}"
+WORK_EMAIL = "{{ if .workconf }}{{ .work.workmail }}{{ end }}"
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        mbsync=/usr/bin/mbsync
-        mu=/usr/bin/mu
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-        mbsync=/usr/local/bin/mbsync
-        mu=/usr/local/bin/mu
-fi
+MAILDIR = pathlib.Path().home().joinpath("mail")
+PERSONAL_MAILDIR = MAILDIR.joinpath("personal")
+WORK_MAILDIR = MAILDIR.joinpath("work")
 
-echo "Syncing mailboxes with '$mbsync'"
-$mbsync -Va
+MU_BIN = (
+    pathlib.Path().joinpath("/usr/local/bin/mu")
+    if os.uname().sysname == "Darwin"
+    else pathlib.Path().joinpath("/usr/bin/mu")
+)
 
-if $noindex; then
-        exit 0
-else
-        echo "Ensuring 'mu' is initialized.."
-        $mu init --my-address={{ .email }} {{ if .workconf }}--my-address={{ .work.workmail }}{{ end }} --maildir=$MAILDIR
+MBSYNC_BIN = (
+    pathlib.Path().joinpath("/usr/local/bin/mbsync")
+    if os.uname().sysname == "Darwin"
+    else pathlib.Path().joinpath("/usr/bin/mbsync")
+)
 
-        echo "Indexing emails with '$mu'"
-        $mu index
-fi
+EMACSCLIENT_BIN = (
+    pathlib.Path().joinpath("/usr/local/bin/emacsclient")
+    if os.uname().sysname == "Darwin"
+    else pathlib.Path().joinpath("/usr/bin/emacsclient")
+)
+
+
+def ensure_dir(path: pathlib.Path):
+    root.info(f"Ensuring dir {path}")
+    path.mkdir(exist_ok=True)
+
+
+def call_mbsync(extra_args: List[str] = []):
+    root.info(f"Running mbsync")
+    result = subprocess.run([MBSYNC_BIN, "-Va"] + extra_args)
+    root.info(f"mbsync returned code {result.returncode}")
+    return False if result.returncode else True
+
+
+def call_emacs(extra_args: List[str] = []):
+    root.info(f"Running emacs")
+    result = subprocess.run([EMACSCLIENT_BIN, "-e", "(mu4e-update-index)"] + extra_args)
+    root.info(f"emacs returned code {result.returncode}")
+    return False if result.returncode else True
+
+
+def call_mu(extra_args: List[str] = []):
+    root.info(f"Running mu")
+    result = subprocess.run([MU_BIN, "index"] + extra_args)
+    root.info(f"mu returned code {result.returncode}")
+    return False if result.returncode else True
+
+
+def ensure_mu(extra_args: List[str] = []):
+    root.info(f"Ensuring mu")
+    result = subprocess.run(
+        [
+            f"{MU_BIN}",
+            "init",
+            f"--my-address={PERSONAL_EMAIL}",
+            f"--my-address={WORK_EMAIL}" if len(WORK_EMAIL) else "",
+            f"--maildir={MAILDIR}",
+        ]
+        + extra_args
+    )
+    root.info(f"mu returned code {result.returncode}")
+    return False if result.returncode else True
+
+
+def lock_acquire(should_exit=True):
+    lockname = __file__.split("/")[-1].strip(".py")
+    lockfile = open(pathlib.Path().joinpath(f"/tmp/{lockname}.flock"), "w")
+
+    if should_exit:
+        try:
+            fcntl.flock(lockfile, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            logging.warning("Lock already aquired by another process. Exiting.")
+            sys.exit(0)
+    else:
+        # wait for unlock
+        fcntl.flock(lockfile, fcntl.LOCK_EX)
+
+    logging.info(f"{lockfile} lock acquired.")
+    return lockfile
+
+
+def lock_release(lockfile):
+    logging.info(f"realeasing lock {__file__}.")
+    fcntl.flock(lockfile, fcntl.LOCK_UN)
+    os.close(lockfile.fileno())
+    logging.info(f"lock {__file__} released.")
+
+
+def main():
+    ensure_dir(MAILDIR)
+    ensure_dir(PERSONAL_MAILDIR)
+    ensure_dir(WORK_MAILDIR)
+
+    ensure_mu()
+
+    mbsync_ok = call_mbsync()
+    emacs_ok = call_emacs() if mbsync_ok else False
+    mu_ok = call_mu() if not emacs_ok else None  # set to None if not needed
+
+
+if __name__ == "__main__":
+    lockfile = lock_acquire()
+    main()
+    lock_release(lockfile)
