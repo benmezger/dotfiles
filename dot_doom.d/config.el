@@ -12,7 +12,7 @@
 (setq auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc"))
 (setq-default enable-local-variables t)
 
-(after! lsp-mode
+(after! (:or lsp-mode lsp)
   :config
   (setq lsp-response-timeout 90000))
 
@@ -161,8 +161,9 @@
 
   (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
 
-(after! org-roam
+(after! (:or org-roam roam2)
   :defer t
+  :config
   (setq org-roam-directory "~/workspace/org/roam")
   (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
 
@@ -201,6 +202,7 @@
 
 (after! (org org-roam)
   :defer t
+  :config
   (push org-roam-directory org-agenda-files)
   (defun benmezger/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
@@ -243,7 +245,7 @@
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
 
-(after! elfeed-org
+(after! (:or org elfeed-org)
   :defer t
   :init
   (setq rmh-elfeed-org-files (list "~/workspace/org/urls.org")))
@@ -253,7 +255,7 @@
   :init
   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
 
-(after! org-ref
+(after! (:or org-ref org)
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
@@ -262,7 +264,8 @@
   (setq reftex-default-bibliography org-ref-default-bibliography))
 
 
-(after! bibtex-completion
+(after! (:org bibtex-completion org-ref org)
+  :config
   (setq bibtex-completion-format-citation-functions
         '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)
           (latex-mode    . bibtex-completion-format-citation-cite)
@@ -295,11 +298,11 @@
   (let ((editorconfig-exclude-regexps '(".")))
     (apply orig-fn args)))
 
-(after! org-msg
+(after! (:or org org-msg)
   :config
   (setq org-msg-default-alternatives '(text)))
 
-(after! org-id
+(after! (:or org-id org roam2 org-roam)
   :defer t
   :config
   (setq org-id-locations-file (concat org-directory "/.orgid"))
