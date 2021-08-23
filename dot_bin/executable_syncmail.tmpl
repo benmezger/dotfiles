@@ -125,7 +125,7 @@ def main():
 
     mbsync_ok = call_mbsync()
     emacs_ok = call_emacs() if mbsync_ok else False
-    mu_ok = call_mu() if not emacs_ok else None  # set to None if not needed
+    # mu_ok = call_mu() if not emacs_ok else None  # set to None if not needed
 
 
 if __name__ == "__main__":
