@@ -178,6 +178,7 @@
 #+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
+#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 
 - Related pages
   -
@@ -190,6 +191,7 @@
 #+DATE: %T
 #+FILETAGS: :personal:%^G
 #+HUGO_SLUG: ${slug}
+#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 ")
            :unnarrowed t)))
 
@@ -202,10 +204,15 @@
   (advice-add 'org-roam-protocol-open-file :around
               #'custom-org-protocol-focus-advice))
 
-(after! (org org-roam)
+(after! (:or org org-roam)
   :defer t
   :config
+  (setq benmezger/org-roam-private-directory (concat org-roam-directory "/private"))
+
   (push org-roam-directory org-agenda-files)
+  (push benmezger/org-roam-private-directory org-agenda-files)
+  (push (concat org-agenda-files "/private") org-agenda-files)
+
   (defun benmezger/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
     (interactive)
