@@ -332,23 +332,21 @@
 (use-package! org-mime
   :after (:any mu4e org roam2)
   :config
-
   (defun benmezger/message-mode-hook()
     (when (featurep! :email mu4e)
       (message "Enabling enabling local org-mime hooks...")
       (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
-
-  (add-hook! message-mode-hook #'benmezger/org-mime-mode-hook)
+  (add-hook 'mu4e-compose-mode-hook 'benmezger/message-mode-hook)
 
   (add-hook! org-mode
     (lambda ()
       (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
-  (add-hook! message-send-hook 'org-mime-confirm-when-no-multipart)
-  (add-hook! org-mime-html-hook
-    (lambda ()
-      (org-mime-change-element-style
-       "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
-                     "#E6E1DC" "#232323"))))
+  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
+  (add-hook 'org-mime-html-hook
+            (lambda ()
+              (org-mime-change-element-style
+               "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
+                             "#E6E1DC" "#232323"))))
 
   (setq org-mime-export-options '(:section-numbers nil
                                   :with-author nil
