@@ -367,9 +367,13 @@
    "\n"))
 
 (use-package! mu4e-thread-folding
-  :when (featurep! :email mu4e)
   :after mu4e
   :config
+  (setq mu4e-thread-folding-root-folded-prefix-string (propertize "▶ " 'face 'shadow)
+        mu4e-thread-folding-root-unfolded-prefix-string (propertize "▼ " 'face 'shadow))
+  (custom-set-faces!
+    '(mu4e-thread-folding-root-unfolded-face :weight bold :slant italic :inherit hl-line :extend t)
+    '(mu4e-thread-folding-child-face :inherit hl-line :extend t))
   (map! :map mu4e-headers-mode-map
         :ne "<tab>" #'mu4e-headers-toggle-at-point
         :ne "<left>" #'mu4e-headers-fold-at-point
@@ -377,11 +381,20 @@
         :ne "<right>" #'mu4e-headers-unfold-at-point
         :ne "<S-right>" #'mu4e-headers-unfold-all)
 
-  (defun benmezger/mu4e-thread-hook()
-    (when (featurep! :email mu4e)
-      (message "Enabling mu4e-thread-folding...")
-      (mu4e-thread-folding-mode +1)))
+  (when (featurep! :editor evil)
+    (defadvice! +mu4e-thread-folding-move-to-column-1-a (&rest _)
+      "Move the point to column 1.
+When using evil, having the cursor at column 0 causes issues,
+so we make sure that it's put a column 1 so everything works nicely."
+      :before #'mu4e-headers-toggle-at-point
+      :before #'mu4e-headers-fold-at-point
+      :before #'mu4e-headers-unfold-at-point
+      :before #'mu4e-headers-view-message
+      :before #'mu4e-compose-reply
+      :before #'mu4e-compose-forward
+      (unless (= (current-column) 1)
+        (move-to-column 1 t))))
 
-  (add-hook 'mu4e-main-mode-hook 'benmezger/mu4e-thread-hook))
+  (mu4e-thread-folding-load))
 
 (load "~/.doom.d/chezmoi")
