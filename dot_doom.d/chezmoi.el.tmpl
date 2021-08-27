@@ -46,7 +46,7 @@
         +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
                                {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})
         mu4e-maildir-shortcuts
-        '((:maildir "/personal/archive" :key ?a)
+        '((:maildir "/personal/archives" :key ?a)
           (:maildir "/personal/inbox"   :key ?i)
           (:maildir "/personal/work"    :key ?w)
           (:maildir "/personal/sent"    :key ?s)))
