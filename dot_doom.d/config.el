@@ -338,9 +338,9 @@
       (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
   (add-hook 'mu4e-compose-mode-hook 'benmezger/message-mode-hook)
 
-  (add-hook! org-mode
-    (lambda ()
-      (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (local-set-key (kbd"C-c M-o") 'org-mime-org-buffer-htmlize)))
   (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
   (add-hook 'org-mime-html-hook
             (lambda ()
