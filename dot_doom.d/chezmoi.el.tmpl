@@ -31,10 +31,25 @@
 (after! mu4e
   :defer t
   :config
-  (setq mu4e-hide-index-messages nil)
-  (setq mu4e-update-interval (* 5 60))
-  (setq mu4e-org-contacts-file "~/workspace/org/contacts.org")
-  (setq mu4e-change-filenames-when-moving t)
+  (setq mu4e-hide-index-messages nil
+        mu4e-update-interval (* 5 60)
+        mu4e-org-contacts-file "~/workspace/org/contacts.org"
+        mu4e-change-filenames-when-moving t
+        mu4e-compose-dont-reply-to-self t
+        mu4e-get-mail-command "mbsync -a"
+        ;; don't need to run cleanup after indexing for gmail
+        mu4e-index-cleanup nil
+        ;; because gmail uses labels as folders we can use lazy check since
+        ;; messages don't really "move"
+        mu4e-index-lazy-check t
+        +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
+                               {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})
+        mu4e-maildir-shortcuts
+        '((:maildir "/personal/archive" :key ?a)
+          (:maildir "/personal/inbox"   :key ?i)
+          (:maildir "/personal/work"    :key ?w)
+          (:maildir "/personal/sent"    :key ?s)))
+
 
   (defun benmezger/mu4e-mode-hook ()
     (when (featurep! :completion company)
@@ -47,8 +62,6 @@
   (add-to-list 'mu4e-view-actions
                '("org-contact-add" . mu4e-action-add-org-contact) t)
 
-  ;; call syncmail script from $HOME/.bin/syncmail
-  (setq mu4e-get-mail-command "mbsync -Va")
 
   {{ if eq .chezmoi.os "darwin" -}}
   (setq sendmail-program "/usr/local/bin/msmtp"
@@ -126,16 +139,7 @@
   (add-to-list 'mu4e-bookmarks
                '( :name "Messages with pdfs"
                   :query "mime:application/pdf"
-                  :key ?a) t)
-
-  ;; don't need to run cleanup after indexing for gmail
-  (setq mu4e-index-cleanup nil
-        ;; because gmail uses labels as folders we can use lazy check since
-        ;; messages don't really "move"
-        mu4e-index-lazy-check t)
-
-  (setq +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
-                               {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})))
+                  :key ?a) t))
 
 
 (after! circe
