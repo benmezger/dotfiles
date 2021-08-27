@@ -37,8 +37,9 @@
         mu4e-change-filenames-when-moving t
         mu4e-compose-dont-reply-to-self t
         mu4e-get-mail-command "mbsync -a"
-        ;; don't need to run cleanup after indexing for gmail
-        mu4e-index-cleanup nil
+        mu4e-index-cleanup t
+        mu4e-index-lazy-check nil
+        mu4e-index-cleanup t
         ;; because gmail uses labels as folders we can use lazy check since
         ;; messages don't really "move"
         mu4e-index-lazy-check t
