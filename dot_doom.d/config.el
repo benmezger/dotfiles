@@ -366,4 +366,22 @@
       (buffer-string)))
    "\n"))
 
+(use-package! mu4e-thread-folding
+  :when (featurep! :email mu4e)
+  :after mu4e
+  :config
+  (map! :map mu4e-headers-mode-map
+        :ne "<tab>" #'mu4e-headers-toggle-at-point
+        :ne "<left>" #'mu4e-headers-fold-at-point
+        :ne "<S-left>" #'mu4e-headers-fold-all
+        :ne "<right>" #'mu4e-headers-unfold-at-point
+        :ne "<S-right>" #'mu4e-headers-unfold-all)
+
+  (defun benmezger/mu4e-thread-hook()
+    (when (featurep! :email mu4e)
+      (message "Enabling mu4e-thread-folding...")
+      (mu4e-thread-folding-mode +1)))
+
+  (add-hook 'mu4e-main-mode-hook 'benmezger/mu4e-thread-hook))
+
 (load "~/.doom.d/chezmoi")

@@ -14,6 +14,8 @@
   :pin "6ec3d054ddadbca1f5effb961c1db583e377ca35")
 (package! powerthesaurus :pin "93036d3b111925ebc34f747ff846cb0b8669b92e")
 (package! org-mime)
+(package! mu4e-thread-folding
+  :recipe (:host github :repo "rougier/mu4e-thread-folding" :nonrecursive t))
 {{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
 (package! wakatime-mode)
