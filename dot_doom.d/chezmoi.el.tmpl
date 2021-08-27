@@ -36,9 +36,10 @@
   (setq mu4e-org-contacts-file "~/workspace/org/contacts.org")
   (setq mu4e-change-filenames-when-moving t)
 
-
   (defun benmezger/mu4e-mode-hook ()
-    (company-mode -1))
+    (when (featurep! :completion company)
+      (message "Disabling company-mode while in mu4e...")
+      (company-mode -1)))
   (add-hook 'mu4e-compose-mode-hook 'benmezger/mu4e-mode-hook)
 
   (add-to-list 'mu4e-headers-actions
@@ -47,7 +48,7 @@
                '("org-contact-add" . mu4e-action-add-org-contact) t)
 
   ;; call syncmail script from $HOME/.bin/syncmail
-  (setq mu4e-get-mail-command "syncmail --noindex")
+  (setq mu4e-get-mail-command "mbsync -Va")
 
   {{ if eq .chezmoi.os "darwin" -}}
   (setq sendmail-program "/usr/local/bin/msmtp"

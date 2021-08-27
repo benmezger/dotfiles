@@ -114,65 +114,66 @@
 
 (after! org
   :config
-  (setq org-log-done 'time)
-  (setq org-clock-persist 'history)
-  (setq org-directory "~/workspace/org")
-  (setq org-archive-location "archives/%s_archive::")
-  (setq org-agenda-files (list org-directory))
-  (org-clock-persistence-insinuate)
+
+  (setq
+   org-log-done 'time
+   org-clock-persist 'history
+   org-directory "~/workspace/org"
+   org-archive-location "archives/%s_archive::"
+   org-agenda-files (list org-directory)
+   org-log-into-drawer t
+   org-agenda-inhibit-startup t
+   bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
+   org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+                       (sequence "READ(!)")
+                       (sequence "|" "DONE(d!)" "CANCELED(c!)"))
+   org-todo-keyword-faces '(("CURRENT"  . "orange")
+                            ("TODO" . "systemRedColor")
+                            ("READ" . "systemOrangeColor")
+                            ("HOLD"  . "indianRed")
+                            ("WAIT" . "salmon1")
+                            ("PROJ" . "systemYellowColor"))
+   org-capture-template-dir (concat doom-private-dir "org-captures/")
+   org-capture-templates
+   `(
+     ("c" "Code" entry (file "~/workspace/org/code.org")
+      (file ,(concat org-capture-template-dir "code-snippet.capture")))
+     ("i" "Inbox" entry (file+datetree "~/workspace/org/inbox.org")
+      (file ,(concat org-capture-template-dir "inbox-snippet.capture")))
+     ("j" "Journal" entry (file+datetree "~/workspace/org/journal.org")
+      (file ,(concat org-capture-template-dir "journal.capture")))
+     ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
+      (file ,(concat org-capture-template-dir "blog-post.capture")))
+     ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
+      "* %?\nEntered on %U\n  %i\n  %a")
+     ("t" "Todo" entry (file "~/workspace/org/todos.org")
+      "* TODO %?\n %i\n  %a")
+     ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
+      (file ,(concat org-capture-template-dir "new-book.capture")))
+     ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
+      (file ,(concat org-capture-template-dir "decision.capture")))
+     ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
+      (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week))
+   ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
-  (setq org-log-into-drawer t)
-  (setq org-agenda-inhibit-startup t)
-  (add-hook! 'org-mode-hook #'turn-on-auto-fill)
-  (setq bibtex-completion-bibliography (concat org-directory "/bibliography.bib"))
 
-  (setq org-todo-keywords
-        '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
-          (sequence "READ(!)")
-          (sequence "|" "DONE(d!)" "CANCELED(c!)"))
-        org-todo-keyword-faces
-        '(("CURRENT"  . "orange")
-          ("TODO" . "systemRedColor")
-          ("READ" . "systemOrangeColor")
-          ("HOLD"  . "indianRed")
-          ("WAIT" . "salmon1")
-          ("PROJ" . "systemYellowColor")))
-
-  (setq org-capture-template-dir (concat doom-private-dir "org-captures/"))
-  (setq org-capture-templates
-        `(
-          ("c" "Code" entry (file "~/workspace/org/code.org")
-           (file ,(concat org-capture-template-dir "code-snippet.capture")))
-          ("i" "Inbox" entry (file+datetree "~/workspace/org/inbox.org")
-           (file ,(concat org-capture-template-dir "inbox-snippet.capture")))
-          ("j" "Journal" entry (file+datetree "~/workspace/org/journal.org")
-           (file ,(concat org-capture-template-dir "journal.capture")))
-          ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
-           (file ,(concat org-capture-template-dir "blog-post.capture")))
-          ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
-           "* %?\nEntered on %U\n  %i\n  %a")
-          ("t" "Todo" entry (file "~/workspace/org/todos.org")
-           "* TODO %?\n %i\n  %a")
-          ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
-           (file ,(concat org-capture-template-dir "new-book.capture")))
-          ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
-           (file ,(concat org-capture-template-dir "decision.capture")))
-          ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
-           (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week)))
-
-
-  (setq ob-async-no-async-languages-alist '("gnuplot" "mermaid")))
+  (defun benmezger/org-mode-hook()
+    (when (featurep! :completion company)
+      (message "Disabling company-mode while in org-capture...")
+      (company-mode -1)))
+  (add-hook! org-capture-mode #'benmezger/org-mode-hook))
 
 (after! (:or org-roam roam2)
   :defer t
   :config
-  (setq org-roam-directory "~/workspace/org/roam")
-  (setq org-roam-index-file (concat org-roam-directory "/" "index.org"))
-
-  (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
+  (setq
+   org-roam-directory "~/workspace/org/roam"
+   org-roam-index-file (concat org-roam-directory "/" "index.org")
+   benmezger/org-roam-private-directory (concat org-roam-directory "/private")
+   org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                         "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: %^G
 #+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
@@ -184,16 +185,16 @@
   -
 
 ------ ")
-           :unnarrowed t)
-          ("p" "private" plain "%?"
-           :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
+      :unnarrowed t)
+     ("p" "private" plain "%?"
+      :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                         "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: :personal:%^G
 #+HUGO_SLUG: ${slug}
 #+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 ")
-           :unnarrowed t)))
+      :unnarrowed t)))
 
   (defun custom-org-protocol-focus-advice (orig &rest args)
     (x-focus-frame nil)
@@ -207,11 +208,8 @@
 (after! (:or org org-roam)
   :defer t
   :config
-  (setq benmezger/org-roam-private-directory (concat org-roam-directory "/private"))
-
   (push org-roam-directory org-agenda-files)
   (push benmezger/org-roam-private-directory org-agenda-files)
-  (push (concat org-agenda-files "/private") org-agenda-files)
 
   (defun benmezger/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
@@ -224,6 +222,7 @@
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
 (use-package! org-roam-server
+  :after org
   :defer t)
 
 (after! (org-journal org)
@@ -237,13 +236,13 @@
 (after! deft
   :defer t
   :config
-  (setq deft-directory "~/workspace/org")
-  (setq deft-extensions '("org" "md" "txt"))
-  (setq deft-default-extension "org")
-  (setq deft-recursive t)
-  (setq deft-use-filename-as-title nil)
-  (setq deft-use-filter-string-for-filename t)
-  (setq deft-file-naming-rules '((nospace . "-"))))
+  (setq deft-directory "~/workspace/org"
+        deft-extensions '("org" "md" "txt")
+        deft-default-extension "org"
+        deft-recursive t
+        deft-use-filename-as-title nil
+        deft-use-filter-string-for-filename t
+        deft-file-naming-rules '((nospace . "-"))))
 
 (after! doom-modeline
   :config
@@ -252,7 +251,9 @@
 
 (use-package! py-isort
   :defer t
-  :init
+  :after python-mode
+  :mode ("[./]flake8\\'" . conf-mode)
+  :config
   (add-hook 'before-save-hook 'py-isort-before-save))
 
 (after! (:or org elfeed-org)
@@ -328,34 +329,30 @@
   "tidy -config ~/.config/tidyrc"
   :modes '(html-mode web-mode))
 
-(after! (:or mu4e org-mime)
+(use-package! org-mime
+  :after (:any mu4e org roam2)
   :config
-  :defer t
+
+  (defun benmezger/message-mode-hook()
+    (when (featurep! :email mu4e)
+      (message "Enabling enabling local org-mime hooks...")
+      (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
+
+  (add-hook! message-mode-hook #'benmezger/org-mime-mode-hook)
+
+  (add-hook! org-mode
+    (lambda ()
+      (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
+  (add-hook! message-send-hook 'org-mime-confirm-when-no-multipart)
+  (add-hook! org-mime-html-hook
+    (lambda ()
+      (org-mime-change-element-style
+       "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
+                     "#E6E1DC" "#232323"))))
 
   (setq org-mime-export-options '(:section-numbers nil
                                   :with-author nil
-                                  :with-toc nil))
-  (add-hook 'message-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
-  (add-hook 'mu4e-compose-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
-  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
-  (add-hook 'org-mime-html-hook
-            (lambda ()
-              (org-mime-change-element-style
-               "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
-                             "#E6E1DC" "#232323"))))
-
-  ;; the following can be used to nicely offset block quotes in email bodies
-  (add-hook 'org-mime-html-hook
-            (lambda ()
-              (org-mime-change-element-style
-               "blockquote" "border-left: 2px solid gray; padding-left: 4px;"))))
+                                  :with-toc nil)))
 
 (defun doom-dashboard-widget-footer ()
   (insert
