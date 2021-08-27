@@ -102,46 +102,8 @@
                         (mu4e-compose-signature . "---\n{{ .name }}")))
   {{- end }}
 
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Notes"
-                  :query "maildir:/personal/notes from:{{ .email }}"
-                  :key   ?b) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "University"
-                  :query "maildir:/personal/archives AND univali OR UNIVALI OR from:univali"
-                  :key   ?x) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "UNIVALI"
-                  :query "from:univali"
-                  :key   ?h) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Sent"
-                  :query "maildir:/personal/sent"
-                  :key   ?s) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Drafts"
-                  :query "maildir:/personal/drafts"
-                  :key   ?d) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Github"
-                  :query "from:github"
-                  :key   ?g) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Me to me"
-                  :query "from:{{ .email }} AND to:{{ .email }}"
-                  :key   ?y) t)
-
-  (add-to-list 'mu4e-bookmarks
-               '( :name "Messages with pdfs"
-                  :query "mime:application/pdf"
-                  :key ?a) t))
-
+  (when (file-exists-p (concat org-directory "/elisp/mu4e-bookmarks.el"))
+    (load (concat org-directory "/elisp/mu4e-bookmarks.el"))))
 
 (after! circe
   :defer t
