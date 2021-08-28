@@ -47,10 +47,13 @@
                                {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})
         mu4e-maildir-shortcuts
         '((:maildir "/personal/archives" :key ?a)
-          (:maildir "/personal/inbox"   :key ?i)
-          (:maildir "/personal/work"    :key ?w)
-          (:maildir "/personal/sent"    :key ?s)))
-
+          (:maildir "/personal/inbox" :key ?i)
+          (:maildir "/personal/work" :key ?w)
+          (:maildir "/personal/sent" :key ?s)
+          (:maildir "/personal/list/emacs" :key ?e)
+          (:maildir "/personal/list/mu4e" :key ?4)
+          (:maildir "/personal/list/debconf" :key ?d)
+          (:maildir "/personal/list/cypherpunk" :key ?c)))
 
   (defun benmezger/mu4e-mode-hook ()
     (when (featurep! :completion company)

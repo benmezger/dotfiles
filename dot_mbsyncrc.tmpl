@@ -45,6 +45,22 @@ Channel personal-notes
 Far :personal-remote:"Notes"
 Near :personal-local:notes
 
+Channel personal-emacs
+Far :personal-remote:"lists/emacs"
+Near :personal-local:list/emacs
+
+Channel personal-cypherpunk
+Far :personal-remote:"lists/cypherpunk"
+Near :personal-local:list/cypherpunk
+
+Channel personal-debconf
+Far :personal-remote:"lists/debconf"
+Near :personal-local:list/debconf
+
+Channel personal-mu4e
+Far :personal-remote:"lists/mu4e"
+Near :personal-local:list/mu4e
+
 Group personal
 Channel personal-inbox
 Channel personal-sent
@@ -52,6 +68,10 @@ Channel personal-trash
 Channel personal-archives
 Channel personal-drafts
 Channel personal-notes
+Channel personal-emacs
+Channel personal-cypherpunk
+Channel personal-debconf
+Channel personal-mu4e
 
 {{ if .workconf -}}
 IMAPAccount work
