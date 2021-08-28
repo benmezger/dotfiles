@@ -103,7 +103,12 @@
   {{- end }}
 
   (when (file-exists-p (concat org-directory "/elisp/mu4e-bookmarks.el"))
-    (load (concat org-directory "/elisp/mu4e-bookmarks.el"))))
+    (load (concat org-directory "/elisp/mu4e-bookmarks.el")))
+
+  (add-hook 'message-send-hook
+            (lambda ()
+              (unless (yes-or-no-p "really send message to space?")
+                (signal 'quit nil)))))
 
 (after! circe
   :defer t
