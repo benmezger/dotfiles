@@ -75,8 +75,8 @@ def call_mu(extra_args: List[str] = []):
     return False if result.returncode else True
 
 
-def ensure_mu(extra_args: List[str] = []):
-    root.info(f"Ensuring mu")
+def init_mu(extra_args: List[str] = []):
+    root.info(f"Initializing mu")
     result = subprocess.run(
         [
             f"{MU_BIN}",
@@ -87,7 +87,23 @@ def ensure_mu(extra_args: List[str] = []):
         ]
         + extra_args
     )
+
     root.info(f"mu returned code {result.returncode}")
+    return False if result.returncode else True
+
+
+def ensure_mu(extra_args: List[str] = []):
+    root.info(f"Ensuring mu")
+    result = subprocess.run(
+        [f"{MU_BIN}", "info"] + extra_args,
+        capture_output=True,
+    )
+
+    root.info(f"mu info returned code {result.returncode}")
+
+    if "Couldn't detect type of database" in result.stderr.strip().decode("ascii"):
+        return init_mu(extra_args)
+
     return False if result.returncode else True
 
 
