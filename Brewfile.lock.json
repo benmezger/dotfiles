@@ -4393,6 +4393,19 @@
             }
           }
         }
+      },
+      "d12frosted/emacs-plus/emacs-plus@28": {
+        "version": "28.0.50",
+        "bottle": false,
+        "options": {
+          "args": [
+            "with-mailutils",
+            "with-no-frame-refocus",
+            "with-native-comp",
+            "with-xwidgets"
+          ],
+          "link": true
+        }
       }
     },
     "cask": {

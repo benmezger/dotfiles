@@ -109,7 +109,7 @@ brew "wakatime-cli"
 brew "watch"
 brew "wget"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@27"
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-mailutils", "with-no-frame-refocus", "with-native-comp", "with-xwidgets"], link: true
 brew "git-chglog/git-chglog/git-chglog"
 brew "heroku/brew/heroku"
 brew "podman"
