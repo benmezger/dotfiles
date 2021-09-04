@@ -107,6 +107,19 @@ def ensure_mu(extra_args: List[str] = []):
     return False if result.returncode else True
 
 
+def check_mu_server(extra_args: List[str] = []):
+    root.info("Checking if mu server is running")
+    ps = subprocess.Popen(["ps", "aux"], stdout=subprocess.PIPE)
+    grep = subprocess.check_output(("grep", "[b]in/mu server"), stdin=ps.stdout).decode(
+        "ascii"
+    )
+    ps.wait()
+
+    root.info(f"grep returned {grep}")
+
+    return True if "mu server" in grep else False
+
+
 def lock_acquire(should_exit=True):
     lockname = __file__.split("/")[-1].strip(".py")
     lockfile = open(pathlib.Path().joinpath(f"/tmp/{lockname}.flock"), "w")
@@ -136,6 +149,10 @@ def main():
     ensure_dir(MAILDIR)
     ensure_dir(PERSONAL_MAILDIR)
     ensure_dir(WORK_MAILDIR)
+
+    if check_mu_server():
+        logging.info("'mu server' is running. Skipping.")
+        return
 
     ensure_mu()
 
