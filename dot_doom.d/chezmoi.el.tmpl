@@ -92,7 +92,7 @@
                         (smtpmail-smtp-server   . "{{ .smtp_host }}")
                         (smtpmail-smtp-service  . {{ .smtp_port }})
                         (mu4e-compose-signature . (with-temp-buffer
-                                                    (insert-file-contents "~/.config/neomutt/signature.personal")
+                                                    (insert-file-contents "~/.config/neomutt/signature-short.personal")
                                                     (buffer-string)))))
   {{- if .workconf }}
   (set-email-account! "work"
@@ -104,7 +104,7 @@
                         (user-mail-address      . "{{ .work.workmail }}")
                         (smtpmail-smtp-server   . "{{ .work.smtp_host }}")
                         (smtpmail-smtp-service  . {{ .work.smtp_port }})
-                        (mu4e-compose-signature . "---\n{{ .name }}")))
+                        (mu4e-compose-signature . "{{ .name }}")))
   {{- end }}
 
   (when (file-exists-p (concat org-directory "/elisp/mu4e-bookmarks.el"))
@@ -113,7 +113,30 @@
   (add-hook 'message-send-hook
             (lambda ()
               (unless (yes-or-no-p "really send message to space?")
-                (signal 'quit nil)))))
+                (signal 'quit nil))))
+
+  (defun benmezger/mu4e-choose-signature ()
+    "Insert one of a number of sigs"
+    (interactive)
+    (let ((message-signature
+           (mu4e-read-option "Signature:"
+                             '(
+                               ("full" . (with-temp-buffer
+                                           (insert-file-contents
+                                            "~/.config/neomutt/signature-full.personal")
+                                           (buffer-string)))
+                               ("short" . (with-temp-buffer
+                                            (insert-file-contents
+                                             "~/.config/neomutt/signature-short.personal")
+                                            (buffer-string)))
+                               ("tiny" . (with-temp-buffer
+                                           (insert-file-contents
+                                            "~/.config/neomutt/signature-tiny.personal")
+                                           (buffer-string)))))))
+      (message-insert-signature)))
+
+  (add-hook 'mu4e-compose-mode-hook
+            (lambda () (local-set-key (kbd "C-c C-w") #'benmezger/mu4e-choose-signature))))
 
 (after! circe
   :defer t
