@@ -37,7 +37,7 @@
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
 # c.InteractiveShellApp.extensions = []
-c.InteractiveShellApp.extensions = ["grasp"]
+c.InteractiveShellApp.extensions = ["grasp", "autoreload"]
 
 ## dotted module name of an IPython extension to load.
 #  Default: ''
@@ -190,9 +190,7 @@ c.InteractiveShellApp.extensions = ["grasp"]
 #  See also: BaseIPythonApplication.copy_config_files
 # c.TerminalIPythonApp.copy_config_files = False
 
-## Whether to display a banner upon starting IPython.
-#  Default: True
-# c.TerminalIPythonApp.display_banner = True
+c.TerminalIPythonApp.display_banner = False
 
 ## Run the file referenced by the PYTHONSTARTUP environment
 #  See also: InteractiveShellApp.exec_PYTHONSTARTUP
@@ -204,7 +202,7 @@ c.InteractiveShellApp.extensions = ["grasp"]
 
 ## lines of code to run at IPython startup.
 #  See also: InteractiveShellApp.exec_lines
-# c.TerminalIPythonApp.exec_lines = []
+c.TerminalIPythonApp.exec_lines = ["%autoreload 2"]
 
 ## A list of dotted module names of IPython extensions to load.
 #  See also: InteractiveShellApp.extensions
@@ -423,9 +421,7 @@ c.InteractiveShellApp.extensions = ["grasp"]
 #  Default: 0
 # c.InteractiveShell.object_info_string_level = 0
 
-## Automatically call the pdb debugger after every exception.
-#  Default: False
-# c.InteractiveShell.pdb = False
+c.InteractiveShell.pdb = True
 
 ## Deprecated since IPython 4.0 and ignored since 5.0, set
 #  TerminalInteractiveShell.prompts object directly.
