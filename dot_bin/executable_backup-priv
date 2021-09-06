@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PRIVDIR="$HOME/dotfiles/priv"
+mkdir -pv $PRIVDIR
+
+echo "Making backup to $PRIVDIR"
+
+echo "Backing up zsh.."
+cp -rfv $HOME/.zsh_history $PRIVDIR
+
+echo "Backing up ipython.."
+mkdir -pv $PRIVDIR/.ipython/profile_default/
+cp -rfv $HOME/.ipython/profile_default/history.sqlite \
+        $PRIVDIR/.ipython/profile_default/
+
+echo "Backing up mu index.."
+mkdir -pv $PRIVDIR/.cache/
+cp -rfv $HOME/.cache/mu $PRIVDIR/.cache/
+
+echo "Backing up roam2 database.."
+mkdir -pv $PRIVDIR/.emacs.d/.local/etc/
+cp -rfv $HOME/.emacs.d/.local/etc/org-roam.db \
+        $PRIVDIR/.emacs.d/.local/etc/
