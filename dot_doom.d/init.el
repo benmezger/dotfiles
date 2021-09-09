@@ -53,7 +53,6 @@
        (lsp)
        (magit +forge)
        make
-       terraform
        biblio
 
        :lang
