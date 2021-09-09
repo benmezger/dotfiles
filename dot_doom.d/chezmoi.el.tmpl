@@ -55,7 +55,8 @@
           (:maildir "/personal/list/debconf" :key ?d)
           (:maildir "/personal/list/cypherpunk" :key ?c)
           (:maildir "/personal/list/ieee-cass" :key ?j)
-          (:maildir "/personal/list/riscv" :key ?5)))
+          (:maildir "/personal/list/riscv" :key ?5))
+        smtpmail-queue-dir (expand-file-name "~/mail/queue/cur"))
 
   (defun benmezger/mu4e-mode-hook ()
     (when (featurep! :completion company)
@@ -82,6 +83,7 @@
         message-sendmail-extra-arguments '("--read-envelope-from")
         message-send-mail-function 'message-send-mail-with-sendmail)
   {{- end }}
+
   (set-email-account! "personal"
                       '((mu4e-sent-folder       . "/personal/sent")
                         (mu4e-drafts-folder     . "/personal/drafts")
