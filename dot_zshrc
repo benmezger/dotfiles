@@ -3,11 +3,11 @@
 source $HOME/.zsh/exports.zsh
 
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
-    source $HOME/.zsh_plugins.sh
+        source $HOME/.zsh_plugins.sh
 else
-    echo "Bundling zsh plugins..."
-    antibody bundle <$HOME/.zsh/plugins.txt >$HOME/.zsh_plugins.sh
-    source $HOME/.zsh_plugins.sh
+        echo "Bundling zsh plugins..."
+        antibody bundle <$HOME/.zsh/plugins.txt >$HOME/.zsh_plugins.sh
+        source $HOME/.zsh_plugins.sh
 fi
 
 source $HOME/.zsh/init.zsh
@@ -19,12 +19,12 @@ source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
 
 if [ -f "$HOME/.cargo/env" ]; then
-    source $HOME/.cargo/env
+        source $HOME/.cargo/env
 fi
 
 # base16 theme
 base16_gruvbox-dark-hard
 
-if (($+commands[fortune])); then
-    fortune
+if ( ($+commands[fortune])); then
+        fortune
 fi
