@@ -58,3 +58,9 @@ HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup \
 
 # setup custom completion path
 fpath=($HOME/.zsh/completions $fpath)
+
+
+profzsh() {
+	shell=${1-$SHELL}
+	ZPROF=true $shell -i -c exit
+}

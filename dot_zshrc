@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+if [[ "$ZPROF" = true ]]; then
+        zmodload zsh/zprof
+fi
+
 source $HOME/.zsh/exports.zsh
 
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
@@ -25,6 +29,10 @@ fi
 # base16 theme
 base16_gruvbox-dark-hard
 
-if ( ($+commands[fortune])); then
+if (($+commands[fortune])); then
         fortune
+fi
+
+if [[ "$ZPROF" = true ]]; then
+        zprof
 fi
