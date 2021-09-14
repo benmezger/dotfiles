@@ -21,7 +21,9 @@ class DotfileStart(CommitRule):
         for f in pathlib.Path().absolute().iterdir():
             filename = f.name.lstrip("dot_").lstrip(".tmpl")
             if (f.is_dir() or f.is_file()) and (
-                filename == config_name or REMAPS.get(config_name, False)
+                filename == config_name
+                or REMAPS.get(config_name, False)
+                or (f.is_dir() and filename == "config")
             ):
                 return True
         return False
@@ -52,7 +54,33 @@ class EnsureLower(CommitRule):
                 (
                     x.islower()
                     or x.isspace()
-                    or x in (":", "-", "/", "_", "!", "'", '"')
+                    or x
+                    in (
+                        ":",
+                        "-",
+                        "/",
+                        "_",
+                        "!",
+                        "'",
+                        '"',
+                        ".",
+                        "#",
+                        "(",
+                        ")",
+                        "$",
+                        "!",
+                        "@",
+                        "*",
+                        "&",
+                        "%",
+                        "+",
+                        "-",
+                        "{",
+                        "}",
+                        "[",
+                        "]",
+                        "\\",
+                    )
                     or x.isdigit()
                 )
                 for x in commit.message.title
