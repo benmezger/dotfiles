@@ -221,10 +221,6 @@
 
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
-(use-package! org-roam-server
-  :after org
-  :defer t)
-
 (after! (org-journal org)
   :defer t
   :config
@@ -405,3 +401,14 @@ so we make sure that it's put a column 1 so everything works nicely."
   (start-process
    "chezmoi" "*chezmoi*" "chezmoi" "--color" "false"
    "apply" "--force" "-v" "-i" "noscripts"))
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after (:or org org-roam)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))

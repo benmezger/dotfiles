@@ -3,7 +3,6 @@
 
 (package! pyenv-mode-auto)
 (package! ob-mermaid)
-(package! org-roam-server)
 (package! yasnippet-snippets)
 (package! org-ref)
 (package! citeproc-org)
@@ -16,6 +15,10 @@
 (package! org-mime)
 (package! mu4e-thread-folding
   :recipe (:host github :repo "rougier/mu4e-thread-folding" :nonrecursive t))
+(unpin! org-roam)
+(package! websocket)
+(package! org-roam-ui
+  :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
 {{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
 (package! wakatime-mode)
