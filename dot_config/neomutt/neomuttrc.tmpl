@@ -68,6 +68,7 @@ source ./personal.neomuttrc
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/personal.neomuttrc<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/work.neomuttrc<enter><change-folder>!<enter>'
+macro index S "<shell-escape>mbsync -a<enter>" "run mbsync"
 
 set sidebar_visible
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
