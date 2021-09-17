@@ -430,13 +430,6 @@ so we make sure that it's put a column 1 so everything works nicely."
 (load "~/.doom.d/chezmoi")
 (load "~/.doom.d/elisp/chezmoi.el")
 
-(defun benmezger/chezmoi-apply()
-  "Run chezmoi apply without running scripts."
-  (interactive)
-  (start-process
-   "chezmoi" "*chezmoi*" "chezmoi" "--color" "false"
-   "apply" "--force" "-v" "-i" "noscripts"))
-
 (use-package! websocket
   :after org-roam)
 
