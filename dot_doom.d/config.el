@@ -229,7 +229,15 @@
   (advice-add 'org-roam-protocol-open-ref :around
               #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around
-              #'custom-org-protocol-focus-advice))
+              #'custom-org-protocol-focus-advice)
+
+  (defun benmezger/org-roam-node-insert-immediate (arg &rest args)
+    (interactive "P")
+    (let ((args (cons arg args))
+          (org-roam-capture-templates
+           (list (append (car org-roam-capture-templates)
+                         '(:immediate-finish t)))))
+      (apply #'org-roam-node-insert args))))
 
 (after! (:or org org-roam)
   :defer t
