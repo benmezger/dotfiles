@@ -11,6 +11,9 @@
 (defvar chezmoi-bin "chezmoi"
   "Path to chezmoi's binary.")
 
+(defvar chezmoi-buffer "*chezmoi*"
+  "Path to chezmoi's binary.")
+
 (defvar chezmoi-flags "--color false -v --force -i noscripts"
   "Flags to pass to chezmoi in every run.")
 
@@ -18,9 +21,9 @@
   "Run chezmoi apply without running scripts."
   (interactive)
   (apply 'start-process
-         "chezmoi" "*chezmoi*"
+         "chezmoi" chezmoi-buffer
          chezmoi-bin "apply" (split-string chezmoi-flags " "))
-  (with-current-buffer "*chezmoi*"
+  (with-current-buffer chezmoi-buffer
     (diff-mode)))
 
 (defun chezmoi-diff()
@@ -28,9 +31,9 @@
   (interactive)
   (message "Running chezmoi diff...")
   (apply 'start-process
-         "chezmoi" "*chezmoi*"
+         "chezmoi" chezmoi-buffer
          chezmoi-bin "diff" (split-string chezmoi-flags " "))
-  (with-current-buffer "*chezmoi*"
+  (with-current-buffer chezmoi-buffer
     (diff-mode)
     (read-only-mode)))
 
