@@ -4,11 +4,6 @@ set -euo pipefail
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 
-ZPLUG_PATH="$HOME/.zplug"
-if [ ! -d "$ZPLUG_PATH" ]; then
-	git clone https://github.com/zplug/zplug "$ZPLUG_PATH"
-fi
-
 TMUX_TPM_PATH="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TMUX_TPM_PATH" ]; then
 	mkdir -p "$TMUX_TPM_PATH"
