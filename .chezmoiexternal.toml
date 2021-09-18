@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "darwin" }}
+["Applications/Mute Me.app"]
+    type = "archive"
+    url = "https://github.com/pixel-point/mute-me/releases/download/v2.0.0-rc2/mute-me-v2.0.0-rc2.zip"
+    stripComponents = 1
+["Applications/Itsycal.app"]
+    type = "archive"
+    url = "https://itsycal.s3.amazonaws.com/Itsycal.zip"
+    stripComponents = 1
+{{- end }}
