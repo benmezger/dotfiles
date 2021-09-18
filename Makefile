@@ -153,3 +153,6 @@ install-rust:
 install-osx-apps:
 	@echo "Installing Amphetamine"
 	mas install 937984704
+
+generate-changelog:
+	git-chglog -o CHANGELOG.md
