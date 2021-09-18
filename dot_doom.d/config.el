@@ -440,3 +440,15 @@ so we make sure that it's put a column 1 so everything works nicely."
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+
+(defun benmezger/dotfile-script-run()
+  "Edit a chezmoi file."
+  (interactive)
+  (ivy-read "script: "
+            (directory-files "~/dotfiles/scripts")
+            :require-match t
+            :action
+            (lambda (n)
+              (async-shell-command
+               (format "bash ~/dotfiles/scripts/%s" n)
+               "*dotfiles*" "*dotfiles-stderr"))))
