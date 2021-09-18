@@ -4,26 +4,9 @@ set -euo pipefail
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 
-TMUX_TPM_PATH="$HOME/.tmux/plugins/tpm"
-if [ ! -d "$TMUX_TPM_PATH" ]; then
-	mkdir -p "$TMUX_TPM_PATH"
-	git clone https://github.com/tmux-plugin/tpm "$TMUX_TPM_PATH"
-fi
-
-VIM_PLUG_PATH="$HOME/.vim/autoload"
-if [ ! -d "$VIM_PLUG_PATH" ]; then
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-	if ! [ -x "$(command -v nvim)" ]; then
-		nvim +PlugInstall +qall --headless
-	fi
-fi
-
-BASE16_PATH="$HOME/.config/base16-shell"
-if [ ! -d "$BASE16_PATH" ]; then
-	mkdir -p "$BASE16_PATH"
-	git clone https://github.com/chriskempson/base16-shell "$BASE16_PATH"
+VIM_PLUG_PATH="$HOME/.vim/autoload/plug.vim"
+if [[ -f "$VIM_PLUG_PATH" && -x "$(command -v nvim)" ]]; then
+	nvim +PlugInstall +qall --headless
 fi
 
 EMACS_PATH="$HOME/.emacs.d"
