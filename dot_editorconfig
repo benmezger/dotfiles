@@ -61,3 +61,7 @@ indent_style = tab
 [*.go]
 indent_size = 8
 indent_style = tab
+
+[*.toml]
+indent_style = space
+indent_size = 4
