@@ -139,7 +139,34 @@
       (message-insert-signature)))
 
   (add-hook 'mu4e-compose-mode-hook
-            (lambda () (local-set-key (kbd "C-c C-w") #'benmezger/mu4e-choose-signature))))
+            (lambda () (local-set-key (kbd "C-c C-w") #'benmezger/mu4e-choose-signature)))
+
+  (add-to-list 'mu4e-headers-actions
+               '("Mute thread" .
+                 (lambda (msg)
+                   (let ((docid (mu4e-message-field msg :docid))
+                         (refloc (if (stringp mu4e-refile-folder)
+                                     mu4e-refile-folder
+                                   (funcall mu4e-refile-folder msg))))
+                     (mu4e-action-retag-message msg "+muted")
+                     (mu4e~proc-move docid refloc "+S-N")))))
+
+  (defun mu4e-archive-if-muted ()
+    (let* ((cmd "mu find tag:muted --format=sexp -r")
+           (result (concat "(list " (shell-command-to-string cmd) ")"))
+           (msgs (car (read-from-string result))))
+      (dolist (msg (cdr msgs))
+        (let ((maildir (mu4e-message-field msg :maildir))
+              (docid (mu4e-message-field msg :docid))
+              (refloc (if (stringp mu4e-refile-folder)
+                          mu4e-refile-folder
+                        (funcall mu4e-refile-folder msg))))
+          (unless (or (string= refloc maildir)
+                      (string= "/sent" maildir))
+            (when (and docid (> docid 0))
+              (mu4e~proc-move docid refloc "+S-N")))))))
+
+  (add-to-list 'mu4e-index-updated-hook 'mu4e-archive-if-muted t))
 
 (after! circe
   :defer t
