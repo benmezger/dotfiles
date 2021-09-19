@@ -20,6 +20,7 @@
        vi-tilde-fringe
        window-select
        workspaces
+       zen
 
        :editor
        (evil +everywhere)
