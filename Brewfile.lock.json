@@ -24,6 +24,9 @@
       },
       "discoteq/discoteq": {
         "revision": "fcb37d0d1ddbd537c71de774534beff10cf9834f"
+      },
+      "koekeishiya/formulae": {
+        "revision": "14013bd892497b9aa9f67ddab993d1fc61691fb9"
       }
     },
     "brew": {
@@ -1810,6 +1813,10 @@
               "sha256": "34f67172a3c5afa67755508aa36decd2d4055e7c6f9cf481ea7b5fda2ff34578"
             }
           }
+        },
+        "options": {
+          "link": true,
+          "force": true
         }
       },
       "grv": {

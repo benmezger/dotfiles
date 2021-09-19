@@ -7,6 +7,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "mopidy/mopidy"
 tap "discoteq/discoteq"
+tap "koekeishiya/formulae"
 
 # brew install
 brew "ack"
@@ -62,8 +63,7 @@ brew "git"
 brew "libusb"
 brew "gnupg"
 brew "gnuplot"
-brew "go"
-brew "grv"
+brew "go", link: true, force: true
 brew "htop"
 brew "httpie"
 brew "hub"
