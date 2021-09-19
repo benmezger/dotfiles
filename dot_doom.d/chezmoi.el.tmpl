@@ -162,7 +162,7 @@
                           mu4e-refile-folder
                         (funcall mu4e-refile-folder msg))))
           (unless (or (string= refloc maildir)
-                      (string= "/sent" maildir))
+                      (string-suffix-p "/sent" maildir))
             (when (and docid (> docid 0))
               (mu4e~proc-move docid refloc "+S-N")))))))
 
