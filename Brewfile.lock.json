@@ -4594,6 +4594,12 @@
         "options": {
           "full_name": "postgres-unofficial"
         }
+      },
+      "trailer": {
+        "version": "1.7.6",
+        "options": {
+          "full_name": "trailer"
+        }
       }
     }
   },
