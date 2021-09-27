@@ -21,6 +21,7 @@
        window-select
        workspaces
        zen
+       (treemacs +lsp)
 
        :editor
        (evil +everywhere)
