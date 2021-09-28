@@ -48,5 +48,9 @@ jobs:
         run: cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
       - name: Remove problematic 2to3 bin
         run: rm /usr/local/bin/2to3
+      - name: Remove problematic Golang
+        run: |
+          rm -rf /usr/local/bin/go
+          rm -rf /usr/local/bin/gofmt
       - name: Run install.sh
         run: ./install.sh
