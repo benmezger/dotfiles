@@ -36,67 +36,67 @@ help:
 
 install-riscv:
 	@echo "Installing RISCV dependencies.."
-	bash ./scripts/install_riscv.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_riscv.sh | tee -a $(LOGFILE) || exit 1
 
 archlinux-firewall:
 	@echo "Setting up firewall.."
-	bash ./scripts/set_firewall_rules.sh | tee -a $(LOGFILE)
+	bash ./scripts/set_firewall_rules.sh | tee -a $(LOGFILE) || exit 1
 
 start-services:
 	@echo "Starting services.."
-	bash ./scripts/start_services.sh | tee -a $(LOGFILE)
+	bash ./scripts/start_services.sh | tee -a $(LOGFILE) || exit 1
 
 git-repos:
 	@echo "Cloning Git repos.."
-	bash ./scripts/install_git_repos.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_git_repos.sh | tee -a $(LOGFILE) || exit 1
 
 conf-sys:
 	@echo "Configuring system.."
-	bash ./scripts/configure_sys.sh | tee -a $(LOGFILE)
+	bash ./scripts/configure_sys.sh | tee -a $(LOGFILE) || exit 1
 
 ssh-perms:
 	@echo "Setting SSH permissions.."
-	bash ./scripts/set_ssh_perms.sh | tee -a $(LOGFILE)
+	bash ./scripts/set_ssh_perms.sh | tee -a $(LOGFILE) || exit 1
 
 gnupg-perms:
 	@echo "Setting GnuPG permissions.."
-	bash ./scripts/fix_gnupg_perms.sh | tee -a $(LOGFILE)
+	bash ./scripts/fix_gnupg_perms.sh | tee -a $(LOGFILE) || exit 1
 
 pyenv:
 	@echo "Installing pyenv.."
-	bash ./scripts/install_pyenv.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_pyenv.sh | tee -a $(LOGFILE) || exit 1
 
 osx-defaults: 
 	@echo "Applying OSX defaults.."
-	bash ./scripts/set_osx_defaults.sh | tee -a $(LOGFILE)
+	bash ./scripts/set_osx_defaults.sh | tee -a $(LOGFILE) || exit 1
 
 archlinux-defaults: 
 	@echo "Applying Archlinux defaults.."
-	bash ./scripts/set_osx_defaults.sh | tee -a $(LOGFILE)
+	bash ./scripts/set_osx_defaults.sh | tee -a $(LOGFILE) || exit 1
 
 install-chezmoi:
 	@echo "Installing chezmoi.."
-	bash ./scripts/install_chezmoi.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_chezmoi.sh | tee -a $(LOGFILE) || exit 1
 
 install-deps:
 	@echo "Installing dependencies.."
-	bash ./scripts/install_deps.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_deps.sh | tee -a $(LOGFILE) || exit 1
 
 install-aur:
 	@echo "Installing AUR packages.."
-	bash ./scripts/install_aur_packages.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_aur_packages.sh | tee -a $(LOGFILE) || exit 1
 
 install-homebrew:
 	@echo "Installing homebrew.."
-	bash ./scripts/install_homebrew.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_homebrew.sh | tee -a $(LOGFILE) || exit 1
 
 ensure-dirs:
 	@echo "Ensuring directories.."
-	bash ./scripts/ensure_directories.sh | tee -a $(LOGFILE)
+	bash ./scripts/ensure_directories.sh | tee -a $(LOGFILE) || exit 1
 
 install-go-deps:
 	@echo "Installing go packages.."
-	bash ./scripts/install_go_packages.sh | tee -a $(LOGFILE)
+	bash ./scripts/install_go_packages.sh | tee -a $(LOGFILE) || exit 1
 
 ensure-deps:
 	@echo "Ensuring dependencies.."
