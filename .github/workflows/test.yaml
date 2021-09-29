@@ -54,3 +54,6 @@ jobs:
           rm -rf /usr/local/bin/gofmt
       - name: Run install.sh
         run: ./install.sh
+        env:
+          LC_CTYPE: C
+          LANG: C
