@@ -177,4 +177,24 @@
         org-gcal-notify-p nil
         org-gcal-recurring-events-mode 'nested))
 
+(after! notmuch
+  :defer t
+  :config
+  (setq message-kill-buffer-on-exit t
+        +notmuch-sync-backend 'mbsync
+        +notmuch-mail-folder "~/mail"
+        notmuch-show-logo nil
+        {{ if eq .chezmoi.os "darwin" -}}
+        sendmail-program "/usr/local/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail
+        {{ else -}}
+        sendmail-program "/usr/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail{{- end }}))
+
 {{ end -}}

@@ -360,17 +360,21 @@
   :modes '(html-mode web-mode))
 
 (use-package! org-mime
-  :after (:any mu4e org roam2)
+  :after (:any mu4e org roam2 notmuch)
   :config
   (defun benmezger/message-mode-hook()
-    (when (featurep! :email mu4e)
+    (when (featurep! :email (:or mu4e neomutt))
       (message "Enabling enabling local org-mime hooks...")
       (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
-  (add-hook 'mu4e-compose-mode-hook 'benmezger/message-mode-hook)
+
+  (if (featurep! :email mu4e)
+      (add-hook 'mu4e-compose-mode-hook 'benmezger/message-mode-hook)
+    (add-hook 'notmuch-message-mode-hook 'benmezger/message-mode-hook))
 
   (add-hook 'org-mode-hook
             (lambda ()
               (local-set-key (kbd"C-c M-o") 'org-mime-org-buffer-htmlize)))
+
   (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
   (add-hook 'org-mime-html-hook
             (lambda ()
@@ -404,6 +408,7 @@
    "\n"))
 
 (use-package! mu4e-thread-folding
+  :requires mu4e
   :after mu4e
   :config
   (setq mu4e-thread-folding-root-folded-prefix-string (propertize "▶ " 'face 'shadow)
