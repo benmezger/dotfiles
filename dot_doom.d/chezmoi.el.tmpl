@@ -50,7 +50,7 @@
         mu4e-maildir-shortcuts
         '((:maildir "/personal/archives" :key ?a)
           (:maildir "/personal/inbox" :key ?i)
-          (:maildir "/work/inbox" :key ?w)
+          {{ if .workconf }}(:maildir "/work/inbox" :key ?w){{ end }}
           (:maildir "/personal/sent" :key ?s)
           (:maildir "/personal/list/emacs" :key ?e)
           (:maildir "/personal/list/mu4e" :key ?4)
@@ -187,7 +187,7 @@
         {{ if eq .chezmoi.os "darwin" -}}
         sendmail-program "/usr/local/bin/msmtp"
         send-mail-function 'smtpmail-send-it
-        message-sendmail-f-is-evil t
+        message-sendmail-f-is-evil 't
         message-sendmail-extra-arguments '("--read-envelope-from")
         message-send-mail-function 'message-send-mail-with-sendmail
         {{ else -}}
@@ -195,6 +195,12 @@
         send-mail-function 'smtpmail-send-it
         message-sendmail-f-is-evil t
         message-sendmail-extra-arguments '("--read-envelope-from")
-        message-send-mail-function 'message-send-mail-with-sendmail{{- end }}))
+        message-send-mail-function 'message-send-mail-with-sendmail{{- end }}
+        message-default-mail-headers "Cc: \nBcc: \n"
+        message-signature-file "~/.config/neomutt/signature-short.personal"
+        notmuch-hello-url "https://gmail.com"
+        +popup--display-buffer-alist (delq (assoc "^\\*notmuch-hello"
+                                                  +popup--display-buffer-alist) +popup--display-buffer-alist)
+        notmuch-draft-folder "personal/drafts"))
 
 {{ end -}}
