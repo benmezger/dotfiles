@@ -175,6 +175,9 @@
 (after! notmuch
   :defer t
   :config
+
+  (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0)
+
   (setq message-kill-buffer-on-exit t
         +notmuch-sync-backend 'mbsync
         +notmuch-mail-folder "~/mail"
