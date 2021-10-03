@@ -199,6 +199,13 @@
         notmuch-hello-url "https://gmail.com"
         +popup--display-buffer-alist (delq (assoc "^\\*notmuch-hello"
                                                   +popup--display-buffer-alist) +popup--display-buffer-alist)
-        notmuch-draft-folder "personal/drafts"))
+        notmuch-draft-folder "personal/drafts"
 
+        notmuch-saved-searches nil
+        notmuch-saved-searches '((:name "inbox" :query "folder:personal/inbox not tag:trash" :key "i")
+                                 (:name "flagged" :query "tag:flagged" :key "f")
+                                 (:name "sent" :query "tag:sent" :key "s")
+                                 (:name "drafts" :query "tag:draft" :key "d")
+                                 (:name "unread" :query "tag:unread" :key "u")
+                                 (:name "emacs" :query "folder:personal/lists/emacs" :key "e"))))
 {{ end -}}
