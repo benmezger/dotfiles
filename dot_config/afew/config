@@ -62,6 +62,11 @@ message = Tagging notmuch
 query = folder:list/notmuch
 tags = +notmuch;-new
 
+[Filter.11]
+message = Tagging unread sent
+query = folder:sent AND tag:unread
+tags = +inbox;
+
 [InboxFilter]
 
 [MailMover]
@@ -69,7 +74,7 @@ folders = inbox archives trash spam
 rename = True
 max_age = 15
 # rules
-inbox = '(NOT tag:inbox AND NOT tag:deleted) OR tag:archived':archives
-archives = 'tag:inbox':inbox
-trash = 'not tag:deleted and folder:trash':archives
-spam = 'tag:spam':spam
+inbox = '(NOT tag:inbox AND NOT tag:deleted) OR tag:archived':archives 'tag:deleted':trash 'tag:spam':spam
+archives = 'tag:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
+trash = 'not tag:deleted and folder:trash':archives 'tag:spam':spam
+spam = 'not tag:spam and folder:spam':archives
