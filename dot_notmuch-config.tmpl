@@ -1,0 +1,19 @@
+[database]
+path={{ .maildir }}/personal
+
+[user]
+name=Ben Mezger
+primary_email={{ .email }}
+{{ if .workconf }}other_email={{ .work.workmail }} {{ end }}
+
+[new]
+tags=new
+
+[search]
+exclude_tags=trash;spam;
+
+[maildir]
+synchronize_flags=true
+
+[index]
+header.list=List-Id

@@ -147,6 +147,7 @@ brew "poetry"
 brew "w3m"
 brew "gist"
 brew "wordnet"
+brew "notmuch"
 
 cask "bitwarden"
 cask "alacritty"

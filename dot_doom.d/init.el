@@ -80,7 +80,7 @@
        (sh +lsp)
 
        :email
-       (mu4e +gmail)
+       (notmuch +org)
 
        :app
        (rss +org)
