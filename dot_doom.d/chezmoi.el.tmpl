@@ -177,6 +177,16 @@
 
   (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0)
 
+  (add-hook 'notmuch-hello-refresh-hook
+            (lambda ()
+              (if (and (eq (point) (point-min))
+                       (search-forward "Saved searches:" nil t))
+                  (progn
+                    (forward-line)
+                    (widget-forward 1))
+                (if (eq (widget-type (widget-at)) 'editable-field)
+                    (beginning-of-line)))))
+
   (setq message-kill-buffer-on-exit t
         +notmuch-sync-backend 'mbsync
         +notmuch-mail-folder "~/mail"
@@ -201,10 +211,10 @@
         notmuch-draft-folder "drafts"
         notmuch-saved-searches nil
         notmuch-archive-tags '("-inbox" "-unread" "-new" "+archived")
-        notmuch-saved-searches (quote ((:name "inbox" :query "tag:inbox not tag:deleted" :key "i")
-                                       (:name "flagged" :query "tag:flagged" :key "f")
-                                       (:name "sent" :query "tag:sent" :key "s")
-                                       (:name "drafts" :query "tag:draft" :key "d")
-                                       (:name "unread" :query "tag:unread" :key "u")
-                                       (:name "emacs" :query "tag:emacs" :key "e")))))
+        notmuch-saved-searches '((:name "inbox" :query "tag:inbox not tag:deleted" :key "i")
+                                 (:name "flagged" :query "tag:flagged" :key "f")
+                                 (:name "sent" :query "tag:sent" :key "s")
+                                 (:name "drafts" :query "tag:draft" :key "d")
+                                 (:name "unread" :query "tag:unread" :key "u")
+                                 (:name "emacs" :query "tag:emacs" :key "e"))))
 {{ end -}}
