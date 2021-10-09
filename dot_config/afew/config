@@ -1,0 +1,64 @@
+#default filter chain
+[SpamFilter]
+[KillThreadsFilter]
+[SentMailsFilter]
+sent_tag = sent
+[ArchiveSentMailsFilter]
+[MeFilter]
+me_tag = me
+
+[Filter.0]
+message = Tagging archives
+query = folder:archives
+tags = +archived;-new;-inbox
+
+[Filter.1]
+message = Tagging inbox
+query = folder:inbox
+tags = +inbox;-archived
+
+[Filter.2]
+message = Tagging drafts
+query = folder:drafts
+tags = +draft;
+
+[Filter.3]
+message = Tagging trash
+query = folder:trash OR tag:deleted
+tags = +deleted;-archived;-inbox;
+
+[Filter.4]
+message = Tagging work
+query = folder:work
+tags = +work
+
+[Filter.5]
+message = Tagging emacs
+query = folder:list/emacs
+tags = +emacs;-new
+
+[Filter.6]
+message = Tagging riscv
+query = folder:list/riscv
+tags = +riscv;-new
+
+[Filter.7]
+message = Tagging IEEE-cass
+query = folder:list/ieeecass
+tags = +ieee;-new
+
+[Filter.8]
+message = Tagging archlinux
+query = folder:list/archlinux
+tags = +archlinux;-new
+
+[InboxFilter]
+
+[MailMover]
+folders = inbox archives trash
+rename = True
+max_age = 15
+# rules
+inbox = 'NOT tag:inbox AND NOT tag:deleted':archives
+archives = 'tag:inbox':inbox
+trash = 'not tag:deleted and folder:trash':archives

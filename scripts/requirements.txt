@@ -6,3 +6,4 @@ pygments
 pynvim
 ipython
 grasp
+afew
