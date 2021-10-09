@@ -41,6 +41,10 @@ Channel personal-drafts
 Far :personal-remote:"[Gmail]/Drafts"
 Near :personal-local:drafts
 
+Channel personal-spam
+Far :personal-remote:"[Gmail]/Spam"
+Near :personal-local:spam
+
 Channel personal-notes
 Far :personal-remote:"Notes"
 Near :personal-local:notes
@@ -77,6 +81,10 @@ Channel personal-work
 Far :personal-remote:"work"
 Near :personal-local:work
 
+Channel personal-notmuch
+Far :personal-remote:"lists/notmuch"
+Near :personal-local:list/notmuch
+
 Group personal
 Channel personal-inbox
 Channel personal-sent
@@ -92,6 +100,8 @@ Channel personal-riscv
 Channel personal-ieee-cass
 Channel personal-archlinux
 Channel personal-work
+Channel personal-notmuch
+Channel personal-spam
 
 {{ if .workconf -}}
 IMAPAccount work

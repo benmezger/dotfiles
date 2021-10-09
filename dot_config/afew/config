@@ -52,13 +52,24 @@ message = Tagging archlinux
 query = folder:list/archlinux
 tags = +archlinux;-new
 
+[Filter.9]
+message = Tagging spam
+query = folder:spam
+tags = +spam;-new;-inbox
+
+[Filter.10]
+message = Tagging notmuch
+query = folder:list/notmuch
+tags = +notmuch;-new
+
 [InboxFilter]
 
 [MailMover]
-folders = inbox archives trash
+folders = inbox archives trash spam
 rename = True
 max_age = 15
 # rules
-inbox = 'NOT tag:inbox AND NOT tag:deleted':archives
+inbox = '(NOT tag:inbox AND NOT tag:deleted) OR tag:archived':archives
 archives = 'tag:inbox':inbox
 trash = 'not tag:deleted and folder:trash':archives
+spam = 'tag:spam':spam
