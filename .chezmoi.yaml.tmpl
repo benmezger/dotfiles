@@ -26,6 +26,7 @@
 {{- $hostname := "seds" -}}
 {{- $gpg_keyid := "0x7357E344D6C3C795" -}}
 {{- $github_user := "benmezger" -}}
+{{- $maildir := "mail" -}}
 
 {{- $personal_smtp_host := "smtp.gmail.com" -}}
 {{- $personal_smtp_port := 587 -}}
@@ -52,6 +53,7 @@
 
 {{- $name := promptString "full name" -}}
 {{- $email := promptString "personal email" -}}
+{{- $maildir := promptString "maildir" -}}
 {{- $hostname := promptString "computer hostname" -}}
 {{- $gpg_keyid := promptString "PGP key id" -}}
 {{- $github_user := promptString "github username" -}}
@@ -84,6 +86,7 @@ data:
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
   workconf: {{ $workconf }}
+  maildir: {{ joinPath .chezmoi.homeDir $maildir }}
 {{- if not $minimal }}
   smtp_host: {{ $personal_smtp_host }}
   smtp_port: {{ $personal_smtp_port }}

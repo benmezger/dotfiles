@@ -17,8 +17,8 @@ Account personal
 MaildirStore personal-local
 Subfolders Verbatim
 # The trailing "/" is important
-Path ~/mail/personal/
-Inbox ~/mail/personal/inbox
+Path {{ .maildir }}/personal/
+Inbox {{ .maildir }}/personal/inbox
 
 Channel personal-inbox
 Far :personal-remote:
@@ -107,8 +107,8 @@ Account work
 MaildirStore work-local
 Subfolders Verbatim
 # The trailing "/" is important
-Path ~/mail/work/
-Inbox ~/mail/work/inbox
+Path {{ .maildir }}/work/
+Inbox {{ .maildir }}/work/inbox
 
 Channel work-inbox
 Far :work-remote:

@@ -58,7 +58,7 @@
           (:maildir "/personal/list/cypherpunk" :key ?c)
           (:maildir "/personal/list/ieee-cass" :key ?j)
           (:maildir "/personal/list/riscv" :key ?5))
-        smtpmail-queue-dir (expand-file-name "~/mail/queue/cur"))
+        smtpmail-queue-dir (expand-file-name "{{ .maildir }}/queue/cur"))
 
   (defun benmezger/mu4e-mode-hook ()
     (when (featurep! :completion company)

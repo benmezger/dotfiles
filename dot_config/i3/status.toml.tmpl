@@ -43,7 +43,7 @@ block = "github"
 [[block]]
 block = "maildir"
 interval = 60
-inboxes = ["/home/{{ .chezmoi.homeDir }}/mail/personal", "{{ .chezmoi.homeDir }}/mail/personal/inbox"]
+inboxes = ["/home/{{ .maildir }}/personal", "{{ .maildir}}/personal/inbox"]
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"

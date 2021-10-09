@@ -14,7 +14,7 @@ set smtp_url=smtps://$my_user@{{ .work.smtp_host }}
 set ssl_force_tls = yes
 {{- end }}
 
-set folder = "~/mail/work"
+set folder = "{{ .maildir }}/work"
 set mbox_type = "Maildir"
 set spoolfile = +inbox
 set postponed = "+drafts"
