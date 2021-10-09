@@ -188,7 +188,7 @@
                     (beginning-of-line)))))
 
   (setq message-kill-buffer-on-exit t
-        +notmuch-sync-backend 'mbsync
+        +notmuch-sync-backend "syncmail"
         +notmuch-mail-folder "~/mail"
         notmuch-show-logo nil
         {{ if eq .chezmoi.os "darwin" -}}
