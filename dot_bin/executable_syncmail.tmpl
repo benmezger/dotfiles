@@ -23,29 +23,26 @@ root.addHandler(handler)
 
 # PERSONAL_EMAIL and WORK_EMAIL is automatically by 'chezmoi apply'.
 # The variables '.email', '.workconf' and '.work.workmail' is located in dotfiles/.chezmoi.yaml.tmpl
+MAILDIR = "{{ .maildir }}"
 PERSONAL_EMAIL = "{{ .email }}"
 WORK_EMAIL = "{{ if .workconf }}{{ .work.workmail }}{{ end }}"
 
-MAILDIR = pathlib.Path().home().joinpath("mail")
+MAILDIR = pathlib.Path(MAILDIR)
 PERSONAL_MAILDIR = MAILDIR.joinpath("personal")
-WORK_MAILDIR = MAILDIR.joinpath("work")
+WORK_MAILDIR = MAILDIR.joinpath("work") if len(WORK_EMAIL) else None
 
-MU_BIN = (
-    pathlib.Path().joinpath("/usr/local/bin/mu")
+NOTMUCH_BIN = (
+    pathlib.Path().joinpath("/usr/local/bin/notmuch")
     if os.uname().sysname == "Darwin"
-    else pathlib.Path().joinpath("/usr/bin/mu")
+    else pathlib.Path().joinpath("/usr/bin/notmuch")
 )
+
+AFEW_BIN = "afew"
 
 MBSYNC_BIN = (
     pathlib.Path().joinpath("/usr/local/bin/mbsync")
     if os.uname().sysname == "Darwin"
     else pathlib.Path().joinpath("/usr/bin/mbsync")
-)
-
-EMACSCLIENT_BIN = (
-    pathlib.Path().joinpath("/usr/local/bin/emacsclient")
-    if os.uname().sysname == "Darwin"
-    else pathlib.Path().joinpath("/usr/bin/emacsclient")
 )
 
 
@@ -61,63 +58,18 @@ def call_mbsync(extra_args: List[str] = []):
     return False if result.returncode else True
 
 
-def call_emacs(extra_args: List[str] = []):
-    root.info(f"Running emacs")
-    result = subprocess.run([EMACSCLIENT_BIN, "-e", "(mu4e-update-index)"] + extra_args)
-    root.info(f"emacs returned code {result.returncode}")
+def call_notmuch(extra_args: List[str] = []):
+    root.info(f"Running notmuch")
+    result = subprocess.run([NOTMUCH_BIN, "new"] + extra_args)
+    root.info(f"notmuch returned code {result.returncode}")
     return False if result.returncode else True
 
 
-def call_mu(extra_args: List[str] = []):
-    root.info(f"Running mu")
-    result = subprocess.run([MU_BIN, "index"] + extra_args)
-    root.info(f"mu returned code {result.returncode}")
+def run_afew(extra_args: List[str]):
+    root.info(f"Running afew move directories")
+    result = subprocess.run([AFEW_BIN] + extra_args)
+    root.info(f"notmuch returned code {result.returncode}")
     return False if result.returncode else True
-
-
-def init_mu(extra_args: List[str] = []):
-    root.info(f"Initializing mu")
-    result = subprocess.run(
-        [
-            f"{MU_BIN}",
-            "init",
-            f"--my-address={PERSONAL_EMAIL}",
-            f"--my-address={WORK_EMAIL}" if len(WORK_EMAIL) else "",
-            f"--maildir={MAILDIR}",
-        ]
-        + extra_args
-    )
-
-    root.info(f"mu returned code {result.returncode}")
-    return False if result.returncode else True
-
-
-def ensure_mu(extra_args: List[str] = []):
-    root.info(f"Ensuring mu")
-    result = subprocess.run(
-        [f"{MU_BIN}", "info"] + extra_args,
-        capture_output=True,
-    )
-
-    root.info(f"mu info returned code {result.returncode}")
-
-    if "Couldn't detect type of database" in result.stderr.strip().decode("ascii"):
-        return init_mu(extra_args)
-
-    return False if result.returncode else True
-
-
-def check_mu_server(extra_args: List[str] = []):
-    root.info("Checking if mu server is running")
-    ps = subprocess.Popen(["ps", "aux"], stdout=subprocess.PIPE)
-    grep = subprocess.check_output(("grep", "[b]in/mu server"), stdin=ps.stdout).decode(
-        "ascii"
-    )
-    ps.wait()
-
-    root.info(f"grep returned {grep}")
-
-    return True if "mu server" in grep else False
 
 
 def lock_acquire(should_exit=True):
@@ -150,15 +102,9 @@ def main():
     ensure_dir(PERSONAL_MAILDIR)
     ensure_dir(WORK_MAILDIR)
 
-    if check_mu_server():
-        logging.info("'mu server' is running. Skipping.")
-        return
-
-    ensure_mu()
-
-    mbsync_ok = call_mbsync()
-    emacs_ok = call_emacs() if mbsync_ok else False
-    # mu_ok = call_mu() if not emacs_ok else None  # set to None if not needed
+    afew_move = run_afew(["--all", "-m", "-v"])
+    mbsync_ok = call_mbsync() if afew_move else False
+    notmuch_ok = call_notmuch() if mbsync_ok else False
 
 
 if __name__ == "__main__":
