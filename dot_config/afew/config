@@ -88,6 +88,11 @@ message = Tagging PDFs
 query = mimetype:application/pdf
 tags = +pdf
 
+[Filter.16]
+message = Tagging linux-riscv
+query = folder:list/linux-riscv
+tags = +linux-rv;+linux;+riscv
+
 [InboxFilter]
 
 [MailMover]
