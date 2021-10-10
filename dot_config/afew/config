@@ -64,7 +64,7 @@ tags = +notmuch;-new
 [HeaderMatchingFilter.0]
 header = List-Id
 pattern = <(?P<list_id>.*)>
-query = and not tag:list
+query = not tag:list
 tags = +list
 
 [Filter.11]
