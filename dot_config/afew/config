@@ -78,6 +78,16 @@ message = Tagging lists
 query = list:
 tags = +list
 
+[Filter.14]
+message = Tagging patches
+query = mimetype:text/x-patch
+tags = +patch
+
+[Filter.15]
+message = Tagging PDFs
+query = mimetype:application/pdf
+tags = +pdf
+
 [InboxFilter]
 
 [MailMover]
