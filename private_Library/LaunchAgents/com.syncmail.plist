@@ -3,6 +3,11 @@
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+           <key>SYNCMAIL_BACKGROUND</key>
+           <string>True</string>
+    </dict>
     <key>Label</key>
     <string>com.syncmail</string>
     <key>OnDemand</key>

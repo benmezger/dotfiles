@@ -11,6 +11,8 @@ import os
 import fcntl
 from typing import List
 
+BACKGROUND = os.environ.get("SYNCMAIL_BACKGROUND", False)
+
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -105,6 +107,10 @@ def main():
     afew_move = run_afew(["--all", "-m", "-v"])
     mbsync_ok = call_mbsync() if afew_move else False
     notmuch_ok = call_notmuch() if mbsync_ok else False
+
+    if BACKGROUND:
+        logging.info("Background is enabled. Running 'afew' against all tags")
+        run_afew(["--all", "-t", "-v"])
 
 
 if __name__ == "__main__":
