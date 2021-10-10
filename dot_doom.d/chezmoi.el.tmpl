@@ -97,6 +97,7 @@
                         (mu4e-compose-signature . (with-temp-buffer
                                                     (insert-file-contents "~/.config/neomutt/signature-short.personal")
                                                     (buffer-string)))))
+  {{ if .workconf -}}(
   (set-email-account! "work"
                       '((mu4e-refile-folder     . "/personal/work")
                         (smtpmail-smtp-user     . "{{ .work.workmail }}")
@@ -104,6 +105,7 @@
                         (smtpmail-smtp-server   . "{{ .work.smtp_host }}")
                         (smtpmail-smtp-service  . {{ .work.smtp_port }})
                         (mu4e-compose-signature . "{{ .name }}")))
+  {{- end }}
 
   (when (file-exists-p (concat org-directory "/elisp/mu4e-bookmarks.el"))
     (load (concat org-directory "/elisp/mu4e-bookmarks.el")))
