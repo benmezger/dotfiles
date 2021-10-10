@@ -61,12 +61,6 @@ message = Tagging notmuch
 query = folder:list/notmuch and not tag:notmuch
 tags = +notmuch;-new
 
-[HeaderMatchingFilter.0]
-header = List-Id
-pattern = <(?P<list_id>.*)>
-query = not tag:list
-tags = +list
-
 [Filter.11]
 message = Tagging unread sent
 query = (folder:sent AND tag:unread) and not tag:inbox
@@ -76,6 +70,13 @@ tags = +inbox
 message = Tagging newsfeed
 query = to:me+newsfeed@benmezger.nl and not tag:newsfeed
 tags = +newsfeed
+
+# this requires 'index.header.List List-Id'
+# see: https://notmuchmail.org/faq/#index8h2
+[Filter.13]
+message = Tagging lists
+query = list:
+tags = +list
 
 [InboxFilter]
 
