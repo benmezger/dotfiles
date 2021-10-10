@@ -5,8 +5,8 @@
   <dict>
     <key>EnvironmentVariables</key>
     <dict>
-           <key>SYNCMAIL_BACKGROUND</key>
-           <string>True</string>
+      <key>SYNCMAIL_BACKGROUND</key>
+      <string>True</string>
     </dict>
     <key>Label</key>
     <string>com.syncmail</string>
@@ -14,7 +14,7 @@
     <true />
     <key>ProgramArguments</key>
     <array>
-      <string>/bin/bash</string>
+      <string>/usr/local/bin/zsh</string>
       <string>-c</string>
       <string>$HOME/.bin/syncmail</string>
     </array>
