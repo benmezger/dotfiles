@@ -97,7 +97,7 @@
                         (mu4e-compose-signature . (with-temp-buffer
                                                     (insert-file-contents "~/.config/neomutt/signature-short.personal")
                                                     (buffer-string)))))
-  {{ if .workconf -}}(
+  {{ if .workconf -}}
   (set-email-account! "work"
                       '((mu4e-refile-folder     . "/personal/work")
                         (smtpmail-smtp-user     . "{{ .work.workmail }}")
@@ -174,10 +174,13 @@
         org-gcal-recurring-events-mode 'nested))
 
 (after! notmuch
+  :init
+  (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0 :ignore t)
   :defer t
   :config
 
-  (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0)
+  (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0 :ignore t)
+  (set-popup-rule! "^\\*notmuch-saved-search-emacs*" :side 'bottom :size 30 :ttl 0)
 
   (add-hook 'notmuch-hello-refresh-hook
             (lambda ()
@@ -218,5 +221,6 @@
                                  (:name "sent" :query "tag:sent" :key "s")
                                  (:name "drafts" :query "tag:draft" :key "d")
                                  (:name "unread" :query "tag:unread" :key "u")
-                                 (:name "emacs" :query "tag:emacs" :key "e"))))
+                                 (:name "emacs" :query "tag:emacs" :key "e"))
+        notmuch-show-all-tags-list t))
 {{ end -}}
