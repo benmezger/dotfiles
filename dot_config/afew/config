@@ -8,7 +8,7 @@ me_tag = me
 
 [Filter.0]
 message = Tagging archives
-query = folder:archives and not (folder:inbox or tag:inbox or tag:archived)
+query = folder:archives and not (folder:inbox or tag:archived)
 tags = +archived;-inbox
 
 [Filter.1]
@@ -19,17 +19,17 @@ tags = +inbox;-archived
 [Filter.2]
 message = Tagging drafts
 query = folder:drafts and not tag:draft
-tags = +draft
+tags = +draft;-new
 
 [Filter.3]
 message = Tagging trash
 query = (folder:trash OR tag:deleted) and not tag:deleted
-tags = +deleted;-archived;-inbox;
+tags = +deleted;-archived;-inbox;-new
 
 [Filter.4]
 message = Tagging work
 query = folder:work and not tag:work
-tags = +work
+tags = +work;-new
 
 [Filter.5]
 message = Tagging emacs
@@ -54,7 +54,7 @@ tags = +archlinux;-new
 [Filter.9]
 message = Tagging spam
 query = folder:spam and not tag:spam
-tags = +spam;-new;-inbox
+tags = +spam;-new;-inbox;-archived
 
 [Filter.10]
 message = Tagging notmuch
@@ -64,12 +64,12 @@ tags = +notmuch;-new
 [Filter.11]
 message = Tagging unread sent
 query = (folder:sent AND tag:unread) and not tag:inbox
-tags = +inbox
+tags = +inbox;-new
 
 [Filter.12]
 message = Tagging newsfeed
 query = to:me+newsfeed@benmezger.nl and not tag:newsfeed
-tags = +newsfeed
+tags = +newsfeed;-new;
 
 # this requires 'index.header.List List-Id'
 # see: https://notmuchmail.org/faq/#index8h2
@@ -90,10 +90,8 @@ tags = +pdf
 
 [Filter.16]
 message = Tagging linux-riscv
-query = folder:list/linux-riscv
-tags = +linux-rv;+linux;+riscv
-
-[InboxFilter]
+query = folder:list/linux-riscv and not (tag:linux and tag:linux-rv)
+tags = +linux-rv;+linux;+riscv;-new
 
 [MailMover]
 folders = inbox archives trash spam
@@ -101,6 +99,6 @@ rename = True
 max_age = 15
 # rules
 inbox = '(NOT tag:inbox AND NOT tag:deleted) OR tag:archived':archives 'tag:deleted':trash 'tag:spam':spam
-archives = 'tag:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
+archives = 'folder:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
 trash = 'not tag:deleted and folder:trash':archives 'tag:spam':spam
 spam = 'not tag:spam and folder:spam':archives
