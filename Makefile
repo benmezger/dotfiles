@@ -156,3 +156,6 @@ install-osx-apps:
 
 generate-changelog:
 	git-chglog -o CHANGELOG.md
+
+install-python-system-pip:
+	/usr/bin/pip3 install -r scripts/requirements.txt
