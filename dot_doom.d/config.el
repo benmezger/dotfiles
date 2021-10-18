@@ -300,9 +300,9 @@
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
-  (setq org-ref-pdf-directory (concat org-directory "/pdfs/"))
-  (setq org-ref-bibliography-notes (concat org-directory "/bibnotes.org"))
-  (setq reftex-default-bibliography org-ref-default-bibliography))
+  (setq bibtex-completion-library-path (concat org-directory "/pdfs/"))
+  (setq bibtex-completion-notes-path (concat org-directory "/bibnotes.org"))
+  (setq bibtex-completion-bibliography org-ref-default-bibliography))
 
 
 (after! (:org bibtex-completion org-ref org)
