@@ -6,7 +6,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/minimalcheck.sh"
 
 PYTHON_REQUIREMENTS="$DIR/requirements.txt"
-PYTHON_VERSION=3.8.5
+PYTHON_VERSION=3.9.7
 
 # see github.com/pyenv/pyenv/issues/1219
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -21,6 +21,7 @@ if [ ! -d "$PYENV_DIR" ]; then
 fi
 
 eval "$(pyenv init -)"
-pyenv local $PYTHON_VERSION
+pyenv virtualenv 3.9.7 personal
+pyenv local personal
 pip install --upgrade -r $PYTHON_REQUIREMENTS
 mv $DIR/../.python-version $HOME
