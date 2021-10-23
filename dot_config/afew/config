@@ -94,6 +94,11 @@ query = folder:list/linux-riscv
 tags = +linux-rv;+linux;+riscv;-inbox
 
 [Filter.17]
+message = Tagging university
+query = folder:university
+tags = +university
+
+[Filter.18]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
