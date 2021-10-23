@@ -18,58 +18,58 @@ tags = +inbox;-archived
 
 [Filter.2]
 message = Tagging drafts
-query = folder:drafts and not tag:draft
-tags = +draft;-new
+query = folder:drafts
+tags = +draft;
 
 [Filter.3]
 message = Tagging trash
-query = (folder:trash OR tag:deleted) and not tag:deleted
-tags = +deleted;-archived;-inbox;-new
+query = (folder:trash OR tag:deleted)
+tags = +deleted;-archived;-inbox;
 
 [Filter.4]
 message = Tagging work
-query = folder:work and not tag:work
-tags = +work;-new
+query = folder:work
+tags = +work;
 
 [Filter.5]
 message = Tagging emacs
-query = folder:list/emacs and not tag:emacs
-tags = +emacs;-new
+query = folder:list/emacs
+tags = +emacs;-inbox
 
 [Filter.6]
 message = Tagging riscv
-query = folder:list/riscv and not tag:riscv
-tags = +riscv;-new
+query = folder:list/riscv
+tags = +riscv;-inbox
 
 [Filter.7]
 message = Tagging IEEE-cass
-query = folder:list/ieeecass and not tag:ieee
-tags = +ieee;-new
+query = folder:list/ieeecass
+tags = +ieee
 
 [Filter.8]
 message = Tagging archlinux
-query = folder:list/archlinux and not tag:archlinux
-tags = +archlinux;-new
+query = folder:list/archlinux
+tags = +archlinux;-inbox
 
 [Filter.9]
 message = Tagging spam
-query = folder:spam and not tag:spam
-tags = +spam;-new;-inbox;-archived
+query = folder:spam
+tags = +spam;-inbox;-archived
 
 [Filter.10]
 message = Tagging notmuch
-query = folder:list/notmuch and not tag:notmuch
-tags = +notmuch;-new
+query = folder:list/notmuch 
+tags = +notmuch;-inbox
 
 [Filter.11]
 message = Tagging unread sent
 query = (folder:sent AND tag:unread) and not tag:inbox
-tags = +inbox;-new
+tags = +inbox
 
 [Filter.12]
 message = Tagging newsfeed
-query = to:me+newsfeed@benmezger.nl and not tag:newsfeed
-tags = +newsfeed;-new;
+query = to:me+newsfeed@benmezger.nl
+tags = +newsfeed
 
 # this requires 'index.header.List List-Id'
 # see: https://notmuchmail.org/faq/#index8h2
@@ -90,8 +90,13 @@ tags = +pdf
 
 [Filter.16]
 message = Tagging linux-riscv
-query = folder:list/linux-riscv and not (tag:linux and tag:linux-rv)
-tags = +linux-rv;+linux;+riscv;-new
+query = folder:list/linux-riscv
+tags = +linux-rv;+linux;+riscv;-inbox
+
+[Filter.17]
+message = Cleaning up 'new' tag and leaving for mails without any tag
+query = tag:new
+tags = -new
 
 [MailMover]
 folders = inbox archives trash spam
