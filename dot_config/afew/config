@@ -68,7 +68,7 @@ tags = +inbox
 
 [Filter.12]
 message = Tagging newsfeed
-query = to:me+newsfeed@benmezger.nl
+query = to:me+newsfeed@benmezger.nl OR to:me+newsletter@benmezger.nl
 tags = +newsfeed
 
 # this requires 'index.header.List List-Id'
