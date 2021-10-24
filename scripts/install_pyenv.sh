@@ -21,7 +21,7 @@ if [ ! -d "$PYENV_DIR" ]; then
 fi
 
 eval "$(pyenv init -)"
-pyenv virtualenv 3.9.7 personal
+pyenv virtualenv --force 3.9.7 personal
 pyenv local personal
 pip install --upgrade -r $PYTHON_REQUIREMENTS
-mv $DIR/../.python-version $HOME
+mv $DIR/.python-version $HOME
