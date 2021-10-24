@@ -93,6 +93,10 @@ Channel personal-university
 Far :personal-remote:"university"
 Near :personal-local:university
 
+Channel personal-newsfeed
+Far :personal-remote:"newsfeed"
+Near :personal-local:newsfeed
+
 Group personal
 Channel personal-inbox
 Channel personal-sent
@@ -112,6 +116,7 @@ Channel personal-notmuch
 Channel personal-spam
 Channel personal-linux-riscv
 Channel personal-university
+Channel personal-newsfeed
 
 {{ if .workconf -}}
 IMAPAccount work
