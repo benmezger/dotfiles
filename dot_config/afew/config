@@ -99,6 +99,31 @@ query = folder:university
 tags = +university
 
 [Filter.18]
+message = Tagging shopping
+query = folder:shopping
+tags = +shopping
+
+[Filter.19]
+message = Tagging social media
+query = folder:social-media
+tags = +social-media
+
+[Filter.20]
+message = Tagging jobs
+query = folder:jobs
+tags = +jobs
+
+[Filter.21]
+message = Tagging misc list
+query = folder:misc
+tags = +misc
+
+[Filter.22]
+message = Tagging seds
+query = folder:seds
+tags = +@seds
+
+[Filter.23]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
@@ -108,7 +133,7 @@ folders = inbox archives trash spam
 rename = True
 max_age = 15
 # rules
-inbox = '(NOT tag:inbox AND NOT tag:deleted) OR tag:archived':archives 'tag:deleted':trash 'tag:spam':spam
+inbox = 'not tag:inbox':archives 'tag:deleted':trash 'tag:archived':archives 'tag:spam':spam 'not folder:inbox':archives
 archives = 'folder:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
 trash = 'not tag:deleted and folder:trash':archives 'tag:spam':spam
 spam = 'not tag:spam and folder:spam':archives

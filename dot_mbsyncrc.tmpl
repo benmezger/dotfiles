@@ -77,10 +77,6 @@ Channel personal-archlinux
 Far :personal-remote:"lists/archlinux"
 Near :personal-local:list/archlinux
 
-Channel personal-work
-Far :personal-remote:"work"
-Near :personal-local:work
-
 Channel personal-notmuch
 Far :personal-remote:"lists/notmuch"
 Near :personal-local:list/notmuch
@@ -88,6 +84,14 @@ Near :personal-local:list/notmuch
 Channel personal-notmuch
 Far :personal-remote:"lists/linux-riscv"
 Near :personal-local:list/linux-riscv
+
+Channel personal-misc
+Far :personal-remote:"lists/misc"
+Near :personal-local:list/misc
+
+Channel personal-work
+Far :personal-remote:"work"
+Near :personal-local:work
 
 Channel personal-university
 Far :personal-remote:"university"
@@ -97,6 +101,18 @@ Channel personal-newsfeed
 Far :personal-remote:"newsfeed"
 Near :personal-local:newsfeed
 
+Channel personal-seds
+Far :personal-remote:"@seds.nl"
+Near :personal-local:seds
+
+Channel personal-jobs
+Far :personal-remote:"jobs"
+Near :personal-local:jobs
+
+Channel personal-social-media
+Far :personal-remote:"social-media"
+Near :personal-local:social-media
+
 Group personal
 Channel personal-inbox
 Channel personal-sent
@@ -104,6 +120,8 @@ Channel personal-trash
 Channel personal-archives
 Channel personal-drafts
 Channel personal-notes
+Channel personal-spam
+Channel personal-seds
 Channel personal-emacs
 Channel personal-cypherpunk
 Channel personal-debconf
@@ -111,12 +129,14 @@ Channel personal-mu4e
 Channel personal-riscv
 Channel personal-ieee-cass
 Channel personal-archlinux
-Channel personal-work
 Channel personal-notmuch
-Channel personal-spam
 Channel personal-linux-riscv
+Channel personal-misc
+Channel personal-work
 Channel personal-university
 Channel personal-newsfeed
+Channel personal-jobs
+Channel personal-social-media
 
 {{ if .workconf -}}
 IMAPAccount work
