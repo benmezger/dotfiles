@@ -1,7 +1,7 @@
 (doom! :completion
        (company
         +auto +tng)
-       (ivy +fuzzy +childframe)
+       (ivy +fuzzy)
 
        :ui
        deft
