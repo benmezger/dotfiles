@@ -124,6 +124,11 @@ query = folder:seds
 tags = +@seds
 
 [Filter.23]
+message = Tagging LWN
+query = from:lwn@lwn.net
+tags = +lwn +newsfeed
+
+[Filter.24]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
