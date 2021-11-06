@@ -1,10 +1,10 @@
 [settings]
 debug = false
-hidefilenames = false
-ignore =
-    COMMIT_EDITMSG$
-    PULLREQ_EDITMSG$
-    MERGE_MSG$
-    TAG_EDITMSG$
-api_key={{ (bitwarden "item" .bitwarden.wakatime_api).login.password }}
-hostname={{ .hostname }}
+hide_file_names = false
+exclude =
+    ^COMMIT_EDITMSG$
+    ^PULLREQ_EDITMSG$
+    ^MERGE_MSG$
+    ^TAG_EDITMSG$
+api_key = {{ (bitwarden "item" .bitwarden.wakatime_api).login.password }}
+hostname = {{ .hostname }}
