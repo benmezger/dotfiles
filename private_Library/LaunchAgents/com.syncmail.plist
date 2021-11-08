@@ -5,8 +5,6 @@
   <dict>
     <key>EnvironmentVariables</key>
     <dict>
-      <key>SYNCMAIL_BACKGROUND</key>
-      <string>True</string>
       <key>PATH</key>
       <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin</string>
     </dict>
