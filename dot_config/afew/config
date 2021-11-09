@@ -129,6 +129,16 @@ query = from:lwn@lwn.net
 tags = +lwn +newsfeed
 
 [Filter.24]
+message = Tagging LWN
+query = from:lwn@lwn.net
+tags = +lwn +newsfeed
+
+[Filter.25]
+message = Tagging linux-kernel
+query = folder:list/linux-kernel
+tags = +linux-kernel
+
+[Filter.26]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
