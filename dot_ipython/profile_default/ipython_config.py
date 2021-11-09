@@ -421,7 +421,7 @@ c.TerminalIPythonApp.exec_lines = ["%autoreload 2"]
 #  Default: 0
 # c.InteractiveShell.object_info_string_level = 0
 
-c.InteractiveShell.pdb = True
+c.InteractiveShell.pdb = False
 
 ## Deprecated since IPython 4.0 and ignored since 5.0, set
 #  TerminalInteractiveShell.prompts object directly.
