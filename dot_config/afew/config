@@ -123,22 +123,22 @@ message = Tagging seds
 query = folder:seds
 tags = +@seds
 
-[Filter.23]
-message = Tagging LWN
-query = from:lwn@lwn.net
-tags = +lwn +newsfeed
-
-[Filter.24]
-message = Tagging LWN
-query = from:lwn@lwn.net
-tags = +lwn +newsfeed
-
 [Filter.25]
+message = Tagging LWN
+query = from:lwn@lwn.net
+tags = +lwn;+newsfeed
+
+[Filter.26]
 message = Tagging linux-kernel
 query = folder:list/linux-kernel
 tags = +linux-kernel
 
-[Filter.26]
+[Filter.27]
+message = Tagging linux-newbie
+query = linux-newbie@vger.kernel.org>
+tags = +linux-newbie
+
+[Filter.28]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
@@ -148,7 +148,7 @@ folders = inbox archives trash spam
 rename = True
 max_age = 15
 # rules
-inbox = 'not tag:inbox':archives 'tag:deleted':trash 'tag:archived':archives 'tag:spam':spam 'not folder:inbox':archives
-archives = 'folder:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
+inbox = 'tag:deleted':trash 'tag:archived':archives 'tag:spam':spam
+archives = 'tag:inbox':inbox 'tag:deleted':trash 'tag:spam':spam
 trash = 'not tag:deleted and folder:trash':archives 'tag:spam':spam
 spam = 'not tag:spam and folder:spam':archives
