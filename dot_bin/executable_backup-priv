@@ -22,3 +22,7 @@ echo "Backing up roam2 database.."
 mkdir -pv $PRIVDIR/.emacs.d/.local/etc/
 cp -rfv $HOME/.emacs.d/.local/etc/org-roam.db \
         $PRIVDIR/.emacs.d/.local/etc/
+
+echo "Backing up notmuch.."
+mkdir -pv $PRIVDIR/notmuch/
+notmuch dump --gzip --output $PRIVDIR/notmuch/tags.gz
