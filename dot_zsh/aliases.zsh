@@ -116,3 +116,5 @@ fi
 function dotf {
 	(cd $HOME/dotfiles && make "$1")
 }
+
+alias neomutt="stty discard undef && neomutt"

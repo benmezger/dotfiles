@@ -22,15 +22,26 @@ set header_cache = ~/.cache/mutt/personal/headers
 set message_cachedir= ~/.cache/mutt/personal/bodies
 set smtp_authenticators = 'gssapi:login'
 set signature = "~/.config/neomutt/signature-short.personal"
+set trash='trash'
 
 unset record
 
 unset move # gmail handles that
 
-unmailboxes *
-mailboxes =inbox
-mailboxes =drafts
-mailboxes =list/emacs =list/mu4e =list/riscv
-mailboxes =archives
-mailboxes =sent
-mailboxes =trash
+unvirtual-mailboxes *
+set virtual_spoolfile = yes
+set nm_default_url = "notmuch:///Users/seds/mail/personal"
+virtual-mailboxes "unread" "notmuch://?query=tag:unread and tag:me"
+virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+virtual-mailboxes "archives" "notmuch://?query=tag:archived"
+virtual-mailboxes "sent" "notmuch://?query=tag:sent"
+virtual-mailboxes "me" "notmuch://?query=tag:me"
+virtual-mailboxes "trash" "notmuch://?query=tag:deleted"
+virtual-mailboxes "linux" "notmuch://?query=tag:linux-kernel"
+virtual-mailboxes "linux-rv" "notmuch://?query=tag:linux-rv"
+virtual-mailboxes "university" "notmuch://?query=tag:university"
+virtual-mailboxes "emacs" "notmuch://?query=tag:emacs"
+virtual-mailboxes "lwn" "notmuch://?query=tag:lwn"
+virtual-mailboxes "drafts" "notmuch://?query=tag:draft"
+virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
+virtual-mailboxes "lists" "notmuch://?query=tag:list"

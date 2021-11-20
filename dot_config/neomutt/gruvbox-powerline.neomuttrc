@@ -1,132 +1,94 @@
-# base16-mutt: base16-shell support for mutt
-#
-# These depend on mutt compiled with s-lang, not ncurses. Check by running `mutt -v`
-# Details this configuration may be found in the mutt manual:
-# §3 Patterns <http://www.mutt.org/doc/manual/#patterns>
-# §9 Using color and mono video attributes <http://www.mutt.org/doc/manual/#color>
+# gruvbox dark (contrast dark):
 
-# https://www.neomutt.org/guide/configuration.html#color
-# base00 : color00 - Default Background
-# base01 : color18 - Lighter Background (Used for status bars)
-# base02 : color19 - Selection Background
-# base03 : color08 - Comments, Invisibles, Line Highlighting
-
-# base04 : color20 - Dark Foreground (Used for status bars)
-# base05 : color07 - Default Foreground, Caret, Delimiters, Operators
-# base06 : color21 - Light Foreground (Not often used)
-# base07 : color15 - Light Background (Not often used)
-
-# base08 : color01 - Index Item: Deleted.
-# base09 : color16 - Message: URL.
-# base0A : color03 - Search Text Background. Message: Bold.
-# base0B : color02 - Message: Code. Index Item: Tagged.
-# base0C : color06 - Message: Subject, Quotes. Index Item: Trusted.
-# base0D : color04 - Message: Headings.
-# base0E : color05 - Message: Italic, Underline. Index Item: Flagged.
-# base0F : color17 - Deprecated, Opening/Closing Embedded Language Tags e.g.
-
-## Base
-color normal      color07  color00 # softer, bold
-
-## Weak
-color tilde       color08  color00  # `~` padding at the end of pager
-color attachment  color08  color00
-color tree        color08  color00  # arrow in threads
-color signature   color08  color00
-color markers     color08  color00  # `+` wrap indicator in pager
-
-## Strong
-color bold        color21  color00
-color underline   color21  color00
-
-## Highlight
-color error       color01  color00
-color message     color04  color00  # informational messages
-color search      color08  color03
-color status      color20  color19
-color indicator   color21  color19  # inverse, brighter
+# bg0    = 234
+# bg1    = 237
+# bg2    = 239
+# bg3    = 241
+# bg4    = 243
+# 
+# gray   = 245
+# 
+# fg0    = 229
+# fg1    = 223
+# fg2    = 250
+# fg3    = 248
+# fg4    = 246
+# 
+# red    = 167
+# green  = 142
+# yellow = 214
+# blue   = 109
+# purple = 175
+# aqua   = 108
+# orange = 208
 
 
-# Message Index ----------------------------------------------------------------
+# See http://www.mutt.org/doc/manual/#color
 
-## Weak
-color index  color08  color00  "~R"        # read messages
-color index  color08  color00  "~d >45d"   # older than 45 days
-color index  color08  color00  "~v~(!~N)"  # collapsed thread with no unread
-color index  color08  color00  "~Q"        # messages that have been replied to
+color attachment  color109 color234
+color bold        color229 color234
+color error       color167 color234
+color hdrdefault  color246 color234
+color indicator   color223 color235
+color markers     color243 color234
+# color normal      color223 color234
+color quoted      color250 color234
+color quoted1     color108 color234
+color quoted2     color250 color234
+color quoted3     color108 color234
+color quoted4     color250 color234
+color quoted5     color108 color234
+color search      color234 color208
+color signature   color108 color234
+color status      color234 color250
+color tilde       color243 color234
+color tree        color142 color234
+color underline   color223 color239
 
-## Strong
-color index  color21  color00  "(~U|~N|~O)"     # unread, new, old messages
-color index  color21  color00  "~v~(~U|~N|~O)"  # collapsed thread with unread
+color sidebar_divider    color250 color234
+color sidebar_new        color142 color234
+color sidebar_unread     color108 color234
 
-## Highlight
-### Trusted
-color index  color06  color00  "~g"  # PGP signed messages
-color index  color06  color00  "~G"  # PGP encrypted messages
-### Odd
-color index  color01  color00  "~E"  # past Expires: header date
-color index  color01  color00  "~="  # duplicated
-color index  color01  color00  "~S"  # marked by Supersedes: header
-### Flagged
-color index  color05  color00  "~F"       # flagged messages
-color index  color02  color00  "~v~(~F)"  # collapsed thread with flagged inside
+color index color142 color234 ~N
+color index color108 color234 ~O
+color index color109 color234 ~P
+color index color214 color234 ~F
+color index color167 color234 ~=
+color index color234 color223 ~T
+color index color234 color167 ~D
 
-# Selection
-color index  color02  color18   "~T"  # tagged messages
-color index  color01  color18   "~D"  # deleted messages
+color header color214 color234 "^(To:|From:)"
+color header color142 color234 "^Subject:"
+color header color108 color234 "^X-Spam-Status:"
+color header color108 color234 "^Received:"
 
-### Message Headers ----------------------------------------------------
+# BSD's regex has RE_DUP_MAX set to 255.
+color body color142 color234 "[a-z]{3,255}://[-a-zA-Z0-9@:%._\\+~#=/?&,]+"
+color body color142 color234 "[a-zA-Z]([-a-zA-Z0-9_]+\\.){2,255}[-a-zA-Z0-9_]{2,255}"
+color body color208 color234 "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body color208 color234 "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body color234 color214 "[;:]-*[)>(<lt;|]"
+color body color229 color234 "\\*[- A-Za-z]+\\*"
 
-# Base
-color hdrdefault  color07  color00
-color header      color07  color00  "^"
-# Strong
-color header      color21  color00  "^(From)"
-# Highlight
-color header      color04  color00  "^(Subject)"
+color body color214 color234 "^-.*PGP.*-*"
+color body color142 color234 "^gpg: Good signature from"
+color body color167 color234 "^gpg: Can't.*$"
+color body color214 color234 "^gpg: WARNING:.*$"
+color body color167 color234 "^gpg: BAD signature from"
+color body color167 color234 "^gpg: Note: This key has expired!"
+color body color214 color234 "^gpg: There is no indication that the signature belongs to the owner."
+color body color214 color234 "^gpg: can't handle these multiple signatures"
+color body color214 color234 "^gpg: signature verification suppressed"
+color body color214 color234 "^gpg: invalid node with packet of type"
 
-### Message Body -------------------------------------------------------
-# When possible, these regular expressions attempt to match http://spec.commonmark.org/
-## Weak
-# ~~~ Horizontal rules ~~~
-color body  color08  color00  "([[:space:]]*[-+=#*~_]){3,}[[:space:]]*"
-## Strong
-# *Bold* span
-color body  color03  color00  "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
-# _Underline_ span
-color body  color05  color00  "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
-# /Italic/ span (Sometimes gets directory names)
-color body  color05  color00  "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
-# ATX headers
-color body  color04  color00  "^[[:space:]]{0,3}#+[[:space:]].*$"
-## Highlight
-# `Code` span
-color body  color02  color00  "(^|[[:space:][:punct:]])\`[^\`]+\`([[:space:][:punct:]]|$)"
-# Indented code block
-color body  color02  color00  "^[[:space:]]{4,}.*$"
-# URLs
-color body  color16 color00  "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
-# Email addresses
-color body  color16 color00  "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
-# Emoticons ;-P
-color body  black   yellow   "[;:][-o]?[})>{(<|P]"
+color body color142 color234 "^Good signature from:"
+color body color167 color234 "^.?BAD.? signature from:"
+color body color142 color234 "^Verification successful"
+color body color167 color234 "^Verification [^s][^[:space:]]*$"
 
-# PGP
-color body  color21  color01   "(BAD signature)"
-color body  color21  color01   "^gpg: BAD signature from.*"
-color body  color21  color04   "(Good signature)"
-color body  color21  color04   "^gpg: Good signature .*"
-color body  color04  color00  "^gpg: "
+color compose header            color223 color234
+color compose security_encrypt  color175 color234
+color compose security_sign     color109 color234
+color compose security_both     color142 color234
+color compose security_none     color208 color234
 
-
-## Quotation blocks
-color quoted   color06  color00
-color quoted1  color02  color00
-color quoted2  color03  color00
-color quoted3  color16  color00
-color quoted4  color01  color00
-color quoted5  color17  color00
-color quoted6  color05  color00
-color quoted7  color04  color00
-
-# vi: ft=muttrc
