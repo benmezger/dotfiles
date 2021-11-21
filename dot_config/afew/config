@@ -24,7 +24,7 @@ tags = +draft;
 [Filter.3]
 message = Tagging trash
 query = (folder:trash OR tag:deleted)
-tags = +deleted;-archived;-inbox;
+tags = +deleted;-archived;-inbox
 
 [Filter.4]
 message = Tagging work
@@ -141,7 +141,7 @@ tags = +linux-newbie
 [Filter.28]
 message = tagging hidden
 query = folder:hidden
-tags = +hidden
+tags = +hidden;-inbox;-archived
 
 [Filter.29]
 message = Cleaning up 'new' tag and leaving for mails without any tag
@@ -155,6 +155,6 @@ max_age = 15
 # rules
 inbox = 'tag:deleted':hidden 'tag:archived':archives 'tag:spam':spam
 archives = 'tag:inbox':inbox 'tag:deleted':hidden 'tag:spam':spam
-hidden = 'not tag:deleted or not tag:hidden':archives 'tag:spam':spam
+hidden = 'not tag:archived':archives 'tag:spam':spam
 spam = 'not tag:spam and folder:spam':archives
-trash 'folder:trash':hidden
+trash = 'folder:trash':hidden
