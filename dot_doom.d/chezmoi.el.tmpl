@@ -216,7 +216,7 @@
         notmuch-draft-folder "drafts"
         notmuch-saved-searches nil
         notmuch-archive-tags '("-inbox" "-unread" "-new" "+archived")
-        notmuch-saved-searches '((:name "inbox" :query "tag:inbox not tag:deleted" :key "i")
+        notmuch-saved-searches '((:name "inbox" :query "tag:inbox not (tag:deleted or tag:hidden)" :key "i")
                                  (:name "flagged" :query "tag:flagged" :key "f")
                                  (:name "sent" :query "tag:sent" :key "s")
                                  (:name "drafts" :query "tag:draft" :key "d")
