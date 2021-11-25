@@ -23,7 +23,7 @@ tags = +draft;
 
 [Filter.3]
 message = Tagging trash
-query = (folder:trash OR tag:deleted)
+query = folder:trash
 tags = +deleted;-archived;-inbox
 
 [Filter.4]
@@ -144,6 +144,16 @@ query = folder:hidden
 tags = +hidden;-inbox;-archived
 
 [Filter.29]
+message = Untagging any non-inbox mail
+query = tag:inbox and not folder:inbox
+tags = -inbox
+
+[Filter.29]
+message = Untagging any non-inbox mail
+query = tag:inbox and not folder:inbox
+tags = -inbox
+
+[Filter.30]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
 tags = -new
