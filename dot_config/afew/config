@@ -153,8 +153,8 @@ folders = inbox archives hidden spam trash
 rename = True
 max_age = 15
 # rules
-inbox = 'tag:deleted':hidden 'tag:archived':archives 'tag:spam':spam
-archives = 'tag:inbox':inbox 'tag:deleted':hidden 'tag:spam':spam
-hidden = 'not tag:archived':archives 'tag:spam':spam
-spam = 'not tag:spam and folder:spam':archives
-trash = 'folder:trash':hidden
+inbox = 'tag:deleted and not tag:inbox':hidden 'tag:archived and not tag:inbox':archives 'tag:spam and not tag:inbox':spam
+spam = 'not tag:spam and tag:inbox':inbox 'not tag:spam and not folder:spam':archives
+archives = 'tag:inbox and not tag:archived':inbox 'tag:hidden or tag:deleted and not tag:archived':hidden 'tag:spam':spam
+hidden = 'tag:archived and not tag:hidden':archives 'tag:spam':spam 'tag:inbox and not tag:hidden':inbox
+trash = 'folder:trash or tag:deleted':hidden
