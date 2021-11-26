@@ -148,11 +148,6 @@ message = Untagging any non-inbox mail
 query = tag:inbox and not folder:inbox
 tags = -inbox
 
-[Filter.29]
-message = Untagging any non-inbox mail
-query = tag:inbox and not folder:inbox
-tags = -inbox
-
 [Filter.30]
 message = Cleaning up 'new' tag and leaving for mails without any tag
 query = tag:new
@@ -163,8 +158,8 @@ folders = inbox archives hidden spam trash
 rename = True
 max_age = 15
 # rules
-inbox = 'tag:deleted and not tag:inbox':hidden 'tag:archived and not tag:inbox':archives 'tag:spam and not tag:inbox':spam
+inbox = 'folder:inbox and tag:deleted and not tag:inbox':hidden 'folder:inbox and tag:archived and not tag:inbox':archives 'folder:inbox and tag:spam and not tag:inbox':spam
 spam = 'not tag:spam and tag:inbox':inbox 'not tag:spam and not folder:spam':archives
-archives = 'tag:inbox and not tag:archived':inbox 'tag:hidden or tag:deleted and not tag:archived':hidden 'tag:spam':spam
-hidden = 'tag:archived and not tag:hidden':archives 'tag:spam':spam 'tag:inbox and not tag:hidden':inbox
+archives = 'folder:archived and tag:inbox and not tag:archived':inbox 'folder:archived and tag:hidden or tag:deleted and not tag:archived':hidden 'folder:archived and tag:spam':spam
+hidden = 'folder:hidden and tag:archived and not (tag:hidden or tag:deleted)':archives 'folder:hidden and tag:spam':spam 'folder:hidden and tag:inbox and not (tag:hidden or tag:deleted)':inbox
 trash = 'folder:trash or tag:deleted':hidden
