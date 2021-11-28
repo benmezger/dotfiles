@@ -86,6 +86,7 @@ bind index,pager - modify-labels
 macro index,pager ! "<modify-labels>!unread\n" "Toggle the 'unread' tag"
 macro index A "<modify-labels>+archived -unread -inbox<enter>" "Archive message"
 macro index D "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
+macro index d "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
 macro index c "<change-vfolder>?" "Change to vfolder overview"
 macro index \\\\ "<vfolder-from-query>" "Search mailbox"
 
@@ -107,3 +108,4 @@ folder-hook . 'set read_inc=1000'
 unset help
 
 bind index,pager @ compose-to-sender
+source ./vim-keys.rc
