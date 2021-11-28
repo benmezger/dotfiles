@@ -1,10 +1,12 @@
 {{- if eq .chezmoi.os "darwin" }}
 application/pdf; open -a Skim %s
+application/octet-stream; open -a Skim %s
 {{- else }}
 application/pdf; firefox %s
+application/octet-stream; nvim %s
 {{- end }}
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 text/x-diff; nvim %s
 text/x-patch; nvim %s
+text/plain; nvim %s
 application/x-patch; nvim %s
-application/octet-stream; nvim %s
