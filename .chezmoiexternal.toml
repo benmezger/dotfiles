@@ -22,3 +22,7 @@
     type = "archive"
     url = "https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip"
     stripComponents = 1
+
+[".bin/notmuch-extract-patch"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/aaptel/notmuch-extract-patch/master/notmuch-extract-patch"
