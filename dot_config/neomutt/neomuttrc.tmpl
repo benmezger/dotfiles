@@ -7,13 +7,14 @@ set sendmail = "/usr/bin/msmtp"
 
 set wait_key = no
 set timeout = 3
-set mail_check = 0
-set mail_check_stats
+set mail_check = 300
+set mail_check_stats = yes
 set quit
 set beep_new
 set thorough_search
 set smart_wrap
-set edit_headers
+set include = yes
+set edit_headers = yes
 
 set sort = threads
 set sort_aux = reverse-last-date-received
@@ -68,7 +69,6 @@ set sidebar_visible
 set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_format = "%D%* %N/%F/%S"
-set mail_check_stats
 
 bind index,pager \CP sidebar-prev  # Ctrl-Shift-P - Previous Mailbox
 bind index,pager \CN sidebar-next  # Ctrl-Shift-N - Next Mailbox
@@ -79,19 +79,32 @@ bind index,pager \CF vfolder-from-query
 
 # enable caching
 set header_cache = "~/.cache/neomutt/headers"
+set header_cache_backend = "lmdb"
 set message_cachedir = "~/.cache/neomutt/bodies"
 
 # notmuch
 bind index,pager - modify-labels
 macro index,pager ! "<modify-labels>!unread\n" "Toggle the 'unread' tag"
-macro index d "<delete-message><modify-tags-then-hide>+deleted<enter>"
-macro index u "<undelete-messsage><modify-tags-then-hide>-deleted<enter>"
+macro index A "<modify-labels>+archived -unread -inbox<enter>" "Archive message"
+macro index D "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+macro index \\\\ "<vfolder-from-query>" "Search mailbox"
+
+set query_command = "notmuch address %s"
+set query_format = "%5c %t %a %n %?e?(%e)?"
 
 # save history
 set save_history = 10000
+set history_remove_dups = yes
 
 set status_format = "[%f, %b\/%m%?n? (%n new)?%?d? (%d to del)?%?t? (%t tagged)?]%> %?p?(%p postponed)?"
 
-set fast_reply
+set fast_reply = yes
 set mark_old = no
 set mime_forward = yes
+
+# use very high $read_inc to speed up reading hcache'd maildirs
+folder-hook . 'set read_inc=1000'
+unset help
+
+bind index,pager @ compose-to-sender
