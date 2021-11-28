@@ -224,7 +224,10 @@
                                  (:name "emacs" :query "tag:emacs" :key "e")
                                  (:name "lwn" :query "tag:lwn" :key "w")
                                  (:name "lists" :query "tag:list" :key "l"))
-        notmuch-show-all-tags-list t)
+        notmuch-show-all-tags-list t
+        +notmuch-delete-tags '("+deleted" "-inbox" "-unread" "-archived")
+        +notmuch-spam-tags '("+spam" "-inbox" "-unread" "-archived"))
+
 
   ;; from: https://github.com/aaptel/notmuch-extract-patch
   (defun apply-thread-patchset (repo branch)
