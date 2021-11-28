@@ -118,3 +118,7 @@ function dotf {
 }
 
 alias neomutt="stty discard undef && neomutt"
+alias unread="neomutt -f 'notmuch://?query=tag:me and tag:unread'"
+alias inbox="neomutt -f 'notmuch://?query=tag:inbox'"
+alias me="neomutt -f 'notmuch://?query=tag:me'"
+alias archived="neomutt -f 'notmuch://?query=tag:archived'"
