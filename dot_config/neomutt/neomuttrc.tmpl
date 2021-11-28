@@ -28,13 +28,12 @@ alternative_order text/plain text/enriched text/html
 
 set forward_format = "Fwd: %s"
 
-set hidden_tags = "deleted"
-tag-transforms "inbox" "inbox"  \
-               "unread" "u" \
-               "sent" "st" \
-               "attachment" "att" \
-               "replied" "re" \
-               "deleted" "del"
+# tag-transforms "inbox" "inbox"  \
+#                "unread" "u" \
+#                "sent" "st" \
+#                "attachment" "att" \
+#                "replied" "re" \
+#                "deleted" "del"
 
 # The formats must start with 'G' and the entire sequence is case sensitive.
 tag-formats "inbox" "GI" \
