@@ -223,7 +223,8 @@
                                  (:name "unread" :query "tag:unread and tag:me" :key "u")
                                  (:name "emacs" :query "tag:emacs" :key "e")
                                  (:name "lwn" :query "tag:lwn" :key "w")
-                                 (:name "lists" :query "tag:list" :key "l"))
+                                 (:name "lists" :query "tag:list" :key "l")
+                                 (:name "todos" :query "tag:todo" :key "t"))
         notmuch-show-all-tags-list t
         +notmuch-delete-tags '("+deleted" "-inbox" "-unread" "-archived")
         +notmuch-spam-tags '("+spam" "-inbox" "-unread" "-archived"))
