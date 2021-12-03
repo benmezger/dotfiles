@@ -298,11 +298,17 @@
 
 (after! (:or org-ref org)
   :config
-  (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
   (setq bibtex-completion-library-path (concat org-directory "/pdfs/"))
   (setq bibtex-completion-notes-path (concat org-directory "/bibnotes.org"))
-  (setq bibtex-completion-bibliography org-ref-default-bibliography))
+  (setq bibtex-completion-bibliography org-ref-default-bibliography)
+
+  (require 'org-ref-ivy)
+  (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+        org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+        org-ref-insert-label-function 'org-ref-insert-label-link
+        org-ref-insert-ref-function 'org-ref-insert-ref-link
+        org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
 
 
 (after! (:org bibtex-completion org-ref org)
