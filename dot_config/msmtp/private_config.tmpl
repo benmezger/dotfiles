@@ -1,8 +1,12 @@
+# Set default values for all following accounts.
+defaults
+logfile        ~/.msmtp.log
+auth           on
+tls            on
+tls_starttls   on
+
 # personal
 account        personal
-tls_starttls on
-auth on
-tls on
 host           {{ .smtp_host }}
 port           {{ .smtp_port }}
 from           {{ .email }}
@@ -12,9 +16,6 @@ password       {{ (bitwarden "item" .bitwarden.personal_mail).login.password }}
 {{- if .workconf }}
 # work
 account        work
-tls_starttls on
-auth on
-tls on
 host           {{ .work.smtp_host }}
 port           {{ .work.smtp_port }}
 from           {{ .work.workmail }}
