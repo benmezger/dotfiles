@@ -229,9 +229,8 @@
         +notmuch-delete-tags '("+deleted" "-inbox" "-unread" "-archived")
         +notmuch-spam-tags '("+spam" "-inbox" "-unread" "-archived"))
 
-
   ;; from: https://github.com/aaptel/notmuch-extract-patch
-  (defun apply-thread-patchset (repo branch)
+  (defun benmezger/apply-thread-patchset (repo branch)
     (interactive "Dgit repo: \nsnew branch name: ")
     (let ((tid notmuch-show-thread-id)
           (tmp "/tmp/notmuch-patchset"))
@@ -240,5 +239,12 @@
                              (shell-quote-argument tmp)
                              (shell-quote-argument (expand-file-name repo))
                              (shell-quote-argument branch)
-                             (shell-quote-argument tmp))))))
+                             (shell-quote-argument tmp)))))
+
+  (global-set-key (kbd "M-n p") 'benmezger/apply-thread-patchset))
 {{ end -}}
+
+(global-set-key (kbd "M-n s") 'notmuch-search)
+(global-set-key (kbd "M-n t") 'notmuch-search-by-tag)
+(global-set-key (kbd "M-n c") '+notmuch/compose)
+(global-set-key (kbd "M-n u") '+notmuch/update)
