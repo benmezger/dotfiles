@@ -34,7 +34,7 @@ tags = +work;
 [Filter.5]
 message = Tagging emacs
 query = folder:list/emacs
-tags = +emacs;-inbox
+tags = +emacs;-inbox;+list
 
 [Filter.6]
 message = Tagging riscv
