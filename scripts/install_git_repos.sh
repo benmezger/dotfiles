@@ -7,6 +7,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 VIM_PLUG_PATH="$HOME/.vim/autoload/plug.vim"
 if [[ -f "$VIM_PLUG_PATH" && -x "$(command -v nvim)" ]]; then
 	nvim +PlugInstall +qall --headless
+	nvim +UpdateRemotePlugins +qall --headless
 fi
 
 EMACS_PATH="$HOME/.emacs.d"

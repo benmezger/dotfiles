@@ -160,7 +160,7 @@ noremap <Right> <NOP>
 " neomake
 let g:neomake_open_list = 2 " open list automatically
 " enable linters
-call neomake#configure#automake('nrwi', 500)
+call neomake#configure#automake('w', 500)
 
 augroup my_neomake_qf
     autocmd!
@@ -241,6 +241,10 @@ if has("clipboard")
   endif
 endif
 
-if $CODESTATS_API_KEY
-  let g:codestats_api_key = '$CODESTATS_API_KEY'
-endif
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
+
+" if $CODESTATS_API_KEY
+"   let g:codestats_api_key = '$CODESTATS_API_KEY'
+" endif

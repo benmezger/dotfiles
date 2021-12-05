@@ -100,6 +100,7 @@ if [ ! -d "$VIM_PLUG_PATH" ]; then
 
 	if ! [ -x "$(command -v nvim)" ]; then
 		nvim +PlugInstall +qall --headless
+		nvim +UpdateRemotePlugins +qall --headless
 	fi
 fi
 #+END_SRC
