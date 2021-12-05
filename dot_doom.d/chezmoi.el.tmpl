@@ -229,6 +229,8 @@
         +notmuch-delete-tags '("+deleted" "-inbox" "-unread" "-archived")
         +notmuch-spam-tags '("+spam" "-inbox" "-unread" "-archived"))
 
+  (load "~/.doom.d/elisp/notmuch-unread.el")
+
   ;; from: https://github.com/aaptel/notmuch-extract-patch
   (defun benmezger/apply-thread-patchset (repo branch)
     (interactive "Dgit repo: \nsnew branch name: ")
