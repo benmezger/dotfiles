@@ -69,29 +69,10 @@ set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_format = "%D%* %N/%F/%S"
 
-bind index,pager \CP sidebar-prev  # Ctrl-Shift-P - Previous Mailbox
-bind index,pager \CN sidebar-next  # Ctrl-Shift-N - Next Mailbox
-bind index,pager \CB sidebar-toggle-visible # Use 'B' to switch the Sidebar on and off
-bind index,pager \CO sidebar-open  # Ctrl-Shift-O - Open Highlighted Mailbox
-
-bind index,pager \CF vfolder-from-query
-
 # enable caching
 set header_cache = "~/.cache/neomutt/headers"
 set header_cache_backend = "lmdb"
 set message_cachedir = "~/.cache/neomutt/bodies"
-
-# notmuch
-bind index,pager - modify-labels
-macro index,pager ! "<modify-labels>!unread\n" "Toggle the 'unread' tag"
-macro index A "<modify-labels>+archived -unread -inbox<enter>" "Archive message"
-macro index D "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
-macro index d "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
-macro index c "<change-vfolder>?" "Change to vfolder overview"
-macro index \\\\ "<vfolder-from-query>" "Search mailbox"
-
-set query_command = "notmuch address %s"
-set query_format = "%5c %t %a %n %?e?(%e)?"
 
 # save history
 set save_history = 10000
@@ -108,4 +89,22 @@ folder-hook . 'set read_inc=1000'
 unset help
 
 bind index,pager @ compose-to-sender
-source ./vim-keys.rc
+#source ./vim-keys.rc
+
+bind index,pager \CP sidebar-prev  # Ctrl-Shift-P - Previous Mailbox
+bind index,pager \CN sidebar-next  # Ctrl-Shift-N - Next Mailbox
+bind index,pager \CB sidebar-toggle-visible # Use 'B' to switch the Sidebar on and off
+bind index,pager \CO sidebar-open  # Ctrl-Shift-O - Open Highlighted Mailbox
+bind index,pager \CF vfolder-from-query
+
+# notmuch
+bind index,pager - modify-labels
+macro index,pager ! "<modify-labels>!unread\n" "Toggle the 'unread' tag"
+macro index A "<modify-labels>+archived -unread -inbox<enter>" "Archive message"
+macro index D "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
+macro index d "<modify-labels>+deleted -unread -inbox -archived<enter>" "Delete message"
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+macro index \\\\ "<vfolder-from-query>" "Search mailbox"
+
+set query_command = "notmuch address %s"
+set query_format = "%5c %t %a %n %?e?(%e)?"
