@@ -12,7 +12,8 @@ import fcntl
 from typing import List
 
 BACKGROUND = os.environ.get("SYNCMAIL_BACKGROUND", False)
-
+DISABLE_FILENAME = "/tmp/syncmail.disable"
+DISABLE = pathlib.Path(DISABLE_FILENAME).exists()
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -114,6 +115,9 @@ def main():
 
 
 if __name__ == "__main__":
-    lockfile = lock_acquire()
-    main()
-    lock_release(lockfile)
+    if not DISABLE:
+        lockfile = lock_acquire()
+        main()
+        lock_release(lockfile)
+    else:
+        logging.info(f"Skipping syncmail. '{DISABLE_FILENAME}' exists.")
