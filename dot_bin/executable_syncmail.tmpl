@@ -10,6 +10,7 @@ import sys
 import os
 import fcntl
 from typing import List
+from contextlib import contextmanager
 
 BACKGROUND = os.environ.get("SYNCMAIL_BACKGROUND", False)
 DISABLE_FILENAME = "/tmp/syncmail.disable"
@@ -48,6 +49,9 @@ MBSYNC_BIN = (
     else pathlib.Path().joinpath("/usr/bin/mbsync")
 )
 
+FILENAME = __file__.split("/")[-1].strip(".py")
+LOCKFILE = pathlib.Path().joinpath(f"/tmp/{FILENAME}.flock")
+
 
 def ensure_dir(path: pathlib.Path):
     root.info(f"Ensuring dir {path}")
@@ -75,9 +79,8 @@ def run_afew(extra_args: List[str]):
     return False if result.returncode else True
 
 
-def lock_acquire(should_exit=True):
-    lockname = __file__.split("/")[-1].strip(".py")
-    lockfile = open(pathlib.Path().joinpath(f"/tmp/{lockname}.flock"), "w")
+def __lock_acquire(should_exit=True):
+    lockfile = open(LOCKFILE, "w")
 
     if should_exit:
         try:
@@ -93,11 +96,21 @@ def lock_acquire(should_exit=True):
     return lockfile
 
 
-def lock_release(lockfile):
+def __lock_release(lockfile):
     logging.info(f"realeasing lock {__file__}.")
     fcntl.flock(lockfile, fcntl.LOCK_UN)
     os.close(lockfile.fileno())
     logging.info(f"lock {__file__} released.")
+
+
+@contextmanager
+def lock_acquire(should_exit=True):
+    lock = __lock_acquire(should_exit=should_exit)
+
+    try:
+        yield lock
+    finally:
+        __lock_release(lock)
 
 
 def main():
@@ -116,8 +129,10 @@ def main():
 
 if __name__ == "__main__":
     if not DISABLE:
-        lockfile = lock_acquire()
-        main()
-        lock_release(lockfile)
+        with lock_acquire() as lock:
+            import time
+
+            time.sleep(10)
+            ## main()
     else:
         logging.info(f"Skipping syncmail. '{DISABLE_FILENAME}' exists.")
