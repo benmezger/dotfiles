@@ -130,9 +130,6 @@ def main():
 if __name__ == "__main__":
     if not DISABLE:
         with lock_acquire() as lock:
-            import time
-
-            time.sleep(10)
-            ## main()
+            main()
     else:
         logging.info(f"Skipping syncmail. '{DISABLE_FILENAME}' exists.")
