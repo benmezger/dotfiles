@@ -74,7 +74,7 @@
         +dragndrop
         +journal)
        plantuml
-       (python +pyenv +lsp)
+       (python +pyenv +lsp +pyright)
        rest
        (rust +eglot)
        (sh +lsp)
