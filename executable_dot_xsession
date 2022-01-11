@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 . $HOME/.xinitrc
+. $HOME/.env-secrets
 
 if [ -f /usr/bin/i3 ]; then
 	exec i3
