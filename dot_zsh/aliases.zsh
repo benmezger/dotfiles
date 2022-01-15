@@ -122,3 +122,7 @@ alias unread="neomutt -f 'notmuch://?query=tag:me and tag:unread'"
 alias inbox="neomutt -f 'notmuch://?query=tag:inbox'"
 alias me="neomutt -f 'notmuch://?query=tag:me'"
 alias archived="neomutt -f 'notmuch://?query=tag:archived'"
+
+if [[ ${OSTYPE} == linux* ]]; then
+    alias spotify="/usr/bin/spotify --force-device-scale-factor=2.0 $1"
+fi
