@@ -87,4 +87,12 @@ export ORGANIZE_CONFIG=$HOME/.config/organize-tool/config.yaml
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export HTML_TIDY="$HOME/.config/tidyrc"
-export ZSH_WAKATIME_BIN="/usr/local/bin/wakatime-cli"
+
+if [[ ${OSTYPE} == darwin* ]]; then
+	export ZSH_WAKATIME_BIN="/usr/local/bin/wakatime-cli"
+else
+	export ZSH_WAKATIME_BIN="/usr/bin/wakatime"
+fi
+
+# smooth scrooling on firefox
+export MOZ_USE_XINPUT2=1
