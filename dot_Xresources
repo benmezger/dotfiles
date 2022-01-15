@@ -1,5 +1,12 @@
 ! cursor size
-Xcursor.size: 9
+Xcursor.size: 54
+Xft.dpi: 220
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
 ! URxvt
 URxvt.font: xft:Hack:size=10,xft:Inconsolata\\-dz:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=10
@@ -78,4 +85,3 @@ URxvt.saveLines: 0
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
-
