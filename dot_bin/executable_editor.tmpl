@@ -1,4 +1,8 @@
-#!/usr/local/bin/zsh
+{{ if eq .chezmoi.os "darwin" -}}
+#/usr/local/bin/zsh
+{{ else -}}
+#!/usr/bin/zsh
+{{- end }}
 
 if (( ${+commands[nvim]} )); then
     export EDITOR=nvim
