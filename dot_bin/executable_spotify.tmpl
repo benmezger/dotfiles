@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#/usr/local/bin/zsh
+
+open -a Spotify $1
+{{ else -}}
+#!/usr/bin/zsh
+
+/usr/bin/spotify --force-device-scale-factor=2.0 $1
+{{- end }}

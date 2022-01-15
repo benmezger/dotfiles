@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -i
 
 # Author: Ben Mezger <me@benmezger.nl>
 # Created at <2020-10-02 Fri 08:53>
