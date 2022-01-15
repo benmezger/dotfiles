@@ -32,3 +32,7 @@ sudo ln -sf /usr/share/zoneinfo/Ameriaca/Sao_Paulo /etc/localtime
 ansi --green "Setup locale"
 sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
 sudo locale-gen
+
+ansi --green "Enable non-root access to dmesg"
+sudo /sbin/sysctl kernel.dmesg_restrict=0
+echo kernel.dmesg_restrict=0 | sudo tee -a /etc/sysctl.d/99-dmesg.conf
