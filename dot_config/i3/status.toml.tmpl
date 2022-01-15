@@ -14,8 +14,8 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
+format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
 
 [[block]]
 block = "cpu"
@@ -49,10 +49,14 @@ threshold_critical = 10
 display_type = "new"
 
 [[block]]
-block = "pomodoro"
-length = 25
-break_length = 5
-message = "Take a break!"
-break_message = "Back to work!"
-use_nag = true
-nag_path = "i3-nagbar"
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min} min, {max} max, {average} avg"
+chip = "*-isa-*"
+driver = "sensors"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage} {time}"
