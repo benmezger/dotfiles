@@ -96,3 +96,4 @@ fi
 
 # smooth scrooling on firefox
 export MOZ_USE_XINPUT2=1
+export XDG_CONFIG_HOME=$HOME/.config
