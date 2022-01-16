@@ -1,0 +1,10 @@
+[Unit]
+Description=Syncmail timer
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=5m
+Unit=syncmail.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Syncmail service
+
+[Service]
+Type=oneshot
+ExecStart=zsh -c -i syncmail
+
+[Install]
+WantedBy=default.target
