@@ -289,7 +289,7 @@ mode "$mode_gaps_left" {
 }
 
 # autostarts
-exec_always --no-startup-id $HOME/workspace/i3-autodisplay/i3-autodisplay -config ~/.config/i3-autodisplay/config.yml
+exec_always --no-startup-id i3-autodisplay -config ~/.config/i3-autodisplay/config.yml
 exec_always --no-startup-id exec feh --bg-scale --randomize ~/workspace/wallpapers/*.png
 
 bar {
