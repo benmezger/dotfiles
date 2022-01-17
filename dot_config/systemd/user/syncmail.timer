@@ -3,7 +3,7 @@ Description=Syncmail timer
 
 [Timer]
 OnBootSec=2m
-OnUnitActiveSec=5m
+OnUnitActiveSec=15m
 Unit=syncmail.service
 
 [Install]
