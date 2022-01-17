@@ -27,6 +27,14 @@ interval = 1
 format = "{1m}"
 
 [[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min} min, {max} max, {average} avg"
+chip = "*-isa-*"
+driver = "sensors"
+
+[[block]]
 block = "docker"
 interval = 2
 format = "{running}/{total}"
@@ -36,11 +44,6 @@ block = "sound"
 
 [[block]]
 block = "backlight"
-
-[[block]]
-block = "time"
-interval = 60
-format = "%a %d/%m %R"
 
 [[block]]
 block = "github"
@@ -54,14 +57,11 @@ threshold_critical = 10
 display_type = "new"
 
 [[block]]
-block = "temperature"
-collapsed = false
-interval = 10
-format = "{min} min, {max} max, {average} avg"
-chip = "*-isa-*"
-driver = "sensors"
-
-[[block]]
 block = "battery"
 driver = "upower"
 format = "{percentage} {time}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
