@@ -33,4 +33,4 @@ isavailable unclutter && unclutter &
 isavailable libinput-gestures-setup && libinput-gestures-setup start &
 isavailable blueman-applet && blueman-applet &
 isavailable solaar && solaar &
-isavailable xmodmap && xmodmap ~/.Xmodmap
+isavailable setxkbmap && setxkbmap -option caps:escape &
