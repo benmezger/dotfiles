@@ -31,3 +31,4 @@ isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
 isavailable picom && picom --config ~/.config/picom.conf &
 isavailable unclutter && unclutter &
 isavailable libinput-gestures-setup && libinput-gestures-setup start &
+isavailable blueman-applet && blueman-applet &
