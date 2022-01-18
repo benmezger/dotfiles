@@ -38,6 +38,10 @@ driver = "sensors"
 block = "docker"
 interval = 2
 format = "{running}/{total}"
+{{- if ne .chezmoi.os "darwin" }}
+socket_path = "/run/user/1000/docker.sock"
+{{- end }}
+
 
 [[block]]
 block = "sound"

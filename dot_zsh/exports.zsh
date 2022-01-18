@@ -97,3 +97,7 @@ fi
 # smooth scrooling on firefox
 export MOZ_USE_XINPUT2=1
 export XDG_CONFIG_HOME=$HOME/.config
+
+if [[ ${OSTYPE} == linux* ]]; then
+	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+fi
