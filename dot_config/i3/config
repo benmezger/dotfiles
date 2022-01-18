@@ -137,6 +137,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 15
 bindsym $mod+r mode "resize"
 
 bindsym $mod+Shift+x exec ~/.bin/lock.sh
+bindsym $mod+F10 exec --no-startup-id /usr/bin/xfce4-screenshooter
 
 # Set gruvbox colorscheme
 set $bg #282828
