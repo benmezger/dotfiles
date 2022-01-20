@@ -98,6 +98,13 @@ keys = [
         lazy.spawn("/usr/bin/xfce4-screenshooter"),
         desc="Run XFCE4 screenshooter tool",
     ),
+    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle full screen"),
+    Key(
+        [mod],
+        "space",
+        lazy.widget["keyboardlayout"].next_keyboard(),
+        desc="Next keyboard layout",
+    ),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -205,6 +212,10 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Wttr(location={"fln": "fln"}),
+                widget.Spacer(length=10),
+                widget.Sep(),
+                widget.Spacer(length=10),
+                widget.KeyboardLayout(configured_keyboards=("us", "br")),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
