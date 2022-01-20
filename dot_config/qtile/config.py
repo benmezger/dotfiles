@@ -126,13 +126,17 @@ for i in groups:
         ]
     )
 
+margin = 8
+border_width = 0
 layouts = [
-    layout.Max(border_width=0),
-    layout.MonadTall(border_width=0),
-    layout.MonadWide(border_width=0),
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0),
+    layout.MonadTall(border_width=border_width, margin=margin),
+    layout.MonadWide(border_width=border_width, margin=margin),
+    layout.Columns(
+        border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=margin
+    ),
+    layout.Max(border_width=border_width, margin=margin),
+    layout.Bsp(border_width=border_width),
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
     # layout.Matrix(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -162,7 +166,7 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
-                widget.WindowName(max_chars=30),
+                widget.TaskList(borderwidth=0),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -207,6 +211,7 @@ screens = [
                 widget.Systray(icon_size=40),
             ],
             size=50,
+            margin=8,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
