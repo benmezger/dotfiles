@@ -4,9 +4,9 @@
 . $HOME/.env-secrets
 
 if [ -f /usr/bin/qtile ]; then
-    exec qtile start --config ~/.config/qtile/config.py
+        exec dbus-launch --auto-syntax --exit-with-session /usr/bin/qtile start
 elif [ -f /usr/bin/i3 ]; then
-    exec i3
+        exec i3
 elif [ -f /usr/local/bin/dwm ]; then
-    . $HOME/.bin/startdwm
+	. $HOME/.bin/startdwm
 fi
