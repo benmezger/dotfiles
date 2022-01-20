@@ -215,6 +215,16 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
+                widget.Maildir(
+                    maildir_path="~/mail/personal",
+                    sub_folders=(
+                        {"label": "i", "path": "inbox"},
+                        {"label": "a", "path": "archives"},
+                    ),
+                ),
+                widget.Spacer(length=10),
+                widget.Sep(),
+                widget.Spacer(length=10),
                 widget.KeyboardLayout(configured_keyboards=("us", "br")),
                 widget.Spacer(length=10),
                 widget.Sep(),
