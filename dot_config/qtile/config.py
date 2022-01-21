@@ -105,6 +105,12 @@ keys = [
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
+    Key(
+        [mod],
+        "p",
+        lazy.spawn(f"sh {personal_bin}/run-dmenu clipboard"),
+        desc="Clipboard history",
+    ),
 ]
 
 groups = [Group(i) for i in "123456789"]
