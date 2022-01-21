@@ -32,5 +32,5 @@ isavailable picom && picom --config ~/.config/picom.conf &
 isavailable unclutter && unclutter &
 isavailable libinput-gestures-setup && libinput-gestures-setup start &
 isavailable blueman-applet && blueman-applet &
-isavailable solaar && solaar &
+isavailable solaar && solaar --window hide &
 isavailable setxkbmap && setxkbmap -option caps:escape &
