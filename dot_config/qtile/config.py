@@ -29,7 +29,7 @@ from urllib import request
 import json
 import pathlib
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -236,6 +236,17 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Systray(icon_size=40),
+                widget.Sep(),
+                widget.CheckUpdates(
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn(
+                            f"{terminal} -e sudo pacman -Syu"
+                        ),
+                        "Button2": lambda: qtile.cmd_spawn(
+                            f"{terminal} -e sudo pacman -Syy --noconfirm"
+                        ),
+                    }
+                ),
             ],
             size=50,
             margin=8,
