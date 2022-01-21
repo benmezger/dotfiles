@@ -193,3 +193,4 @@ xclip
 redshift
 htop
 qtile
+python-psutil
