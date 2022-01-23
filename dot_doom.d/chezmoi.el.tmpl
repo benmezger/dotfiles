@@ -250,3 +250,10 @@
 (global-set-key (kbd "M-n t") 'notmuch-search-by-tag)
 (global-set-key (kbd "M-n c") '+notmuch/compose)
 (global-set-key (kbd "M-n u") '+notmuch/update)
+
+{{ if ne .chezmoi.os "darwin" -}}
+(use-package! pkgbuild-mode
+  :defer t
+  :init
+  (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist)))
+{{ end -}}

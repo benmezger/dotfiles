@@ -24,3 +24,6 @@
 (package! wakatime-mode)
 (package! org-gcal)
 {{- end }}
+{{- if ne .chezmoi.os "darwin" }}
+(package! pkgbuild-mode)
+{{- end }}
