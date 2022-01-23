@@ -20,9 +20,9 @@ URxvt*scrollTtyKeypress: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 ! perl extensions
-URxvt.perl-ext-common: default,matcher,fullscreen,tabbed,clipboard,searchable-scrollback
+URxvt.perl-ext-common: default,matcher,fullscreen,clipboard,searchable-scrollback
 ! clickable urls
-URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 2
 ! to open and list recent urls via keyboard
 URxvt.keysym.C-Delete: perl:matcher:last
@@ -32,7 +32,7 @@ URxvt.matcher.rend.0: Uline Bold fg5
 ! yankable URLs
 URxvt.perl-ext: default,url-select
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/google-chrome-stable
+URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
 ! cursor underline
 URxvt*cursorUnderline: true
