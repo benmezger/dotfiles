@@ -102,4 +102,8 @@ if [[ ${OSTYPE} == linux* ]]; then
 	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 fi
 
-export QSYS_ROOTDIR="$HOME/workspace/quartus/quartus/sopc_builder/bin"
+
+if [[ -d "$HOME/workspace/quartus/quartus" ]]; then
+	export QSYS_ROOTDIR="$HOME/workspace/quartus/quartus/sopc_builder/bin"
+	export PATH="$PATH:$HOME/workspace/quartus/quartus/bin"
+fi
