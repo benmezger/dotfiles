@@ -1,0 +1,12 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+
+# Decrease brightness
+"xbacklight -dec 10"
+  XF86MonBrightnessDown
+
+# Increase brightness
+"xbacklight -inc 10"
+  XF86MonBrightnessUp
