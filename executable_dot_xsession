@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env zsh
 
 . $HOME/.xinitrc
 . $HOME/.env-secrets
