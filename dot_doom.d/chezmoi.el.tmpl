@@ -257,3 +257,14 @@
   :init
   (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist)))
 {{ end -}}
+
+
+(after! ob-mermaid
+  :defer t
+  :init
+  {{ if eq .chezmoi.os "darwin" -}}
+  (setq ob-mermaid-cli-path "/usr/local/bin/mmdc")
+  {{ else -}}
+  (setq ob-mermaid-cli-path "/usr/bin/mmdc")
+  {{ end -}}
+  )

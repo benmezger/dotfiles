@@ -291,11 +291,6 @@
   :init
   (setq rmh-elfeed-org-files (list "~/workspace/org/urls.org")))
 
-(after! ob-mermaid
-  :defer t
-  :init
-  (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))
-
 (after! (:or org-ref org)
   :config
   (setq org-ref-default-bibliography `,(list (concat org-directory "/bibliography.bib")))
