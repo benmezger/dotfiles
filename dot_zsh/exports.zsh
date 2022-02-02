@@ -7,6 +7,13 @@ export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export MAKEFLAGS="-j4 -l5"
+
+if [ -f "$(which nproc)" ]; then
+	export MAKEFLAGS="-j$(nproc) -l5"
+else
+	export MAKERANGE="-j5 -l5"
+fi
+
 export GPGKEY=0x7357E344D6C3C795
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
@@ -107,3 +114,4 @@ if [[ -d "$HOME/workspace/quartus/quartus" ]]; then
 	export QSYS_ROOTDIR="$HOME/workspace/quartus/quartus/sopc_builder/bin"
 	export PATH="$PATH:$HOME/workspace/quartus/quartus/bin"
 fi
+export vblank_mode=1
