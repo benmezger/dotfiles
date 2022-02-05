@@ -35,3 +35,5 @@ isavailable blueman-applet && blueman-applet &
 isavailable solaar && solaar --window hide &
 isavailable setxkbmap && setxkbmap -option caps:escape &
 isavailable xbindkeys && xbindkeys &
+
+bash $HOME/.bin/lightsOn.sh &
