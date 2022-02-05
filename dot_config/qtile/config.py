@@ -30,7 +30,7 @@ import json
 import pathlib
 
 from libqtile import bar, layout, widget, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -139,6 +139,30 @@ for i in groups:
         ]
     )
 
+scratchpads = [
+    ScratchPad(
+        "scratchpad",
+        dropdowns=(
+            DropDown(
+                "terminal",
+                f"{terminal}",
+                opacity=0.98,
+                on_focus_lost_hide=True,
+                height=0.8,
+            ),
+            DropDown(
+                "emacs", "emacs", opacity=0.98, on_focus_lost_hide=True, height=0.9
+            ),
+        ),
+    )
+]
+
+groups = groups + scratchpads
+keys = keys + [
+    Key([mod], "minus", lazy.group["scratchpad"].dropdown_toggle("terminal")),
+    Key([mod], "equal", lazy.group["scratchpad"].dropdown_toggle("emacs")),
+]
+
 margin = 8
 border_width = 0
 layouts = [
@@ -149,13 +173,13 @@ layouts = [
     ),
     layout.Max(border_width=border_width, margin=margin),
     layout.Bsp(border_width=border_width),
-    # layout.Stack(num_stacks=2),
-    # layout.Matrix(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Stack(num_stacks=2),
+    layout.Matrix(),
+    layout.RatioTile(),
+    layout.Tile(),
+    layout.TreeTab(),
+    layout.VerticalTile(),
+    layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -175,7 +199,7 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.GroupBox(),
-                widget.Prompt(),
+                widget.Prompt(prompt="> "),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
@@ -198,8 +222,6 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Memory(),
-                widget.Spacer(length=10),
-                widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
@@ -292,7 +314,9 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+        Match(title="qalculate-gtk"),  # qalculate-gtk
+    ],
+    border_width=border_width,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
