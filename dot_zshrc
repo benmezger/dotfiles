@@ -26,8 +26,11 @@ if [ -f "$HOME/.cargo/env" ]; then
         source $HOME/.cargo/env
 fi
 
-# base16 theme
-base16_gruvbox-dark-hard
+# load base16 themes if on terminal
+if [[ -n $DISPLAY ]]; then
+        # base16 theme
+        base16_gruvbox-dark-hard
+fi
 
 if (($+commands[fortune])); then
         fortune
