@@ -197,17 +197,19 @@ layouts = [
     layout.MonadTall(border_width=border_width, margin=margin),
     layout.MonadWide(border_width=border_width, margin=margin),
     layout.Columns(
-        border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=margin
+        border_focus_stack=["#d75f5f", "#8f3d3d"],
+        border_width=border_width,
+        margin=margin,
     ),
     layout.Max(border_width=border_width, margin=margin),
-    layout.Bsp(border_width=border_width),
-    layout.Stack(num_stacks=2),
-    layout.Matrix(),
-    layout.RatioTile(),
-    layout.Tile(),
-    layout.TreeTab(),
-    layout.VerticalTile(),
-    layout.Zoomy(),
+    layout.Bsp(border_width=border_width, margin=margin),
+    layout.Stack(num_stacks=2, border_width=border_width, margin=margin),
+    layout.Matrix(border_width=border_width, margin=margin),
+    layout.RatioTile(border_width=border_width, margin=margin),
+    layout.Tile(border_width=border_width, margin=margin),
+    layout.TreeTab(border_width=border_width, margin=margin),
+    layout.VerticalTile(border_width=border_width, margin=margin),
+    layout.Zoomy(border_width=border_width, margin=margin),
 ]
 
 widget_defaults = dict(
