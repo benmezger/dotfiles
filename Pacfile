@@ -152,7 +152,6 @@ xautolock
 xf86-video-intel
 xfsprogs
 xorg-server
-xorg-xbacklight
 xorg-xev
 xorg-xinit
 xorg-xinput
@@ -195,3 +194,4 @@ htop
 qtile
 python-psutil
 git-delta
+acpilight
