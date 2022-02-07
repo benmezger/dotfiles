@@ -29,7 +29,7 @@ from urllib import request
 import json
 import pathlib
 
-from libqtile import bar, layout, widget, qtile
+from libqtile import bar, layout, widget, qtile, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -113,7 +113,35 @@ keys = [
     ),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+    Group(i, **kwargs)
+    for i, kwargs in [
+        ("1", {"layout": "monadtall", "spawn": ("alacritty",)}),
+        (
+            "2",
+            {
+                "layout": "max",
+                "spawn": ("firefox",),
+                "matches": [Match(wm_class=["firefox"])],
+            },
+        ),
+        ("3", {"layout": "monadtall", "spawn": ("emacs",)}),
+        ("4", {"layout": "monadtall"}),
+        ("5", {"layout": "monadtall"}),
+        ("6", {"layout": "monadtall"}),
+        ("7", {"layout": "monadtall"}),
+        ("8", {"layout": "monadtall"}),
+        ("9", {"layout": "monadtall", "spawn": ("ferdi",)}),
+        (
+            "0",
+            {
+                "layout": "monadtall",
+                "spawn": ("spotify --force-device-scale-factor=2.0",),
+                "matches": [Match(wm_class=["spotify"])],
+            },
+        ),
+    ]
+]
 
 for i in groups:
     keys.extend(
