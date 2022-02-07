@@ -114,4 +114,9 @@ if [[ -d "$HOME/workspace/quartus/quartus" ]]; then
 	export QSYS_ROOTDIR="$HOME/workspace/quartus/quartus/sopc_builder/bin"
 	export PATH="$PATH:$HOME/workspace/quartus/quartus/bin"
 fi
+
+if [[ -d "/opt/xilinx/Vivado/2021.2/bin" ]]; then
+	export PATH="$PATH:/opt/xilinx/Vivado/2021.2/bin"
+fi
+
 export vblank_mode=1
