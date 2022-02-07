@@ -10,3 +10,19 @@
 # Increase brightness
 "xbacklight -inc 10"
   XF86MonBrightnessUp
+
+# Increase volume
+"pactl set-sink-volume 0 +10%"
+  XF86AudioRaiseVolume
+
+# Decrease volume
+"pactl set-sink-volume 0 -10%"
+  XF86AudioLowerVolume
+
+# Mute
+"pactl set-sink-mute 0 toggle"
+  XF86AudioMute
+
+# play/pause
+"pactl set-sink-mute 0 toggle"
+  XF86AudioPlay
