@@ -72,7 +72,7 @@ osx-defaults:
 
 archlinux-defaults: 
 	@echo "Applying Archlinux defaults.."
-	bash ./scripts/set_osx_defaults.sh | tee -a $(LOGFILE) || exit 1
+	bash ./scripts/set_archlinux_defaults.sh | tee -a $(LOGFILE) || exit 1
 
 install-chezmoi:
 	@echo "Installing chezmoi.."
