@@ -39,4 +39,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		systemctl --user start mopidy.service
 	fi
 
+	ansi --green "Setting up redshift"
+	systemctl --user enable redshift-gtk.service
+	systemctl --user restart redshift-gtk.service
 fi

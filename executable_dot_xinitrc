@@ -21,7 +21,6 @@ xrandr --dpi 125.37
 
 # start redshift
 # current lat/log: oud-zuid
-isavailable redshift && redshift -l "-27.578023":"-48.537449" -t "5500":"3000" &
 isavailable synclient && synclient TouchpadOff=1 &
 
 isavailable nm-applet && nm-applet &
@@ -38,3 +37,4 @@ isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
 
 bash $HOME/.bin/lightsOn.sh &
+/usr/lib/geoclue-2.0/demos/agent &

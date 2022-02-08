@@ -195,3 +195,5 @@ qtile
 python-psutil
 git-delta
 acpilight
+geoclue
+pcre

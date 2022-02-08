@@ -36,3 +36,9 @@ sudo locale-gen
 ansi --green "Enable non-root access to dmesg"
 sudo /sbin/sysctl kernel.dmesg_restrict=0
 echo kernel.dmesg_restrict=0 | sudo tee -a /etc/sysctl.d/99-dmesg.conf
+
+ansi --green "Updating geoclue.conf.."
+redshift_line="\n[redshift]\nallowed=true\nsystem=false\nusers=\n"
+
+grep -qF "[redshift]" "/etc/geoclue/geoclue.conf" \
+	|| sudo echo "$redshift_line" >> "/etc/geoclue/geoclue.conf "
