@@ -22,6 +22,7 @@ sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+sudo sed -i '/^#\[multilib\]/{N;s/#//g}' /etc/pacman.conf
 
 ansi --green "Enable timedatectl and set up timezone"
 sudo timedatectl set-timezone America/Sao_Paulo
