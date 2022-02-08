@@ -126,3 +126,5 @@ alias archived="neomutt -f 'notmuch://?query=tag:archived'"
 if [[ ${OSTYPE} == linux* ]]; then
     alias spotify="/usr/bin/spotify --force-device-scale-factor=2.0 $1"
 fi
+
+alias s="sudo"
