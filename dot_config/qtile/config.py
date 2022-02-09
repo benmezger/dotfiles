@@ -91,7 +91,12 @@ keys = [
         lazy.spawn(f"sh {personal_bin}/lock.sh"),
         desc="Lock screen",
     ),
-    Key([mod], "d", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key(
+        [mod],
+        "d",
+        lazy.spawn(f"sh {personal_bin}/run-dmenu launcher"),
+        desc="Spawn dmenu launcher",
+    ),
     Key(
         [mod],
         "F10",
@@ -229,9 +234,6 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.GroupBox(),
-                widget.Prompt(prompt="> "),
-                widget.Spacer(length=10),
-                widget.Sep(),
                 widget.Spacer(length=10),
                 widget.TaskList(borderwidth=0),
                 widget.Chord(
