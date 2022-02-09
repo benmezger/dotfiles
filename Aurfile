@@ -15,8 +15,6 @@ slack-desktop
 trizen
 ttf-symbola
 xinit-xsession
-linux-zen-headers
-linux-zen
 rofi-greenclip
 mu
 w3m
@@ -34,3 +32,7 @@ mopidy-internetarchive
 git-delta-bin
 i3-autodisplay
 docker-rootless-extras-bin
+spotify
+mermaid-cli
+nerd-fonts-hack
+ferdi-bin
