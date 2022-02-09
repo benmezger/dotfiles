@@ -4,7 +4,7 @@
 # Created at <2020-10-02 Fri 08:53>
 
 FONT="-fn Hack-10"
-THEME="-nb #1e1e1e -sf #1e1e1e -sb #f4800d -nf #F4800d"
+THEME=""
 LINE_LEN="-l 15"
 DMENU_CMD="dmenu $THEME $FONT $LINE_LEN"
 SCRIPT=`realpath -s $0`
