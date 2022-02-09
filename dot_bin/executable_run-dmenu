@@ -9,6 +9,8 @@ LINE_LEN="-l 15"
 DMENU_CMD="dmenu $THEME $FONT $LINE_LEN"
 SCRIPT=`realpath -s $0`
 
+export PATH="$PATH:$HOME/.bin:/opt/riscv/bin/:/opt/xilinx/Vivado/2021.2/bin"
+
 function help() {
    echo "Dmenu utitlity."
    echo
