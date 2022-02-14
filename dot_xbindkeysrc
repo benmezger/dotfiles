@@ -28,14 +28,14 @@
   XF86AudioPlay
 
 # dmenu
-"run-dmenu switch"
+"~/.bin/run-dmenu switch"
   m:0x40 + c:39
   Mod4 + s
 
-"run-dmenu launcher"
+"~/.bin/run-dmenu launcher"
   m:0x40 + c:40
   Mod4 + d
 
-"run-dmenu clipboard"
+"~/.bin/run-dmenu clipboard"
   m:0x40 + c:33
   Mod4 + p
