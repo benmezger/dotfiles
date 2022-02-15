@@ -52,9 +52,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo systemctl restart ntpd
 	sudo timedatectl set-ntp 1
 
-	ansi --green "Running sensors detect"
-	sudo sensors-detect
-
 	ansi --green "Starting pipewire"
 	systemctl start --user pipewire-pulse.service
 fi
