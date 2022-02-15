@@ -42,4 +42,16 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	ansi --green "Setting up redshift"
 	systemctl --user enable redshift-gtk.service
 	systemctl --user restart redshift-gtk.service
+
+	ansi --green "Setting up NetworkManager"
+	sudo systemctl enable NetworkManager
+	sudo systemctl restart NetworkManager
+
+	ansi --green "Setting up NTP"
+	sudo systemctl enable ntpd
+	sudo systemctl restart ntpd
+	sudo timedatectl set-ntp 1
+
+	ansi --green "Running sensors detect"
+	sudo sensors-detect
 fi
