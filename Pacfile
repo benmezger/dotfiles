@@ -198,7 +198,7 @@ acpilight
 geoclue
 pcre
 bitwarden-cli
-bitwarden-gui
+bitwarden
 python-psutil
 fzf
 ntp
