@@ -203,3 +203,9 @@ python-psutil
 fzf
 ntp
 lm_sensors
+xbindkeys
+unclutter
+picom
+xss-lock
+xautolock
+geoclue
