@@ -43,3 +43,6 @@ redshift_line="\n[redshift]\nallowed=true\nsystem=false\nusers=\n"
 
 grep -qF "[redshift]" "/etc/geoclue/geoclue.conf" \
 	|| sudo echo "$redshift_line" >> "/etc/geoclue/geoclue.conf "
+
+ansi --green "Importing Spotify GPG key"
+curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -

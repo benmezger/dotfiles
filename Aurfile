@@ -1,6 +1,4 @@
 antibody
-auracle-git
-emacs-git
 gruvbox-dark-gtk
 gruvbox-icon-theme
 gtk-theme-arc-gruvbox-git
@@ -8,11 +6,9 @@ neovim-git
 numix-cursor-theme
 numix-icon-theme-git
 otf-inconsolata-dz
-pacaur
 polybar
 siji-git
 slack-desktop
-trizen
 ttf-symbola
 xinit-xsession
 rofi-greenclip
@@ -21,15 +17,12 @@ w3m
 mailcap
 neomutt
 msmtp
-bitwarden-bin
-bitwarden-cli
 mopidy-mpd
 mopidy-spotify
 mopidy-podcast
 mopidy-scrobbler
 tmuxinator
 mopidy-internetarchive
-git-delta-bin
 i3-autodisplay
 docker-rootless-extras-bin
 spotify

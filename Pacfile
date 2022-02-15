@@ -197,3 +197,7 @@ git-delta
 acpilight
 geoclue
 pcre
+bitwarden-cli
+bitwarden-gui
+python-psutil
+fzf
