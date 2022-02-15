@@ -109,8 +109,6 @@ pkgconf
 podman
 procps-ng
 psmisc
-pulseaudio
-pulseaudio-qt
 reiserfsprogs
 ripgrep
 rofi
@@ -209,3 +207,5 @@ picom
 xss-lock
 xautolock
 geoclue
+pipewire-media-session
+pipewire-alsa

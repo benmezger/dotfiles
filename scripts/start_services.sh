@@ -54,4 +54,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	ansi --green "Running sensors detect"
 	sudo sensors-detect
+
+	ansi --green "Starting pipewire"
+	systemctl start --user pipewire-pulse.service
 fi
