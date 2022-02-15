@@ -201,3 +201,5 @@ bitwarden-cli
 bitwarden-gui
 python-psutil
 fzf
+ntp
+lm_sensors
