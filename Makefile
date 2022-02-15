@@ -144,11 +144,14 @@ post-chezmoi:
 install-rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	rustup toolchain add nightly
-	rustup component add rust-src
+	rustup default nightly
 
-	cargo install racer
+	rustup component add rust-src rustc-dev llvm-tools-preview clippy-preview
 	rustup target add riscv32imac-unknown-none-elf
 	rustup target add riscv64imac-unknown-none-elf
+
+	cargo install racer
+
 
 install-osx-apps:
 	@echo "Installing Amphetamine"
