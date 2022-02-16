@@ -54,4 +54,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	ansi --green "Starting pipewire"
 	systemctl start --user pipewire-pulse.service
+
+	ansi --green "Setting up greenclip"
+	systemctl --user enable greenclip.service
+	systemctl --user restart greenclip.service
 fi
