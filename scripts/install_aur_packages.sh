@@ -20,9 +20,9 @@ if ! isavailable paru; then
 	PARU_PATH=/tmp/paru
 
 	git clone https://aur.archlinux.org/paru.git $PARU_PATH
-	(cd $PARU_PATH && makepkg -si && rm -rf $PARU_PATH)
+	(cd $PARU_PATH && makepkg -si --noconfirm --needed && rm -rf $PARU_PATH)
 fi
 
 AUR_BUNDLE_FILE="$DIR/Aurfile"
 ansi --green "Using $AUR_BUNDLE_FILE bundle file"
-paru -S --noconfirm --nouseask - <"$AUR_BUNDLE_FILE"
+paru -S --noconfirm --nouseask --needed - <"$AUR_BUNDLE_FILE"

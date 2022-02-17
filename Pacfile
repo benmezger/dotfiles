@@ -209,3 +209,5 @@ xautolock
 geoclue
 pipewire-media-session
 pipewire-alsa
+intel-ucode
+powertop
