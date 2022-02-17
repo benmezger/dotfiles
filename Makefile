@@ -26,6 +26,7 @@ help:
 	@echo '    make install-go-deps    Install go dependencies.'
 	@echo '    make install-osx-app    Install MacOS applications (requires mas).'
 	@echo '    make install-grub-theme Install Archlinux\'s grub theme (requires grub and git)'
+	@echo '    make show-reminders     Show manual pending configuration notes'
 
 	@echo
 	@echo '    make run                Ensure deps and apply chezmoi.'
@@ -126,6 +127,7 @@ all:
 	$(MAKE) osx-defaults
 	$(MAKE) ensure-dirs
 	$(MAKE) chezmoi-apply
+	$(MAKE) show-reminders
 
 run:
 	$(MAKE) ensure-deps 
@@ -140,6 +142,7 @@ post-chezmoi:
 	$(MAKE) gnupg-perms
 	$(MAKE) ensure-dirs
 	$(MAKE) pyenv
+	$(MAKE) show-reminders
 	@echo "Done"
 
 install-rust:
@@ -167,3 +170,6 @@ install-python-system-pip:
 install-grub-theme:
 	@echo "Installing Grub theme.."
 	bash ./scripts/install_grub.sh | tee -a $(LOGFILE) || exit 1
+
+show-reminders:
+	bash ./scripts/reminders.sh | tee -a $(LOGFILE) || exit 1
