@@ -25,6 +25,7 @@ help:
 	@echo '    make install-rust       Install Rust.'
 	@echo '    make install-go-deps    Install go dependencies.'
 	@echo '    make install-osx-app    Install MacOS applications (requires mas).'
+	@echo '    make install-grub-theme Install Archlinux\'s grub theme (requires grub and git)'
 
 	@echo
 	@echo '    make run                Ensure deps and apply chezmoi.'
@@ -162,3 +163,7 @@ generate-changelog:
 
 install-python-system-pip:
 	/usr/bin/pip3 install -r scripts/requirements.txt
+
+install-grub-theme:
+	@echo "Installing Grub theme.."
+	bash ./scripts/install_grub.sh | tee -a $(LOGFILE) || exit 1
