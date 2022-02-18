@@ -43,3 +43,7 @@
 "rofi -show combi"
   m:0x41 + c:38
   Shift + Mod4 + a
+
+"bwmenu"
+  m:0x41 + c:56
+  Shift + Mod4 + b
