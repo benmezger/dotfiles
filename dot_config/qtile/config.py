@@ -91,12 +91,7 @@ keys = [
         lazy.spawn(f"sh {personal_bin}/lock.sh"),
         desc="Lock screen",
     ),
-    Key(
-        [mod],
-        "d",
-        lazy.spawn(f"sh {personal_bin}/run-dmenu launcher"),
-        desc="Spawn dmenu launcher",
-    ),
+    Key([mod], "d", lazy.spawn(f"rofi -show run"), desc="Spawn rofi launcher"),
     Key(
         [mod],
         "F10",
@@ -113,7 +108,7 @@ keys = [
     Key(
         [mod],
         "p",
-        lazy.spawn(f"sh {personal_bin}/run-dmenu clipboard"),
+        lazy.spawn(f"rofi -modi 'clipboard:greenclip print' -show"),
         desc="Clipboard history",
     ),
 ]

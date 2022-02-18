@@ -28,14 +28,14 @@
   XF86AudioPlay
 
 # dmenu
-"~/.bin/run-dmenu switch"
+"rofi -show window"
   m:0x40 + c:39
   Mod4 + s
 
-"~/.bin/run-dmenu launcher"
+"rofi -show run"
   m:0x40 + c:40
   Mod4 + d
 
-"~/.bin/run-dmenu clipboard"
+"rofi -modi 'clipboard:greenclip print' -show"
   m:0x40 + c:33
   Mod4 + p
