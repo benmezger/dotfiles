@@ -1,0 +1,17 @@
+configuration {
+  terminal: "alacritty";
+  font: "Hack 13";
+  show-icons: true;
+  dpi: 177;
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "gruvbox-dark-hard"
