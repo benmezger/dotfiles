@@ -1,6 +1,6 @@
 configuration {
   terminal: "alacritty";
-  font: "Hack 13";
+  font: "Hack 15";
   show-icons: true;
   dpi: 177;
 
