@@ -27,7 +27,7 @@
 "pactl set-sink-mute 0 toggle"
   XF86AudioPlay
 
-# dmenu
+# rofi
 "rofi -show window"
   m:0x40 + c:39
   Mod4 + s
@@ -47,3 +47,7 @@
 "bwmenu"
   m:0x41 + c:56
   Shift + Mod4 + b
+
+"rofi -show calc -modi calc -no-show-match -no-sort"
+  m:0x41 + c:54
+  Shift + Mod4 + c
