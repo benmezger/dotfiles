@@ -15,3 +15,4 @@ configuration {
 }
 
 @theme "gruvbox-dark-hard"
+element-icon { size: 1.75ch ; }
