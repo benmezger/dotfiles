@@ -116,7 +116,7 @@ keys = [
 groups = [
     Group(i, **kwargs)
     for i, kwargs in [
-        ("1", {"layout": "monadtall", "spawn": ("alacritty",)}),
+        ("1", {"layout": "monadtall", "spawn": (f"{terminal}",)}),
         (
             "2",
             {
