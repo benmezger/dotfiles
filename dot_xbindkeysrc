@@ -55,3 +55,7 @@
 "rofi -show emoji -modi emoji"
   m:0x41 + c:26
   Shift + Mod4 + e
+
+"rofi -show p -modi p:rofi-power"
+  m:0x41 + c:33
+  Shift + Mod4 + p
