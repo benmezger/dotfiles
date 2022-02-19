@@ -212,3 +212,5 @@ pipewire-alsa
 intel-ucode
 powertop
 rofi-calc
+rofi-emoji
+noto-fonts-emoji

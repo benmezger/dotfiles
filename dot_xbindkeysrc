@@ -51,3 +51,7 @@
 "rofi -show calc -modi calc -no-show-match -no-sort"
   m:0x41 + c:54
   Shift + Mod4 + c
+
+"rofi -show emoji -modi emoji"
+  m:0x41 + c:26
+  Shift + Mod4 + e
