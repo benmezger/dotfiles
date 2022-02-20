@@ -59,3 +59,7 @@
 "rofi -show p -modi p:~/.bin/rofi-power"
   m:0x41 + c:33
   Shift + Mod4 + p
+
+"~/.bin/lock"
+  m:0x41 + c:53
+  Shift + Mod4 + x
