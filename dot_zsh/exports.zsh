@@ -107,6 +107,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 if [[ ${OSTYPE} == linux* ]]; then
 	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+	export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 fi
 
 
