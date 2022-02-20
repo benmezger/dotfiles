@@ -24,9 +24,9 @@ xrandr --dpi 125.37
 isavailable synclient && synclient TouchpadOff=1 &
 
 isavailable nm-applet && nm-applet &
-isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock.sh &
+isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
-isavailable xss-lock && xss-lock -- ~/.bin/lock.sh &
+isavailable xss-lock && xss-lock -- ~/.bin/lock &
 isavailable picom && picom --config ~/.config/picom.conf &
 isavailable unclutter && unclutter &
 isavailable libinput-gestures-setup && libinput-gestures-setup start &
