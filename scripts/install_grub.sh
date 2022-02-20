@@ -26,7 +26,7 @@ if [ ! -f "$GRUB_THEME_DIR" ]; then
 fi
 
 sudo cp -vrf $THEME_DIR/customize/$THEME $GRUB_THEME_DIR
-sudo sed -i -e '/^GRUB_THEME=/s/=.*/="'$THEME'"/' /etc/default/grub
+sudo sed -i -e '/^GRUB_THEME=/s/=.*/="\/boot\/grub\/themes\/'$THEME'\/theme.txt"/' /etc/default/grub
 
 ansi --yellow "#################################################################"
 ansi --yellow "#################################################################"
