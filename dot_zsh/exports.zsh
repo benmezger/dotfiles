@@ -19,21 +19,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
-if [[ ${OSTYPE} == darwin* ]]; then
-	export HOMEBREW_NO_AUTO_UPDATE=1
-	export HOMEBREW_VERBOSE_USING_DOTS=1
-	# fzf
-	source /usr/local/opt/fzf/shell/key-bindings.zsh
-	source /usr/local/opt/fzf/shell/completion.zsh
-else
-	# fzf
-	source /usr/share/fzf/key-bindings.zsh
-	source /usr/share/fzf/completion.zsh
-fi
-
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 export WORKSPACE="$HOME/workspace"
 export RISCV_PATH="/opt/riscv/"
@@ -49,7 +35,7 @@ export SLIMLINE_ENABLE_ASYNC_AUTOLOAD=0
 
 # Go path
 export GOPATH=$HOME/workspace/go
-export PATH=$GOPATH/bin:$PATH
+export PATH="$GOPATH/bin:$PATH"
 
 ## Autoenv
 export AUTOENV_FILE_ENTER=".hi"
@@ -86,38 +72,26 @@ export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
 export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 
-if [[ -d "/Library/TeX/texbin" ]]; then
-	export PATH="$PATH:/Library/TeX/texbin"
-fi
-
 export ORGANIZE_CONFIG=$HOME/.config/organize-tool/config.yaml
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export HTML_TIDY="$HOME/.config/tidyrc"
 
-if [[ ${OSTYPE} == darwin* ]]; then
-	export ZSH_WAKATIME_BIN="/usr/local/bin/wakatime-cli"
-else
-	export ZSH_WAKATIME_BIN="/usr/bin/wakatime"
-fi
-
 # smooth scrooling on firefox
 export MOZ_USE_XINPUT2=1
 export XDG_CONFIG_HOME=$HOME/.config
 
-if [[ ${OSTYPE} == linux* ]]; then
-	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-	export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
-fi
-
-
 if [[ -d "$HOME/workspace/quartus/quartus" ]]; then
-	export QSYS_ROOTDIR="$HOME/workspace/quartus/quartus/sopc_builder/bin"
-	export PATH="$PATH:$HOME/workspace/quartus/quartus/bin"
+	export QSYS_ROOTDIR="$WORKSPACE/quartus/quartus/sopc_builder/bin"
+	export PATH="$PATH:$WORKSPACE/quartus/quartus/bin"
 fi
 
 if [[ -d "/opt/xilinx/Vivado/2021.2/bin" ]]; then
 	export PATH="$PATH:/opt/xilinx/Vivado/2021.2/bin"
 fi
 
-export vblank_mode=1
+if [[ ${OSTYPE} == darwin* ]]; then
+	source $HOME/.zsh/osx.zsh
+else
+	source $HOME/.zsh/linux.zsh
+fi
