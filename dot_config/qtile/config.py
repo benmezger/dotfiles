@@ -121,12 +121,19 @@ keys = [
 groups = [
     Group(i, **kwargs)
     for i, kwargs in [
-        ("1", {"layout": "monadtall", "spawn": (f"{terminal}",)}),
         (
-            "2",
+            "1",
             {
                 "layout": "max",
                 "spawn": ("firefox",),
+                "matches": [Match(wm_class=["firefox"])],
+            },
+        ),
+        (
+            "2",
+            {
+                "layout": "monadtall",
+                "spawn": (f"{terminal}",),
                 "matches": [Match(wm_class=["firefox"])],
             },
         ),
