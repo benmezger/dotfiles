@@ -38,3 +38,9 @@ isavailable conky && conky --daemonize &
 
 bash $HOME/.bin/lightsOn.sh &
 /usr/lib/geoclue-2.0/demos/agent &
+
+# XPS
+# set touchpad speed
+isavailable xixinput && xinput --set-prop \
+    "DLL0945:00 04F3:311C Touchpad"  \
+    "libinput Accel Speed" 0.2  &
