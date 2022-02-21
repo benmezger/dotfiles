@@ -128,3 +128,10 @@ if [[ ${OSTYPE} == linux* ]]; then
 fi
 
 alias s="sudo"
+
+if (( $+commands[etckeeper] )); then
+    alias etcstatus="sudo etckeeper vcs status"
+    alias etcadd="sudo etckeeper vcs add ."
+    alias etccommit="sudo etckeeper vcs commit -m"
+    alias etcpush="sudo etckeeper vcs push origin"
+fi
