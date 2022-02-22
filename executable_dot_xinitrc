@@ -41,6 +41,11 @@ bash $HOME/.bin/lightsOn.sh &
 
 # XPS
 # set touchpad speed
-isavailable xixinput && xinput --set-prop \
+isavailable xinput && xinput --set-prop \
     "DLL0945:00 04F3:311C Touchpad"  \
     "libinput Accel Speed" 0.2  &
+
+# enable natural scrolling
+isavailable xinput && xinput --set-prop \
+    "DLL0945:00 04F3:311C Touchpad"  \
+    "libinput Natural Scrolling Enabled" 1 &
