@@ -130,8 +130,9 @@ fi
 alias s="sudo"
 
 if (( $+commands[etckeeper] )); then
-    alias etcstatus="sudo etckeeper vcs status"
-    alias etcadd="sudo etckeeper vcs add ."
-    alias etccommit="sudo etckeeper vcs commit -m"
-    alias etcpush="sudo etckeeper vcs push origin"
+    alias etcs="sudo etckeeper vcs status"
+    alias etca="sudo etckeeper vcs add ."
+    alias etcc="sudo etckeeper vcs commit -m"
+    alias etcp="sudo etckeeper vcs push origin"
+    alias etcl="sudo etckeeper vcs log"
 fi
