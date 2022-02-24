@@ -135,4 +135,5 @@ if (( $+commands[etckeeper] )); then
     alias etcc="sudo etckeeper vcs commit -m"
     alias etcp="sudo etckeeper vcs push origin"
     alias etcl="sudo etckeeper vcs log"
+    alias etcpl="sudo etckeeper vcs pull"
 fi
