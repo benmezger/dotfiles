@@ -12,3 +12,6 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # gdb
 export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
+
+# dbus
+export $(dbus-launch)
