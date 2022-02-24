@@ -125,8 +125,8 @@ groups = [
             "1",
             {
                 "layout": "max",
-                "spawn": ("firefox",),
-                "matches": [Match(wm_class=["firefox"])],
+                "spawn": ("google-chrome",),
+                "matches": [Match(wm_class=["google-chrome"])],
             },
         ),
         (
@@ -134,7 +134,7 @@ groups = [
             {
                 "layout": "monadtall",
                 "spawn": (f"{terminal}",),
-                "matches": [Match(wm_class=["firefox"])],
+                "matches": [Match(wm_class=[f"{terminal}"])],
             },
         ),
         ("3", {"layout": "monadtall", "spawn": ("emacs",)}),
