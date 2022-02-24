@@ -38,6 +38,29 @@ mod = "mod4"
 terminal = guess_terminal()
 personal_bin = str(pathlib.Path().home().joinpath(".bin"))
 
+gruvbox_dark = {
+    "background": "#282828",
+    "black": "#282828",
+    "blue": "#458588",
+    "brightBlack": "#928374",
+    "brightBlue": "#83A598",
+    "brightCyan": "#8EC07C",
+    "brightGreen": "#B8BB26",
+    "brightPurple": "#D3869B",
+    "brightRed": "#FB4934",
+    "brightWhite": "#EBDBB2",
+    "brightYellow": "#FABD2F",
+    "cursorColor": "#FFFFFF",
+    "cyan": "#689D6A",
+    "foreground": "#EBDBB2",
+    "green": "#98971A",
+    "purple": "#B16286",
+    "red": "#CC241D",
+    "selectionBackground": "#FFFFFF",
+    "white": "#A89984",
+    "yellow": "#D79921",
+}
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -240,42 +263,34 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
-                widget.GroupBox(),
-                widget.Spacer(length=10),
-                widget.TaskList(borderwidth=0),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.GroupBox(
+                    borderwidth=1,
+                    disable_drag=True,
+                    font="Hack",
+                    highlight_method="text",
+                    active=gruvbox_dark["foreground"],
+                    this_current_screen_border=gruvbox_dark["yellow"],
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
+                widget.Spacer(length=bar.STRETCH),
+                widget.Sep(),
                 widget.Spacer(length=20),
-                widget.ThermalSensor(),
+                widget.ThermalSensor(fmt="  {}", font="Hack Nerd Font"),
                 widget.Spacer(length=10),
                 widget.Sep(),
-                widget.Spacer(length=10),
-                widget.CPU(),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.Memory(),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.Volume(emoji=True),
+                widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.OpenWeather(
+                    fmt=" {} ",
+                    font="Hack Nerd Font",
                     location="Florianopolis",
                     format="fln: {main_temp} °{units_temperature}",
                 ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
                 widget.OpenWeather(
+                    font="Hack Nerd Font",
                     location="Amsterdam",
                     format="ams: {main_temp} °{units_temperature}",
                 ),
@@ -283,6 +298,8 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Maildir(
+                    fmt="﫮 {}",
+                    font="Hack Nerd Font",
                     maildir_path="~/mail/personal",
                     sub_folders=(
                         {"label": "i", "path": "inbox"},
@@ -292,34 +309,38 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
-                widget.KeyboardLayout(configured_keyboards=("us", "br")),
+                widget.KeyboardLayout(
+                    configured_keyboards=("us", "br"), fmt=" {}", font="Hack Nerd Font"
+                ),
                 widget.Spacer(length=10),
                 widget.Sep(),
-                widget.Battery(),
+                widget.Battery(
+                    format=" {char} {percent:2.0%} {hour:d}:{min:02d}/{watt:.2f}W",
+                    charge_char="",
+                    discharge_char="",
+                    font="Hack Nerd Font",
+                    empty_char="",
+                    full_char="",
+                    notify_bellow=20,
+                ),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
-                widget.Clock(format="%H:%M:%S %h %d, %Y"),
+                widget.Clock(
+                    format="%H:%M:%S %h %d %Y",
+                    fmt=" {}",
+                    font="Hack Nerd Font",
+                ),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Systray(icon_size=40),
                 widget.Sep(),
-                widget.CheckUpdates(
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn(
-                            f"{terminal} -e sudo pacman -Syu"
-                        ),
-                        "Button2": lambda: qtile.cmd_spawn(
-                            f"{terminal} -e sudo pacman -Syy --noconfirm"
-                        ),
-                    }
-                ),
             ],
-            size=50,
+            size=60,
             margin=8,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background=gruvbox_dark["background"],
+            border_width=[0, 0, 0, 0],  # Draw top and bottom borders
         ),
     ),
 ]
