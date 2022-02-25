@@ -28,6 +28,7 @@ from typing import List  # noqa: F401
 from urllib import request
 import json
 import pathlib
+import webbrowser
 
 from libqtile import bar, layout, widget, qtile, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
@@ -280,7 +281,9 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
-                widget.Spacer(length=10),
+                widget.Spacer(
+                    length=10,
+                ),
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.OpenWeather(
@@ -288,11 +291,21 @@ screens = [
                     font="Hack Nerd Font",
                     location="Florianopolis",
                     format="fln: {main_temp} °{units_temperature}",
+                    mouse_callbacks={
+                        "Button1": lambda: webbrowser.open_new_tab(
+                            "https://wttr.in/florianopolis"
+                        )
+                    },
                 ),
                 widget.OpenWeather(
                     font="Hack Nerd Font",
                     location="Amsterdam",
                     format="ams: {main_temp} °{units_temperature}",
+                    mouse_callbacks={
+                        "Button1": lambda: webbrowser.open_new_tab(
+                            "https://wttr.in/amsterdam"
+                        )
+                    },
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
@@ -305,6 +318,9 @@ screens = [
                         {"label": "i", "path": "inbox"},
                         {"label": "a", "path": "archives"},
                     ),
+                    mouse_callbacks={
+                        "Button1": lambda: webbrowser.open_new_tab("https://gmail.com")
+                    },
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
@@ -322,14 +338,30 @@ screens = [
                     empty_char="",
                     full_char="",
                     notify_bellow=20,
+                    show_short_text=False,
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Clock(
-                    format="%H:%M:%S %h %d %Y",
-                    fmt=" {}",
+                    format="%H:%M:%S",
+                    fmt=" {} ",
                     font="Hack Nerd Font",
+                    mouse_callbacks={
+                        "Button1": lambda: webbrowser.open_new_tab(
+                            "https://calendar.google.com/calendar/u/0/r"
+                        )
+                    },
+                ),
+                widget.Clock(
+                    format="%h %d %Y",
+                    fmt=" {}",
+                    font="Hack Nerd Font",
+                    mouse_callbacks={
+                        "Button1": lambda: webbrowser.open_new_tab(
+                            "https://calendar.google.com/calendar/u/0/r"
+                        )
+                    },
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
