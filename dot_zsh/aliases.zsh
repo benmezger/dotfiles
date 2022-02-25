@@ -137,3 +137,10 @@ if (( $+commands[etckeeper] )); then
     alias etcl="sudo etckeeper vcs log"
     alias etcpl="sudo etckeeper vcs pull"
 fi
+
+if (( $+commands[chezmoi] )); then
+    alias cza="chezmoi apply -v"
+    alias czadd="chezmoi add -v"
+    alias czd="chezmoi diff"
+    alias czl="chezmoi git log"
+fi
