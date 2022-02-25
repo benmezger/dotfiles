@@ -149,7 +149,7 @@ groups = [
             "1",
             {
                 "layout": "max",
-                "spawn": ("google-chrome",),
+                "spawn": ("google-chrome-stable",),
                 "matches": [Match(wm_class=["google-chrome"])],
             },
         ),
