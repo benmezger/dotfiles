@@ -1,0 +1,10 @@
+[Unit]
+Description=RSS2Email service
+
+[Service]
+Type=oneshot
+ExecStart=zsh -c -i "r2e --verbose run"
+ExecStartPost=zsh -c -i "notmuch new"
+
+[Install]
+WantedBy=default.target

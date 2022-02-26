@@ -7,3 +7,4 @@ pynvim
 ipython
 grasp
 afew
+rss2email
