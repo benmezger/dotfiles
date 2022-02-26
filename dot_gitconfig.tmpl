@@ -110,3 +110,10 @@
     diffFilter = delta --color-only
 [rerere]
     enabled = 1
+{{- if eq .chezmoi.os "darwin" }}
+[credential]
+    helper = osxkeychain
+{{- else }}
+[credential]
+    helper = /usr/lib/git-core/git-credential-libsecret
+{{ end -}}
