@@ -24,4 +24,4 @@ eval "$(pyenv init -)"
 pyenv virtualenv --force 3.9.7 personal
 pyenv local personal
 pip install --upgrade -r $PYTHON_REQUIREMENTS
-cp -f $DIR/.python-version $HOME
+mv $DIR/../.python-version $HOME
