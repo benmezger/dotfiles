@@ -20,6 +20,8 @@ else
 fi
 
 NOTES_PATH="/usr/local/bin/notes"
+sudo -v
+
 if [ ! -f "$NOTES_PATH" ]; then
-	curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | bash
+	curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | sudo bash
 fi
