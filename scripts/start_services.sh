@@ -58,4 +58,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	ansi --green "Setting up greenclip"
 	systemctl --user enable greenclip.service
 	systemctl --user restart greenclip.service
+
+	ansi --green "Setting up r2e"
+	systemctl --user enable r2e.timer
+	systemctl --user restart r2e.timer
 fi
