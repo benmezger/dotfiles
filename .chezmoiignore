@@ -80,6 +80,7 @@ themes
 # Don't copy the following files if OS is Linux
 {{- if ne .chezmoi.os "darwin" }}
 .skhdrc
+Library/
 
 # I don't use tmux on i3wm
 .weechat/python/tmuxnotify.py
