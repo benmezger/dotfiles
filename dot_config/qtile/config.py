@@ -407,6 +407,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="qalculate-gtk"),  # qalculate-gtk
+        Match(title="pcmanfm"),  # pcmanfm
     ],
     border_width=border_width,
 )
