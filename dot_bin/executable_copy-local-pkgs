@@ -1,0 +1,37 @@
+#!/bin/env python
+
+
+# copy all *.pkg.tar.zst recursively from $CUSTOM_ABS_DIR to $CUSTOM_PKG_DIR
+# and runs repo-add to DB defined in $CUSTOM_REPO_DB
+# If any environment variable is not defined, it defauls to:
+# $CUSTOM_ABS_DIR = $HOME/workspace/archrepo
+# $CUSTOM_PKG_DIR = $HOME/workspace/pacman-local
+# $CUSTOM_REPO_DB = seds
+
+import pathlib
+import shutil
+import os
+import subprocess
+
+DEFAULT_ABSDIR = pathlib.Path(".").home().joinpath("workspace/archrepo")
+DEFAULT_PKGDIR = pathlib.Path(".").home().joinpath(f"workspace/pacman-local/{os.uname().machine}")
+DEFAULT_REPO_DB = DEFAULT_PKGDIR.joinpath(f"seds.db.tar.gz")
+
+def get_pkgs(
+    absdir: pathlib.Path = DEFAULT_ABSDIR
+) -> pathlib.Path:
+    for path in absdir.glob("**/*.pkg.tar.zst"):
+        yield path
+
+
+def main():
+    repo_cmd = ["repo-add", os.environ.get("CUSTOM_REPO_DB", str(DEFAULT_REPO_DB))]
+    for path in get_pkgs(os.environ.get("CUSTOM_ABS_DIR", DEFAULT_ABSDIR)):
+        ok = shutil.copy(path, os.environ.get("CUSTOM_PKG_DIR", DEFAULT_PKGDIR))
+        print(f"Copied {path} -> {ok}")
+        repo_cmd.append(ok)
+
+    result = subprocess.run(repo_cmd)
+
+if __name__ == "__main__":
+    main()
