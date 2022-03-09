@@ -5,7 +5,7 @@ set_pyenv() {
         _set_pyenv() {
             export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
             export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-            eval "$(pyenv init - zsh --no-rehash)"
+            eval "$(pyenv init -)"
             eval "$(pyenv virtualenv-init -)"
             . $(pyenv root)/completions/pyenv.zsh
         }
