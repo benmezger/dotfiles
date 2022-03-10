@@ -6,7 +6,7 @@
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin</string>
+      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:{{ joinPath .chezmoi.homeDir ".pyenv/shims" }}</string>
     </dict>
     <key>Label</key>
     <string>com.syncmail</string>
