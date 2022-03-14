@@ -15,7 +15,7 @@ import subprocess
 
 DEFAULT_ABSDIR = pathlib.Path(".").home().joinpath("workspace/archrepo")
 DEFAULT_PKGDIR = pathlib.Path(".").home().joinpath(f"workspace/pacman-local/{os.uname().machine}")
-DEFAULT_REPO_DB = DEFAULT_PKGDIR.joinpath(f"seds.db.tar.gz")
+DEFAULT_REPO_DB = DEFAULT_PKGDIR.joinpath(f"sedspkgs.db.tar.gz")
 
 def get_pkgs(
     absdir: pathlib.Path = DEFAULT_ABSDIR

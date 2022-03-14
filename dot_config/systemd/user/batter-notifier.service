@@ -1,0 +1,9 @@
+[Unit]
+Description=Battery notifier service
+
+[Service]
+Type=oneshot
+ExecStart=zsh -c -i "$HOME/.bin/battery-notifier.sh"
+
+[Install]
+WantedBy=default.target
