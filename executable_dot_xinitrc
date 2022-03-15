@@ -16,6 +16,9 @@ xrandr --dpi 125.37
 # run xrdb
 [[ -f $HOME/.Xresources ]] && xrdb -load $HOME/.Xresources
 
+isavailable gnome-keyring-daemon && eval $(gnome-keyring-daemon --start)
+isavailable gnome-keyring-daemon && export SSH_AUTH_SOCK
+
 # run urxvt daemon
 [[ -z "$(pidof urxvtd)" ]] && urxvtd --quiet --opendisplay --fork
 
