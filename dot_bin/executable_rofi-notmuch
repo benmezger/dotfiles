@@ -1,0 +1,136 @@
+#!/usr/bin/env python
+# Author: Ben Mezger
+# https://github.com/benmezger
+# https://seds.nl
+
+from typing import (
+    Any,
+    AsyncIterator,
+    Callable,
+    Dict,
+    List,
+    Tuple,
+)
+import pathlib
+import os
+import sys
+import json
+import asyncio
+
+NOTMUCH_BIN = (
+    pathlib.Path().joinpath("/usr/local/bin/notmuch")
+    if os.uname().sysname == "Darwin"
+    else pathlib.Path().joinpath("/usr/bin/notmuch")
+)
+
+ROFI_CMD = (
+    "rofi",
+    "-width",
+    "100",
+    "-dmenu",
+    "-i",
+    "-p",
+    "email",
+    "-async-pre-read",  # https://github.com/davatorium/rofi/issues/703#issuecomment-338422621
+    "0",
+)
+
+
+async def notmuch_run(extra_args: List[str] = []):
+    cmd = [f"{NOTMUCH_BIN}"] + extra_args
+    return await asyncio.create_subprocess_exec(*cmd, stdout=asyncio.subprocess.PIPE)
+
+
+async def notmuch_search(flter: str) -> AsyncIterator[Tuple[str, str]]:
+    process = await notmuch_run(["search", "--format=json", flter])
+
+    while process.returncode is None:
+        if not (line := (await process.stdout.readline()).decode("utf-8")):
+            break
+
+        email = sdict(line)
+
+        if subject := email.get("subject"):
+            yield subject, email.get("thread")
+
+    await process.wait()
+
+
+async def notmuch_all() -> int | None:
+    process = await asyncio.create_subprocess_exec(
+        *ROFI_CMD,
+        stdout=asyncio.subprocess.PIPE,
+        stdin=asyncio.subprocess.PIPE,
+    )
+    return await _rofify_emails(process, notmuch_search, "*")
+
+
+async def notmuch_filtered(flter: List[str]) -> int | None:
+    process = await asyncio.create_subprocess_exec(
+        *ROFI_CMD,
+        stdout=asyncio.subprocess.PIPE,
+        stdin=asyncio.subprocess.PIPE,
+    )
+    return await _rofify_emails(process, notmuch_search, " ".join(flter))
+
+
+async def _rofify_emails(
+    process_in: asyncio.subprocess.Process,
+    callback: Callable[..., AsyncIterator[Tuple[str, str]]],
+    *cargs,
+    **ckwargs,
+) -> int | None:
+    emails = {}
+
+    async for email, thread in callback(*cargs, **ckwargs):
+        emails[thread] = email
+        process_in.stdin.write(email.encode() + b"\n")
+
+    if await process_in.wait():
+        sys.exit(1)
+
+    choice = (await process_in.stdout.readline()).decode("utf-8").strip()
+    thread = [k for (k, v) in emails.items() if v == choice][0]
+
+    return await _notmuch_emacs(thread)
+
+
+async def _notmuch_emacs(thread_id: str) -> int | None:
+    emacs_cmd = f"emacsclient -c -n -a '' --eval"
+    process = await asyncio.create_subprocess_exec(
+        *(emacs_cmd.split() + [f'(notmuch-search "{thread_id}")']),
+        stdout=asyncio.subprocess.PIPE,
+        stdin=asyncio.subprocess.PIPE,
+    )
+
+    await process.communicate()
+    return process.returncode
+
+
+def sdict(s: str) -> Dict[Any, Any]:
+    """Converts string s to a dict"""
+    s = s.strip()
+
+    if s.startswith("["):
+        s = s[1:]
+
+    if s.endswith("]"):
+        s = s[:-1]
+
+    if s.endswith(","):
+        s = s[:-1]
+
+    return json.loads(s)
+
+
+if __name__ == "__main__":
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    if len(sys.argv) == 1:
+        tasks = (asyncio.ensure_future(notmuch_all(), loop=loop),)
+    else:
+        tasks = (asyncio.ensure_future(notmuch_filtered(sys.argv[1:]), loop=loop),)
+
+    loop.run_until_complete(asyncio.gather(*tasks))
+    loop.close()
