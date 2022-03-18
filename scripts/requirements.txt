@@ -8,3 +8,5 @@ ipython
 grasp
 afew
 rss2email
+pyright
+isort
