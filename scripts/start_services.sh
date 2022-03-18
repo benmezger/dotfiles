@@ -29,9 +29,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	mkdir -p "$HOME/.config/systemd/user/"
 
-	if [ -f "$HOME/.config/systemd/user/mbsync.service" ]; then
-		systemctl --user enable mbsync.service
-		systemctl --user enable mbsync.timer
+	if [ -f "$HOME/.config/systemd/user/syncmail.service" ]; then
+		systemctl --user enable syncmail.service
+		systemctl --user enable syncmail.timer
 	fi
 
 	if [ -f "$HOME/.config/systemd/user/mopidy.service" ]; then
