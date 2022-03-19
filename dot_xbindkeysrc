@@ -64,6 +64,6 @@
   m:0x41 + c:53
   Shift + Mod4 + x
 
-"rofi -show p -modi p:~/.bin/rofi-notmuch"
-  m:0x41 + c:58
-  Shift + Mod4 + m
+"rofi -show filebrowser"
+  m:0x41 + c:41
+  Shift + Mod4 + f
