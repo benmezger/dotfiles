@@ -84,7 +84,7 @@ async def _rofify_emails(
 
     async for email, thread in callback(*cargs, **ckwargs):
         emails[thread] = email
-        process_in.stdin.write(email.encode() + b"\n")
+        print(email)
 
     if await process_in.wait():
         sys.exit(1)
