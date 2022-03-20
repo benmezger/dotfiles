@@ -1,4 +1,3 @@
-enabled=False
 XDG_DESKTOP_DIR="$HOME/desktop"
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
