@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Usable: ./reload-on-change <command-to-run> file1 files2 file..
+
+declare -a prevcsums csums files
+cmd="$1"
+
+for arg in ${@:2};do
+	files+=("$(realpath $arg)")
+done
+
+for v in "${files[@]}"; do
+	prevcsums+=($(sha1sum "$v" | cut -d " " -f 1))
+	csums+=($(sha1sum "$v" | cut -d " " -f 1))
+done
+
+reload=0
+while true; do
+	for i in "${!files[@]}"; do
+	    if [ "${prevcsums[$i]}" != "${csums[$i]}" ]; then
+			reload=1
+                        prevcsums[$i]="$(sha1sum "${files[$i]}" | cut -d " " -f 1)"
+		fi
+                csums[$i]="$(sha1sum "${files[$i]}" | cut -d " " -f 1)"
+	done
+
+	if [[ $reload -eq 1 ]]; then
+	    $cmd
+	fi
+
+	reload=0
+	sleep 1
+done
