@@ -5,7 +5,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_VERBOSE_USING_DOTS=1
 
 # fzf
-source /usr/local/opt/fzf/shell/key-bindings.zsh
 source /usr/local/opt/fzf/shell/completion.zsh
 
 if [[ -d "/Library/TeX/texbin" ]]; then

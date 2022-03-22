@@ -61,9 +61,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 export WORKON_HOME=$HOME/.virtualenvs
 
-# FZF
-export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
-
 if [ -f "$HOME/.poetry/bin/poetry" ]; then
 	export PATH="$HOME/.poetry/bin:${PATH}"
 fi
@@ -95,3 +92,7 @@ if [[ ${OSTYPE} == darwin* ]]; then
 else
 	source $HOME/.zsh/linux.zsh
 fi
+
+# FZF
+export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
+source $HOME/.zsh/fzf-theme.zsh

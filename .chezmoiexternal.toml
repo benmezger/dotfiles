@@ -31,3 +31,7 @@
     type = "file"
     executable = true
     url = "https://raw.githubusercontent.com/jluttine/rofi-power-menu/master/rofi-power-menu"
+
+[".zsh/fzf-theme.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/fnune/base16-fzf/master/bash/base16-gruvbox-dark-hard.config"
