@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+HISTFILE=.zhistory
+GPGKEY={{ .gpg_keyid }}
+
+if ! [[ -d "$HOME/workspace/zhistory/" ]]; then
+    git clone git@github.com:benmezger/zhistory.git $HOME/workspace/zhistory
+fi
+
+cp -fv $HOME/$HISTFILE /tmp/$HISTFILE
+rm -v /tmp/$HISTFILE.gpg
+gpg -e -r $GPGKEY /tmp/$HISTFILE
+cp -fv /tmp/$HISTFILE.gpg $HOME/workspace/zhistory/$HISTFILE.gpg
+
+cd $HOME/workspace/zhistory/
+git add .
+git commit -am "zsh history update"
