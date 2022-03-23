@@ -47,6 +47,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo systemctl enable NetworkManager
 	sudo systemctl restart NetworkManager
 
+	sleep 3 # wait for network
+
 	ansi --green "Setting up NTP"
 	sudo systemctl enable ntpd
 	sudo systemctl restart ntpd
