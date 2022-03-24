@@ -18,6 +18,9 @@ if [ ! -d "$PYENV_DIR" ]; then
 	curl https://pyenv.run | bash
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	pyenv install -s $PYTHON_VERSION
+	pyenv install -s 3.8.12
+	pyenv install -s 3.9.9
+	pyenv install -s 3.11-dev
 fi
 
 eval "$(pyenv init -)"
