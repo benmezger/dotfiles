@@ -4,7 +4,6 @@ organize-tool
 pygments
 pynvim
 ipython
-grasp
 afew
 rss2email
 pyright
