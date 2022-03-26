@@ -172,8 +172,8 @@ groups = [
             "0",
             {
                 "layout": "monadtall",
-                "spawn": ("spotify --force-device-scale-factor=2.0",),
-                "matches": [Match(wm_class=["spotify"])],
+                "spawn": (f"{terminal} -e zsh -i -c '/usr/bin/weechat'",),
+                "matches": [Match(wm_class=["weechat"])],
             },
         ),
     ]
