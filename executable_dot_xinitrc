@@ -49,7 +49,7 @@ start_nordvpn() {
     nordvpn connect
 }
 
-isavailable nordvpn && grep -v "You are not logged in" && start_nordvpn &
+isavailable nordvpn && nordvpn account | grep -v "You are not logged in" && start_nordvpn &
 
 
 bash $HOME/.bin/lightsOn.sh &
