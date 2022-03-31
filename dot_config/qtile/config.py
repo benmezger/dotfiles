@@ -130,7 +130,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle full screen"),
     Key(
         [mod],
-        "space",
+        "k",
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
