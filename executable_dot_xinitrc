@@ -40,6 +40,17 @@ isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
 isavailable telegram-desktop && telegram-desktop -startintray &
 
+start_nordvpn() {
+    while ! ping -c 1 -W 1 8.8.8.8; do                                                                                                                                                    [I]
+        echo "Waiting for 8.8.8.8 - network interface might be down..."
+        sleep 1
+    done
+
+    nordvpn connect
+}
+
+isavailable nordvpn && grep -v "You are not logged in" && start_nordvpn &
+
 
 bash $HOME/.bin/lightsOn.sh &
 /usr/lib/geoclue-2.0/demos/agent &
