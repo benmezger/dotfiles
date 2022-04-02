@@ -34,6 +34,7 @@ from libqtile import bar, layout, widget, qtile, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from widgets import NordVPN
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -273,12 +274,7 @@ screens = [
                     this_current_screen_border=gruvbox_dark["yellow"],
                 ),
                 widget.Spacer(length=10),
-                widget.Sep(),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Sep(),
-                widget.Spacer(length=20),
-                widget.Net(interface="tun0"),
-                widget.Spacer(length=20),
                 widget.Sep(),
                 widget.Spacer(length=20),
                 widget.ThermalSensor(fmt="  {}", font="Hack Nerd Font"),
@@ -372,6 +368,7 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Systray(icon_size=40),
                 widget.Sep(),
+                NordVPN(),
             ],
             size=60,
             margin=8,
