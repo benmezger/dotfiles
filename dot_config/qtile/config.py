@@ -275,110 +275,118 @@ screens = [
                 ),
                 widget.Spacer(length=10),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Sep(),
-                widget.Spacer(length=20),
-                widget.WidgetBox(
-                    text_closed="[>] ",
-                    widgets=[
-                        widget.CPU(fmt="{}"),
-                        widget.Memory(fmt=" {} "),
-                        widget.ThermalSensor(fmt="  {} ", font="Hack Nerd Font"),
-                        NordVPN(),
-                    ],
-                ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
-                widget.Spacer(
-                    length=10,
-                ),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.OpenWeather(
-                    fmt=" {} ",
-                    font="Hack Nerd Font",
-                    location="Florianopolis",
-                    format="fln: {main_temp} °{units_temperature}",
-                    mouse_callbacks={
-                        "Button1": lambda: webbrowser.open_new_tab(
-                            "https://wttr.in/florianopolis"
-                        )
-                    },
-                ),
                 widget.WidgetBox(
                     widgets=[
+                        widget.Spacer(length=20),
+                        widget.WidgetBox(
+                            widgets=[
+                                widget.CPU(fmt="{}"),
+                                widget.Memory(fmt=" {} "),
+                                widget.ThermalSensor(
+                                    fmt="  {} ", font="Hack Nerd Font"
+                                ),
+                                NordVPN(),
+                            ],
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
+                        widget.Spacer(
+                            length=10,
+                        ),
+                        widget.Sep(),
+                        widget.Spacer(length=10),
                         widget.OpenWeather(
+                            fmt=" {} ",
                             font="Hack Nerd Font",
-                            location="Amsterdam",
-                            format="ams: {main_temp} °{units_temperature}",
+                            location="Florianopolis",
+                            format="fln: {main_temp} °{units_temperature}",
                             mouse_callbacks={
                                 "Button1": lambda: webbrowser.open_new_tab(
-                                    "https://wttr.in/amsterdam"
+                                    "https://wttr.in/florianopolis"
                                 )
                             },
                         ),
+                        widget.WidgetBox(
+                            widgets=[
+                                widget.OpenWeather(
+                                    font="Hack Nerd Font",
+                                    location="Amsterdam",
+                                    format="ams: {main_temp} °{units_temperature}",
+                                    mouse_callbacks={
+                                        "Button1": lambda: webbrowser.open_new_tab(
+                                            "https://wttr.in/amsterdam"
+                                        )
+                                    },
+                                ),
+                            ]
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Spacer(length=10),
+                        widget.Maildir(
+                            fmt="﫮 {}",
+                            font="Hack Nerd Font",
+                            maildir_path="~/mail/personal",
+                            sub_folders=(
+                                {"label": "i", "path": "inbox"},
+                                {"label": "a", "path": "archives"},
+                            ),
+                            mouse_callbacks={
+                                "Button1": lambda: webbrowser.open_new_tab(
+                                    "https://gmail.com"
+                                )
+                            },
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Spacer(length=10),
+                        widget.KeyboardLayout(
+                            configured_keyboards=("us", "br"),
+                            fmt=" {}",
+                            font="Hack Nerd Font",
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Battery(
+                            format=" {char} {percent:2.0%} {hour:d}:{min:02d}/{watt:.2f}W",
+                            charge_char="",
+                            discharge_char="",
+                            font="Hack Nerd Font",
+                            empty_char="",
+                            full_char="",
+                            notify_bellow=20,
+                            show_short_text=False,
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Spacer(length=10),
+                        widget.Clock(
+                            format="%H:%M:%S",
+                            fmt=" {} ",
+                            font="Hack Nerd Font",
+                            mouse_callbacks={
+                                "Button1": lambda: webbrowser.open_new_tab(
+                                    "https://calendar.google.com/calendar/u/0/r"
+                                )
+                            },
+                        ),
+                        widget.Clock(
+                            format="%h %d %Y",
+                            fmt=" {}",
+                            font="Hack Nerd Font",
+                            mouse_callbacks={
+                                "Button1": lambda: webbrowser.open_new_tab(
+                                    "https://calendar.google.com/calendar/u/0/r"
+                                )
+                            },
+                        ),
+                        widget.Spacer(length=10),
+                        widget.Sep(),
+                        widget.Spacer(length=10),
+                        widget.Systray(icon_size=40),
                     ]
                 ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.Maildir(
-                    fmt="﫮 {}",
-                    font="Hack Nerd Font",
-                    maildir_path="~/mail/personal",
-                    sub_folders=(
-                        {"label": "i", "path": "inbox"},
-                        {"label": "a", "path": "archives"},
-                    ),
-                    mouse_callbacks={
-                        "Button1": lambda: webbrowser.open_new_tab("https://gmail.com")
-                    },
-                ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.KeyboardLayout(
-                    configured_keyboards=("us", "br"), fmt=" {}", font="Hack Nerd Font"
-                ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Battery(
-                    format=" {char} {percent:2.0%} {hour:d}:{min:02d}/{watt:.2f}W",
-                    charge_char="",
-                    discharge_char="",
-                    font="Hack Nerd Font",
-                    empty_char="",
-                    full_char="",
-                    notify_bellow=20,
-                    show_short_text=False,
-                ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.Clock(
-                    format="%H:%M:%S",
-                    fmt=" {} ",
-                    font="Hack Nerd Font",
-                    mouse_callbacks={
-                        "Button1": lambda: webbrowser.open_new_tab(
-                            "https://calendar.google.com/calendar/u/0/r"
-                        )
-                    },
-                ),
-                widget.Clock(
-                    format="%h %d %Y",
-                    fmt=" {}",
-                    font="Hack Nerd Font",
-                    mouse_callbacks={
-                        "Button1": lambda: webbrowser.open_new_tab(
-                            "https://calendar.google.com/calendar/u/0/r"
-                        )
-                    },
-                ),
-                widget.Spacer(length=10),
-                widget.Sep(),
-                widget.Spacer(length=10),
-                widget.Systray(icon_size=40),
             ],
             size=60,
             margin=8,
