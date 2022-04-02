@@ -35,3 +35,8 @@
 [".zsh/fzf-theme.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/fnune/base16-fzf/master/bash/base16-gruvbox-dark-hard.config"
+
+[".bin/rofi-nordvpn"]
+    type = "file"
+    executable = true
+    url = "https://raw.githubusercontent.com/loiccoyle/rofi-nordvpn/main/rofi-nordvpn"
