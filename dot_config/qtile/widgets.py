@@ -3,9 +3,7 @@
 # Author: Ben Mezger <me@benmezger.nl>
 # Created at <2022-03-31 Thu 12:32>
 
-from libqtile.log_utils import logger
 from libqtile.widget import base
-from datetime import datetime
 import subprocess
 import pathlib
 from countries import COUNTRIES

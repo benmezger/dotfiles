@@ -277,7 +277,15 @@ screens = [
                 widget.Spacer(length=bar.STRETCH),
                 widget.Sep(),
                 widget.Spacer(length=20),
-                widget.ThermalSensor(fmt="  {}", font="Hack Nerd Font"),
+                widget.WidgetBox(
+                    text_closed="[>] ",
+                    widgets=[
+                        widget.CPU(fmt="{}"),
+                        widget.Memory(fmt=" {} "),
+                        widget.ThermalSensor(fmt="  {} ", font="Hack Nerd Font"),
+                        NordVPN(),
+                    ],
+                ),
                 widget.Spacer(length=10),
                 widget.Sep(),
                 widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
@@ -297,15 +305,19 @@ screens = [
                         )
                     },
                 ),
-                widget.OpenWeather(
-                    font="Hack Nerd Font",
-                    location="Amsterdam",
-                    format="ams: {main_temp} °{units_temperature}",
-                    mouse_callbacks={
-                        "Button1": lambda: webbrowser.open_new_tab(
-                            "https://wttr.in/amsterdam"
-                        )
-                    },
+                widget.WidgetBox(
+                    widgets=[
+                        widget.OpenWeather(
+                            font="Hack Nerd Font",
+                            location="Amsterdam",
+                            format="ams: {main_temp} °{units_temperature}",
+                            mouse_callbacks={
+                                "Button1": lambda: webbrowser.open_new_tab(
+                                    "https://wttr.in/amsterdam"
+                                )
+                            },
+                        ),
+                    ]
                 ),
                 widget.Spacer(length=10),
                 widget.Sep(),
@@ -367,8 +379,6 @@ screens = [
                 widget.Sep(),
                 widget.Spacer(length=10),
                 widget.Systray(icon_size=40),
-                widget.Sep(),
-                NordVPN(),
             ],
             size=60,
             margin=8,
