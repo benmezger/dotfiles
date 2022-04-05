@@ -1,7 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Hack")
-      doom-theme 'doom-monokai-spectrum
+(setq doom-theme 'doom-monokai-spectrum
       display-line-numbers-type t
       default-directory "~/"
       command-line-default-directory "~/")
