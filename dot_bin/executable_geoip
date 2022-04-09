@@ -20,6 +20,29 @@ from json import loads
 from socket import gethostbyname, gethostname
 from os import getenv
 
+try:
+    import speedtest
+
+    has_speedtest = True
+except ImportError:
+    has_speedtest = False
+
+
+def test_speed():
+    threads = 2
+    s = speedtest.Speedtest()
+    return s.download(threads=threads), s.upload(threads=threads)
+
+
+def humansize(nbytes):
+    suffixes = ["B", "KB", "MB", "GB", "TB", "PB"]
+    i = 0
+    while nbytes >= 1024 and i < len(suffixes) - 1:
+        nbytes /= 1024.0
+        i += 1
+    f = ("%.2f" % nbytes).rstrip("0").rstrip(".")
+    return "%s %s" % (f, suffixes[i])
+
 
 def fetch_url(url: str):
     return loads(urlopen(url).read())
@@ -49,6 +72,11 @@ def main():
     print("HTTP Proxy:", getenv("http_proxy"))
     print("HTTPS Proxy:", getenv("https_proxy"))
     print("FTP Proxy:", getenv("ftp_proxy"))
+
+    if has_speedtest:
+        download, upload = test_speed()
+        print("Download speed:", humansize(download))
+        print("Upload speed:", humansize(upload))
 
 
 if __name__ == "__main__":

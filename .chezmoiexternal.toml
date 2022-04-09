@@ -40,3 +40,8 @@
     type = "file"
     executable = true
     url = "https://raw.githubusercontent.com/loiccoyle/rofi-nordvpn/main/rofi-nordvpn"
+
+[".bin/speedtest.py"]
+    type = "file"
+    executable = true
+    url = "https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py"
