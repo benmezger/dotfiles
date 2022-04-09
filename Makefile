@@ -174,5 +174,5 @@ install-grub-theme:
 show-reminders:
 	bash ./scripts/reminders.sh | tee -a $(LOGFILE) || exit 1
 
-nordvpn-rules:
-	bash ./scripts/nordvpn-allowedlist.sh | tee -a $(LOGFILE) || exit 1
+nordvpn-setup:
+	bash ./scripts/nordvpn-setup.sh | tee -a $(LOGFILE) || exit 1
