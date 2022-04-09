@@ -1,0 +1,221 @@
+#!/usr/bin/env python
+
+from typing import Iterable
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
+from json import dumps, loads
+from os import getenv
+from dataclasses import dataclass, asdict
+from datetime import datetime, timedelta, timezone
+import argparse
+
+USERNAME = "benmezger"
+
+
+@dataclass
+class PullRequest:
+    @dataclass
+    class Commit:
+        totalCount: int
+
+    id: str
+    is_draft: str
+    merged: str
+    merged_at: str
+    created_at: str
+    permalink: str
+    state: str
+    closed: str
+    title: str
+    commits: Commit
+    check_url: str
+
+    def __post_init__(self):
+        self.created_at = str(
+            datetime.strptime(str(self.created_at)[:-1], "%Y-%m-%dT%H:%M:%S").replace(
+                tzinfo=timezone.utc
+            )
+        )
+        self.merged_at = (
+            str(
+                datetime.strptime(
+                    str(self.merged_at)[:-1], "%Y-%m-%dT%H:%M:%S"
+                ).replace(tzinfo=timezone.utc)
+            )
+            if self.merged_at
+            else "-"
+        )
+
+        self.state = self.state.title()
+
+        if self.merged:
+            self.merged = "✅"
+        else:
+            self.merged = "❌"
+
+        if self.is_draft:
+            self.is_draft = "✅"
+        else:
+            self.is_draft = "❌"
+
+        if self.closed:
+            self.closed = "✅"
+        else:
+            self.closed = "❌"
+
+    @property
+    def total_commits(self) -> int:
+        return self.commits.totalCount
+
+
+def _prepare_req(url: str, data: str) -> Request:
+    query = {"query": data}
+    req = Request(url=url, data=dumps(query).encode(), method="POST")
+    req.add_header("Authorization", f"bearer {getenv('GITHUB_TOKEN')}")
+    return req
+
+
+def fetch_url(url: str, data: str) -> dict | None:
+    try:
+        response = urlopen(_prepare_req(url, data)).read()
+    except HTTPError as e:
+        print(e.read(), e.status)
+        return None
+
+    return loads(response)
+
+
+def get_prs(data: dict) -> Iterable[PullRequest]:
+    edges: dict = data.get("data", {}).get("search", {}).get("edges", [])
+
+    for edge in edges:
+        node = edge.get("node")
+        yield PullRequest(
+            id=node.get("id"),
+            is_draft=node.get("isDraft"),
+            merged=node.get("merged"),
+            merged_at=node.get("mergedAt"),
+            created_at=node.get("createdAt"),
+            permalink=node.get("permalink"),
+            state=node.get("state"),
+            closed=node.get("closed"),
+            title=node.get("title"),
+            commits=node.get("commits").get("totalCount"),
+            check_url=node.get("checksUrl"),
+        )
+
+
+def fetch_pr_by_date(date: str):
+    query = (
+        """query {
+        search(query: "created:"""
+        + date
+        + ", author:"
+        + USERNAME
+        + """, sort:created\", type: ISSUE, last: 100) {
+            edges {
+            node {
+                ... on PullRequest {
+                id
+                title
+                createdAt
+                isDraft
+                merged
+                mergedAt
+                permalink
+                state
+                checksUrl
+                closed
+                commits {
+                    totalCount
+                }
+              }
+            }
+         }
+      }
+    }
+    """
+    )
+
+    if response := fetch_url("https://api.github.com/graphql", data=query):
+        for pr in get_prs(response):
+            right_size = 0
+            for k, v in asdict(pr).items():
+                if isinstance(v, dict):
+                    continue
+
+                if k == "checksUrl":
+                    right_size = len(v) + 1
+
+                print(f"{k:<15}| {v:<15}")
+
+            print(f"{'-'* 15:<15} {'-' * right_size}")
+
+
+def fetch_todays_pr():
+    return fetch_pr_by_date(datetime.now().strftime("%Y-%m-%d"))
+
+
+def fetch_yesterdays_pr():
+    return fetch_pr_by_date((datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"))
+
+
+def fetch_weeks_pr():
+    return fetch_pr_by_date(
+        (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+        + ".."
+        + datetime.now().strftime("%Y-%m-%d")
+    )
+
+
+def fetch_month_pr():
+    return fetch_pr_by_date(
+        (datetime.now() - timedelta(weeks=4)).strftime("%Y-%m-%d")
+        + ".."
+        + datetime.now().strftime("%Y-%m-%d")
+    )
+
+
+def create_argparser():
+    parser = argparse.ArgumentParser(description="Check personal Github stuff")
+    parser.add_argument(
+        "-t",
+        "--today",
+        action="store_true",
+        help="List today's PRs",
+    )
+
+    parser.add_argument(
+        "-y",
+        "--yesterday",
+        action="store_true",
+        help="List yesterday's PRs",
+    )
+
+    parser.add_argument(
+        "-w",
+        "--week",
+        action="store_true",
+        help="List last 7 days PRs",
+    )
+
+    parser.add_argument(
+        "-m",
+        "--month",
+        action="store_true",
+        help="List last months PRs",
+    )
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = create_argparser()
+
+    if args.today:
+        fetch_todays_pr()
+    elif args.yesterday:
+        fetch_yesterdays_pr()
+    elif args.week:
+        fetch_weeks_pr()
+    elif args.month:
+        fetch_month_pr()
