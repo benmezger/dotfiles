@@ -19,6 +19,7 @@ from urllib.request import urlopen
 from json import loads
 from socket import gethostbyname, gethostname
 from os import getenv
+import asyncio
 
 try:
     import speedtest
@@ -28,10 +29,11 @@ except ImportError:
     has_speedtest = False
 
 
-def test_speed():
-    threads = 2
-    s = speedtest.Speedtest()
-    return s.download(threads=threads), s.upload(threads=threads)
+async def test_speed(threads: int = 2):
+    if has_speedtest:
+        s = speedtest.Speedtest()
+        return s.download(threads=threads), s.upload(threads=threads)
+    return None, None
 
 
 def humansize(nbytes):
@@ -44,16 +46,19 @@ def humansize(nbytes):
     return "%s %s" % (f, suffixes[i])
 
 
-def fetch_url(url: str):
+async def fetch_url(url: str):
     return loads(urlopen(url).read())
 
 
-def main():
-    ip_info, vpn_info, tor_info = (
+async def main():
+    ip_info, vpn_info, tor_info, speed = await asyncio.gather(
         fetch_url("https://ipinfo.io"),
         fetch_url("https://api.nordvpn.com/vpn/check/full"),
         fetch_url("https://check.torproject.org/api/ip"),
+        test_speed(),
     )
+
+    download, upload = speed
 
     print("Public IP:", ip_info.get("ip"))
     print("Country:", ip_info.get("country"))
@@ -73,11 +78,10 @@ def main():
     print("HTTPS Proxy:", getenv("https_proxy"))
     print("FTP Proxy:", getenv("ftp_proxy"))
 
-    if has_speedtest:
-        download, upload = test_speed()
+    if download and upload:
         print("Download speed:", humansize(download))
         print("Upload speed:", humansize(upload))
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
