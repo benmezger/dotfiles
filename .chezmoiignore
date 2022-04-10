@@ -72,9 +72,6 @@ themes
 .xsession
 .config/picom.conf
 .config/systemd
-
-.weechat/python/anotify.py
-.weechat/python/autoload/anotify.py
 {{- end }}
 
 # Don't copy the following files if OS is Linux
