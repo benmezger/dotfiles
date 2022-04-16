@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-from typing import Iterable
+import functools
+import json
+from typing import Iterable, List, Optional, Union
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 from json import dumps, loads
@@ -8,8 +10,14 @@ from os import getenv
 from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta, timezone
 import argparse
+from enum import Enum
 
 USERNAME = "benmezger"
+
+
+class Format(Enum):
+    JSON = 1
+    ASCII = 2
 
 
 @dataclass
@@ -75,7 +83,7 @@ def _prepare_req(url: str, data: str) -> Request:
     return req
 
 
-def fetch_url(url: str, data: str) -> dict | None:
+def fetch_url(url: str, data: str) -> Optional[dict]:
     try:
         response = urlopen(_prepare_req(url, data)).read()
     except HTTPError as e:
@@ -105,13 +113,13 @@ def get_prs(data: dict) -> Iterable[PullRequest]:
         )
 
 
-def fetch_pr_by_date(date: str):
+def fetch_pr_by_date(date: str, user: str) -> Optional[dict]:
     query = (
         """query {
         search(query: "created:"""
         + date
         + ", author:"
-        + USERNAME
+        + user
         + """, sort:created\", type: ISSUE, last: 100) {
             edges {
             node {
@@ -138,41 +146,80 @@ def fetch_pr_by_date(date: str):
     )
 
     if response := fetch_url("https://api.github.com/graphql", data=query):
-        for pr in get_prs(response):
-            right_size = 0
-            for k, v in asdict(pr).items():
-                if isinstance(v, dict):
-                    continue
-
-                if k == "checksUrl":
-                    right_size = len(v) + 1
-
-                print(f"{k:<15}| {v:<15}")
-
-            print(f"{'-'* 15:<15} {'-' * right_size}")
+        return response
 
 
-def fetch_todays_pr():
-    return fetch_pr_by_date(datetime.now().strftime("%Y-%m-%d"))
-
-
-def fetch_yesterdays_pr():
-    return fetch_pr_by_date((datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"))
-
-
-def fetch_weeks_pr():
-    return fetch_pr_by_date(
-        (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
-        + ".."
-        + datetime.now().strftime("%Y-%m-%d")
+def write_json(pr: Union[PullRequest, List[PullRequest]]):
+    print(
+        json.dumps([asdict(p) for p in pr] if isinstance(pr, list) else pr, indent=4),
     )
 
 
-def fetch_month_pr():
+def write_ascii(pr: Union[PullRequest, List[PullRequest]]):
+    def _output(p):
+        right_size = 0
+        for k, v in asdict(p).items():
+            if isinstance(v, dict):
+                continue
+
+            if k == "checksUrl":
+                right_size = len(v) + 1
+
+            print(f"{k:<15}| {v:<15}")
+
+        print(f"{'-'* 15:<15} {'-' * right_size}")
+
+    if isinstance(pr, list):
+        for p in pr:
+            _output(p)
+    else:
+        _output(pr)
+
+
+def fmt(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        format = kwargs.get("format")
+        prs = func(*args, **kwargs)
+
+        if format == Format.JSON:
+            write_json([pr for pr in get_prs(prs)])
+        else:
+            write_ascii([pr for pr in get_prs(prs)])
+
+    return wrapper
+
+
+@fmt
+def fetch_todays_pr(*, user: str, format: Format):
+    return fetch_pr_by_date(datetime.now().strftime("%Y-%m-%d"), user)
+
+
+@fmt
+def fetch_yesterdays_pr(*, user: str, format: Format):
+    return fetch_pr_by_date(
+        (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"),
+        user,
+    )
+
+
+@fmt
+def fetch_weeks_pr(*, user: str, format: Format):
+    return fetch_pr_by_date(
+        (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+        + ".."
+        + datetime.now().strftime("%Y-%m-%d"),
+        user,
+    )
+
+
+@fmt
+def fetch_month_pr(*, user: str, format: Format):
     return fetch_pr_by_date(
         (datetime.now() - timedelta(weeks=4)).strftime("%Y-%m-%d")
         + ".."
-        + datetime.now().strftime("%Y-%m-%d")
+        + datetime.now().strftime("%Y-%m-%d"),
+        user,
     )
 
 
@@ -205,17 +252,38 @@ def create_argparser():
         action="store_true",
         help="List last months PRs",
     )
+
+    parser.add_argument(
+        "-u",
+        "--user",
+        nargs="?",
+        type=str,
+        default=USERNAME,
+        help=f"Set user. Defaults to {USERNAME}",
+    )
+
+    parser.add_argument(
+        "-j",
+        "--json",
+        action="store_true",
+        default=False,
+        help=f"Return results in JSON format. Defaults to ascii",
+    )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = create_argparser()
 
+    format = Format.ASCII
+    if args.json:
+        format = Format.JSON
+
     if args.today:
-        fetch_todays_pr()
+        fetch_todays_pr(user=args.user, format=format)
     elif args.yesterday:
-        fetch_yesterdays_pr()
+        fetch_yesterdays_pr(user=args.user, format=format)
     elif args.week:
-        fetch_weeks_pr()
+        fetch_weeks_pr(user=args.user, format=format)
     elif args.month:
-        fetch_month_pr()
+        fetch_month_pr(user=args.user, format=format)
