@@ -88,6 +88,20 @@ rules:
     actions:
       - move: "{{ $desktopDir }}/screenshots/"
 
+  - locations: {{ $desktopDir }}
+    filters:
+      - extension:
+        - *docs
+    actions:
+      - move: "{{ $desktopDir }}/docs/"
+
+  - locations: {{ $desktopDir }}
+    filters:
+      - extension:
+        - *imgs
+    actions:
+      - move: "{{ $desktopDir }}/images/"
+
   - locations: ~/.weechat/
     filters:
       - extension: log
