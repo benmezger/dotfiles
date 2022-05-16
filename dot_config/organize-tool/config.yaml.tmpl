@@ -46,49 +46,49 @@ misc: &misc
     - log
 
 rules:
-  - folders: {{ $downloadDir }}
+  - locations: {{ $downloadDir }}
     filters:
       - extension:
         - *imgs
     actions:
       - move: "{{ $downloadDir }}/images/"
 
-  - folders: {{ $downloadDir }}
+  - locations: {{ $downloadDir }}
     filters:
       - extension:
         - *archives
     actions:
       - move: "{{ $downloadDir }}/archives/"
 
-  - folders: {{ $downloadDir }}
+  - locations: {{ $downloadDir }}
     filters:
       - extension:
         - *docs
     actions:
       - move: "{{ $downloadDir }}/docs/"
 
-  - folders: {{ $downloadDir }}
+  - locations: {{ $downloadDir }}
     filters:
       - extension:
         - *installers
     actions:
       - move: "{{ $downloadDir }}/installers/"
 
-  - folders: {{ $downloadDir }}
+  - locations: {{ $downloadDir }}
     filters:
       - extension:
         - *misc
     actions:
       - move: "{{ $downloadDir }}/misc/"
 
-  - folders: {{ $desktopDir }}
+  - locations: {{ $desktopDir }}
     filters:
-      - filename:
+      - name:
           startswith: "Screen Shot"
     actions:
       - move: "{{ $desktopDir }}/screenshots/"
 
-  - folders: ~/.weechat/
+  - locations: ~/.weechat/
     filters:
       - extension: log
     actions:
