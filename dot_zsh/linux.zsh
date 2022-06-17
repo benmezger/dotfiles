@@ -14,3 +14,6 @@ export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 
 # dbus
 export $(dbus-launch)
+
+# dpi
+export GDK_SCALE=2
