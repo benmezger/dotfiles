@@ -32,7 +32,7 @@
   m:0x40 + c:39
   Mod4 + s
 
-"rofi -show run"
+"rofi -run-command '/bin/zsh -c -i {cmd}' -show run"
   m:0x40 + c:40
   Mod4 + d
 
@@ -40,7 +40,7 @@
   m:0x40 + c:33
   Mod4 + p
 
-"rofi -show combi"
+"rofi -run-command '/bin/zsh -c -i {cmd}' -show combi"
   m:0x41 + c:38
   Shift + Mod4 + a
 
