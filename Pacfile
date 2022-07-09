@@ -207,7 +207,7 @@ picom
 xss-lock
 xautolock
 geoclue
-wireplumber
+pipewire-media-session
 pipewire-alsa
 intel-ucode
 powertop
