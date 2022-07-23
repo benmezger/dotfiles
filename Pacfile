@@ -220,3 +220,4 @@ conky
 gnuplot
 tcl
 wireguard-tools
+libgnome-keyring
