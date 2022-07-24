@@ -1,0 +1,146 @@
+#!/usr/bin/env python
+# Author: Ben Mezger <me@benmezger.nl>
+
+import pathlib
+import subprocess
+import logging
+import sys
+from typing import Iterable, List, Tuple
+import dataclasses
+import argparse
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+root.addHandler(handler)
+
+AUTORANDR_BIN = pathlib.Path().joinpath("/usr/bin/autorandr")
+FILENAME = __file__.split("/")[-1].strip(".py")
+
+DEFAULT_PRIORITIES = ("dual", "all")
+
+
+@dataclasses.dataclass
+class Screen:
+    profile: str
+    detected: bool
+    current: bool
+    priority: int | None = None
+
+    @classmethod
+    def from_list(cls, screens: List[str]) -> Iterable["Screen"]:
+        # screens example:
+        # 1. ['dual (detected) (current)', 'all']
+        # 2. ['dual (current)', 'all (detected)']
+
+        for screen in screens:
+            parts = screen.split(" ")
+            if (parts := screen.split(" ")) and not len(parts):
+                continue
+
+            profile = parts[0]
+            if len(parts) == 1:
+                yield cls(profile=profile, detected=False, current=False)
+
+            if len(parts) == 2:
+                value = parts[1]
+
+                if value.lower() == "(detected)":
+                    yield cls(profile=profile, detected=True, current=False)
+                elif value.lower() == "(current)":
+                    yield cls(profile=profile, detected=True, current=True)
+            if len(parts) == 3:
+                yield cls(profile=profile, detected=True, current=True)
+
+
+def call_autrandr(
+    extra_args: List[str] = [], debug: bool = False
+) -> Tuple[bool, bytes]:
+    root.info(f"Running autorandr")
+
+    cmd = [AUTORANDR_BIN]
+    if debug:
+        cmd.append("--debug")
+
+    result = subprocess.run(cmd + extra_args, capture_output=True)
+
+    root.info(f"autorandr returned code {result.returncode}")
+
+    ok = False if result.returncode else True
+    return ok, result.stdout if ok else result.stderr
+
+
+def choose_screens(screens: List[Screen]) -> Screen | None:
+    choice: Screen | None = None
+
+    for screen in screens:
+        if screen.priority is None:
+            continue
+
+        if choice is None:
+            choice = screen
+            continue
+
+        if screen.priority == 0:
+            choice = screen
+            continue
+
+        # lowest has most priority
+        if choice.priority and choice.priority > screen.priority:
+            choice = screen
+            continue
+
+    return choice
+
+
+def set_priorities(screens: Iterable[Screen], priorities: Iterable[str]):
+    for screen in screens:
+        # zero is the highest priority
+        if (
+            screen.detected
+            and screen.profile in priorities
+            and (priority := tuple(priorities).index(screen.profile)) >= 0
+        ):
+            screen.priority = priority
+
+
+def main(priorities: Iterable[str] = DEFAULT_PRIORITIES) -> bool:
+    ok, std = call_autrandr()
+    if not ok:
+        return ok
+
+    # examples:
+    # 1. b'dual (detected) (current)\nall\n' -> ['dual (detected) (current)', 'all']
+    # 2. b'dual (current)\nall (detected)\n' -> ['dual (current)', 'all (detected)']
+    screens = list(
+        Screen.from_list(list(filter(lambda x: x != "", std.decode().split("\n"))))
+    )
+    set_priorities(screens, priorities)
+    screen = choose_screens(screens)
+    if screen is None or screen.current == True:
+        root.warning(f"Screen '{screen}' is not choosen. Returning.")
+        return True
+
+    root.info(f"Switching to {screen}")
+
+    ok, _ = call_autrandr(extra_args=[screen.profile])
+    return ok
+
+
+if __name__ == "__main__":
+    if not AUTORANDR_BIN.exists() or not AUTORANDR_BIN.is_file():
+        root.warning("autorandr doesn't exist or is not a file")
+        sys.exit(0)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--priorities", nargs="+", default=DEFAULT_PRIORITIES)
+    argv = parser.parse_args()
+
+    if not (ok := main(priorities=argv.priorities)):
+        sys.exit(1)
+
+    sys.exit(0)
