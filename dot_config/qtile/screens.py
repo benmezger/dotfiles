@@ -1,5 +1,5 @@
 import webbrowser
-from libqtile import bar, widget
+from libqtile import bar, widget, hook, qtile
 from libqtile.config import Screen
 from widgets import NordVPN
 from theme import gruvbox_dark
@@ -151,30 +151,30 @@ screens = [
         top=bar.Bar(
             default_screen_left_widgets()
             + [widget.Spacer(length=bar.STRETCH)]
-            + default_screen_right_widgets(),
-            size=60,
-            margin=8,
-            background=gruvbox_dark["background"],
-            border_width=[0, 0, 0, 0],
-        )
-    ),
-    Screen(
-        top=bar.Bar(
-            default_screen_left_widgets()
-            + [widget.Spacer(length=bar.STRETCH)]
-            + default_screen_right_widgets(),
-            size=60,
-            margin=8,
-            background=gruvbox_dark["background"],
-            border_width=[0, 0, 0, 0],
-        )
-    ),
-    Screen(
-        top=bar.Bar(
-            default_screen_left_widgets()
-            + [widget.Spacer(length=bar.STRETCH)]
             + default_screen_right_widgets()
             + [widget.Systray(icon_size=40)],
+            size=60,
+            margin=8,
+            background=gruvbox_dark["background"],
+            border_width=[0, 0, 0, 0],
+        )
+    ),
+    Screen(
+        top=bar.Bar(
+            default_screen_left_widgets()
+            + [widget.Spacer(length=bar.STRETCH)]
+            + default_screen_right_widgets(),
+            size=60,
+            margin=8,
+            background=gruvbox_dark["background"],
+            border_width=[0, 0, 0, 0],
+        )
+    ),
+    Screen(
+        top=bar.Bar(
+            default_screen_left_widgets()
+            + [widget.Spacer(length=bar.STRETCH)]
+            + default_screen_right_widgets(),
             size=60,
             margin=8,
             background=gruvbox_dark["background"],
@@ -182,3 +182,8 @@ screens = [
         ),
     ),
 ]
+
+
+@hook.subscribe.screen_change
+def on_screens_reconfigured(_):
+    qtile.cmd_reload_config()
