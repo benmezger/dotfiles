@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Usage: ./rerun-on-exit <command-to-run> arg1 arg2 ...
+
+declare -a cmd
+
+cmd=("$1")
+
+for arg in ${@:2}; do
+        cmd+=" $arg"
+done
+
+echo "Running command: '$cmd'"
+
+counter=1
+while true; do
+        eval "${cmd[@]}"
+        echo "Times ran: $counter"
+        counter=$((counter + 1))
+        sleep 1
+done
