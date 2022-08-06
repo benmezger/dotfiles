@@ -117,7 +117,7 @@ groups = [
         ("6", {"layout": "monadtall"}),
         ("7", {"layout": "monadtall"}),
         ("8", {"layout": "monadtall"}),
-        ("9", {"layout": "monadtall", "spawn": ("ferdi",)}),
+        ("9", {"layout": "monadtall"}),
         (
             "0",
             {
