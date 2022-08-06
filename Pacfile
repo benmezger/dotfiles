@@ -219,6 +219,4 @@ gnuplot
 tcl
 wireguard-tools
 libgnome-keyring
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
+pipewire-pulse
