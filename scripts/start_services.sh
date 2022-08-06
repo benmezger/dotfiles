@@ -54,8 +54,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo systemctl restart ntpd
 	sudo timedatectl set-ntp 1
 
-	ansi --green "Starting pipewire"
-	systemctl start --user pipewire-pulse.service
+	ansi --green "Starting pulseaudio"
+	systemctl enable --user pulseaudio.service
+	systemctl start --user pulseaudio.service
 
 	ansi --green "Setting up greenclip"
 	systemctl --user enable greenclip.service

@@ -207,8 +207,6 @@ picom
 xss-lock
 xautolock
 geoclue
-pipewire-media-session
-pipewire-alsa
 intel-ucode
 powertop
 rofi-calc
@@ -221,3 +219,6 @@ gnuplot
 tcl
 wireguard-tools
 libgnome-keyring
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
