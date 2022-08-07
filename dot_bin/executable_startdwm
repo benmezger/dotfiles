@@ -1,6 +1,7 @@
 #!/bin/bash
 
 zsh $HOME/.bin/dwmbar
+python $HOME/.bin/detect-screen
 
 # relaunch DWM if the binary changes, otherwise bail
 csum=""
