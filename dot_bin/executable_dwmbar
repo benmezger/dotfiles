@@ -23,6 +23,6 @@ bat() {
 }
 
 while true; do
-    xsetroot -name "$(vpn) | $(dte) | $(bat)"
+    xsetroot -name "旅 $(vpn) |  $(dte) | $(bat)"
     sleep 1m
 done &
