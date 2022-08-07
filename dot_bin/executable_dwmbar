@@ -22,7 +22,11 @@ bat() {
     bash $HOME/.bin/battery-stats
 }
 
+volume() {
+    bash $HOME/.bin/volume-stats
+}
+
 while true; do
-    xsetroot -name "旅 $(vpn) |  $(dte) | $(bat)"
+    xsetroot -name "旅 $(vpn) |  $(dte) | $(bat) | $(volume)"
     sleep 1m
 done &
