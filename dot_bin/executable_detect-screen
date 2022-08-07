@@ -42,7 +42,16 @@ class Screen:
             if (parts := screen.split(" ")) and not len(parts):
                 continue
 
+            parts = list(filter(lambda s: "match" not in s, parts))
+            parts = list(
+                filter(
+                    lambda s: (s.startswith("(") and s.endswith(")"))
+                    or (not s.startswith("(") and not s.endswith(")")),
+                    parts,
+                )
+            )
             profile = parts[0]
+
             if len(parts) == 1:
                 yield cls(profile=profile, detected=False, current=False)
 
