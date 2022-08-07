@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+dte() {
+    echo -e "$(date +'%H:%M:%S %d %b %y')"
+}
+
+vpn() {
+    output="$(nordvpn status | grep Connected)"
+    if [[ -n $output ]] then
+       country="$(nordvpn status \
+           | grep Country \
+           | sed s/'Country: '// \
+           | tr '[:upper:]' '[:lower:]')"
+
+       echo -e "vpn/c @ $country"
+    else
+        echo -e "vpn/n"
+    fi
+}
+
+while true; do
+    xsetroot -name "$(vpn) | $(dte) | "
+    sleep 1m
+done &
