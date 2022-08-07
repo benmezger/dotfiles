@@ -71,3 +71,7 @@
 "~/.bin/rofi-nordvpn"
   m:0x41 + c:55
   Shift + Mod4 + v
+
+"emacsclient -c -a '' --eval '(notmuch)'"
+  m:0x0 + c:96
+  F12
