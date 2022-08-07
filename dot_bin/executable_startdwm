@@ -1,3 +1,7 @@
+#!/bin/bash
+
+zsh $HOME/.bin/dwmbar
+
 # relaunch DWM if the binary changes, otherwise bail
 csum=""
 new_csum=$(sha1sum $(which dwm))
@@ -6,7 +10,7 @@ while true; do
 		csum=$new_csum
 		dwm
 	else
-		exit 0
+	    exit 0
 	fi
 	new_csum=$(sha1sum $(which dwm))
 	sleep 0.5
