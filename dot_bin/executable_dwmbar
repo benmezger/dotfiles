@@ -18,7 +18,11 @@ vpn() {
     fi
 }
 
+bat() {
+    bash $HOME/.bin/battery-stats
+}
+
 while true; do
-    xsetroot -name "$(vpn) | $(dte) | "
+    xsetroot -name "$(vpn) | $(dte) | $(bat)"
     sleep 1m
 done &
