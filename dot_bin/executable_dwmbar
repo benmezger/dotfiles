@@ -1,7 +1,11 @@
 #!/bin/zsh
 
+tme() {
+    echo -e "$(date +'%H:%M:%S')"
+}
+
 dte() {
-    echo -e "$(date +'%H:%M:%S %d %b %y')"
+    echo -e "$(date +'%d %b %y')"
 }
 
 vpn() {
@@ -27,6 +31,6 @@ volume() {
 }
 
 while true; do
-    xsetroot -name "旅 $(vpn) |  $(dte) | $(bat) | $(volume)"
+    xsetroot -name "旅 $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
     sleep 1m
 done &
