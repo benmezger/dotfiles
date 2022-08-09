@@ -1,6 +1,10 @@
 #!/bin/bash
 
-zsh $HOME/.bin/dwmbar
+while true; do
+    zsh $HOME/.bin/dwmbar
+    sleep 1m
+done &
+
 python $HOME/.bin/detect-screen
 
 # relaunch DWM if the binary changes, otherwise bail
