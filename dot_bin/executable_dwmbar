@@ -30,4 +30,9 @@ volume() {
     bash $HOME/.bin/volume-stats
 }
 
-xsetroot -name "旅 $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
+emails() {
+    echo -e "mi: $(notmuch count tag:inbox and tag:me)" \
+        "u: $(notmuch count tag:unread and tag:me)"
+}
+
+xsetroot -name " $(emails) | 旅 $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
