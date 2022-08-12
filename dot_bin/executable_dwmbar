@@ -5,7 +5,7 @@ tme() {
 }
 
 dte() {
-    echo -e "$(date +'%d %b %y')"
+    echo -e "$(date +'%a %d %b %y')"
 }
 
 vpn() {
