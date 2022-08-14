@@ -2,24 +2,23 @@ output DP-2
 off
 output DP-3
 off
-output DP-2-1
+output DP-3-1
 off
-output DP-2-2
+output DP-3-2
 off
 output eDP-1
 off
-output DP-2-3
-crtc 0
+output DP-3-3
+crtc 2
 mode 3840x2160
 pos 0x0
-primary
 rate 60.00
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
 x-prop-non_desktop 0
 output DP-1
-crtc 2
+crtc 1
 mode 3840x2160
 pos 3840x0
 rate 60.00
