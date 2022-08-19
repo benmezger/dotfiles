@@ -1,5 +1,5 @@
 mafredri/zsh-async
-agkozak/agkozak-zsh-prompt
+woefe/git-prompt.zsh
 zsh-users/zsh-completions path:src kind:fpath
 zdharma-continuum/fast-syntax-highlighting
 chriskempson/base16-shell
