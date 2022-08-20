@@ -32,6 +32,7 @@ fi
 
 # zsh prompt
 ZSH_GIT_PROMPT_SHOW_STASH=1
+source $HOME/.zsh/prompt.zsh
 
 # Go path
 export GOPATH=$HOME/workspace/go
