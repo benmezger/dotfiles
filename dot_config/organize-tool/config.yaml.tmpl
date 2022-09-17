@@ -22,6 +22,8 @@ archives_ext: &archives
     - tgz
     - 7z
     - iso
+    - tar.xz
+    - sig
 
 docs_ext: &docs
     - pdf
@@ -38,12 +40,30 @@ installers_ext: &installers
     - dmg
     - pkg
     - app
+    - apk
+    - img
 
 misc: &misc
     - csv
     - json
     - torrent
     - log
+
+code: &code
+    - py
+    - html
+    - js
+    - c
+    - rs
+    - el
+    - asm
+    - tex
+    - sty
+    - sh
+    - zsh
+    - bst
+    - cls
+    - patch
 
 rules:
   - locations: {{ $downloadDir }}
@@ -52,6 +72,13 @@ rules:
         - *imgs
     actions:
       - move: "{{ $downloadDir }}/images/"
+
+  - locations: {{ $downloadDir }}
+    filters:
+      - extension:
+        - *code
+    actions:
+      - move: "{{ $downloadDir }}/code/"
 
   - locations: {{ $downloadDir }}
     filters:
@@ -107,3 +134,27 @@ rules:
       - extension: log
     actions:
       - move: "~/irclogs/"
+
+  - locations:
+    - path: {{ $desktopDir }}
+      exclude_files:
+        - ".zsh_plugins.sh"
+      filters:
+        - extension:
+          - *code
+    actions:
+      - move: "{{ $desktopDir }}/code/"
+
+  - locations: {{ .chezmoi.homedir }}
+    filters:
+      - extension:
+        - *imgs
+    actions:
+      - move: "{{ .chezmoi.homedir }}/images/"
+
+  - locations: {{ .chezmoi.homedir }}
+    filters:
+      - extension:
+        - *code
+    actions:
+      - move: "{{ .chezmoi.homedir }}/code/"
