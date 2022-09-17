@@ -7,7 +7,6 @@
        deft
        doom
        doom-quit
-       fill-column
        hl-todo
        modeline
        nav-flash
