@@ -4,13 +4,12 @@ output DP-2
 off
 output DP-3
 off
-output DP-3-1
+output DP-2-1
 off
-output DP-3-2
+output DP-2-2
 off
-output DP-3-3
+output DP-2-3
 crtc 2
-gamma 1.0:0.833:0.714
 mode 3840x2160
 pos 0x0
 rate 60.00
@@ -20,7 +19,6 @@ x-prop-max_bpc 12
 x-prop-non_desktop 0
 output DP-1
 crtc 1
-gamma 1.0:0.833:0.714
 mode 3840x2160
 pos 3840x0
 rate 60.00
