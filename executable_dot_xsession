@@ -4,7 +4,7 @@
 . $HOME/.env-secrets
 
 if [ -f /usr/local/bin/dwm ]; then
-        exec dbus-launch --auto-syntax --exit-with-session $HOME/.bin/startdwm
+        . $HOME/.bin/startdwm
 elif [ -f /usr/bin/qtile ]; then
         exec dbus-launch --auto-syntax --exit-with-session /usr/bin/qtile start
 elif [ -f /usr/bin/i3 ]; then
