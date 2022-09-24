@@ -101,3 +101,7 @@ source $HOME/.zsh/fzf-theme.zsh
 if [[ -d "/opt/crosstool-ng/bin/" ]]; then
 	export PATH="$PATH:/opt/crosstool-ng/bin"
 fi
+
+if [[ -d "$HOME/.local/bin/" ]]; then
+	export PATH="$PATH:$HOME/.local/bin/"
+fi
