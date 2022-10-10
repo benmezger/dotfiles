@@ -1,0 +1,29 @@
+#!/usr/bin/env doomscript
+
+(defcli! org2blog ()
+  (require 'doom-start)
+
+  (require 'org-roam)
+  (require 'citeproc-org-setup)
+
+  (toggle-debug-on-error)
+  (citeproc-org-setup)
+
+  (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h)
+
+  (defadvice! +editorconfig--inhibit-in-org-exports-a (orig-fn &rest args)
+    :around '(org-export-to-file org-babel-tangle)
+    (let ((editorconfig-exclude-regexps '(".")))
+      (apply orig-fn args)))
+
+  (dolist (org-file (directory-files-recursively org-roam-directory "\.org$"))
+    (with-current-buffer (find-file org-file)
+      (when (and (s-contains? "SETUPFILE" (buffer-string))
+                 (not (s-contains? "ISPRIVATE: t" (buffer-string))))
+        (print! (format "[build] Exporting %s" org-file))
+        (find-file org-file)
+        (fundamental-mode)
+        (org-hugo-export-wim-to-md)
+        (kill-buffer)))))
+
+(run! "org2blog" (cdr (member "--" argv)))
