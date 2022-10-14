@@ -145,16 +145,16 @@ rules:
     actions:
       - move: "{{ $desktopDir }}/code/"
 
-  - locations: {{ .chezmoi.homedir }}
+  - locations: {{ .chezmoi.homeDir }}
     filters:
       - extension:
         - *imgs
     actions:
-      - move: "{{ .chezmoi.homedir }}/images/"
+      - move: "{{ .chezmoi.homeDir }}/images/"
 
-  - locations: {{ .chezmoi.homedir }}
+  - locations: {{ .chezmoi.homeDir }}
     filters:
       - extension:
         - *code
     actions:
-      - move: "{{ .chezmoi.homedir }}/code/"
+      - move: "{{ .chezmoi.homeDir }}/code/"
