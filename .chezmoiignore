@@ -1,111 +1,21 @@
-rules/
-.github/
-Dockerfile
-LICENSE.md
-README.md
-TODO.org
-archlinux.yml
-docker-compose.yml
-docker-entrypoint.sh
-inventory
-osx.yml
-requirements.yml
-COMMANDS.org
-ansible.cfg
-CHANGELOG.md
-install.sh
-.weechat/logs
-.weechat/weechat.log
-.weechat/python/__pycache__/
-config/pgcli/history
-scripts/
-Brewfile
-Pacfile
-Aurfile
-Brewfile.lock.json
-Makefile
-projectile
-resources
-notes.org
-
-# hugo
-docs/
-.content/
-static
-config.toml
-themes
+{{ template "ignore_global.tmpl" . }}
 
 {{- if .minimal }}
-*
-.env-secrets
-.mailrc
-!.zsh/*
-!.zshrc
-
-!.vim
-!.doom.d
-!.tmux.conf
-!.gitconfig
-!.gitignore_global
-!.dircolors
-!.editorconfig
-!.curlrc
-!.config/alacritty
-!.config/nvim
-!.config/user-dirs
-
-{{- else }}
-# Don't copy the following files if OS is OSX
-{{- if ne .chezmoi.os "linux" }}
-.config/dunst
-.config/rofi
-.config/i3
-.config/polybar
-.config/i3-autodisplay
-.config/greenclip.cfg
-
-.xinitrc
-.xsession
-.Xmodmap
-.Xresources
-.xinitrc
-.xsession
-.config/picom.conf
-.config/systemd
+{{ template "ignore_minimal.tmpl" . }}
 {{- end }}
 
-# Don't copy the following files if OS is Linux
-{{- if ne .chezmoi.os "darwin" }}
-.skhdrc
-Library/
+{{- if .workconf }}
+{{ template "ignore_work.tmpl" }}
+{{- end }}
 
-# I don't use tmux on i3wm
-.weechat/python/tmuxnotify.py
-.weechat/python/autoload/tmuxnotify.py
+{{- if ne .chezmoi.os "linux" }}
+{{ template "ignore_linux.tmpl" }}
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+{{ template "ignore_linux.tmpl" }}
 {{- end }}
 
 {{- if not .secrets }}
-.mbsyncrc
-.config/msmtp
-.wakatime.cfg
-.env-secrets
-.ssh/id_rsa.pub
-.ssh/id_rsa
-.weechat/sec.conf
-.weechat/weechat.conf
-.config/mopidy/mopidy.conf
-.config/rclone/rclone.conf
-.gist
-
-.gnupg/pubring.kbx
-.gnupg/trustdb.gpg
-.gnupg/private-keys-v1.d/1A1454B27AB014B0F46B4914A48CD9D408232BDB.key
-.gnupg/private-keys-v1.d/93EF471D0D148D56E50AD95AE4F7402EB65DFD26.key
-.authinfo
-.ngrok2
-{{- end }}
-{{- end }}
-
-{{- if not .workconf }}
-.config/neomutt/work.neomuttrc
+{{ template "ignore_secrets.tmpl" }}
 {{- end }}
