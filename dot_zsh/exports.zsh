@@ -105,3 +105,6 @@ fi
 if [[ -d "$HOME/.local/bin/" ]]; then
 	export PATH="$PATH:$HOME/.local/bin/"
 fi
+
+# Disabling automatic widget re-binding
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
