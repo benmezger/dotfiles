@@ -37,5 +37,14 @@ if (($+commands[fortune])); then
 fi
 
 if [[ "$ZPROF" = true ]]; then
-        zprof
+        exit_hook() {
+                print "zprof for process $$"
+                zprof
+
+                while read input; do
+                done
+
+                exit 0
+        }
+        add-zsh-hook zshexit exit_hook
 fi
