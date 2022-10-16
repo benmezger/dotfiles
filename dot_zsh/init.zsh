@@ -1,7 +1,12 @@
 # General init file
 
 autoload -Uz compinit
-compinit -C -i
+
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 setopt autocd
 setopt extendedglob
