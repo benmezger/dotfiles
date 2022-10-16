@@ -5,8 +5,6 @@ set_pyenv() {
         _set_pyenv() {
             export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
             export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-            eval "$(pyenv init - --no-rehash)"
-            eval "$(pyenv virtualenv-init -)"
             . $(pyenv root)/completions/pyenv.zsh
         }
         async_start_worker pyenv_worker -n
