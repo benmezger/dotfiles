@@ -156,3 +156,5 @@ if (( $+commands[pacman] )); then
 	alias pacc='pacman -Scc'    # clean cache
 	alias paclf='pacman -Ql'   # list files
 fi
+
+alias ptrypyenv="poetry env use $(pyenv which python)"
