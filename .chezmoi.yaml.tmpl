@@ -86,7 +86,7 @@ data:
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
   workconf: {{ $workconf }}
-  maildir: {{ joinPath .chezmoi.homeDir $maildir }}
+  maildir: {{ joinPath (printf "%v" .chezmoi.homeDir) $maildir }}
 {{- if not $minimal }}
   smtp_host: {{ $personal_smtp_host }}
   smtp_port: {{ $personal_smtp_port }}
