@@ -1,13 +1,5 @@
 # General init file
 
-autoload -Uz compinit
-
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
-
 setopt autocd
 setopt extendedglob
 setopt NO_NOMATCH
@@ -23,13 +15,6 @@ setopt promptcr promptsp
 
 # disable keyboard beep
 unsetopt BEEP
-
-# navidate completion
-zstyle ':completion:*' menu select
-zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-_approximate # enable approximate matches for completion
 
 ## Tmux
 function _tmux_autostart(){
@@ -63,6 +48,21 @@ HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup \
 
 # setup custom completion path
 fpath=($HOME/.zsh/completions $fpath)
+
+autoload -Uz compinit
+
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+# navidate completion
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+_approximate # enable approximate matches for completion
 
 
 profzsh() {
