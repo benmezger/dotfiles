@@ -1,17 +1,14 @@
 #!/usr/bin/env doomscript
 
-(defcli! org2blog ()
+(defcli! org2blog (orgfile)
   (require 'doom-start)
-  (setq max-lisp-eval-depth 9999999999)
-
   (require 'org-roam)
   (require 'citeproc-org-setup)
-
-  (setq max-specpdl-size 5)  ; default is 1000, reduce the backtrace level
-  (setq debug-on-error t)    ; now you should get a backtrace
-
-  (toggle-debug-on-error)
   (citeproc-org-setup)
+
+  (setq max-lisp-eval-depth 9999999999)
+  (setq max-specpdl-size 5)
+
   (toggle-debug-on-error)
   (toggle-debug-on-quit)
 
@@ -22,22 +19,23 @@
     (let ((editorconfig-exclude-regexps '(".")))
       (apply orig-fn args)))
 
-  (dolist (org-file (directory-files-recursively org-roam-directory "\.org$"))
-    (with-temp-buffer
-      (unwind-protect
-          (insert-file-contents org-file)
-        (if (save-excursion
-              (goto-char (point-min))
-              (search-forward "SETUPFILE" nil t))
-            (if (eq (save-excursion
-                      (goto-char (point-min))
-                      (search-forward "ISPRIVATE: t" nil t)) nil)
-                (progn
-                  (print! (format "[build] Exporting %s" org-file))
-                  (set-visited-file-name org-file t)
-                  (org-hugo-export-wim-to-md)
-                  (doom/kill-other-buffers)))
-          (progn
-            (doom/kill-other-buffers)))))))
+  (with-temp-buffer
+    (insert-file-contents orgfile)
+    (if (save-excursion
+          (goto-char (point-min))
+          (search-forward "SETUPFILE" nil t))
+        (progn
+          (if (eq (save-excursion
+                    (goto-char (point-min))
+                    (search-forward "ISPRIVATE: t" nil t)) nil)
+              (progn
+                (print! (format "[build] exporting '%s'" orgfile))
+                (set-visited-file-name orgfile t)
+                (org-hugo-export-wim-to-md))
+            (progn
+              (print! (format "[build] skipping private file '%s'" orgfile)))))
+      (progn
+        (print! (format "[build] skipping file without SETUPFILE '%s'" orgfile)))))
+  (print! (format "[build] done processing '%s'" orgfile)))
 
 (run! "org2blog" (cdr (member "--" argv)))
