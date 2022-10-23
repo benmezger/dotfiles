@@ -2,12 +2,18 @@
 
 (defcli! org2blog ()
   (require 'doom-start)
+  (setq max-lisp-eval-depth 9999999999)
 
   (require 'org-roam)
   (require 'citeproc-org-setup)
 
+  (setq max-specpdl-size 5)  ; default is 1000, reduce the backtrace level
+  (setq debug-on-error t)    ; now you should get a backtrace
+
   (toggle-debug-on-error)
   (citeproc-org-setup)
+  (toggle-debug-on-error)
+  (toggle-debug-on-quit)
 
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h)
 
@@ -17,13 +23,21 @@
       (apply orig-fn args)))
 
   (dolist (org-file (directory-files-recursively org-roam-directory "\.org$"))
-    (with-current-buffer (find-file org-file)
-      (when (and (s-contains? "SETUPFILE" (buffer-string))
-                 (not (s-contains? "ISPRIVATE: t" (buffer-string))))
-        (print! (format "[build] Exporting %s" org-file))
-        (find-file org-file)
-        (fundamental-mode)
-        (org-hugo-export-wim-to-md)
-        (kill-buffer)))))
+    (with-temp-buffer
+      (unwind-protect
+          (insert-file-contents org-file)
+        (if (save-excursion
+              (goto-char (point-min))
+              (search-forward "SETUPFILE" nil t))
+            (if (eq (save-excursion
+                      (goto-char (point-min))
+                      (search-forward "ISPRIVATE: t" nil t)) nil)
+                (progn
+                  (print! (format "[build] Exporting %s" org-file))
+                  (set-visited-file-name org-file t)
+                  (org-hugo-export-wim-to-md)
+                  (doom/kill-other-buffers)))
+          (progn
+            (doom/kill-other-buffers)))))))
 
 (run! "org2blog" (cdr (member "--" argv)))
