@@ -14,9 +14,9 @@ EMACS_PATH="$HOME/.emacs.d"
 if [ ! -f "$EMACS_PATH/bin/doom" ]; then
 	mkdir -p "$EMACS_PATH"
 	git clone --depth 1 https://github.com/hlissner/doom-emacs "$EMACS_PATH"
-	"$EMACS_PATH/bin/doom" -y install
+	"$EMACS_PATH/bin/doom" install -!
 else
-	"$EMACS_PATH/bin/doom" -y sync -e
+	"$EMACS_PATH/bin/doom" sync -e -!
 fi
 
 NOTES_PATH="/usr/local/bin/notes"
