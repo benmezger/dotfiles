@@ -23,9 +23,14 @@ export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.emac
 
 export WORKSPACE="$HOME/workspace"
 export RISCV_PATH="/opt/riscv/"
+export RISCV64_PATH="/opt/riscv64/"
 
 if [[ -d $RISCV_PATH ]]; then
 	export PATH="$RISCV_PATH/bin:$PATH"
+fi
+
+if [[ -d $RISCV64_PATH ]]; then
+	export PATH="$RISCV64_PATH/bin:$PATH"
 fi
 
 ### Plugins
