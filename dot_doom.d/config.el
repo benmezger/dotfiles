@@ -152,7 +152,9 @@
      ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
       (file ,(concat org-capture-template-dir "decision.capture")))
      ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
-      (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week))
+      (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week)
+     ("e" "RRR" entry (file "~/workspace/org/rrr.org")
+      (file ,(concat org-capture-template-dir "rrr.capture"))))
    ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
