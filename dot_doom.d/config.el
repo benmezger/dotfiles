@@ -321,10 +321,10 @@
   (map! :map org-mode-map
         :localleader
         (:prefix ("-" . "bibliography")
-         "i" #'org-ref-insert-link
-         "r" #'org-ref-insert-ref-link
-         "l" #'org-ref-insert-bibliography-link
-         "c" #'org-ref-insert-cite-with-completion))
+                 "i" #'org-ref-insert-link
+                 "r" #'org-ref-insert-ref-link
+                 "l" #'org-ref-insert-bibliography-link
+                 "c" #'org-ref-insert-cite-with-completion))
 
   (citeproc-org-setup))
 
