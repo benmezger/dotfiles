@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "dotfiles"
+version = "0.1.0"
+description = "Dotfiles dependencies"
+authors = ["Ben Mezger <me@benmezger.nl>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+organize-tool = "^2.4.0"
+pygments = "^2.13.0"
+rss2email = "^3.14"
+afew = "^3.0.1"
+ipython = "^8.6.0"
+
+[tool.poetry.group.dev.dependencies]
+pip = "^22.3.1"
+black = "^22.10.0"
+isort = "^5.10.1"
+pyright = "^1.1.278"
+taskipy = "^1.10.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+organize = "organize run"
+syncmail = "syncmail"
+r2e = "r2e --verbose run"
+ipython = "ipython"
