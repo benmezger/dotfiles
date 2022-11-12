@@ -3,7 +3,7 @@ Description=RSS2Email service
 
 [Service]
 Type=oneshot
-ExecStart=zsh -c -i "r2e --verbose run"
+ExecStart=zsh -c -i "poetry run task r2e"
 ExecStartPost=zsh -c -i "notmuch new"
 
 [Install]
