@@ -31,8 +31,8 @@
 (after! doom-modeline
   :config
 
-  (set-face-attribute 'mode-line nil :family "Hack" :height 125)
-  (set-face-attribute 'mode-line-inactive nil :family "Hack" :height 125)
+  ;;(set-face-attribute 'mode-line nil :family "Hack" :height 125)
+  ;;(set-face-attribute 'mode-line-inactive nil :family "Hack" :height 125)
 
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
 
