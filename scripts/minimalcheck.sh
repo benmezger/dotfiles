@@ -6,9 +6,12 @@ set -euo pipefail
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$dir/ansi"
 
-minimal=$(chezmoi data | grep -ci '"minimal": true')
+is_minimal() {
+	data=$(chezmoi data)
+	return "$(grep -ci '"minimal": true' <<<"$data")"
+}
 
-if ! [[ $minimal ]]; then
+if ! is_minimal; then
 	ansi --yellow "Skipping post_install due to minimal version"
 	exit 0
 fi
