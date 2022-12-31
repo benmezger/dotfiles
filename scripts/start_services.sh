@@ -34,11 +34,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		systemctl --user enable syncmail.timer
 	fi
 
-	if [ -f "$HOME/.config/systemd/user/mopidy.service" ]; then
-		systemctl --user enable mopidy.service
-		systemctl --user start mopidy.service
-	fi
-
 	ansi --green "Setting up redshift"
 	systemctl --user enable redshift-gtk.service
 	systemctl --user restart redshift-gtk.service

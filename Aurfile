@@ -17,12 +17,7 @@ w3m
 mailcap
 neomutt
 msmtp
-mopidy-mpd
-mopidy-spotify
-mopidy-podcast
-mopidy-scrobbler
 tmuxinator
-mopidy-internetarchive
 i3-autodisplay
 docker-rootless-extras-bin
 spotify
