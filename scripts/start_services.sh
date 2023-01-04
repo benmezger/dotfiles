@@ -57,9 +57,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	systemctl --user enable greenclip.service
 	systemctl --user restart greenclip.service
 
-	ansi --green "Setting up r2e"
-	systemctl --user enable r2e.timer
-	systemctl --user restart r2e.timer
+	# ansi --green "Setting up r2e"
+	# systemctl --user enable r2e.timer
+	# systemctl --user restart r2e.timer
 
 	ansi --green "Setting up battery notifier"
 	systemctl --user enable battery-notifier.timer
