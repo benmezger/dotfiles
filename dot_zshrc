@@ -48,3 +48,9 @@ if [[ "$ZPROF" = true ]]; then
         }
         add-zsh-hook zshexit exit_hook
 fi
+
+# emacs(tramp): disable zsh line editor because zsh uses
+# left-hand side and right-hand side prompts in parallel
+# see: TRAMP does not connect to the remote host at
+# https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
