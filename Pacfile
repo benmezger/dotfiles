@@ -218,3 +218,5 @@ tcl
 wireguard-tools
 libgnome-keyring
 pipewire-pulse
+opensc
+ccid
