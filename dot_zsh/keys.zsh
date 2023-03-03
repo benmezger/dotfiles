@@ -23,13 +23,6 @@ bindkey "\e[3~" delete-char
 bindkey '^W' backward-kill-word
 bindkey '^ ' autosuggest-accept
 
-# fzf
-if [[ ${OSTYPE} == darwin* ]]; then
-	source /usr/local/opt/fzf/shell/key-bindings.zsh
-else
-	source /usr/share/fzf/key-bindings.zsh
-fi
-
 fzf-history-widget-accept() {
   fzf-history-widget
   zle accept-line
