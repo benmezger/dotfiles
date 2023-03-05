@@ -1,5 +1,3 @@
-![](https://github.com/benmezger/dotfiles/workflows/dotfiles/badge.svg)
-
 ## Installing this configuration
 
 ### Requirements
