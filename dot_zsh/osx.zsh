@@ -15,8 +15,12 @@ else
 	source /usr/local/opt/fzf/shell/key-bindings.zsh
 fi
 
+export ZSH_WAKATIME_BIN=wakatime-cli
+
 if [[ -d "/Library/TeX/texbin" ]]; then
 	export PATH="$PATH:/Library/TeX/texbin"
 fi
 
-export ZSH_WAKATIME_BIN="/usr/local/bin/wakatime-cli"
+if (( $+commands[gcloud] )); then
+	source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+fi
