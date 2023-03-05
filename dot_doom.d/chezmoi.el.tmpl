@@ -8,7 +8,11 @@
 (use-package! wakatime-mode
   :init
   {{ if eq .chezmoi.os "darwin" -}}
+  {{ if eq .chezmoi.arch "arm64" -}}
+  (setq wakatime-cli-path "/opt/homebrew/bin/wakatime-cli")
+  {{ else -}}
   (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")
+  {{ end -}}
   {{ else -}}
   (setq wakatime-cli-path "/usr/bin/wakatime")
   {{ end -}}
