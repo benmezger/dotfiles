@@ -9,24 +9,23 @@
 
 ### Installing
 
-**Note:** You are required to use the `env` variable `SECRETS_OFF=1`, as not passing will
-make chezmoi fail when connecting to my bitwarden's account.
+**Note:** You need to set the `env` variable `SECRETS_OFF=1` to disable
+bitwarden. Not passing will make chezmoi fail when connecting to my bitwarden's
+account ¯\_(ツ)_/¯.
 
-The following environment variables can be set to configure Chezmoi on runtime:
+The following environment variables can be set to configure chezmoi when
+applying changed:
 
 - `ASK`: Set to `1` if you want to enable chezmoi prompt
 - `SECRETS_OFF`: Set to `1` to enable Bitwarden (uses my personal secrets set in
-  .chezmoi.yaml)
+  `.chezmoi.yaml`)
 - `DOTFILES_MINIMAL`: Set to `1` if you want to install the minimal version
 - `WORKCONF`: Set to `1` to enable work configuration (work email, etc)
 
-For example, you can enable `ASK` by running `ASK=1 chezmoi apply` or enable a
-minimal version of the dotfiles with `DOTFILES_MINIMAL=1 chezmoi apply`
+For example: `ASK=1 chezmoi apply` to enable prompt or `DOTFILES_MINIMAL=1
+chezmoi apply` for applying the minimal version.
 
-Chezmoi allows easy install of this configuration by running the following
-command:
-
-#### Full version
+#### Install with chezmoi
 
 ```shell
 SECRETS_OFF=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
@@ -52,40 +51,22 @@ The minimal version installs only the essentials.
 SECRETS_OFF=1 DOTFILES_MINIMAL=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
 ```
 
-## Scripts
+#### Makefile
 
-All the system dependencies are installed either by running the
-[Makefile](./Makefile) (see `make help`) or by running `chezmoi apply`. All
-scripts are located in the [scripts](./scripts/) directory. Two files are of
-importance: [buildcheck.sh](./scripts/buildcheck.sh) and
-[minimalcheck.sh](./scripts/minimalcheck.sh). The first checks if the scripts is
-running in a `CI` environment while the latter checks if the install profile is
-equal to minimal.
+You can clone this repository and use the Makefile to apply the changes +
+install dependencies.
 
-| Command               | Description                                 |
-| --------------------- | ------------------------------------------- |
-| make start-services   | Starts services (systemd, brew services..). |
-| make git-repos        | Clone Git repos.                            |
-| make conf-sys         | Configure system files.                     |
-| make ssh-perms        | Set SSH permissions.                        |
-| make gnupg-perms      | Set GnuPG permissions.                      |
-| make pyenv            | Install pyenv.                              |
-| make osx-defaults     | Configure defaults for OSX.                 |
-| make ensure-deps      | Install all dependencies.                   |
-| make chezmoi-init     | Initialize chezmoi.                         |
-| make chezmoi-apply    | Apply chezmoi files (runs all scripts).     |
-| make post-chezmoi     | Run post chezmoi scripts.                   |
-| make install-homebrew | Install Homebrew.                           |
-| make install-chezmoi  | Install chezmoi.                            |
-| make install-aur      | Install AUR packages .                      |
-| make install-deps     | Install system dependencies.                |
-| make ensure-dirs      | Creates required directories.               |
-| make install-riscv    | Install RISC-V toolchain and dependencies.  |
-| make install-rust     | Install Rust.                               |
-| make install-go-deps  | Install go dependencies.                    |
-| make install-osx-app  | Install MacOS applications (requires mas).  |
-| make run              | Ensure deps and apply chezmoi.              |
-| make all              | Run all.                                    |
+``` shell
+make apply or make all
+make fix-permissions
+make install-required-dependencies
+make install-extra-dependencies
+make install-pyenv
+make install-go-dependencies
+make install git-dependencies
+make configure-osx
+make configure-linux
+```
 
 ## Keybindings
 
@@ -142,7 +123,4 @@ export I3RS_GITHUB_TOKEN="your-github-token"
 
 ## Contributing
 
-1. Ensure you have linted the commits before committing:
-   1. Install [pre-commit](https://pre-commit.com/)
-   1. Install the hook: `pre-commit install --hook-type commit-msg`
-1. Make the contribution and open a pull request
+1. Feel free to contribute and/or report issues.
