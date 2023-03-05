@@ -20,7 +20,12 @@ else
 	endif
 endif
 
-all: apply
+
+ifeq ($(host),Darwin)
+all: configure-osx | apply
+else
+all: configure-linux | apply
+endif
 
 configure-linux:
 	@echo "Updating pacman.conf.."
