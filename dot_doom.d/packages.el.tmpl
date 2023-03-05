@@ -19,6 +19,8 @@
 (package! websocket)
 (package! org-roam-ui
   :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
+(package! protobuf-mode)
+(package! just-mode)
 {{- if or (not .minimal) (and .secrets) }}
 (package! code-stats)
 (package! wakatime-mode)

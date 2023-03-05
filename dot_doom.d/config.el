@@ -472,3 +472,12 @@ so we make sure that it's put a column 1 so everything works nicely."
               (async-shell-command
                (format "bash ~/dotfiles/scripts/%s" n)
                "*dotfiles*" "*dotfiles-stderr"))))
+
+(use-package! protobuf-mode
+  :defer t
+  :mode ("[./]proto\\'" . protobuf-mode))
+
+
+(use-package! just-mode
+  :defer t
+  :mode ("[./]just\\'" . just-mode))
