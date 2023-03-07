@@ -179,7 +179,7 @@ install-pyenv:
 
 install-extra-dependencies:
 	if [[ $(is_linux) -eq 1 ]]; then \
-                sudo pacman -Syyu; \
+		sudo pacman -Syyu; \
 		sudo pacman -S --noconfirm --needed - <"$(PACMAN_BUNDLE_FILE)"; \
 		if [ $(paru_installed) -eq 1 ]; then \
 			paru -S --noconfirm --nouseask --needed - <"$(AUR_BUNDLE_FILE)"; \
