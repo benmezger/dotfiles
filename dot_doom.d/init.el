@@ -55,6 +55,7 @@
        (magit +forge)
        make
        biblio
+       terraform
 
        :lang
        (cc +lsp)

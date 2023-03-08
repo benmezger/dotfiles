@@ -477,7 +477,6 @@ so we make sure that it's put a column 1 so everything works nicely."
   :defer t
   :mode ("[./]proto\\'" . protobuf-mode))
 
-
 (use-package! just-mode
   :defer t
   :mode ("[./]just\\'" . just-mode))
