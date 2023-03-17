@@ -5,13 +5,13 @@
 declare -a prevcsums csums files
 cmd="$1"
 
-for arg in ${@:2}; do
+for arg in "${@:2}"; do
         files+=("$(realpath $arg)")
 done
 
 for v in "${files[@]}"; do
-        prevcsums+=($(sha1sum "$v" | cut -d " " -f 1))
-        csums+=($(sha1sum "$v" | cut -d " " -f 1))
+        prevcsums+=("$(sha1sum "$v" | cut -d " " -f 1)")
+        csums+=("$(sha1sum "$v" | cut -d " " -f 1)")
 done
 
 reload=1

@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
 
 # Usage: ./rerun-on-exit <command-to-run> arg1 arg2 ...
+if [ $# -lt 1 ]; then
+        echo "Usage: $0 command [args...]"
+        exit 1
+fi
 
 declare -a cmd
 
 cmd=("$1")
 
-for arg in ${@:2}; do
-        cmd+=" $arg"
+for arg in "${@:2}"; do
+        cmd+=("$arg")
 done
 
-echo "Running command: '$cmd'"
+echo "Running command: '${cmd[*]}'"
 
 counter=1
 while true; do
-        eval "${cmd[@]}"
-        echo "Times ran: $counter"
+        eval "${cmd[*]}"
+        exit_code=$?
         counter=$((counter + 1))
+        echo "[$counter] Command exited with code $exit_code, rerunning in 1 second..."
         sleep 1
 done
