@@ -1,8 +1,15 @@
 name: work
-root: ~/
+root: ~/workspace/argyle
+
+startup_window: shell
 
 windows:
-  - editor:
+  - svc/services:
+      layout: even-vertical
+      panes:
+        - rerun-on-exit kubectl --namespace=argyle-services port-forward svc/proxyman 8001:80
+        - rerun-on-exit kubectl --namespace=argyle-services port-forward svc/versionman 7001:80
+  - shell:
       layout: even-vertical
       panes:
         - clear

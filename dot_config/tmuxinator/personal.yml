@@ -1,6 +1,8 @@
 name: personal
 root: ~/
 
+startup_window: shell
+
 windows:
   - shell:
       layout: even-vertical
