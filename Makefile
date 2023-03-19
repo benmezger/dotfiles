@@ -207,8 +207,8 @@ fix-permissions:
 	chmod 700 ~/.gnupg
 
 	chmod 755 $(HOME)/.ssh
-	[ -f "$(HOME)/.ssh/id_rsa" ] && chmod 600 "$(HOME)/.ssh/id_rsa"
-	[ -f "$(HOME)/.ssh/id_rsa.pub" ] && chmod 600 "$(HOME)/.ssh/id_rsa.pub"
+	[ -f "$(HOME)/.ssh/id_ed25519" ] && chmod 600 "$(HOME)/.ssh/id_ed25519"
+	[ -f "$(HOME)/.ssh/id_ed25519.pub" ] && chmod 600 "$(HOME)/.ssh/id_ed25519.pub"
 
 apply: install-required-dependencies
 	bw login || true
