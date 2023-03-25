@@ -78,6 +78,7 @@
        rest
        (rust +eglot)
        (sh +lsp)
+       (javascript +lsp +tree-sitter)
 
        :email
        (notmuch +org)
