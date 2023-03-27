@@ -13,6 +13,7 @@ window:
 
   {{- if eq .chezmoi.os "darwin" }}
   startup_mode: "Fullscreen"
+  option_as_alt: OnlyLeft
   {{- else }}
   startup_mode: "Windowed"
   dynamic_title: true
@@ -190,7 +191,6 @@ shell:
   {{- end }}
 
 enable_experimental_conpty_backend: false
-alt_send_esc: true
 
 key_bindings:
   # (macOS only)
