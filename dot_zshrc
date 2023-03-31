@@ -4,8 +4,6 @@ if [[ "$ZPROF" = true ]]; then
         zmodload zsh/zprof
 fi
 
-source $HOME/.zsh/exports.zsh
-
 if [ -f "$HOME/.zsh_plugins.sh" ]; then
         source $HOME/.zsh_plugins.sh
 else
@@ -21,6 +19,7 @@ source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
+source $HOME/.zsh/exports.zsh
 
 if [ -f "$HOME/.cargo/env" ]; then
         source $HOME/.cargo/env
