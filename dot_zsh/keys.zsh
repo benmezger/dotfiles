@@ -22,10 +22,13 @@ bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 bindkey '^W' backward-kill-word
 bindkey '^ ' autosuggest-accept
+bindkey '^r' fzf-history-widget
 
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
+# from: http://www.zsh.org/mla/users/2001/msg00870.html
+custom-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
 }
 
-zle -N fzf-history-widget-accept
+zle -N custom-backward-delete-word
+bindkey '^W' custom-backward-delete-word

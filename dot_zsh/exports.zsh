@@ -132,3 +132,13 @@ fi
 
 # Disabling automatic widget re-binding
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# cargo
+if [[ -f "$HOME/.cargo/env" ]]; then
+	source $HOME/.cargo/env
+fi
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup &&
+	test -f $HEROKU_AC_ZSH_SETUP_PATH &&
+	source $HEROKU_AC_ZSH_SETUP_PATH

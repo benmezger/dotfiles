@@ -4,7 +4,9 @@ if [[ "$ZPROF" = true ]]; then
         zmodload zsh/zprof
 fi
 
-if [ -f "$HOME/.zsh_plugins.sh" ]; then
+source $HOME/.zsh/exports.zsh
+
+if [[ -f "$HOME/.zsh_plugins.sh" ]]; then
         source $HOME/.zsh_plugins.sh
 else
         echo "Bundling zsh plugins..."
@@ -19,20 +21,11 @@ source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/gpg-agent.zsh
-source $HOME/.zsh/exports.zsh
-
-if [ -f "$HOME/.cargo/env" ]; then
-        source $HOME/.cargo/env
-fi
 
 # load base16 themes if on terminal
 if [[ -n $DISPLAY ]]; then
         # base16 theme
         base16_gruvbox-dark-hard
-fi
-
-if (($+commands[fortune])); then
-        fortune
 fi
 
 if [[ "$ZPROF" = true ]]; then
@@ -52,4 +45,6 @@ fi
 # left-hand side and right-hand side prompts in parallel
 # see: TRAMP does not connect to the remote host at
 # https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+if [[ $TERM == "dumb" ]]; then
+        unsetopt zle && PS1='$ ' && return
+fi

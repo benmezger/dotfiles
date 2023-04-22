@@ -17,34 +17,18 @@ setopt promptcr promptsp
 unsetopt BEEP
 
 ## Tmux
-function _tmux_autostart(){
+_tmux_autostart(){
     if [[ "$TMUX_AUTOSTART" == "true" && -z "$TMUX" ]]; then
         tmux attach || tmux new
         exit 0
     fi
-  precmd_functions=(${precmd_functions#_tmux_autostart})
 }
 
 _fix_cursor() {
    echo -ne '\e[5 q'
 }
 
-precmd_functions+=(_tmux_autostart, _fix_cursor)
-
-# from: http://www.zsh.org/mla/users/2001/msg00870.html
-custom-backward-delete-word() {
-    local WORDCHARS=${WORDCHARS/\//}
-    zle backward-delete-word
-}
-
-zle -N custom-backward-delete-word
-bindkey '^W' custom-backward-delete-word
-
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup \
-    && test -f $HEROKU_AC_ZSH_SETUP_PATH \
-    && source $HEROKU_AC_ZSH_SETUP_PATH
+precmd_functions+=(_tmux_autostart _fix_cursor)
 
 # setup custom completion path
 fpath=($HOME/.zsh/completions $fpath)
@@ -63,7 +47,6 @@ zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 _approximate # enable approximate matches for completion
-
 
 profzsh() {
 	shell=${1-$SHELL}

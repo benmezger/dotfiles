@@ -24,3 +24,6 @@ fi
 if (( $+commands[gcloud] )); then
 	source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
+
+# completions
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
