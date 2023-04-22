@@ -32,3 +32,12 @@ custom-backward-delete-word() {
 
 zle -N custom-backward-delete-word
 bindkey '^W' custom-backward-delete-word
+
+custom-edit-command-line() {
+    export CUSTOM_EDITOR=nvim
+    zle edit-command-line;
+    unset CUSTOM_EDITOR
+}
+
+zle -N custom-edit-command-line
+bindkey -M vicmd v custom-edit-command-line

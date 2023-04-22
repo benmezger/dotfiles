@@ -52,3 +52,6 @@ profzsh() {
 	shell=${1-$SHELL}
 	ZPROF=true $shell -i -c exit
 }
+
+autoload edit-command-line
+zle -N edit-command-line
