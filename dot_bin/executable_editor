@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+if [[ -v CUSTOM_EDITOR ]]; then
+        eval $CUSTOM_EDITOR '$@'
+        exit $?
+fi
+
 # default to vim
 export EDITOR=vim
 
@@ -7,7 +12,7 @@ export EDITOR=vim
 bin=/usr/bin
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-        bin=/usr/local/bin
+        bin=$(brew --prefix)/bin
 fi
 
 if [[ -x "$(command -v nvim)" ]]; then
@@ -21,12 +26,11 @@ if [[ -x "$(command -v emacs)" ]]; then
                 is_running="$(pgrep -x emacs)"
         fi
 
-        export EDITOR='$bin/emacsclient -c -a ""'
+        export EDITOR='$bin/emacsclient -q -c -a ""'
         if [[ ! $is_running ]]; then
                 echo "Starting emacs daemon.."
                 $bin/emacs --daemon 2>/dev/null
         fi
 fi
 
-echo "Running editor '$EDITOR'"
 eval $EDITOR '$@'
