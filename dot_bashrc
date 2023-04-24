@@ -1,3 +1,12 @@
+export PATH=$HOME/.bin:$PATH
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  export PATH=$PATH:$(brew --prefix)/bin
+  export PATH=$PATH:$(brew --prefix)/opt/coreutils/libexec/gnubin
+else
+  export PATH=$PATH:/usr/local/bin
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -13,14 +22,17 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  if [[ $OSTYPE == 'darwin'* ]]; then
+    if [ -f $(brew --prefix)/share/bash-completion/completions/ ]; then
+      . $(brew --prefix)/share/bash-completion/completions
+    fi
+  else
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+      . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+      . /etc/bash_completion
+    fi
   fi
 fi
 
@@ -29,13 +41,10 @@ set -o vi
 
 # setup nice colors
 eval `dircolors ~/.dircolors`
-export GREP_OPTIONS='--color=auto'
-alias ls='ls --color'
 export PS1="[@\[$(tput sgr0)\]\[\033[38;5;45m\]\W\[$(tput sgr0)\]] \\$ \[$(tput sgr0)\]"
 
-
+# env-secrets
 if [ -f "$HOME/.env-secrets" ]; then
     source "$HOME/.env-secrets"
 fi
 
-export PATH=$HOME/.bin:$PATH
