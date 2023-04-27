@@ -238,7 +238,13 @@
           (org-roam-capture-templates
            (list (append (car org-roam-capture-templates)
                          '(:immediate-finish t)))))
-      (apply #'org-roam-node-insert args))))
+      (apply #'org-roam-node-insert args)))
+  (setq org-roam-dailies-directory "../journal/")
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry
+           "* %?"
+           :target (file+head "%<%Y-%m-%d>.org"
+                              "#+TITLE: %<%Y-%m-%d>\n")))))
 
 (after! (:or org org-roam)
   :defer t
