@@ -120,6 +120,7 @@ fi
 
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
+source $HOME/.zsh/fzf-theme.zsh
 
 if [[ -d "/opt/crosstool-ng/bin/" ]]; then
 	export PATH="$PATH:/opt/crosstool-ng/bin"
