@@ -11,7 +11,7 @@ organize-tool = "^2.4.0"
 pygments = "^2.13.0"
 rss2email = "^3.14"
 afew = "^3.0.1"
-ipython = "^8.6.0"
+ipython = "^8.10.0"
 
 [tool.poetry.group.dev.dependencies]
 pip = "^22.3.1"
