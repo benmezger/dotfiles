@@ -66,8 +66,4 @@ isavailable xinput && xinput --set-prop \
 # enable tapping
 isavailable xinput && xinput --set-prop \
     "DLL0945:00 04F3:311C Touchpad"  \
-    "334" 1 &
-
-isavailable xinput && xinput --set-prop \
-    "DLL0945:00 04F3:311C Touchpad"  \
-    "334" 1 &
+    "libinput Tapping Enabled" 1 &
