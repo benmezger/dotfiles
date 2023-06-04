@@ -18,3 +18,6 @@ export $(dbus-launch)
 
 # dpi
 # export GDK_SCALE=2
+
+# alacritty
+export VBLANK_MODE=1
