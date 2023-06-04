@@ -99,8 +99,8 @@ groups = [
             "1",
             {
                 "layout": "max",
-                "spawn": ("google-chrome-stable",),
-                "matches": [Match(wm_class=["google-chrome"])],
+                "spawn": ("vivaldi-stable",),
+                "matches": [Match(wm_class=["vivaldi-stable"])],
             },
         ),
         (
