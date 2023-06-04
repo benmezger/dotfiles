@@ -3,10 +3,10 @@
 . $HOME/.xinitrc
 . $HOME/.env-secrets
 
-if [ -f /usr/local/bin/dwm ]; then
-        . $HOME/.bin/startdwm
-elif [ -f /usr/bin/qtile ]; then
+if [ -f /usr/bin/qtile ]; then
         exec dbus-launch --auto-syntax --exit-with-session /usr/bin/qtile start
+elif [ -f /usr/local/bin/dwm ]; then
+        . $HOME/.bin/startdwm
 elif [ -f /usr/bin/i3 ]; then
         exec dbus-launch --auto-syntax --exit-with-session i3
 elif [ -f /usr/local/bin/dwm ]; then
