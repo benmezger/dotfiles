@@ -52,7 +52,8 @@ export AUTOENV_FILE_LEAVE=".bye"
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
 
 # Make sure we are not sshing to this shell or running within an i3 session
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$I3SOCK" ]; then
+IS_DWM=$(ps aux | grep dwm)
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$I3SOCK" ] || [ -n "$IS_DWM" ]; then
 	export TMUX_AUTOSTART="false"
 else
 	export TMUX_AUTOSTART="true"
