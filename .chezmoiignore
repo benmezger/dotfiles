@@ -13,7 +13,7 @@
 {{- end }}
 
 {{- if ne .chezmoi.os "darwin" }}
-{{ template "ignore_linux.tmpl" }}
+{{ template "ignore_osx.tmpl" }}
 {{- end }}
 
 {{- if not .secrets }}
