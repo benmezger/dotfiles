@@ -35,4 +35,4 @@ emails() {
         "u: $(notmuch count tag:unread and tag:me)"
 }
 
-xsetroot -name " $(emails) | 旅 $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
+xsetroot -name "  $(emails) |  $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
