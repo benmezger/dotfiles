@@ -260,6 +260,11 @@
         (when (s-contains? "SETUPFILE" (buffer-string))
           (org-hugo-export-wim-to-md)))))
 
+  (setq org-hugo-external-file-extensions-allowed-for-copying
+        '("jpg" "jpeg" "tiff" "png" "svg" "gif"
+          "mp4" "pdf" "odt" "doc" "ppt" "xls"
+          "docx" "pptx" "xlsx" "zip"))
+
   (remove-hook! 'find-file-hook #'+org-roam-open-buffer-maybe-h))
 
 (after! (org-journal org)
