@@ -118,7 +118,7 @@
    org-log-done 'time
    org-clock-persist 'history
    org-directory "~/workspace/org"
-   org-archive-location "archives/%s_archive::"
+   org-archive-location ".archives/%s_archive::"
    org-agenda-files (list org-directory)
    org-log-into-drawer t
    org-agenda-inhibit-startup t
