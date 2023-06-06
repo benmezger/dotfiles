@@ -1,5 +1,5 @@
 # terminal
-cmd - return: /Applications/Alacritty.app/Contents/MacOS/alacritty
+ctrl + cmd - return: /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # editor
 fn + cmd - e: emacsclient -c -a ""
