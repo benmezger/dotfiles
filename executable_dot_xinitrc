@@ -35,7 +35,6 @@ isavailable solaar && solaar --window hide &
 isavailable setxkbmap && setxkbmap -option caps:escape &
 isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
-isavailable telegram-desktop && telegram-desktop -startintray &
 
 start_nordvpn() {
     while ! ping -c 1 -W 1 8.8.8.8; do                                                                                                                                                    [I]
