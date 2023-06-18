@@ -9,6 +9,10 @@ if [[ $(arch) == 'arm64' ]]; then
 	# fzf
 	source /opt/homebrew/Cellar/fzf/*/shell/completion.zsh
 	source /opt/homebrew/Cellar/fzf/*/shell/key-bindings.zsh
+
+	if [[ -d "/opt/homebrew/opt/gnupg@2.2" ]]; then
+		export PATH="$PATH:/opt/homebrew/opt/gnupg@2.2/bin"
+	fi
 else
 	# fzf
 	source /usr/local/opt/fzf/shell/completion.zsh
