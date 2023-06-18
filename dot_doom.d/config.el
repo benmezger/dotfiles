@@ -221,6 +221,15 @@
 #+HUGO_SLUG: ${slug}
 #+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 ")
+      :unnarrowed t)
+     ("e" "encrypted private" plain "%?"
+      :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
+                         "#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: :personal:gpg:%^G
+#+HUGO_SLUG: ${slug}
+#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
+")
       :unnarrowed t)))
 
   (defun custom-org-protocol-focus-advice (orig &rest args)
