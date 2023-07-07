@@ -8,6 +8,8 @@
 ;;
 ;;; Code:
 
+(require 'ivy)
+
 (defvar chezmoi-bin "chezmoi"
   "Path to chezmoi's binary.")
 
