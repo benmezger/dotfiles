@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.10"
 organize-tool = "^2.4.0"
-pygments = "^2.13.0"
+pygments = "^2.15.0"
 rss2email = "^3.14"
 afew = "^3.0.1"
 ipython = "^8.10.0"
