@@ -45,7 +45,9 @@ AFEW_BIN = "afew"
 
 MBSYNC_BIN = (
     pathlib.Path().joinpath("/usr/local/bin/mbsync")
-    if os.uname().sysname == "Darwin"
+    if os.uname().sysname == "Darwin" and os.uname().machine != "arm64"
+    else pathlib.Path().joinpath("/opt/homebrew/bin/mbsync")
+    if os.uname().sysname == "Darwin" and os.uname().machine == "arm64"
     else pathlib.Path().joinpath("/usr/bin/mbsync")
 )
 
