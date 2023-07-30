@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # homebrew
+export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_VERBOSE_USING_DOTS=1
 
 if [[ $(arch) == 'arm64' ]]; then
