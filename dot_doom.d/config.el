@@ -414,26 +414,26 @@
                                   :with-author nil
                                   :with-toc nil)))
 
-(defun doom-dashboard-widget-footer ()
-  (insert
-   "\n"
-   (+doom-dashboard--center
-    (- +doom-dashboard--width 2)
-    (with-temp-buffer
-      (insert-text-button
-       (or (all-the-icons-octicon
-            "octoface"
-            :face 'doom-dashboard-footer-icon
-            :height 1.3
-            :v-adjust -0.15)
-           (propertize
-            "github"
-            'face 'doom-dashboard-footer))
-       'action (lambda (_) (browse-url "https://github.com/benmezger"))
-       'follow-link t
-       'help-echo "Personal github")
-      (buffer-string)))
-   "\n"))
+;; (defun doom-dashboard-widget-footer ()
+;;   (insert
+;;    "\n"
+;;    (+doom-dashboard--center
+;;     (- +doom-dashboard--width 2)
+;;     (with-temp-buffer
+;;       (insert-text-button
+;;        (or (all-the-icons-octicon
+;;             "octoface"
+;;             :face 'doom-dashboard-footer-icon
+;;             :height 1.3
+;;             :v-adjust -0.15)
+;;            (propertize
+;;             "github"
+;;             'face 'doom-dashboard-footer))
+;;        'action (lambda (_) (browse-url "https://github.com/benmezger"))
+;;        'follow-link t
+;;        'help-echo "Personal github")
+;;       (buffer-string)))
+;;    "\n"))
 
 (use-package! mu4e-thread-folding
   :requires mu4e
