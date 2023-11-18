@@ -5,7 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_VERBOSE_USING_DOTS=1
 
 if [[ $(arch) == 'arm64' ]]; then
-	export PATH="$PATH:/opt/homebrew/bin"
+	export PATH="/opt/homebrew/bin:$PATH"
 	# fzf
 	source /opt/homebrew/Cellar/fzf/*/shell/completion.zsh
 	source /opt/homebrew/Cellar/fzf/*/shell/key-bindings.zsh
