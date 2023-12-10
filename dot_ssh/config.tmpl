@@ -1,1 +1,14 @@
+{{- if .secrets -}}
 {{ onepasswordRead (join "/" (list .onepassword.ssh "config")) }}
+{{- end }}
+
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_ed25519
+{{ if eq .chezmoi.os "darwin" -}}
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{ else }}
+    IdentityAgent "~/.1password/agent.sock"
+{{- end }}
+{{- end }}
