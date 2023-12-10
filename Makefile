@@ -195,9 +195,9 @@ install-extra-dependencies:
 
 install-required-dependencies:
 	if [[ $(is_linux) -eq 1 ]]; then \
-		sudo pacman -S chezmoi bitwarden-cli; \
+		sudo pacman -S chezmoi && paru -S 1password-cli; \
 	else \
-		brew install chezmoi bitwarden-cli; \
+		brew install chezmoi 1password-cli; \
 	fi
 
 fix-permissions:

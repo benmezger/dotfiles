@@ -6,7 +6,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         open /Applications/Trailer.app
         open /Applications/Clocker.app
         open /Applications/Amphetamine.app
-        open /Applications/Bitwarden.app
+        open /Applications/1Password.app
         open /Applications/Maccy.app
         open /Applications/WhatsApp.app
         open "/Applications/Backup\ and\ Sync.app/"

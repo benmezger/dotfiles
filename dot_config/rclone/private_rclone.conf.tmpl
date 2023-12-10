@@ -1,7 +1,6 @@
 [google-drive]
 type = drive
-client_id = {{ (index (bitwarden "item" .bitwarden.googleapi).fields 0).value }} 
-client_secret = {{ (bitwarden "item" .bitwarden.googleapi).login.password }}
 scope = drive
-token = {{ (index (bitwarden "item" .bitwarden.googleapi).fields 1).value }}
-
+client_id = {{ onepasswordRead (join "/" (list .onepassword.googleapi "client_id")) }}
+client_secret = {{ onepasswordRead (join "/" (list .onepassword.googleapi "credential")) }}
+token = {{ onepasswordRead (join "/" (list .onepassword.googleapi "token")) }}

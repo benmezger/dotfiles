@@ -8,14 +8,14 @@
 ### Installing
 
 **Note:** You need to set the `env` variable `SECRETS_OFF=1` to disable
-bitwarden. Not passing will make chezmoi fail when connecting to my bitwarden's
+1password. Not passing will make chezmoi fail when connecting to my 1password
 account ¯\_(ツ)_/¯.
 
 The following environment variables can be set to configure chezmoi when
 applying changed:
 
 - `ASK`: Set to `1` if you want to enable chezmoi prompt
-- `SECRETS_OFF`: Set to `1` to enable Bitwarden (uses my personal secrets set in
+- `SECRETS_OFF`: Set to `1` to enable 1Password (uses my personal secrets set in
   `.chezmoi.yaml`)
 - `DOTFILES_MINIMAL`: Set to `1` if you want to install the minimal version
 - `WORKCONF`: Set to `1` to enable work configuration (work email, etc)

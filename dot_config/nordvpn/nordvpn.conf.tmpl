@@ -1,1 +1,1 @@
-{{- (bitwardenAttachment "nordvpn.conf" .bitwarden.nordvpn) -}}
+{{ onepasswordRead {{join "/" (list .onepassword.nordvpn "nordvpn.conf") }}

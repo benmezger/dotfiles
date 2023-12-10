@@ -101,34 +101,26 @@ data:
     smtp_port: {{ $work_smtp_port }}
 {{- end }}
 {{- if $secrets }}
-  bitwarden:
-    i3rs: 1f13be62-1f5e-40fb-9b60-acb500c08fff
-    freenode: da4d9bba-62ee-47d4-8e9c-acb500c08fff
-    bnc: 66879550-7ff9-4e50-9a2d-acb500c08fff
-    liberachat: f4bd1859-14cf-4d8a-b12f-ad85004a4a94
-    spotify: d8ebcdfe-0ecc-40ec-a464-acb500c08fff
-    spotify_api: 64c5ef38-cb4b-4ae7-961d-acba0047e94b
-    wakatime_api: 806af555-54de-44cc-a857-acb500c08fff
-    personal_mail: c553f8b1-f4a3-4220-8b0b-acb500c08fff
-    work_mail: aeff6fce-4245-4fea-80a6-acb500c08fff
-    googleapi: 34d2c72b-c33d-44ad-883e-acbe01020aef
-    ssh_pub: 98ebec3b-3a9f-4220-9ae2-acc300fee77f
-    ssh_priv: 0572f760-a184-40f9-bfa2-acc300d9ec5c
-    ssh: eb36407d-787d-4266-9b97-acc3014f98a3
-    pgp_priv: 5bc1d3cd-3332-4c83-ad4a-accc00f68aad
-    lastfm: c9a4cb98-f7b5-46ea-bef9-acb500c08fff
-    slack_work_api_token: 5e81b24b-13b5-4c03-a415-acda010435cb
-    weechat_passphrase: afed73f5-2638-4157-9f06-acdd012d5ad3
-    github_repo_token: 975a2e15-57b6-4875-b1f5-acea002b111f
-    bnc_liberachat_pass: d7eab2fc-2f25-42e1-85a2-ad3200d3fb45
-    bnc_freenode_pass: 0d9f5d3d-5d10-4b03-8a41-ad3200d39a75
-    bnc_2600_pass: f07a3e72-6d5a-43de-9314-acb500c08fff
-    bnc_oftc_pass: bf464a79-487b-4cff-9aae-ad3200d3b68e
-    bnc_darkscience_pass: a3569ea6-6f95-48c4-aa8e-ad3200d3d849
-    bnc_bitlbee_pass: aaecbe46-e879-43c7-a3ab-ad5500079ea9
-    codestats_api_key_osx: 4be111e5-875c-4e73-8787-ad380047ac21
-    codestats_api_key_linux: 2c97140b-4f05-423e-b26b-ae79002f5bef
-    ngrok: 5b9e7d65-f849-47c3-ad8c-ae040088a53f
-    nordvpn: dc571eaf-5749-428b-a435-af7c000c809e
-    ssh_config: 1d2b426a-8954-4aef-9be8-afd000af38dc
+  onepassword:
+    i3rs: op://3kygcny5whqjpzj5nq72uu6kua/7x3mmpqs2yqgjxjyofrotznbze/credential
+    freenode: op://3kygcny5whqjpzj5nq72uu6kua/cgnroh67bfy6kgn3hkd4ak2vta/password
+    bnc: op://3kygcny5whqjpzj5nq72uu6kua/lxpjtnd455wh7uj47xzauv4cde/credential
+    wakatime_api: op://3kygcny5whqjpzj5nq72uu6kua/mfj7igdw54vqlahxscx6u43i6i/credential
+    personal_mail: op://3kygcny5whqjpzj5nq72uu6kua/mggrdcdzo5uhlv2ox6ta2om2dq/password
+    work_mail: op://bkpivgdniyxevxolxjzg3y2dfu/4bjct6jx4ezhs64xkzbdaalr3q/password
+    googleapi: op://3kygcny5whqjpzj5nq72uu6kua/dsyrpdpii5w32nqnf253l7prqe
+    ssh: op://3kygcny5whqjpzj5nq72uu6kua/ajgg5n5sbsfkgpt2runkoze2m4
+    pgp: op://3kygcny5whqjpzj5nq72uu6kua/tdsiqq7e24pmcslfczkpisv5fy
+    weechat_passphrase: op://3kygcny5whqjpzj5nq72uu6kua/czawqidse6w5a5tzch6kn7q4ay/password
+    github_repo_token: op://3kygcny5whqjpzj5nq72uu6kua/o3fcrsyelhcbjxpocvkwkkpubi/credential
+    bnc_liberachat_pass: op://3kygcny5whqjpzj5nq72uu6kua/ji3qgwidaull3tfy7c635dy4bq/credential
+    bnc_freenode_pass: op://3kygcny5whqjpzj5nq72uu6kua/gk4fpynqboiucydrm2unrldqti/credential
+    bnc_2600_pass: op://3kygcny5whqjpzj5nq72uu6kua/enikxxbmzfhgjaew6lszfataqu/credential
+    bnc_oftc_pass: op://3kygcny5whqjpzj5nq72uu6kua/rmi7hxhcbjhnfzt6eb2a6upsei/credential
+    bnc_darkscience_pass: op://3kygcny5whqjpzj5nq72uu6kua/wlze6ny7mopykiw7556s6wmtf4/credential
+    bnc_bitlbee_pass: op://3kygcny5whqjpzj5nq72uu6kua/ixxq6xstl7wbs52xhfhvgk7t3q/credential
+    codestats_api_key_osx: op://3kygcny5whqjpzj5nq72uu6kua/onge2szi4nevj7roshvjlybgka/credential
+    codestats_api_key_linux: op://3kygcny5whqjpzj5nq72uu6kua/lglc7xxqhr3s57l4mon73q6dbm/credential
+    ngrok: op://3kygcny5whqjpzj5nq72uu6kua/bsuiyo6kacispbqu3yyf25jjq4/credential
+    nordvpn: op://3kygcny5whqjpzj5nq72uu6kua/7s664t6dxzg7dkzyecixylfwnu
 {{- end -}}

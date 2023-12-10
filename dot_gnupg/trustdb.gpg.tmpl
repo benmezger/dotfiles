@@ -1,1 +1,1 @@
-{{- (bitwardenAttachment "trustdb.gpg" .bitwarden.pgp_priv) -}}
+{{ onepasswordRead (join "/" (list .onepassword.pgp "rkprkpweeaghwdmnrjwisakue4")) -}}

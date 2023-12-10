@@ -142,41 +142,6 @@
   (add-hook 'mu4e-compose-mode-hook
             (lambda () (local-set-key (kbd "C-c C-w") #'benmezger/mu4e-choose-signature))))
 
-(after! circe
-  :defer t
-  :config
-
-  (defun benmezger-fetch-password (&rest params)
-    (require 'auth-source)
-    (let ((match (car (apply #'auth-source-search params))))
-      (if match
-          (let ((secret (plist-get match :secret)))
-            (if (functionp secret)
-                (funcall secret)
-              secret))
-        (error "Password not found for %S" params))))
-
-  (defun benmezger-nickserv-password (server)
-    (benmezger-fetch-password
-     :user "seds"
-     :host "{{ (index (bitwarden "item" .bitwarden.liberachat).login.uris 0).uri }}"))
-
-  (set-irc-server! "{{ (index (bitwarden "item" .bitwarden.liberachat).login.uris 0).uri }}"
-                   '(:tls t
-                     :port 6697
-                     :nick "seds"
-                     :pass benmezger-nickserv-password
-                     :channels ("#emacs" "#osdev"))))
-
-(after! org-gcal
-  :defer t
-  :config
-  (setq org-gcal-client-id "{{ (index (bitwarden "item" .bitwarden.googleapi).fields 0).value }}"
-        org-gcal-client-secret "{{ (bitwarden "item" .bitwarden.googleapi).login.password }}"
-        org-gcal-fetch-file-alist '(("{{ .email }}" . "~/workspace/org/schedule.org"))
-        org-gcal-notify-p nil
-        org-gcal-recurring-events-mode 'nested))
-
 (after! notmuch
   :init
   (set-popup-rule! "^\\*notmuch-hello" :side 'bottom :size 30 :ttl 0 :ignore t)

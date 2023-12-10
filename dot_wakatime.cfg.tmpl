@@ -6,5 +6,5 @@ exclude =
     ^PULLREQ_EDITMSG$
     ^MERGE_MSG$
     ^TAG_EDITMSG$
-api_key = {{ (bitwarden "item" .bitwarden.wakatime_api).login.password }}
+api_key = {{ onepasswordRead .onepassword.wakatime_api }}
 hostname = {{ .hostname }}

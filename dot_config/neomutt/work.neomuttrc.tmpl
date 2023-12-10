@@ -1,7 +1,7 @@
 set my_user={{ .work.workmail }}
 
 {{- if .secrets }}
-set my_pass={{ (bitwarden "item" .bitwarden.work_mail).login.password }}
+set my_pass={{ onepasswordRead .onepassword.work_mail }}
 {{- end }}
 
 set realname = {{ .name | quote }}
