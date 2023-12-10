@@ -16,10 +16,8 @@ salt = on
 
 [data]
 __passphrase__ = on
-freenode_pass = {{ onepasswordRead .onepassword.freenode }}
-slack_work_api_token = ""
-bnc_server = {{ onepasswordRead .onepassword.bnc }}
-bnc_liberachat_pass = {{ onepasswordRead .onepassword.bnc_liberachat_pass }}
-bnc_freenode_pass = {{ onepasswordRead .onepassword.bnc_freenode_pass }}
-bnc_oftc_pass = {{ onepasswordRead .onepassword.bnc_oftc_pass }}
-bnc_darkscience_pass = {{ onepasswordRead .onepassword.bnc_darkscience_pass }}
+bcn_libera = "{{ onepasswordRead (join "/" (list .onepassword.bnc "libera_hash")) -}}"
+bnc_darkscience = "{{ onepasswordRead (join "/" (list .onepassword.bnc "darkscience_hash")) -}}"
+bnc_oftc = "{{ onepasswordRead (join "/" (list .onepassword.bnc "oftc_hash")) -}}"
+freenode_passwd = "{{ onepasswordRead (join "/" (list .onepassword.bnc "freenode_passwd_hash")) -}}"
+bnc_server = "{{ onepasswordRead (join "/" (list .onepassword.bnc "bnc_server_hash")) -}}"
