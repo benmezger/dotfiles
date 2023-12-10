@@ -416,8 +416,6 @@ default.current = on
 [notify]
 perl.chanmon = none
 perl.highmon = none
-python.slack.cheesecake.%tekpigs = highlight
-python.slack.cheesecake.&arnaldo = highlight
 python.urlbuf = none
 
 [filter]
@@ -704,11 +702,6 @@ meta2-A = "/cursor move up"
 meta2-B = "/cursor move down"
 meta2-C = "/cursor move right"
 meta2-D = "/cursor move left"
-@chat(python.*):D = "hsignal:slack_cursor_delete"
-@chat(python.*):L = "hsignal:slack_cursor_linkarchive"
-@chat(python.*):M = "hsignal:slack_cursor_message"
-@chat(python.*):R = "hsignal:slack_cursor_reply"
-@chat(python.*):T = "hsignal:slack_cursor_thread"
 @item(buffer_nicklist):K = "/window ${_window_number};/kickban ${nick}"
 @item(buffer_nicklist):b = "/window ${_window_number};/ban ${nick}"
 @item(buffer_nicklist):k = "/window ${_window_number};/kick ${nick}"
@@ -736,7 +729,6 @@ meta2-D = "/cursor move left"
 @chat(perl.iset):button2* = "hsignal:iset_mouse"
 @chat(perl.iset):wheeldown = "/repeat 5 /iset **down"
 @chat(perl.iset):wheelup = "/repeat 5 /iset **up"
-@chat(python.*):button2 = "hsignal:slack_mouse"
 @chat(script.scripts):button1 = "/window ${_window_number};/script go ${_chat_line_y}"
 @chat(script.scripts):button2 = "/window ${_window_number};/script go ${_chat_line_y};/script installremove -q ${script_name_with_extension}"
 @chat(script.scripts):wheeldown = "/script down 5"
