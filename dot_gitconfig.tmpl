@@ -1,7 +1,9 @@
 [user]
     name = {{ .name }}
     email = {{ .email }}
-    signingkey = {{ .gpg_keyid }}
+{{- if .secrets }}
+    signingkey = {{ onepasswordRead (join "/" (list .onepassword.ssh "public_key")) }}
+{{- end }}
 [core]
     excludesfile = ~/.gitignore_global
     editor = ~/.bin/editor
@@ -66,6 +68,7 @@
 [commit]
     verbose = true
     template = ~/.gittemplates/commit
+    gpgsign = true
 [advice]
     pushNonFastForward = false
     statusHints = false
@@ -117,3 +120,11 @@
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 {{ end -}}
+{{- if .secrets }}
+[gpg]
+    format = ssh
+{{- if eq .chezmoi.os "darwin" }}
+[gpg "ssh"]
+       program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{- end -}}
+{{- end }}
