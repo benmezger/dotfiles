@@ -2,7 +2,7 @@ machine {{ .imap_host }} login {{ .email }} password {{ onepasswordRead .onepass
 machine {{ .smtp_host }} login {{ .email }} password {{ onepasswordRead .onepassword.personal_mail }} port {{ .smtp_port }}
 machine api.github.com login {{ .github_user }}^forge password {{ onepasswordRead .onepassword.github_repo_token }}
 {{ if eq .chezmoi.os "darwin" -}}
-machine codestats.net password {{ onepasswordRead .onepassword.codestats_api_key_osx }}
+machine codestats.net password {{ onepasswordRead (join "/" (list .onepassword.codestats_api "credential_osx")) }}
 {{ else -}}
-machine codestats.net password {{ onepasswordRead .onepassword.codestats_api_key_linux }}
+machine codestats.net password {{ onepasswordRead (join "/" (list .onepassword.codestats_api "credential_linux")) }}
 {{ end -}}
