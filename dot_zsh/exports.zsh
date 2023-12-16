@@ -143,3 +143,7 @@ fi
 HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup &&
 	test -f $HEROKU_AC_ZSH_SETUP_PATH &&
 	source $HEROKU_AC_ZSH_SETUP_PATH
+
+# 1password
+# default to personal account
+export OP_ACCOUNT=my.1password.com
