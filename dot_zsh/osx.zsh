@@ -13,10 +13,13 @@ if [[ $(arch) == 'arm64' ]]; then
 	if [[ -d "/opt/homebrew/opt/gnupg@2.2" ]]; then
 		export PATH="$PATH:/opt/homebrew/opt/gnupg@2.2/bin"
 	fi
+
+	fpath+=("/opt/homebrew/completions/zsh/")
 else
 	# fzf
 	source /usr/local/opt/fzf/shell/completion.zsh
 	source /usr/local/opt/fzf/shell/key-bindings.zsh
+	fpath+=("/usr/local/Homebrew/completions/")
 fi
 
 export ZSH_WAKATIME_BIN=wakatime-cli

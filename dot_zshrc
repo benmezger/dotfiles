@@ -4,6 +4,7 @@ if [[ "$ZPROF" = true ]]; then
         zmodload zsh/zprof
 fi
 
+source $HOME/.zsh/init.zsh
 source $HOME/.zsh/exports.zsh
 
 if [[ -f "$HOME/.zsh_plugins.sh" ]]; then
@@ -14,7 +15,6 @@ else
         source $HOME/.zsh_plugins.sh
 fi
 
-source $HOME/.zsh/init.zsh
 source $HOME/.zsh/evals.zsh
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
@@ -48,3 +48,11 @@ fi
 if [[ $TERM == "dumb" ]]; then
         unsetopt zle && PS1='$ ' && return
 fi
+
+# initialize completion
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+        compinit
+else
+        compinit -C
+fi
+_approximate # enable approximate matches for completion
