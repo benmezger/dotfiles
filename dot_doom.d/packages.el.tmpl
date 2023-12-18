@@ -29,3 +29,6 @@
 {{- if ne .chezmoi.os "darwin" }}
 (package! pkgbuild-mode)
 {{- end }}
+{{ if .secrets -}}
+(package! org-ai)
+{{- end }}

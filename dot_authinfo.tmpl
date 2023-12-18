@@ -6,3 +6,4 @@ machine codestats.net password {{ onepasswordRead (join "/" (list .onepassword.c
 {{ else -}}
 machine codestats.net password {{ onepasswordRead (join "/" (list .onepassword.codestats_api "credential_linux")) }}
 {{ end -}}
+machine api.openai.com login org-ai password {{ onepasswordRead .onepassword.openai_token }}

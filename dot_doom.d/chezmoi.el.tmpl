@@ -213,6 +213,16 @@
                              (shell-quote-argument tmp)))))
 
   (global-set-key (kbd "M-n p") 'benmezger/apply-thread-patchset))
+
+(use-package org-ai
+  :ensure t
+  :commands (org-ai-mode org-ai-global-mode)
+  :init
+  (add-hook 'org-mode-hook #'org-ai-mode)
+  (org-ai-global-mode) ; installs global keybindings on C-c M-a
+  :config
+  (setq org-ai-default-chat-model "gpt-4")
+  (org-ai-install-yasnippets))
 {{ end -}}
 
 (global-set-key (kbd "M-n s") 'notmuch-search)
