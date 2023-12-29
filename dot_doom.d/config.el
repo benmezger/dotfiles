@@ -501,3 +501,10 @@ so we make sure that it's put a column 1 so everything works nicely."
 (use-package! just-mode
   :defer t
   :mode ("[./]just\\'" . just-mode))
+
+
+(after! apheleia
+  :defer t
+  :config
+  ;; make ruff the priority
+  (add-to-list 'apheleia-mode-alist '(python-mode . ruff)))
