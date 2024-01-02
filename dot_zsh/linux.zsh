@@ -21,3 +21,5 @@ export $(dbus-launch)
 
 # alacritty
 export VBLANK_MODE=1
+
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
