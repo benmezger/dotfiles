@@ -1,0 +1,80 @@
+#!/bin/bash -eu
+
+project_dir="$(git rev-parse --show-toplevel)"
+pyproject_file="$project_dir/pyproject.toml"
+
+isavailable() {
+    type "$1" &>/dev/null
+}
+
+file_exists() {
+    if [ -f "$1" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+run_command_with_poetry() {
+    local command=$1
+    shift
+
+    poetry run -q "$command" "$@"
+}
+
+is_poetry_installed() {
+    if file_exists "$pyproject_file" \
+        && grep -q "tool.poetry" "$pyproject_file" \
+        && isavailable poetry; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+maybe_ruff() {
+    if ! run_command_with_poetry "which" "ruff"; then
+        return 255;
+    fi
+
+    echo "Running Ruff"
+    run_command_with_poetry "ruff" "check" "$project_dir"
+}
+
+maybe_black_run() {
+    if ! run_command_with_poetry "which" "black"; then
+        return 255;
+    fi
+
+    echo "Running black"
+    run_command_with_poetry "black" "--check" "$project_dir"
+}
+
+maybe_isort_run() {
+    if ! run_command_with_poetry "which" "isort"; then
+        return 255;
+    fi
+
+    echo "Running isort"
+    run_command_with_poetry "isort" "--check" "--profile" "black" "$project_dir"
+}
+
+if ! is_poetry_installed; then
+    echo "Project is not using poetry"
+    exit 0
+fi
+
+maybe_ruff_run
+if [ $? -ne 255 ]; then
+    exit 0
+fi
+
+maybe_black_run
+if [ $? -ne 255 ]; then
+    exit 0
+fi
+
+maybe_isort_run
+if [ $? -ne 255 ]; then
+    exit 0
+fi

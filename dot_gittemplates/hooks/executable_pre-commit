@@ -1,0 +1,16 @@
+#!/bin/bash -eu
+
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+export GIT_COMMON_DIR
+test -f "$GIT_COMMON_DIR"/CHERRY_PICK_HEAD && exit 0
+
+for hook in $(git config --get-all hooks.enabled)
+do
+	if [ -f "$$HOME/.scripts/git-hooks/$hook" ]
+	then
+		if ! "$GIT_COMMON_DIR/hooks/$hook"
+		then
+			exit 1
+		fi
+	fi
+done

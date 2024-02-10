@@ -125,6 +125,8 @@
     format = ssh
 {{- if eq .chezmoi.os "darwin" }}
 [gpg "ssh"]
-       program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 {{- end -}}
 {{- end }}
+[hooks]
+    enabled = python
