@@ -10,3 +10,6 @@ doom sync -e -u --force
 
 echo "Updating ZSH"
 antibody update
+
+echo "Updating Tmux"
+"$HOME"/.tmux/plugins/tpm/bin/update_plugins all
