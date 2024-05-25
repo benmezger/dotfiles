@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ ${OSTYPE} == darwin* ]]; then
+    echo "Updating OSX packages"
+    brew update && brew upgrade && brew cleanup
+fi
+
+echo "Updating Emacs Doom"
+doom sync -e -u --force
+
+echo "Updating ZSH"
+antibody update
