@@ -2,6 +2,7 @@
 {{- $headless := false -}}
 {{- $secrets := true -}}
 {{- $workconf := false -}}
+{{- $laptop_mode := true -}}
 
 {{- if (env "CI") -}}
 {{- $headless = true -}}
@@ -20,6 +21,10 @@
 {{- if (env "WORKCONF") -}}
 {{- $workconf = true -}}
 {{- end -}}
+
+{{- if (env "DOTFILES_DESKTOP_MODE") -}}
+{{- $laptop_mode = false -}}
+{{- end }}
 
 {{- $name := "Ben Mezger" -}}
 {{- $email := "me@benmezger.nl" -}}
@@ -44,6 +49,7 @@
 {{- if (env "ASK") }}
 {{- $minimal = promptBool "minimal" -}}
 {{- $workconf = promptBool "work config" -}}
+{{- $laptop_mode = promptBool "laptop mode" -}}
 
 {{- if $minimal -}}
 {{- $secrets = false -}}
@@ -80,6 +86,7 @@ data:
   secrets: {{ $secrets }}
   headless: {{ $headless }}
   minimal: {{ $minimal }}
+  laptop_mode: {{ $laptop_mode }}
   email: {{ $email }}
   name: {{ $name }}
   hostname: {{ $hostname }}

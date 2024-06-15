@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+laptop_mode=$(chezmoi execute-template '{{.chezmoi.config.data.laptop_mode }}')
+
 tme() {
     echo -e "$(date +'%H:%M')"
 }
@@ -23,7 +25,11 @@ vpn() {
 }
 
 bat() {
-    bash $HOME/.bin/battery-stats
+    if [ "$laptop_mode" = "true" ]; then
+        echo "| $(bash $HOME/.bin/battery-stats) "
+    else
+        echo
+    fi
 }
 
 volume() {
@@ -35,4 +41,4 @@ emails() {
         "u: $(notmuch count tag:unread and tag:me)"
 }
 
-xsetroot -name "  $(emails) |  $(vpn) |  $(tme)  $(dte) | $(bat) | $(volume)"
+xsetroot -name "  $(emails) |  $(tme)  $(dte) $(bat)| $(volume)"
