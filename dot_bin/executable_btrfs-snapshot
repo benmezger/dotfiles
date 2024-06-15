@@ -6,11 +6,11 @@ SNAPSHOTS_PATH=/.snapshots
 BACKUP_DATE=$(date +"%d.%m.%Y_%H:%M:%S")
 
 if [ ! -d "$SNAPSHOTS_PATH/@root" ]; then
-    mkdir $SNAPSHOTS_PATH/@root
+    sudo mkdir $SNAPSHOTS_PATH/@root
 fi
 
 if [ ! -d "$SNAPSHOTS_PATH/@home" ]; then
-    mkdir $SNAPSHOTS_PATH/@home
+    sudo mkdir $SNAPSHOTS_PATH/@home
 fi
 
 sudo btrfs subv snap -r $ROOT_PATH $SNAPSHOTS_PATH/@root/root_$BACKUP_DATE
