@@ -43,57 +43,26 @@ default_screen_right_widgets = lambda: [
             widget.WidgetBox(
                 widgets=[
                     widget.CPU(fmt="{}"),
-                    widget.Memory(fmt=" {} "),
-                    widget.ThermalSensor(fmt="  {} ", font="Hack Nerd Font"),
-                    NordVPN(),
+                    widget.Memory(fmt=" {} "),
+                    widget.ThermalSensor(fmt=" {} ", font="Hack Nerd Font"),
                 ],
             ),
             widget.Spacer(length=10),
             widget.Sep(),
-            widget.Volume(fmt=" 墳 {}", font="Hack Nerd Font"),
+            widget.Volume(fmt="󰕾 {}", font="Hack Nerd Font"),
             widget.Spacer(
                 length=10,
             ),
             widget.Sep(),
             widget.Spacer(length=10),
             widget.OpenWeather(
-                fmt=" {} ",
                 font="Hack Nerd Font",
-                location="Florianopolis",
-                format="fln: {main_temp} °{units_temperature}",
+                location="Amsterdam",
+                format="ams: {main_temp} °{units_temperature}",
                 mouse_callbacks={
                     "Button1": lambda: webbrowser.open_new_tab(
-                        "https://wttr.in/florianopolis"
+                        "https://wttr.in/amsterdam"
                     )
-                },
-            ),
-            widget.WidgetBox(
-                widgets=[
-                    widget.OpenWeather(
-                        font="Hack Nerd Font",
-                        location="Amsterdam",
-                        format="ams: {main_temp} °{units_temperature}",
-                        mouse_callbacks={
-                            "Button1": lambda: webbrowser.open_new_tab(
-                                "https://wttr.in/amsterdam"
-                            )
-                        },
-                    ),
-                ]
-            ),
-            widget.Spacer(length=10),
-            widget.Sep(),
-            widget.Spacer(length=10),
-            widget.Maildir(
-                fmt="﫮 {}",
-                font="Hack Nerd Font",
-                maildir_path="~/mail/personal",
-                sub_folders=(
-                    {"label": "i", "path": "inbox"},
-                    {"label": "a", "path": "archives"},
-                ),
-                mouse_callbacks={
-                    "Button1": lambda: webbrowser.open_new_tab("https://gmail.com")
                 },
             ),
             widget.Spacer(length=10),
@@ -101,20 +70,8 @@ default_screen_right_widgets = lambda: [
             widget.Spacer(length=10),
             widget.KeyboardLayout(
                 configured_keyboards=("us", "br"),
-                fmt=" {}",
+                fmt="󰌓 {}",
                 font="Hack Nerd Font",
-            ),
-            widget.Spacer(length=10),
-            widget.Sep(),
-            widget.Battery(
-                format=" {char} {percent:2.0%} {hour:d}:{min:02d}/{watt:.2f}W",
-                charge_char="",
-                discharge_char="",
-                font="Hack Nerd Font",
-                empty_char="",
-                full_char="",
-                notify_bellow=20,
-                show_short_text=False,
             ),
             widget.Spacer(length=10),
             widget.Sep(),
