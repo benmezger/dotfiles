@@ -1,0 +1,13 @@
+[theme]
+theme = "semi-native"
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 60
+format = " $icon $timestamp.datetime(f:'%d-%m-%Y %R %Z', l:nl_NL) "

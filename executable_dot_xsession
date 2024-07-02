@@ -4,7 +4,7 @@
 . $HOME/.env-secrets
 
 # default wm
-WM="$HOME/.bin/startdwm"
+WM="/usr/bin/i3"
 
 if [ -n "$WM" ] && [ -x "$WM" ]; then
         exec dbus-launch --auto-syntax --exit-with-session "$WM"

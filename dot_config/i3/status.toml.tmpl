@@ -1,21 +1,23 @@
+[theme]
 theme = "semi-native"
-icons = "awesome"
+
+[icons]
+icons = "awesome4"
 
 [[block]]
 block = "disk_space"
 path = "/"
-alias = "/"
 info_type = "available"
-unit = "GB"
+alert_unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
+format = " $icon root: $available.eng(w:2) "
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
-format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
 
 [[block]]
 block = "cpu"
@@ -24,30 +26,23 @@ interval = 1
 [[block]]
 block = "load"
 interval = 1
-format = "{1m}"
+format = " $icon  1min avg: $1m.eng(w:4) "
 
 [[block]]
 block = "temperature"
-collapsed = false
 interval = 10
-format = "{min} min, {max} max, {average} avg"
+scale = "celsius"
+format = " $icon $average avg "
+format_alt = " $icon $min min, $max max, $average avg "
 chip = "*-isa-*"
-driver = "sensors"
-
-[[block]]
-block = "docker"
-interval = 2
-format = "{running}/{total}"
-{{- if ne .chezmoi.os "darwin" }}
-socket_path = "/run/user/1000/docker.sock"
-{{- end }}
-
 
 [[block]]
 block = "sound"
 
+{{- if .laptop_mode }}
 [[block]]
 block = "backlight"
+{{- end }}
 
 [[block]]
 block = "github"
@@ -60,11 +55,13 @@ threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
 
+{{- if .laptop_mode }}
 [[block]]
 block = "battery"
 format = "{percentage} {time}"
+{{- end }}
 
 [[block]]
 block = "time"
 interval = 60
-format = "%a %d/%m %R"
+format = " $icon $timestamp.datetime(f:'%d-%m-%Y %R %Z', l:nl_NL) "
