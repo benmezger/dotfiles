@@ -7,7 +7,7 @@ isavailable() {
 
 # screen powersave
 xset +dpms
-xset dpms 0 0 300
+xset dpms 0 0 900
 xset r rate 180 40
 
 # 230 has IPS or TN screen with 125.37 DPI
@@ -16,20 +16,12 @@ xrandr --dpi 125.37
 # run xrdb
 [[ -f $HOME/.Xresources ]] && xrdb -load $HOME/.Xresources
 
-# run urxvt daemon
-[[ -z "$(pidof urxvtd)" ]] && urxvtd --quiet --opendisplay --fork
-
-# start redshift
-# current lat/log: oud-zuid
-isavailable synclient && synclient TouchpadOff=1 &
-
 isavailable picom && picom --config ~/.config/picom.conf &
 isavailable nm-applet && nm-applet &
 isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock &
 isavailable unclutter && unclutter &
-isavailable libinput-gestures-setup && libinput-gestures-setup start &
 isavailable blueman-applet && blueman-applet &
 isavailable solaar && solaar --window hide &
 isavailable setxkbmap && setxkbmap -option caps:escape &
@@ -37,33 +29,4 @@ isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
 isavailable 1password && 1password --silent &
 
-start_nordvpn() {
-    while ! ping -c 1 -W 1 8.8.8.8; do                                                                                                                                                    [I]
-        echo "Waiting for 8.8.8.8 - network interface might be down..."
-        sleep 1
-    done
-
-    nordvpn connect
-}
-
-isavailable nordvpn && nordvpn account | grep -v "You are not logged in" && start_nordvpn &
-
-
 bash $HOME/.bin/lightsOn.sh &
-/usr/lib/geoclue-2.0/demos/agent &
-
-# XPS
-# set touchpad speed
-isavailable xinput && xinput --set-prop \
-    "DLL0945:00 04F3:311C Touchpad"  \
-    "libinput Accel Speed" 0.6  &
-
-# enable natural scrolling
-isavailable xinput && xinput --set-prop \
-    "DLL0945:00 04F3:311C Touchpad"  \
-    "libinput Natural Scrolling Enabled" 1 &
-
-# enable tapping
-isavailable xinput && xinput --set-prop \
-    "DLL0945:00 04F3:311C Touchpad"  \
-    "libinput Tapping Enabled" 1 &
