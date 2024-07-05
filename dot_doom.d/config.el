@@ -117,7 +117,8 @@
   (setq
    org-log-done 'time
    org-clock-persist 'history
-   org-directory "~/workspace/org"
+   org-directory "~/workspace/org/private"
+   org-base-directory "~/workspace/org/"
    org-archive-location ".archives/%s_archive::"
    org-agenda-files (list org-directory)
    org-log-into-drawer t
@@ -135,25 +136,25 @@
    org-capture-template-dir (concat doom-private-dir "org-captures/")
    org-capture-templates
    `(
-     ("c" "Code" entry (file "~/workspace/org/code.org")
+     ("c" "Code" entry (file "~/workspace/org/private/code.org")
       (file ,(concat org-capture-template-dir "code-snippet.capture")))
-     ("i" "Inbox" entry (file+datetree "~/workspace/org/inbox.org")
+     ("i" "Inbox" entry (file+datetree "~/workspace/org/private/inbox.org")
       (file ,(concat org-capture-template-dir "inbox-snippet.capture")))
-     ("j" "Journal" entry (file+datetree "~/workspace/org/journal.org")
+     ("j" "Journal" entry (file+datetree "~/workspace/org/private/journal.org")
       (file ,(concat org-capture-template-dir "journal.capture")))
-     ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
+     ("b" "Blog post" entry (file+olp "~/workspace/org/private/blog.org" "Posts")
       (file ,(concat org-capture-template-dir "blog-post.capture")))
-     ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
+     ("n" "Note" entry (file+olp "~/workspace/org/private/notes.org" "Inbox")
       "* %?\nEntered on %U\n  %i\n  %a")
-     ("t" "Todo" entry (file "~/workspace/org/todos.org")
+     ("t" "Todo" entry (file "~/workspace/org/private/todos.org")
       "* TODO %?\n %i\n  %a")
-     ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
+     ("r" "Register new book" entry (file+olp "~/workspace/org/private/notes.org" "Books")
       (file ,(concat org-capture-template-dir "new-book.capture")))
-     ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
+     ("d" "Decision note" entry (file "~/workspace/org/private/decisions.org")
       (file ,(concat org-capture-template-dir "decision.capture")))
-     ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
+     ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/private/journal/weekly.org" "Weekly notes")
       (file ,(concat org-capture-template-dir "weekly-journal.capture")) :tree-type week)
-     ("e" "RRR" entry (file "~/workspace/org/rrr.org")
+     ("e" "RRR" entry (file "~/workspace/org/private/rrr.org")
       (file ,(concat org-capture-template-dir "rrr.capture"))))
    ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
@@ -194,7 +195,7 @@
   :defer t
   :config
   (setq
-   org-roam-directory "~/workspace/org/roam"
+   org-roam-directory "~/workspace/org/private/roam"
    org-roam-index-file (concat org-roam-directory "/" "index.org")
    benmezger/org-roam-private-directory (concat org-roam-directory "/private")
    org-roam-capture-templates
@@ -279,7 +280,7 @@
 (after! (org-journal org)
   :defer t
   :config
-  (setq org-journal-dir "~/workspace/org/journal")
+  (setq org-journal-dir "~/workspace/org/private/journal")
   (push org-journal-dir org-agenda-files)
   (setq org-journal-enable-agenda-integration t)
   (setq org-journal-file-format "%Y%m%d.org"))
@@ -287,7 +288,7 @@
 (after! deft
   :defer t
   :config
-  (setq deft-directory "~/workspace/org"
+  (setq deft-directory "~/workspace/org/private"
         deft-extensions '("org" "md" "txt")
         deft-default-extension "org"
         deft-recursive t
@@ -317,7 +318,7 @@
 (after! (:or org elfeed-org)
   :defer t
   :init
-  (setq rmh-elfeed-org-files (list "~/workspace/org/urls.org")))
+  (setq rmh-elfeed-org-files (list "~/workspace/org/private/urls.org")))
 
 (after! (:or org-ref org)
   :config
