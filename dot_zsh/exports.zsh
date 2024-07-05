@@ -19,7 +19,8 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
-export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.config/emacs/bin"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:"
+export PATH="$PATH:$HOME/.config/emacs/bin:$HOME/.doom.d/bin"
 
 export WORKSPACE="$HOME/workspace"
 export RISCV_PATH="/opt/riscv/"
