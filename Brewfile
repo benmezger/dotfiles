@@ -1,6 +1,5 @@
 # Taps
 tap "d12frosted/emacs-plus"
-tap "getantibody/tap"
 tap "git-chglog/git-chglog"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -14,7 +13,7 @@ brew "libyaml"
 brew "openssl@1.1"
 brew "readline", link: true
 brew "ansible"
-brew "antibody"
+brew "antidote"
 brew "asciinema"
 brew "aspell"
 brew "astyle"

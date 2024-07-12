@@ -20,3 +20,5 @@ export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 export VBLANK_MODE=1
 
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
+source /usr/share/zsh-antidote/antidote.zsh

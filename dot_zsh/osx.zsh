@@ -35,3 +35,5 @@ fi
 
 # completions
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
