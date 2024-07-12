@@ -509,3 +509,55 @@ so we make sure that it's put a column 1 so everything works nicely."
   :config
   ;; make ruff the priority
   (add-to-list 'apheleia-mode-alist '(python-mode . ruff)))
+
+
+(defun circe-network-connected-p (network)
+  "Return non-nil if there's any Circe server-buffer whose
+`circe-server-netwok' is NETWORK."
+  (catch 'return
+    (dolist (buffer (circe-server-buffers))
+      (with-current-buffer buffer
+        (if (string= network circe-server-network)
+            (throw 'return t))))))
+
+(defun circe-maybe-connect (network)
+  "Connect to NETWORK, but ask user for confirmation if it's
+already been connected to."
+  (interactive "sNetwork: ")
+  (if (or (not (circe-network-connected-p network))
+          (y-or-n-p (format "Already connected to %s, reconnect?" network)))
+      (circe network)))
+
+(defun irc ()
+  "Connect to IRC"
+  (interactive)
+  (circe-maybe-connect "irc.libera.chat"))
+
+(after! circe
+  (defun my-fetch-password (&rest params)
+    (require 'auth-source)
+    (let ((match (car (apply #'auth-source-search params))))
+      (if match
+          (let ((secret (plist-get match :secret)))
+            (if (functionp secret)
+                (funcall secret)
+              secret))
+        (error "Password not found for %S" params))))
+
+  (defun my-nickserv-password (server)
+    (my-fetch-password :user "seds" :host "irc.libera.chat"))
+
+  (setq circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}")
+  (setq circe-reduce-lurker-spam t)
+
+  (require 'lui-autopaste)
+  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+
+  (set-irc-server! "irc.libera.chat"
+    '(:tls t
+      :port 6697
+      :nick "seds"
+      :sasl-username "seds"
+      :logging t
+      :sasl-password my-nickserv-password
+      :channels (:after-auth "#emacs" "#python" "#archlinux" "#osdev"))))
