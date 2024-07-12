@@ -282,7 +282,8 @@
   (setq org-journal-dir "~/workspace/org/journal")
   (push org-journal-dir org-agenda-files)
   (setq org-journal-enable-agenda-integration t)
-  (setq org-journal-file-format "%Y%m%d.org.gpg"))
+  (setq org-journal-encrypt-journal t)
+  (setq org-journal-file-format "%Y%m%d.org"))
 
 (after! deft
   :defer t
