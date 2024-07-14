@@ -22,8 +22,8 @@
 {{- $workconf = true -}}
 {{- end -}}
 
-{{- if (env "DOTFILES_DESKTOP_MODE") -}}
-{{- $laptop_mode = false -}}
+{{- if (env "LAPTOP_MODE") -}}
+{{- $laptop_mode = true -}}
 {{- end }}
 
 {{- $name := "Ben Mezger" -}}
