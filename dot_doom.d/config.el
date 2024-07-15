@@ -3,7 +3,8 @@
 (setq doom-theme 'doom-monokai-spectrum
       display-line-numbers-type t
       default-directory "~/"
-      command-line-default-directory "~/")
+      command-line-default-directory "~/"
+      epa-armor t)
 
 (display-time-mode 1)
 (display-battery-mode 1)
