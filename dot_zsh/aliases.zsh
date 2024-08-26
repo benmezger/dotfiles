@@ -25,8 +25,8 @@ fi
 
 
 # if exa exist, alias to ls
-if (( ${+commands[exa]} )); then
-    alias ls='exa'
+if (( ${+commands[eza]} )); then
+    alias ls='eza'
     alias l='ls'
     alias ll='exa -l'
     alias lll='exa -l | less'
