@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 
 [bell]
@@ -995,7 +996,7 @@ multiplier = 3
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
+[terminal.shell]
 {{- if eq .chezmoi.os "darwin" }}
 {{ if eq .chezmoi.arch "arm64" -}}
 program = "/opt/homebrew/bin/zsh"
