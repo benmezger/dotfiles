@@ -7,7 +7,6 @@
   (citeproc-org-setup)
 
   (setq max-lisp-eval-depth 9999999999)
-  (setq max-specpdl-size 5)
 
   (toggle-debug-on-error)
   (toggle-debug-on-quit)
