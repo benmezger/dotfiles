@@ -46,6 +46,8 @@
     pkgs.scrot
     pkgs.gnumake
     pkgs.alacritty
+    pkgs.fd
+    pkgs._1password-gui
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
