@@ -44,11 +44,34 @@
     pkgs.tmux
     pkgs.sxhkd
     pkgs.scrot
-    pkgs.gnumake
     pkgs.alacritty
     pkgs.fd
     pkgs._1password-gui
-    # # Adds the 'hello' command to your environment. It prints a friendly
+    pkgs.arandr
+    pkgs.diff-so-fancy
+    pkgs.dmenu
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.dunst
+    pkgs.eza
+    pkgs.fasd
+    pkgs.feh
+    pkgs.httpie
+    pkgs.imagemagick
+    pkgs.ispell
+    pkgs.rofi
+    pkgs.calc
+    pkgs.discord
+    pkgs.xclip
+    pkgs.redshift
+    pkgs.htop
+    pkgs.geoclue2
+    pkgs.rofi-calc
+    pkgs.rofi-emoji
+    pkgs.noto-fonts-emoji-blob-bin
+    pkgs.conky
+
+    # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
 

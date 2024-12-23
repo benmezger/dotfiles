@@ -49,6 +49,30 @@
     vim
     git
     ripgrep
+    acpi
+    acpid
+    alsa-tools
+    alsa-utils
+    autoconf
+    binutils
+    bzip2
+    coreutils
+    cryptsetup
+    dhcpcd
+    findutils
+    gcc
+    libgcc
+    gnugrep
+    less
+    lvm2
+    gnumake
+    man
+    mlocate
+    nettools
+    gnused
+    gnutar
+    which
+    iucode-tool
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
