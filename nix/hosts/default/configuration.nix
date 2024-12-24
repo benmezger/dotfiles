@@ -34,6 +34,7 @@
         "plugdev"
         "input"
       ];
+      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZPZ+lDBETiLkDt5W7KqCwk67b2eTBbRqI923tjVhnS"];
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };
