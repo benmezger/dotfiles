@@ -80,6 +80,7 @@
        (sh +lsp)
        (javascript +lsp +tree-sitter)
        (ledger)
+       (nix)
 
        :email
        (notmuch +org)
