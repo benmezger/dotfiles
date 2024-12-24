@@ -74,6 +74,7 @@
     gnutar
     which
     iucode-tool
+    refind
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
