@@ -7,7 +7,8 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    open = true;
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 }
