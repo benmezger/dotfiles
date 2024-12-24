@@ -1,6 +1,6 @@
 # Common configuration for all hosts
 
-{ lib, inputs, outputs, ... }: {
+{ lib, inputs, outputs, config, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -31,7 +31,7 @@
       experimental-features = "nix-command flakes";
       trusted-users = [
         "root"
-        "your-user"
+        "${config.username}"
       ]; # Set users that are allowed to use the flake command
     };
     gc = {
