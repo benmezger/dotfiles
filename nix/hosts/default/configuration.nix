@@ -33,8 +33,8 @@
         "plugdev"
         "input"
       ];
-      hashedPassword = "8cd824c700eb0c125fff40c8c185d14c5dfe7f32814afac079ba7c20d93bc3c082193243c420fed22ef2474fbb85880e7bc1ca772150a1f759f8ddebca77711f";
-      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZPZ+lDBETiLkDt5W7KqCwk67b2eTBbRqI923tjVhnS"];
+      hashedPassword = config.hashedPassword;
+      openssh.authorizedKeys.keys = config.sshKeys;
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };

@@ -7,6 +7,8 @@
     timezone = mkOption { type = str; };
     locale = mkOption { type = str; };
     locale_settings = mkOption { type = attrs; };
+    hashedPassword = mkOption { type = str; };
+    sshKeys = mkOption { type = types.listOf str; };
   };
   config = {
     username = "seds";
@@ -24,5 +26,7 @@
       LC_TELEPHONE = "nl_NL.UTF-8";
       LC_TIME = "nl_NL.UTF-8";
     };
+    hashedPassword = "8cd824c700eb0c125fff40c8c185d14c5dfe7f32814afac079ba7c20d93bc3c082193243c420fed22ef2474fbb85880e7bc1ca772150a1f759f8ddebca77711f";
+    sshKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZPZ+lDBETiLkDt5W7KqCwk67b2eTBbRqI923tjVhnS"];
   };
 }
