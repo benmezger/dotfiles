@@ -79,6 +79,7 @@
        (rust +eglot)
        (sh +lsp)
        (javascript +lsp +tree-sitter)
+       (ledger)
 
        :email
        (notmuch +org)
