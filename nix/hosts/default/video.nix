@@ -10,5 +10,9 @@
 
   hardware.opengl.enable = true;
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.nvidia_x11
+  ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
