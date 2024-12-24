@@ -16,6 +16,7 @@
     ];
 
   services.openssh.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   time.timeZone = config.timezone;
 
