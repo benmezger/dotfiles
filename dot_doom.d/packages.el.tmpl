@@ -32,3 +32,7 @@
 {{ if .secrets -}}
 (package! org-ai)
 {{- end }}
+;; TODO: check if running on nix
+{{- if ne .chezmoi.os "darwin" }}
+(package! exwm)
+{{- end }}
