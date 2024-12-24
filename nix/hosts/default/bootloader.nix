@@ -2,6 +2,7 @@
 
 {
   boot = {
+    kernelParams = ["module_blacklist=i915"];
     supportedFilesystems = ["btrfs"];
     loader = {
       efi = {
