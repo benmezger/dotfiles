@@ -124,6 +124,12 @@
     # EDITOR = "emacs";
   };
 
+  home.activation.createDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p $HOME/workspace
+    mkdir -p $HOME/documents
+    mkdir -p $HOME/downloads
+  '';
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
