@@ -70,6 +70,9 @@
     pkgs.conky
     pkgs.xdg-user-dirs
     pkgs.antidote
+    pkgs.pyenv
+    pkgs.lua
+    pkgs.python311
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
