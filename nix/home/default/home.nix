@@ -45,7 +45,6 @@
     pkgs.scrot
     pkgs.alacritty
     pkgs.fd
-    pkgs._1password-gui
     pkgs.arandr
     pkgs.diff-so-fancy
     pkgs.dmenu
@@ -70,7 +69,6 @@
     pkgs.noto-fonts-emoji-blob-bin
     pkgs.conky
     pkgs.xdg-user-dirs
-    pkgs._1password-cli
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

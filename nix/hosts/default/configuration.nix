@@ -77,6 +77,8 @@
     iucode-tool
     refind
     gnome-keyring
+    _1password-gui
+    _1password-cli
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -86,6 +88,13 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # https://discourse.nixos.org/t/findutils-missing-locate-and-updatedb/27557/4
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [config.username];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
