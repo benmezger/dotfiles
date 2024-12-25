@@ -66,7 +66,6 @@
     pkgs.geoclue2
     pkgs.rofi-calc
     pkgs.rofi-emoji
-    pkgs.noto-fonts-emoji-blob-bin
     pkgs.conky
     pkgs.xdg-user-dirs
     pkgs.antidote

@@ -113,6 +113,8 @@
   fonts.packages = [
     pkgs.nerd-fonts.hack
     pkgs.font-awesome
+    pkgs.noto-fonts-emoji-blob-bin
+    pkgs.source-code-pro
   ];
 
   fonts.fontconfig.enable = true;
