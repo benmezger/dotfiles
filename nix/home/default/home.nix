@@ -76,6 +76,11 @@
     pkgs.wmctrl
     pkgs.poetry
     pkgs.xbindkeys
+    pkgs.networkmanagerapplet
+    pkgs.xautolock
+    pkgs.xss-lock
+    pkgs.blueman
+    pkgs.xorg.setxkbmap
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
