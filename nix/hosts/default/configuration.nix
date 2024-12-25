@@ -96,6 +96,8 @@
     polkitPolicyOwners = [config.username];
   };
 
+  programs.dconf.enable = true;
+
   services.locate.enable = true;
 
   # This value determines the NixOS release from which the default

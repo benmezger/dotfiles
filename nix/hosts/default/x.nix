@@ -9,12 +9,16 @@
       xterm.enable = false;
     };
 
-    windowManager.exwm = {
+    windowManager.i3 = {
       enable = true;
+      extraPackages = with pkgs; [
+        i3status-rust
+        i3lock
+      ];
     };
   };
 
-  services.displayManager.defaultSession = "none+exwm";
+  services.displayManager.defaultSession = "none+i3";
 
   # Configure keymap in X11
   services.xserver.xkb = {
