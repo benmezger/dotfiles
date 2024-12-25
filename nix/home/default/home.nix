@@ -81,6 +81,7 @@
     pkgs.xss-lock
     pkgs.blueman
     pkgs.xorg.setxkbmap
+    pkgs.pciutils
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
