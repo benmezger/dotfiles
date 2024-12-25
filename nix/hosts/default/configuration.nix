@@ -79,6 +79,7 @@
     gnome-keyring
     _1password-gui
     _1password-cli
+    upower
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
