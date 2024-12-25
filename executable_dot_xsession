@@ -4,16 +4,12 @@
 . $HOME/.env-secrets
 
 # default wm
-WM="/usr/bin/i3"
+WM=$(which i3)
 
 if [ -n "$WM" ] && [ -x "$WM" ]; then
         exec "$WM"
-elif [ -f /usr/bin/qtile ]; then
+elif which qtile >/dev/null 2>&1; then
         exec /usr/bin/qtile start
-elif [ -f /usr/local/bin/dwm ]; then
+elif which dwm >/dev/null 2>&1; then
         . $HOME/.bin/startdwm
-elif [ -f /usr/bin/i3 ]; then
-        exec i3
-elif [ -f /usr/local/bin/dwm ]; then
-	. $HOME/.bin/startdwm
 fi
