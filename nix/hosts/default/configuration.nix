@@ -24,7 +24,7 @@
   i18n.extraLocaleSettings = config.locale_settings;
 
   users.users = {
-    "${config.username}"= {
+    "${config.username}" = {
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
@@ -34,11 +34,15 @@
         "plugdev"
         "input"
       ];
+      shell = pkgs.zsh;
+      ignoreShellProgramCheck = true;
+
       hashedPassword = config.hashedPassword;
       openssh.authorizedKeys.keys = config.sshKeys;
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };
+
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
