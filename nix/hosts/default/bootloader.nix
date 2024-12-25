@@ -15,6 +15,7 @@
         device = "nodev";
         efiSupport = true;
         enableCryptodisk = true;
+        gfxmodeEfi = "1920x1440";
       };
     };
     initrd.luks.devices = {
