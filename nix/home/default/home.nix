@@ -73,6 +73,7 @@
     pkgs.pyenv
     pkgs.lua
     pkgs.python311
+    pkgs.xdotool
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
