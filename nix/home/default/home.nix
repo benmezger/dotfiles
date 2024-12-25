@@ -74,6 +74,7 @@
     pkgs.lua
     pkgs.python311
     pkgs.xdotool
+    pkgs.wmctrl
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
