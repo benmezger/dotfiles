@@ -75,6 +75,7 @@
     pkgs.python311
     pkgs.xdotool
     pkgs.wmctrl
+    pkgs.poetry
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
