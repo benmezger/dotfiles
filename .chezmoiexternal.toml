@@ -45,3 +45,10 @@
     type = "file"
     executable = true
     url = "https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py"
+
+{{- if eq .chezmoi.os "linux" }}
+[".bin/i3-autodisplay"]
+    type = "file"
+    executable = true
+    url = "https://github.com/lpicanco/i3-autodisplay/releases/download/v0.6/i3-autodisplay-0.6-linux-amd64"
+{{- end }}
