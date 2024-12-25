@@ -10,6 +10,7 @@ if (( $+commands[nix-env] )); then
 	export ZSH_WAKATIME_BIN="$HOME/.nix-profile/bin/wakatime-cli"
 
 	source $HOME/.nix-profile/share/antidote/antidote.zsh
+	source $HOME/.nix-profile/share/zsh/site-functions/_pyenv
 else
 	source /usr/share/fzf/completion.zsh
 	source /usr/share/fzf/key-bindings.zsh
@@ -17,6 +18,8 @@ else
 	export ZSH_WAKATIME_BIN="/usr/bin/wakatime"
 
 	source /usr/share/zsh-antidote/antidote.zsh
+
+	source $(pyenv root)/completions/pyenv.zsh
 fi
 
 # docker

@@ -38,3 +38,4 @@ fi
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+source $(pyenv root)/completions/pyenv.zsh
