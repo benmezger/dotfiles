@@ -7,15 +7,19 @@
 {{ if and (not .minimal) (and .secrets) -}}
 (use-package! wakatime-mode
   :init
-  {{ if eq .chezmoi.os "darwin" -}}
-  {{ if eq .chezmoi.arch "arm64" -}}
+  {{- if eq .chezmoi.os "darwin" -}}
+  {{- if eq .chezmoi.arch "arm64" -}}
   (setq wakatime-cli-path "/opt/homebrew/bin/wakatime-cli")
-  {{ else -}}
+  {{- else -}}
   (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")
-  {{ end -}}
-  {{ else -}}
+  {{- end -}}
+  {{- else -}}
+  {{- if eq .chezmoi.osRelease.id "nixos" }}
+  (setq wakatime-cli-path "~/.nix-profile/bin/wakatime-cli")
+  {{- else -}}
   (setq wakatime-cli-path "/usr/bin/wakatime")
-  {{ end -}}
+  {{- end -}}
+  {{- end }}
 
   :config
   (global-wakatime-mode))
