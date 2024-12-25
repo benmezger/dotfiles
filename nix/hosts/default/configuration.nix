@@ -103,6 +103,11 @@
 
   programs.dconf.enable = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glibc
+  ];
+
   services.locate.enable = true;
 
   fonts.packages = [
