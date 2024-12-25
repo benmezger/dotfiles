@@ -1,7 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(load "~/.doom.d/elisp/exwm.el")
-
 (setq doom-theme 'doom-monokai-spectrum
       display-line-numbers-type t
       default-directory "~/"
