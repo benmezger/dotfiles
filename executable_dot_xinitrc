@@ -23,7 +23,6 @@ isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable xss-lock && xss-lock -- ~/.bin/lock &
 isavailable unclutter && unclutter &
 isavailable blueman-applet && blueman-applet &
-isavailable solaar && solaar --window hide &
 isavailable setxkbmap && setxkbmap -option caps:escape &
 isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
