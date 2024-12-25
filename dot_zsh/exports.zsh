@@ -19,8 +19,14 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
-export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/.config/emacs/bin:$HOME/.doom.d/bin"
+
+if [[ ${OSTYPE} == darwin* ]]; then
+	source $HOME/.zsh/osx.zsh
+else
+	source $HOME/.zsh/linux.zsh
+fi
 
 export WORKSPACE="$HOME/workspace"
 export RISCV_PATH="/opt/riscv/"
@@ -112,12 +118,6 @@ fi
 
 if [[ -d "/opt/xilinx/Vivado/2021.2/bin" ]]; then
 	export PATH="$PATH:/opt/xilinx/Vivado/2021.2/bin"
-fi
-
-if [[ ${OSTYPE} == darwin* ]]; then
-	source $HOME/.zsh/osx.zsh
-else
-	source $HOME/.zsh/linux.zsh
 fi
 
 # FZF
