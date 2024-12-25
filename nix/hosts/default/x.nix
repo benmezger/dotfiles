@@ -19,6 +19,13 @@
   };
 
   services.displayManager.defaultSession = "none+i3";
+  services.xserver.displayManager.session = [{
+    manage = "desktop";
+    name = "xsession";
+    start = ''
+      exec ~/.xsession
+    '';
+  }];
 
   # Configure keymap in X11
   services.xserver.xkb = {
