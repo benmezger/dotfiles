@@ -115,6 +115,7 @@
     pkgs.font-awesome
     pkgs.noto-fonts-emoji-blob-bin
     pkgs.source-code-pro
+    pkgs.hack-font
   ];
 
   fonts.fontconfig.enable = true;
