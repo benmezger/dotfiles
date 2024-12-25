@@ -69,6 +69,7 @@
     pkgs.noto-fonts-emoji-blob-bin
     pkgs.conky
     pkgs.xdg-user-dirs
+    pkgs.antidote
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -130,4 +131,5 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.zsh.antidote.enable = true;
 }
