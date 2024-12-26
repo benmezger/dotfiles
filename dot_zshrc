@@ -30,7 +30,6 @@ source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
 source $HOME/.zsh/keys.zsh
 source $HOME/.zsh/aliases.zsh
-#source $HOME/.zsh/gpg-agent.zsh
 
 # load base16 themes if on terminal
 if [[ -n $DISPLAY ]]; then
