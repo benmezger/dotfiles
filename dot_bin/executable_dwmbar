@@ -10,20 +10,6 @@ dte() {
     echo -e "$(date +'%a %d %b %y')"
 }
 
-vpn() {
-    output="$(nordvpn status | grep Connected)"
-    if [[ -n $output ]] then
-       country="$(nordvpn status \
-           | grep Country \
-           | sed s/'Country: '// \
-           | tr '[:upper:]' '[:lower:]')"
-
-       echo -e "vpn/c @ $country"
-    else
-        echo -e "vpn/n"
-    fi
-}
-
 bat() {
     if [ "$laptop_mode" = "true" ]; then
         echo "| $(bash $HOME/.bin/battery-stats) "

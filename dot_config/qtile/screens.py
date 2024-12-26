@@ -1,7 +1,6 @@
 import webbrowser
 from libqtile import bar, widget, hook, qtile
 from libqtile.config import Screen
-from widgets import NordVPN
 from theme import gruvbox_dark
 
 widget_defaults = dict(
