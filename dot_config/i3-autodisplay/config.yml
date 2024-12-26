@@ -1,8 +1,8 @@
 # from: https://github.com/lpicanco/i3-autodisplay
 displays:
-  - name: HDMI-1
+  - name: HDMI-1 # bottom
     workspaces: [1]
-    randr_extra_options: "--primary --pos 2160x1377 --rotate normal"
-  - name: HDMI-0
+    randr_extra_options: "--primary --rotate normal --pos 0x2160"
+  - name: HDMI-0 # top
     workspaces: [11]
-    randr_extra_options: "--pos 0x0 --rotate right"
+    randr_extra_options: "--pos 0x0 --rotate normal"
