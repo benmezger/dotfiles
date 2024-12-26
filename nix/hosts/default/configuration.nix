@@ -33,6 +33,7 @@
         "video"
         "plugdev"
         "input"
+        "power"
       ];
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
