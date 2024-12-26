@@ -11,46 +11,40 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
+  fileSystems."/" = {
+      device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" ];
+      options = ["subvol=@" "compress=zstd"];
+      neededForBoot = true;
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
+  fileSystems."/home" = {
+      device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" ];
+      options = ["subvol=@home" "compress=zstd"];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/02fc10a5-c3f0-45c3-8766-95c9d84a4f60";
+  fileSystems."/nix" = {
+      device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
+      fsType = "btrfs";
+      options = ["subvol=@nix" "compress=zstd" "noatime"];
+      neededForBoot = true;
+    };
+
+  fileSystems."/.snapshots" = {
+      device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
+      fsType = "btrfs";
+      options = ["subvol=@snapshots" "compress=zstd"];
+    };
+
+  fileSystems."/boot" = {
+      device = "/dev/disk/by-uuid/02fc10a5-c3f0-45c3-8766-95c9d84a4f60";
       fsType = "ext2";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/56F6-FFB4";
+  fileSystems."/boot/efi" = {
+      device = "/dev/disk/by-uuid/56F6-FFB4";
       fsType = "vfat";
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" "noatime"];
-      neededForBoot = true;
-    };
-
-  fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
-      fsType = "btrfs";
-      options = [ "subvol=@persist" "compress=zstd" "noatime"];
-    };
-
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
-      fsType = "btrfs";
-      options = [ "subvol=/@/@log" "compress=zstd" "noatime"];
-      neededForBoot = true;
     };
 
   swapDevices = [
