@@ -1,4 +1,4 @@
-#!/usr/bin/bash -i
+#!/usr/bin/env bash
 
 # Author: Ben Mezger <me@benmezger.nl>
 # Created at <2020-10-02 Fri 08:53>
