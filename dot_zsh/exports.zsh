@@ -1,23 +1,20 @@
 # general exports
-export PROJECT_HOME=$HOME/workspace
 export EDITOR=$HOME/.bin/editor
 export VISUAL=$HOME/.bin/editor
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # vim mode key lag
 export PYTHONSTARTUP="$HOME/.pythonrc"
-export MAKEFLAGS="-j4 -l5"
 
+export MAKEFLAGS="-j4 -l5"
 if [ -f "$(which nproc)" ]; then
 	export MAKEFLAGS="-j$(nproc) -l5"
-else
-	export MAKERANGE="-j5 -l5"
 fi
 
 export GPGKEY=0x7357E344D6C3C795
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/.config/emacs/bin:$HOME/.doom.d/bin"
@@ -141,6 +138,20 @@ HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup &&
 	test -f $HEROKU_AC_ZSH_SETUP_PATH &&
 	source $HEROKU_AC_ZSH_SETUP_PATH
 
-# 1password
-# default to personal account
+# 1password. Default to personal account
 export OP_ACCOUNT=my.1password.com
+
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+# less Colours
+if [[ ${PAGER} == 'less' ]]; then
+    (( ! ${+LESS_TERMCAP_mb} )) && export LESS_TERMCAP_mb=$'\E[1;31m'   # Begins blinking.
+    (( ! ${+LESS_TERMCAP_md} )) && export LESS_TERMCAP_md=$'\E[1;31m'   # Begins bold.
+    (( ! ${+LESS_TERMCAP_me} )) && export LESS_TERMCAP_me=$'\E[0m'      # Ends mode.
+    (( ! ${+LESS_TERMCAP_se} )) && export LESS_TERMCAP_se=$'\E[0m'      # Ends standout-mode.
+    (( ! ${+LESS_TERMCAP_so} )) && export LESS_TERMCAP_so=$'\E[7m'      # Begins standout-mode.
+    (( ! ${+LESS_TERMCAP_ue} )) && export LESS_TERMCAP_ue=$'\E[0m'      # Ends underline.
+    (( ! ${+LESS_TERMCAP_us} )) && export LESS_TERMCAP_us=$'\E[1;32m'   # Begins underline.
+fi
+
+# grep
+export GREP_OPTIONS='-i --color'

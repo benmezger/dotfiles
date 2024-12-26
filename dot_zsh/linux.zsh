@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
-export PATH="$PATH:$HOME/.nix-profile/bin/:/run/current-system/sw/bin/"
+export PATH="$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH"
 
 if (( $+commands[nix-env] )); then
+	export PATH="$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH"
 	export PATH="/run/wrappers/bin/:$PATH:/bin"
+
 	source $HOME/.nix-profile/share/fzf/completion.zsh
 	source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
@@ -35,4 +37,3 @@ export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 export VBLANK_MODE=1
 
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
-
