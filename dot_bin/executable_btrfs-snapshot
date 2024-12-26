@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HOME_PATH=/home
 ROOT_PATH=/
