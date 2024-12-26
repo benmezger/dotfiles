@@ -145,3 +145,10 @@ if (( $+commands[pacman] )); then
 fi
 
 alias ptrypyenv="poetry env use $(pyenv which python)"
+
+nixswitch() {
+    local prev_dir=$PWD
+    cd ~/workspace/nix || return
+    sudo nixos-rebuild switch --flake .#default
+    cd "$prev_dir"
+}
