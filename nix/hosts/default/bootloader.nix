@@ -2,6 +2,7 @@
 
 {
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["module_blacklist=i915"];
     supportedFilesystems = ["btrfs"];
     kernelModules = [ "kvm-intel" ];
