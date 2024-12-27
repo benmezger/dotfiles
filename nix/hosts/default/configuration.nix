@@ -11,12 +11,10 @@
       ./networking.nix
       ./bootloader.nix
       ./x.nix
+      ./apps.nix
       ./../../variables.nix
       inputs.home-manager.nixosModules.home-manager
     ];
-
-  services.openssh.enable = true;
-  services.gnome.gnome-keyring.enable = true;
 
   time.timeZone = config.timezone;
 
@@ -108,8 +106,6 @@
   programs.nix-ld.libraries = with pkgs; [
     glibc
   ];
-
-  services.locate.enable = true;
 
   fonts.packages = [
     pkgs.nerd-fonts.hack
