@@ -152,3 +152,7 @@ nixswitch() {
     sudo nixos-rebuild switch --flake .#default
     cd "$prev_dir"
 }
+
+if (( $+commands[ledger] )); then
+	alias led="ledger --strict -f $HOME/workspace/ledger/finances.ledger.gpg"
+fi
