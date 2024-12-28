@@ -30,5 +30,10 @@
         };
       };
     };
+    kernel = {
+      sysctl = {
+        "dmesg_restrict" = 0;
+      };
+    };
   };
 }
