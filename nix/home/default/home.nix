@@ -86,6 +86,7 @@
     pkgs.gnupg
     pkgs.jq
     pkgs.tradingview
+    pkgs.capitaine-cursors
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
