@@ -20,7 +20,6 @@ isavailable picom && picom --config ~/.config/picom.conf &
 isavailable nm-applet && nm-applet &
 isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
-isavailable xss-lock && xss-lock -- ~/.bin/lock &
 isavailable unclutter && unclutter &
 isavailable blueman-applet && blueman-applet &
 isavailable setxkbmap && setxkbmap -option caps:escape &
