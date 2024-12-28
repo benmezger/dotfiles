@@ -88,6 +88,7 @@
     pkgs.tradingview
     pkgs.capitaine-cursors
     pkgs.pulseaudio
+    pkgs.haskellPackages.greenclip
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
