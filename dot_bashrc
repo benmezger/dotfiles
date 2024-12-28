@@ -38,10 +38,10 @@ fi
 
 # set vi-mode
 set -o vi
+bind 'set show-mode-in-prompt off'
 
 # setup nice colors
 eval `dircolors ~/.dircolors`
-export PS1="[@\[$(tput sgr0)\]\[\033[38;5;45m\]\W\[$(tput sgr0)\]] \\$ \[$(tput sgr0)\]"
 
 # env-secrets
 if [ -f "$HOME/.env-secrets" ]; then
