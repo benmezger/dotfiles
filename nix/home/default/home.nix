@@ -151,6 +151,10 @@
     mkdir -p $HOME/downloads
   '';
 
+  home.activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
+      ${pkgs.chezmoi}/bin/chezmoi init -S $HOME/workspace/dotfiles benmezger/dotfiles
+  '';
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.zsh.antidote.enable = true;
