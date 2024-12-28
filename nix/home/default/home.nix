@@ -41,7 +41,7 @@
     pkgs.gnuplot
     pkgs.picom
     pkgs.gist
-    pkgs.unclutter
+    pkgs.unclutter-xfixes
     pkgs.wakatime
     pkgs.tmux
     pkgs.sxhkd
