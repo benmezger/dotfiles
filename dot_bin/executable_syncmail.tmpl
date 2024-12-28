@@ -35,21 +35,9 @@ MAILDIR = pathlib.Path(MAILDIR)
 PERSONAL_MAILDIR = MAILDIR.joinpath("personal")
 WORK_MAILDIR = MAILDIR.joinpath("work") if len(WORK_EMAIL) else None
 
-NOTMUCH_BIN = (
-    pathlib.Path().joinpath("/usr/local/bin/notmuch")
-    if os.uname().sysname == "Darwin"
-    else pathlib.Path().joinpath("/usr/bin/notmuch")
-)
-
+NOTMUCH_BIN = "notmuch"
 AFEW_BIN = "afew"
-
-MBSYNC_BIN = (
-    pathlib.Path().joinpath("/usr/local/bin/mbsync")
-    if os.uname().sysname == "Darwin" and os.uname().machine != "arm64"
-    else pathlib.Path().joinpath("/opt/homebrew/bin/mbsync")
-    if os.uname().sysname == "Darwin" and os.uname().machine == "arm64"
-    else pathlib.Path().joinpath("/usr/bin/mbsync")
-)
+MBSYNC_BIN = "mbsync"
 
 FILENAME = __file__.split("/")[-1].strip(".py")
 LOCKFILE = pathlib.Path().joinpath(f"/tmp/{FILENAME}.flock")
