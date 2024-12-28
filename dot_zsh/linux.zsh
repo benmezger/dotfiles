@@ -3,6 +3,8 @@
 export PATH="$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH"
 
 if (( $+commands[nix-env] )); then
+	export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+	export NIX_PATH="$NIX_PATH:nixos-config=$HOME/workspace/nix/hosts/default/configuration.nix"
 	export PATH="$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH"
 	export PATH="/run/wrappers/bin/:$PATH:/bin"
 
