@@ -15,6 +15,7 @@ if (( $+commands[nix-env] )); then
 
 	source $HOME/.nix-profile/share/antidote/antidote.zsh
 	source $HOME/.nix-profile/share/zsh/site-functions/_pyenv
+	source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 else
 	source /usr/share/fzf/completion.zsh
 	source /usr/share/fzf/key-bindings.zsh
