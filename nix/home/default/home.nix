@@ -87,6 +87,7 @@
     pkgs.jq
     pkgs.tradingview
     pkgs.capitaine-cursors
+    pkgs.pulseaudio
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
