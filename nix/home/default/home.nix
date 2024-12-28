@@ -26,10 +26,10 @@
     pkgs.chezmoi
     pkgs.google-chrome
     pkgs.emacs
-    (pkgs.ledger.override {
-      gpgmeSupport = true;
-      python3 = true;
-    })
+    # (pkgs.ledger.override {
+    #   gpgmeSupport = true;
+    #   python3 = true;
+    # })
     pkgs.hugo
     pkgs.notmuch
     pkgs.isync
