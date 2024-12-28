@@ -5,7 +5,11 @@ pinentry-program /opt/homebrew/bin/pinentry-mac
 pinentry-program /usr/local/bin/pinentry-mac
 {{ end -}}
 {{ else -}}
+{{ if eq .chezmoi.osRelease.id "nixos" -}}
+pinentry-program {{ .chezmoi.homeDir }}/.nix-profile/bin/pinentry-gtk-2
+{{ else -}}
 pinentry-program /usr/bin/pinentry-qt
+{{ end -}}
 {{ end -}}
 default-cache-ttl 18000
 enable-ssh-support
