@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs, outputs, pkgs, ... }:
+{ userConf, config, inputs, outputs, pkgs, ... }:
 
 {
   imports =
@@ -12,17 +12,16 @@
       ./bootloader.nix
       ./x.nix
       ./apps.nix
-      ./../../../conf.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  time.timeZone = config.timezone;
+  time.timeZone = userConf.timezone;
 
-  i18n.defaultLocale = config.locale;
-  i18n.extraLocaleSettings = config.locale_settings;
+  i18n.defaultLocale = userConf.locale;
+  i18n.extraLocaleSettings = userConf.locale_settings;
 
   users.users = {
-    "${config.username}" = {
+    "${userConf.username}" = {
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
@@ -36,8 +35,8 @@
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
 
-      hashedPassword = config.hashedPassword;
-      openssh.authorizedKeys.keys = config.sshKeys;
+      hashedPassword = userConf.hashedPassword;
+      openssh.authorizedKeys.keys = userConf.sshKeys;
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };
@@ -45,7 +44,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
-    users."${config.username}" = import (builtins.toPath ../../home/default/default.nix);
+    users."${userConf.username}" = import (builtins.toPath ../../home/default/default.nix);
   };
 
   # List packages installed in system profile. To search, run:
@@ -98,7 +97,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [config.username];
+    polkitPolicyOwners = [userConf.username];
   };
 
   programs.dconf.enable = true;

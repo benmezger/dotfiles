@@ -22,23 +22,23 @@
       evaledConfig = nixpkgs.lib.evalModules {
         modules = [ ./conf.nix ];
       };
-      config = evaledConfig.config;
+      userConf = evaledConfig.config;
     in {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {
         "default" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit userConf inputs outputs; };
           modules = [ ./nixos/hosts/default ];
         };
       };
 
       homeConfigurations = {
-        "${config.username}@${config.hostname}" = home-manager.lib.homeManagerConfiguration {
+        "${userConf.username}@${userConf.hostname}" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit userConf inputs outputs;
           };
           modules = [ ./nixos/home/default/default.nix ];
         };

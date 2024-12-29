@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ userConf, lib, pkgs, ... }:
 
 {
-  networking.hostName = config.hostname;
+  networking.hostName = userConf.hostname;
   networking.networkmanager.enable = true;
 
   networking.useDHCP = lib.mkDefault true;
