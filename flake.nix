@@ -30,7 +30,7 @@
       nixosConfigurations = {
         "default" = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit userConf inputs outputs; };
-          modules = [ ./nixos/hosts/default ];
+          modules = [ ./hosts/default ];
         };
       };
 
@@ -40,7 +40,7 @@
           extraSpecialArgs = {
             inherit userConf inputs outputs;
           };
-          modules = [ ./nixos/home/default/default.nix ];
+          modules = [ ./home/default/default.nix ];
         };
       };
     };
