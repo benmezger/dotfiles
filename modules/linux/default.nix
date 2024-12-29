@@ -9,5 +9,11 @@
     ./greenclip.nix
     ./gnome.nix
     ./grub.nix
+    ./1password.nix
+    ./dconf.nix
+    ./locate.nix
+    ./ssh.nix
+    ./fonts.nix
+    ./gnupg.nix
   ];
 }

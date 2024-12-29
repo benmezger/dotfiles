@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./fonts.nix
-    ./gnupg.nix
+    ./homebrew.nix
+    ./trackpad.nix
   ];
 }

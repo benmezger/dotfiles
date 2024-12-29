@@ -16,7 +16,5 @@ in
       pkgs.source-code-pro
       pkgs.hack-font
     ];
-
-    fonts.fontconfig.enable = true;
   };
 }

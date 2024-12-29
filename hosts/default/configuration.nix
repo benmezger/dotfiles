@@ -29,6 +29,17 @@
   i18n.defaultLocale = userConf.locale;
   i18n.extraLocaleSettings = userConf.locale_settings;
 
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    settings = {
+      auto-optimise-store = true;
+    };
+  };
+
   users.users = {
     "${userConf.username}" = {
       isNormalUser = true;

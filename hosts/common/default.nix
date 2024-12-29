@@ -28,17 +28,11 @@
 
   nix = {
     settings = {
-      auto-optimise-store = true;
       experimental-features = "nix-command flakes";
       trusted-users = [
         "root"
         "${userConf.username}"
       ]; # Set users that are allowed to use the flake command
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
     };
     optimise.automatic = true;
     registry = (lib.mapAttrs (_: flake: { inherit flake; }))

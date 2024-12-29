@@ -3,6 +3,14 @@
 {
   options = with lib; with types; {
     username = mkOption { type = str; };
+    osx_username = mkOption {
+      type = str;
+      default = username;
+    };
+    osx_hostname = mkOption {
+      type = str;
+      default = hostname;
+    };
     hostname = mkOption { type = str; };
     timezone = mkOption { type = str; };
     locale = mkOption { type = str; };
@@ -12,7 +20,9 @@
   };
   config = {
     username = "seds";
+    osx_username = "benmezger";
     hostname = "lenin";
+    osx_hostname = "work";
     timezone = "Europe/Amsterdam";
     locale = "en_US.UTF-8";
     locale_settings = {

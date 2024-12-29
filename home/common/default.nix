@@ -34,8 +34,8 @@
     };
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users."${userConf.username}" = import (builtins.toPath ./default.nix);
-  };
+  #home-manager = {
+  #  extraSpecialArgs = { inherit inputs outputs; };
+  #  users."${userConf.username}" = import (builtins.toPath ./default.nix);
+  #};
 }
