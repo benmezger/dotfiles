@@ -24,7 +24,13 @@
   home.packages = [
     pkgs.git
     pkgs.chezmoi
-    pkgs.google-chrome
+    (pkgs.google-chrome.override {
+      commandLineArgs = ''
+          --force-device-scale-factor=1.8
+          --force-dark-mode
+          --enable-features=WebUIDarkMode
+      '';
+    })
     pkgs.emacs
     # (pkgs.ledger.override {
     #   gpgmeSupport = true;
