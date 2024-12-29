@@ -1,4 +1,7 @@
 ## Personal Setup
+**👷 Note:** I am working on refactoring the structure to introduce my Nix
+configuration along with my dotfiles. You can get my `dotfiles` on the
+[chezmoi](./chezmoi) directory.
 
 ### Requirements
 
