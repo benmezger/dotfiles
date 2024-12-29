@@ -1,101 +1,61 @@
-## Installing this configuration
+## Personal Setup
 
 ### Requirements
 
 - Chezmoi
-- Archlinux or OSX
+- Arch Linux, NixOS, or macOS
 
-### Installing
+### Installation
 
-**Note:** You need to set the `env` variable `SECRETS_OFF=1` to disable
-1password. Not passing will make chezmoi fail when connecting to my 1password
-account ¯\_(ツ)_/¯.
+#### Without NixOS
 
-The following environment variables can be set to configure chezmoi when
-applying changed:
-
-- `ASK`: Set to `1` if you want to enable chezmoi prompt
-- `SECRETS_OFF`: Set to `1` to enable 1Password (uses my personal secrets set in
-  `.chezmoi.yaml`)
-- `DOTFILES_MINIMAL`: Set to `1` if you want to install the minimal version
-- `WORKCONF`: Set to `1` to enable work configuration (work email, etc)
-
-For example: `ASK=1 chezmoi apply` to enable prompt or `DOTFILES_MINIMAL=1
-chezmoi apply` for applying the minimal version.
-
-#### Install with chezmoi
+**⚠️ Note:** _If you're not me, you won't have access to my 1Password account. To
+prevent chezmoi from applying files with secrets, set the `SECRETS_OFF=1`
+environment variable. If you do not use this flag, chezmoi will fail when
+attempting to connect to my 1Password account ¯\_(ツ)_/¯._
 
 ```shell
 SECRETS_OFF=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
 ```
 
-#### Minimal version
+#### With NixOS
 
-The minimal version installs only the essentials.
-
-- zsh
-- git
-- vim
-- emacs
-- tmux
-- curl
-- alacritty
-- neovim
-- user-dirs
-- editorconfig
-- dircolors
+This method is guaranteed to work out of the box since `chezmoi` will not
+attempt to download all dependencies. To install my NixOS configuration, simply
+run the following command in the [./nix](./nix) directory:
 
 ```shell
-SECRETS_OFF=1 DOTFILES_MINIMAL=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
+sudo nixos-rebuild switch --flake .#default
 ```
 
-#### Makefile
+### Environment Variables
 
-You can clone this repository and use the Makefile to apply the changes +
-install dependencies.
+The following environment variables can be used to configure `chezmoi` during
+initialization and when applying changes:
 
-``` shell
-make apply or make all
-make fix-permissions
-make install-required-dependencies
-make install-extra-dependencies
-make install-pyenv
-make install-go-dependencies
-make install git-dependencies
-make configure-osx
-make configure-linux
-```
+- `ASK`: Set to `1` to enable prompts in `chezmoi`.
+- `SECRETS_OFF`: Set to `1` to disable 1Password integration (uses my personal
+  secrets defined in `.chezmoi.yaml`).
+- `DOTFILES_MINIMAL`: Set to `1` to install the minimal version of the dotfiles.
+- `WORKCONF`: Set to `1` to enable work-related configurations (e.g., work
+  email, etc.).
 
-## Keybindings
-
-### OSX
-
-- `fn + cmd - e` - opens emacs
-- `fn + cmd - i` - opens firefox
-- `fn + cmd - f` - opens finder in $HOME
-- `cmd + return` - opens alacritty
-
-#### MPC
-
-- `fn + cmd - f1` - mpc play
-- `fn + cmd - f2` - mpc pause
-- `fn + cmd - f3` - mpc prev
-- `fn + cmd - f4` - mpc next
-- `fn + cmd - f5` - mpc volume -10
-- `fn + cmd - f6` - mpc volume +10
+For example, run `ASK=1 chezmoi apply` to enable prompts or `DOTFILES_MINIMAL=1
+chezmoi apply` to generate the minimal configuration.
 
 ## Troubleshooting
 
-### Chezmoi does not seem to reload the configuration
+### Chezmoi Is Not Reloading the Configuration
 
-Run `chezmoi init <dotfiles-path>` again. This should reload the configuration
-by copying [chezmoi.yaml](.chezmoi.yaml.tmpl) to `$HOME/.config/chezmoi/chezmoi.yaml`.
+Run `chezmoi init <dotfiles-path>` again. This will reload the configuration by
+regenerating [chezmoi.yaml](.chezmoi.yaml.tmpl) in
+`$HOME/.config/chezmoi/chezmoi.yaml`.
 
-### Sourcing env with i3
+### Sourcing Environment Variables With i3
 
-For some reason, i3 is sourcing `.xprofile` instead of `xinitrc`, so for
-getting Github plugin for the [i3status-rust](dot_config/i3/status.toml) you need to set up a variable in
-your `.xprofile`
+For some reason, i3 sources `.xprofile` instead of `.xinitrc`. To get the GitHub
+plugin for [i3status-rust](dot_config/i3/status.toml) to work, you need to set a
+variable in your `.xprofile`:
 
 ```shell
 export I3RS_GITHUB_TOKEN="your-github-token"
@@ -103,11 +63,11 @@ export I3RS_GITHUB_TOKEN="your-github-token"
 
 ## Screenshots
 
-### OSX
+### macOS
 
 ![](./static/osx-screenshot.png)
 
-### Archlinux
+### Arch Linux
 
 ![](./static/arch-screenshot.png)
 
@@ -121,4 +81,4 @@ export I3RS_GITHUB_TOKEN="your-github-token"
 
 ## Contributing
 
-1. Feel free to contribute and/or report issues.
+1. Feel free to contribute and/or report any issues.
