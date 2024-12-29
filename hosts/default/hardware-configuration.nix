@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ./video.nix ];
+  my.nvidia.enable = true;
 
   fileSystems."/" = {
       device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";

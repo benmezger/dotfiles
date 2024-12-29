@@ -27,12 +27,20 @@
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
 
-      nixosConfigurations = {
-        "default" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit userConf inputs outputs; };
-          modules = [ ./hosts/default ];
-        };
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit userConf inputs outputs; };
+        modules = [
+          ./hosts/default
+          ./modules
+        ];
       };
+
+      #nixosConfigurations = {
+      #  "default" = nixpkgs.lib.nixosSystem {
+      #    specialArgs = { inherit userConf inputs outputs; };
+      #    modules = [ ./hosts/default ];
+      #  };
+      #};
 
       homeConfigurations = {
         "${userConf.username}@${userConf.hostname}" = home-manager.lib.homeManagerConfiguration {

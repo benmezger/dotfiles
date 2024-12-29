@@ -6,17 +6,26 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
-      ./networking.nix
       ./bootloader.nix
-      ./x.nix
-      ./apps.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  time.timeZone = userConf.timezone;
+  my.x.enable = true;
+  my.networking.enable = true;
+  my.pipewire.enable = true;
+  my.locate.enable = true;
+  my.ssh.enable = true;
+  my.clipboard.enable = true;
+  my.gnome.enable = true;
+  my.grub.enable = true;
+  my.gnupg.enable = true;
+  my._1password.enable = true;
+  my.dconf.enable = true;
+  my.fonts.enable = true;
 
+  time.timeZone = userConf.timezone;
   i18n.defaultLocale = userConf.locale;
   i18n.extraLocaleSettings = userConf.locale_settings;
 
@@ -41,28 +50,22 @@
     };
   };
 
-
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users."${userConf.username}" = import (builtins.toPath ../../home/default/default.nix);
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     git
     ripgrep
     acpi
     acpid
-    alsa-tools
-    alsa-utils
     autoconf
     binutils
     bzip2
     coreutils
     cryptsetup
-    dhcpcd
     findutils
     gcc
     libgcc
@@ -71,51 +74,17 @@
     lvm2
     gnumake
     man
-    mlocate
-    nettools
     gnused
     gnutar
     which
     iucode-tool
-    refind
-    gnome-keyring
-    _1password-gui
-    _1password-cli
     upower
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
-  };
-
-  # https://discourse.nixos.org/t/findutils-missing-locate-and-updatedb/27557/4
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [userConf.username];
-  };
-
-  programs.dconf.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     glibc
   ];
-
-  fonts.packages = [
-    pkgs.nerd-fonts.hack
-    pkgs.font-awesome
-    pkgs.noto-fonts-emoji-blob-bin
-    pkgs.source-code-pro
-    pkgs.hack-font
-  ];
-
-  fonts.fontconfig.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

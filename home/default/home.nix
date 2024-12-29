@@ -97,7 +97,6 @@
     pkgs.capitaine-cursors
     pkgs.pulseaudio
     pkgs.haskellPackages.greenclip
-    pkgs.pinentry-gtk2
     pkgs.afew
 
     # Adds the 'hello' command to your environment. It prints a friendly
