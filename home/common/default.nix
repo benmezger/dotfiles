@@ -1,4 +1,4 @@
-{ config, lib, outputs, pkgs, ... }: {
+{ userConf, config, lib, outputs, pkgs, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -32,5 +32,10 @@
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users."${userConf.username}" = import (builtins.toPath ./default.nix);
   };
 }

@@ -50,11 +50,6 @@
     };
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users."${userConf.username}" = import (builtins.toPath ../../home/default/default.nix);
-  };
-
   environment.systemPackages = with pkgs; [
     vim
     git
