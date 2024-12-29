@@ -4,3 +4,4 @@ dot_weechat/private_logs
 __pycache__
 dot_config/pgcli/history
 /.python-version
+/result
