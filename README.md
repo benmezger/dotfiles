@@ -21,8 +21,8 @@ SECRETS_OFF=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfil
 #### With NixOS
 
 This method is guaranteed to work out of the box since `chezmoi` will not
-attempt to download all dependencies. To install my NixOS configuration, simply
-run the following command in the [./nix](./nix) directory:
+attempt to download all dependencies. To install my NixOS configuration, run the
+following command:
 
 ```shell
 sudo nixos-rebuild switch --flake .#default

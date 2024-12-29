@@ -12,7 +12,7 @@
       ./bootloader.nix
       ./x.nix
       ./apps.nix
-      ./../../variables.nix
+      ./../../../conf.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 

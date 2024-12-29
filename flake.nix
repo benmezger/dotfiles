@@ -20,7 +20,7 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       evaledConfig = nixpkgs.lib.evalModules {
-        modules = [ ./variables.nix ];
+        modules = [ ./conf.nix ];
       };
       config = evaledConfig.config;
     in {
@@ -30,7 +30,7 @@
       nixosConfigurations = {
         "default" = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/default ];
+          modules = [ ./nixos/hosts/default ];
         };
       };
 
@@ -40,7 +40,7 @@
           extraSpecialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./home/default/default.nix ];
+          modules = [ ./nixos/home/default/default.nix ];
         };
       };
     };
