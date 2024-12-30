@@ -6,7 +6,7 @@ configuration along with my dotfiles. You can get my `dotfiles` on the
 ### Requirements
 
 - Chezmoi
-- Arch Linux, NixOS, or macOS
+- Arch Linux, NixOS, or MacOS
 
 ### Installation
 
@@ -29,6 +29,14 @@ following command:
 
 ```shell
 sudo nixos-rebuild switch --flake .#default
+```
+
+#### With nix-darwin
+
+To install my nix configuration on the OSX, run the following command:
+
+```shell
+nix run nix-darwin -- switch --flake .
 ```
 
 ### Environment Variables
