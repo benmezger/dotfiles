@@ -1,0 +1,23 @@
+name: Nix CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  nix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: https://nixos.org/nix/install
+
+      - name: Run nixfmt
+        run: |
+          nix-env -f https://github.com/NixOS/nixfmt/archive/master.tar.gz -i
+          nixfmt --check .
