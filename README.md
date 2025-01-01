@@ -1,7 +1,7 @@
 ## Personal Setup
 **👷 Note:** I am working on refactoring the structure to introduce my Nix
 configuration along with my dotfiles. You can get my `dotfiles` on the
-[chezmoi](./chezmoi) directory.
+[chezmoi](./chezmoi) directory. Meanwhile, many nix-related stuff can change.
 
 ### Requirements
 
@@ -32,6 +32,7 @@ sudo nixos-rebuild switch --flake .#default
 ```
 
 #### With nix-darwin
+**⚠️ Note:** _Darwin support is still WIP_
 
 To install my nix configuration on the OSX, run the following command:
 
