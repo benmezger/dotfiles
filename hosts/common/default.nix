@@ -1,6 +1,14 @@
 # Common configuration for all hosts
 
-{ lib, inputs, outputs, config, userConf, ... }: {
+{
+  lib,
+  inputs,
+  outputs,
+  config,
+  userConf,
+  ...
+}:
+{
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -35,8 +43,9 @@
       ]; # Set users that are allowed to use the flake command
     };
     optimise.automatic = true;
-    registry = (lib.mapAttrs (_: flake: { inherit flake; }))
-      ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
+      (lib.filterAttrs (_: lib.isType "flake")) inputs
+    );
     nixPath = [ "/etc/nix/path" ];
   };
 }

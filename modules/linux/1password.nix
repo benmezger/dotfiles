@@ -1,4 +1,10 @@
-{ userConf, config, lib, pkgs, ... }:
+{
+  userConf,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my._1password;
@@ -12,7 +18,7 @@ in
     programs._1password.enable = true;
     programs._1password-gui = {
       enable = true;
-      polkitPolicyOwners = [userConf.username];
+      polkitPolicyOwners = [ userConf.username ];
     };
 
     environment.systemPackages = with pkgs; [

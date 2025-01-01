@@ -1,4 +1,10 @@
-{ userConf, config, lib, pkgs, ... }:
+{
+  userConf,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my.networking;
@@ -13,7 +19,10 @@ in
     networking.networkmanager.enable = true;
 
     networking.useDHCP = lib.mkDefault true;
-    networking.nameservers = ["1.1.1.3" "1.0.0.3"];
+    networking.nameservers = [
+      "1.1.1.3"
+      "1.0.0.3"
+    ];
 
     environment.systemPackages = with pkgs; [
       nettools

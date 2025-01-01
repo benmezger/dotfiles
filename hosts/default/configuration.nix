@@ -2,15 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ userConf, config, inputs, outputs, pkgs, ... }:
+{
+  userConf,
+  config,
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./bootloader.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./bootloader.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   my.x.enable = true;
   my.networking.enable = true;

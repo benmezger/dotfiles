@@ -13,8 +13,14 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-
-  outputs = { self, nix-darwin, home-manager, nixpkgs, ... }@inputs:
+  outputs =
+    {
+      self,
+      nix-darwin,
+      home-manager,
+      nixpkgs,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       systems = [
@@ -26,7 +32,8 @@
         modules = [ ./conf.nix ];
       };
       userConf = evaledConfig.config;
-    in {
+    in
+    {
       overlays = import ./overlays { inherit inputs; };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -39,9 +46,10 @@
             ./modules
             ./modules/linux
             ./hosts/default
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager = {
-                extraSpecialArgs = {inherit inputs outputs;};
+                extraSpecialArgs = { inherit inputs outputs; };
                 users."${userConf.username}" = import ./home/default/default.nix;
               };
             }
@@ -58,10 +66,11 @@
             ./modules
             ./modules/osx
             ./hosts/osx
-            home-manager.darwinModules.home-manager {
+            home-manager.darwinModules.home-manager
+            {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = {inherit inputs outputs;};
+                extraSpecialArgs = { inherit inputs outputs; };
                 users."${userConf.osx_username}" = import ./home/osx/default.nix;
               };
             }

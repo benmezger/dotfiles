@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   home.username = lib.mkDefault "${config.osx_username}";
@@ -79,14 +84,14 @@
     # EDITOR = "emacs";
   };
 
-  home.activation.createDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.createDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p $HOME/workspace
     mkdir -p $HOME/documents
     mkdir -p $HOME/downloads
   '';
 
   home.activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
-      ${pkgs.chezmoi}/bin/chezmoi init -S $HOME/workspace/dotfiles benmezger/dotfiles
+    ${pkgs.chezmoi}/bin/chezmoi init -S $HOME/workspace/dotfiles benmezger/dotfiles
   '';
 
   # Let Home Manager install and manage itself.

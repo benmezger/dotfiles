@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my.x;
@@ -11,7 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
+      videoDrivers = [ "nvidia" ];
 
       desktopManager = {
         xterm.enable = false;
@@ -28,13 +33,15 @@ in
     };
 
     services.displayManager.defaultSession = "none+i3";
-    services.xserver.displayManager.session = [{
-      manage = "desktop";
-      name = "xsession";
-      start = ''
-        exec ~/.xsession
-      '';
-    }];
+    services.xserver.displayManager.session = [
+      {
+        manage = "desktop";
+        name = "xsession";
+        start = ''
+          exec ~/.xsession
+        '';
+      }
+    ];
 
     # Configure keymap in X11
     services.xserver.xkb = {

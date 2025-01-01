@@ -1,11 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["module_blacklist=i915"];
-    supportedFilesystems = ["btrfs"];
-    kernelModules = ["kvm-intel" "iwlwifi"];
+    kernelParams = [ "module_blacklist=i915" ];
+    supportedFilesystems = [ "btrfs" ];
+    kernelModules = [
+      "kvm-intel"
+      "iwlwifi"
+    ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -13,7 +21,15 @@
       };
     };
     initrd = {
-      availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+      availableKernelModules = [
+        "vmd"
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
       luks.devices = {
         cryptroot = {
           # Use https://nixos.wiki/wiki/Full_Disk_Encryption

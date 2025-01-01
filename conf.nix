@@ -1,23 +1,31 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  options = with lib; with types; {
-    username = mkOption { type = str; };
-    osx_username = mkOption {
-      type = str;
-      default = username;
+  options =
+    with lib;
+    with types;
+    {
+      username = mkOption { type = str; };
+      osx_username = mkOption {
+        type = str;
+        default = username;
+      };
+      osx_hostname = mkOption {
+        type = str;
+        default = hostname;
+      };
+      hostname = mkOption { type = str; };
+      timezone = mkOption { type = str; };
+      locale = mkOption { type = str; };
+      locale_settings = mkOption { type = attrs; };
+      hashedPassword = mkOption { type = str; };
+      sshKeys = mkOption { type = types.listOf str; };
     };
-    osx_hostname = mkOption {
-      type = str;
-      default = hostname;
-    };
-    hostname = mkOption { type = str; };
-    timezone = mkOption { type = str; };
-    locale = mkOption { type = str; };
-    locale_settings = mkOption { type = attrs; };
-    hashedPassword = mkOption { type = str; };
-    sshKeys = mkOption { type = types.listOf str; };
-  };
   config = {
     username = "seds";
     osx_username = "benmezger";
@@ -37,6 +45,6 @@
       LC_TIME = "nl_NL.UTF-8";
     };
     hashedPassword = "$y$j9T$9e8lY.GFRO4g7B9XhJat41$cZ7f/BHb9WzvE1BwKZJTQwrram/8ZfgT.jYCX90acHA";
-    sshKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZPZ+lDBETiLkDt5W7KqCwk67b2eTBbRqI923tjVhnS"];
+    sshKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZPZ+lDBETiLkDt5W7KqCwk67b2eTBbRqI923tjVhnS" ];
   };
 }
