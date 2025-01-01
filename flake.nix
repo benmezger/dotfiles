@@ -32,11 +32,12 @@
         modules = [ ./conf.nix ];
       };
       userConf = evaledConfig.config;
+      system = builtins.currentSystem;
     in
     {
       overlays = import ./overlays { inherit inputs; };
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-rfc-style;
 
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
