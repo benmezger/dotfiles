@@ -85,6 +85,7 @@
     which
     iucode-tool
     upower
+    nixfmt-rfc-style
   ];
 
   programs.nix-ld.enable = true;
