@@ -24,7 +24,7 @@
     };
     kernel = {
       sysctl = {
-        "dmesg_restrict" = 0;
+        "kernel.dmesg_restrict" = 0;
       };
     };
   };
