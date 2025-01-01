@@ -86,7 +86,7 @@
     pkgs.poetry
     pkgs.xbindkeys
     pkgs.networkmanagerapplet
-    pkgs.xautolock
+    pkgs.xidlehook
     pkgs.blueman
     pkgs.xorg.setxkbmap
     pkgs.pciutils

@@ -18,7 +18,10 @@ xrandr --dpi 125.37
 
 isavailable picom && picom --config ~/.config/picom.conf &
 isavailable nm-applet && nm-applet &
-isavailable xautolock && xautolock -time 10 -locker ~/.bin/lock &
+isavailable xidlehook && xidlehook --not-when-fullscreen \
+    --not-when-audio \
+    --timer 600 \
+    ~/.bin/lock '' &
 isavailable dunst && dunst -config ~/.config/dunst/dunstrc &
 isavailable unclutter && unclutter &
 isavailable blueman-applet && blueman-applet &
