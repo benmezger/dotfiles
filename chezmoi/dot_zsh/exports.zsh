@@ -26,6 +26,7 @@ else
 fi
 
 export WORKSPACE="$HOME/workspace"
+export DOTFILES="$WORKSPACE/dotfiles"
 export RISCV_PATH="/opt/riscv/"
 export RISCV64_PATH="/opt/riscv64/"
 
