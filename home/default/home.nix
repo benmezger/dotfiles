@@ -104,6 +104,7 @@
     pkgs.haskellPackages.greenclip
     pkgs.afew
     pkgs.pinentry-gtk2
+    pkgs.nvd
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
