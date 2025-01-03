@@ -3,7 +3,8 @@
 source $HOME/.zsh/git_aliases.zsh 
 
 alias init-completion="rm -f $HOME/.zcompdump; compinit"
-alias dotfiles="cd ~/dotfiles"
+alias dotfiles="cd $WORKSPACE/dotfiles"
+alias workspace="cd $WORKSPACE"
 alias fucking='sudo'
 alias vi="vim"
 alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
