@@ -4,8 +4,6 @@
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_VERBOSE_USING_DOTS=1
 
-export PATH="$PATH:/run/current-system/sw/bin/"
-
 if [[ $(arch) == 'arm64' ]]; then
 	export PATH="/opt/homebrew/bin:$PATH"
 	export PATH="/opt/homebrew/opt:$PATH"

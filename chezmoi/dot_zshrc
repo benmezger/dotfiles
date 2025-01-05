@@ -64,4 +64,6 @@ if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 else
         compinit -C
 fi
-_approximate # enable approximate matches for completion
+
+# enable approximate matches for completion
+zstyle ':completion:*' completer _expand _complete _approximate
