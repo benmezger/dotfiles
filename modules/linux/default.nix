@@ -21,5 +21,6 @@
     ./ssh.nix
     ./fonts.nix
     ./gnupg.nix
+    ./fwupd.nix
   ];
 }

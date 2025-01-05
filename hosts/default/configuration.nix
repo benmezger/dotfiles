@@ -30,6 +30,7 @@
   my._1password.enable = true;
   my.dconf.enable = true;
   my.fonts.enable = true;
+  my.fwupd.enable = true;
 
   time.timeZone = userConf.timezone;
   i18n.defaultLocale = userConf.locale;
