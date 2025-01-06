@@ -18,6 +18,8 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/.config/emacs/bin:$HOME/.doom.d/bin"
+export PATH="$PATH:/$HOME/.pyenv/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 if [[ ${OSTYPE} == darwin* ]]; then
 	source $HOME/.zsh/osx.zsh
