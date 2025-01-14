@@ -14,7 +14,8 @@
 
 (after! (:or lsp-mode lsp)
   :config
-  (setq lsp-response-timeout 90000))
+  (setq lsp-response-timeout 90000)
+  (setq lsp-ruff-ruff-args '("--preview")))
 
 (after! company-lsp
   :config
