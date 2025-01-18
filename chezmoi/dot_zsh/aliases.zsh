@@ -155,5 +155,7 @@ nixswitch() {
 }
 
 if (( $+commands[ledger] )); then
-	alias led="ledger --strict -f $HOME/workspace/ledger/finances.ledger.gpg"
+	alias led="ledger --strict -f $LEDGER/finances.ledger.gpg --price-db $LEDGER/pricedb.ledger"
+	alias bal="led bal"
+	alias reg="led reg"
 fi
