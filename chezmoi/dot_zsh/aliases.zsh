@@ -6,12 +6,28 @@ alias init-completion="rm -f $HOME/.zcompdump; compinit"
 alias dotfiles="cd $DOTFILES"
 alias workspace="cd $WORKSPACE"
 alias fucking='sudo'
-alias vi="vim"
-alias pip-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
-alias lessf="less +F"
-#alias tmux="TERM=xterm-256color tmux"
 
+alias lessf="less +F"
+
+alias sl='ls' # I often screw this up.
+alias s="sudo"
 alias c=clear
+alias v='vim'
+
+alias editor='$EDITOR'
+
+alias ..="cd .."
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+
+alias neomutt="stty discard undef && neomutt"
+alias unread="neomutt -f 'notmuch://?query=tag:me and tag:unread'"
+alias inbox="neomutt -f 'notmuch://?query=tag:inbox'"
+alias me="neomutt -f 'notmuch://?query=tag:me'"
+alias archived="neomutt -f 'notmuch://?query=tag:archived'"
+
+alias plocal="poetry env use $(pyenv which python)"
 
 # if exa exist, alias to ls
 if (( ${+commands[eza]} )); then
@@ -35,53 +51,28 @@ else
     alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 fi
 
-alias sl='ls' # I often screw this up.
-
 if (( $+commands[nvim] )); then
     alias vim="nvim"
 fi
-
 
 if (( $+commands[emacsclient] )); then
     alias e='emacsclient -c -n -a ""'
 fi
 
-alias editor='$EDITOR'
-alias v='vim'
-
-if (( $+commands[pacman] )); then
-    alias pacall='sudo pacman -Syyu'
-    alias paci='sudo pacman -S'
-    alias pacrdeps='sudo pacman -Rsn'
-fi
-
-# Django
-alias drunser='python manage.py runserver'
-alias dmakemig='python manage.py makemigrations'
-alias dmigrate='python manage.py migrate'
-alias dshell='python manage.py shell'
-
 if (( $+commands[ggrep] )); then
     alias ggrep="ggrep $GREP_OPTIONS"
 fi
 
-alias ..="cd .."
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias .....="cd ../../../../"
-
 if [ -f "$HOME/.emacs.d/bin/doom" ]; then
     alias doom="$HOME/.emacs.d/bin/doom"
 fi
-
-dotfiles-update() { cd "$HOME/dotfiles" && ./install.sh; }
 
 if (( $+commands[brew] )); then
     brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
     alias tailf="tail -f"
 fi
 
-if [[ $+commands[emacs] && -f "$HOME/workspace/blog/org_to_hugo.el" ]]; then
+if [[ $+commands[emacs] && -f "$WORKSPACE/blog/org_to_hugo.el" ]]; then
     blog-gen() {
         cd $HOME/workspace/blog/ && emacs \
             --batch \
@@ -101,29 +92,8 @@ if (( $+commands[gist] )); then
     alias gist="gist -p"
 fi
 
-function dotf {
-	(cd $HOME/dotfiles && make "$1")
-}
-
-alias neomutt="stty discard undef && neomutt"
-alias unread="neomutt -f 'notmuch://?query=tag:me and tag:unread'"
-alias inbox="neomutt -f 'notmuch://?query=tag:inbox'"
-alias me="neomutt -f 'notmuch://?query=tag:me'"
-alias archived="neomutt -f 'notmuch://?query=tag:archived'"
-
 if [[ ${OSTYPE} == linux* ]]; then
     alias spotify="/usr/bin/spotify --force-device-scale-factor=2.0 $1"
-fi
-
-alias s="sudo"
-
-if (( $+commands[etckeeper] )); then
-    alias etcs="sudo etckeeper vcs status"
-    alias etca="sudo etckeeper vcs add ."
-    alias etcc="sudo etckeeper vcs commit -m"
-    alias etcp="sudo etckeeper vcs push origin"
-    alias etcl="sudo etckeeper vcs log"
-    alias etcpl="sudo etckeeper vcs pull"
 fi
 
 if (( $+commands[chezmoi] )); then
@@ -144,8 +114,6 @@ if (( $+commands[pacman] )); then
 	alias pacc='pacman -Scc'    # clean cache
 	alias paclf='pacman -Ql'   # list files
 fi
-
-alias ptrypyenv="poetry env use $(pyenv which python)"
 
 nixswitch() {
     local prev_dir=$PWD
