@@ -83,6 +83,8 @@
     textconv = mdls
 [diff "bin"]
     textconv = hexdump -v -C
+[diff "gpg"]
+    textconv = gpg --no-tty -q --decrypt
 [github]
     user = {{ .github_user }}
 [gitlab]
