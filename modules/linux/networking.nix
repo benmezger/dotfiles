@@ -37,5 +37,10 @@ in
         addresses = true;
       };
     };
+
+    services.blueman.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+    };
   };
 }
