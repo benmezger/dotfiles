@@ -29,6 +29,8 @@ alias archived="neomutt -f 'notmuch://?query=tag:archived'"
 
 alias plocal="poetry env use $(pyenv which python)"
 
+alias rebuild="sudo nixos-rebuild switch --flake $DOTFILES/.#default"
+
 # if exa exist, alias to ls
 if (( ${+commands[eza]} )); then
     alias ls='eza'
@@ -114,13 +116,6 @@ if (( $+commands[pacman] )); then
 	alias pacc='pacman -Scc'    # clean cache
 	alias paclf='pacman -Ql'   # list files
 fi
-
-nixswitch() {
-    local prev_dir=$PWD
-    cd "$DOTFILES" || return
-    sudo nixos-rebuild switch --flake .#default
-    cd "$prev_dir"
-}
 
 if (( $+commands[ledger] )); then
 	alias led="ledger --strict -f $LEDGER/finances.ledger.gpg --price-db $LEDGER/pricedb.ledger"
