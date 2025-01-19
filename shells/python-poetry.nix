@@ -23,5 +23,6 @@ pkgs.mkShell {
     export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
     export POETRY_HOME=${poetry}
     export POETRY_VIRTUALENVS_IN_PROJECT=true
+    exec ${pkgs.zsh}/bin/zsh
   '';
 }
