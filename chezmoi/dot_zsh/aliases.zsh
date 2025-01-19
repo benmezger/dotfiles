@@ -117,7 +117,7 @@ fi
 
 nixswitch() {
     local prev_dir=$PWD
-    cd ~/workspace/nix || return
+    cd "$DOTFILES" || return
     sudo nixos-rebuild switch --flake .#default
     cd "$prev_dir"
 }
