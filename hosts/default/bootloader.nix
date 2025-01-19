@@ -8,7 +8,13 @@
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "module_blacklist=i915" ];
+    kernelParams = [
+      "module_blacklist=i915"
+      # set HID_QUIRK_ALWAYS_POLL for Razer Basilisk V3 Pro mouse
+      # to prevent connection drop
+      # fixes: usb 1-10.2: 3:1: cannot get freq at ep 0x3
+      "usbhid.quirks=0x1532:0x00ab:0x00000400"
+    ];
     supportedFilesystems = [ "btrfs" ];
     kernelModules = [
       "kvm-intel"
