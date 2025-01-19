@@ -17,6 +17,7 @@ pkgs.mkShell {
   buildInputs = [
     pythonPackage
     poetry
+    pkgs.zsh
   ];
   shellHook = ''
     export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
