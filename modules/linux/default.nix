@@ -23,5 +23,6 @@
     ./gnupg.nix
     ./fwupd.nix
     ./thunar.nix
+    ./syncmail.nix
   ];
 }

@@ -18,20 +18,23 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  my.x.enable = true;
-  my.networking.enable = true;
-  my.pipewire.enable = true;
-  my.locate.enable = true;
-  my.ssh.enable = true;
-  my.clipboard.enable = true;
-  my.gnome.enable = true;
-  my.grub.enable = true;
-  my.gnupg.enable = true;
-  my._1password.enable = true;
-  my.dconf.enable = true;
-  my.fonts.enable = true;
-  my.fwupd.enable = true;
-  my.thunar.enable = true;
+  my = {
+    x.enable = true;
+    networking.enable = true;
+    pipewire.enable = true;
+    locate.enable = true;
+    ssh.enable = true;
+    clipboard.enable = true;
+    gnome.enable = true;
+    grub.enable = true;
+    gnupg.enable = true;
+    _1password.enable = true;
+    dconf.enable = true;
+    fonts.enable = true;
+    fwupd.enable = true;
+    thunar.enable = true;
+    syncmail.enable = true;
+  };
 
   time.timeZone = userConf.timezone;
   i18n.defaultLocale = userConf.locale;
