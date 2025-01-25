@@ -22,5 +22,6 @@
     ./fonts.nix
     ./gnupg.nix
     ./fwupd.nix
+    ./thunar.nix
   ];
 }

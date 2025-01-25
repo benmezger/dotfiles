@@ -31,6 +31,7 @@
   my.dconf.enable = true;
   my.fonts.enable = true;
   my.fwupd.enable = true;
+  my.thunar.enable = true;
 
   time.timeZone = userConf.timezone;
   i18n.defaultLocale = userConf.locale;
@@ -110,4 +111,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
+
 }
