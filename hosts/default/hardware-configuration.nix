@@ -64,6 +64,15 @@
     }
   ];
 
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    # By default, autoscrub will scrub all detected btrfs mount points.
+    # However, in case of mounted nested subvolumes (like /home is a nested
+    # subvolumes under /), you only need to scrub the top-most one.
+    fileSystems = [ "/" ];
+  };
+
   boot.initrd.kernelModules = [
     "dm-snapshot"
     "btrfs"
