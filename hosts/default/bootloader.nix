@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  userConf,
   ...
 }:
 
@@ -15,7 +14,6 @@
       # to prevent connection drop
       # fixes: usb 1-10.2: 3:1: cannot get freq at ep 0x3
       "usbhid.quirks=0x1532:0x00ab:0x00000400"
-      "ip=192.168.0.168::192.168.0.1:255.255.255.0:${userConf.hostname}.local::none"
     ];
     supportedFilesystems = [ "btrfs" ];
     kernelModules = [
@@ -29,16 +27,6 @@
       };
     };
     initrd = {
-      systemd.users.root.shell = "/bin/cryptsetup-askpass";
-      network = {
-        enable = true;
-        ssh = {
-          enable = true;
-          port = 22;
-          authorizedKeys = userConf.sshKeys;
-          hostKeys = [ "/etc/secrets/initrd/host_rsa_key" ];
-        };
-      };
       availableKernelModules = [
         "vmd"
         "xhci_pci"
@@ -47,7 +35,6 @@
         "usbhid"
         "usb_storage"
         "sd_mod"
-        "igc"
       ];
       luks.devices = {
         cryptroot = {
