@@ -15,7 +15,7 @@
       # to prevent connection drop
       # fixes: usb 1-10.2: 3:1: cannot get freq at ep 0x3
       "usbhid.quirks=0x1532:0x00ab:0x00000400"
-      "ip=192.168.0.168::192.168.0.1:255.255.255.0:${userConf.hostname}.local::none"
+      "ip=::::grub::dhcp"
     ];
     supportedFilesystems = [ "btrfs" ];
     kernelModules = [
@@ -36,7 +36,7 @@
           enable = true;
           port = 22;
           authorizedKeys = userConf.sshKeys;
-          hostKeys = [ "/etc/secrets/initrd/host_rsa_key" ];
+          hostKeys = [ "/home/${userConf.username}/.ssh/nixos_rsa" ];
         };
       };
       availableKernelModules = [
