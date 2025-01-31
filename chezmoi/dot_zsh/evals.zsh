@@ -11,3 +11,7 @@ if [ -n "${TMUX+1}" ]; then
 		tmux set-environment -g PATH $PATH
 	fi
 fi
+
+if (( $+commands[direnv] )); then
+	eval "$(direnv hook zsh)"
+fi
