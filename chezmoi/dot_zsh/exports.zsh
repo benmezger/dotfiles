@@ -51,10 +51,6 @@ source $HOME/.zsh/prompt.zsh
 export GOPATH=$HOME/workspace/go
 export PATH="$GOPATH/bin:$PATH"
 
-## Autoenv
-export AUTOENV_FILE_ENTER=".hi"
-export AUTOENV_FILE_LEAVE=".bye"
-
 ## Tmux
 # autostart tmux
 # from: https://github.com/zpm-zsh/tmux/blob/master/tmux.plugin.zsh
