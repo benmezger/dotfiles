@@ -56,6 +56,7 @@
        make
        biblio
        terraform
+       direnv
 
        :lang
        (cc +lsp)
