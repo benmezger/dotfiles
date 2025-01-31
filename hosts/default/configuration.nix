@@ -98,6 +98,7 @@
     upower
     nixfmt-rfc-style
     nix-index
+    direnv
   ];
 
   environment.variables.LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
