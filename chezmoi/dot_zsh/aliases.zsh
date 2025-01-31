@@ -118,7 +118,7 @@ if (( $+commands[pacman] )); then
 fi
 
 if (( $+commands[ledger] )); then
-	alias led="ledger --strict -f $LEDGER/finances.ledger.gpg --price-db $LEDGER/pricedb.ledger"
+	alias led="ledger --strict -f $LEDGER/main.ledger.gpg --price-db $LEDGER/pricedb.ledger"
 	alias bal="led bal"
 	alias reg="led reg"
 fi
