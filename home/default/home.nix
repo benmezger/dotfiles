@@ -106,6 +106,7 @@
     pkgs.pinentry-gtk2
     pkgs.nvd
     pkgs.slack
+    pkgs.gh
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

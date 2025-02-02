@@ -31,6 +31,7 @@
     pkgs.isync
     pkgs.zsh
     pkgs.rclone
+    pkgs.gh
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
