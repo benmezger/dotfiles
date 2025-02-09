@@ -34,6 +34,7 @@
     fwupd.enable = true;
     thunar.enable = true;
     syncmail.enable = true;
+    btrfsSnapshot.enable = true;
   };
 
   time.timeZone = userConf.timezone;

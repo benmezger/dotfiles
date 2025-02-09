@@ -24,5 +24,6 @@
     ./fwupd.nix
     ./thunar.nix
     ./syncmail.nix
+    ./btrfs-snapshot.nix
   ];
 }
