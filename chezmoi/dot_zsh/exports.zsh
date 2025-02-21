@@ -89,6 +89,7 @@ pyenv() {
 
 if [ -f "$HOME/.poetry/bin/poetry" ]; then
 	export PATH="$HOME/.poetry/bin:${PATH}"
+	export POETRY_VIRTUALENVS_IN_PROJECT=1
 fi
 
 export GITLINE_REPO_INDICATOR='${reset}ᚴ'
