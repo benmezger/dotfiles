@@ -310,13 +310,6 @@
   :config
   (add-hook 'before-save-hook 'py-isort-before-save))
 
-(after! poetry
-  :defer t
-  :config
-  (setq poetry-tracking-strategy 'projectile)
-  :init
-  (remove-hook 'python-mode-hook #'poetry-tracking-mode))
-
 (after! (:or org elfeed-org)
   :defer t
   :init
