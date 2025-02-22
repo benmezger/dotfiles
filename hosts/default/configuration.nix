@@ -99,6 +99,7 @@
     nixfmt-rfc-style
     nix-index
     direnv
+    ncurses
   ];
 
   environment.variables.LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
@@ -106,6 +107,7 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     glibc
+    ncurses
   ];
 
   virtualisation.docker = {
