@@ -87,7 +87,7 @@ pyenv() {
 	esac
 }
 
-if [ -f "$HOME/.poetry/bin/poetry" ]; then
+if [ -f "$HOME/.local/bin/poetry" ]; then
 	export PATH="$HOME/.poetry/bin:${PATH}"
 	export POETRY_VIRTUALENVS_IN_PROJECT=1
 fi
