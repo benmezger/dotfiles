@@ -38,6 +38,7 @@ in
     networking.interfaces."wlan0" = {
       name = "wlan0";
       macAddress = "90:09:df:57:fe:4a";
+      wakeOnLan.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
