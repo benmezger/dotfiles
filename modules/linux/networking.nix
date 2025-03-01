@@ -24,6 +24,22 @@ in
       "1.0.0.3"
     ];
 
+    services.udev.extraRules = ''
+      SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="e8:9c:25:38:4e:a0", NAME="eth0"
+      SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="90:09:df:57:fe:4a", NAME="wlan0"
+    '';
+
+    networking.interfaces."eth0" = {
+      name = "eth0";
+      macAddress = "e8:9c:25:38:4e:a0";
+      wakeOnLan.enable = true;
+    };
+
+    networking.interfaces."wlan0" = {
+      name = "wlan0";
+      macAddress = "90:09:df:57:fe:4a";
+    };
+
     environment.systemPackages = with pkgs; [
       nettools
       dhcpcd
