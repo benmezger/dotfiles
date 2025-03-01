@@ -108,6 +108,7 @@
     pkgs.slack
     pkgs.gh
     pkgs.clang-tools
+    pkgs.uv
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
