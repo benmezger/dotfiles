@@ -59,5 +59,25 @@ in
     hardware.bluetooth = {
       enable = true;
     };
+
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        21
+        80
+        443
+        8085
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 4000;
+          to = 4007;
+        }
+        {
+          from = 8000;
+          to = 8010;
+        }
+      ];
+    };
   };
 }
