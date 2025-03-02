@@ -122,3 +122,5 @@ if (( $+commands[ledger] )); then
 	alias bal="led bal"
 	alias reg="led reg"
 fi
+
+alias resurrect-lenin="wakeonlan e8:9c:25:38:4e:a0"
