@@ -123,4 +123,7 @@ if (( $+commands[ledger] )); then
 	alias reg="led reg"
 fi
 
+# desktop
 alias resurrect-lenin="wakeonlan e8:9c:25:38:4e:a0"
+alias unlock-lenin="ssh -t grub 'cryptsetup-askpass'"
+alias lenin="ssh lenin"
