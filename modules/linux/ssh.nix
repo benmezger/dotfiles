@@ -16,5 +16,6 @@ in
 
   config = lib.mkIf cfg.enable {
     services.openssh.enable = true;
+    programs.mosh.enable = true;
   };
 }
