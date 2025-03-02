@@ -110,6 +110,7 @@
     pkgs.clang-tools
     pkgs.uv
     pkgs.devenv
+    pkgs.wakeonlan
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
