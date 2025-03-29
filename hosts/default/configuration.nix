@@ -35,6 +35,7 @@
     thunar.enable = true;
     syncmail.enable = true;
     ai.enable = true;
+    streamdeck.enable = true;
   };
 
   time.timeZone = userConf.timezone;

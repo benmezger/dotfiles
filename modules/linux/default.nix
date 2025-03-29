@@ -25,5 +25,6 @@
     ./thunar.nix
     ./syncmail.nix
     ./ai.nix
+    ./streamdeck.nix
   ];
 }
