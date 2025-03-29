@@ -115,7 +115,7 @@
 
 (after! org
   :config
-
+  (add-hook 'org-mode-hook 'auto-fill-mode)
   (setq
    org-log-done 'time
    org-clock-persist 'history
