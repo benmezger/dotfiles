@@ -3,5 +3,6 @@
   imports = [
     ./home.nix
     ../common
+    ./packages
   ];
 }
