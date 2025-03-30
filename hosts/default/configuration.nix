@@ -102,6 +102,11 @@
     nix-index
     direnv
     ncurses
+    # python
+    zlib
+    readline
+    openssl
+    libffi
   ];
 
   environment.variables.LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
