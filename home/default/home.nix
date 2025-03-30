@@ -113,6 +113,7 @@
     pkgs.wakeonlan
     pkgs.sqlite
     pkgs.zathura
+    pkgs.ghostscript
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
