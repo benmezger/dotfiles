@@ -30,6 +30,7 @@ alias archived="neomutt -f 'notmuch://?query=tag:archived'"
 alias plocal="poetry env use $(pyenv which python)"
 
 alias rebuild="sudo nixos-rebuild switch --flake $DOTFILES/.#default"
+alias nix-diff="nvd diff /run/current-system $DOTFILES/result"
 
 # if exa exist, alias to ls
 if (( ${+commands[eza]} )); then
