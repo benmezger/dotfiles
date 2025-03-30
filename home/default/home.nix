@@ -114,6 +114,7 @@
     pkgs.sqlite
     pkgs.zathura
     pkgs.ghostscript
+    pkgs.unzip
 
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
