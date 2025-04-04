@@ -8,6 +8,7 @@
 
 {
   my.nvidia.enable = true;
+  hardware.keyboard.zsa.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8b1fa901-c05b-48c1-a961-a789620601d6";
