@@ -95,10 +95,6 @@ if (( $+commands[gist] )); then
     alias gist="gist -p"
 fi
 
-if [[ ${OSTYPE} == linux* ]]; then
-    alias spotify="/usr/bin/spotify --force-device-scale-factor=2.0 $1"
-fi
-
 if (( $+commands[chezmoi] )); then
     alias cza="chezmoi apply -v"
     alias czadd="chezmoi add -v"
