@@ -1,6 +1,6 @@
 (doom! :completion
        (company
-        +auto +tng)
+        +auto +tng +childframe)
        (ivy +fuzzy)
 
        :ui
