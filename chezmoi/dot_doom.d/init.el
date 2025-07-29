@@ -82,6 +82,7 @@
        (javascript +lsp +tree-sitter)
        (ledger)
        (nix)
+       (java +lsp +tree-sitter)
 
        :email
        (notmuch +org)
