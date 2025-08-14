@@ -568,3 +568,6 @@ already been connected to."
       :logging t
       :sasl-password my-nickserv-password
       :channels (:after-auth "#emacs" "#python" "#archlinux" "#osdev"))))
+
+(use-package! copilot-chat
+  :defer t)
