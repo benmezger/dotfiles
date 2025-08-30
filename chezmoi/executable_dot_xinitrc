@@ -29,5 +29,6 @@ isavailable setxkbmap && setxkbmap -option caps:escape &
 isavailable xbindkeys && xbindkeys &
 isavailable conky && conky --daemonize &
 isavailable 1password && 1password --silent &
+isavailable pasystray && pasystray &
 
 bash $HOME/.bin/lightsOn.sh &
