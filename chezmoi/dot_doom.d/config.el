@@ -30,18 +30,6 @@
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
 
-(after! magit
-  :config
-  (remove-hook 'magit-status-sections-hook 'magit-insert-head-branch-header)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-push-branch-header)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-from-pushremote)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream))
-
 (after! doom-modeline
   :config
 
