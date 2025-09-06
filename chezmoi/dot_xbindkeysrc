@@ -24,8 +24,14 @@
   XF86AudioMute
 
 # play/pause
-"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+"playerctl play-pause"
   XF86AudioPlay
+
+"playerctl next"
+  XF86AudioNext
+
+"playerctl previous"
+  XF86AudioPrev
 
 # rofi
 "rofi -show window"
