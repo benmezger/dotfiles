@@ -1,1 +1,0 @@
-../tmuxnotify.py
