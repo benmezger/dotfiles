@@ -16,3 +16,5 @@ passphrase_command = ""
 salt = on
 
 [data]
+__passphrase__ = on
+bnc-libera = "{{ onepasswordRead (join "/" (list .onepassword.bnc "libera_hash")) -}}"
