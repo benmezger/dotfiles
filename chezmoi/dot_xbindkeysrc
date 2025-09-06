@@ -12,19 +12,19 @@
   XF86MonBrightnessUp
 
 # Increase volume
-"pactl set-sink-volume alsa_output.usb-Razer_Razer_Nommo_Pro-02.analog-stereo +5%"
+"pactl set-sink-volume @DEFAULT_SINK@ +5%"
   XF86AudioRaiseVolume
 
 # Decrease volume
-"pactl set-sink-volume alsa_output.usb-Razer_Razer_Nommo_Pro-02.analog-stereo -5%"
+"pactl set-sink-volume @DEFAULT_SINK@ -5%"
   XF86AudioLowerVolume
 
 # Mute
-"pactl set-sink-mute alsa_output.usb-Razer_Razer_Nommo_Pro-02.analog-stereo toggle"
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
   XF86AudioMute
 
 # play/pause
-"pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle"
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
   XF86AudioPlay
 
 # rofi
