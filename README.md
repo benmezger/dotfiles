@@ -1,16 +1,14 @@
-## Personal Setup
-**👷 Note:** I am working on refactoring the structure to introduce my Nix
-configuration along with my dotfiles. You can get my `dotfiles` on the
-[chezmoi](./chezmoi) directory. Meanwhile, many nix-related stuff can change.
+# Ben Mezger's Dotfiles
+My personal dotfiles.
 
-### Requirements
+You will find my `dotfiles` in the [`chezmoi`](https://github.com/benmezger/dotfiles/tree/main/chezmoi) directory.
 
-- Chezmoi
-- Arch Linux, NixOS, or MacOS
+## Requirements
 
-### Installation
+- [Chezmoi](http://chezmoi.io/)
+- Arch Linux or MacOS
 
-#### Without NixOS
+## Installation
 
 **⚠️ Note:** _If you're not me, you won't have access to my 1Password account. To
 prevent chezmoi from applying files with secrets, set the `SECRETS_OFF=1`
@@ -21,26 +19,14 @@ attempting to connect to my 1Password account ¯\_(ツ)_/¯._
 SECRETS_OFF=1 chezmoi init https://github.com/benmezger/dotfiles.git -S ~/dotfiles
 ```
 
-#### With NixOS
+## Applying changes
+Use `chezmoi` to apply the dotfiles:
 
-This method is guaranteed to work out of the box since `chezmoi` will not
-attempt to download all dependencies. To install my NixOS configuration, run the
-following command:
-
-```shell
-sudo nixos-rebuild switch --flake .#default
+``` shell
+chezmoi apply -v
 ```
 
-#### With nix-darwin
-**⚠️ Note:** _Darwin support is still WIP_
-
-To install my nix configuration on the OSX, run the following command:
-
-```shell
-nix run nix-darwin -- switch --flake .
-```
-
-### Environment Variables
+## Environment Variables
 
 The following environment variables can be used to configure `chezmoi` during
 initialization and when applying changes:

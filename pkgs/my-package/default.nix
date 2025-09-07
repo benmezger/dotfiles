@@ -1,2 +1,0 @@
-# Your custom nix-package
-{ } { }
