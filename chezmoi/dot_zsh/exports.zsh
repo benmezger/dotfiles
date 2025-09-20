@@ -157,3 +157,6 @@ fi
 
 # grep
 export GREP_OPTIONS='-i --color'
+
+# work related
+source $HOME/.zsh/work.zsh
