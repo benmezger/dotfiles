@@ -67,3 +67,6 @@ fi
 
 # enable approximate matches for completion
 zstyle ':completion:*' completer _expand _complete _approximate
+
+# Apply theme
+base16_gruvbox-dark-hard
