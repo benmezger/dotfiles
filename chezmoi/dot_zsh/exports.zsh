@@ -34,14 +34,6 @@ export LEDGER="$WORKSPACE/ledger"
 export RISCV_PATH="/opt/riscv/"
 export RISCV64_PATH="/opt/riscv64/"
 
-if [[ -d $RISCV_PATH ]]; then
-	export PATH="$RISCV_PATH/bin:$PATH"
-fi
-
-if [[ -d $RISCV64_PATH ]]; then
-	export PATH="$RISCV64_PATH/bin:$PATH"
-fi
-
 ### Plugins
 
 # zsh prompt
@@ -97,7 +89,6 @@ export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
 export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 
-export ORGANIZE_CONFIG=$HOME/.config/organize-tool/config.yaml
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export HTML_TIDY="$HOME/.config/tidyrc"
@@ -106,22 +97,9 @@ export HTML_TIDY="$HOME/.config/tidyrc"
 export MOZ_USE_XINPUT2=1
 export XDG_CONFIG_HOME=$HOME/.config
 
-if [[ -d "$HOME/workspace/quartus/quartus" ]]; then
-	export QSYS_ROOTDIR="$WORKSPACE/quartus/quartus/sopc_builder/bin"
-	export PATH="$PATH:$WORKSPACE/quartus/quartus/bin"
-fi
-
-if [[ -d "/opt/xilinx/Vivado/2021.2/bin" ]]; then
-	export PATH="$PATH:/opt/xilinx/Vivado/2021.2/bin"
-fi
-
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
 source $HOME/.zsh/fzf-theme.zsh
-
-if [[ -d "/opt/crosstool-ng/bin/" ]]; then
-	export PATH="$PATH:/opt/crosstool-ng/bin"
-fi
 
 if [[ -d "$HOME/.local/bin/" ]]; then
 	export PATH="$PATH:$HOME/.local/bin/"
@@ -134,11 +112,6 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 if [[ -f "$HOME/.cargo/env" ]]; then
 	source $HOME/.cargo/env
 fi
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=$HOME/.cache/heroku/autocomplete/zsh_setup &&
-	test -f $HEROKU_AC_ZSH_SETUP_PATH &&
-	source $HEROKU_AC_ZSH_SETUP_PATH
 
 # 1password. Default to personal account
 export OP_ACCOUNT=my.1password.com
