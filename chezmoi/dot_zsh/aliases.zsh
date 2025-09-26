@@ -27,7 +27,13 @@ alias inbox="neomutt -f 'notmuch://?query=tag:inbox'"
 alias me="neomutt -f 'notmuch://?query=tag:me'"
 alias archived="neomutt -f 'notmuch://?query=tag:archived'"
 
+# python
 alias plocal="poetry env use $(pyenv which python)"
+alias u="uv"
+alias us="uv sync"
+alias ua="uv add"
+alias ur="uv run"
+alias py="python"
 
 alias rebuild="sudo nixos-rebuild switch --flake $DOTFILES/.#default"
 alias nix-diff="nvd diff /run/current-system $DOTFILES/result"
