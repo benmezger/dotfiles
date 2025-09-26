@@ -35,9 +35,6 @@ alias ua="uv add"
 alias ur="uv run"
 alias py="python"
 
-alias rebuild="sudo nixos-rebuild switch --flake $DOTFILES/.#default"
-alias nix-diff="nvd diff /run/current-system $DOTFILES/result"
-
 # if exa exist, alias to ls
 if (( ${+commands[eza]} )); then
     alias ls='eza'
