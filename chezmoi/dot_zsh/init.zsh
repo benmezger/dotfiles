@@ -24,11 +24,7 @@ _tmux_autostart(){
     fi
 }
 
-_fix_cursor() {
-   echo -ne '\e[5 q'
-}
-
-precmd_functions+=(_tmux_autostart _fix_cursor)
+precmd_functions+=(_tmux_autostart)
 
 # setup custom completion path
 fpath=($HOME/.zsh/completions $fpath)
