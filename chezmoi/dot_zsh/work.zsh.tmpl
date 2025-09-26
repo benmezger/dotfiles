@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
-# Backbase
+alias work="cd $WORKSPACE/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}"
+
+export WIFI_PROXY="{{ onepasswordRead (join "/" (list .onepassword.work_env "wifi_proxy")) }}"
+export KUBECONFIG=~/.kube/agbs/dev
+export GH_ENTERPRISE_TOKEN="{{ onepasswordRead (join "/" (list .onepassword.work_env "gh_token")) }}"
 
 set_proxy() {
   export ALL_PROXY="{{ onepasswordRead (join "/" (list .onepassword.work_env "all_proxy")) }}"
@@ -9,16 +13,14 @@ set_proxy() {
   export HTTPS_PROXY=$ALL_PROXY
   export FTP_PROXY=$ALL_PROXY
   export RSYNC_PROXY=$ALL_PROXY
+
   export ftp_proxy=$ALL_PROXY
   export rsync_proxy=$ALL_PROXY
   export http_proxy=$ALL_PROXY
   export https_proxy=$ALL_PROXY
 
-  export KUBECONFIG=~/.kube/agbs/dev
-  export GH_ENTERPRISE_TOKEN="{{ onepasswordRead (join "/" (list .onepassword.work_env "gh_token")) }}"
+  echo "Proxy environment variables set."
 }
-
-set_proxy
 
 unset_proxy() {
   unset ALL_PROXY
@@ -31,5 +33,16 @@ unset_proxy() {
   unset https_proxy
   unset ftp_proxy
   unset rsync_proxy
+
   echo "Proxy environment variables unset."
+}
+
+set_wifi_proxy() {
+  networksetup -setautoproxyurl "Wi-Fi" "$WIFI_PROXY"
+  echo "WiFi proxy set."
+}
+
+unset_wifi_proxy() {
+  networksetup -setautoproxystate "Wi-Fi" off
+  echo "WiFi proxy unset."
 }
