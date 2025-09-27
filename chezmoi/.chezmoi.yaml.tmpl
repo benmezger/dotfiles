@@ -44,8 +44,6 @@
 {{- $work_imap_host := "imap.gmail.com" -}}
 {{- $work_imap_port := 443 -}}
 
-{{- $podcast_opml := "https://www.listennotes.com/listen/podcast-list-McKCI8sZ0v2/opml/" -}}
-
 {{- if (env "ASK") }}
 {{- $minimal = promptBool "minimal" -}}
 {{- $workconf = promptBool "work config" -}}
@@ -78,7 +76,6 @@
 {{- $work_imap_port := promptString "work email's imap port" -}}
 {{- end }}
 
-{{- $podcast_opml := promptString "podcast opml url" -}}
 {{- end -}}
 {{- end -}}
 
@@ -101,7 +98,6 @@ data:
   smtp_port: {{ $personal_smtp_port }}
   imap_host: {{ $personal_imap_host }}
   imap_port: {{ $personal_imap_port }}
-  podcast_opml: {{ $podcast_opml }}
 {{- if $workconf }}
   work:
     workmail: {{ $work_email }}
