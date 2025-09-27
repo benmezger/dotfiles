@@ -29,10 +29,7 @@ fi
 
 export WORKSPACE="$HOME/workspace"
 export DOTFILES="$WORKSPACE/dotfiles"
-export DEVENV="$HOME/workspace/devenv/"
 export LEDGER="$WORKSPACE/ledger"
-export RISCV_PATH="/opt/riscv/"
-export RISCV64_PATH="/opt/riscv64/"
 
 ### Plugins
 
