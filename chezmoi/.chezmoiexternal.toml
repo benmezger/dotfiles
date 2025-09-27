@@ -36,3 +36,8 @@
     executable = true
     url = "https://github.com/lpicanco/i3-autodisplay/releases/download/v0.6/i3-autodisplay-0.6-linux-amd64"
 {{- end }}
+
+[".antidote"]
+    type = "git-repo"
+    refreshPeriod = "168h"
+    url = "https://github.com/mattmc3/antidote.git"
