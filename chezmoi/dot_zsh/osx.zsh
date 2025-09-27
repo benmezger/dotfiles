@@ -23,8 +23,6 @@ else
 	fpath+=("/usr/local/Homebrew/completions/")
 fi
 
-export ZSH_WAKATIME_BIN=wakatime-cli
-
 if [[ -d "/Library/TeX/texbin" ]]; then
 	export PATH="$PATH:/Library/TeX/texbin"
 fi

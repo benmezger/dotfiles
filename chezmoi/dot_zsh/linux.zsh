@@ -5,8 +5,6 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh-antidote/antidote.zsh
 source $(pyenv root)/completions/pyenv.zsh
 
-export ZSH_WAKATIME_BIN="/usr/bin/wakatime"
-
 # docker
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 

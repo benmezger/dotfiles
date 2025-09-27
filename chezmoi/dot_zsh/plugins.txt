@@ -4,7 +4,6 @@ zsh-users/zsh-completions path:src kind:fpath
 zdharma-continuum/fast-syntax-highlighting
 chriskempson/base16-shell
 zsh-users/zsh-history-substring-search
-sobolevn/wakatime-zsh-plugin
 docker/cli path:contrib/completion/zsh kind:fpath
 skywind3000/z.lua
 zsh-users/zsh-autosuggestions
