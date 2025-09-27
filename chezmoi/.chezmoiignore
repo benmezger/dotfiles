@@ -4,7 +4,7 @@
 {{ template "ignore_minimal.tmpl" . }}
 {{- end }}
 
-{{- if .workconf }}
+{{- if not .workconf }}
 {{ template "ignore_work.tmpl" }}
 {{- end }}
 
