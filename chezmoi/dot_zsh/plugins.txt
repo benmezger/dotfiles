@@ -8,4 +8,3 @@ docker/cli path:contrib/completion/zsh kind:fpath
 skywind3000/z.lua
 zsh-users/zsh-autosuggestions
 https://gitlab.com/code-stats/code-stats-zsh.git
-nix-community/nix-zsh-completions.git kind:fpath
