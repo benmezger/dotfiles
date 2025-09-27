@@ -1,7 +1,5 @@
 tap "d12frosted/emacs-plus"
-tap "homebrew/bundle"
 
-brew "antidote"
 brew "python@3.13"
 brew "chezmoi"
 brew "fzf"
@@ -10,12 +8,10 @@ brew "httpie"
 brew "ledger"
 brew "lua"
 brew "pinentry-mac"
-brew "poetry"
 brew "tmux"
 brew "wakatime-cli"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-mailutils", "with-native-comp"]
-brew "ripgrep"
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick", "with-mailutils", "with-native-comp"]
 brew "ripgrep"
 brew "coreutils", link: true
 brew "binutils"
@@ -24,11 +20,13 @@ cask "1password"
 cask "1password-cli"
 cask "alacritty"
 cask "chatgpt"
-cask "discord"
-cask "docker"
+cask "claude"
 cask "font-hack-nerd-font"
-cask "google-cloud-sdk"
 cask "maccy"
 cask "spotify"
 cask "whatsapp"
 cask "numi"
+cask "backblaze"
+cask "wakatime"
+
+mas "Amphetamine", id:937984704
