@@ -1,4 +1,5 @@
 tap "d12frosted/emacs-plus"
+tap "hashicorp/tap/terraform"
 
 brew "python@3.13"
 brew "chezmoi"
@@ -15,6 +16,15 @@ brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick", "with-mai
 brew "ripgrep"
 brew "coreutils", link: true
 brew "binutils"
+brew "sqlite"
+brew "direnv"
+brew "eza"
+brew "fd"
+brew "gh"
+brew "mas"
+brew "neovim"
+brew "terraform"
+brew "ispell"
 
 cask "1password"
 cask "1password-cli"
