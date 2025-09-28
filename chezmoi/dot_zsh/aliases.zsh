@@ -39,11 +39,11 @@ alias py="python"
 if (( ${+commands[eza]} )); then
     alias ls='eza'
     alias l='ls'
-    alias ll='exa -l'
-    alias lll='exa -l | less'
-    alias lla='exa -la'
-    alias llt='exa -T'
-    alias llfu='exa -bghHliS --git'
+    alias ll='eza -l'
+    alias lll='eza -l | less'
+    alias lla='eza -la'
+    alias llt='eza -T'
+    alias llfu='eza -bghHliS --git'
 else
     alias l='ls -1A'         # Lists in one column, hidden files.
     alias ll='ls -lh'        # Lists human readable sizes.
