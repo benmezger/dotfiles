@@ -128,5 +128,5 @@
     enabled = python
 [help]
     autocorrect = 1
-[includeIf "gitdir:~/workspace/backbase/"]
-    path = ~/workspace/backbase/.gitconfig
+[includeIf "gitdir:~/workspace/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}/"]
+    path = ~/workspace/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}/.gitconfig
