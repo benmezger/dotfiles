@@ -86,8 +86,6 @@ export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
 export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export HTML_TIDY="$HOME/.config/tidyrc"
 
 # smooth scrooling on firefox
@@ -101,9 +99,6 @@ source $HOME/.zsh/fzf-theme.zsh
 if [[ -d "$HOME/.local/bin/" ]]; then
 	export PATH="$PATH:$HOME/.local/bin/"
 fi
-
-# Disabling automatic widget re-binding
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # cargo
 if [[ -f "$HOME/.cargo/env" ]]; then

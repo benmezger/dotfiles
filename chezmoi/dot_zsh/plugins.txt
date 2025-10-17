@@ -6,5 +6,4 @@ chriskempson/base16-shell
 zsh-users/zsh-history-substring-search
 docker/cli path:contrib/completion/zsh kind:fpath
 skywind3000/z.lua
-zsh-users/zsh-autosuggestions
 https://gitlab.com/code-stats/code-stats-zsh.git kind:defer

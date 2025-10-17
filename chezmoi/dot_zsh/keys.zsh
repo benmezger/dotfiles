@@ -21,7 +21,6 @@ bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 bindkey '^W' backward-kill-word
-bindkey '^ ' autosuggest-accept
 bindkey '^r' fzf-history-widget
 
 # from: http://www.zsh.org/mla/users/2001/msg00870.html
