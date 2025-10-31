@@ -9,7 +9,7 @@ echo "Updating Emacs Doom"
 doom sync -e -u --force
 
 echo "Updating ZSH"
-antidote update
+zsh $HOME/.antidote/antidote update
 
 echo "Updating Tmux"
 "$HOME"/.tmux/plugins/tpm/bin/update_plugins all
