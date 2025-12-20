@@ -2,7 +2,7 @@
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh-antidote/antidote.zsh
+source $HOME/.antidote/antidote.zsh
 source $(pyenv root)/completions/pyenv.zsh
 
 # docker
