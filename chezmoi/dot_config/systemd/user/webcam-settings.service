@@ -1,0 +1,11 @@
+[Unit]
+Description=Razor Webcam settings
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/v4l2-ctl -d /dev/video0 -c focus_automatic_continuous=1
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
