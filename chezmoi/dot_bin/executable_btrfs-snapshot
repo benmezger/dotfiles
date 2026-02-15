@@ -15,3 +15,7 @@ fi
 
 sudo btrfs subv snap -r $ROOT_PATH $SNAPSHOTS_PATH/@root/root_$BACKUP_DATE
 sudo btrfs subv snap -r $HOME_PATH $SNAPSHOTS_PATH/@home/home_$BACKUP_DATE
+
+if command -v grub-mkconfig &>/dev/null; then
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+fi
