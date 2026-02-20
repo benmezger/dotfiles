@@ -303,13 +303,6 @@
   (setq doom-modeline-continuous-word-count-modes
         '(markdown-mode gfm-mod)))
 
-(use-package! py-isort
-  :defer t
-  :after python-mode
-  :mode ("[./]flake8\\'" . conf-mode)
-  :config
-  (add-hook 'before-save-hook 'py-isort-before-save))
-
 (after! (:or org elfeed-org)
   :defer t
   :init
