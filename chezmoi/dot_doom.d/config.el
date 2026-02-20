@@ -559,3 +559,48 @@ already been connected to."
 
 (use-package! copilot-chat
   :defer t)
+
+(defun benmezger/python-fmt ()
+  (interactive)
+  (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                    (projectile-project-root))
+                               default-directory)))
+    (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
+
+(defun benmezger/python-test ()
+  (interactive)
+  (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                    (projectile-project-root))
+                               default-directory)))
+    (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
+
+(defun benmezger/python-types ()
+  (interactive)
+  (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                    (projectile-project-root))
+                               default-directory)))
+    (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
+
+(defun benmezger/python-activate-venv ()
+  (interactive)
+  (let* ((root (or (and (fboundp 'projectile-project-root)
+                        (projectile-project-root))
+                   default-directory))
+         (venv (expand-file-name ".venv" root)))
+    (pyvenv-activate venv)))
+
+(defvar benmezger/python-last-project nil
+  "Project root for which a venv was last activated.")
+
+(defun benmezger/python-maybe-activate-venv (&optional _frame)
+  "Activate .venv when the current buffer belongs to a new Python project."
+  (when (and (fboundp 'projectile-project-p) (projectile-project-p))
+    (let* ((root (projectile-project-root))
+           (venv (expand-file-name ".venv" root)))
+      (when (and (not (equal root benmezger/python-last-project))
+                 (file-exists-p (expand-file-name "pyproject.toml" root))
+                 (file-directory-p venv))
+        (setq benmezger/python-last-project root)
+        (pyvenv-activate venv)))))
+
+(add-hook 'window-buffer-change-functions #'benmezger/python-maybe-activate-venv)
