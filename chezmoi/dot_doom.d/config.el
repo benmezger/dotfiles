@@ -216,7 +216,7 @@
 ------ ")
       :unnarrowed t)
      ("p" "private" plain "%?"
-      :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+      :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
                          "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: :personal:%^G
