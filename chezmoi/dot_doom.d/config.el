@@ -553,6 +553,13 @@ already been connected to."
 (use-package! copilot-chat
   :defer t)
 
+(after! gptel
+  :config
+  (gptel-make-ollama "Ollama"
+                     :host "localhost:11434"
+                     :stream t
+                     :models '(mistral:latest)))
+
 (defun benmezger/python-fmt ()
   (interactive)
   (let ((default-directory (or (and (fboundp 'projectile-project-root)

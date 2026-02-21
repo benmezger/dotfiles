@@ -57,6 +57,7 @@
        biblio
        terraform
        direnv
+       llm
 
        :lang
        (cc +lsp)
