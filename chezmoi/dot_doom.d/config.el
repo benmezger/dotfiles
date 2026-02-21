@@ -555,10 +555,12 @@ already been connected to."
 
 (after! gptel
   :config
-  (gptel-make-ollama "Ollama"
-                     :host "localhost:11434"
-                     :stream t
-                     :models '(mistral:latest)))
+  (setq gptel-backend
+        (gptel-make-ollama "Ollama"
+          :host "localhost:11434"
+          :stream t
+          :models '(codestral qwen3 deepseek-coder)))
+  (setq gptel-model 'codestral))
 
 (defun benmezger/python-fmt ()
   (interactive)
