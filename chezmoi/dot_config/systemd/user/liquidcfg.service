@@ -1,0 +1,10 @@
+[Unit]
+Description=AIO startup service
+
+[Service]
+Type=oneshot
+ExecStart=liquidctl initialize all
+ExecStart=liquidctl --match "NZXT Kraken 2023 Elite" set lcd screen orientation 180
+
+[Install]
+WantedBy=default.target
