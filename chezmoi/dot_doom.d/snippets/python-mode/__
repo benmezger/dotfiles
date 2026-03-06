@@ -1,7 +1,5 @@
-# -*- mode: snippet -*-                                     
+# -*- mode: snippet -*-
 # --
-#!/usr/bin/env `(file-name-nondirectory python-shell-interpreter)`
-
 # Author: `(user-full-name)` <`user-mail-address`>
 # Created at <`(format-time-string "%F %a %R")`>
 
