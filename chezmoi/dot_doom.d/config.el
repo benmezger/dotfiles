@@ -606,3 +606,5 @@ already been connected to."
         (pyvenv-activate venv)))))
 
 (add-hook 'window-buffer-change-functions #'benmezger/python-maybe-activate-venv)
+
+(map! "C-c C-x k" (lambda () (interactive) (kill-buffer (current-buffer))))
