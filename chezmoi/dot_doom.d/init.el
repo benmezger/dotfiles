@@ -60,6 +60,7 @@
        llm
 
        :lang
+       json (+lsp +tree-sitter)
        (cc +lsp)
        (yaml +lsp)
        data
