@@ -87,7 +87,8 @@
        (java +lsp +tree-sitter)
 
        :email
-       (mu4e +mbsync +org)
+       (notmuch +org)
+
        :app
        (rss +org)
        irc
