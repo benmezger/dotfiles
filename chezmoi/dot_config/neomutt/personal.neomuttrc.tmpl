@@ -1,7 +1,7 @@
 set my_user={{ .email }}
 
 {{- if .secrets }}
-set my_pass={{ onepasswordRead .onepassword.personal_mail }}
+set my_pass={{ onepasswordRead (join "/" (list .onepassword.fastmail "mbsync")) }}
 {{- end }}
 
 set realname = {{ .name | quote }}

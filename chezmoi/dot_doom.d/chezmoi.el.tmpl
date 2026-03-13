@@ -39,6 +39,9 @@
 (after! mu4e
   :defer t
   :config
+  {{- if eq .chezmoi.os "linux" }}
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+  {{- end }}
   (require 'mu4e-contrib)
   (setq mu4e-hide-index-messages nil
         mu4e-update-interval (* 5 60)
@@ -50,22 +53,11 @@
         mu4e-index-lazy-check nil
         mu4e-index-cleanup t
         +mu4e-main-bullet "•"
-        ;; because gmail uses labels as folders we can use lazy check since
-        ;; messages don't really "move"
-        mu4e-index-lazy-check t
-        +mu4e-gmail-accounts '(("{{ .email }}" . "personal")
-                               {{ if .workconf }}("{{ .work.workmail }}" . "work"){{ end}})
         mu4e-maildir-shortcuts
-        '((:maildir "/personal/archives" :key ?a)
+        '((:maildir "/personal/Archive" :key ?a)
           (:maildir "/personal/inbox" :key ?i)
-          {{ if .workconf }}(:maildir "/work/inbox" :key ?w){{ end }}
-          (:maildir "/personal/sent" :key ?s)
-          (:maildir "/personal/list/emacs" :key ?e)
-          (:maildir "/personal/list/mu4e" :key ?4)
-          (:maildir "/personal/list/debconf" :key ?d)
-          (:maildir "/personal/list/cypherpunk" :key ?c)
-          (:maildir "/personal/list/ieee-cass" :key ?j)
-          (:maildir "/personal/list/riscv" :key ?5))
+          (:maildir "/personal/Sent" :key ?s)
+          (:maildir "/personal/lists/emacs" :key ?e))
         smtpmail-queue-dir (expand-file-name "{{ .maildir }}/queue/cur"))
 
   (defun benmezger/mu4e-mode-hook ()
@@ -94,10 +86,10 @@
   {{- end }}
 
   (set-email-account! "personal"
-                      '((mu4e-sent-folder       . "/personal/sent")
-                        (mu4e-drafts-folder     . "/personal/drafts")
-                        (mu4e-trash-folder      . "/personal/trash")
-                        (mu4e-refile-folder     . "/personal/archives")
+                      '((mu4e-sent-folder       . "/personal/Sent")
+                        (mu4e-drafts-folder     . "/personal/Drafts")
+                        (mu4e-trash-folder      . "/personal/Trash")
+                        (mu4e-refile-folder     . "/personal/Archive")
                         (user-mail-address      . "{{ .email }}")
                         (smtpmail-smtp-user     . "{{ .email }}")
                         (smtpmail-smtp-server   . "{{ .smtp_host }}")
@@ -105,16 +97,6 @@
                         (mu4e-compose-signature . (with-temp-buffer
                                                     (insert-file-contents "~/.config/neomutt/signature-short.personal")
                                                     (buffer-string)))))
-  {{ if .workconf -}}
-  (set-email-account! "work"
-                      '((mu4e-refile-folder     . "/personal/work")
-                        (smtpmail-smtp-user     . "{{ .work.workmail }}")
-                        (user-mail-address      . "{{ .work.workmail }}")
-                        (smtpmail-smtp-server   . "{{ .work.smtp_host }}")
-                        (smtpmail-smtp-service  . {{ .work.smtp_port }})
-                        (mu4e-compose-signature . "{{ .name }}")))
-  {{- end }}
-
   (when (file-exists-p (concat org-directory "/elisp/mu4e-bookmarks.el"))
     (load (concat org-directory "/elisp/mu4e-bookmarks.el")))
 

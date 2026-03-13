@@ -11,16 +11,6 @@ host           {{ .smtp_host }}
 port           {{ .smtp_port }}
 from           {{ .email }}
 user           {{ .email }}
-password       {{ onepasswordRead .onepassword.personal_mail }}
-
-{{- if .workconf }}
-# work
-account        work
-host           {{ .work.smtp_host }}
-port           {{ .work.smtp_port }}
-from           {{ .work.workmail }}
-user           {{ .work.workmail }}
-password       {{ onepasswordRead .onepassword.work_mail }}
-{{- end }}
+password       {{ onepasswordRead (join "/" (list .onepassword.fastmail "mbsync")) }}
 
 account default: personal

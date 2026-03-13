@@ -33,20 +33,13 @@
 {{- $github_user := "benmezger" -}}
 {{- $maildir := "mail" -}}
 
-{{- $personal_smtp_host := "smtp.gmail.com" -}}
+{{- $personal_smtp_host := "smtp.fastmail.com" -}}
 {{- $personal_smtp_port := 587 -}}
-{{- $personal_imap_host := "imap.gmail.com" -}}
-{{- $personal_imap_port := 443 -}}
-
-{{- $work_email := "benjaminm@backbase.com" -}}
-{{- $work_smtp_host := "smtp.gmail.com" -}}
-{{- $work_smtp_port := 587 -}}
-{{- $work_imap_host := "imap.gmail.com" -}}
-{{- $work_imap_port := 443 -}}
+{{- $personal_imap_host := "imap.fastmail.com" -}}
+{{- $personal_imap_port := 993 -}}
 
 {{- if (env "ASK") }}
 {{- $minimal = promptBool "minimal" -}}
-{{- $workconf = promptBool "work config" -}}
 {{- $laptop_mode = promptBool "laptop mode" -}}
 
 {{- if $minimal -}}
@@ -67,15 +60,6 @@
 {{- $personal_smtp_port := promptInt "personal email's smtp port" -}}
 {{- $personal_imap_host := promptString "personal email's imap host" -}}
 {{- $personal_imap_port := promptInt "personal email's imap port" -}}
-
-{{- if .workconf -}}
-{{- $work_email := promptString "work email" -}}
-{{- $work_smtp_host := promptString "work email's smtp host" -}}
-{{- $work_smtp_port := promptString "work email's smtp port" -}}
-{{- $work_imap_host := promptString "work email's imap host" -}}
-{{- $work_imap_port := promptString "work email's imap port" -}}
-{{- end }}
-
 {{- end -}}
 {{- end -}}
 
@@ -98,21 +82,12 @@ data:
   smtp_port: {{ $personal_smtp_port }}
   imap_host: {{ $personal_imap_host }}
   imap_port: {{ $personal_imap_port }}
-{{- if $workconf }}
-  work:
-    workmail: {{ $work_email }}
-    imap_host: {{ $work_imap_host }}
-    imap_port: {{ $work_imap_port }}
-    smtp_host: {{ $work_smtp_host }}
-    smtp_port: {{ $work_smtp_port }}
-{{- end }}
 {{- end }}
 {{- if $secrets }}
   onepassword:
     bnc: op://3kygcny5whqjpzj5nq72uu6kua/j7i447k2evit77xqn55kocpeyi
     wakatime_api: op://3kygcny5whqjpzj5nq72uu6kua/mfj7igdw54vqlahxscx6u43i6i/credential
-    personal_mail: op://3kygcny5whqjpzj5nq72uu6kua/mggrdcdzo5uhlv2ox6ta2om2dq/password
-    work_mail: op://bkpivgdniyxevxolxjzg3y2dfu/4bjct6jx4ezhs64xkzbdaalr3q/password
+    fastmail: op://3kygcny5whqjpzj5nq72uu6kua/h4pv4gsvreaxvz2zfisayth3hi
     googleapi: op://3kygcny5whqjpzj5nq72uu6kua/dsyrpdpii5w32nqnf253l7prqe
     ssh: op://3kygcny5whqjpzj5nq72uu6kua/ajgg5n5sbsfkgpt2runkoze2m4
     pgp: op://3kygcny5whqjpzj5nq72uu6kua/tdsiqq7e24pmcslfczkpisv5fy

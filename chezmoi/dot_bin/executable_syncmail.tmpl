@@ -25,15 +25,13 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 root.addHandler(handler)
 
-# PERSONAL_EMAIL and WORK_EMAIL is automatically by 'chezmoi apply'.
-# The variables '.email', '.workconf' and '.work.workmail' is located in dotfiles/.chezmoi.yaml.tmpl
+# PERSONAL_EMAIL is automatically set by 'chezmoi apply'.
+# The variable '.email' is located in dotfiles/.chezmoi.yaml.tmpl
 MAILDIR = "{{ .maildir }}"
 PERSONAL_EMAIL = "{{ .email }}"
-WORK_EMAIL = "{{ if .workconf }}{{ .work.workmail }}{{ end }}"
 
 MAILDIR = pathlib.Path(MAILDIR)
 PERSONAL_MAILDIR = MAILDIR.joinpath("personal")
-WORK_MAILDIR = MAILDIR.joinpath("work") if len(WORK_EMAIL) else None
 
 NOTMUCH_BIN = "notmuch"
 AFEW_BIN = "afew"
@@ -106,7 +104,6 @@ def lock_acquire(should_exit=True):
 def main():
     ensure_dir(MAILDIR)
     ensure_dir(PERSONAL_MAILDIR)
-    ensure_dir(WORK_MAILDIR) if WORK_MAILDIR else None
 
     afew_move = run_afew(["--all", "-m", "-v"])
     mbsync_ok = call_mbsync() if afew_move else False
