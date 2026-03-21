@@ -127,3 +127,18 @@ fi
 alias resurrect-lenin="wakeonlan e8:9c:25:38:4e:a0"
 alias unlock-lenin="ssh -t grub 'cryptsetup-askpass'"
 alias lenin="ssh lenin"
+
+alias export-cv="emacsclient --eval '
+  (progn
+    (load \"$HOME/workspace/org/cv/cv-export-init.el\" nil t)
+    (with-current-buffer
+        (find-file-noselect \"$HOME/workspace/org/cv/cv.org\")
+      (org-with-wide-buffer
+       (dolist (heading (quote (\"General CV\" \"Python CV\")))
+         (goto-char (point-min))
+         (when (re-search-forward
+                (concat \"^\\\\* \" (regexp-quote heading))
+                nil t)
+           (beginning-of-line)
+           (org-latex-export-to-pdf t t))))))
+'"
