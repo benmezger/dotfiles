@@ -140,5 +140,5 @@ alias export-cv="emacsclient --eval '
                 (concat \"^\\\\* \" (regexp-quote heading))
                 nil t)
            (beginning-of-line)
-           (org-latex-export-to-pdf t t))))))
+           (org-latex-export-to-pdf nil t))))))
 '"
