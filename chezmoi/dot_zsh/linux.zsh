@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+ZSH_SITE_FUNCTIONS=/usr/share/zsh/site-functions
+
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source $HOME/.antidote/antidote.zsh

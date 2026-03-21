@@ -61,12 +61,20 @@ fi
 
 # initialize completion
 # zsh-defer defers compinit until after the first prompt, removing it from
-# startup time.
-if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
-        zsh-defer compinit -d ~/.zcompdump
-else
-        zsh-defer compinit -C -d ~/.zcompdump
-fi
+# startup time. Run full compinit if the dump is >24h old OR if any completion
+# file in fpath is newer than the dump (e.g. after installing system packages).
+_compinit_maybe_refresh() {
+  local dump=~/.zcompdump
+  local newest_completion=()
+  [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
+  if [[ -n ${dump}(#qN.mh+24) ]] || \
+     [[ -n $newest_completion && $newest_completion -nt $dump ]]; then
+    compinit -d $dump
+  else
+    compinit -C -d $dump
+  fi
+}
+zsh-defer _compinit_maybe_refresh
 
 # enable approximate matches for completion
 zstyle ':completion:*' completer _expand _complete _approximate

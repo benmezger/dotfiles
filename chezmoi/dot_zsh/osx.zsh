@@ -35,5 +35,11 @@ fi
 # completions
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+  ZSH_SITE_FUNCTIONS=/opt/homebrew/share/zsh/site-functions
+else
+  ZSH_SITE_FUNCTIONS=/usr/local/share/zsh/site-functions
+fi
+
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source $(pyenv root)/completions/pyenv.zsh
