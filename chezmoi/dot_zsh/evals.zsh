@@ -14,4 +14,12 @@ fi
 
 if (( $+commands[direnv] )); then
 	eval "$(direnv hook zsh)"
+	# The hook registers _direnv_hook on both precmd (every prompt) and chpwd
+	# (directory change). The precmd registration causes ~8ms overhead on every
+	# prompt draw. Removing it from precmd_functions keeps direnv running only
+	# on directory changes (chpwd), saving ~8ms/prompt.
+	#
+	# Tradeoff: if we edit an .envrc while already in that directory, it won't
+	# auto-reload. For that, we need to run `direnv reload` manually or `cd .`.
+	precmd_functions=(${precmd_functions:#_direnv_hook})
 fi

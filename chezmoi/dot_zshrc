@@ -60,14 +60,13 @@ if [[ $TERM == "dumb" ]]; then
 fi
 
 # initialize completion
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-        compinit
+# zsh-defer defers compinit until after the first prompt, removing it from
+# startup time.
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+        zsh-defer compinit -d ~/.zcompdump
 else
-        compinit -C
+        zsh-defer compinit -C -d ~/.zcompdump
 fi
 
 # enable approximate matches for completion
 zstyle ':completion:*' completer _expand _complete _approximate
-
-# Apply theme
-base16_gruvbox-dark-hard
