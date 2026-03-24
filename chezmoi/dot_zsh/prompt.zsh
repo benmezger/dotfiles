@@ -21,4 +21,4 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔ "
 
 PROMPT='%B%40<..<%~%b$(gitprompt)'
 PROMPT+='%(?.%(!.%F{yellow}.%F{grey}).%F{red}) $%f '
-RPROMPT=''
+RPROMPT='${SSH_CONNECTION+"%F{yellow}ssh%f "}'
