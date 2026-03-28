@@ -16,6 +16,7 @@
 
 (load (expand-file-name "chezmoi.el" user-emacs-directory) t)
 
+
 (use-package straight
   :custom
   (straight-use-package-by-default t)
@@ -255,6 +256,9 @@
 
 (use-package org
   :ensure t
+  :init
+  ;; Set before org loads so keybindings referencing this variable never see it void.
+  (setq org-directory "~/workspace/org")
   :hook (org-mode . auto-fill-mode)
   :requires general
   :general
@@ -276,6 +280,7 @@
    org-archive-location ".archives/%s_archive::"
    org-agenda-files (list org-directory)
    org-log-into-drawer t
+   org-startup-indented t
    org-agenda-inhibit-startup t
    bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
    org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
