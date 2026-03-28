@@ -213,7 +213,10 @@
     "c h" '(lsp-describe-thing-at-point :which-key "hover doc")
     "c e" '(flymake-show-buffer-diagnostics :which-key "errors list"))
   :config
-  (setq lsp-completion-provider :capf))
+  (setq lsp-completion-provider :capf
+        lsp-idle-delay 0.5
+        lsp-log-io nil
+        lsp-ruff-ruff-args '("--preview")))
 
 (use-package lsp-ivy
   :ensure t
@@ -531,6 +534,7 @@
 	;; names.
 	uniquify-buffer-name-style 'forward
 	ring-bell-function 'ignore
+	inhibit-compacting-font-caches t
 	inhibit-startup-screen t
 	cursor-type 'bar
 	auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc")
