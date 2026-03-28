@@ -202,6 +202,8 @@
   (company-active-map
    "TAB"     'company-complete-selection
    "<tab>"   'company-complete-selection)
+  :hook
+  (git-commit-mode . (lambda () (company-mode -1)))
   :config
   (setq company-idle-delay 0.0
         company-minimum-prefix-length 1))
