@@ -1,7 +1,0 @@
-* %(format-time-string org-journal-time-format)%^{Title}
-
-%?
-
-Entered on %U
-  %i
-  %a

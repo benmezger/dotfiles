@@ -1,8 +1,0 @@
-**** %^{State|READING|HOLD|READ} %? %^g
-:PROPERTIES:
-:BOOK_CATEGORY: %^{Category|misc}
-:BOOK_AUTHORS: %^{Authors|unknown}
-:START_DATE: %^{Start date|%T|nil}
-:END_DATE: %^{End date|%T|nil}
-:URL: %^{URL|nil}
-:END:
