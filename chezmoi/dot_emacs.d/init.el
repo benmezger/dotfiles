@@ -14,6 +14,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(load (expand-file-name "chezmoi.el" user-emacs-directory) t)
+
 (use-package straight
   :custom
   (straight-use-package-by-default t)
@@ -361,7 +363,7 @@
                               "#+TITLE: ${title}
 #+DATE: %T
 #+FILETAGS: %^G
-#+SETUPFILE: %(concat (file-name-as-directory org-directory) \"hugo.setup\")
+#+SETUPFILE: ../hugo.setup
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
 #+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
