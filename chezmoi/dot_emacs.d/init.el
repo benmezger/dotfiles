@@ -505,6 +505,7 @@
   (tool-bar-mode -1)
   (display-time-mode 1)
   (display-battery-mode 1)
+  (hl-line-mode 1)
 
   (require 'uniquify)
 
