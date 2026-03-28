@@ -76,7 +76,15 @@
 
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1))
+  :init
+  ;; Disable icons to prevent a crash on macOS ARM64 (GNU Emacs bug#68940).
+  ;; During init, nsterm.m's `layoutSublayersOfLayer:' fires `redisplay()'
+  ;; before the face cache is fully initialised.  doom-modeline's battery
+  ;; status update then calls `char-displayable-p', which reaches
+  ;; `font_find_for_lface' and dereferences the corrupted cache → SIGABRT.
+  ;; Keeping icons off prevents any `char-displayable-p' calls at startup.
+  (setq doom-modeline-icon nil)
+  (doom-modeline-mode 1))
 
 (use-package counsel
   :diminish (ivy-mode . "")
