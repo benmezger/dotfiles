@@ -114,6 +114,7 @@
 	ivy-count-format "%d/%d "
 	enable-recursive-minibuffers t
 	search-default-mode #'char-fold-to-regexp
+	ivy-wrap t
 	ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
           (counsel-rg . ivy--regex-plus)
