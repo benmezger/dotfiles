@@ -196,11 +196,18 @@
   (setq company-idle-delay 0.0
         company-minimum-prefix-length 1))
 
+(use-package treesit-auto
+  :ensure t
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
+
 (use-package lsp-mode
   :ensure t
   :after company
   :requires (which-key company general)
-  :hook ((python-mode . lsp-deferred)
+  :hook ((python-mode    . lsp-deferred)
+         (python-ts-mode . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
   :general
