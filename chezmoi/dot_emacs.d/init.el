@@ -503,7 +503,7 @@
     "p k" '(project-kill-buffers :which-key "kill buffers")
     "p s" '(my/counsel-rg-project :which-key "search project")
     "s"   '(:ignore t :which-key "search")
-    "s d" '(counsel-rg :which-key "rg directory")
+    "s p" '(counsel-rg :which-key "rg project")
     "s d" '((lambda () (interactive) (counsel-rg nil default-directory)) :which-key "rg directory")
     "t"   '(:ignore t :which-key "toggle")
     "t b" '(my/big-font-mode :which-key "big font")
