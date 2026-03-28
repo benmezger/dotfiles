@@ -362,7 +362,7 @@
            :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
                               "#+TITLE: ${title}
 #+DATE: %T
-#+FILETAGS: %^G
+#+FILETAGS: %^{Filetags}
 #+SETUPFILE: ../hugo.setup
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
@@ -377,7 +377,7 @@
            :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
                               "#+TITLE: ${title}
 #+DATE: %T
-#+FILETAGS: :personal:%^G
+#+FILETAGS: :personal:%^{Filetags}
 #+HUGO_SLUG: ${slug}
 #+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 ")
@@ -386,7 +386,7 @@
            :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
                               "#+TITLE: ${title}
 #+DATE: %T
-#+FILETAGS: :personal:gpg:%^G
+#+FILETAGS: :personal:gpg:%^{Filetags}
 #+HUGO_SLUG: ${slug}
 #+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
 ")
