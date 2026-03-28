@@ -465,6 +465,13 @@
   :requires general
   :bind (("C-w" . backward-kill-word)
 	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer)))))
+  :hook
+  (emacs-startup . (lambda ()
+                     (message
+		      "Emacs loaded in %s with %d garbage collections."
+                      (format "%.2f seconds"
+                              (float-time (time-subtract after-init-time before-init-time)))
+                      gcs-done)))
   :general
   (my/leader-keys
     "b"   '(:ignore t :which-key "buffers")
