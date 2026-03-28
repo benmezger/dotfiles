@@ -487,7 +487,8 @@
   :ensure nil
   :requires general
   :bind (("C-w" . backward-kill-word)
-	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer)))))
+	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer))))
+	 ("<escape>" . keyboard-quit))
   :hook
   (emacs-startup . (lambda ()
                      (message
