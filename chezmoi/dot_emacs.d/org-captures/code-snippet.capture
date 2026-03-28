@@ -1,0 +1,9 @@
+* %^{Description} %^g
+:PROPERTIES:
+:CREATED: %U
+:LOCATION: %^{Location|%F|nil}
+:END:
+
+#+BEGIN_SRC %^{Source type}
+%?
+#+END_SRC

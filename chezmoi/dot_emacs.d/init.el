@@ -14,30 +14,10 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(require 'package)
-(setopt package-archives
-        '(("melpa" . "http://melpa.org/packages/")
-          ("org" . "http://orgmode.org/elpa/")
-          ("gnu" . "https://elpa.gnu.org/packages/")
-          ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
-
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (use-package straight
-  :custom (straight-use-package-by-default t))
-
-(use-package auto-package-update
-  :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
+  :custom
+  (straight-use-package-by-default t)
+  (straight-recipe-repositories '(org-elpa melpa gnu-elpa-mirror nongnu-elpa el-get emacsmirror-mirror)))
 
 (use-package vertico
   :ensure t
@@ -48,9 +28,11 @@
   :ensure t
   :config
   (general-evil-setup t)
+  (general-override-mode 1)
 
   (general-create-definer my/leader-keys
-    :keymaps '(normal insert visual emacs)
+    :states '(normal insert visual emacs motion)
+    :keymaps 'override
     :prefix "SPC"
     :global-prefix "C-SPC"))
 
@@ -66,11 +48,20 @@
 (use-package goto-chg
   :ensure t)
 
+(use-package undo-fu)
+
+(use-package undo-fu-session
+  :config
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+  (undo-fu-session-global-mode))
+
 (use-package evil
   :ensure t
   :requires goto-chg
   :init
-  (setq evil-want-keybinding nil)
+  (setq evil-want-keybinding nil
+	evil-undo-system 'undo-fu
+        evil-insert-state-cursor 'bar)
   :config
   (evil-mode))
 
@@ -100,14 +91,15 @@
    ("C-x l"   . counsel-locate))
   :general
   (my/leader-keys
-   "SPC" '(counsel-find-file :which-key "find file")
-   "f"   '(:ignore t :which-key "files")
-   "f r" '(counsel-recentf :which-key "find recent files")
-   "f g" '(counsel-git :which-key "find git file")
-   "f k" '(counsel-locate :which-key "locate file"))
+    "SPC" '(counsel-find-file :which-key "find file")
+    "f"   '(:ignore t :which-key "files")
+    "f r" '(counsel-recentf :which-key "find recent files")
+    "f g" '(counsel-git :which-key "find git file")
+    "f k" '(counsel-locate :which-key "locate file"))
   :config
   (setq ivy-use-virtual-buffers t
-	ivy-height 20
+	ivy-height 10
+	ivy-fixed-height-minibuffer t
 	ivy-count-format "%d/%d "
 	enable-recursive-minibuffers t
 	search-default-mode #'char-fold-to-regexp
@@ -168,11 +160,11 @@
   :requires general
   :general
   (my/leader-keys
-   "g"   '(:ignore t :which-key "git")
-   "g g" '(magit-status :which-key "magit buffer"))
+    "g"   '(:ignore t :which-key "git")
+    "g g" '(magit-status :which-key "magit buffer"))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-save-repository-buffers 'dontask))
+        magit-save-repository-buffers nil))
 
 (use-package pyenv-mode
   :ensure t
@@ -211,15 +203,15 @@
   :commands (lsp lsp-deferred)
   :general
   (my/leader-keys
-   "c"   '(:ignore t :which-key "code")
-   "c f" '(lsp-format-buffer :which-key "format")
-   "c r" '(lsp-rename :which-key "rename")
-   "c a" '(lsp-execute-code-action :which-key "code action")
-   "c d" '(lsp-find-definition :which-key "find definition")
-   "c i" '(lsp-find-implementation :which-key "find implementation")
-   "c t" '(lsp-find-type-definition :which-key "find type definition")
-   "c h" '(lsp-describe-thing-at-point :which-key "hover doc")
-   "c e" '(flymake-show-buffer-diagnostics :which-key "errors list"))
+    "c"   '(:ignore t :which-key "code")
+    "c f" '(lsp-format-buffer :which-key "format")
+    "c r" '(lsp-rename :which-key "rename")
+    "c a" '(lsp-execute-code-action :which-key "code action")
+    "c d" '(lsp-find-definition :which-key "find definition")
+    "c i" '(lsp-find-implementation :which-key "find implementation")
+    "c t" '(lsp-find-type-definition :which-key "find type definition")
+    "c h" '(lsp-describe-thing-at-point :which-key "hover doc")
+    "c e" '(flymake-show-buffer-diagnostics :which-key "errors list"))
   :config
   (setq lsp-completion-provider :capf))
 
@@ -243,15 +235,15 @@
   :requires general
   :general
   (my/leader-keys
-   "o"   '(:ignore t :which-key "org")
-   "o a" '(org-agenda :which-key "agenda")
-   "o c" '(org-capture :which-key "capture")
-   "o l" '(org-store-link :which-key "store link")
-   "o i" '(benmezger/org-insert-link-dwim :which-key "insert link")
-   "o f" '((lambda () (interactive) (require 'org) (counsel-find-file org-directory)) :which-key "find file")
-   "o t" '(org-todo-list :which-key "todo list")
-   "o j" '(org-journal-new-entry :which-key "new journal entry")
-   "o v" '((lambda () (interactive) (require 'org) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
+    "o"   '(:ignore t :which-key "org")
+    "o a" '(org-agenda :which-key "agenda")
+    "o c" '(org-capture :which-key "capture")
+    "o l" '(org-store-link :which-key "store link")
+    "o i" '(benmezger/org-insert-link-dwim :which-key "insert link")
+    "o f" '((lambda () (interactive) (counsel-find-file org-directory)) :which-key "find file")
+    "o t" '(org-todo-list :which-key "todo list")
+    "o j" '(org-journal-new-entry :which-key "new journal entry")
+    "o v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
   :config
   (setq
    org-log-done 'time
@@ -322,22 +314,18 @@
                                            'title))))))))
             (t (call-interactively 'org-insert-link))))))
 
-(use-package org-bullets
-  :ensure t
-  :hook (org-mode . org-bullets-mode))
-
 (use-package org-roam
   :ensure t
   :demand t
   :general
   (my/leader-keys
-   "o r"   '(:ignore t :which-key "roam")
-   "o r f" '(org-roam-node-find :which-key "find node")
-   "o r i" '(org-roam-node-insert :which-key "insert node")
-   "o r b" '(org-roam-buffer-toggle :which-key "backlinks")
-   "o r c" '(org-roam-capture :which-key "capture")
-   "o r d" '(org-roam-dailies-goto-today :which-key "today's daily")
-   "o r D" '(org-roam-dailies-find-date :which-key "find daily"))
+    "o r"   '(:ignore t :which-key "roam")
+    "o r f" '(org-roam-node-find :which-key "find node")
+    "o r i" '(org-roam-node-insert :which-key "insert node")
+    "o r b" '(org-roam-buffer-toggle :which-key "backlinks")
+    "o r c" '(org-roam-capture :which-key "capture")
+    "o r d" '(org-roam-dailies-goto-today :which-key "today's daily")
+    "o r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :config
   (setq org-roam-directory "~/workspace/org/roam"
         org-roam-index-file (concat org-roam-directory "/" "index.org"))
@@ -409,12 +397,11 @@
     (interactive)
     (org-id-update-id-locations
      (directory-files-recursively
-      org-roam-directory ".org$\\|.org.gpg$")))
-
-  (org-roam-db-autosync-mode))
+      org-roam-directory ".org$\\|.org.gpg$"))))
 
 (use-package org-roam-ui
   :ensure t
+  :requires org
   :after org-roam
   :config
   (setq org-roam-ui-sync-theme t
@@ -423,7 +410,7 @@
         org-roam-ui-open-on-start t))
 
 (use-package org-contrib
-  :ensure t
+  :straight t
   :after org
   :config (require 'ox-extra))
 
@@ -452,51 +439,175 @@
         org-journal-encrypt-journal t
         org-journal-file-format "%Y%m%d.org"))
 
+(use-package direnv
+  :config (direnv-mode))
+
+(use-package restart-emacs
+  :ensure t
+  :requires general
+  :general
+  (my/leader-keys
+    "e R" '(restart-emacs :which-key "restart emacs")))
+
+(use-package code-stats
+  :defer t
+  :ensure t
+  :hook (kill-emacs . (lambda () (code-stats-sync :wait)))
+  :config
+  (setq code-stats-token (auth-source-pick-first-password :host "codestats.net"))
+  (define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
+    (lambda () (code-stats-mode 1)))
+  (my-global-code-stats-mode)
+  (run-with-idle-timer 30 t #'code-stats-sync))
+
 (use-package emacs
   :ensure nil
   :requires general
-  :bind
-  ("C-w" . backward-kill-word)
+  :bind (("C-w" . backward-kill-word)
+	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer)))))
   :general
   (my/leader-keys
-   "b"   '(:ignore t :which-key "buffers")
-   "b b" '(switch-to-buffer :which-key "switch buffer")
-   "b k" '(kill-buffer :which-key "kill buffer")
-   "b s" '(save-buffer :which-key "save buffer")
-   "b l" '(list-buffers :which-key "list buffers")
-   "w"   '(:ignore t :which-key "windows")
-   "w s" '(split-window-below :which-key "split horizontal")
-   "w v" '(split-window-right :which-key "split vertical")
-   "w k" '(delete-window :which-key "close window")
-   "p"   '(:ignore t :which-key "project")
-   "p p" '(project-find-file :which-key "find files")
-   "p g" '(project-find-regexp :which-key "grep files")
-   "p k" '(project-kill-buffers :which-key "kill buffers"))
+    "b"   '(:ignore t :which-key "buffers")
+    "b b" '(switch-to-buffer :which-key "switch buffer")
+    "b k" '(kill-buffer :which-key "kill buffer")
+    "b s" '(save-buffer :which-key "save buffer")
+    "b l" '(list-buffers :which-key "list buffers")
+    "w"   '(:ignore t :which-key "windows")
+    "w s" '(split-window-below :which-key "split horizontal")
+    "w v" '(split-window-right :which-key "split vertical")
+    "w k" '(delete-window :which-key "close window")
+    "p"   '(:ignore t :which-key "project")
+    "p p" '(project-switch-project :which-key "switch project")
+    "p f" '(project-find-file :which-key "find file")
+    "p g" '(project-find-regexp :which-key "grep files")
+    "p k" '(project-kill-buffers :which-key "kill buffers")
+    "p s" '(my/counsel-rg-project :which-key "search project")
+    "s"   '(:ignore t :which-key "search")
+    "s d" '(counsel-rg :which-key "rg directory")
+    "s d" '((lambda () (interactive) (counsel-rg nil default-directory)) :which-key "rg directory")
+    "t"   '(:ignore t :which-key "toggle")
+    "t b" '(my/big-font-mode :which-key "big font")
+    "q"   '(:ignore t :which-key "quit")
+    "e r" '(my/reload-init :which-key "reload config")
+    "h"   '(:ignore t :which-key "help")
+    "h k" '(describe-key :which-key "describe key")
+    "h v" '(describe-variable :which-key "describe variable")
+    "h m" '(describe-mode :which-key "describe mode")
+    "h M" '(describe-minor-mode :which-key "describe minor mode")
+    "h i" '(info :which-key "info"))
   :config
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (global-display-line-numbers-mode)
+  (global-auto-revert-mode t)
+  (toggle-frame-maximized)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (toggle-frame-maximized)
-
-  (global-display-line-numbers-mode)
-  (global-auto-revert-mode t)
+  (display-time-mode 1)
+  (display-battery-mode 1)
 
   (require 'uniquify)
 
   (setq epa-armor t
-        display-line-numbers-type t
-        gc-cons-threshold 100000000 ; 100 mb
-        read-process-output-max (* 1024 1024) ; 1mb
-        ;; Place backups in a separate folder.
-        backup-directory-alist `(("." . "~/.saves"))
-        auto-save-file-name-transforms `((".*" "~/.saves/" t))
-        ;; I store automatic customization options in a gitignored file,
-        ;; but this is definitely a personal preference.
-        custom-file (locate-user-emacs-file "custom.el")
-        ;; Ensure unique names when matching files exist in the buffer.
-        ;; It will add a "myproj/main.rs" prefix when it detects matching
-        ;; names.
-        uniquify-buffer-name-style 'forward)
+	display-line-numbers-type t
+	gc-cons-threshold 100000000 ; 100 mb
+	read-process-output-max (* 1024 1024) ; 1mb
+	;; Place backups in a separate folder.
+	backup-directory-alist `(("." . "~/.saves"))
+	auto-save-file-name-transforms `((".*" "~/.saves/" t))
+	;; I store automatic customization options in a gitignored file,
+	;; but this is definitely a personal preference.
+	custom-file (locate-user-emacs-file "custom.el")
+	;; Ensure unique names when matching files exist in the buffer.
+	;; It will add a "myproj/main.rs" prefix when it detects matching
+	;; names.
+	uniquify-buffer-name-style 'forward
+	ring-bell-function 'ignore
+	inhibit-startup-screen t
+	cursor-type 'bar
+	auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc")
+	enable-recursive-minibuffers t
+	undo-limit 67108864 ; 64mb
+	undo-strong-limit 100663296 ; 96mb.
+	undo-outer-limit 1006632960) ; 960mb
 
   (when (file-exists-p custom-file)
-    (load custom-file)))
+    (load custom-file))
+
+  (defvar my/big-font-mode nil "Non-nil when big font mode is active.")
+  (defvar my/normal-font-height 140 "Default font height.")
+  (defvar my/big-font-height 200 "Font height for big font mode.")
+
+  (defun my/big-font-mode ()
+    "Toggle between normal and big font size."
+    (interactive)
+    (setq my/big-font-mode (not my/big-font-mode))
+    (set-face-attribute 'default nil
+                        :height (if my/big-font-mode
+                                    my/big-font-height
+                                  my/normal-font-height))
+    (message "Big font mode %s" (if my/big-font-mode "enabled" "disabled")))
+
+  (defvar my/hack-local-variables-running nil)
+  (advice-add 'hack-local-variables :around
+              (lambda (orig &rest args)
+		(unless my/hack-local-variables-running
+                  (let ((my/hack-local-variables-running t))
+                    (apply orig args)))))
+
+  (defun benmezger/python-fmt ()
+    (interactive)
+    (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                      (projectile-project-root))
+				 default-directory)))
+      (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
+
+  (defun benmezger/python-test ()
+    (interactive)
+    (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                      (projectile-project-root))
+				 default-directory)))
+      (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
+
+  (defun benmezger/python-types ()
+    (interactive)
+    (let ((default-directory (or (and (fboundp 'projectile-project-root)
+                                      (projectile-project-root))
+				 default-directory)))
+      (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
+
+  (defun benmezger/python-activate-venv ()
+    (interactive)
+    (let* ((root (or (and (fboundp 'projectile-project-root)
+                          (projectile-project-root))
+                     default-directory))
+           (venv (expand-file-name ".venv" root)))
+      (pyvenv-activate venv)))
+
+  (defvar benmezger/python-last-project nil
+    "Project root for which a venv was last activated.")
+
+  (defun benmezger/python-maybe-activate-venv (&optional _frame)
+    "Activate .venv when the current buffer belongs to a new Python project."
+    (when (and (fboundp 'projectile-project-p) (projectile-project-p))
+      (let* ((root (projectile-project-root))
+             (venv (expand-file-name ".venv" root)))
+	(when (and (not (equal root benmezger/python-last-project))
+                   (file-exists-p (expand-file-name "pyproject.toml" root))
+                   (file-directory-p venv))
+          (setq benmezger/python-last-project root)
+          (pyvenv-activate venv)))))
+
+  (add-hook 'window-buffer-change-functions #'benmezger/python-maybe-activate-venv)
+
+  (defun my/reload-init ()
+    "Reload init.el in the current Emacs session."
+    (interactive)
+    (load-file user-init-file)
+    (message "init.el reloaded"))
+
+  (defun my/counsel-rg-project ()
+    "Run counsel-rg from the current project root."
+    (interactive)
+    (counsel-rg nil (project-root (project-current t))))
+  )
