@@ -157,6 +157,7 @@
 
 (use-package magit
   :ensure t
+  :defer t
   :requires general
   :general
   (my/leader-keys
@@ -168,12 +169,13 @@
 
 (use-package pyenv-mode
   :ensure t
+  :defer t
+  :hook (python-mode . pyenv-mode)
   :config
   (when (executable-find "pyenv")
-    (pyenv-mode +1)
     (add-to-list 'exec-path (expand-file-name "shims" (or (getenv "PYENV_ROOT") "~/.pyenv")))))
 
-(use-package pyvenv :ensure t)
+(use-package pyvenv :ensure t :defer t)
 
 (use-package apheleia
   :ensure t
@@ -319,7 +321,7 @@
 
 (use-package org-roam
   :ensure t
-  :demand t
+  :defer t
   :general
   (my/leader-keys
     "o r"   '(:ignore t :which-key "roam")
@@ -410,7 +412,7 @@
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+        org-roam-ui-open-on-start nil))
 
 (use-package org-contrib
   :straight t
@@ -443,7 +445,8 @@
         org-journal-file-format "%Y%m%d.org"))
 
 (use-package direnv
-  :config (direnv-mode))
+  :defer t
+  :hook (after-init . direnv-mode))
 
 (use-package restart-emacs
   :ensure t
