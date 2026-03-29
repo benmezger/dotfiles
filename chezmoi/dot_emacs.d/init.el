@@ -90,74 +90,31 @@
     (setq doom-modeline-icon nil))
   (doom-modeline-mode 1))
 
-(use-package counsel
-  :diminish (ivy-mode . "")
-  :init (ivy-mode 1)
-  :requires general
+(use-package consult
   :ensure t
+  :requires general
   :bind*
-  (("M-x"     . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)
-   ("C-c g"   . counsel-git)
-   ("C-x l"   . counsel-locate))
+  (("C-x C-r" . consult-recent-file)
+   ("C-x l"   . consult-locate))
   :general
   (my/leader-keys
-    "SPC" '(counsel-find-file :which-key "find file")
+    "SPC" '(consult-fd :which-key "find file")
     "f"   '(:ignore t :which-key "files")
-    "f r" '(counsel-recentf :which-key "find recent files")
-    "f g" '(counsel-git :which-key "find git file")
-    "f k" '(counsel-locate :which-key "locate file"))
+    "f r" '(consult-recent-file :which-key "find recent files")
+    "f f" '(consult-fd :which-key "find file")
+    "f l" '(consult-locate :which-key "locate file"))
   :config
-  (setq ivy-use-virtual-buffers t
-	ivy-height 10
-	ivy-fixed-height-minibuffer t
-	ivy-count-format "%d/%d "
-	enable-recursive-minibuffers t
-	search-default-mode #'char-fold-to-regexp
-	ivy-wrap t
-	ivy-re-builders-alist
-        '((swiper . ivy--regex-plus)
-	  ivy-wrap t
-          (counsel-rg . ivy--regex-plus)
-          (t      . ivy--regex-fuzzy)))
+  (consult-customize
+   consult-ripgrep consult-grep consult-git-grep
+   :group nil
+   :preview-key "M-."))
 
-  (defun eh-ivy-return-recentf-index (dir)
-    (when (and (boundp 'recentf-list)
-               recentf-list)
-      (let ((files-list
-             (cl-subseq recentf-list
-			0 (min (- (length recentf-list) 1) 20)))
-            (index 0))
-	(while files-list
-          (if (string-match-p dir (car files-list))
-              (setq files-list nil)
-            (setq index (+ index 1))
-            (setq files-list (cdr files-list))))
-	index)))
-
-  (defun eh-ivy-sort-file-function (x y)
-    (let* ((x (concat ivy--directory x))
-           (y (concat ivy--directory y))
-           (x-mtime (nth 5 (file-attributes x)))
-           (y-mtime (nth 5 (file-attributes y))))
-      (if (file-directory-p x)
-          (if (file-directory-p y)
-              (let ((x-recentf-index (eh-ivy-return-recentf-index x))
-                    (y-recentf-index (eh-ivy-return-recentf-index y)))
-		(if (and x-recentf-index y-recentf-index)
-                    ;; Directories is sorted by `recentf-list' index
-                    (< x-recentf-index y-recentf-index)
-                  (string< x y)))
-            t)
-	(if (file-directory-p y)
-            nil
-          ;; Files is sorted by mtime
-          (time-less-p y-mtime x-mtime)))))
-
-  (add-to-list 'ivy-sort-functions-alist
-               '(read-file-name-internal . eh-ivy-sort-file-function)))
-
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-pcm-leading-wildcard t))
 
 (use-package which-key
   :init (which-key-mode)
@@ -255,10 +212,11 @@
         lsp-log-io nil
         lsp-ruff-ruff-args '("--preview")))
 
-(use-package lsp-ivy
+(use-package consult-lsp
   :ensure t
-  :requires (lsp-mode counsel)
-  :commands lsp-ivy-workspace-symbol)
+  :requires (lsp-mode consult)
+  :after lsp-mode
+  :commands (consult-lsp-symbols consult-lsp-diagnostics consult-lsp-file-symbols))
 
 (use-package lsp-ui
   :ensure t
@@ -283,7 +241,7 @@
     "n c" '(org-capture :which-key "capture")
     "n l" '(org-store-link :which-key "store link")
     "n i" '(benmezger/org-insert-link-dwim :which-key "insert link")
-    "n f" '((lambda () (interactive) (counsel-find-file org-directory)) :which-key "find file")
+    "n f" '((lambda () (interactive) (let ((default-directory org-directory)) (call-interactively #'find-file))) :which-key "find file")
     "n t" '(org-todo-list :which-key "todo list")
     "n j" '(org-journal-new-entry :which-key "new journal entry")
     "n v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
@@ -542,14 +500,14 @@
     "p"   '(:ignore t :which-key "project")
     "p p" '(project-switch-project :which-key "switch project")
     "p f" '(project-find-file :which-key "find file")
-    "p g" '(project-find-regexp :which-key "grep files")
+    "p g" '(consult-ripgrep :which-key "grep files")
     "p k" '(project-kill-buffers :which-key "kill buffers")
-    "p s" '(my/counsel-rg-project :which-key "search project")
+    "p s" '(my/consult-rg-project :which-key "search project")
     "p c" '(project-compile :which-key "compile project")
     "p b" '(project-buffers :which-key "project buffers")
     "s"   '(:ignore t :which-key "search")
-    "s p" '(counsel-rg :which-key "rg project")
-    "s d" '((lambda () (interactive) (counsel-rg nil default-directory)) :which-key "rg directory")
+    "s p" '(consult-ripgrep :which-key "rg project")
+    "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
     "t"   '(:ignore t :which-key "toggle")
     "t b" '(my/big-font-mode :which-key "big font")
     "q"   '(:ignore t :which-key "quit")
@@ -559,12 +517,16 @@
     "h v" '(describe-variable :which-key "describe variable")
     "h m" '(describe-mode :which-key "describe mode")
     "h M" '(describe-minor-mode :which-key "describe minor mode")
+    "h f" '(describe-function :which-key "describe function")
     "h i" '(info :which-key "info")
     "o"   '(:ignore t :which-key "open")
     "o d" '((lambda () (interactive) (dired "~/workspace/dotfiles/")) :which-key "dotfiles")
     "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
-    "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org"))
+    "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
+    "g"   '(:ignore t :which-key "git")
+    "g s" '(magit-status :which-key "git status")
+    "g g" '(consult-git-grep :which-key "git grep"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
@@ -577,6 +539,7 @@
   (display-battery-mode 1)
   (global-hl-line-mode 1)
   (save-place-mode)
+  (recentf-mode)
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
@@ -682,10 +645,10 @@
     (load-file user-init-file)
     (message "init.el reloaded"))
 
-  (defun my/counsel-rg-project ()
-    "Run counsel-rg from the current project root."
+  (defun my/consult-rg-project ()
+    "Run consult-ripgrep from the current project root."
     (interactive)
-    (counsel-rg nil (project-root (project-current t))))
+    (consult-ripgrep (project-root (project-current t))))
   )
 
 (use-package terraform-mode
