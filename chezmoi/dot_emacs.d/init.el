@@ -658,3 +658,7 @@
     (interactive)
     (counsel-rg nil (project-root (project-current t))))
   )
+
+(use-package terraform-mode
+  :ensure t
+  :mode "\\.tf\\'")
