@@ -71,7 +71,6 @@
 (use-package evil-collection
   :ensure t
   :after evil
-  :defer t
   :config (evil-collection-init))
 
 (use-package gruvbox-theme
@@ -177,12 +176,14 @@
   (my/leader-keys
     "g"   '(:ignore t :which-key "git")
     "g g" '(magit-status :which-key "magit buffer"))
+  :init
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
+  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-save-repository-buffers nil
+	magit-save-repository-buffers nil
 	;; performance improvements
-	magit-refresh-status-buffer nil
-	))
+	magit-refresh-status-buffer nil))
 
 (use-package pyenv-mode
   :ensure t
