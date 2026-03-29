@@ -177,10 +177,9 @@
   (my/leader-keys
     "g"   '(:ignore t :which-key "git")
     "g g" '(magit-status :which-key "magit buffer"))
-  :init
+  :config
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
-  :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
 	magit-save-repository-buffers nil
 	;; performance improvements
@@ -198,7 +197,6 @@
 
 (use-package apheleia
   :ensure t
-  :defer t
   :config
   (apheleia-global-mode +1)
   ;; make ruff the priority
@@ -507,12 +505,13 @@
 	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer))))
 	 ("<escape>" . keyboard-quit))
   :hook
-  (emacs-startup . (lambda ()
-                     (message
-		      "Emacs loaded in %s with %d garbage collections."
-                      (format "%.2f seconds"
-                              (float-time (time-subtract after-init-time before-init-time)))
-                      gcs-done)))
+  ((emacs-startup . (lambda ()
+                      (message
+                       "Emacs loaded in %s with %d garbage collections."
+                       (format "%.2f seconds"
+                               (float-time (time-subtract after-init-time before-init-time)))
+                       gcs-done)))
+   (window-buffer-change-functions . benmezger/python-maybe-activate-venv))
   :general
   (my/leader-keys
     "b"   '(:ignore t :which-key "buffers")
@@ -647,8 +646,6 @@
                  (file-directory-p venv))
         (setq benmezger/python-last-project root)
         (pyvenv-activate venv))))
-
-  (add-hook 'window-buffer-change-functions #'benmezger/python-maybe-activate-venv)
 
   (defun my/reload-init ()
     "Reload init.el in the current Emacs session."
