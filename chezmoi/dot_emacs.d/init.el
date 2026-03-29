@@ -104,6 +104,7 @@
     "f f" '(consult-fd :which-key "find file")
     "f l" '(consult-locate :which-key "locate file"))
   :config
+  (setq consult-async-min-input 0)
   (consult-customize
    consult-ripgrep consult-grep consult-git-grep
    :group nil
