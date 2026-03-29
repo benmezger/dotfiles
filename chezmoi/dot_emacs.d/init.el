@@ -220,6 +220,14 @@
   :ensure t
   :config
   (setq treesit-auto-install 'prompt)
+
+  ;; avoid loading treesit during magit commit, avoiding slowness
+  (defvar my/treesit-auto-remap-cache nil)
+  (advice-add 'treesit-auto--build-major-mode-remap-alist :around
+              (lambda (orig &rest args)
+		(or my/treesit-auto-remap-cache
+                    (setq my/treesit-auto-remap-cache
+                          (apply orig args)))))
   (global-treesit-auto-mode))
 
 (use-package lsp-mode
