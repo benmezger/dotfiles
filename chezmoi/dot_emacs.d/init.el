@@ -569,6 +569,7 @@
   (display-time-mode 1)
   (display-battery-mode 1)
   (global-hl-line-mode 1)
+  (save-place-mode)
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
