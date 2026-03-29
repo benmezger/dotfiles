@@ -522,11 +522,11 @@
 	 ("<escape>" . keyboard-quit))
   :hook
   ((emacs-startup . (lambda ()
-                      (message
-                       "Emacs loaded in %s with %d garbage collections."
-                       (format "%.2f seconds"
-                               (float-time (time-subtract after-init-time before-init-time)))
-                       gcs-done)))
+		      (message
+		       "Emacs loaded in %s with %d garbage collections."
+		       (format "%.2f seconds"
+			       (float-time (time-subtract after-init-time before-init-time)))
+		       gcs-done)))
    (window-buffer-change-functions . benmezger/python-maybe-activate-venv))
   :general
   (my/leader-keys
@@ -621,7 +621,7 @@
 
   (defvar my/hack-local-variables-running nil)
   (advice-add 'hack-local-variables :around
-              (lambda (orig &rest args)
+	      (lambda (orig &rest args)
 		(unless my/hack-local-variables-running
                   (let ((my/hack-local-variables-running t))
                     (apply orig args)))))
@@ -650,7 +650,7 @@
   (defun benmezger/python-activate-venv ()
     (interactive)
     (let* ((root (or (when-let ((proj (project-current)))
-                       (project-root proj))
+		       (project-root proj))
                      default-directory))
            (venv (expand-file-name ".venv" root)))
       (pyvenv-activate venv)))
