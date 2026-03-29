@@ -71,6 +71,7 @@
 (use-package evil-collection
   :ensure t
   :after evil
+  :defer t
   :config (evil-collection-init))
 
 (use-package gruvbox-theme
@@ -476,6 +477,7 @@
 (use-package restart-emacs
   :ensure t
   :requires general
+  :commands restart-emacs
   :general
   (my/leader-keys
     "e R" '(restart-emacs :which-key "restart emacs")))
