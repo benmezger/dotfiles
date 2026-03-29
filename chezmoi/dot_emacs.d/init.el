@@ -198,6 +198,7 @@
 
 (use-package apheleia
   :ensure t
+  :defer t
   :config
   (apheleia-global-mode +1)
   ;; make ruff the priority
