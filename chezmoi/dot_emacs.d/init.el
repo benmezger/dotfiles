@@ -118,6 +118,7 @@
 	ivy-wrap t
 	ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
+	  ivy-wrap t
           (counsel-rg . ivy--regex-plus)
           (t      . ivy--regex-fuzzy)))
 
