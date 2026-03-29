@@ -498,6 +498,14 @@
   (my-global-code-stats-mode)
   (run-with-idle-timer 30 t #'code-stats-sync))
 
+(use-package package
+  :ensure nil
+  :config
+  (dolist (proj '("~/workspace/dotfiles/"
+                  "~/workspace/terraform/"
+                  "~/workspace/org/"))
+    (project-remember-project (list 'vc 'Git proj))))
+
 (use-package emacs
   :ensure nil
   :requires general
