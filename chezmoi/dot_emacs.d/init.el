@@ -559,7 +559,12 @@
     "h v" '(describe-variable :which-key "describe variable")
     "h m" '(describe-mode :which-key "describe mode")
     "h M" '(describe-minor-mode :which-key "describe minor mode")
-    "h i" '(info :which-key "info"))
+    "h i" '(info :which-key "info")
+    "o"   '(:ignore t :which-key "open")
+    "o d" '((lambda () (interactive) (dired "~/workspace/dotfiles/")) :which-key "dotfiles")
+    "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
+    "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
+    "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
