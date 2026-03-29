@@ -570,6 +570,9 @@
   (display-battery-mode 1)
   (hl-line-mode 1)
 
+  ;; for emacs lock files
+  (make-directory "~/.emacs.d/locks" t)
+
   (require 'uniquify)
 
   (setq epa-armor t
@@ -594,7 +597,9 @@
 	enable-recursive-minibuffers t
 	undo-limit 67108864 ; 64mb
 	undo-strong-limit 100663296 ; 96mb.
-	undo-outer-limit 1006632960) ; 960mb
+	undo-outer-limit 1006632960 ; 960mb
+	lock-file-name-transforms '((".*" "~/.emacs.d/locks/" t))
+	) 
 
   (when (file-exists-p custom-file)
     (load custom-file))
