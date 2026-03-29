@@ -179,7 +179,10 @@
     "g g" '(magit-status :which-key "magit buffer"))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-save-repository-buffers nil))
+        magit-save-repository-buffers nil
+	;; performance improvements
+	magit-refresh-status-buffer nil
+	))
 
 (use-package pyenv-mode
   :ensure t
