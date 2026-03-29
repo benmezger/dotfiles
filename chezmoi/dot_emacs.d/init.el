@@ -545,6 +545,8 @@
     "p g" '(project-find-regexp :which-key "grep files")
     "p k" '(project-kill-buffers :which-key "kill buffers")
     "p s" '(my/counsel-rg-project :which-key "search project")
+    "p c" '(project-compile :which-key "compile project")
+    "p b" '(project-buffers :which-key "project buffers")
     "s"   '(:ignore t :which-key "search")
     "s p" '(counsel-rg :which-key "rg project")
     "s d" '((lambda () (interactive) (counsel-rg nil default-directory)) :which-key "rg directory")
