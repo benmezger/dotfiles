@@ -278,15 +278,15 @@
   :requires general
   :general
   (my/leader-keys
-    "o"   '(:ignore t :which-key "org")
-    "o a" '(org-agenda :which-key "agenda")
-    "o c" '(org-capture :which-key "capture")
-    "o l" '(org-store-link :which-key "store link")
-    "o i" '(benmezger/org-insert-link-dwim :which-key "insert link")
-    "o f" '((lambda () (interactive) (counsel-find-file org-directory)) :which-key "find file")
-    "o t" '(org-todo-list :which-key "todo list")
-    "o j" '(org-journal-new-entry :which-key "new journal entry")
-    "o v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
+    "n"   '(:ignore t :which-key "org")
+    "n a" '(org-agenda :which-key "agenda")
+    "n c" '(org-capture :which-key "capture")
+    "n l" '(org-store-link :which-key "store link")
+    "n i" '(benmezger/org-insert-link-dwim :which-key "insert link")
+    "n f" '((lambda () (interactive) (counsel-find-file org-directory)) :which-key "find file")
+    "n t" '(org-todo-list :which-key "todo list")
+    "n j" '(org-journal-new-entry :which-key "new journal entry")
+    "n v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
   :config
   (setq
    org-log-done 'time
@@ -363,13 +363,13 @@
   :defer t
   :general
   (my/leader-keys
-    "o r"   '(:ignore t :which-key "roam")
-    "o r f" '(org-roam-node-find :which-key "find node")
-    "o r i" '(org-roam-node-insert :which-key "insert node")
-    "o r b" '(org-roam-buffer-toggle :which-key "backlinks")
-    "o r c" '(org-roam-capture :which-key "capture")
-    "o r d" '(org-roam-dailies-goto-today :which-key "today's daily")
-    "o r D" '(org-roam-dailies-find-date :which-key "find daily"))
+    "n r"   '(:ignore t :which-key "roam")
+    "n r f" '(org-roam-node-find :which-key "find node")
+    "n r i" '(org-roam-node-insert :which-key "insert node")
+    "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
+    "n r c" '(org-roam-capture :which-key "capture")
+    "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
+    "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :config
   (setq org-roam-directory "~/workspace/org/roam"
         org-roam-index-file (concat org-roam-directory "/" "index.org"))
