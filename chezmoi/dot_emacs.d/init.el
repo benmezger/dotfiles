@@ -24,6 +24,8 @@
 
 (use-package vertico
   :ensure t
+  :custom
+  (vertico-cycle t)
   :init
   (vertico-mode))
 
