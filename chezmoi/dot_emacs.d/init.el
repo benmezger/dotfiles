@@ -83,7 +83,10 @@
 
 (use-package gruvbox-theme
   :ensure t
-  :init (load-theme 'gruvbox-dark-hard t))
+  :init (load-theme 'gruvbox-dark-hard t)
+  :config
+  (custom-set-faces
+   '(vertico-current ((t (:background "#3c3836" :foreground "#ebdbb2" :extend t))))))
 
 (use-package doom-modeline
   :ensure t
