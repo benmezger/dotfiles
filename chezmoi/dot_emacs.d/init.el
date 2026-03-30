@@ -573,6 +573,7 @@
 	undo-strong-limit 100663296 ; 96mb.
 	undo-outer-limit 1006632960 ; 960mb
 	lock-file-name-transforms '((".*" "~/.emacs.d/locks/" t))
+	native-comp-async-report-warnings-errors 'silent
 	) 
 
   (when (file-exists-p custom-file)
