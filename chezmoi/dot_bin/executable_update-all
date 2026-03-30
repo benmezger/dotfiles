@@ -5,8 +5,11 @@ if [[ ${OSTYPE} == darwin* ]]; then
     brew update && brew upgrade && brew cleanup
 fi
 
-echo "Updating Emacs Doom"
-doom sync -e -u --force
+emacs --batch \
+      --load $HOME/.emacs.d/early-init.el \
+      --load $HOME/.emacs.d/init.el \
+      --eval "(straight-pull-all)" \
+      --eval "(straight-rebuild-all)"
 
 echo "Updating ZSH"
 zsh $HOME/.antidote/antidote update

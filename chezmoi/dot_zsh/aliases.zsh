@@ -69,10 +69,6 @@ if (( $+commands[ggrep] )); then
     alias ggrep="ggrep $GREP_OPTIONS"
 fi
 
-if [ -f "$HOME/.emacs.d/bin/doom" ]; then
-    alias doom="$HOME/.emacs.d/bin/doom"
-fi
-
 if (( $+commands[brew] )); then
     brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
     alias tailf="tail -f"
