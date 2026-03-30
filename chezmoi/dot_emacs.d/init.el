@@ -181,14 +181,20 @@
   :config
   (setq treesit-auto-install 'prompt)
 
-  ;; avoid loading treesit during magit commit, avoiding slowness
-  (defvar my/treesit-auto-remap-cache nil)
+  (global-treesit-auto-mode)
+  ;; Cache treesit-auto--build-major-mode-remap-alist so emacsclient openings
+  ;; (e.g. git commit) don't re-run treesit-language-available-p for every grammar.
+  ;; Uses :unset sentinel so a nil return value is still cached correctly.
+  ;; NOTE: cache is never invalidated during the session — if you install a new
+  ;; grammar mid-session, reset it with (setq my/treesit-auto-remap-cache :unset).
+  (defvar my/treesit-auto-remap-cache :unset)
   (advice-add 'treesit-auto--build-major-mode-remap-alist :around
               (lambda (orig &rest args)
-		(or my/treesit-auto-remap-cache
-                    (setq my/treesit-auto-remap-cache
-                          (apply orig args)))))
-  (global-treesit-auto-mode))
+                (if (eq my/treesit-auto-remap-cache :unset)
+                    (setq my/treesit-auto-remap-cache (apply orig args))
+                  my/treesit-auto-remap-cache)))
+  ;; Pre-warm the cache shortly after startup so the first emacsclient hit is fast.
+  (run-with-idle-timer 2 nil #'treesit-auto--build-major-mode-remap-alist))
 
 (use-package lsp-mode
   :ensure t
