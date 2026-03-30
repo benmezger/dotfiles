@@ -664,3 +664,8 @@
 (use-package terraform-mode
   :ensure t
   :mode "\\.tf\\'")
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
