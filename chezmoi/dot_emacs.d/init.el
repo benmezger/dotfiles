@@ -699,3 +699,11 @@
                 (yas--load-pending-jits)
                 (when-let ((template (yas-lookup-snippet "__" major-mode t)))
                   (yas-expand-snippet template))))))
+
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yaml\\'" "\\.yml\\'"))
+
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
