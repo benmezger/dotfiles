@@ -94,17 +94,9 @@
 
 (use-package consult
   :ensure t
-  :requires general
   :bind*
   (("C-x C-r" . consult-recent-file)
    ("C-x l"   . consult-locate))
-  :general
-  (my/leader-keys
-    "SPC" '(consult-fd :which-key "find file")
-    "f"   '(:ignore t :which-key "files")
-    "f r" '(consult-recent-file :which-key "find recent files")
-    "f f" '(consult-fd :which-key "find file")
-    "f l" '(consult-locate :which-key "locate file"))
   :config
   (setq consult-async-min-input 0)
   (consult-customize
@@ -497,6 +489,12 @@
    (window-buffer-change-functions . benmezger/python-maybe-activate-venv))
   :general
   (my/leader-keys
+    "f"   '(:ignore t :which-key "files")
+    "f r" '(consult-recent-file :which-key "find recent files")
+    "f f" '(consult-fd :which-key "find file")
+    "f l" '(consult-locate :which-key "locate file")
+    "f d" '(my/delete-current-file :which-key "delete file")
+    "f c" '(my/copy-current-file :which-key "copy file")
     "b"   '(:ignore t :which-key "buffers")
     "b b" '(switch-to-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
@@ -580,7 +578,7 @@
 	undo-outer-limit 1006632960 ; 960mb
 	lock-file-name-transforms '((".*" "~/.emacs.d/locks/" t))
 	native-comp-async-report-warnings-errors 'silent
-	) 
+	)
 
   (when (file-exists-p custom-file)
     (load custom-file))
@@ -659,6 +657,23 @@
     "Run consult-ripgrep from the current project root."
     (interactive)
     (consult-ripgrep (project-root (project-current t))))
+
+  (defun my/delete-current-file ()
+    "Delete the file the current buffer is visiting and kill the buffer."
+    (interactive)
+    (let ((file (buffer-file-name)))
+      (unless file (user-error "Buffer is not visiting a file"))
+      (when (yes-or-no-p (format "Delete %s? " file))
+        (delete-file file t)
+        (kill-buffer))))
+
+  (defun my/copy-current-file (dest)
+    "Copy the file the current buffer is visiting to DEST and open it."
+    (interactive (list (read-file-name "Copy to: " default-directory)))
+    (let ((file (buffer-file-name)))
+      (unless file (user-error "Buffer is not visiting a file"))
+      (copy-file file dest)
+      (find-file dest)))
   )
 
 (use-package terraform-mode
@@ -668,4 +683,11 @@
 (use-package yasnippet
   :ensure t
   :config
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  (add-hook 'find-file-hook
+            (lambda ()
+              (when (and (= (buffer-size) 0)
+                         yas-minor-mode)
+                (yas--load-pending-jits)
+                (when-let ((template (yas-lookup-snippet "__" major-mode t)))
+                  (yas-expand-snippet template))))))
