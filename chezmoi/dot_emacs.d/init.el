@@ -94,9 +94,20 @@
 
 (use-package consult
   :ensure t
+  :requires general
   :bind*
   (("C-x C-r" . consult-recent-file)
    ("C-x l"   . consult-locate))
+  :general
+  (my/leader-keys
+    "f r" '(consult-recent-file :which-key "find recent files")
+    "f f" '(consult-fd :which-key "find file")
+    "f l" '(consult-locate :which-key "locate file")
+    "s p" '(consult-ripgrep :which-key "rg project")
+    "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
+    "p g" '(consult-ripgrep :which-key "grep files")
+    "p s" '(my/consult-rg-project :which-key "search project")
+    "g g" '(consult-git-grep :which-key "git grep"))
   :config
   (setq consult-async-min-input 0)
   (consult-customize
@@ -127,8 +138,7 @@
   :requires general
   :general
   (my/leader-keys
-    "g"   '(:ignore t :which-key "git")
-    "g g" '(magit-status :which-key "magit buffer"))
+    "g s" '(magit-status :which-key "git status"))
   :config
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
@@ -198,7 +208,6 @@
   :commands (lsp lsp-deferred)
   :general
   (my/leader-keys
-    "c"   '(:ignore t :which-key "code")
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename")
     "c a" '(lsp-execute-code-action :which-key "code action")
@@ -237,7 +246,6 @@
   :requires general
   :general
   (my/leader-keys
-    "n"   '(:ignore t :which-key "org")
     "n a" '(org-agenda :which-key "agenda")
     "n c" '(org-capture :which-key "capture")
     "n l" '(org-store-link :which-key "store link")
@@ -322,7 +330,6 @@
   :defer t
   :general
   (my/leader-keys
-    "n r"   '(:ignore t :which-key "roam")
     "n r f" '(org-roam-node-find :which-key "find node")
     "n r i" '(org-roam-node-insert :which-key "insert node")
     "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
@@ -489,12 +496,14 @@
    (window-buffer-change-functions . benmezger/python-maybe-activate-venv))
   :general
   (my/leader-keys
-    "f"   '(:ignore t :which-key "files")
-    "f r" '(consult-recent-file :which-key "find recent files")
-    "f f" '(consult-fd :which-key "find file")
-    "f l" '(consult-locate :which-key "locate file")
     "f d" '(my/delete-current-file :which-key "delete file")
     "f c" '(my/copy-current-file :which-key "copy file")
+    "f"   '(:ignore t :which-key "files")
+    "s"   '(:ignore t :which-key "search")
+    "c"   '(:ignore t :which-key "code")
+    "n"   '(:ignore t :which-key "org")
+    "n r" '(:ignore t :which-key "roam")
+    "g"   '(:ignore t :which-key "git")
     "b"   '(:ignore t :which-key "buffers")
     "b b" '(switch-to-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
@@ -507,14 +516,9 @@
     "p"   '(:ignore t :which-key "project")
     "p p" '(project-switch-project :which-key "switch project")
     "p f" '(project-find-file :which-key "find file")
-    "p g" '(consult-ripgrep :which-key "grep files")
     "p k" '(project-kill-buffers :which-key "kill buffers")
-    "p s" '(my/consult-rg-project :which-key "search project")
     "p c" '(project-compile :which-key "compile project")
     "p b" '(project-buffers :which-key "project buffers")
-    "s"   '(:ignore t :which-key "search")
-    "s p" '(consult-ripgrep :which-key "rg project")
-    "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
     "t"   '(:ignore t :which-key "toggle")
     "t b" '(my/big-font-mode :which-key "big font")
     "q"   '(:ignore t :which-key "quit")
@@ -531,9 +535,7 @@
     "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
     "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
-    "g"   '(:ignore t :which-key "git")
-    "g s" '(magit-status :which-key "git status")
-    "g g" '(consult-git-grep :which-key "git grep"))
+    "SPC" '(project-find-file :which-key "find file"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
