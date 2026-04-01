@@ -121,7 +121,7 @@
   :config
   (setq consult-async-min-input 0)
   (consult-customize
-   consult-ripgrep consult-grep consult-git-grep consult-buffer consult-project-buffer
+   consult-ripgrep consult-grep consult-git-grep consult-buffer consult-project-buffer consult-recent-file
    :group nil
    :preview-key "M-."))
 
