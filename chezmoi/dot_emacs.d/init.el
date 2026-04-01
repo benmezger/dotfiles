@@ -116,11 +116,12 @@
     "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
-    "g g" '(consult-git-grep :which-key "git grep"))
+    "g g" '(consult-git-grep :which-key "git grep")
+    "b b" '(consult-buffer :which-key "switch buffer"))
   :config
   (setq consult-async-min-input 0)
   (consult-customize
-   consult-ripgrep consult-grep consult-git-grep
+   consult-ripgrep consult-grep consult-git-grep consult-buffer
    :group nil
    :preview-key "M-."))
 
@@ -514,7 +515,6 @@
     "n r" '(:ignore t :which-key "roam")
     "g"   '(:ignore t :which-key "git")
     "b"   '(:ignore t :which-key "buffers")
-    "b b" '(switch-to-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
     "b s" '(save-buffer :which-key "save buffer")
     "b l" '(list-buffers :which-key "list buffers")
