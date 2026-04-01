@@ -117,11 +117,11 @@
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
     "g g" '(consult-git-grep :which-key "git grep")
-    "b b" '(consult-buffer :which-key "switch buffer"))
+    "p b" '(consult-project-buffer :which-key "project buffers"))
   :config
   (setq consult-async-min-input 0)
   (consult-customize
-   consult-ripgrep consult-grep consult-git-grep consult-buffer
+   consult-ripgrep consult-grep consult-git-grep consult-buffer consult-project-buffer
    :group nil
    :preview-key "M-."))
 
@@ -527,7 +527,6 @@
     "p f" '(project-find-file :which-key "find file")
     "p k" '(project-kill-buffers :which-key "kill buffers")
     "p c" '(project-compile :which-key "compile project")
-    "p b" '(project-buffers :which-key "project buffers")
     "t"   '(:ignore t :which-key "toggle")
     "t b" '(my/big-font-mode :which-key "big font")
     "q"   '(:ignore t :which-key "quit")
