@@ -809,3 +809,16 @@
 		 (file-directory-p venv))
 	(setq benmezger/python-last-project root)
 	(pyvenv-activate venv)))))
+
+(use-package kubernetes
+  :straight (:host github :repo "kubernetes-el/kubernetes-el" :tag "0.19.0")
+  :ensure t
+  :commands (kubernetes-overview)
+  :config
+  (setq kubernetes-poll-frequency 3600
+        kubernetes-redraw-frequency 3600))
+
+(use-package kubernetes-evil
+  :ensure t
+  :requires evil
+  :after kubernetes)
