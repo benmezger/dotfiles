@@ -486,6 +486,7 @@
 (use-package package
   :ensure nil
   :config
+  (setq project-switch-commands 'project-find-file)
   (dolist (proj '("~/workspace/dotfiles/"
                   "~/workspace/terraform/"
                   "~/workspace/org/"))
