@@ -138,3 +138,6 @@ alias export-cv="emacsclient --eval '
            (beginning-of-line)
            (org-latex-export-to-pdf nil t))))))
 '"
+
+alias lower='tr "[:upper:]" "[:lower:]"'
+alias upper='tr "[:lower:]" "[:upper:]"'
