@@ -9,6 +9,7 @@ emacs --batch \
       --load $HOME/.emacs.d/early-init.el \
       --load $HOME/.emacs.d/init.el \
       --eval "(straight-pull-all)" \
+      --load $HOME/.emacs.d/init.el \
       --eval "(straight-rebuild-all)"
 
 echo "Updating ZSH"
