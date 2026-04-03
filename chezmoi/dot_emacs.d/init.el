@@ -545,7 +545,9 @@
     "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
     "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
-    "SPC" '(project-find-file :which-key "find file"))
+    "SPC" '(project-find-file :which-key "find file")
+    "d"   '(:ignore t :which-key "diff")
+    "d d" '(my/diff-current-buffer :which-key "diff buffer"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
@@ -616,6 +618,11 @@
 		(unless my/hack-local-variables-running
                   (let ((my/hack-local-variables-running t))
                     (apply orig args)))))
+
+  (defun my/diff-current-buffer ()
+    (interactive)
+    (ediff-buffers (current-buffer)
+                   (read-buffer "Ediff with buffer: " nil t)))
 
   (defun benmezger/python-fmt ()
     (interactive)
