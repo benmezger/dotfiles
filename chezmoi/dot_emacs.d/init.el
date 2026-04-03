@@ -693,17 +693,47 @@
   :ensure t
   :mode "\\.tf\\'")
 
-(use-package yasnippet
-  :ensure t
+(use-package autoinsert
   :config
-  (yas-global-mode 1)
-  (add-hook 'find-file-hook
-            (lambda ()
-              (when (and (= (buffer-size) 0)
-                         yas-minor-mode)
-                (yas--load-pending-jits)
-                (when-let ((template (yas-lookup-snippet "__" major-mode t)))
-                  (yas-expand-snippet template))))))
+  (auto-insert-mode 1)
+  (setq auto-insert-query nil)
+  (define-auto-insert '("\\.org\\'" . "Org template")
+    '(nil
+      "#+TITLE: "
+      (let* ((base (file-name-base buffer-file-name))
+             (spaced (let (case-fold-search)
+                       (replace-regexp-in-string
+                        "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
+                        (replace-regexp-in-string
+                         "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
+                         "\\1 \\2" base))))
+             (title (string-join (mapcar #'capitalize
+                                         (split-string spaced "[^[:word:]0-9]+"))
+                                 " ")))
+        (skeleton-read "Title: " title))
+      \n
+      "#+SUBTITLE: " (skeleton-read "Subtitle: " "") \n
+      "#+AUTHOR: " (user-full-name) \n
+      "#+EMAIL: " user-mail-address \n
+      "#+DATE: <" (format-time-string "%F %a %R") ">" \n
+      \n
+      "#+HTML_DOCTYPE: xhtml5" \n
+      "#+HTML_HTML5_FANCY:" \n
+      \n
+      "# Hugo config" \n
+      "#+DRAFT: false" \n
+      "#+HUGO_AUTO_SET_LASTMOD: t" \n
+      "#+HUGO_BASE_DIR: ~/workspace/blog" \n
+      "#+HUGO_AUTO_SET_LASTMOD: t" \n
+      \n
+      _))
+
+  (define-auto-insert '("\\.py\\'" . "Python template")
+    '(nil
+      "# Author: " (user-full-name) " <" user-mail-address ">" \n
+      "# Created at <" (format-time-string "%F %a %R") ">" \n
+      \n
+      _)))
 
 (use-package yaml-mode
   :ensure t
