@@ -551,7 +551,7 @@
     "o d" '((lambda () (interactive) (dired "~/workspace/dotfiles/")) :which-key "dotfiles")
     "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
-    "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
+    "o n" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
     "SPC" '(project-find-file :which-key "find file")
     "j"   '(:ignore t :which-key "jump")
     "j b" '(consult-bookmark :which-key "bookmark")
