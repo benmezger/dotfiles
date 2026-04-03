@@ -547,7 +547,8 @@
     "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
     "SPC" '(project-find-file :which-key "find file")
     "d"   '(:ignore t :which-key "diff")
-    "d d" '(my/diff-current-buffer :which-key "diff buffer"))
+    "d d" '(my/diff-current-buffer :which-key "diff buffer")
+    "d g" '(magit-diff-range :which-key "diff git range"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
