@@ -115,6 +115,7 @@
     "s p" '(consult-ripgrep :which-key "rg project")
     "s b" '(consult-line :which-key "find in buffer")
     "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
+    "s i" '(consult-imenu :which-key "imenu")
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
     "g g" '(consult-git-grep :which-key "git grep")
@@ -122,7 +123,9 @@
   :config
   (setq consult-async-min-input 0)
   (consult-customize
-   consult-ripgrep consult-grep consult-git-grep consult-buffer consult-project-buffer consult-recent-file
+   consult-ripgrep consult-grep consult-git-grep
+   consult-buffer consult-project-buffer consult-recent-file
+   consult-imenu
    :group nil
    :preview-key "M-."))
 
@@ -517,9 +520,13 @@
     "n r" '(:ignore t :which-key "roam")
     "g"   '(:ignore t :which-key "git")
     "b"   '(:ignore t :which-key "buffers")
+    "b b" '(consult-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
     "b s" '(save-buffer :which-key "save buffer")
     "b l" '(list-buffers :which-key "list buffers")
+    "b n" '(next-buffer :which-key "next buffer")
+    "b p" '(prev-buffer :which-key "prev buffer")
+    "b r" '(revert-buffer :which-key "revert buffer")
     "w"   '(:ignore t :which-key "windows")
     "w s" '(split-window-below :which-key "split horizontal")
     "w v" '(split-window-right :which-key "split vertical")
@@ -546,9 +553,12 @@
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
     "o o" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
     "SPC" '(project-find-file :which-key "find file")
+    "j"   '(:ignore t :which-key "jump")
+    "j b" '(consult-bookmark :which-key "bookmark")
     "d"   '(:ignore t :which-key "diff")
     "d d" '(my/diff-current-buffer :which-key "diff buffer")
-    "d g" '(magit-diff-range :which-key "diff git range"))
+    "d g" '(magit-diff-range :which-key "diff git range")
+    "d s" '(diff-buffer-with-file :which-key "diff with file"))
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
