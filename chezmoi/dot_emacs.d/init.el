@@ -728,12 +728,39 @@
       \n
       _))
 
+  (defun my/python-file-header ()
+    (insert "# Author: " (user-full-name) " <" user-mail-address ">\n")
+    (insert "# Created at <" (format-time-string "%F %a %R") ">\n")
+    (insert "\n"))
+
   (define-auto-insert '("\\.py\\'" . "Python template")
+    '(nil (my/python-file-header) _))
+
+  (define-auto-insert '("__main__\\.py\\'" . "Python __main__ template")
     '(nil
-      "# Author: " (user-full-name) " <" user-mail-address ">" \n
-      "# Created at <" (format-time-string "%F %a %R") ">" \n
+      (my/python-file-header)
       \n
-      _)))
+      "def main() -> None:" \n
+      > _ \n
+      > "..." \n
+      "\n\nif __name__ == \"__main__\":\n    main()\n"))
+
+  (define-auto-insert '("\\.github/workflows/.*\\.yml\\'" . "GitHub Actions workflow")
+    '(nil
+      "name: " (skeleton-read "Workflow name: " "CI") \n
+      \n
+      "on:" \n
+      > "push:" \n
+      > > "branches: [main]" \n
+      > "pull_request:" \n
+      > > "branches: [main]" \n
+      \n
+      "jobs:" \n
+      > (skeleton-read "Job name: " "ci") ":" \n
+      > > "runs-on: ubuntu-latest" \n
+      > > "steps:" \n
+      > > > "- uses: actions/checkout@v4" \n
+      > > > "- name: " _ \n)))
 
 (use-package yaml-mode
   :ensure t
