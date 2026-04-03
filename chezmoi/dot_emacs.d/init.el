@@ -555,6 +555,7 @@
     "SPC" '(project-find-file :which-key "find file")
     "j"   '(:ignore t :which-key "jump")
     "j b" '(consult-bookmark :which-key "bookmark")
+    "j w" '(webjump :which-key "webjump")
     "d"   '(:ignore t :which-key "diff")
     "d d" '(my/diff-current-buffer :which-key "diff buffer")
     "d g" '(magit-diff-range :which-key "diff git range")
