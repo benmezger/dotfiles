@@ -746,6 +746,10 @@
   :ensure t
   :mode "\\.json\\'")
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode))
+
 (use-package python
   :mode "\\.py\\'"
   :hook (python-mode . benmezger/python-maybe-activate-venv)
