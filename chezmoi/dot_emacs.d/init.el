@@ -750,6 +750,10 @@
   :ensure t
   :mode ("\\.md\\'" . gfm-mode))
 
+(use-package dockerfile-mode
+  :ensure t
+  :mode ("\\Dockerfile\\'" . dockerfile-mode))
+
 (use-package python
   :mode "\\.py\\'"
   :hook (python-mode . benmezger/python-maybe-activate-venv)
