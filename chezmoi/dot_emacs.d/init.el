@@ -218,6 +218,7 @@
   :requires (which-key company general)
   :hook ((python-mode    . lsp-deferred)
          (python-ts-mode . lsp-deferred)
+         (bash-ts-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
   :general
@@ -753,6 +754,14 @@
 (use-package dockerfile-mode
   :ensure t
   :mode ("\\Dockerfile\\'" . dockerfile-mode))
+
+(use-package sh-script
+  :ensure nil
+  :mode (("\\.sh\\'"    . bash-ts-mode)
+         ("\\.zsh\\'"   . bash-ts-mode)
+         ("\\.bash\\'"  . bash-ts-mode)
+         ("/\\.zshrc\\'" . bash-ts-mode)
+         ("/\\.bashrc\\'" . bash-ts-mode)))
 
 (use-package python
   :mode "\\.py\\'"
