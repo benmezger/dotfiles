@@ -276,7 +276,9 @@
    org-clock-persist 'history
    org-directory "~/workspace/org"
    org-archive-location ".archives/%s_archive::"
-   org-agenda-files (list org-directory)
+   org-agenda-files (list org-directory
+                          "~/workspace/org/roam"
+                          "~/workspace/org/roam/private")
    org-log-into-drawer t
    org-startup-indented t
    org-agenda-inhibit-startup t
@@ -292,6 +294,30 @@
                             ("PROJ"     . "systemYellowColor"))
    ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
+  (setq org-id-locations-file (concat org-directory "/.orgid"))
+
+  (defvar benmezger/org-capture-note-title nil
+    "Stores note title during capture for use in file templates.")
+
+  (defvar benmezger/org-capture-inhibit-auto-insert nil
+    "When non-nil, suppress auto-insert for the next org-capture note file.")
+
+  (add-hook 'find-file-hook
+            (lambda ()
+              (when benmezger/org-capture-inhibit-auto-insert
+                (setq-local auto-insert nil)
+                (setq benmezger/org-capture-inhibit-auto-insert nil))))
+
+  (defun benmezger/org-capture-note-filename (dir &optional encrypted)
+    "Return a timestamped note filename in DIR.
+If ENCRYPTED is non-nil, use .org.gpg extension."
+    (let* ((title (read-string "Title: "))
+           (slug (replace-regexp-in-string "[^[:alnum:]]+" "-" (downcase title)))
+           (ts (format-time-string "%Y-%m-%d--%H-%M-%SZ" (current-time) t))
+           (ext (if encrypted ".org.gpg" ".org")))
+      (setq benmezger/org-capture-note-title title
+            benmezger/org-capture-inhibit-auto-insert t)
+      (expand-file-name (concat ts "--" slug ext) (expand-file-name dir))))
 
   (let ((capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-capture-templates
@@ -299,22 +325,24 @@
              (file ,(concat capture-dir "code-snippet.capture")))
             ("i" "Inbox" entry (file+datetree "~/workspace/org/inbox.org")
              (file ,(concat capture-dir "inbox-snippet.capture")))
-            ("j" "Journal" entry (file+datetree "~/workspace/org/journal.org")
-             (file ,(concat capture-dir "journal.capture")))
             ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
              (file ,(concat capture-dir "blog-post.capture")))
-            ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
-             "* %?\nEntered on %U\n  %i\n  %a")
             ("t" "Todo" entry (file "~/workspace/org/todos.org")
              "* TODO %?\n %i\n  %a")
-            ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
-             (file ,(concat capture-dir "new-book.capture")))
             ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
              (file ,(concat capture-dir "decision.capture")))
-            ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
-             (file ,(concat capture-dir "weekly-journal.capture")) :tree-type week)
-            ("e" "RRR" entry (file "~/workspace/org/rrr.org")
-             (file ,(concat capture-dir "rrr.capture"))))))
+            ("n" "Note" plain
+             (file (lambda () (benmezger/org-capture-note-filename "~/workspace/org/roam")))
+             (file ,(concat capture-dir "note.capture"))
+             :unnarrowed t)
+            ("p" "Private note" plain
+             (file (lambda () (benmezger/org-capture-note-filename "~/workspace/org/roam/private")))
+             (file ,(concat capture-dir "private-note.capture"))
+             :unnarrowed t)
+            ("g" "Encrypted note" plain
+             (file (lambda () (benmezger/org-capture-note-filename "~/workspace/org/roam/private" t)))
+             (file ,(concat capture-dir "encrypted-note.capture"))
+             :unnarrowed t))))
 
   (defun benmezger/org-insert-link-dwim ()
     "Like `org-insert-link' but with personal dwim preferences."
@@ -341,100 +369,6 @@
                                            'title))))))))
             (t (call-interactively 'org-insert-link))))))
 
-(use-package org-roam
-  :ensure t
-  :defer t
-  :general
-  (my/leader-keys
-    "n r f" '(org-roam-node-find :which-key "find node")
-    "n r i" '(org-roam-node-insert :which-key "insert node")
-    "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
-    "n r c" '(org-roam-capture :which-key "capture")
-    "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
-    "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
-  :config
-  (setq org-roam-directory "~/workspace/org/roam"
-        org-roam-index-file (concat org-roam-directory "/" "index.org"))
-  (defvar benmezger/org-roam-private-directory
-    (concat org-roam-directory "/private"))
-
-  (push org-roam-directory org-agenda-files)
-  (push benmezger/org-roam-private-directory org-agenda-files)
-
-  (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: %^{Filetags}
-#+SETUPFILE: ../hugo.setup
-#+HUGO_SLUG: ${slug}
-#+HUGO_TAGS: %^{Hugo tags}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-
-- Related pages
-  -
-
------- ")
-           :unnarrowed t)
-          ("p" "private" plain "%?"
-           :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: :personal:%^{Filetags}
-#+HUGO_SLUG: ${slug}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-")
-           :unnarrowed t)
-          ("e" "encrypted private" plain "%?"
-           :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: :personal:gpg:%^{Filetags}
-#+HUGO_SLUG: ${slug}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-")
-           :unnarrowed t)))
-
-  (setq org-roam-dailies-directory "../journal/"
-        org-roam-dailies-capture-templates
-        '(("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+TITLE: %<%Y-%m-%d>\n"))))
-
-  (defun benmezger/org-roam-node-insert-immediate (arg &rest args)
-    (interactive "P")
-    (let ((args (cons arg args))
-          (org-roam-capture-templates
-           (list (append (car org-roam-capture-templates)
-                         '(:immediate-finish t)))))
-      (apply #'org-roam-node-insert args)))
-
-  (defun custom-org-protocol-focus-advice (orig &rest args)
-    (x-focus-frame nil)
-    (apply orig args))
-  (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
-  (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
-
-  (setq org-id-locations-file (concat org-directory "/.orgid"))
-  (defun benmezger/org-update-org-ids ()
-    "Update all org ids."
-    (interactive)
-    (org-id-update-id-locations
-     (directory-files-recursively
-      org-roam-directory ".org$\\|.org.gpg$"))))
-
-(use-package org-roam-ui
-  :ensure t
-  :requires org
-  :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
-
 (use-package org-contrib
   :straight t
   :after org
@@ -449,10 +383,10 @@
           "mp4" "pdf" "odt" "doc" "ppt" "xls"
           "docx" "pptx" "xlsx" "zip"))
 
-  (defun benmezger/org-roam-export-all ()
-    "Re-exports all Org-roam files to Hugo markdown."
+  (defun benmezger/org-export-notes-to-hugo ()
+    "Re-exports all notes with a SETUPFILE keyword to Hugo markdown."
     (interactive)
-    (dolist (f (org-roam--list-all-files))
+    (dolist (f (directory-files-recursively "~/workspace/org/roam" "\\.org$"))
       (with-current-buffer (find-file f)
         (when (s-contains? "SETUPFILE" (buffer-string))
           (org-hugo-export-wim-to-md))))))
