@@ -249,6 +249,7 @@
 
 (use-package lsp-pyright
   :ensure t
+  :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :after lsp-mode)
 
 (use-package org
