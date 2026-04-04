@@ -508,8 +508,7 @@
 		       "Emacs loaded in %s with %d garbage collections."
 		       (format "%.2f seconds"
 			       (float-time (time-subtract after-init-time before-init-time)))
-		       gcs-done)))
-   (window-buffer-change-functions . benmezger/python-maybe-activate-venv))
+		       gcs-done))))
   :general
   (my/leader-keys
     "f d" '(my/delete-current-file :which-key "delete file")
@@ -637,49 +636,6 @@
     (ediff-buffers (current-buffer)
                    (read-buffer "Ediff with buffer: " nil t)))
 
-  (defun benmezger/python-fmt ()
-    (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
-                                   (project-root proj))
-                                 default-directory)))
-      (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
-
-  (defun benmezger/python-test ()
-    (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
-                                   (project-root proj))
-                                 default-directory)))
-      (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
-
-  (defun benmezger/python-types ()
-    (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
-                                   (project-root proj))
-                                 default-directory)))
-      (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
-
-  (defun benmezger/python-activate-venv ()
-    (interactive)
-    (let* ((root (or (when-let ((proj (project-current)))
-		       (project-root proj))
-                     default-directory))
-           (venv (expand-file-name ".venv" root)))
-      (pyvenv-activate venv)))
-
-  (defvar benmezger/python-last-project nil
-    "Project root for which a venv was last activated.")
-
-  (defun benmezger/python-maybe-activate-venv (&optional _frame)
-    "Activate .venv when the current buffer belongs to a new Python project."
-    (when-let* ((proj (project-current))
-                (root (project-root proj))
-                (venv (expand-file-name ".venv" root)))
-      (when (and (not (equal root benmezger/python-last-project))
-                 (file-exists-p (expand-file-name "pyproject.toml" root))
-                 (file-directory-p venv))
-        (setq benmezger/python-last-project root)
-        (pyvenv-activate venv))))
-
   (defun my/reload-init ()
     "Reload init.el in the current Emacs session."
     (interactive)
@@ -789,3 +745,50 @@
 (use-package json-mode
   :ensure t
   :mode "\\.json\\'")
+
+(use-package python
+  :mode "\\.py\\'"
+  :hook (python-mode . benmezger/python-maybe-activate-venv)
+  :config
+  (defun benmezger/python-fmt ()
+    (interactive)
+    (let ((default-directory (or (when-let ((proj (project-current)))
+                                   (project-root proj))
+				 default-directory)))
+      (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
+
+  (defun benmezger/python-test ()
+    (interactive)
+    (let ((default-directory (or (when-let ((proj (project-current)))
+                                   (project-root proj))
+				 default-directory)))
+      (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
+
+  (defun benmezger/python-types ()
+    (interactive)
+    (let ((default-directory (or (when-let ((proj (project-current)))
+                                   (project-root proj))
+				 default-directory)))
+      (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
+
+  (defun benmezger/python-activate-venv ()
+    (interactive)
+    (let* ((root (or (when-let ((proj (project-current)))
+		       (project-root proj))
+                     default-directory))
+           (venv (expand-file-name ".venv" root)))
+      (pyvenv-activate venv)))
+
+  (defvar benmezger/python-last-project nil
+    "Project root for which a venv was last activated.")
+
+  (defun benmezger/python-maybe-activate-venv (&optional _frame)
+    "Activate .venv when the current buffer belongs to a new Python project."
+    (when-let* ((proj (project-current))
+		(root (project-root proj))
+		(venv (expand-file-name ".venv" root)))
+      (when (and (not (equal root benmezger/python-last-project))
+		 (file-exists-p (expand-file-name "pyproject.toml" root))
+		 (file-directory-p venv))
+	(setq benmezger/python-last-project root)
+	(pyvenv-activate venv)))))
