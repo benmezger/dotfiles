@@ -542,11 +542,8 @@
     "q"   '(:ignore t :which-key "quit")
     "e r" '(my/reload-init :which-key "reload config")
     "h"   '(:ignore t :which-key "help")
-    "h k" '(describe-key :which-key "describe key")
-    "h v" '(describe-variable :which-key "describe variable")
     "h m" '(describe-mode :which-key "describe mode")
     "h M" '(describe-minor-mode :which-key "describe minor mode")
-    "h f" '(describe-function :which-key "describe function")
     "h i" '(info :which-key "info")
     "o"   '(:ignore t :which-key "open")
     "o d" '((lambda () (interactive) (dired "~/workspace/dotfiles/")) :which-key "dotfiles")
@@ -822,3 +819,19 @@
   :ensure t
   :requires evil
   :after kubernetes)
+
+(use-package helpful
+  :ensure t
+  :bind
+  (("C-h f" . helpful-callable)
+   ("C-h v" . helpful-variable)
+   ("C-h k" . helpful-key)
+   ("C-h x" . helpful-command)
+   ("C-c C-d" . helpful-at-point)
+   ("C-h F" . helpful-function))
+  :general
+  (my/leader-keys
+    "h k" '(helpful-key :which-key "describe key")
+    "h v" '(helpful-variable :which-key "describe variable")
+    "h f" '(helpful-function :which-key "describe function")
+    "h c" '(helpful-command :which-key "describe command")))
