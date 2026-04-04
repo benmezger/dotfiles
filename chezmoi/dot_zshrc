@@ -64,6 +64,7 @@ fi
 # startup time. Run full compinit if the dump is >24h old OR if any completion
 # file in fpath is newer than the dump (e.g. after installing system packages).
 _compinit_maybe_refresh() {
+  setopt local_options extendedglob
   local dump=~/.zcompdump
   local newest_completion=()
   [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
