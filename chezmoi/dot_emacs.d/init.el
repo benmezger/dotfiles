@@ -543,6 +543,7 @@
     "d g" '(magit-diff-range :which-key "diff git range")
     "d s" '(diff-buffer-with-file :which-key "diff with file"))
   :config
+  (set-face-attribute 'default nil :height 90 :family "Hack Nerd Font")
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
   (global-auto-revert-mode t)
