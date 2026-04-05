@@ -1,6 +1,3 @@
-:PROPERTIES:
-:ID:       %(org-id-new)
-:END:
 #+TITLE: %(identity benmezger/org-capture-note-title)
 #+DATE: %T
 #+FILETAGS: :personal:%^{Filetags}
