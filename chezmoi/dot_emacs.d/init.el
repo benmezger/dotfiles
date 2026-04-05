@@ -291,7 +291,10 @@
                             ("WAIT"     . "salmon1")
                             ("PROJ"     . "systemYellowColor"))
    ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
+
+  (setq org-id-locations-file (concat org-directory "/.orgid"))
   (setq-default org-catch-invisible-edits 'smart)
+
 
   (let ((capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-capture-templates
@@ -349,11 +352,8 @@
   :config
   (setq org-roam-directory "~/workspace/org/roam"
         org-roam-index-file (concat org-roam-directory "/" "index.org"))
-  (defvar benmezger/org-roam-private-directory
-    (concat org-roam-directory "/private"))
 
   (push org-roam-directory org-agenda-files)
-  (push benmezger/org-roam-private-directory org-agenda-files)
 
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-roam-capture-templates
@@ -362,21 +362,9 @@
                                 ,(with-temp-buffer
                                    (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
                                    (buffer-string)))
-             :unnarrowed t)
-            ("p" "private" plain "%?"
-             :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                                ,(with-temp-buffer
-                                   (insert-file-contents (concat roam-capture-dir "roam-private-head.capture"))
-                                   (buffer-string)))
-             :unnarrowed t)
-            ("e" "encrypted private" plain "%?"
-             :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
-                                ,(with-temp-buffer
-                                   (insert-file-contents (concat roam-capture-dir "roam-encrypted-head.capture"))
-                                   (buffer-string)))
              :unnarrowed t))))
 
-  (setq org-roam-dailies-directory "../journal/"
+  (setq org-roam-dailies-directory "/journal/"
         org-roam-dailies-capture-templates
         '(("d" "default" entry
            "* %?"
@@ -397,7 +385,6 @@
   (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
 
-  (setq org-id-locations-file (concat org-directory "/.orgid"))
   (defun benmezger/org-update-org-ids ()
     "Update all org ids."
     (interactive)
