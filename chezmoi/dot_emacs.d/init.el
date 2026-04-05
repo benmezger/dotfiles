@@ -146,6 +146,7 @@
 
 (use-package wgrep
   :ensure t
+  :hook (grep-mode . wgrep-setup)
   :custom
   (wgrep-auto-save-buffer t))
 
