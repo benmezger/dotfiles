@@ -1,0 +1,12 @@
+#+TITLE: ${title}
+#+DATE: %T
+#+FILETAGS: %^{Filetags}
+#+SETUPFILE: ../hugo.setup
+#+HUGO_SLUG: ${slug}
+#+HUGO_TAGS: %^{Hugo tags}
+#+EXPORT_FILE_NAME: exports/%(format-time-string "%Y-%m-%d--%H-%M-%SZ--${slug}" (current-time) t)
+
+- Related pages
+  -
+
+------

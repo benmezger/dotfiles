@@ -355,40 +355,26 @@
   (push org-roam-directory org-agenda-files)
   (push benmezger/org-roam-private-directory org-agenda-files)
 
-  (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: %^{Filetags}
-#+SETUPFILE: ../hugo.setup
-#+HUGO_SLUG: ${slug}
-#+HUGO_TAGS: %^{Hugo tags}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-
-- Related pages
-  -
-
------- ")
-           :unnarrowed t)
-          ("p" "private" plain "%?"
-           :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: :personal:%^{Filetags}
-#+HUGO_SLUG: ${slug}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-")
-           :unnarrowed t)
-          ("e" "encrypted private" plain "%?"
-           :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
-                              "#+TITLE: ${title}
-#+DATE: %T
-#+FILETAGS: :personal:gpg:%^{Filetags}
-#+HUGO_SLUG: ${slug}
-#+EXPORT_FILE_NAME: exports/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}\" (current-time) t)
-")
-           :unnarrowed t)))
+  (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
+    (setq org-roam-capture-templates
+          `(("d" "default" plain "%?"
+             :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                                ,(with-temp-buffer
+                                   (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
+                                   (buffer-string)))
+             :unnarrowed t)
+            ("p" "private" plain "%?"
+             :if-new (file+head "roam/private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                                ,(with-temp-buffer
+                                   (insert-file-contents (concat roam-capture-dir "roam-private-head.capture"))
+                                   (buffer-string)))
+             :unnarrowed t)
+            ("e" "encrypted private" plain "%?"
+             :if-new (file+head "private/%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
+                                ,(with-temp-buffer
+                                   (insert-file-contents (concat roam-capture-dir "roam-encrypted-head.capture"))
+                                   (buffer-string)))
+             :unnarrowed t))))
 
   (setq org-roam-dailies-directory "../journal/"
         org-roam-dailies-capture-templates
