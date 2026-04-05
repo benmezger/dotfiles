@@ -399,6 +399,7 @@
   (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
 
+
   (defun benmezger/org-update-org-ids ()
     "Update all org ids."
     (interactive)
@@ -655,9 +656,8 @@
   :config
   (auto-insert-mode 1)
   (setq auto-insert-query nil)
-  (define-auto-insert '("\\.org\\'" . "Org template")
-    '(nil
-      "#+TITLE: "
+  (defun my/org-auto-insert ()
+    (unless (and (fboundp 'org-roam-capture-p) (org-roam-capture-p))
       (let* ((base (file-name-base buffer-file-name))
              (spaced (let (case-fold-search)
                        (replace-regexp-in-string
@@ -668,23 +668,20 @@
              (title (string-join (mapcar #'capitalize
                                          (split-string spaced "[^[:word:]0-9]+"))
                                  " ")))
-        (skeleton-read "Title: " title))
-      \n
-      "#+SUBTITLE: " (skeleton-read "Subtitle: " "") \n
-      "#+AUTHOR: " (user-full-name) \n
-      "#+EMAIL: " user-mail-address \n
-      "#+DATE: <" (format-time-string "%F %a %R") ">" \n
-      \n
-      "#+HTML_DOCTYPE: xhtml5" \n
-      "#+HTML_HTML5_FANCY:" \n
-      \n
-      "# Hugo config" \n
-      "#+DRAFT: false" \n
-      "#+HUGO_AUTO_SET_LASTMOD: t" \n
-      "#+HUGO_BASE_DIR: ~/workspace/blog" \n
-      "#+HUGO_AUTO_SET_LASTMOD: t" \n
-      \n
-      _))
+        (insert "#+TITLE: " (read-string "Title: " title) "\n"
+                "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
+                "#+AUTHOR: " (user-full-name) "\n"
+                "#+EMAIL: " user-mail-address "\n"
+                "#+DATE: <" (format-time-string "%F %a %R") ">\n\n"
+                "#+HTML_DOCTYPE: xhtml5\n"
+                "#+HTML_HTML5_FANCY:\n\n"
+                "# Hugo config\n"
+                "#+DRAFT: false\n"
+                "#+HUGO_AUTO_SET_LASTMOD: t\n"
+                "#+HUGO_BASE_DIR: ~/workspace/blog\n"
+                "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
+
+  (define-auto-insert '("\\.org\\'" . "Org template") #'my/org-auto-insert)
 
   (defun my/python-file-header ()
     (insert "# Author: " (user-full-name) " <" user-mail-address ">\n")
