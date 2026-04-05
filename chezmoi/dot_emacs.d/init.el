@@ -362,6 +362,7 @@
 (use-package org-roam
   :ensure t
   :after org
+  :demand t
   :general
   (my/leader-keys
     "n r f" '(org-roam-node-find :which-key "find node")
@@ -371,9 +372,10 @@
     "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
     "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :custom
-  (setq org-roam-directory "~/workspace/org/roam"
-        org-roam-index-file (concat org-roam-directory "/" "index.org"))
+  (org-roam-directory "~/workspace/org/roam")
+  (org-roam-file-exclude-regexp "/workspace/org/journal/")
   :config
+
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-roam-capture-templates
           `(("d" "default" plain "%?"
@@ -402,7 +404,9 @@
     (interactive)
     (org-id-update-id-locations
      (directory-files-recursively
-      org-roam-directory ".org$\\|.org.gpg$"))))
+      org-roam-directory ".org$\\|.org.gpg$")))
+
+  (org-roam-db-autosync-mode))
 
 (use-package org-roam-ui
   :ensure t
