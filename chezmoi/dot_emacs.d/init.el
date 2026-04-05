@@ -299,8 +299,6 @@
              (file ,(concat capture-dir "code-snippet.capture")))
             ("i" "Inbox" entry (file+datetree "~/workspace/org/inbox.org")
              (file ,(concat capture-dir "inbox-snippet.capture")))
-            ("j" "Journal" entry (file+datetree "~/workspace/org/journal.org")
-             (file ,(concat capture-dir "journal.capture")))
             ("b" "Blog post" entry (file+olp "~/workspace/org/blog.org" "Posts")
              (file ,(concat capture-dir "blog-post.capture")))
             ("n" "Note" entry (file+olp "~/workspace/org/notes.org" "Inbox")
@@ -310,11 +308,7 @@
             ("r" "Register new book" entry (file+olp "~/workspace/org/notes.org" "Books")
              (file ,(concat capture-dir "new-book.capture")))
             ("d" "Decision note" entry (file "~/workspace/org/decisions.org")
-             (file ,(concat capture-dir "decision.capture")))
-            ("w" "Weekly journal" entry (file+olp+datetree "~/workspace/org/journal/weekly.org" "Weekly notes")
-             (file ,(concat capture-dir "weekly-journal.capture")) :tree-type week)
-            ("e" "RRR" entry (file "~/workspace/org/rrr.org")
-             (file ,(concat capture-dir "rrr.capture"))))))
+             (file ,(concat capture-dir "decision.capture"))))))
 
   (defun benmezger/org-insert-link-dwim ()
     "Like `org-insert-link' but with personal dwim preferences."
