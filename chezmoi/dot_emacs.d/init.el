@@ -62,8 +62,9 @@
 (use-package undo-fu)
 
 (use-package undo-fu-session
+  :custom
+  (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   :config
-  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   (undo-fu-session-global-mode))
 
 (use-package evil
@@ -120,8 +121,9 @@
     "p s" '(my/consult-rg-project :which-key "search project")
     "g g" '(consult-git-grep :which-key "git grep")
     "p b" '(consult-project-buffer :which-key "project buffers"))
+  :custom
+  (consult-async-min-input 0)
   :config
-  (setq consult-async-min-input 0)
   (consult-customize
    consult-ripgrep consult-grep consult-git-grep
    consult-buffer consult-project-buffer consult-recent-file
@@ -161,11 +163,12 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :ensure t
+  :custom
+  (which-key-sort-order 'which-key-key-order-alpha)
+  (which-key-side-window-max-width 0.333)
+  (which-key-idle-delay 1.0)
   :config
-  (which-key-setup-minibuffer)
-  (setq which-key-sort-order 'which-key-key-order-alpha
-        which-key-side-window-max-width 0.333
-        which-key-idle-delay 1.0))
+  (which-key-setup-minibuffer))
 
 (use-package magit
   :ensure t
@@ -174,13 +177,13 @@
   :general
   (my/leader-keys
     "g s" '(magit-status :which-key "git status"))
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (magit-save-repository-buffers nil)
+  (magit-refresh-status-buffer nil)
   :config
   (remove-hook 'server-switch-hook 'magit-commit-diff)
-  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-	magit-save-repository-buffers nil
-	;; performance improvements
-	magit-refresh-status-buffer nil))
+  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff))
 
 (use-package pyenv-mode
   :ensure t
@@ -209,15 +212,15 @@
    "<tab>"   'company-complete-selection)
   :hook
   (git-commit-mode . (lambda () (company-mode -1)))
-  :config
-  (setq company-idle-delay 0.0
-        company-minimum-prefix-length 1))
+  :custom
+  (company-idle-delay 0.0)
+  (company-minimum-prefix-length 1))
 
 (use-package treesit-auto
   :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
   :config
-  (setq treesit-auto-install 'prompt)
-
   (global-treesit-auto-mode)
   ;; Cache treesit-auto--build-major-mode-remap-alist so emacsclient openings
   ;; (e.g. git commit) don't re-run treesit-language-available-p for every grammar.
@@ -252,11 +255,11 @@
     "c t" '(lsp-find-type-definition :which-key "find type definition")
     "c h" '(lsp-describe-thing-at-point :which-key "hover doc")
     "c e" '(flymake-show-buffer-diagnostics :which-key "errors list"))
-  :config
-  (setq lsp-completion-provider :capf
-        lsp-idle-delay 0.5
-        lsp-log-io nil
-        lsp-ruff-ruff-args '("--preview")))
+  :custom
+  (lsp-completion-provider :capf)
+  (lsp-idle-delay 0.5)
+  (lsp-log-io nil)
+  (lsp-ruff-ruff-args '("--preview")))
 
 (use-package consult-lsp
   :ensure t
@@ -281,6 +284,22 @@
   (setq org-directory "~/workspace/org")
   :hook (org-mode . auto-fill-mode)
   :requires general
+  :custom
+  (org-log-done 'time)
+  (org-clock-persist 'history)
+  (org-archive-location ".archives/%s_archive::")
+  (org-log-into-drawer t)
+  (org-startup-indented t)
+  (org-agenda-inhibit-startup t)
+  (org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+                       (sequence "READ(!)")
+                       (sequence "|" "DONE(d!)" "CANCELED(c!)")))
+  (org-todo-keyword-faces '(("CURRENT"  . "orange")
+                             ("TODO"     . "systemRedColor")
+                             ("READ"     . "systemOrangeColor")
+                             ("HOLD"     . "indianRed")
+                             ("WAIT"     . "salmon1")
+                             ("PROJ"     . "systemYellowColor")))
   :general
   (my/leader-keys
     "n a" '(org-agenda :which-key "agenda")
@@ -292,28 +311,11 @@
     "n j" '(org-journal-new-entry :which-key "new journal entry")
     "n v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
   :config
-  (setq
-   org-log-done 'time
-   org-clock-persist 'history
-   org-directory "~/workspace/org"
-   org-archive-location ".archives/%s_archive::"
-   org-agenda-files (list org-directory)
-   org-log-into-drawer t
-   org-startup-indented t
-   org-agenda-inhibit-startup t
-   bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
-   org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
-                       (sequence "READ(!)")
-                       (sequence "|" "DONE(d!)" "CANCELED(c!)"))
-   org-todo-keyword-faces '(("CURRENT"  . "orange")
-                            ("TODO"     . "systemRedColor")
-                            ("READ"     . "systemOrangeColor")
-                            ("HOLD"     . "indianRed")
-                            ("WAIT"     . "salmon1")
-                            ("PROJ"     . "systemYellowColor"))
-   ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
-
-  (setq org-id-locations-file (concat org-directory "/.orgid"))
+  (setq org-directory "~/workspace/org"
+        org-agenda-files (list org-directory)
+        bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
+        org-id-locations-file (concat org-directory "/.orgid")
+        ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
 
@@ -413,11 +415,11 @@
   :ensure t
   :requires org
   :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
+  :custom
+  (org-roam-ui-sync-theme t)
+  (org-roam-ui-follow t)
+  (org-roam-ui-update-on-save t)
+  (org-roam-ui-open-on-start nil))
 
 (use-package org-contrib
   :straight t
@@ -427,11 +429,12 @@
 (use-package ox-hugo
   :ensure t
   :after org
+  :custom
+  (org-hugo-external-file-extensions-allowed-for-copying
+   '("jpg" "jpeg" "tiff" "png" "svg" "gif"
+     "mp4" "pdf" "odt" "doc" "ppt" "xls"
+     "docx" "pptx" "xlsx" "zip"))
   :config
-  (setq org-hugo-external-file-extensions-allowed-for-copying
-        '("jpg" "jpeg" "tiff" "png" "svg" "gif"
-          "mp4" "pdf" "odt" "doc" "ppt" "xls"
-          "docx" "pptx" "xlsx" "zip"))
 
   (defun benmezger/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
@@ -444,10 +447,10 @@
 (use-package org-journal
   :ensure t
   :after org
-  :config
-  (setq org-journal-dir "~/workspace/org/journal"
-        org-journal-encrypt-journal t
-        org-journal-file-format "%Y%m%d.org"))
+  :custom
+  (org-journal-dir "~/workspace/org/journal")
+  (org-journal-encrypt-journal t)
+  (org-journal-file-format "%Y%m%d.org"))
 
 (use-package direnv
   :defer t
@@ -542,6 +545,25 @@
     "d d" '(my/diff-current-buffer :which-key "diff buffer")
     "d g" '(magit-diff-range :which-key "diff git range")
     "d s" '(diff-buffer-with-file :which-key "diff with file"))
+  :custom
+  (epa-armor t)
+  (display-line-numbers-type t)
+  (gc-cons-threshold 100000000)              ; 100 mb
+  (backup-directory-alist '(("." . "~/.saves")))
+  (auto-save-file-name-transforms '((".*" "~/.saves/" t)))
+  (custom-file (locate-user-emacs-file "custom.el"))
+  (uniquify-buffer-name-style 'forward)
+  (ring-bell-function 'ignore)
+  (inhibit-startup-screen t)
+  (cursor-type 'bar)
+  (auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc"))
+  (enable-recursive-minibuffers t)
+  (undo-limit 67108864)                      ; 64mb
+  (undo-strong-limit 100663296)              ; 96mb
+  (undo-outer-limit 1006632960)              ; 960mb
+  (lock-file-name-transforms '((".*" "~/.emacs.d/locks/" t)))
+  (native-comp-async-report-warnings-errors 'silent)
+  (use-dialog-box nil)
   :config
   (set-face-attribute 'default nil :height 90 :family "Hack Nerd Font")
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -563,33 +585,8 @@
 
   (require 'uniquify)
 
-  (setq epa-armor t
-	display-line-numbers-type t
-	gc-cons-threshold 100000000 ; 100 mb
-	read-process-output-max (* 1024 1024) ; 1mb
-	;; Place backups in a separate folder.
-	backup-directory-alist `(("." . "~/.saves"))
-	auto-save-file-name-transforms `((".*" "~/.saves/" t))
-	;; I store automatic customization options in a gitignored file,
-	;; but this is definitely a personal preference.
-	custom-file (locate-user-emacs-file "custom.el")
-	;; Ensure unique names when matching files exist in the buffer.
-	;; It will add a "myproj/main.rs" prefix when it detects matching
-	;; names.
-	uniquify-buffer-name-style 'forward
-	ring-bell-function 'ignore
-	inhibit-compacting-font-caches t
-	inhibit-startup-screen t
-	cursor-type 'bar
-	auth-sources '("~/.authinfo" "~/.authinfo.gpg" "~/.netrc")
-	enable-recursive-minibuffers t
-	undo-limit 67108864 ; 64mb
-	undo-strong-limit 100663296 ; 96mb.
-	undo-outer-limit 1006632960 ; 960mb
-	lock-file-name-transforms '((".*" "~/.emacs.d/locks/" t))
-	native-comp-async-report-warnings-errors 'silent
-	use-dialog-box nil
-	)
+  (setq read-process-output-max (* 1024 1024) ; 1mb — defvar, not defcustom
+        inhibit-compacting-font-caches t)     ; defvar, not defcustom
 
   (when (file-exists-p custom-file)
     (load custom-file))
@@ -654,9 +651,10 @@
   :mode "\\.tf\\'")
 
 (use-package autoinsert
+  :custom
+  (auto-insert-query nil)
   :config
   (auto-insert-mode 1)
-  (setq auto-insert-query nil)
   (defun my/org-auto-insert ()
     (unless (and (fboundp 'org-roam-capture-p) (org-roam-capture-p))
       (let* ((base (file-name-base buffer-file-name))
@@ -793,9 +791,9 @@
   :straight (:host github :repo "kubernetes-el/kubernetes-el" :tag "0.19.0")
   :ensure t
   :commands (kubernetes-overview)
-  :config
-  (setq kubernetes-poll-frequency 3600
-        kubernetes-redraw-frequency 3600))
+  :custom
+  (kubernetes-poll-frequency 3600)
+  (kubernetes-redraw-frequency 3600))
 
 (use-package kubernetes-evil
   :ensure t
