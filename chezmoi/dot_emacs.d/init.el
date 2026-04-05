@@ -361,7 +361,7 @@
 
 (use-package org-roam
   :ensure t
-  :defer t
+  :after org
   :general
   (my/leader-keys
     "n r f" '(org-roam-node-find :which-key "find node")
@@ -370,12 +370,10 @@
     "n r c" '(org-roam-capture :which-key "capture")
     "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
     "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
-  :config
+  :custom
   (setq org-roam-directory "~/workspace/org/roam"
         org-roam-index-file (concat org-roam-directory "/" "index.org"))
-
-  (push org-roam-directory org-agenda-files)
-
+  :config
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-roam-capture-templates
           `(("d" "default" plain "%?"
@@ -384,13 +382,6 @@
                                    (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
                                    (buffer-string)))
              :unnarrowed t))))
-
-  (setq org-roam-dailies-directory "/journal/"
-        org-roam-dailies-capture-templates
-        '(("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+TITLE: %<%Y-%m-%d>\n"))))
 
   (defun benmezger/org-roam-node-insert-immediate (arg &rest args)
     (interactive "P")
