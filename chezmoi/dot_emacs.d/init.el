@@ -655,6 +655,7 @@
   (auto-insert-query nil)
   :config
   (auto-insert-mode 1)
+  (setq auto-insert-alist nil)
   (defun my/org-auto-insert ()
     (unless (and (fboundp 'org-roam-capture-p) (org-roam-capture-p))
       (let* ((base (file-name-base buffer-file-name))
