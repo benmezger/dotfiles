@@ -296,11 +296,11 @@
                        (sequence "READ(!)")
                        (sequence "|" "DONE(d!)" "CANCELED(c!)")))
   (org-todo-keyword-faces '(("CURRENT"  . "orange")
-                             ("TODO"     . "systemRedColor")
-                             ("READ"     . "systemOrangeColor")
-                             ("HOLD"     . "indianRed")
-                             ("WAIT"     . "salmon1")
-                             ("PROJ"     . "systemYellowColor")))
+                            ("TODO"     . "systemRedColor")
+                            ("READ"     . "systemOrangeColor")
+                            ("HOLD"     . "indianRed")
+                            ("WAIT"     . "salmon1")
+                            ("PROJ"     . "systemYellowColor")))
   :general
   (my/leader-keys
     "n a" '(org-agenda :which-key "agenda")
