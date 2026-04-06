@@ -278,6 +278,7 @@
   :after lsp-mode)
 
 (use-package org
+  :straight t
   :ensure t
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
@@ -363,8 +364,7 @@
 
 (use-package org-roam
   :ensure t
-  :after org
-  :demand t
+  :hook (org-mode . org-roam-db-autosync-mode)
   :general
   (my/leader-keys
     "n r f" '(org-roam-node-find :which-key "find node")
@@ -401,15 +401,12 @@
   (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
 
-
   (defun benmezger/org-update-org-ids ()
     "Update all org ids."
     (interactive)
     (org-id-update-id-locations
      (directory-files-recursively
-      org-roam-directory ".org$\\|.org.gpg$")))
-
-  (org-roam-db-autosync-mode))
+      org-roam-directory "\\.org$\\|\\.org\\.gpg$"))))
 
 (use-package org-roam-ui
   :ensure t
