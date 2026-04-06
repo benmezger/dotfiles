@@ -281,7 +281,7 @@
   :ensure t
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
-  (setq org-directory "~/workspace/org")
+  (setq org-directory (expand-file-name "~/workspace/org/"))
   :hook (org-mode . auto-fill-mode)
   :requires general
   :custom
@@ -374,7 +374,7 @@
     "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
     "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :custom
-  (org-roam-directory "~/workspace/org/roam")
+  (org-roam-directory (expand-file-name "roam/" org-directory))
   (org-roam-file-exclude-regexp "/workspace/org/journal/")
   :config
 
