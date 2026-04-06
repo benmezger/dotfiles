@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+export EDITOR=$HOME/.bin/editor
+export VISUAL=$HOME/.bin/editor
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export GPGKEY=0x7357E344D6C3C795
+
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+export XDG_CONFIG_HOME=$HOME/.config
+
+export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:$HOME/.config/emacs/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+export GOPATH=$HOME/workspace/go
+export PATH="$GOPATH/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+
+export WORKSPACE="$HOME/workspace"
+export DOTFILES="$WORKSPACE/dotfiles"
+export LEDGER="$WORKSPACE/ledger"
+
+export MAKEFLAGS="-j4 -l5"
+if [ -x "$(command -v nproc)" ]; then
+	export MAKEFLAGS="-j$(nproc) -l5"
+fi
+
+export HTML_TIDY="$HOME/.config/tidyrc"
