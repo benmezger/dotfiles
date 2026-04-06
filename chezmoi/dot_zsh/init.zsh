@@ -1,7 +1,5 @@
 # General init file
 
-setopt autocd
-setopt extendedglob
 setopt NO_NOMATCH
 setopt CORRECT
 

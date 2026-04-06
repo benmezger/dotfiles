@@ -41,7 +41,6 @@ else
   ZSH_SITE_FUNCTIONS=/usr/local/share/zsh/site-functions
 fi
 
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source $(pyenv root)/completions/pyenv.zsh
 
 if (( $+commands[ggrep] )); then

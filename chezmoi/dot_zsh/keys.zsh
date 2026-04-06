@@ -1,7 +1,6 @@
 bindkey -v
 bindkey '\ew' kill-region
 bindkey -s '\el' "ls\n"
-bindkey '^r' history-incremental-search-backward
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey '^[[A' up-line-or-search
@@ -20,7 +19,6 @@ bindkey '^?' backward-delete-char
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
-bindkey '^W' backward-kill-word
 bindkey '^r' fzf-history-widget
 
 # from: http://www.zsh.org/mla/users/2001/msg00870.html
@@ -33,9 +31,8 @@ zle -N custom-backward-delete-word
 bindkey '^W' custom-backward-delete-word
 
 custom-edit-command-line() {
-    export CUSTOM_EDITOR=nvim
-    zle edit-command-line;
-    unset CUSTOM_EDITOR
+    local VISUAL=nvim
+    zle edit-command-line
 }
 
 zle -N custom-edit-command-line
