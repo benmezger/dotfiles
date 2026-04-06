@@ -8,6 +8,10 @@ else
 	source $HOME/.zsh/linux.zsh
 fi
 
+if (( $+commands[pyenv] )); then
+	source $(pyenv root)/completions/pyenv.zsh
+fi
+
 ### Plugins
 
 # zsh prompt
@@ -48,9 +52,6 @@ if [ -f "$HOME/.local/bin/poetry" ]; then
 	export POETRY_VIRTUALENVS_IN_PROJECT=1
 fi
 
-export GITLINE_REPO_INDICATOR='${reset}ᚴ'
-export GITLINE_BRANCH='[${blue}${branch}${reset}]'
-export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 
 
 # FZF

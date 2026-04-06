@@ -4,7 +4,6 @@ ZSH_SITE_FUNCTIONS=/usr/share/zsh/site-functions
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source $(pyenv root)/completions/pyenv.zsh
 
 # docker
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

@@ -41,7 +41,6 @@ else
   ZSH_SITE_FUNCTIONS=/usr/local/share/zsh/site-functions
 fi
 
-source $(pyenv root)/completions/pyenv.zsh
 
 if (( $+commands[ggrep] )); then
     alias ggrep='ggrep --color=auto'
