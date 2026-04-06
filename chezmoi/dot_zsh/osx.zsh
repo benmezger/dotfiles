@@ -43,3 +43,7 @@ fi
 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source $(pyenv root)/completions/pyenv.zsh
+
+if (( $+commands[ggrep] )); then
+    alias ggrep='ggrep --color=auto'
+fi

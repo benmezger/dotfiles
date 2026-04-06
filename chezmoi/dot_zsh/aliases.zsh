@@ -65,9 +65,7 @@ if (( $+commands[emacsclient] )); then
     alias e='emacsclient -c -n -a ""'
 fi
 
-if (( $+commands[ggrep] )); then
-    alias ggrep="ggrep $GREP_OPTIONS"
-fi
+alias grep='grep --color=auto'
 
 if (( $+commands[brew] )); then
     brewfile() {cd $HOME/dotfiles && brew bundle "$1" }
