@@ -19,3 +19,8 @@ export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
 export VBLANK_MODE=1
 
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
+# tmux: disable autostart when running under dwm
+if pgrep -x dwm > /dev/null; then
+	export IS_DWM=1
+fi

@@ -15,7 +15,6 @@ ZSH_GIT_PROMPT_SHOW_STASH=1
 source $HOME/.zsh/prompt.zsh
 
 ## Tmux autostart
-IS_DWM=$(ps aux | grep dwm)
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$I3SOCK" ] || [ -n "$IS_DWM" ]; then
 	export TMUX_AUTOSTART="false"
 else
@@ -46,7 +45,6 @@ pyenv() {
 }
 
 if [ -f "$HOME/.local/bin/poetry" ]; then
-	export PATH="$HOME/.poetry/bin:${PATH}"
 	export POETRY_VIRTUALENVS_IN_PROJECT=1
 fi
 
