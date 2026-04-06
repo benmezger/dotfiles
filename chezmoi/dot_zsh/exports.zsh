@@ -52,8 +52,6 @@ export GITLINE_REPO_INDICATOR='${reset}ᚴ'
 export GITLINE_BRANCH='[${blue}${branch}${reset}]'
 export SLIMLINE_RIGHT_PROMPT_SECTIONS="execution_time git vi_mode exit_status"
 
-# smooth scrolling on firefox
-export MOZ_USE_XINPUT2=1
 
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'

@@ -4,6 +4,14 @@ if [[ "$ZPROF" = true ]]; then
         zmodload zsh/zprof
 fi
 
+# emacs(tramp): disable zsh line editor because zsh uses
+# left-hand side and right-hand side prompts in parallel
+# see: TRAMP does not connect to the remote host at
+# https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
+if [[ $TERM == "dumb" ]]; then
+        unsetopt zle && PS1='$ ' && return
+fi
+
 source $HOME/.zsh/init.zsh
 source $HOME/.zsh/exports.zsh
 
@@ -45,14 +53,6 @@ if [[ "$ZPROF" = true ]]; then
                 exit 0
         }
         add-zsh-hook zshexit exit_hook
-fi
-
-# emacs(tramp): disable zsh line editor because zsh uses
-# left-hand side and right-hand side prompts in parallel
-# see: TRAMP does not connect to the remote host at
-# https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
-if [[ $TERM == "dumb" ]]; then
-        unsetopt zle && PS1='$ ' && return
 fi
 
 # initialize completion
