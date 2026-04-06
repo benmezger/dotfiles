@@ -11,7 +11,14 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.bin:/usr/bin:/bin:/usr/sbin:/sbin"
+if [[ $(uname) == "Darwin" ]]; then
+	if [[ $(uname -m) == "arm64" ]]; then
+		export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+	else
+		export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+	fi
+fi
 export PATH="$PATH:$HOME/.config/emacs/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
