@@ -80,8 +80,6 @@ if [[ ${PAGER} == 'less' ]]; then
     (( ! ${+LESS_TERMCAP_us} )) && export LESS_TERMCAP_us=$'\E[1;32m'   # Begins underline.
 fi
 
-# grep
-export GREP_OPTIONS='-i --color'
 
 # work related
 if [[ -f "$HOME/.zsh/work.zsh" ]]; then
