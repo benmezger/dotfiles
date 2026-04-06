@@ -419,8 +419,8 @@
   (org-roam-ui-open-on-start nil))
 
 (use-package org-contrib
-  :straight t
   :after org
+  :straight (:host github :repo "emacsmirror/org-contrib")
   :config (require 'ox-extra))
 
 (use-package ox-hugo
