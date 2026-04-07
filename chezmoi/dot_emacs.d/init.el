@@ -562,7 +562,9 @@
   (native-comp-async-report-warnings-errors 'silent)
   (use-dialog-box nil)
   :config
-  (set-face-attribute 'default nil :height 90 :family "Hack Nerd Font")
+  (set-face-attribute 'default nil
+                      :height (if (eq system-type 'gnu/linux) 90 130)
+                      :family "Hack Nerd Font")
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-display-line-numbers-mode)
   (global-auto-revert-mode t)
