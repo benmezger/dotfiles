@@ -375,7 +375,7 @@
     "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :custom
   (org-roam-directory (expand-file-name "roam/" org-directory))
-  (org-roam-file-exclude-regexp "/workspace/org/journal/")
+  (org-roam-file-exclude-regexp "journal/\\|\.org\.gpg$")
   :config
 
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
@@ -406,7 +406,7 @@
     (interactive)
     (org-id-update-id-locations
      (directory-files-recursively
-      org-roam-directory "\\.org$\\|\\.org\\.gpg$"))))
+      org-roam-directory "\\.org$"))))
 
 (use-package org-roam-ui
   :ensure t
