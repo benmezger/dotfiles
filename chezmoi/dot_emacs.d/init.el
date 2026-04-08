@@ -115,7 +115,7 @@
     "f l" '(consult-locate :which-key "locate file")
     "s p" '(consult-ripgrep :which-key "rg project")
     "s b" '(consult-line :which-key "find in buffer")
-    "s d" '((lambda () (interactive) (consult-ripgrep nil default-directory)) :which-key "rg directory")
+    "s d" '((lambda () (interactive) (consult-ripgrep default-directory nil)) :which-key "rg directory")
     "s i" '(consult-imenu :which-key "imenu")
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
