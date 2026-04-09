@@ -572,8 +572,8 @@
   (epa-armor t)
   (display-line-numbers-type t)
   (gc-cons-threshold 100000000)              ; 100 mb
-  (backup-directory-alist '(("." . "~/.saves")))
-  (auto-save-file-name-transforms '((".*" "~/.saves/" t)))
+  (backup-directory-alist `(("." . ,(expand-file-name "saves/backups/" user-emacs-directory))))
+  (auto-save-file-name-transforms `((".*" ,(expand-file-name "saves/auto-saves/" user-emacs-directory) t)))
   (custom-file (locate-user-emacs-file "custom.el"))
   (uniquify-buffer-name-style 'forward)
   (ring-bell-function 'ignore)
@@ -630,6 +630,9 @@
 	;; persist the Kill Ring Across Sessions
 	savehist-additional-variables '(search-ring regexp-search-ring kill-ring)
 	)   
+
+  (make-directory (expand-file-name "saves/backups/" user-emacs-directory) t)
+  (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
 
   (when (file-exists-p custom-file)
     (load custom-file))
