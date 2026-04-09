@@ -54,7 +54,16 @@
 
 (use-package savehist
   :ensure t
-  :init (savehist-mode))
+  :init (savehist-mode)
+  :hook (savehist-save . benmezger/savehist-sanitize-kill-ring)
+  :config
+  ;; kill ring can accumulate text properties (fonts, overlays, etc.)
+  ;; that bloat the savehist file, so strip them before saving
+  (defun benmezger/savehist-sanitize-kill-ring ()
+    "Strip text properties from kill-ring entries before saving."
+    (setq kill-ring
+          (mapcar #'substring-no-properties
+                  (cl-remove-if-not #'stringp kill-ring)))))
 
 (use-package goto-chg
   :ensure t)
@@ -503,7 +512,8 @@
 		       "Emacs loaded in %s with %d garbage collections."
 		       (format "%.2f seconds"
 			       (float-time (time-subtract after-init-time before-init-time)))
-		       gcs-done))))
+		       gcs-done)))
+   (after-save . executable-make-buffer-file-executable-if-script-p))
   :general
   (my/leader-keys
     "f d" '(my/delete-current-file :which-key "delete file")
@@ -572,6 +582,12 @@
   (native-comp-async-report-warnings-errors 'silent)
   (use-dialog-box nil)
   :config
+  ;; disable bidirectional text scanning (right to left)
+  (setq-default bidi-display-reordering 'left-to-right
+		bidi-paragraph-direction 'left-to-right
+		;; dont render cursors in non-focussed windows
+		cursor-in-non-selected-windows nil
+		)
   (set-face-attribute 'default nil
                       :height (if (eq system-type 'gnu/linux) 90 130)
                       :family "Hack Nerd Font")
@@ -594,8 +610,20 @@
 
   (require 'uniquify)
 
-  (setq read-process-output-max (* 1024 1024) ; 1mb — defvar, not defcustom
-        inhibit-compacting-font-caches t)     ; defvar, not defcustom
+  (setq read-process-output-max (* 4 1024 1024) ; 4MB
+        inhibit-compacting-font-caches t
+	;; skip fontification during input. this defers fontification until we stop typing
+	redisplay-skip-fontification-on-input t
+	bidi-inhibit-bpa t
+	;; dont render cursors in non-focussed windows
+	highlight-nonselected-windows nil
+	;; save the Clipboard Before Killing 
+	save-interprogram-paste-before-kill t
+	;; no Duplicates in the Kill Ring
+	kill-do-not-save-duplicates t
+	;; persist the Kill Ring Across Sessions
+	savehist-additional-variables '(search-ring regexp-search-ring kill-ring)
+	)   
 
   (when (file-exists-p custom-file)
     (load custom-file))
