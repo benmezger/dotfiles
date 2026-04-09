@@ -592,8 +592,7 @@
   (setq-default bidi-display-reordering 'left-to-right
 		bidi-paragraph-direction 'left-to-right
 		;; dont render cursors in non-focussed windows
-		cursor-in-non-selected-windows nil
-		)
+		cursor-in-non-selected-windows nil)
   (set-face-attribute 'default nil
                       :height (if (eq system-type 'gnu/linux) 90 130)
                       :family "Hack Nerd Font")
@@ -613,6 +612,8 @@
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
+  (make-directory (expand-file-name "saves/backups/" user-emacs-directory) t)
+  (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
 
   (require 'uniquify)
 
@@ -631,8 +632,6 @@
 	savehist-additional-variables '(search-ring regexp-search-ring kill-ring)
 	)   
 
-  (make-directory (expand-file-name "saves/backups/" user-emacs-directory) t)
-  (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
 
   (when (file-exists-p custom-file)
     (load custom-file))
