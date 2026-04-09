@@ -534,7 +534,7 @@
     "b b" '(consult-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
     "b s" '(save-buffer :which-key "save buffer")
-    "b l" '(list-buffers :which-key "list buffers")
+    "b l" '(ibuffer-list-buffers :which-key "list buffers")
     "b n" '(next-buffer :which-key "next buffer")
     "b p" '(prev-buffer :which-key "prev buffer")
     "b r" '(revert-buffer :which-key "revert buffer")
@@ -612,7 +612,6 @@
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
-  (make-directory (expand-file-name "saves/backups/" user-emacs-directory) t)
   (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
 
   (require 'uniquify)
