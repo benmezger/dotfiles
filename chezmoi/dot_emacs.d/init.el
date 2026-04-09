@@ -510,7 +510,8 @@
   :requires general
   :bind (("C-w" . backward-kill-word)
 	 ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer))))
-	 ("<escape>" . keyboard-quit))
+	 ("<escape>" . keyboard-quit)
+	 ("M-z" . zap-up-to-char))
   :hook
   ((emacs-startup . (lambda ()
 		      (message
