@@ -858,3 +858,7 @@
     "h v" '(helpful-variable :which-key "describe variable")
     "h f" '(helpful-function :which-key "describe function")
     "h c" '(helpful-command :which-key "describe command")))
+
+(use-package osx-lib
+  :if (eq system-type 'darwin)
+  :ensure t)
