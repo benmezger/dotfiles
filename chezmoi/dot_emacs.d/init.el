@@ -307,10 +307,10 @@
     "n c" '(org-capture :which-key "capture")
     "n l" '(org-store-link :which-key "store link")
     "n i" '(benmezger/org-insert-link-dwim :which-key "insert link")
-    "n f" '((lambda () (interactive) (let ((default-directory org-directory)) (call-interactively #'find-file))) :which-key "find file")
+    "n f" '(benmezger/org-find-file :which-key "find file")
     "n t" '(org-todo-list :which-key "todo list")
     "n j" '(org-journal-new-entry :which-key "new journal entry")
-    "n v" '((lambda () (interactive) (find-file (expand-file-name "cv/cv.org" org-directory))) :which-key "cv"))
+    "n v" '(benmezger/org-open-cv :which-key "cv"))
   :config
   (setq org-directory "~/workspace/org"
         org-agenda-files (list org-directory)
@@ -319,6 +319,16 @@
         ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
+  (defun benmezger/org-find-file ()
+    "Find a file in `org-directory'."
+    (interactive)
+    (let ((default-directory (file-name-as-directory (expand-file-name org-directory))))
+      (call-interactively #'find-file)))
+
+  (defun benmezger/org-open-cv ()
+    "Open the org CV file."
+    (interactive)
+    (find-file (expand-file-name "cv/cv.org" org-directory)))
 
   (let ((capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-capture-templates
