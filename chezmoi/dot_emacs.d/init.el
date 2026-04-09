@@ -491,14 +491,19 @@
   (my-global-code-stats-mode)
   (run-with-idle-timer 30 t #'code-stats-sync))
 
-(use-package package
+(use-package project
   :ensure nil
+  :hook (find-file . benmezger/project-remember-current)
   :config
   (setq project-switch-commands 'project-find-file)
   (dolist (proj '("~/workspace/dotfiles/"
                   "~/workspace/terraform/"
                   "~/workspace/org/"))
-    (project-remember-project (list 'vc 'Git proj))))
+    (project-remember-project (list 'vc 'Git proj)))
+
+  (defun benmezger/project-remember-current ()
+    (when-let ((proj (project-current)))
+      (project-remember-project proj))))
 
 (use-package emacs
   :ensure nil
