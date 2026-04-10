@@ -71,6 +71,7 @@
 (use-package undo-fu)
 
 (use-package undo-fu-session
+  :requires undo-fu
   :custom
   (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   :config
@@ -78,7 +79,7 @@
 
 (use-package evil
   :ensure t
-  :requires goto-chg
+  :requires (goto-chg undo-fu)
   :init
   (setq evil-want-keybinding nil
 	evil-undo-system 'undo-fu
@@ -87,6 +88,7 @@
   (evil-mode))
 
 (use-package evil-collection
+  :requires (evil)
   :ensure t
   :after evil
   :config (evil-collection-init))
@@ -283,6 +285,7 @@
 
 (use-package lsp-pyright
   :ensure t
+  :requires lsp
   :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :after lsp-mode)
 
@@ -382,6 +385,7 @@
             (t (call-interactively 'org-insert-link))))))
 
 (use-package org-roam
+  :requires org
   :ensure t
   :hook (org-mode . org-roam-db-autosync-mode)
   :general
@@ -429,7 +433,7 @@
 
 (use-package org-roam-ui
   :ensure t
-  :requires org
+  :requires org-roam
   :after org-roam
   :custom
   (org-roam-ui-sync-theme t)
@@ -438,6 +442,7 @@
   (org-roam-ui-open-on-start nil))
 
 (use-package org-contrib
+  :requires org
   :after org
   :straight (:host github :repo "emacsmirror/org-contrib")
   :config (require 'ox-extra))
@@ -461,6 +466,7 @@
           (org-hugo-export-wim-to-md))))))
 
 (use-package org-journal
+  :requires org
   :ensure t
   :after org
   :custom
