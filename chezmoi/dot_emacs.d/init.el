@@ -603,18 +603,22 @@
                       :height (if (eq system-type 'gnu/linux) 90 130)
                       :family "Hack Nerd Font")
   (fset 'yes-or-no-p 'y-or-n-p)
-  (global-display-line-numbers-mode)
-  (global-auto-revert-mode t)
   (unless (memq (frame-parameter nil 'fullscreen) '(maximized fullboth))
     (toggle-frame-maximized))
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (display-time-mode 1)
-  (display-battery-mode 1)
-  (global-hl-line-mode 1)
-  (save-place-mode)
-  (recentf-mode)
+
+  (dolist (mode '(menu-bar-mode
+		  scroll-bar-mode
+		  tool-bar-mode))
+    (funcall mode -1))
+
+  (dolist (mode '(display-time-mode
+		  display-battery-mode
+		  global-hl-line-mode
+		  save-place-mode
+		  recentf-mode
+		  global-display-line-numbers-mode
+		  global-auto-revert-mode))
+    (funcall mode 1))
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
