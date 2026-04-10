@@ -852,7 +852,7 @@
 
 (use-package kubernetes-evil
   :ensure t
-  :requires evil
+  :requires (evil kubernetes)
   :after kubernetes)
 
 (use-package helpful
