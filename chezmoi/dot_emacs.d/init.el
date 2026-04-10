@@ -1,13 +1,3 @@
-
-(load (expand-file-name "chezmoi.el" user-emacs-directory) t)
-
-(let ((elisp-dir (expand-file-name "elisp" user-emacs-directory)))
-  (when (file-directory-p elisp-dir)
-    (add-to-list 'load-path elisp-dir)
-    (dolist (file (directory-files-recursively elisp-dir "\\.el\\'"))
-      (load file nil t))))
-
-
 (use-package straight
   :custom
   (straight-use-package-by-default t)
@@ -683,7 +673,15 @@
       (unless file (user-error "Buffer is not visiting a file"))
       (copy-file file dest)
       (find-file dest)))
-  )
+
+  ;; load custom chezmoi applied configuration
+  (load (expand-file-name "chezmoi.el" user-emacs-directory) t)
+
+  (let ((elisp-dir (expand-file-name "elisp" user-emacs-directory)))
+    (when (file-directory-p elisp-dir)
+      (add-to-list 'load-path elisp-dir)
+      (dolist (file (directory-files-recursively elisp-dir "\\.el\\'"))
+	(load file nil t)))))
 
 (use-package terraform-mode
   :straight t
