@@ -29,14 +29,14 @@
   (straight-recipe-repositories '(org-elpa melpa gnu-elpa-mirror nongnu-elpa el-get emacsmirror-mirror)))
 
 (use-package vertico
-  :ensure t
+  :straight t
   :custom
   (vertico-cycle t)
   :init
   (vertico-mode))
 
 (use-package general
-  :ensure t
+  :straight t
   :config
   (general-evil-setup t)
   (general-override-mode 1)
@@ -49,11 +49,11 @@
 
 (use-package marginalia
   :after vertico
-  :ensure t
+  :straight t
   :init (marginalia-mode))
 
 (use-package savehist
-  :ensure t
+  :straight t
   :init (savehist-mode)
   :hook (savehist-save . benmezger/savehist-sanitize-kill-ring)
   :config
@@ -66,7 +66,7 @@
                   (cl-remove-if-not #'stringp kill-ring)))))
 
 (use-package goto-chg
-  :ensure t)
+  :straight t)
 
 (use-package undo-fu)
 
@@ -78,7 +78,7 @@
   (undo-fu-session-global-mode))
 
 (use-package evil
-  :ensure t
+  :straight t
   :requires (goto-chg undo-fu)
   :init
   (setq evil-want-keybinding nil
@@ -89,19 +89,19 @@
 
 (use-package evil-collection
   :requires (evil)
-  :ensure t
+  :straight t
   :after evil
   :config (evil-collection-init))
 
 (use-package gruvbox-theme
-  :ensure t
+  :straight t
   :init (load-theme 'gruvbox-dark-hard t)
   :config
   (custom-set-faces
    '(vertico-current ((t (:background "#3c3836" :foreground "#ebdbb2" :extend t))))))
 
 (use-package doom-modeline
-  :ensure t
+  :straight t
   :init
   ;; Disable icons to prevent a crash on macOS ARM64 (GNU Emacs bug#68940).
   ;; During init, nsterm.m's `layoutSublayersOfLayer:' fires `redisplay()'
@@ -114,7 +114,7 @@
   (doom-modeline-mode 1))
 
 (use-package consult
-  :ensure t
+  :straight t
   :requires general
   :bind*
   (("C-x C-r" . consult-recent-file)
@@ -143,7 +143,7 @@
    :preview-key "M-."))
 
 (use-package embark
-  :ensure t
+  :straight t
   :bind*
   (("C-." . embark-act)
    ("C-;" . embark-dwim)
@@ -152,19 +152,19 @@
   (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package embark-consult
-  :ensure t
+  :straight t
   :after (embark consult)
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package wgrep
-  :ensure t
+  :straight t
   :hook (grep-mode . wgrep-setup)
   :custom
   (wgrep-auto-save-buffer t))
 
 (use-package orderless
-  :ensure t
+  :straight t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
@@ -173,7 +173,7 @@
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :ensure t
+  :straight t
   :custom
   (which-key-sort-order 'which-key-key-order-alpha)
   (which-key-side-window-max-width 0.333)
@@ -182,7 +182,7 @@
   (which-key-setup-minibuffer))
 
 (use-package magit
-  :ensure t
+  :straight t
   :defer t
   :requires general
   :general
@@ -197,24 +197,24 @@
   (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff))
 
 (use-package pyenv-mode
-  :ensure t
+  :straight t
   :defer t
   :hook (python-mode . pyenv-mode)
   :config
   (when (executable-find "pyenv")
     (add-to-list 'exec-path (expand-file-name "shims" (or (getenv "PYENV_ROOT") "~/.pyenv")))))
 
-(use-package pyvenv :ensure t :defer t)
+(use-package pyvenv :straight t :defer t)
 
 (use-package apheleia
-  :ensure t
+  :straight t
   :config
   (apheleia-global-mode +1)
   ;; make ruff the priority
   (add-to-list 'apheleia-mode-alist '(python-mode . ruff)))
 
 (use-package company
-  :ensure t
+  :straight t
   :requires general
   :init (global-company-mode)
   :general
@@ -228,7 +228,7 @@
   (company-minimum-prefix-length 1))
 
 (use-package treesit-auto
-  :ensure t
+  :straight t
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -248,7 +248,7 @@
   (run-with-idle-timer 2 nil #'treesit-auto--build-major-mode-remap-alist))
 
 (use-package lsp-mode
-  :ensure t
+  :straight t
   :after company
   :requires (which-key company general)
   :hook ((python-mode    . lsp-deferred)
@@ -273,25 +273,25 @@
   (lsp-ruff-ruff-args '("--preview")))
 
 (use-package consult-lsp
-  :ensure t
+  :straight t
   :requires (lsp-mode consult)
   :after lsp-mode
   :commands (consult-lsp-symbols consult-lsp-diagnostics consult-lsp-file-symbols))
 
 (use-package lsp-ui
-  :ensure t
+  :straight t
   :requires lsp-mode
   :hook (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-pyright
-  :ensure t
+  :straight t
   :requires lsp
   :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :after lsp-mode)
 
 (use-package org
   :straight t
-  :ensure t
+  :straight t
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
   (setq org-directory (expand-file-name "~/workspace/org/"))
@@ -386,7 +386,7 @@
 
 (use-package org-roam
   :requires org
-  :ensure t
+  :straight t
   :hook (org-mode . org-roam-db-autosync-mode)
   :general
   (my/leader-keys
@@ -432,7 +432,7 @@
       org-roam-directory "\\.org$"))))
 
 (use-package org-roam-ui
-  :ensure t
+  :straight t
   :requires org-roam
   :after org-roam
   :custom
@@ -448,7 +448,7 @@
   :config (require 'ox-extra))
 
 (use-package ox-hugo
-  :ensure t
+  :straight t
   :after org
   :custom
   (org-hugo-external-file-extensions-allowed-for-copying
@@ -467,7 +467,7 @@
 
 (use-package org-journal
   :requires org
-  :ensure t
+  :straight t
   :after org
   :custom
   (org-journal-dir "~/workspace/org/journal")
@@ -479,7 +479,7 @@
   :hook (after-init . direnv-mode))
 
 (use-package restart-emacs
-  :ensure t
+  :straight t
   :requires general
   :commands restart-emacs
   :general
@@ -488,7 +488,7 @@
 
 (use-package code-stats
   :defer t
-  :ensure t
+  :straight t
   :hook (kill-emacs . (lambda () (code-stats-sync :wait)))
   :config
   (setq code-stats-token (auth-source-pick-first-password :host "codestats.net"))
@@ -701,7 +701,7 @@
   )
 
 (use-package terraform-mode
-  :ensure t
+  :straight t
   :mode "\\.tf\\'")
 
 (use-package autoinsert
@@ -772,19 +772,19 @@
       > > > "- name: " _ \n)))
 
 (use-package yaml-mode
-  :ensure t
+  :straight t
   :mode ("\\.yaml\\'" "\\.yml\\'"))
 
 (use-package json-mode
-  :ensure t
+  :straight t
   :mode "\\.json\\'")
 
 (use-package markdown-mode
-  :ensure t
+  :straight t
   :mode ("\\.md\\'" . gfm-mode))
 
 (use-package dockerfile-mode
-  :ensure t
+  :straight t
   :mode ("\\Dockerfile\\'" . dockerfile-mode))
 
 (use-package sh-script
@@ -844,19 +844,19 @@
 
 (use-package kubernetes
   :straight (:host github :repo "kubernetes-el/kubernetes-el" :tag "0.19.0")
-  :ensure t
+  :straight t
   :commands (kubernetes-overview)
   :custom
   (kubernetes-poll-frequency 3600)
   (kubernetes-redraw-frequency 3600))
 
 (use-package kubernetes-evil
-  :ensure t
+  :straight t
   :requires (evil kubernetes)
   :after kubernetes)
 
 (use-package helpful
-  :ensure t
+  :straight t
   :bind
   (("C-h f" . helpful-callable)
    ("C-h v" . helpful-variable)
@@ -873,4 +873,4 @@
 
 (use-package osx-lib
   :if (eq system-type 'darwin)
-  :ensure t)
+  :straight t)
