@@ -57,16 +57,21 @@ fi
 
 # initialize completion
 # zsh-defer defers compinit until after the first prompt, removing it from
-# startup time. Run full compinit if the dump is >24h old OR if any completion
-# file in fpath is newer than the dump (e.g. after installing system packages).
+# startup time. Run full compinit if the dump is >168h (weekly) old OR if any
+# completion file in fpath is newer than the dump (e.g. after package update).
+# compaudit is stubbed: it checks for world-writable fpath dirs, unnecessary
+# on a personal machine and costs ~13ms. Delete ~/.zcompdump to force rebuild.
 _compinit_maybe_refresh() {
   setopt local_options extendedglob
   local dump=~/.zcompdump
   local newest_completion=()
   [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
+  # Stub compaudit for this call only to avoid the ~13ms security scan.
+  local -f compaudit
+  compaudit() { typeset -a reply; reply=() }
   if [[ -n ${dump}(#qN.mh+168) ]] || \
      [[ -n $newest_completion && $newest_completion -nt $dump ]]; then
-    compinit -C -d $dump
+    compinit -d $dump
   else
     compinit -C -d $dump
   fi
