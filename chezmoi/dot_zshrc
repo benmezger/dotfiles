@@ -66,9 +66,6 @@ _compinit_maybe_refresh() {
   local dump=~/.zcompdump
   local newest_completion=()
   [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
-  # Stub compaudit for this call only to avoid the ~13ms security scan.
-  local -f compaudit
-  compaudit() { typeset -a reply; reply=() }
   if [[ -n ${dump}(#qN.mh+168) ]] || \
      [[ -n $newest_completion && $newest_completion -nt $dump ]]; then
     compinit -d $dump

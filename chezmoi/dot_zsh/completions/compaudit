@@ -1,0 +1,7 @@
+# Stub compaudit to skip the ~13ms security scan on startup.
+# compinit calls this to find world-writable dirs in fpath — unnecessary
+# on a personal machine. Place this file first in fpath so the autoload
+# resolves here instead of the real implementation.
+# To run the real audit: autoload -Uz +X compaudit && builtin compaudit
+typeset -a reply
+reply=()

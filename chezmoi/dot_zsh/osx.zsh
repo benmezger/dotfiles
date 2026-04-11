@@ -27,13 +27,8 @@ if [[ -d "/Library/TeX/texbin" ]]; then
 	export PATH="$PATH:/Library/TeX/texbin"
 fi
 
-if (( $+commands[gcloud] )); then
-	source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-	source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-fi
-
 # completions
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 
 if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
   ZSH_SITE_FUNCTIONS=/opt/homebrew/share/zsh/site-functions
