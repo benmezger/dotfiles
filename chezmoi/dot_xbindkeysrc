@@ -77,3 +77,11 @@
 "rofi -show drun"
   m:0x40 + c:38
   Mod4 + a
+
+# Elecom huge trackball
+"alacritty"
+  m:0x0 + b:10
+
+# Elecom huge trackball
+"emacs"
+  m:0x0 + b:11
