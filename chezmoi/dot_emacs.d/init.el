@@ -101,7 +101,7 @@
     "f l" '(consult-locate :which-key "locate file")
     "s p" '(consult-ripgrep :which-key "rg project")
     "s b" '(consult-line :which-key "find in buffer")
-    "s d" '((lambda () (interactive) (consult-ripgrep default-directory nil)) :which-key "rg directory")
+    "s d" '(my/consult-rg-directory :which-key "rg directory")
     "s i" '(consult-imenu :which-key "imenu")
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
@@ -110,12 +110,17 @@
   :custom
   (consult-async-min-input 0)
   :config
+  (defun my/consult-rg-directory ()
+    "Run consult-ripgrep from the current directory."
+    (interactive)
+    (consult-ripgrep default-directory nil))
   (consult-customize
    consult-ripgrep consult-grep consult-git-grep
    consult-buffer consult-project-buffer consult-recent-file
-   consult-imenu
+   consult-imenu my/consult-rg-directory my/consult-rg-project
    :group nil
-   :preview-key "M-."))
+   :preview-key "M-.")
+  (consult-customize my/consult-rg-directory :preview-key nil))
 
 (use-package embark
   :straight t
