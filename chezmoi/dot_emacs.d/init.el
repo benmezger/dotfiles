@@ -359,7 +359,6 @@
             (t (call-interactively 'org-insert-link))))))
 
 (use-package org-roam
-  :requires org
   :straight t
   :hook (org-mode . org-roam-db-autosync-mode)
   :general
