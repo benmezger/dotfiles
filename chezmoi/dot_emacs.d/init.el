@@ -174,7 +174,7 @@
 (use-package pyenv-mode
   :straight t
   :defer t
-  :hook (python-mode . pyenv-mode)
+  :hook (python-ts-mode . pyenv-mode)
   :config
   (when (executable-find "pyenv")
     (add-to-list 'exec-path (expand-file-name "shims" (or (getenv "PYENV_ROOT") "~/.pyenv")))))
@@ -186,7 +186,7 @@
   :config
   (apheleia-global-mode +1)
   ;; make ruff the priority
-  (add-to-list 'apheleia-mode-alist '(python-mode . ruff)))
+  (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff)))
 
 (use-package company
   :straight t
@@ -226,8 +226,7 @@
   :straight t
   :after company
   :requires (which-key company general)
-  :hook ((python-mode    . lsp-deferred)
-         (python-ts-mode . lsp-deferred)
+  :hook ((python-ts-mode . lsp-deferred)
          (bash-ts-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
@@ -261,7 +260,7 @@
 (use-package lsp-pyright
   :straight t
   :requires lsp
-  :hook (python-mode . (lambda () (require 'lsp-pyright)))
+  :hook (python-ts-mode . (lambda () (require 'lsp-pyright)))
   :after lsp-mode)
 
 (use-package org
@@ -783,8 +782,7 @@
          ("/\\.bashrc\\'" . bash-ts-mode)))
 
 (use-package python
-  :mode "\\.py\\'"
-  :hook (python-mode . benmezger/python-maybe-activate-venv)
+  :hook (python-ts-mode . benmezger/python-maybe-activate-venv)
   :config
   (defun benmezger/python-fmt ()
     (interactive)
