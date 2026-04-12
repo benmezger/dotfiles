@@ -548,7 +548,7 @@
               (if (project-current)
                   (project-find-file)
                 (call-interactively #'find-file)))
-             :which-key "find file")
+            :which-key "find file")
     "j"   '(:ignore t :which-key "jump")
     "j b" '(consult-bookmark :which-key "bookmark")
     "j w" '(webjump :which-key "webjump")
@@ -862,4 +862,8 @@
 
 (use-package osx-lib
   :if (eq system-type 'darwin)
+  :straight t)
+
+(use-package pkgbuild-mode
+  :if (eq system-type 'gnu/linux)
   :straight t)
