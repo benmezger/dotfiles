@@ -905,7 +905,9 @@
 			 'face 'circe-prompt-face)
              " ")))
 
+
   (setq circe-reduce-lurker-spam t
+	lui-fill-type nil
 	circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}"
 	circe-format-say "<{nick}>: {body}"
 	circe-format-self-say "<{nick}>: {body}"
