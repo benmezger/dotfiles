@@ -508,6 +508,7 @@
   (my/leader-keys
     "f d" '(my/delete-current-file :which-key "delete file")
     "f c" '(my/copy-current-file :which-key "copy file")
+    "f m" '(my/move-current-file :which-key "move file")
     "f"   '(:ignore t :which-key "files")
     "s"   '(:ignore t :which-key "search")
     "c"   '(:ignore t :which-key "code")
@@ -680,6 +681,14 @@
       (unless file (user-error "Buffer is not visiting a file"))
       (copy-file file dest)
       (find-file dest)))
+
+  (defun my/move-current-file (dest)
+    "Move (rename) the file the current buffer is visiting to DEST."
+    (interactive (list (read-file-name "Move to: " default-directory)))
+    (let ((file (buffer-file-name)))
+      (unless file (user-error "Buffer is not visiting a file"))
+      (rename-file file dest t)
+      (set-visited-file-name dest t t)))
 
   ;; load custom chezmoi applied configuration
   (load (expand-file-name "chezmoi.el" user-emacs-directory) t)
