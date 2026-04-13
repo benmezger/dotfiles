@@ -876,3 +876,51 @@
 (use-package pkgbuild-mode
   :if (eq system-type 'gnu/linux)
   :straight t)
+
+(use-package circe
+  :straight t
+  :config
+  (defun my/fetch-password (&rest params)
+    (require 'auth-source)
+    (let ((match (car (apply #'auth-source-search params))))
+      (if match
+          (let ((secret (plist-get match :secret)))
+            (if (functionp secret)
+		(funcall secret)
+              secret))
+	(error "Password not found for %S" params))))
+
+  (defun my/irccloud-password (server)
+    (my/fetch-password :user "seds" :host "bnc.irccloud.com" :port 6697))
+
+  (require 'lui-autopaste)
+  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+
+  ;; set channel name in prompt
+  (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+  (defun my-circe-prompt ()
+    (lui-set-prompt
+     (concat (propertize (concat (buffer-name) ">")
+			 'face 'circe-prompt-face)
+             " ")))
+
+  (setq circe-reduce-lurker-spam t
+	circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}"
+	circe-format-say "<{nick}>: {body}"
+	circe-format-self-say "<{nick}>: {body}"
+	circe-use-cycle-completion t
+	circe-network-options
+	'(("irccloud"
+	   :nick "seds"
+	   :port 6697
+	   :use-tls t
+	   :host "bnc.irccloud.com"
+	   :channels (:after-auth "#emacs")
+	   :pass my/irccloud-password)))
+
+  (defun irc ()
+    "Connect to IRC"
+    (interactive)
+    (circe "irccloud"))
+
+  )
