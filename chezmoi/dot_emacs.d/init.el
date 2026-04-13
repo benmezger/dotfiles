@@ -148,7 +148,8 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
-  (completion-pcm-leading-wildcard t))
+  (completion-pcm-leading-wildcard t)
+  (orderless-matching-styles '(orderless-literal orderless-flex orderless-regexp)))
 
 (use-package which-key
   :init (which-key-mode)
