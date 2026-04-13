@@ -44,7 +44,7 @@ bind 'set show-mode-in-prompt off'
 eval `dircolors ~/.dircolors`
 
 # env-secrets
-if [ -f "$HOME/.env-secrets" ]; then
-    source "$HOME/.env-secrets"
+if [ -f "$HOME/.zsh/env-secrets" ]; then
+    source "$HOME/.zsh/env-secrets"
 fi
 

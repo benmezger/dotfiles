@@ -25,8 +25,8 @@ else
 	export TMUX_AUTOSTART="true"
 fi
 
-if [ -f "$HOME/.env-secrets" ]; then
-	source "$HOME/.env-secrets"
+if [ -f "$HOME/.zsh/env-secrets" ]; then
+	source "$HOME/.zsh/env-secrets"
 fi
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

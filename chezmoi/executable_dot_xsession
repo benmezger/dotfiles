@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 . $HOME/.xinitrc
-. $HOME/.env-secrets
+. $HOME/.zsh/env-secrets
 
 # default wm
 WM=$(which i3)
