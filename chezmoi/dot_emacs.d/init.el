@@ -8,7 +8,8 @@
   :custom
   (vertico-cycle t)
   :init
-  (vertico-mode))
+  (vertico-mode)
+  (setq enable-recursive-minibuffers t))
 
 (use-package general
   :straight t
@@ -90,6 +91,7 @@
 
 (use-package consult
   :straight t
+  :demand t
   :requires general
   :bind*
   (("C-x C-r" . consult-recent-file)
@@ -117,10 +119,11 @@
   (consult-customize
    consult-ripgrep consult-grep consult-git-grep
    consult-buffer consult-project-buffer consult-recent-file
-   consult-imenu my/consult-rg-directory my/consult-rg-project
+   consult-imenu my/consult-rg-directory
    :group nil
    :preview-key "M-.")
-  (consult-customize my/consult-rg-directory :preview-key nil))
+  (consult-customize my/consult-rg-directory :preview-key nil)
+  (setq completion-in-region-function #'consult-completion-in-region))
 
 (use-package embark
   :straight t
