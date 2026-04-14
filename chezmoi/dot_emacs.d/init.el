@@ -796,6 +796,7 @@
          ("/\\.bashrc\\'" . bash-ts-mode)))
 
 (use-package python
+  :mode ("\\.py\\'" . python-ts-mode)
   :hook (python-ts-mode . benmezger/python-maybe-activate-venv)
   :config
   (defun benmezger/python-fmt ()
