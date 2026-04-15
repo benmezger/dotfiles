@@ -931,3 +931,9 @@
     (circe "irccloud"))
 
   )
+
+(use-package editorconfig
+  :ensure t
+  :straight t
+  :init
+  (editorconfig-mode 1))
