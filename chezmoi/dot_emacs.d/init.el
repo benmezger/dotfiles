@@ -275,7 +275,6 @@
 
 (use-package org
   :straight t
-  :straight t
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
   (setq org-directory (expand-file-name "~/workspace/org/"))
@@ -305,7 +304,6 @@
     "n i" '(benmezger/org-insert-link-dwim :which-key "insert link")
     "n f" '(benmezger/org-find-file :which-key "find file")
     "n t" '(org-todo-list :which-key "todo list")
-    "n j" '(org-journal-new-entry :which-key "new journal entry")
     "n v" '(benmezger/org-open-cv :which-key "cv"))
   :config
   (setq org-directory "~/workspace/org"
@@ -449,9 +447,10 @@
           (org-hugo-export-wim-to-md))))))
 
 (use-package org-journal
-  :requires org
+  :general
+  (my/leader-keys
+    "n j" '(org-journal-new-entry :which-key "new journal entry"))
   :straight t
-  :after org
   :custom
   (org-journal-dir "~/workspace/org/journal")
   (org-journal-encrypt-journal t)
