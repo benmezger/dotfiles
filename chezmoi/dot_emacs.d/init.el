@@ -695,6 +695,10 @@
       (rename-file file dest t)
       (set-visited-file-name dest t t)))
 
+  (defun benmezger/sudo-current-buffer ()
+    (interactive)
+    (find-alternate-file (concat "/sudo::" buffer-file-name)))
+
   ;; load custom chezmoi applied configuration
   (load (expand-file-name "chezmoi.el" user-emacs-directory) t)
 
