@@ -209,7 +209,9 @@
    "<tab>"   'company-complete-selection
    "C-w"     'backward-kill-word)
   :hook
-  (git-commit-mode . (lambda () (company-mode -1)))
+  (git-commit-mode    . (lambda () (company-mode -1)))
+  (circe-channel-mode . (lambda () (company-mode -1)))
+  (circe-query-mode   . (lambda () (company-mode -1)))
   :custom
   (company-idle-delay 0.0)
   (company-minimum-prefix-length 1))
@@ -984,6 +986,7 @@ since circe-display passes the plist as a single wrapped list."
 
   (setq circe-ignore-list '("Re-join:" "Quit: ")
 	circe-reduce-lurker-spam t
+	circe-format-server-lurker-activity ""
 	circe-highlight-nick-type 'message
 	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
 	lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
