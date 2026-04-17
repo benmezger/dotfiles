@@ -621,13 +621,13 @@
 	bidi-inhibit-bpa t
 	;; dont render cursors in non-focussed windows
 	highlight-nonselected-windows nil
-	;; save the Clipboard Before Killing 
+	;; save the Clipboard Before Killing
 	save-interprogram-paste-before-kill t
 	;; no Duplicates in the Kill Ring
 	kill-do-not-save-duplicates t
 	;; persist the Kill Ring Across Sessions
 	savehist-additional-variables '(search-ring regexp-search-ring kill-ring)
-	)   
+	)
 
 
   (when (file-exists-p custom-file)
@@ -902,6 +902,15 @@
   (require 'lui-autopaste)
   (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
 
+  ;; consult-completion-in-region is set globally but causes the buffer to
+  ;; jump/scroll as the popup resizes with each candidate list.  Use the
+  ;; default completion--in-region locally so circe-use-cycle-completion
+  ;; can cycle silently without opening a minibuffer popup.
+  (defun my/circe-use-default-completion ()
+    (setq-local completion-in-region-function #'completion--in-region))
+  (add-hook 'circe-channel-mode-hook #'my/circe-use-default-completion)
+  (add-hook 'circe-query-mode-hook   #'my/circe-use-default-completion)
+
   ;; set channel name in prompt
   (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
   (defun my-circe-prompt ()
@@ -910,12 +919,62 @@
 			 'face 'circe-prompt-face)
              " ")))
 
+  ;; Nick colorization
+  (enable-circe-color-nicks)
+  (setq circe-color-nicks-everywhere t)
 
-  (setq circe-reduce-lurker-spam t
-	lui-fill-type nil
+  ;; Right-aligned fixed-width nick column
+  (defvar my/circe-nick-column 8
+    "Max nick width; nicks longer than this are truncated.")
+
+  (defun my/lui-format-pad-nick (args)
+    "Format :nick in ARGS as <nick> left-aligned in a fixed column.
+Nicks longer than `my/circe-nick-column' are truncated.
+Handles both (lui-format fmt :key val ...) and (lui-format fmt \\='(:key val ...))
+since circe-display passes the plist as a single wrapped list."
+    (let* ((fmt  (car args))
+           (rest (cdr args))
+           ;; circe-display calls (lui-format fmt '(:nick ...)) — unwrap that
+           (wrapped   (and (= 1 (length rest)) (listp (car rest))))
+           (keywords  (if wrapped (car rest) rest))
+           (nick      (plist-get keywords :nick)))
+      (if nick
+          (let* ((nick-trimmed (if (> (length nick) my/circe-nick-column)
+                                   (substring nick 0 my/circe-nick-column)
+                                 nick))
+                 (wrapped-nick (format "<%s>" nick-trimmed))
+                 (pad    (max 0 (- (+ my/circe-nick-column 2) (length wrapped-nick))))
+                 (padded (concat wrapped-nick (make-string pad ?\s)))
+                 (new-kw (plist-put (copy-sequence keywords) :nick padded)))
+            (if wrapped
+                (list fmt new-kw)
+              (cons fmt new-kw)))
+        args)))
+
+  (advice-add 'lui-format :filter-args #'my/lui-format-pad-nick)
+
+  (defvar my/circe-time-stamp-format "[%H:%M:%S] "
+    "Timestamp format prepended to each message.")
+
+  ;; Prepend the timestamp inside lui-insert, BEFORE lui calls fill-region.
+  ;; lui's built-in 'left timestamp is added AFTER fill, so continuation lines
+  ;; don't account for the timestamp width and body alignment breaks.
+  ;; By injecting it here, fill-region sees the complete line and wraps correctly.
+  (defun my/lui-insert-with-timestamp (orig-fn str &optional not-tracked)
+    (funcall orig-fn
+             (concat (format-time-string my/circe-time-stamp-format) str)
+             not-tracked))
+  (advice-add 'lui-insert :around #'my/lui-insert-with-timestamp)
+
+  (setq circe-ignore-list '("changed host to")
+	circe-reduce-lurker-spam t
+	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
+	lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
+				      my/circe-nick-column 3) ?\s)
+	lui-fill-column 120
 	circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}"
-	circe-format-say "<{nick}>: {body}"
-	circe-format-self-say "<{nick}>: {body}"
+	circe-format-say "{nick} {body}"
+	circe-format-self-say "{nick} {body}"
 	circe-use-cycle-completion t
 	circe-network-options
 	'(("irccloud"
