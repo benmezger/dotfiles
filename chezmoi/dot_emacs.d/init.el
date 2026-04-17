@@ -980,7 +980,9 @@ since circe-display passes the plist as a single wrapped list."
                          (> (hash-table-count circe-nick-color-mapping) 500))
                 (clrhash circe-nick-color-mapping))))
 
-  (setq circe-ignore-list '("changed host to" "changed host:" "Re-join:" "Quit: ")
+  (advice-add 'circe-display-CHGHOST :override #'ignore)
+
+  (setq circe-ignore-list '("Re-join:" "Quit: ")
 	circe-reduce-lurker-spam t
 	circe-highlight-nick-type 'message
 	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
