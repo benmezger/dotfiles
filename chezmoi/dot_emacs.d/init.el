@@ -982,6 +982,7 @@ since circe-display passes the plist as a single wrapped list."
 
   (setq circe-ignore-list '("changed host to" "changed host:" "Re-join:" "Quit: ")
 	circe-reduce-lurker-spam t
+	circe-highlight-nick-type 'message
 	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
 	lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
 				      my/circe-nick-column 3) ?\s)
