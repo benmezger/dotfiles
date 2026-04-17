@@ -87,6 +87,8 @@
   ;; Keeping icons off prevents any `char-displayable-p' calls at startup.
   (when (eq system-type 'darwin)
     (setq doom-modeline-icon nil))
+
+  (setq doom-modeline-irc-stylize #'ignore)
   (doom-modeline-mode 1))
 
 (use-package consult
@@ -970,7 +972,15 @@ since circe-display passes the plist as a single wrapped list."
              not-tracked))
   (advice-add 'lui-insert :around #'my/lui-insert-with-timestamp)
 
-  (setq circe-ignore-list '("changed host to")
+  ;; circe-nick-color-mapping accumulates every nick ever seen and is never
+  ;; pruned.  Clear it on GC so it doesn't balloon to hundreds of KiB.
+  (add-hook 'post-gc-hook
+            (lambda ()
+              (when (and (boundp 'circe-nick-color-mapping)
+                         (> (hash-table-count circe-nick-color-mapping) 500))
+                (clrhash circe-nick-color-mapping))))
+
+  (setq circe-ignore-list '("changed host to" "changed host:" "Re-join:" "Quit: ")
 	circe-reduce-lurker-spam t
 	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
 	lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
