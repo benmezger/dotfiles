@@ -313,6 +313,11 @@
     "n t" '(org-todo-list :which-key "todo list")
     "n v" '(benmezger/org-open-cv :which-key "cv"))
   :config
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)))
+
   (setq org-directory "~/workspace/org"
         org-agenda-files (list org-directory)
         bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
