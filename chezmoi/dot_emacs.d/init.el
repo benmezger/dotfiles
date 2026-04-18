@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (use-package straight
   :custom
   (straight-use-package-by-default t)
@@ -242,6 +244,7 @@
   :requires (which-key company general)
   :hook ((python-ts-mode . lsp-deferred)
          (bash-ts-mode   . lsp-deferred)
+         (go-ts-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
   :general
@@ -1013,7 +1016,10 @@ since circe-display passes the plist as a single wrapped list."
   )
 
 (use-package editorconfig
-  :ensure t
   :straight t
   :init
   (editorconfig-mode 1))
+
+(use-package go-mode
+  :straight t
+  :mode ("\\.go\\'" . go-ts-mode))
