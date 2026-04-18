@@ -528,6 +528,7 @@
     "f m" '(my/move-current-file :which-key "move file")
     "f"   '(:ignore t :which-key "files")
     "s"   '(:ignore t :which-key "search")
+    "s l" '(:ignore t :which-key "search links")
     "c"   '(:ignore t :which-key "code")
     "n"   '(:ignore t :which-key "org")
     "n r" '(:ignore t :which-key "roam")
@@ -1028,3 +1029,11 @@ since circe-display passes the plist as a single wrapped list."
 (use-package go-mode
   :straight t
   :mode ("\\.go\\'" . go-ts-mode))
+
+(use-package link-hint
+  :straight t
+  :general
+  (my/leader-keys
+    "s l o" '(link-hint-open-link :which-key "open link")
+    "s l c" '(link-hint-copy-link :which-key "copy link")
+    "s l a" '(link-hint-copy-all-links :which-key "copy all links")))
