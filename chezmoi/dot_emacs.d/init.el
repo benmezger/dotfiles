@@ -741,8 +741,8 @@
 
 (use-package epa
   :ensure nil
-  :custom
-  (epa-armor t))
+  :config
+  (setq epa-armor t))
 
 (use-package terraform-mode
   :straight t
