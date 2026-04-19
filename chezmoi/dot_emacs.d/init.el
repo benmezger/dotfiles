@@ -476,7 +476,8 @@
   :custom
   (org-journal-dir "~/workspace/org/journal")
   (org-journal-encrypt-journal t)
-  (org-journal-file-format "%Y%m%d.org"))
+  (org-journal-file-format "%Y%m%d.org")
+  (org-journal-date-format "%A, %m/%d/%Y"))
 
 (use-package direnv
   :defer t
