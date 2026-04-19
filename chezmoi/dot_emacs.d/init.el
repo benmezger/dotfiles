@@ -73,7 +73,14 @@
 
 (use-package gruvbox-theme
   :straight t
-  :init (load-theme 'gruvbox-dark-hard t)
+  :init
+  ;; gruvbox defines gnus-group-news-low and gnus-group-news-low-empty with
+  ;; mutually circular inheritance.  When Circe is running it pre-loads those
+  ;; faces, so reloading the theme triggers "Face inheritance results in
+  ;; inheritance cycle".  Reset them first to break the cycle.
+  (mapc (lambda (f) (when (facep f) (face-spec-reset-face f)))
+        '(gnus-group-news-low gnus-group-news-low-empty))
+  (load-theme 'gruvbox-dark-hard t)
   :config
   (custom-set-faces
    '(vertico-current ((t (:background "#3c3836" :foreground "#ebdbb2" :extend t))))))
@@ -90,7 +97,7 @@
   (when (eq system-type 'darwin)
     (setq doom-modeline-icon nil))
 
-  (setq doom-modeline-irc-stylize #'ignore)
+  (setq doom-modeline-irc-stylize #'identity)
   (doom-modeline-mode 1))
 
 (use-package consult
@@ -503,7 +510,7 @@
     (project-remember-project (list 'vc 'Git proj)))
 
   (defun benmezger/project-remember-current ()
-    (when-let ((proj (project-current)))
+    (when-let* ((proj (project-current)))
       (project-remember-project proj))))
 
 (use-package emacs
@@ -823,28 +830,28 @@
   :config
   (defun benmezger/python-fmt ()
     (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
+    (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
 
   (defun benmezger/python-test ()
     (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
+    (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
 
   (defun benmezger/python-types ()
     (interactive)
-    (let ((default-directory (or (when-let ((proj (project-current)))
+    (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
 
   (defun benmezger/python-activate-venv ()
     (interactive)
-    (let* ((root (or (when-let ((proj (project-current)))
+    (let* ((root (or (when-let* ((proj (project-current)))
 		       (project-root proj))
                      default-directory))
            (venv (expand-file-name ".venv" root)))
@@ -905,7 +912,8 @@
   :straight t
   :general
   (my/leader-keys
-    "i c" '(circe :which-key "connect to irc"))
+    "i c" '(circe :which-key "connect to irc")
+    "i s" '(my/circe-switch-channel :which-key "switch irc channel"))
   :config
   (defun my/fetch-password (&rest params)
     (require 'auth-source)
@@ -1017,6 +1025,18 @@ since circe-display passes the plist as a single wrapped list."
 	   :host "bnc.irccloud.com"
 	   :channels (:after-auth "#emacs")
 	   :pass my/irccloud-password)))
+
+  (defun my/circe-switch-channel ()
+    "Switch to an open Circe channel or query buffer via completing-read."
+    (interactive)
+    (let* ((bufs (seq-filter (lambda (b)
+                               (with-current-buffer b
+                                 (derived-mode-p 'circe-channel-mode
+                                                 'circe-query-mode)))
+                             (buffer-list)))
+           (names (mapcar #'buffer-name bufs))
+           (choice (completing-read "IRC channel: " names nil t)))
+      (switch-to-buffer choice)))
 
   (defun irc ()
     "Connect to IRC"
