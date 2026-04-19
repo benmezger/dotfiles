@@ -584,7 +584,6 @@
     "d g" '(magit-diff-range :which-key "diff git range")
     "d s" '(diff-buffer-with-file :which-key "diff with file"))
   :custom
-  (epa-armor t)
   (display-line-numbers-type t)
   (gc-cons-threshold 100000000)              ; 100 mb
   (backup-directory-alist `(("." . ,(expand-file-name "saves/backups/" user-emacs-directory))))
@@ -735,6 +734,11 @@
       (add-to-list 'load-path elisp-dir)
       (dolist (file (directory-files-recursively elisp-dir "\\.el\\'"))
 	(load file nil t)))))
+
+(use-package epa
+  :ensure nil
+  :custom
+  (epa-armor t))
 
 (use-package terraform-mode
   :straight t
