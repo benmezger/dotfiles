@@ -654,6 +654,13 @@
   (when (file-exists-p custom-file)
     (load custom-file))
 
+  ;; Automatically create missing parent directories when visiting a file,
+  ;; suppressing the "Use M-x make-directory" prompt.
+  (add-to-list 'find-file-not-found-functions
+               (lambda ()
+                 (make-directory (file-name-directory buffer-file-name) t)
+                 nil))
+
   (defvar my/big-font-mode nil "Non-nil when big font mode is active.")
   (defvar my/normal-font-height 140 "Default font height.")
   (defvar my/big-font-height 200 "Font height for big font mode.")
