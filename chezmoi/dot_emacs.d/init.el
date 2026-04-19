@@ -347,7 +347,7 @@
     (setq org-capture-templates
           `(("c" "Code" entry (file "~/workspace/org/refs/code.org")
              (file ,(concat capture-dir "code-snippet.capture")))
-            ("i" "Inbox" entry (file+datetree "~/workspace/org/refs/inbox.org")
+            ("i" "Inbox" entry (file+olp+datetree "~/workspace/org/refs/inbox.org")
              (file ,(concat capture-dir "inbox-snippet.capture")))
             ("b" "Blog post" entry (file+olp "~/workspace/org/refs/blog.org" "Posts")
              (file ,(concat capture-dir "blog-post.capture")))
