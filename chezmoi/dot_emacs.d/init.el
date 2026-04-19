@@ -468,7 +468,10 @@
 (use-package org-journal
   :general
   (my/leader-keys
-    "n j" '(org-journal-new-entry :which-key "new journal entry"))
+    "n j"   '(:ignore t :which-key "journal")
+    "n j n" '(org-journal-new-entry :which-key "new journal entry")
+    "n j s" '(org-journal-search-forever :which-key "search all journal")
+    "n j r" '(org-journal-search :which-key "search ranged journal"))
   :straight t
   :custom
   (org-journal-dir "~/workspace/org/journal")
