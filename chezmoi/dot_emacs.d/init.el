@@ -527,6 +527,7 @@
     "f c" '(my/copy-current-file :which-key "copy file")
     "f m" '(my/move-current-file :which-key "move file")
     "f"   '(:ignore t :which-key "files")
+    "i"   '(:ignore t :which-key "irc")
     "s"   '(:ignore t :which-key "search")
     "s l" '(:ignore t :which-key "search links")
     "c"   '(:ignore t :which-key "code")
@@ -902,6 +903,9 @@
 
 (use-package circe
   :straight t
+  :general
+  (my/leader-keys
+    "i c" '(circe :which-key "connect to irc"))
   :config
   (defun my/fetch-password (&rest params)
     (require 'auth-source)
