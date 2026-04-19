@@ -913,9 +913,9 @@
       (if match
           (let ((secret (plist-get match :secret)))
             (if (functionp secret)
-		(funcall secret)
+	        (funcall secret)
               secret))
-	(error "Password not found for %S" params))))
+        (error "Password not found for %S" params))))
 
   (defun my/irccloud-password (server)
     (my/fetch-password :user "seds" :host "bnc.irccloud.com" :port 6697))
@@ -937,7 +937,7 @@
   (defun my-circe-prompt ()
     (lui-set-prompt
      (concat (propertize (concat (buffer-name) ">")
-			 'face 'circe-prompt-face)
+		         'face 'circe-prompt-face)
              " ")))
 
   ;; Nick colorization
@@ -998,19 +998,19 @@ since circe-display passes the plist as a single wrapped list."
   (advice-add 'circe-display-CHGHOST :override #'ignore)
 
   (setq circe-ignore-list '("Re-join:" "Quit: ")
-	circe-reduce-lurker-spam t
-	circe-format-server-lurker-activity ""
-	circe-highlight-nick-type 'message
-	lui-time-stamp-position nil  ; disabled — injected in lui-insert above
-	lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
+        circe-reduce-lurker-spam t
+        circe-format-server-lurker-activity ""
+        circe-highlight-nick-type 'message
+        lui-time-stamp-position nil  ; disabled — injected in lui-insert above
+        lui-fill-type (make-string (+ (length my/circe-time-stamp-format)
 				      my/circe-nick-column 3) ?\s)
-	lui-fill-column 120
-	circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}"
-	circe-format-say "{nick} {body}"
-	circe-format-self-say "{nick} {body}"
-	circe-use-cycle-completion t
-	circe-network-options
-	'(("irccloud"
+        lui-fill-column 120
+        circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}"
+        circe-format-say "{nick} {body}"
+        circe-format-self-say "{nick} {body}"
+        circe-use-cycle-completion t
+        circe-network-options
+        '(("irccloud"
 	   :nick "seds"
 	   :port 6697
 	   :use-tls t
