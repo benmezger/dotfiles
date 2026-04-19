@@ -1076,3 +1076,33 @@ since circe-display passes the plist as a single wrapped list."
     "s l o" '(link-hint-open-link :which-key "open link")
     "s l c" '(link-hint-copy-link :which-key "copy link")
     "s l a" '(link-hint-copy-all-links :which-key "copy all links")))
+
+(use-package gnus
+  :ensure nil
+  :custom
+  (gnus-select-method '(nnimap "fastmail"
+                               (nnimap-address "imap.fastmail.com")
+                               (nnimap-server-port 993)
+                               (nnimap-stream ssl)))
+  (gnus-secondary-select-methods nil)
+  (smtpmail-smtp-server "smtp.fastmail.com")
+  (smtpmail-smtp-service 587)
+  (smtpmail-stream-type 'starttls)
+  (send-mail-function #'smtpmail-send-it)
+  (message-send-mail-function #'smtpmail-send-it)
+  (gnus-use-cache t)
+  (gnus-read-active-file 'some)
+  (nnmail-expiry-target "nnimap+fastmail:Trash")
+  (nnmail-expiry-wait 'immediate)
+  (gnus-fetch-old-headers nil)
+  (gnus-summary-line-format "%U%R%z %(%&user-date;%) %-15,15f %B%s\n")
+  (gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
+  (nnml-directory (expand-file-name "gnus/mail" user-emacs-directory))
+  (message-directory (expand-file-name "gnus/mail" user-emacs-directory))
+  :config
+  (when-let* ((auth (car (auth-source-search :host "imap.fastmail.com" :require '(:user))))
+              (email (plist-get auth :user)))
+    (setq user-mail-address email
+          smtpmail-smtp-user email))
+  (add-hook 'gnus-article-prepare-hook
+            (lambda () (select-window (get-buffer-window gnus-article-buffer)))))
