@@ -925,6 +925,7 @@
 
 (use-package circe
   :straight t
+  :demand t
   :general
   (my/leader-keys
     "i c" '(circe :which-key "connect to irc")
