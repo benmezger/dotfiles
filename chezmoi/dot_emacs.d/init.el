@@ -928,7 +928,7 @@
   :demand t
   :general
   (my/leader-keys
-    "i c" '(circe :which-key "connect to irc")
+    "i c" '(my/irc :which-key "connect to irc")
     "i s" '(my/circe-switch-channel :which-key "switch irc channel"))
   :config
   (defun my/fetch-password (&rest params)
@@ -1054,7 +1054,7 @@ since circe-display passes the plist as a single wrapped list."
            (choice (completing-read "IRC channel: " names nil t)))
       (switch-to-buffer choice)))
 
-  (defun irc ()
+  (defun my/irc ()
     "Connect to IRC"
     (interactive)
     (circe "irccloud"))
