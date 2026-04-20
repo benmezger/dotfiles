@@ -46,6 +46,22 @@
      (car (process-lines chezmoi-bin "source-path"
                          (expand-file-name (concat "~/" file)))))))
 
+(defun chezmoi-apply-file ()
+  "Apply the current buffer's file with chezmoi."
+  (interactive)
+  (let* ((file (or (buffer-file-name)
+                   (user-error "Buffer is not visiting a file")))
+         (target (condition-case nil
+                     (car (process-lines chezmoi-bin "target-path" file))
+                   (error file))))
+    (apply 'start-process
+           "chezmoi" chezmoi-buffer
+           chezmoi-bin "apply"
+           (append (split-string chezmoi-flags " ")
+                   (list target)))
+    (with-current-buffer chezmoi-buffer
+      (diff-mode))))
+
 (define-minor-mode chezmoi-mode
   "Enable chezmoi functionality."
   :lighter " chezmoi"
@@ -53,6 +69,7 @@
             (define-key map (kbd "C-c A") 'chezmoi-apply)
             (define-key map (kbd "C-c E") 'chezmoi-edit)
             (define-key map (kbd "C-c D") 'chezmoi-diff)
+            (define-key map (kbd "C-c F") 'chezmoi-apply-file)
             map))
 
 (provide 'chezmoi)
