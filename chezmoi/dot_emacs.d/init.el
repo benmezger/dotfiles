@@ -33,11 +33,11 @@
 (use-package savehist
   :straight t
   :init (savehist-mode)
-  :hook (savehist-save . benmezger/savehist-sanitize-kill-ring)
+  :hook (savehist-save . my/savehist-sanitize-kill-ring)
   :config
   ;; kill ring can accumulate text properties (fonts, overlays, etc.)
   ;; that bloat the savehist file, so strip them before saving
-  (defun benmezger/savehist-sanitize-kill-ring ()
+  (defun my/savehist-sanitize-kill-ring ()
     "Strip text properties from kill-ring entries before saving."
     (setq kill-ring
           (mapcar #'substring-no-properties
@@ -315,10 +315,10 @@
     "n a" '(org-agenda :which-key "agenda")
     "n c" '(org-capture :which-key "capture")
     "n l" '(org-store-link :which-key "store link")
-    "n i" '(benmezger/org-insert-link-dwim :which-key "insert link")
-    "n f" '(benmezger/org-find-file :which-key "find file")
+    "n i" '(my/org-insert-link-dwim :which-key "insert link")
+    "n f" '(my/org-find-file :which-key "find file")
     "n t" '(org-todo-list :which-key "todo list")
-    "n v" '(benmezger/org-open-cv :which-key "cv"))
+    "n v" '(my/org-open-cv :which-key "cv"))
   :config
   (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
@@ -332,13 +332,13 @@
         ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
-  (defun benmezger/org-find-file ()
+  (defun my/org-find-file ()
     "Find a file in `org-directory'."
     (interactive)
     (let ((default-directory (file-name-as-directory (expand-file-name org-directory))))
       (call-interactively #'find-file)))
 
-  (defun benmezger/org-open-cv ()
+  (defun my/org-open-cv ()
     "Open the org CV file."
     (interactive)
     (find-file (expand-file-name "cv/cv.org" org-directory)))
@@ -360,7 +360,7 @@
             ("d" "Decision note" entry (file "~/workspace/org/refs/decisions.org")
              (file ,(concat capture-dir "decision.capture"))))))
 
-  (defun benmezger/org-insert-link-dwim ()
+  (defun my/org-insert-link-dwim ()
     "Like `org-insert-link' but with personal dwim preferences."
     (interactive)
     (let* ((point-in-link (org-in-regexp org-link-any-re 1))
@@ -410,7 +410,7 @@
                                    (buffer-string)))
              :unnarrowed t))))
 
-  (defun benmezger/org-roam-node-insert-immediate (arg &rest args)
+  (defun my/org-roam-node-insert-immediate (arg &rest args)
     (interactive "P")
     (let ((args (cons arg args))
           (org-roam-capture-templates
@@ -424,7 +424,7 @@
   (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
   (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
 
-  (defun benmezger/org-update-org-ids ()
+  (defun my/org-update-org-ids ()
     "Update all org ids."
     (interactive)
     (org-id-update-id-locations
@@ -457,7 +457,7 @@
      "docx" "pptx" "xlsx" "zip"))
   :config
 
-  (defun benmezger/org-roam-export-all ()
+  (defun my/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
     (interactive)
     (dolist (f (org-roam--list-all-files))
@@ -504,7 +504,7 @@
 
 (use-package project
   :ensure nil
-  :hook (find-file . benmezger/project-remember-current)
+  :hook (find-file . my/project-remember-current)
   :config
   (setq project-switch-commands 'project-find-file)
   (dolist (proj '("~/workspace/dotfiles/"
@@ -513,7 +513,7 @@
                   "~/workspace/org/"))
     (project-remember-project (list 'vc 'Git proj)))
 
-  (defun benmezger/project-remember-current ()
+  (defun my/project-remember-current ()
     (when-let* ((proj (project-current)))
       (project-remember-project proj))))
 
@@ -726,7 +726,7 @@
       (rename-file file dest t)
       (set-visited-file-name dest t t)))
 
-  (defun benmezger/sudo-current-buffer ()
+  (defun my/sudo-current-buffer ()
     (interactive)
     (find-alternate-file (concat "/sudo::" buffer-file-name)))
 
@@ -841,30 +841,30 @@
 
 (use-package python
   :mode ("\\.py\\'" . python-ts-mode)
-  :hook (python-ts-mode . benmezger/python-maybe-activate-venv)
+  :hook (python-ts-mode . my/python-maybe-activate-venv)
   :config
-  (defun benmezger/python-fmt ()
+  (defun my/python-fmt ()
     (interactive)
     (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
 
-  (defun benmezger/python-test ()
+  (defun my/python-test ()
     (interactive)
     (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task test" "*python-test*" "*python-test-stderr*")))
 
-  (defun benmezger/python-types ()
+  (defun my/python-types ()
     (interactive)
     (let ((default-directory (or (when-let* ((proj (project-current)))
                                    (project-root proj))
 				 default-directory)))
       (async-shell-command "uv run task check_types" "*python-types*" "*python-test-stderr*")))
 
-  (defun benmezger/python-activate-venv ()
+  (defun my/python-activate-venv ()
     (interactive)
     (let* ((root (or (when-let* ((proj (project-current)))
 		       (project-root proj))
@@ -872,18 +872,18 @@
            (venv (expand-file-name ".venv" root)))
       (pyvenv-activate venv)))
 
-  (defvar benmezger/python-last-project nil
+  (defvar my/python-last-project nil
     "Project root for which a venv was last activated.")
 
-  (defun benmezger/python-maybe-activate-venv (&optional _frame)
+  (defun my/python-maybe-activate-venv (&optional _frame)
     "Activate .venv when the current buffer belongs to a new Python project."
     (when-let* ((proj (project-current))
 		(root (project-root proj))
 		(venv (expand-file-name ".venv" root)))
-      (when (and (not (equal root benmezger/python-last-project))
+      (when (and (not (equal root my/python-last-project))
 		 (file-exists-p (expand-file-name "pyproject.toml" root))
 		 (file-directory-p venv))
-	(setq benmezger/python-last-project root)
+	(setq my/python-last-project root)
 	(pyvenv-activate venv)))))
 
 (use-package kubernetes
