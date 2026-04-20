@@ -1102,9 +1102,5 @@ since circe-display passes the plist as a single wrapped list."
   (nnml-directory (expand-file-name "gnus/mail" user-emacs-directory))
   (message-directory (expand-file-name "gnus/mail" user-emacs-directory))
   :config
-  (when-let* ((auth (car (auth-source-search :host "imap.fastmail.com" :require '(:user))))
-              (email (plist-get auth :user)))
-    (setq user-mail-address email
-          smtpmail-smtp-user email))
   (add-hook 'gnus-article-prepare-hook
             (lambda () (select-window (get-buffer-window gnus-article-buffer)))))
