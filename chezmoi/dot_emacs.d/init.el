@@ -1107,3 +1107,15 @@ since circe-display passes the plist as a single wrapped list."
   (define-key gnus-summary-mode-map (kbd "A")
               (lambda () (interactive)
                 (gnus-summary-move-article nil "nnimap+fastmail:Archive"))))
+
+(use-package deft
+  :straight t
+  :commands (deft)
+  :general
+  (my/leader-keys
+    "n d" '(deft :which-key "deft"))
+  :config
+  (setq deft-extensions '("txt" "tex" "org")
+        deft-directory org-directory
+        deft-recursive t
+        deft-use-filename-as-title t))
