@@ -1103,4 +1103,7 @@ since circe-display passes the plist as a single wrapped list."
   (message-directory (expand-file-name "gnus/mail" user-emacs-directory))
   :config
   (add-hook 'gnus-article-prepare-hook
-            (lambda () (select-window (get-buffer-window gnus-article-buffer)))))
+            (lambda () (select-window (get-buffer-window gnus-article-buffer))))
+  (define-key gnus-summary-mode-map (kbd "A")
+              (lambda () (interactive)
+                (gnus-summary-move-article nil "nnimap+fastmail:Archive"))))
