@@ -1097,7 +1097,7 @@ since circe-display passes the plist as a single wrapped list."
   (nnmail-expiry-target "nnimap+fastmail:Trash")
   (nnmail-expiry-wait 'immediate)
   (gnus-fetch-old-headers nil)
-  (gnus-summary-line-format "%U%R%z %(%&user-date;%) %-15,15f %B%s\n")
+  (gnus-summary-line-format "%U%R%z %(%&user-date;%) %-15,15f %B%S\n")
   (gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
   (nnml-directory (expand-file-name "gnus/mail" user-emacs-directory))
   (message-directory (expand-file-name "gnus/mail" user-emacs-directory))
