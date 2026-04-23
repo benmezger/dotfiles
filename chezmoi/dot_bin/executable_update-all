@@ -3,8 +3,12 @@
 if [[ ${OSTYPE} == darwin* ]]; then
     echo "Updating OSX packages"
     brew update && brew upgrade && brew cleanup
+elif [[ -f /etc/arch-release ]]; then
+    echo "Updating Arch Linux packages"
+    pacman -Syyu --noconfirm
 fi
 
+echo "Updating Emacs packages"
 emacs --batch \
     --load $HOME/.emacs.d/early-init.el \
     --load $HOME/.emacs.d/init.el \
