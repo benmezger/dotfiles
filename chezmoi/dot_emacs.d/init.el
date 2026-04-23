@@ -97,7 +97,8 @@
   (when (eq system-type 'darwin)
     (setq doom-modeline-icon nil))
 
-  (setq doom-modeline-irc-stylize #'identity)
+  (setq doom-modeline-irc-stylize #'identity
+        doom-modeline-irc t)
   (doom-modeline-mode 1))
 
 (use-package consult
