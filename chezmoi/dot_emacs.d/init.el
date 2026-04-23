@@ -1097,6 +1097,9 @@ since circe-display passes the plist as a single wrapped list."
   (nnmail-expiry-target "nnimap+fastmail:Trash")
   (nnmail-expiry-wait 'immediate)
   (gnus-fetch-old-headers nil)
+  (mm-discouraged-alternatives '("text/html" "text/richtext"))
+  (gnus-message-archive-group "nnimap+fastmail:Sent")
+  (mail-user-agent 'gnus-user-agent)
   (gnus-summary-line-format "%U%R%z %(%&user-date;%) %-15,15f %B%S\n")
   (gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
   (nnml-directory (expand-file-name "gnus/mail" user-emacs-directory))
@@ -1107,6 +1110,11 @@ since circe-display passes the plist as a single wrapped list."
   (define-key gnus-summary-mode-map (kbd "A")
               (lambda () (interactive)
                 (gnus-summary-move-article nil "nnimap+fastmail:Archive"))))
+
+(use-package message
+  :straight nil
+  :custom
+  (message-signature "    Ben Mezger\n"))
 
 (use-package deft
   :straight t
