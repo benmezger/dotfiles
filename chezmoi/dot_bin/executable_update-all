@@ -6,11 +6,13 @@ if [[ ${OSTYPE} == darwin* ]]; then
 fi
 
 emacs --batch \
-      --load $HOME/.emacs.d/early-init.el \
-      --load $HOME/.emacs.d/init.el \
-      --eval "(straight-pull-all)" \
-      --load $HOME/.emacs.d/init.el \
-      --eval "(straight-rebuild-all)"
+    --load $HOME/.emacs.d/early-init.el \
+    --load $HOME/.emacs.d/init.el \
+    --eval "(straight-pull-all)" \
+    --eval "(straight-freeze-versions)"
+
+cp -rf $HOME/.emacs.d/straight/versions/default.el \
+    $(chezmoi source-path)/dot_emacs.d/straight/versions/default.el
 
 echo "Updating ZSH"
 zsh $HOME/.antidote/antidote update
