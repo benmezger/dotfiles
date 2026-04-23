@@ -1113,6 +1113,7 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package message
   :straight nil
+  :hook (message-mode . auto-fill-mode)
   :custom
   (message-signature "    Ben Mezger\n"))
 
