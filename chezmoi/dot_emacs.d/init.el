@@ -135,7 +135,9 @@
    :group nil
    :preview-key "M-.")
   (consult-customize my/consult-rg-directory :preview-key nil)
-  (setq completion-in-region-function #'consult-completion-in-region))
+  (setq completion-in-region-function #'consult-completion-in-region
+        xref-show-xrefs-function      #'consult-xref
+        xref-show-definitions-function #'consult-xref))
 
 (use-package embark
   :straight t
