@@ -117,6 +117,7 @@
     "s b" '(consult-line :which-key "find in buffer")
     "s d" '(my/consult-rg-directory :which-key "rg directory")
     "s i" '(consult-imenu :which-key "imenu")
+    "s a" '(xref-find-apropos :which-key "apropos symbols")
     "p g" '(consult-ripgrep :which-key "grep files")
     "p s" '(my/consult-rg-project :which-key "search project")
     "g g" '(consult-git-grep :which-key "git grep")
