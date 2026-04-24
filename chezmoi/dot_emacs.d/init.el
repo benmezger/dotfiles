@@ -745,6 +745,13 @@
       (dolist (file (directory-files-recursively elisp-dir "\\.el\\'"))
 	(load file nil t)))))
 
+(use-package dumb-jump
+  :straight t
+  :custom
+  (dumb-jump-prefer-searcher 'rg)
+  (xref-show-definitions-function #'consult-xref)
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package elisp-mode
   :straight nil
