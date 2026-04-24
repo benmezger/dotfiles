@@ -262,7 +262,7 @@
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename")
     "c a" '(lsp-execute-code-action :which-key "code action")
-    "c d" '(lsp-find-definition :which-key "find definition")
+    "c d" '(xref-find-definitions    :which-key "find definition")
     "c i" '(lsp-find-implementation :which-key "find implementation")
     "c t" '(lsp-find-type-definition :which-key "find type definition")
     "c h" '(lsp-describe-thing-at-point :which-key "hover doc")
@@ -741,6 +741,14 @@
       (add-to-list 'load-path elisp-dir)
       (dolist (file (directory-files-recursively elisp-dir "\\.el\\'"))
 	(load file nil t)))))
+
+
+(use-package elisp-mode
+  :straight nil
+  :general
+  (my/leader-keys
+    :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+    "c h" '(eldoc-doc-buffer :which-key "hover doc")))
 
 (use-package epa
   :ensure nil
