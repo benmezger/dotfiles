@@ -271,7 +271,9 @@
   (lsp-completion-provider :capf)
   (lsp-idle-delay 0.5)
   (lsp-log-io nil)
-  (lsp-ruff-ruff-args '("--preview")))
+  (lsp-ruff-ruff-args '("--preview"))
+  (lsp-keep-workspace-alive nil)
+  (lsp-auto-guess-root nil))
 
 (use-package consult-lsp
   :straight t
