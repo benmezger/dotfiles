@@ -178,7 +178,7 @@
   (which-key-side-window-max-width 0.333)
   (which-key-idle-delay 1.0)
   :config
-  (which-key-setup-minibuffer))
+  (which-key-setup-side-window-bottom))
 
 (use-package magit
   :straight t
