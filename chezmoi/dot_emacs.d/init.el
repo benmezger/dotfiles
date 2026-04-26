@@ -69,7 +69,14 @@
   :requires (evil)
   :straight t
   :after evil
-  :config (evil-collection-init))
+  :config
+  (evil-collection-init)
+  ;; isearch C-w default yanks from buffer; delete last word instead (vim behaviour)
+  (define-key isearch-mode-map (kbd "C-w")
+    (lambda ()
+      (interactive)
+      (isearch-del-char (- (length isearch-string)
+                           (length (replace-regexp-in-string "\\s-*\\w+$" "" isearch-string)))))))
 
 (use-package gruvbox-theme
   :straight t
