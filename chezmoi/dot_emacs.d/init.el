@@ -807,7 +807,7 @@
                 "#+HUGO_BASE_DIR: ~/workspace/blog\n"
                 "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
 
-  (define-auto-insert '("\\.org\\'" . "Org template") #'my/org-auto-insert)
+  (define-auto-insert '("\\.org\\(\\.gpg\\)?\\'" . "Org template") #'my/org-auto-insert)
 
   (defun my/python-file-header ()
     (insert "# Author: " (user-full-name) " <" user-mail-address ">\n")
