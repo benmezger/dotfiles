@@ -880,6 +880,13 @@
 			       default-directory)))
       (async-shell-command "uv run task fmt" "*python-fmt*" "*python-fmt-stderr*")))
 
+  (defun my/python-ruff ()
+    (interactive)
+    (let ((default-directory (or (when-let* ((proj (project-current)))
+                                   (project-root proj))
+			       default-directory)))
+      (async-shell-command "uv run ruff format --check ." "*python-ruff*" "*python-ruff-stderr*")))
+
   (defun my/python-test ()
     (interactive)
     (let ((default-directory (or (when-let* ((proj (project-current)))
