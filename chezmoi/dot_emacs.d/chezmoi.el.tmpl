@@ -1,7 +1,8 @@
 ;; -*- lexical-binding: t -*-
 
 (setq user-full-name "{{ .name }}"
-      user-mail-address "{{ .email }}")
+      user-mail-address "{{ .email }}"
+      user-encryption-key "{{ .gpg_keyid }}")
 
 {{ if and (not .minimal) (and .secrets) -}}
 (use-package wakatime-mode

@@ -771,8 +771,9 @@
   :ensure nil
   :config
   (setq epa-armor t
-    epa-file-select-keys nil
-    epa-file-encrypt-to user-mail-address))
+    epa-file-select-keys 'never
+    epa-pinentry-mode 'loopback
+    epa-file-encrypt-to user-encryption-key))
 
 (use-package terraform-mode
   :straight t
