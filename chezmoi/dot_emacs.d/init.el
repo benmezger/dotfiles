@@ -310,7 +310,7 @@
   :custom
   (org-log-done 'time)
   (org-clock-persist 'history)
-  (org-archive-location ".archives/%s_archive::")
+  (org-archive-location ".archives/%s_archive.org.gpg::")
   (org-log-into-drawer t)
   (org-startup-indented t)
   (org-agenda-inhibit-startup t)
