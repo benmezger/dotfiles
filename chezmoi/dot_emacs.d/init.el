@@ -364,7 +364,7 @@
              (file ,(concat capture-dir "inbox-snippet.capture")))
             ("b" "Blog post" entry (file+olp "~/workspace/org/refs/blog.org" "Posts")
              (file ,(concat capture-dir "blog-post.capture")))
-            ("n" "Note" entry (file+olp "~/workspace/org/refs/notes.org.gpp" "Inbox")
+            ("n" "Note" entry (file+olp "~/workspace/org/refs/notes.org.gpg" "Inbox")
              "* %?\nEntered on %U\n  %i\n  %a")
             ("t" "Todo" entry (file "~/workspace/org/refs/todos.org.gpg")
              "* TODO %?\n %i\n  %a")
