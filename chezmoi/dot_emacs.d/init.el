@@ -310,7 +310,7 @@
   :custom
   (org-log-done 'time)
   (org-clock-persist 'history)
-  (org-archive-location ".archives/%s_archive.org.gpg::")
+  (org-archive-location ".archives/archived_%s::")
   (org-log-into-drawer t)
   (org-startup-indented t)
   (org-agenda-inhibit-startup t)
@@ -786,7 +786,8 @@
   (auto-insert-mode 1)
   (setq auto-insert-alist nil)
   (defun my/org-auto-insert ()
-    (unless (and (fboundp 'org-roam-capture-p) (org-roam-capture-p))
+    (unless (or (string-match-p "/archived_" buffer-file-name)
+              (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
       (let* ((base (file-name-base buffer-file-name))
               (spaced (let (case-fold-search)
                         (replace-regexp-in-string
