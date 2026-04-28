@@ -179,7 +179,7 @@
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :straight t
+  :ensure nil
   :custom
   (which-key-sort-order 'which-key-key-order-alpha)
   (which-key-side-window-max-width 0.333)
