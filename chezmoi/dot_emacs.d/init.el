@@ -349,7 +349,7 @@
     "Find a file in `org-directory'."
     (interactive)
     (let ((default-directory (file-name-as-directory (expand-file-name org-directory))))
-      (call-interactively #'find-file)))
+      (call-interactively #'project-find-file)))
 
   (defun my/org-open-cv ()
     "Open the org CV file."
