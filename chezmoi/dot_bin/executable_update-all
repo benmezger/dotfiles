@@ -13,6 +13,7 @@ emacs --batch \
     --load $HOME/.emacs.d/early-init.el \
     --load $HOME/.emacs.d/init.el \
     --eval "(straight-pull-all)" \
+    --eval "(straight-rebuild-all)" \
     --eval "(straight-freeze-versions)"
 
 cp -rf $HOME/.emacs.d/straight/versions/default.el \
