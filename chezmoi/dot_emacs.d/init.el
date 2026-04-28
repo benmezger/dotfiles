@@ -360,17 +360,17 @@
     (setq org-capture-templates
           `(("c" "Code" entry (file "~/workspace/org/refs/code.org")
              (file ,(concat capture-dir "code-snippet.capture")))
-            ("i" "Inbox" entry (file+olp+datetree "~/workspace/org/refs/inbox.org")
+            ("i" "Inbox" entry (file+olp+datetree "~/workspace/org/refs/inbox.org.gpg")
              (file ,(concat capture-dir "inbox-snippet.capture")))
             ("b" "Blog post" entry (file+olp "~/workspace/org/refs/blog.org" "Posts")
              (file ,(concat capture-dir "blog-post.capture")))
-            ("n" "Note" entry (file+olp "~/workspace/org/refs/notes.org" "Inbox")
+            ("n" "Note" entry (file+olp "~/workspace/org/refs/notes.org.gpp" "Inbox")
              "* %?\nEntered on %U\n  %i\n  %a")
-            ("t" "Todo" entry (file "~/workspace/org/refs/todos.org")
+            ("t" "Todo" entry (file "~/workspace/org/refs/todos.org.gpg")
              "* TODO %?\n %i\n  %a")
-            ("r" "Register new book" entry (file+olp "~/workspace/org/refs/notes.org" "Books")
+            ("r" "Register new book" entry (file+olp "~/workspace/org/refs/notes.org.gpg" "Books")
              (file ,(concat capture-dir "new-book.capture")))
-            ("d" "Decision note" entry (file "~/workspace/org/refs/decisions.org")
+            ("d" "Decision note" entry (file "~/workspace/org/refs/decisions.org.gpg")
              (file ,(concat capture-dir "decision.capture"))))))
 
   (defun my/org-insert-link-dwim ()
@@ -770,7 +770,8 @@
 (use-package epa
   :ensure nil
   :config
-  (setq epa-armor t))
+  (setq epa-armor t
+        epa-file-select-keys nil))
 
 (use-package terraform-mode
   :straight t
