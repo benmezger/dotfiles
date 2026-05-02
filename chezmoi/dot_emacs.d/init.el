@@ -335,8 +335,8 @@
   :config
   (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((shell . t)))
+   'org-babel-load-languages
+   '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
 
   (setq org-directory "~/workspace/org"
     org-agenda-files (list org-directory)
@@ -397,6 +397,10 @@
                                              (point-max))
                                  'title))))))))
         (t (call-interactively 'org-insert-link))))))
+
+(use-package ob-go
+  :straight t
+  :after org)
 
 (use-package org-roam
   :straight t
