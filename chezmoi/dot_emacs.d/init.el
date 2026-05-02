@@ -349,8 +349,8 @@
   :config
   (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
+    'org-babel-load-languages
+    '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
 
   (setq org-directory "~/workspace/org"
     org-agenda-files (list org-directory)
@@ -485,16 +485,7 @@
   (org-hugo-external-file-extensions-allowed-for-copying
     '("jpg" "jpeg" "tiff" "png" "svg" "gif"
        "mp4" "pdf" "odt" "doc" "ppt" "xls"
-       "docx" "pptx" "xlsx" "zip"))
-  :config
-
-  (defun my/org-roam-export-all ()
-    "Re-exports all Org-roam files to Hugo markdown."
-    (interactive)
-    (dolist (f (org-roam--list-all-files))
-      (with-current-buffer (find-file f)
-        (when (s-contains? "SETUPFILE" (buffer-string))
-          (org-hugo-export-wim-to-md))))))
+       "docx" "pptx" "xlsx" "zip")))
 
 (use-package org-journal
   :general
@@ -607,7 +598,7 @@
     "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
     "o n" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
     "SPC" '((lambda () (interactive)
-              (if (project-current)
+	      (if (project-current)
                 (project-find-file)
                 (call-interactively #'find-file)))
              :which-key "find file")
@@ -805,17 +796,17 @@
   (setq auto-insert-alist nil)
   (defun my/org-auto-insert ()
     (unless (or (string-match-p "/archived_" buffer-file-name)
-              (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
+	      (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
       (let* ((base (file-name-base buffer-file-name))
-              (spaced (let (case-fold-search)
+	      (spaced (let (case-fold-search)
                         (replace-regexp-in-string
                           "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
                           (replace-regexp-in-string
                             "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
                             "\\1 \\2" base))))
-              (title (string-join (mapcar #'capitalize
+	      (title (string-join (mapcar #'capitalize
                                     (split-string spaced "[^[:word:]0-9]+"))
-                       " ")))
+		       " ")))
         (insert "#+TITLE: " (read-string "Title: " title) "\n"
           "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
           "#+AUTHOR: " (user-full-name) "\n"
@@ -1042,8 +1033,8 @@ since circe-display passes the plist as a single wrapped list."
             (nick      (plist-get keywords :nick)))
       (if nick
         (let* ((nick-trimmed (if (> (length nick) my/circe-nick-column)
-                               (substring nick 0 my/circe-nick-column)
-                               nick))
+			       (substring nick 0 my/circe-nick-column)
+			       nick))
                 (wrapped-nick (format "<%s>" nick-trimmed))
                 (pad    (max 0 (- (+ my/circe-nick-column 2) (length wrapped-nick))))
                 (padded (concat wrapped-nick (make-string pad ?\s)))
@@ -1073,7 +1064,7 @@ since circe-display passes the plist as a single wrapped list."
   (add-hook 'post-gc-hook
     (lambda ()
       (when (and (boundp 'circe-nick-color-mapping)
-              (> (hash-table-count circe-nick-color-mapping) 500))
+	      (> (hash-table-count circe-nick-color-mapping) 500))
         (clrhash circe-nick-color-mapping))))
 
   (advice-add 'circe-display-CHGHOST :override #'ignore)
@@ -1103,7 +1094,7 @@ since circe-display passes the plist as a single wrapped list."
     "Switch to an open Circe channel or query buffer via completing-read."
     (interactive)
     (let* ((bufs (seq-filter (lambda (b)
-                               (with-current-buffer b
+			       (with-current-buffer b
                                  (derived-mode-p 'circe-channel-mode
                                    'circe-query-mode)))
                    (buffer-list)))
