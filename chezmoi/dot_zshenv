@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# https://donottrack.sh/
+export DO_NOT_TRACK=1
+
 export EDITOR=$HOME/.bin/editor
 export VISUAL=$HOME/.bin/editor
 export LC_ALL=en_US.UTF-8
