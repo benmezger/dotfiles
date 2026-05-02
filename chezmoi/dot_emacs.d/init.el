@@ -217,7 +217,21 @@
   :config
   (apheleia-global-mode +1)
   ;; make ruff the priority
-  (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff)))
+  (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
+  ;; lisp-indent runs emacs --batch and never sees buffer-local editorconfig
+  ;; variables; replace it with an in-process formatter that copies
+  ;; lisp-indent-offset from the original buffer before indenting
+  ;; apheleia-indent-lisp-buffer copies indent-line-function etc. but not
+  ;; lisp-indent-offset, so editorconfig's indent_size is ignored; extend it
+  (cl-defun my/apheleia-lisp-indent (&key buffer scratch callback &allow-other-keys)
+    (with-current-buffer scratch
+      (emacs-lisp-mode)
+      (setq-local lisp-indent-offset
+        (buffer-local-value 'lisp-indent-offset buffer))
+      (indent-region (point-min) (point-max)))
+    (funcall callback))
+  (setf (alist-get 'my-lisp-indent apheleia-formatters) #'my/apheleia-lisp-indent)
+  (setf (alist-get 'emacs-lisp-mode apheleia-mode-alist) 'my-lisp-indent))
 
 (use-package company
   :straight t
