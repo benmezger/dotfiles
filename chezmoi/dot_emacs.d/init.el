@@ -460,7 +460,25 @@
     (interactive)
     (org-id-update-id-locations
       (directory-files-recursively
-        org-roam-directory "\\.org$"))))
+        org-roam-directory "\\.org$")))
+
+  (defun benmezger/org-roam-export-all ()
+    "Re-exports all Org-roam files to Hugo markdown."
+    (interactive)
+    (let ((files (mapcar #'car (org-roam-db-query [:select [file] :from files]))))
+      (dolist (f files)
+	(let ((buf (find-file-noselect f)))
+          (with-current-buffer buf
+            (when (org-roam--hugo-setupfile-p)
+              (org-hugo-export-wim-to-md)))
+          (unless (get-buffer-window buf)
+            (kill-buffer buf))))))
+
+  (defun org-roam--hugo-setupfile-p ()
+    "Return t if the current Org buffer has a Hugo SETUPFILE keyword."
+    (save-excursion
+      (goto-char (point-min))
+      (re-search-forward "^#\\+SETUPFILE:.*hugo" nil t))))
 
 (use-package org-roam-ui
   :straight t
