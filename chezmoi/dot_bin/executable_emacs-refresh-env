@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+# Regenerate the Emacs shell env snapshot. Run after changing .zshenv or .zshrc.
+set -euo pipefail
+
+env_file="${XDG_CONFIG_HOME:-$HOME/.config}/emacs/env"
+emacs_d="$HOME/.emacs.d"
+out="${emacs_d}/env"
+
+zsh -ic env | grep -v '^_=' | sort >"$out"
+echo "Wrote $(wc -l <"$out" | tr -d ' ') vars to $out"
