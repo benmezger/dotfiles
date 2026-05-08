@@ -943,15 +943,25 @@
     "Project root for which a venv was last activated.")
 
   (defun my/python-maybe-activate-venv (&optional _frame)
-    "Activate .venv when the current buffer belongs to a new Python project."
-    (when-let* ((proj (project-current))
-		 (root (project-root proj))
-		 (venv (expand-file-name ".venv" root)))
-      (when (and (not (equal root my/python-last-project))
-	      (file-exists-p (expand-file-name "pyproject.toml" root))
-	      (file-directory-p venv))
-	(setq my/python-last-project root)
-	(pyvenv-activate venv)))))
+    "Activate .venv when the current buffer belongs to a Python project.
+    Walks up from the buffer file toward the project root to find the
+    nearest sub-project venv, handling monorepos."
+    (when-let* ((file (buffer-file-name))
+                 (proj (project-current))
+                 (root (file-name-as-directory (expand-file-name (project-root proj)))))
+      (let ((dir (file-name-as-directory (expand-file-name (file-name-directory file)))))
+        (while (and dir (string-prefix-p root dir))
+          (let ((venv (expand-file-name ".venv" dir)))
+            (if (and (file-directory-p venv)
+                  (file-exists-p (expand-file-name "pyproject.toml" dir)))
+              (progn
+                (unless (equal venv my/python-last-project)
+                  (setq my/python-last-project venv)
+                  (pyvenv-activate venv))
+                (setq dir nil))
+              (setq dir (if (string= dir root)
+                          nil
+                          (file-name-directory (directory-file-name dir)))))))))))
 
 (use-package kubernetes
   :straight (:host github :repo "kubernetes-el/kubernetes-el" :tag "0.19.0")
