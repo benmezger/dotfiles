@@ -41,3 +41,5 @@ if [ -x "$(command -v nproc)" ]; then
 fi
 
 export HTML_TIDY="$HOME/.config/tidyrc"
+
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config

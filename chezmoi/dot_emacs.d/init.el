@@ -132,6 +132,7 @@
   :custom
   (consult-async-min-input 0)
   :config
+  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
   (defun my/consult-rg-directory ()
     "Run consult-ripgrep from the current directory."
     (interactive)
