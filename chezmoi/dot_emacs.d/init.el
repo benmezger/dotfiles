@@ -594,9 +594,10 @@
     (after-save . executable-make-buffer-file-executable-if-script-p))
   :general
   (my/leader-keys
-    "f d" '(my/delete-current-file :which-key "delete file")
-    "f c" '(my/copy-current-file :which-key "copy file")
-    "f m" '(my/move-current-file :which-key "move file")
+    "f D" '(my/delete-current-file :which-key "delete file")
+    "f C" '(my/copy-current-file :which-key "copy file")
+    "f M" '(my/move-current-file :which-key "move file")
+    "f p" '(my/copy-current-file-path :which-key "copy file path")
     "f"   '(:ignore t :which-key "files")
     "i"   '(:ignore t :which-key "irc")
     "s"   '(:ignore t :which-key "search")
@@ -761,6 +762,14 @@
     "Run consult-ripgrep from the current project root."
     (interactive)
     (consult-ripgrep (project-root (project-current t))))
+
+  (defun my/copy-current-file-path ()
+    "Copy the current buffer's file path to the kill ring."
+    (interactive)
+    (let ((path (buffer-file-name)))
+      (unless path (user-error "Buffer is not visiting a file"))
+      (kill-new path)
+      (message "%s" path)))
 
   (defun my/delete-current-file ()
     "Delete the file the current buffer is visiting and kill the buffer."
