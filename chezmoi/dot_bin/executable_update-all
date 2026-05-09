@@ -16,6 +16,17 @@ emacs --batch \
     --eval "(straight-rebuild-all)" \
     --eval "(straight-freeze-versions)"
 
+echo "Native-compiling Emacs packages"
+emacs --batch \
+    --eval "(when (fboundp 'native-compile-async)
+              (native-compile-async
+                (list (expand-file-name \"straight/build\" user-emacs-directory))
+                'recursively)
+              (while (or comp-files-queue
+                         (and (fboundp 'comp-async-runnings)
+                              (> (comp-async-runnings) 0)))
+                (sleep-for 1)))"
+
 cp -rf $HOME/.emacs.d/straight/versions/default.el \
     $(chezmoi source-path)/dot_emacs.d/straight/versions/default.el
 
