@@ -256,7 +256,10 @@
   (circe-query-mode   . (lambda () (company-mode -1)))
   :custom
   (company-idle-delay 0.0)
-  (company-minimum-prefix-length 1))
+  (company-minimum-prefix-length 1)
+  ;; LSP completion flows through capf; default backends load etags/semantic/bbdb
+  ;; at startup for every buffer — skip them.
+  (company-backends '(company-capf company-dabbrev)))
 
 (use-package treesit-auto
   :straight t
