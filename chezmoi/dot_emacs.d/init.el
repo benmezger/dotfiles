@@ -672,14 +672,16 @@
 		   tool-bar-mode))
     (funcall mode -1))
 
-  (dolist (mode '(display-time-mode
-		   display-battery-mode
-		   global-hl-line-mode
-		   save-place-mode
-		   recentf-mode
-		   global-display-line-numbers-mode
-		   global-auto-revert-mode))
-    (funcall mode 1))
+  (add-hook 'after-init-hook
+    (lambda ()
+      (dolist (mode '(display-time-mode
+		       display-battery-mode
+		       global-hl-line-mode
+		       save-place-mode
+		       recentf-mode
+		       global-display-line-numbers-mode
+		       global-auto-revert-mode))
+        (funcall mode 1))))
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
