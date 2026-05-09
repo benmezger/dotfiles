@@ -553,6 +553,14 @@
   (my-global-code-stats-mode)
   (run-with-idle-timer 30 t #'code-stats-sync))
 
+(use-package autorevert
+  :ensure nil
+  :hook (after-init . global-auto-revert-mode)
+  :custom
+  (auto-revert-interval 1)
+  (auto-revert-use-notify t)
+  (auto-revert-verbose nil))
+
 (use-package project
   :ensure nil
   :hook (find-file . my/project-remember-current)
@@ -682,8 +690,7 @@
 		       global-hl-line-mode
 		       save-place-mode
 		       recentf-mode
-		       global-display-line-numbers-mode
-		       global-auto-revert-mode))
+		       global-display-line-numbers-mode))
         (funcall mode 1))))
 
   ;; for emacs lock files
