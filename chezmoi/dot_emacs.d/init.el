@@ -206,6 +206,7 @@
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (magit-save-repository-buffers nil)
   (magit-refresh-status-buffer nil)
+  (git-commit-summary-max-length 50)
   :config
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff))
