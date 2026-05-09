@@ -691,6 +691,7 @@
 		       global-hl-line-mode
 		       save-place-mode
 		       recentf-mode
+		       column-number-mode
 		       global-display-line-numbers-mode))
         (funcall mode 1))))
 
