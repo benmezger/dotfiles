@@ -113,7 +113,7 @@
 
   (setq doom-modeline-irc-stylize #'identity
     doom-modeline-irc t)
-  (doom-modeline-mode 1))
+  (add-hook 'after-init-hook #'doom-modeline-mode))
 
 (use-package consult
   :straight t
