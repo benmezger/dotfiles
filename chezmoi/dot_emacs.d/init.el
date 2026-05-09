@@ -145,7 +145,7 @@
     (interactive)
     (consult-ripgrep default-directory nil))
   (consult-customize
-    consult-ripgrep consult-grep consult-git-grep
+    consult-ripgrep consult-grep consult-git-grep consult-man
     consult-buffer consult-project-buffer consult-recent-file
     consult-imenu my/consult-rg-directory
     :group nil
