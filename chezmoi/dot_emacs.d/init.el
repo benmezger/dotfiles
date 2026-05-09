@@ -1217,3 +1217,13 @@ since circe-display passes the plist as a single wrapped list."
     deft-directory org-directory
     deft-recursive t
     deft-use-filename-as-title t))
+
+(use-package forge
+  :after magit
+  :init
+  ;; Forge inserts after "o" in magit-dispatch, removed in magit 4.x.
+  ;; Plant a placeholder so forge's transient-insert-suffix can find it.
+  (transient-append-suffix 'magit-dispatch "!"
+    '("o" "" ignore))
+  :config
+  (transient-remove-suffix 'magit-dispatch "o"))
