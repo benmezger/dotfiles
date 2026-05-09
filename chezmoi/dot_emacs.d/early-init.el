@@ -27,7 +27,7 @@
                                 "\n" t))
       (when (string-match "^\\([^=\n]+\\)=\\(.*\\)$" line)
         (setenv (match-string 1 line) (match-string 2 line))))
-    (when-let ((path (getenv "PATH")))
+    (when-let* ((path (getenv "PATH")))
       (setq exec-path (append (split-string path ":") (list exec-directory))))))
 
 (defvar bootstrap-version)
