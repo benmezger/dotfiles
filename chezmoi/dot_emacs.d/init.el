@@ -247,8 +247,8 @@
   :init (global-company-mode)
   :general
   (company-active-map
-    "TAB"     'company-complete-selection
-    "<tab>"   'company-complete-selection
+    "TAB"     'company-select-next
+    "<tab>"   'company-select-next
     "C-w"     'backward-kill-word)
   :hook
   (git-commit-mode    . (lambda () (company-mode -1)))
