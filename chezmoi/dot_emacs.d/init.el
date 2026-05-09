@@ -70,7 +70,14 @@
   :straight t
   :after evil
   :config
-  (evil-collection-init)
+  (evil-collection-init '(dired magit ibuffer helpful
+                           company lsp-ui-imenu embark
+                           vertico consult wgrep
+                           org org-roam which-key
+                           gnus xref flymake python
+                           elisp-mode epa yaml-mode
+                           markdown-mode docker sh-script
+                           go-mode message))
   ;; isearch C-w default yanks from buffer; delete last word instead (vim behaviour)
   (define-key isearch-mode-map (kbd "C-w")
     (lambda ()
@@ -567,6 +574,7 @@
 	  ("M-z" . zap-up-to-char))
   :hook
   ((emacs-startup . (lambda ()
+		      (setq file-name-handler-alist my/file-name-handler-alist)
 		      (message
 		        "Emacs loaded in %s with %d garbage collections."
 		        (format "%.2f seconds"
@@ -1002,7 +1010,6 @@
 
 (use-package circe
   :straight t
-  :demand t
   :general
   (my/leader-keys
     "i c" '(my/irc :which-key "connect to irc")
