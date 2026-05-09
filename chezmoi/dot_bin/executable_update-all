@@ -5,7 +5,7 @@ if [[ ${OSTYPE} == darwin* ]]; then
     brew update && brew upgrade && brew cleanup
 elif [[ -f /etc/arch-release ]]; then
     echo "Updating Arch Linux packages"
-    pacman -Syyu --noconfirm
+    sudo pacman -Syyu --noconfirm
 fi
 
 echo "Updating Emacs packages"
