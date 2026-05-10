@@ -341,6 +341,7 @@
   (org-startup-indented t)
   (org-return-follows-link t)
   (org-agenda-inhibit-startup t)
+  (org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   (org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
                         (sequence "READ(!)")
                         (sequence "|" "DONE(d!)" "CANCELED(c!)")))
