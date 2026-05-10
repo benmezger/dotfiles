@@ -52,3 +52,18 @@ fi
 export POETRY_VIRTUALENVS_IN_PROJECT=1
 export OP_ACCOUNT=my.1password.com
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+if [[ ${OSTYPE} == darwin* ]]; then
+	export HOMEBREW_NO_AUTO_UPDATE=1
+	export HOMEBREW_VERBOSE_USING_DOTS=1
+	if [[ -d "/opt/homebrew/opt/gnupg@2.2" ]]; then
+		export PATH="$PATH:/opt/homebrew/opt/gnupg@2.2/bin"
+	fi
+	if [[ -d "/Library/TeX/texbin" ]]; then
+		export PATH="$PATH:/Library/TeX/texbin"
+	fi
+else
+	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+	export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
+	export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi

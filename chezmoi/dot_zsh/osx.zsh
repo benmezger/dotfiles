@@ -1,30 +1,15 @@
 #!/usr/bin/env zsh
 
-# homebrew
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_VERBOSE_USING_DOTS=1
-
 if [[ $(arch) == 'arm64' ]]; then
-	export PATH="/opt/homebrew/bin:$PATH"
-	export PATH="/opt/homebrew/opt:$PATH"
 	# fzf
 	source /opt/homebrew/Cellar/fzf/*/shell/completion.zsh
 	source /opt/homebrew/Cellar/fzf/*/shell/key-bindings.zsh
-
-	if [[ -d "/opt/homebrew/opt/gnupg@2.2" ]]; then
-		export PATH="$PATH:/opt/homebrew/opt/gnupg@2.2/bin"
-	fi
-
 	fpath+=("/opt/homebrew/completions/zsh/")
 else
 	# fzf
 	source /usr/local/opt/fzf/shell/completion.zsh
 	source /usr/local/opt/fzf/shell/key-bindings.zsh
 	fpath+=("/usr/local/Homebrew/completions/")
-fi
-
-if [[ -d "/Library/TeX/texbin" ]]; then
-	export PATH="$PATH:/Library/TeX/texbin"
 fi
 
 # completions
