@@ -831,7 +831,7 @@
   :config
   (setq epa-armor t
     epa-file-select-keys 'never
-    epa-pinentry-mode 'loopback
+    epg-pinentry-mode 'ask
     epa-file-encrypt-to user-encryption-key))
 
 (use-package terraform-mode
