@@ -10,8 +10,7 @@
   :custom
   (vertico-cycle t)
   :init
-  (vertico-mode)
-  (setq enable-recursive-minibuffers t))
+  (vertico-mode))
 
 (use-package general
   :straight t
@@ -34,6 +33,8 @@
   :straight t
   :init (savehist-mode)
   :hook (savehist-save . my/savehist-sanitize-kill-ring)
+  :custom
+  (savehist-additional-variables '(search-ring regexp-search-ring kill-ring))
   :config
   ;; kill ring can accumulate text properties (fonts, overlays, etc.)
   ;; that bloat the savehist file, so strip them before saving
@@ -383,8 +384,7 @@
     'org-babel-load-languages
     '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
 
-  (setq org-directory "~/workspace/org"
-    org-agenda-files (list org-directory)
+  (setq org-agenda-files (list org-directory)
     bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
     org-id-locations-file (concat org-directory "/.orgid")
     ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
@@ -494,11 +494,12 @@
                      '(:immediate-finish t)))))
       (apply #'org-roam-node-insert args)))
 
-  (defun custom-org-protocol-focus-advice (orig &rest args)
+  (defun my/org-roam-protocol-focus-advice (orig &rest args)
+    "Focus the Emacs frame when opening an org-roam protocol link."
     (x-focus-frame nil)
     (apply orig args))
-  (advice-add 'org-roam-protocol-open-ref :around #'custom-org-protocol-focus-advice)
-  (advice-add 'org-roam-protocol-open-file :around #'custom-org-protocol-focus-advice)
+  (advice-add 'org-roam-protocol-open-ref :around #'my/org-roam-protocol-focus-advice)
+  (advice-add 'org-roam-protocol-open-file :around #'my/org-roam-protocol-focus-advice)
 
   (defun my/org-update-org-ids ()
     "Update all org ids."
@@ -507,19 +508,19 @@
       (directory-files-recursively
         org-roam-directory "\\.org$")))
 
-  (defun benmezger/org-roam-export-all ()
+  (defun my/org-roam-export-all ()
     "Re-exports all Org-roam files to Hugo markdown."
     (interactive)
     (let ((files (mapcar #'car (org-roam-db-query [:select [file] :from files]))))
       (dolist (f files)
 	(let ((buf (find-file-noselect f)))
           (with-current-buffer buf
-            (when (org-roam--hugo-setupfile-p)
+            (when (my/org-roam-hugo-setupfile-p)
               (org-hugo-export-wim-to-md)))
           (unless (get-buffer-window buf)
             (kill-buffer buf))))))
 
-  (defun org-roam--hugo-setupfile-p ()
+  (defun my/org-roam-hugo-setupfile-p ()
     "Return t if the current Org buffer has a Hugo SETUPFILE keyword."
     (save-excursion
       (goto-char (point-min))
@@ -732,7 +733,7 @@
   (set-face-attribute 'default nil
     :height (if (eq system-type 'gnu/linux) 90 130)
     :family "Hack Nerd Font")
-  (fset 'yes-or-no-p 'y-or-n-p)
+  (setopt use-short-answers t)
   (unless (memq (frame-parameter nil 'fullscreen) '(maximized fullboth))
     (toggle-frame-maximized))
 
@@ -757,8 +758,6 @@
   (make-directory "~/.emacs.d/locks" t)
   (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
 
-  (require 'uniquify)
-
   (setq read-process-output-max (* 4 1024 1024) ; 4MB
     inhibit-compacting-font-caches t
     ;; skip fontification during input. this defers fontification until we stop typing
@@ -769,10 +768,7 @@
     ;; save the Clipboard Before Killing
     save-interprogram-paste-before-kill t
     ;; no Duplicates in the Kill Ring
-    kill-do-not-save-duplicates t
-    ;; persist the Kill Ring Across Sessions
-    savehist-additional-variables '(search-ring regexp-search-ring kill-ring)
-    )
+    kill-do-not-save-duplicates t)
 
 
   (when (file-exists-p custom-file)
@@ -925,7 +921,6 @@
           "#+HTML_HTML5_FANCY:\n\n"
           "# Hugo config\n"
           "#+DRAFT: false\n"
-          "#+HUGO_AUTO_SET_LASTMOD: t\n"
           "#+HUGO_BASE_DIR: ~/workspace/blog\n"
           "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
 
@@ -1055,7 +1050,6 @@
 
 (use-package kubernetes
   :straight (:host github :repo "kubernetes-el/kubernetes-el" :tag "0.19.0")
-  :straight t
   :commands (kubernetes-overview)
   :custom
   (kubernetes-poll-frequency 3600)
@@ -1111,7 +1105,7 @@
     (my/fetch-password :user "seds" :host "bnc.irccloud.com" :port 6697))
 
   (require 'lui-autopaste)
-  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+  (add-hook 'circe-channel-mode-hook #'enable-lui-autopaste)
 
   ;; consult-completion-in-region is set globally but causes the buffer to
   ;; jump/scroll as the popup resizes with each candidate list.  Use the
@@ -1123,8 +1117,8 @@
   (add-hook 'circe-query-mode-hook   #'my/circe-use-default-completion)
 
   ;; set channel name in prompt
-  (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
-  (defun my-circe-prompt ()
+  (add-hook 'circe-chat-mode-hook #'my/circe-prompt)
+  (defun my/circe-prompt ()
     (lui-set-prompt
       (concat (propertize (concat (buffer-name) ">")
 		'face 'circe-prompt-face)
