@@ -367,7 +367,9 @@
     "n i" '(my/org-insert-link-dwim :which-key "insert link")
     "n f" '(my/org-find-file :which-key "find file")
     "n t" '(org-todo-list :which-key "todo list")
-    "n v" '(my/org-open-cv :which-key "cv"))
+    "n v" '(my/org-open-cv :which-key "cv")
+    "n w" '(:ignore t :which-key "work")
+    "n w o" '(my/org-open-work-notes :which-key "open work notes"))
   :config
   (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
@@ -381,16 +383,23 @@
     ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
-  (defun my/org-find-file ()
-    "Find a file in `org-directory'."
+  (defun my/org-find-file (&optional file)
+    "Find a file in `org-directory', or open FILE directly if given."
     (interactive)
-    (let ((default-directory (file-name-as-directory (expand-file-name org-directory))))
-      (call-interactively #'project-find-file)))
+    (if file
+      (find-file (expand-file-name file org-directory))
+      (let ((default-directory (file-name-as-directory (expand-file-name org-directory))))
+        (call-interactively #'project-find-file))))
 
   (defun my/org-open-cv ()
     "Open the org CV file."
     (interactive)
-    (find-file (expand-file-name "cv/cv.org" org-directory)))
+    (my/org-find-file "cv/cv.org"))
+
+  (defun my/org-open-work-notes ()
+    "Open the work notes file."
+    (interactive)
+    (my/org-find-file "work/ah.org.gpg"))
 
   (let ((capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-capture-templates
