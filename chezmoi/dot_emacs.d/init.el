@@ -1240,7 +1240,7 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package gnus
   :ensure nil
-  :after auth-source
+  :defer t
   :custom
   (gnus-select-method '(nnimap "fastmail"
                          (nnimap-address "imap.fastmail.com")
