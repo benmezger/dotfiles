@@ -43,3 +43,12 @@ fi
 export HTML_TIDY="$HOME/.config/tidyrc"
 
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+
+# cargo
+if [[ -f "$HOME/.cargo/env" ]]; then
+	source $HOME/.cargo/env
+fi
+
+export POETRY_VIRTUALENVS_IN_PROJECT=1
+export OP_ACCOUNT=my.1password.com
+export LESS='-F -g -i -M -R -S -w -X -z-4'

@@ -48,24 +48,11 @@ pyenv() {
 	esac
 }
 
-if [ -f "$HOME/.local/bin/poetry" ]; then
-	export POETRY_VIRTUALENVS_IN_PROJECT=1
-fi
 
 
 
 # FZF
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
-
-# cargo
-if [[ -f "$HOME/.cargo/env" ]]; then
-	source $HOME/.cargo/env
-fi
-
-# 1password. Default to personal account
-export OP_ACCOUNT=my.1password.com
-
-export LESS='-F -g -i -M -R -S -w -X -z-4'
 # less colours
 if [[ ${PAGER} == 'less' ]]; then
     (( ! ${+LESS_TERMCAP_mb} )) && export LESS_TERMCAP_mb=$'\E[1;31m'   # Begins blinking.
