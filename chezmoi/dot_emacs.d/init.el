@@ -79,11 +79,12 @@
                            markdown-mode docker sh-script
                            go-mode message))
   ;; isearch C-w default yanks from buffer; delete last word instead (vim behaviour)
-  (define-key isearch-mode-map (kbd "C-w")
-    (lambda ()
-      (interactive)
-      (isearch-del-char (- (length isearch-string)
-                          (length (replace-regexp-in-string "\\s-*\\w+$" "" isearch-string)))))))
+  (defun my/isearch-delete-word ()
+    "Delete the last word from the isearch string."
+    (interactive)
+    (isearch-del-char (- (length isearch-string)
+                        (length (replace-regexp-in-string "\\s-*\\w+$" "" isearch-string)))))
+  (define-key isearch-mode-map (kbd "C-w") #'my/isearch-delete-word))
 
 (use-package gruvbox-theme
   :straight t
@@ -278,11 +279,13 @@
   ;; NOTE: cache is never invalidated during the session — if you install a new
   ;; grammar mid-session, reset it with (setq my/treesit-auto-remap-cache :unset).
   (defvar my/treesit-auto-remap-cache :unset)
+  (defun my/treesit-auto-remap-cache-advice (orig &rest args)
+    "Cache the result of `treesit-auto--build-major-mode-remap-alist'."
+    (if (eq my/treesit-auto-remap-cache :unset)
+      (setq my/treesit-auto-remap-cache (apply orig args))
+      my/treesit-auto-remap-cache))
   (advice-add 'treesit-auto--build-major-mode-remap-alist :around
-    (lambda (orig &rest args)
-      (if (eq my/treesit-auto-remap-cache :unset)
-        (setq my/treesit-auto-remap-cache (apply orig args))
-        my/treesit-auto-remap-cache)))
+    #'my/treesit-auto-remap-cache-advice)
   ;; Pre-warm the cache shortly after startup so the first emacsclient hit is fast.
   (run-with-idle-timer 2 nil #'treesit-auto--build-major-mode-remap-alist))
 
@@ -617,7 +620,7 @@
   :ensure nil
   :requires general
   :bind (("C-w" . backward-kill-word)
-	  ("C-c C-x k" . (lambda () (interactive) (kill-buffer (current-buffer))))
+	  ("C-c C-x k" . kill-current-buffer)
 	  ("<escape>" . keyboard-quit)
 	  ("M-z" . zap-up-to-char))
   :hook
@@ -798,11 +801,12 @@
     (message "Big font mode %s" (if my/big-font-mode "enabled" "disabled")))
 
   (defvar my/hack-local-variables-running nil)
-  (advice-add 'hack-local-variables :around
-    (lambda (orig &rest args)
-      (unless my/hack-local-variables-running
-        (let ((my/hack-local-variables-running t))
-          (apply orig args)))))
+  (defun my/hack-local-variables-once (orig &rest args)
+    "Prevent `hack-local-variables' from running recursively."
+    (unless my/hack-local-variables-running
+      (let ((my/hack-local-variables-running t))
+        (apply orig args))))
+  (advice-add 'hack-local-variables :around #'my/hack-local-variables-once)
 
   (defun my/diff-current-buffer ()
     (interactive)
@@ -1271,9 +1275,11 @@ since circe-display passes the plist as a single wrapped list."
     "Select the article buffer window."
     (select-window (get-buffer-window gnus-article-buffer)))
   (add-hook 'gnus-article-prepare-hook #'my/gnus-select-article-window)
-  (define-key gnus-summary-mode-map (kbd "A")
-    (lambda () (interactive)
-      (gnus-summary-move-article nil "nnimap+fastmail:Archive"))))
+  (defun my/gnus-archive-article ()
+    "Move the current article to the Fastmail archive."
+    (interactive)
+    (gnus-summary-move-article nil "nnimap+fastmail:Archive"))
+  (define-key gnus-summary-mode-map (kbd "A") #'my/gnus-archive-article))
 
 (use-package message
   :straight nil
