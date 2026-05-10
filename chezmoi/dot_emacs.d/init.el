@@ -252,15 +252,19 @@
     "<tab>"   'company-select-next
     "C-w"     'backward-kill-word)
   :hook
-  (git-commit-mode    . (lambda () (company-mode -1)))
-  (circe-channel-mode . (lambda () (company-mode -1)))
-  (circe-query-mode   . (lambda () (company-mode -1)))
+  (git-commit-mode    . my/company-disable)
+  (circe-channel-mode . my/company-disable)
+  (circe-query-mode   . my/company-disable)
   :custom
   (company-idle-delay 0.0)
   (company-minimum-prefix-length 1)
   ;; LSP completion flows through capf; default backends load etags/semantic/bbdb
   ;; at startup for every buffer — skip them.
-  (company-backends '(company-capf company-dabbrev)))
+  (company-backends '(company-capf company-dabbrev))
+  :config
+  (defun my/company-disable ()
+    "Disable company-mode in the current buffer."
+    (company-mode -1)))
 
 (use-package treesit-auto
   :straight t
@@ -323,8 +327,12 @@
 (use-package lsp-pyright
   :straight t
   :requires lsp
-  :hook (python-ts-mode . (lambda () (require 'lsp-pyright)))
-  :after lsp-mode)
+  :hook (python-ts-mode . my/lsp-pyright-setup)
+  :after lsp-mode
+  :config
+  (defun my/lsp-pyright-setup ()
+    "Load lsp-pyright for the current buffer."
+    (require 'lsp-pyright)))
 
 (use-package org
   :straight t
@@ -355,11 +363,7 @@
   (general-define-key
     :states '(normal)
     :keymaps 'org-mode-map
-    "RET" (lambda ()
-            (interactive)
-            (if (org-in-regexp org-link-any-re)
-              (org-open-at-point)
-              (evil-ret))))
+    "RET" #'my/org-ret)
   (my/leader-keys
     "n a" '(org-agenda :which-key "agenda")
     "n c" '(org-capture :which-key "capture")
@@ -382,6 +386,13 @@
     org-id-locations-file (concat org-directory "/.orgid")
     ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
+
+  (defun my/org-ret ()
+    "Follow link at point or fall back to `evil-ret'."
+    (interactive)
+    (if (org-in-regexp org-link-any-re)
+      (org-open-at-point)
+      (evil-ret)))
 
   (defun my/org-find-file (&optional file)
     "Find a file in `org-directory', or open FILE directly if given."
@@ -565,11 +576,17 @@
 (use-package code-stats
   :defer t
   :straight t
-  :hook (kill-emacs . (lambda () (code-stats-sync :wait)))
+  :hook (kill-emacs . my/code-stats-sync-on-exit)
   :config
   (setq code-stats-token (auth-source-pick-first-password :host "codestats.net"))
+  (defun my/code-stats-sync-on-exit ()
+    "Sync code-stats and wait for completion before Emacs exits."
+    (code-stats-sync :wait))
+  (defun my/code-stats-enable ()
+    "Enable code-stats-mode in the current buffer."
+    (code-stats-mode 1))
   (define-globalized-minor-mode my-global-code-stats-mode code-stats-mode
-    (lambda () (code-stats-mode 1)))
+    my/code-stats-enable)
   (my-global-code-stats-mode)
   (run-with-idle-timer 30 t #'code-stats-sync))
 
@@ -604,13 +621,7 @@
 	  ("<escape>" . keyboard-quit)
 	  ("M-z" . zap-up-to-char))
   :hook
-  ((emacs-startup . (lambda ()
-		      (setq file-name-handler-alist my/file-name-handler-alist)
-		      (message
-		        "Emacs loaded in %s with %d garbage collections."
-		        (format "%.2f seconds"
-			  (float-time (time-subtract after-init-time before-init-time)))
-		        gcs-done)))
+  ((emacs-startup . my/emacs-startup-message)
     (after-save . executable-make-buffer-file-executable-if-script-p))
   :general
   (my/leader-keys
@@ -652,15 +663,11 @@
     "h M" '(describe-minor-mode :which-key "describe minor mode")
     "h i" '(info :which-key "info")
     "o"   '(:ignore t :which-key "open")
-    "o d" '((lambda () (interactive) (dired "~/workspace/dotfiles/")) :which-key "dotfiles")
-    "o t" '((lambda () (interactive) (dired "~/workspace/terraform/")) :which-key "terraform")
-    "o b" '((lambda () (interactive) (dired "~/workspace/blog/")) :which-key "blog")
-    "o n" '((lambda () (interactive) (dired "~/workspace/org/")) :which-key "org")
-    "SPC" '((lambda () (interactive)
-	      (if (project-current)
-                (project-find-file)
-                (call-interactively #'find-file)))
-             :which-key "find file")
+    "o d" '(my/open-dotfiles :which-key "dotfiles")
+    "o t" '(my/open-terraform :which-key "terraform")
+    "o b" '(my/open-blog :which-key "blog")
+    "o n" '(my/open-org :which-key "org")
+    "SPC" '(my/find-file :which-key "find file")
     "j"   '(:ignore t :which-key "jump")
     "j b" '(consult-bookmark :which-key "bookmark")
     "j w" '(webjump :which-key "webjump")
@@ -687,6 +694,33 @@
   (native-comp-async-report-warnings-errors 'silent)
   (use-dialog-box nil)
   :config
+  (defun my/emacs-startup-message ()
+    "Restore file-name-handler-alist and print startup time."
+    (setq file-name-handler-alist my/file-name-handler-alist)
+    (message "Emacs loaded in %s with %d garbage collections."
+      (format "%.2f seconds"
+        (float-time (time-subtract after-init-time before-init-time)))
+      gcs-done))
+
+  (defun my/open-dotfiles ()
+    "Open dotfiles directory in dired."
+    (interactive) (dired "~/workspace/dotfiles/"))
+  (defun my/open-terraform ()
+    "Open terraform directory in dired."
+    (interactive) (dired "~/workspace/terraform/"))
+  (defun my/open-blog ()
+    "Open blog directory in dired."
+    (interactive) (dired "~/workspace/blog/"))
+  (defun my/open-org ()
+    "Open org directory in dired."
+    (interactive) (dired "~/workspace/org/"))
+  (defun my/find-file ()
+    "Find file in project if in one, otherwise prompt globally."
+    (interactive)
+    (if (project-current)
+      (project-find-file)
+      (call-interactively #'find-file)))
+
   ;; disable bidirectional text scanning (right to left)
   (setq-default bidi-display-reordering 'left-to-right
     bidi-paragraph-direction 'left-to-right
@@ -704,16 +738,17 @@
 		   tool-bar-mode))
     (funcall mode -1))
 
-  (add-hook 'after-init-hook
-    (lambda ()
-      (dolist (mode '(display-time-mode
-		       display-battery-mode
-		       global-hl-line-mode
-		       save-place-mode
-		       recentf-mode
-		       column-number-mode
-		       global-display-line-numbers-mode))
-        (funcall mode 1))))
+  (defun my/enable-global-modes ()
+    "Enable global minor modes after init."
+    (dolist (mode '(display-time-mode
+                     display-battery-mode
+                     global-hl-line-mode
+                     save-place-mode
+                     recentf-mode
+                     column-number-mode
+                     global-display-line-numbers-mode))
+      (funcall mode 1)))
+  (add-hook 'after-init-hook #'my/enable-global-modes)
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
@@ -742,10 +777,11 @@
 
   ;; Automatically create missing parent directories when visiting a file,
   ;; suppressing the "Use M-x make-directory" prompt.
-  (add-to-list 'find-file-not-found-functions
-    (lambda ()
-      (make-directory (file-name-directory buffer-file-name) t)
-      nil))
+  (defun my/create-missing-parent-dirs ()
+    "Create missing parent directories when visiting a new file."
+    (make-directory (file-name-directory buffer-file-name) t)
+    nil)
+  (add-to-list 'find-file-not-found-functions #'my/create-missing-parent-dirs)
 
   (defvar my/big-font-mode nil "Non-nil when big font mode is active.")
   (defvar my/normal-font-height 140 "Default font height.")
@@ -1139,11 +1175,11 @@ since circe-display passes the plist as a single wrapped list."
 
   ;; circe-nick-color-mapping accumulates every nick ever seen and is never
   ;; pruned.  Clear it on GC so it doesn't balloon to hundreds of KiB.
-  (add-hook 'post-gc-hook
-    (lambda ()
-      (when (and (boundp 'circe-nick-color-mapping)
-	      (> (hash-table-count circe-nick-color-mapping) 500))
-        (clrhash circe-nick-color-mapping))))
+  (defun my/circe-prune-nick-colors ()
+    (when (and (boundp 'circe-nick-color-mapping)
+            (> (hash-table-count circe-nick-color-mapping) 500))
+      (clrhash circe-nick-color-mapping)))
+  (add-hook 'post-gc-hook #'my/circe-prune-nick-colors)
 
   (advice-add 'circe-display-CHGHOST :override #'ignore)
 
@@ -1231,8 +1267,10 @@ since circe-display passes the plist as a single wrapped list."
   (nnml-directory (expand-file-name "gnus/mail" user-emacs-directory))
   (message-directory (expand-file-name "gnus/mail" user-emacs-directory))
   :config
-  (add-hook 'gnus-article-prepare-hook
-    (lambda () (select-window (get-buffer-window gnus-article-buffer))))
+  (defun my/gnus-select-article-window ()
+    "Select the article buffer window."
+    (select-window (get-buffer-window gnus-article-buffer)))
+  (add-hook 'gnus-article-prepare-hook #'my/gnus-select-article-window)
   (define-key gnus-summary-mode-map (kbd "A")
     (lambda () (interactive)
       (gnus-summary-move-article nil "nnimap+fastmail:Archive"))))
