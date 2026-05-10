@@ -30,6 +30,9 @@ emacs --batch \
 cp -rf $HOME/.emacs.d/straight/versions/default.el \
     $(chezmoi source-path)/dot_emacs.d/straight/versions/default.el
 
+echo "Refreshing Emacs env file"
+$HOME/.bin/emacs-refresh-env
+
 echo "Updating ZSH"
 zsh $HOME/.antidote/antidote update
 
