@@ -339,6 +339,7 @@
   (org-archive-location ".archives/archived_%s::")
   (org-log-into-drawer t)
   (org-startup-indented t)
+  (org-return-follows-link t)
   (org-agenda-inhibit-startup t)
   (org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
                         (sequence "READ(!)")
@@ -350,6 +351,14 @@
                              ("WAIT"     . "salmon1")
                              ("PROJ"     . "systemYellowColor")))
   :general
+  (general-define-key
+    :states '(normal)
+    :keymaps 'org-mode-map
+    "RET" (lambda ()
+            (interactive)
+            (if (org-in-regexp org-link-any-re)
+              (org-open-at-point)
+              (evil-ret))))
   (my/leader-keys
     "n a" '(org-agenda :which-key "agenda")
     "n c" '(org-capture :which-key "capture")
