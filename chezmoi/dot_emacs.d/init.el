@@ -1295,6 +1295,7 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package forge
   :after magit
+  :straight t
   :init
   ;; Forge inserts after "o" in magit-dispatch, removed in magit 4.x.
   ;; Plant a placeholder so forge's transient-insert-suffix can find it.
@@ -1302,3 +1303,8 @@ since circe-display passes the plist as a single wrapped list."
     '("o" "" ignore))
   :config
   (transient-remove-suffix 'magit-dispatch "o"))
+
+(use-package hl-todo
+  :straight t
+  :init
+  (global-hl-todo-mode))
