@@ -605,6 +605,11 @@
 (use-package project
   :ensure nil
   :hook (find-file . my/project-remember-current)
+  :custom
+  ;; Treat directories containing these files as sub-project roots, so
+  ;; monorepo sub-packages each get their own lsp workspace rather than
+  ;; sharing the git root.
+  (project-vc-extra-root-markers '("pyrightconfig.json" ".venv"))
   :config
   (setq project-switch-commands 'project-find-file)
   (dolist (proj '("~/workspace/dotfiles/"
