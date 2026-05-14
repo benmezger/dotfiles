@@ -15,73 +15,43 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
 
+import socket
 from urllib.request import urlopen
 from json import loads
-from socket import gethostbyname, gethostname
 from os import getenv
-import asyncio
-
-try:
-    import speedtest
-
-    has_speedtest = True
-except ImportError:
-    has_speedtest = False
 
 
-async def test_speed(threads: int = 2):
-    if has_speedtest:
-        s = speedtest.Speedtest()
-        return s.download(threads=threads), s.upload(threads=threads)
-    return None, None
-
-
-def humansize(nbytes):
-    suffixes = ["B", "KB", "MB", "GB", "TB", "PB"]
-    i = 0
-    while nbytes >= 1024 and i < len(suffixes) - 1:
-        nbytes /= 1024.0
-        i += 1
-    f = ("%.2f" % nbytes).rstrip("0").rstrip(".")
-    return "%s %s" % (f, suffixes[i])
-
-
-async def fetch_url(url: str):
-    return loads(urlopen(url).read())
-
-
-async def main():
-    ip_info, vpn_info, tor_info, speed = await asyncio.gather(
-        fetch_url("https://ipinfo.io"),
-        fetch_url("https://api.nordvpn.com/vpn/check/full"),
-        fetch_url("https://check.torproject.org/api/ip"),
-        test_speed(),
-    )
-
-    download, upload = speed
+def main() -> None:
+    ip_info = _fetch_url("https://ipwho.is/")
 
     print("Public IP:", ip_info.get("ip"))
     print("Country:", ip_info.get("country"))
-    print("City", ip_info.get("city"))
-    print("ISP:", vpn_info.get("isp"))
+    print("City:", ip_info.get("city"))
 
-    print("Is Torified:", tor_info.get("IsTor"))
-    print("VPN:", vpn_info.get("status", "N/A"))
-    print("VPN IP:", vpn_info.get("ip", "N/A"))
-    print("VPN Location:", vpn_info.get("country", "N/A"))
-
-    print("Local IP:", gethostbyname(gethostname()))
-    print("Hostname:", gethostname())
+    print("Local IP:", _get_local_ip())
+    print("Hostname:", socket.gethostname())
+    print("ISP:", ip_info.get("connection", {}).get("isp", None))
 
     print("\nLocal variables:")
     print("HTTP Proxy:", getenv("http_proxy"))
     print("HTTPS Proxy:", getenv("https_proxy"))
     print("FTP Proxy:", getenv("ftp_proxy"))
 
-    if download and upload:
-        print("Download speed:", humansize(download))
-        print("Upload speed:", humansize(upload))
+
+def _get_local_ip() -> str:
+    # safer way to getting the local IP
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+
+    local_ip = s.getsockname()[0]
+
+    s.close()
+    return local_ip
+
+
+def _fetch_url(url: str) -> dict:
+    return loads(urlopen(url).read())
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
