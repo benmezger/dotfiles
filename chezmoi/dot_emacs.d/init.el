@@ -65,7 +65,18 @@
     evil-insert-state-cursor 'bar
     evil-search-module 'evil)
   :config
-  (evil-mode))
+  (evil-mode)
+
+  (defun my/evil-absolute-numbers ()
+    "Switch to absolute line numbers in insert mode."
+    (setq display-line-numbers t))
+
+  (defun my/evil-relative-numbers ()
+    "Switch to relative line numbers in normal mode."
+    (setq display-line-numbers 'relative))
+
+  (add-hook 'evil-insert-state-entry-hook #'my/evil-absolute-numbers)
+  (add-hook 'evil-insert-state-exit-hook #'my/evil-relative-numbers))
 
 (use-package evil-collection
   :requires (evil)
@@ -775,8 +786,10 @@
     ;; save the Clipboard Before Killing
     save-interprogram-paste-before-kill t
     ;; no Duplicates in the Kill Ring
-    kill-do-not-save-duplicates t)
+    kill-do-not-save-duplicates t
+    display-line-numbers-type 'relative)
 
+  (global-display-line-numbers-mode +1)
 
   (when (file-exists-p custom-file)
     (load custom-file))
