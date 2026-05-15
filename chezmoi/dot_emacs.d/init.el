@@ -1348,3 +1348,18 @@ since circe-display passes the plist as a single wrapped list."
     gptel-model 'qwen2.5-coder:7b)
   (gptel-make-gh-copilot "Copilot Individual" :host "api.individual.githubcopilot.com")
   (gptel-make-gh-copilot "Copilot Business" :host "api.enterprise.githubcopilot.com"))
+
+(use-package git-gutter
+  :straight t
+  :config
+  (global-git-gutter-mode +1)
+  (set-face-background 'git-gutter:added nil)
+  (set-face-background 'git-gutter:deleted nil)
+  (set-face-background 'git-gutter:modified nil)
+
+  (custom-set-variables
+    '(git-gutter:window-width 1)
+    '(git-gutter:modified-sign "~")
+    '(git-gutter:added-sign "+")
+    '(git-gutter:deleted-sign "-"))
+  )
