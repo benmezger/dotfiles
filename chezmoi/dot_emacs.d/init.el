@@ -62,7 +62,8 @@
   :init
   (setq evil-want-keybinding nil
     evil-undo-system 'undo-fu
-    evil-insert-state-cursor 'bar)
+    evil-insert-state-cursor 'bar
+    evil-search-module 'evil)
   :config
   (evil-mode))
 
