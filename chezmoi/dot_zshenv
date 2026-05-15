@@ -65,5 +65,7 @@ if [[ ${OSTYPE} == darwin* ]]; then
 else
 	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 	export DEBUGINFOD_URLS="https://debuginfod.elfutils.org"
-	export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+        if [ -z "$SSH_CONNECTION" ]; then
+               export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+        fi
 fi
