@@ -648,6 +648,7 @@
     "n r" '(:ignore t :which-key "roam")
     "g"   '(:ignore t :which-key "git")
     "b"   '(:ignore t :which-key "buffers")
+    "l"   '(:ignore t :which-key "llm")
     "b b" '(consult-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
     "b s" '(save-buffer :which-key "save buffer")
@@ -1314,3 +1315,17 @@ since circe-display passes the plist as a single wrapped list."
   :straight t
   :init
   (global-hl-todo-mode))
+
+(use-package gptel
+  :straight t
+  :general
+  (my/leader-keys
+    "l s" '(gptel-send :which-key "send")
+    "l c" '(gptel :which-key "chat"))
+  :config
+  (setq gptel-backend (gptel-make-ollama "Lenin Ollama"
+			:host "lenin.local:11434"
+			:stream t
+			:models '(qwen2.5-coder:7b)))
+  (gptel-make-gh-copilot "Copilot Individual" :host "api.individual.githubcopilot.com")
+  (gptel-make-gh-copilot "Copilot Business" :host "api.enterprise.githubcopilot.com"))
