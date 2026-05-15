@@ -787,7 +787,8 @@
     save-interprogram-paste-before-kill t
     ;; no Duplicates in the Kill Ring
     kill-do-not-save-duplicates t
-    display-line-numbers-type 'relative)
+    display-line-numbers-type 'relative
+    initial-buffer-choice "~/")
 
   (global-display-line-numbers-mode +1)
 
