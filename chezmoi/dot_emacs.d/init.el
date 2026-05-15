@@ -1321,11 +1321,16 @@ since circe-display passes the plist as a single wrapped list."
   :general
   (my/leader-keys
     "l s" '(gptel-send :which-key "send")
-    "l c" '(gptel :which-key "chat"))
+    "l c" '(gptel :which-key "chat")
+    "l r" '(gptel-rewrite :which-key "rewrite"))
   :config
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+
   (setq gptel-backend (gptel-make-ollama "Lenin Ollama"
 			:host "lenin.local:11434"
 			:stream t
-			:models '(qwen2.5-coder:7b)))
+			:models '(qwen2.5-coder:7b))
+    gptel-model 'qwen2.5-coder:7b)
   (gptel-make-gh-copilot "Copilot Individual" :host "api.individual.githubcopilot.com")
   (gptel-make-gh-copilot "Copilot Business" :host "api.enterprise.githubcopilot.com"))
