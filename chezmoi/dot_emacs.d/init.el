@@ -1337,21 +1337,32 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package gptel
   :straight t
-  :hook (gptel-post-stream . gptel-auto-scroll)
   :general
   (my/leader-keys
     "l s" '(gptel-send :which-key "send")
     "l c" '(gptel :which-key "chat")
+    "l m" '(gptel-menu :which-key "menu")
+    "l a" '(gptel-add :which-key "add buffer to context")
     "l r" '(gptel-rewrite :which-key "rewrite"))
+  (general-define-key
+    :keymaps 'gptel-mode-map
+    "C-c C-c" 'gptel-send)
+  :custom-face
+  ;; do not highlight buffer when adding to context
+  (gptel-context-highlight-face
+    ((t (:background unspecified :foreground unspecified :inherit unspecified))))
   :config
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
   (setq gptel-backend (gptel-make-ollama "Lenin Ollama"
 			:host "lenin.local:11434"
 			:stream t
-			:models '(qwen2.5-coder:7b))
+			:models '(qwen2.5-coder:7b
+                                   deepseek-r1:latest
+                                   deepseek-coder:latest
+                                   codestral:latest))
     gptel-model 'qwen2.5-coder:7b)
-  (gptel-make-gh-copilot "Copilot Individual" :host "api.individual.githubcopilot.com")
+  (gptel-make-gh-copilot "Copilot Individual")
   (gptel-make-gh-copilot "Copilot Business" :host "api.enterprise.githubcopilot.com"))
 
 (use-package git-gutter
