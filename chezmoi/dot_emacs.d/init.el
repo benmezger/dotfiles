@@ -58,12 +58,16 @@
 
 (use-package evil
   :straight t
+  :demand t
   :requires (goto-chg undo-fu)
   :init
   (setq evil-want-keybinding nil
     evil-undo-system 'undo-fu
     evil-insert-state-cursor 'bar
     evil-search-module 'evil)
+  :hook
+  ((evil-insert-state-entry . my/evil-absolute-numbers)
+    (evil-insert-state-exit . my/evil-relative-numbers))
   :config
   (evil-mode)
 
@@ -73,10 +77,7 @@
 
   (defun my/evil-relative-numbers ()
     "Switch to relative line numbers in normal mode."
-    (setq display-line-numbers 'relative))
-
-  (add-hook 'evil-insert-state-entry-hook #'my/evil-absolute-numbers)
-  (add-hook 'evil-insert-state-exit-hook #'my/evil-relative-numbers))
+    (setq display-line-numbers 'relative)))
 
 (use-package evil-collection
   :requires (evil)
@@ -115,6 +116,7 @@
 
 (use-package doom-modeline
   :straight t
+  :hook (after-init . doom-modeline-mode)
   :init
   ;; Disable icons to prevent a crash on macOS ARM64 (GNU Emacs bug#68940).
   ;; During init, nsterm.m's `layoutSublayersOfLayer:' fires `redisplay()'
@@ -126,8 +128,7 @@
     (setq doom-modeline-icon nil))
 
   (setq doom-modeline-irc-stylize #'identity
-    doom-modeline-irc t)
-  (add-hook 'after-init-hook #'doom-modeline-mode))
+    doom-modeline-irc t))
 
 (use-package consult
   :straight t
@@ -646,7 +647,8 @@
 	  ("M-z" . zap-up-to-char))
   :hook
   ((emacs-startup . my/emacs-startup-message)
-    (after-save . executable-make-buffer-file-executable-if-script-p))
+    (after-save . executable-make-buffer-file-executable-if-script-p)
+    (after-init . my/enable-global-modes))
   :general
   (my/leader-keys
     "f D" '(my/delete-current-file :which-key "delete file")
@@ -773,7 +775,6 @@
                      column-number-mode
                      global-display-line-numbers-mode))
       (funcall mode 1)))
-  (add-hook 'after-init-hook #'my/enable-global-modes)
 
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
@@ -1110,6 +1111,12 @@
 
 (use-package circe
   :straight t
+  :demand t
+  :hook
+  ((circe-channel-mode . enable-lui-autopaste)
+    (circe-channel-mode . my/circe-use-default-completion)
+    (circe-query-mode   . my/circe-use-default-completion)
+    (circe-chat-mode    . my/circe-prompt))
   :general
   (my/leader-keys
     "i c" '(my/irc :which-key "connect to irc")
@@ -1129,7 +1136,6 @@
     (my/fetch-password :user "seds" :host "bnc.irccloud.com" :port 6697))
 
   (require 'lui-autopaste)
-  (add-hook 'circe-channel-mode-hook #'enable-lui-autopaste)
 
   ;; consult-completion-in-region is set globally but causes the buffer to
   ;; jump/scroll as the popup resizes with each candidate list.  Use the
@@ -1137,11 +1143,7 @@
   ;; can cycle silently without opening a minibuffer popup.
   (defun my/circe-use-default-completion ()
     (setq-local completion-in-region-function #'completion--in-region))
-  (add-hook 'circe-channel-mode-hook #'my/circe-use-default-completion)
-  (add-hook 'circe-query-mode-hook   #'my/circe-use-default-completion)
 
-  ;; set channel name in prompt
-  (add-hook 'circe-chat-mode-hook #'my/circe-prompt)
   (defun my/circe-prompt ()
     (lui-set-prompt
       (concat (propertize (concat (buffer-name) ">")
@@ -1265,6 +1267,7 @@ since circe-display passes the plist as a single wrapped list."
 (use-package gnus
   :ensure nil
   :defer t
+  :hook (gnus-article-prepare . my/gnus-select-article-window)
   :custom
   (gnus-select-method '(nnimap "fastmail"
                          (nnimap-address "imap.fastmail.com")
@@ -1292,7 +1295,6 @@ since circe-display passes the plist as a single wrapped list."
   (defun my/gnus-select-article-window ()
     "Select the article buffer window."
     (select-window (get-buffer-window gnus-article-buffer)))
-  (add-hook 'gnus-article-prepare-hook #'my/gnus-select-article-window)
   (defun my/gnus-archive-article ()
     "Move the current article to the Fastmail archive."
     (interactive)
@@ -1335,13 +1337,13 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package gptel
   :straight t
+  :hook (gptel-post-stream . gptel-auto-scroll)
   :general
   (my/leader-keys
     "l s" '(gptel-send :which-key "send")
     "l c" '(gptel :which-key "chat")
     "l r" '(gptel-rewrite :which-key "rewrite"))
   :config
-  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
   (setq gptel-backend (gptel-make-ollama "Lenin Ollama"
