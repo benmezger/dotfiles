@@ -1,0 +1,6 @@
+* TODO %?
+:LOGBOOK:
+- State "TODO"    from              %U
+:END:
+ %i
+  %a

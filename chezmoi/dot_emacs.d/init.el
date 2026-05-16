@@ -442,7 +442,10 @@
          ("r" "Register new book" entry (file+olp "~/workspace/org/refs/notes.org.gpg" "Books")
            (file ,(concat capture-dir "new-book.capture")))
          ("d" "Decision note" entry (file "~/workspace/org/refs/decisions.org.gpg")
-           (file ,(concat capture-dir "decision.capture"))))))
+           (file ,(concat capture-dir "decision.capture")))
+         ("w" "Work TODO" entry (file+olp "~/workspace/org/work/ah.org.gpg" "Tasks")
+           (file ,(concat capture-dir "work-todo.capture"))))))
+
 
   (defun my/org-insert-link-dwim ()
     "Like `org-insert-link' but with personal dwim preferences."
