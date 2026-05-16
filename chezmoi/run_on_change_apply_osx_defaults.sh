@@ -37,6 +37,9 @@ defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 # Quit printer app once jobs are complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+# Enable crash logs in ~/Library/Logs/DiagnosticReports
+defaults write com.apple.CrashReporter UseUNC -bool true
+
 ## Keyboard
 
 # Set key repeat rate (lower = faster; default: 6)
@@ -152,6 +155,36 @@ defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # Install system data files & security updates automatically
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+## Display
+
+# Displays have separate Spaces (for multiple monitors)
+defaults write com.apple.spaces spans-displays -bool false
+
+# Switch to Space with open windows when cmd-tabbing
+defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool true
+
+## Security
+
+# Firewall on
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+## Disk Utility
+
+# Show all devices (not just volumes)
+defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
+
+## Siri
+
+# Disable Siri
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.Siri UserHasDeclinedEnable -bool true
+
+## Game Center
+
+# Disable Game Center
+defaults write com.apple.gamed Disabled -bool true
 
 ## Restart apps
 
