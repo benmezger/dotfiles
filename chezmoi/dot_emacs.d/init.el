@@ -367,7 +367,7 @@
   (org-return-follows-link t)
   (org-agenda-inhibit-startup t)
   (org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
-  (org-todo-keywords '((sequence "TODO(t!)" "CURRENT(u!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
+  (org-todo-keywords '((sequence "CURRENT(u!)" "TODO(t!)" "WAIT(w@/!)" "NEXT(n!)" "PROJ(o!)" "|")
                         (sequence "READ(!)")
                         (sequence "|" "DONE(d!)" "CANCELED(c!)")))
   (org-todo-keyword-faces '(("CURRENT"  . "orange")
