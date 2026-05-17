@@ -792,6 +792,7 @@
     ;; no Duplicates in the Kill Ring
     kill-do-not-save-duplicates t
     display-line-numbers-type 'relative
+    display-line-numbers-current-absolute nil
     initial-buffer-choice "~/workspace")
 
   (global-display-line-numbers-mode +1)
