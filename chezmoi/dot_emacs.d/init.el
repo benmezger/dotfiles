@@ -1364,7 +1364,7 @@ since circe-display passes the plist as a single wrapped list."
                                    codestral:latest))
     gptel-model 'qwen2.5-coder:7b)
   (gptel-make-gh-copilot "Copilot Individual")
-  (gptel-make-gh-copilot "Copilot Business" :host "api.enterprise.githubcopilot.com"))
+  (gptel-make-gh-copilot "Copilot Business" :host "api.business.githubcopilot.com"))
 
 (use-package git-gutter
   :straight t
