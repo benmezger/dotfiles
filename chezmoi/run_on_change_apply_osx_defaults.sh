@@ -11,6 +11,9 @@ osascript -e 'tell application "System Preferences" to quit' 2>/dev/null || true
 
 ## General
 
+# Disable boot sound
+sudo nvram StartupMute=%01
+
 # Allow copy/paste across apps without delay (reduces clipboard latency)
 defaults write org.nspasteboard.ConcealedType NSAllowsCoercion -bool true
 
@@ -104,6 +107,9 @@ defaults write com.apple.screencapture target -string "clipboard"
 
 # Disable screenshot sound
 defaults write com.apple.screencapture playHUDAnimation -bool false
+
+# Disable Finder sounds
+defaults write com.apple.finder FinderSounds -boolean false
 
 ## Dock
 
