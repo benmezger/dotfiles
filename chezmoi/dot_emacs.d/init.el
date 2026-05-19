@@ -648,7 +648,8 @@
   :hook
   ((emacs-startup . my/emacs-startup-message)
     (after-save . executable-make-buffer-file-executable-if-script-p)
-    (after-init . my/enable-global-modes))
+    (after-init . my/enable-global-modes)
+    (find-file . my/disable-backup-for-gpg))
   :general
   (my/leader-keys
     "f D" '(my/delete-current-file :which-key "delete file")
@@ -779,6 +780,12 @@
   ;; for emacs lock files
   (make-directory "~/.emacs.d/locks" t)
   (make-directory (expand-file-name "saves/auto-saves/" user-emacs-directory) t)
+
+  (defun my/disable-backup-for-gpg ()
+    (when (and buffer-file-name (string-match-p "\\.gpg\\'" buffer-file-name))
+      (setq-local make-backup-files nil)
+      (setq-local auto-save-default nil)
+      (setq-local create-lockfiles nil)))
 
   (setq read-process-output-max (* 4 1024 1024) ; 4MB
     inhibit-compacting-font-caches t
