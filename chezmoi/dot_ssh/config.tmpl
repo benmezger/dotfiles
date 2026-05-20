@@ -2,6 +2,13 @@
 {{ onepasswordRead (join "/" (list .onepassword.ssh "config")) }}
 {{- end -}}
 
+{{- if .workconf -}}
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+{{- end }}
+
 Host *
     AddKeysToAgent yes
     ForwardAgent yes
