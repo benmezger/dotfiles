@@ -23,3 +23,8 @@ if (( $+commands[direnv] )); then
 	# auto-reload. For that, we need to run `direnv reload` manually or `cd .`.
 	precmd_functions=(${precmd_functions:#_direnv_hook})
 fi
+
+if (( $+commands[terraform] )); then
+    autoload -U +X bashcompinit && bashcompinit
+    complete -o nospace -C terraform terraform
+fi
