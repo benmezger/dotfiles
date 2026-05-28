@@ -30,6 +30,26 @@ fi
 # Source your static plugins file.
 source ${zsh_plugins}.zsh
 
+# initialize completion
+# zsh-defer defers compinit until after the first prompt, removing it from
+# startup time. Run full compinit if the dump is >168h (weekly) old OR if any
+# completion file in fpath is newer than the dump (e.g. after package update).
+# compaudit is stubbed: it checks for world-writable fpath dirs, unnecessary
+# on a personal machine and costs ~13ms. Delete ~/.zcompdump to force rebuild.
+_compinit_maybe_refresh() {
+  setopt local_options extendedglob
+  local dump=~/.zcompdump
+  local newest_completion=()
+  [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
+  if [[ -n ${dump}(#qN.mh+168) ]] || \
+     [[ -n $newest_completion && $newest_completion -nt $dump ]]; then
+    compinit -d $dump
+  else
+    compinit -C -d $dump
+  fi
+}
+zsh-defer _compinit_maybe_refresh
+
 source $HOME/.zsh/evals.zsh
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/stack.zsh
@@ -54,26 +74,6 @@ if [[ "$ZPROF" = true ]]; then
         }
         add-zsh-hook zshexit exit_hook
 fi
-
-# initialize completion
-# zsh-defer defers compinit until after the first prompt, removing it from
-# startup time. Run full compinit if the dump is >168h (weekly) old OR if any
-# completion file in fpath is newer than the dump (e.g. after package update).
-# compaudit is stubbed: it checks for world-writable fpath dirs, unnecessary
-# on a personal machine and costs ~13ms. Delete ~/.zcompdump to force rebuild.
-_compinit_maybe_refresh() {
-  setopt local_options extendedglob
-  local dump=~/.zcompdump
-  local newest_completion=()
-  [[ -d $ZSH_SITE_FUNCTIONS ]] && newest_completion=($ZSH_SITE_FUNCTIONS/*(#qN.Om[1]))
-  if [[ -n ${dump}(#qN.mh+168) ]] || \
-     [[ -n $newest_completion && $newest_completion -nt $dump ]]; then
-    compinit -d $dump
-  else
-    compinit -C -d $dump
-  fi
-}
-zsh-defer _compinit_maybe_refresh
 
 # enable approximate matches for completion
 zstyle ':completion:*' completer _expand _complete _approximate

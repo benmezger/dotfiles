@@ -25,6 +25,6 @@ if (( $+commands[direnv] )); then
 fi
 
 if (( $+commands[terraform] )); then
-    autoload -U +X bashcompinit && bashcompinit
-    complete -o nospace -C terraform terraform
+	zsh-defer -c 'autoload -U +X bashcompinit && bashcompinit && complete -o nospace -C terraform terraform'
 fi
+
