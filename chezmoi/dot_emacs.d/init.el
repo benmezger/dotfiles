@@ -428,6 +428,22 @@
     (interactive)
     (my/org-find-file "work/ah.org.gpg"))
 
+  (defun my/org-attach-encrypt-last (&rest _)
+    "Encrypt attachments in the current entry's attach dir using GPG."
+    (let ((dir (org-attach-dir)))
+      (when dir
+	(dolist (file (directory-files dir t ".*" t))
+          (when (and (file-regular-p file)
+                  (not (string-suffix-p ".gpg" file)))
+            (shell-command
+              (format "gpg --batch --yes --armor --encrypt --recipient %s --output %s %s"
+                (shell-quote-argument user-encryption-key)
+                (shell-quote-argument (concat file ".gpg"))
+                (shell-quote-argument file)))
+            (delete-file file))))))
+
+  (add-hook 'org-attach-after-change-hook #'my/org-attach-encrypt-last)
+
   (let ((capture-dir (concat user-emacs-directory "org-captures/")))
     (setq org-capture-templates
       `(("c" "Code" entry (file ,(concat org-directory "refs/code.org"))
