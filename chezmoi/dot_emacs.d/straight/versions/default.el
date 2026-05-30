@@ -69,6 +69,7 @@
  ("org-journal" . "6460f6f2b0835b4b8aa87d5fdf40cac7deb319f5")
  ("org-roam" . "903bd4ec56d29247990d005ed9052c201e18b812")
  ("org-roam-ui" . "2894dcbf56d2eca8d3cae2b1ae183f51724b5db6")
+ ("orgit" . "d705d5cf7841d157c558cab0ae62af43c87f8224")
  ("osx-lib" . "7afdb57edd5725e8a66f841a90fa571a4cbb81e7")
  ("ox-hugo" . "b7dc44dc28911b9d8e3055a18deac16c3b560b03")
  ("pkgbuild-mode" . "aadf3d1d19c5eb9b52c15c5b73b1a46faac5b7d5")

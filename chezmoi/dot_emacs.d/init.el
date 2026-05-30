@@ -481,6 +481,9 @@
   :straight t
   :after org)
 
+(use-package orgit
+  :straight t)
+
 (use-package org-roam
   :straight t
   :hook (org-mode . org-roam-db-autosync-mode)
