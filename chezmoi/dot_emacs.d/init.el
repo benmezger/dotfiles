@@ -566,6 +566,7 @@
   :straight t
   :after org
   :custom
+  (org-hugo-default-static-subdirectory-for-externals "files")
   (org-hugo-external-file-extensions-allowed-for-copying
     '("jpg" "jpeg" "tiff" "png" "svg" "gif"
        "mp4" "pdf" "odt" "doc" "ppt" "xls"
