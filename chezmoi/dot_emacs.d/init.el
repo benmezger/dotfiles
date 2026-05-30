@@ -474,6 +474,9 @@
                                  'title))))))))
         (t (call-interactively 'org-insert-link))))))
 
+(use-package gnuplot
+  :straight t)
+
 (use-package ob-go
   :straight t
   :after org)
