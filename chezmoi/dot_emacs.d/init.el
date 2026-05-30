@@ -359,6 +359,7 @@
   :hook (org-mode . auto-fill-mode)
   :requires general
   :custom
+  (org-attach-use-inheritance t)
   (org-log-done 'time)
   (org-clock-persist 'history)
   (org-archive-location ".archives/archived_%s::")
