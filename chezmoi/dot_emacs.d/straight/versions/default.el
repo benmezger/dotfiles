@@ -60,7 +60,7 @@
  ("map" . "d0aac540461a2ed0e6f9e83de68a819d1a0db8c1")
  ("marginalia" . "feb66c02bbd88dba867cdd92b94fe24279ed578a")
  ("markdown-mode" . "1f72cefa6a4b759f90e335e4908725a721b17ad9")
- ("melpa" . "1ef16a62b192dc63d39c1596f2ac5e375679883d")
+ ("melpa" . "1d888e12b1c4002896723b3c993a72bf920ef37b")
  ("nerd-icons.el" . "d33d12f5dcb6bf2fb23c3f75df5de85beb4afd95")
  ("nongnu-elpa" . "9a138bb309154f4595bd11b6e12cd2d56d99dc49")
  ("ob-go" . "c6c7c811fba278924888010ac1fa555297fe760a")
