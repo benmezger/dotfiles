@@ -953,7 +953,10 @@
 	      (title (string-join (mapcar #'capitalize
                                     (split-string spaced "[^[:word:]0-9]+"))
 		       " ")))
-        (insert "#+TITLE: " (read-string "Title: " title) "\n"
+	(insert ":PROPERTIES:\n"
+          ":ID: " (org-id-new) "\n"
+          ":END:\n"
+          "#+TITLE: " (read-string "Title: " title) "\n"
           "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
           "#+AUTHOR: " (user-full-name) "\n"
           "#+EMAIL: " user-mail-address "\n"
