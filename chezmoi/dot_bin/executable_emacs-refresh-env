@@ -2,9 +2,29 @@
 # Regenerate the Emacs shell env snapshot. Run after changing .zshenv or .zshrc.
 set -euo pipefail
 
-env_file="${XDG_CONFIG_HOME:-$HOME/.config}/emacs/env"
 emacs_d="$HOME/.emacs.d"
 out="${emacs_d}/env"
 
-zsh -ic env | grep -v '^_=' | sort >"$out"
+# Vars to omit from the Emacs env snapshot (shell bookkeeping, etc.).
+exclude=(
+  _
+  SHLVL
+  PWD
+  OLDPWD
+  DIRENV_DIFF
+  DIRENV_DIR
+  DIRENV_FILE
+  DIRENV_WATCHES
+  EDITOR
+  VISUAL
+  LS_COLORS
+  ALACRITTY_LOG
+)
+
+pattern="^(${(j:|:)exclude})="
+# Drop excluded vars and tmux/terminal garbage (e.g. leaked \033Ptmux;…ALACRITTY_LOG=…).
+zsh -ic env </dev/null |
+  grep -E '^[A-Za-z_][A-Za-z0-9_]*=' |
+  grep -Ev "$pattern" |
+  sort >"$out"
 echo "Wrote $(wc -l <"$out" | tr -d ' ') vars to $out"
