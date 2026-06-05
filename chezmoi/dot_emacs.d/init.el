@@ -398,7 +398,10 @@
     'org-babel-load-languages
     '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
 
-  (setq org-agenda-files (list org-directory)
+  (setq org-agenda-files
+    (list (concat org-directory "work/ah.org.gpg")
+      (concat org-directory "refs/todos.org.gpg")
+      (concat org-directory "refs/notes.org.gpg"))
     bibtex-completion-bibliography (concat org-directory "/bibliography.bib")
     org-id-locations-file (concat org-directory "/.orgid")
     ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
