@@ -1,6 +1,6 @@
 ## aliases
 
-source $HOME/.zsh/git_aliases.zsh 
+source $HOME/.zsh/git_aliases.zsh
 
 alias init-completion="rm -f $HOME/.zcompdump; compinit"
 alias dotfiles="cd $DOTFILES"
@@ -118,6 +118,7 @@ if (( $+commands[ledger] )); then
 fi
 
 # desktop
+alias resurrect-lenin-from-router="ssh benmezger@gt-ax11000-pro-58e0 'ether-wake -i br0 e8:9c:25:38:4e:a0'"
 alias resurrect-lenin="wakeonlan e8:9c:25:38:4e:a0"
 alias unlock-lenin="ssh -t grub 'cryptsetup-askpass'"
 alias lenin="ssh lenin"
