@@ -120,7 +120,7 @@ fi
 # desktop
 alias resurrect-lenin-from-router="ssh benmezger@gt-ax11000-pro-58e0 'ether-wake -i br0 e8:9c:25:38:4e:a0'"
 alias resurrect-lenin="wakeonlan e8:9c:25:38:4e:a0"
-alias unlock-lenin="ssh -t grub 'cryptsetup-askpass'"
+alias unlock-lenin="ssh grub"
 alias lenin="ssh lenin"
 
 alias export-cv="emacsclient --eval '
@@ -140,3 +140,57 @@ alias export-cv="emacsclient --eval '
 
 alias lower='tr "[:upper:]" "[:lower:]"'
 alias upper='tr "[:lower:]" "[:upper:]"'
+
+
+boot-lenin-remote() {
+  local machine_ip="192.168.50.2"
+  local router_ip="gt-ax11000-pro-58e0"
+
+  echo "Waking up machine..."
+  ssh benmezger@"$router_ip" 'ether-wake -i br0 e8:9c:25:38:4e:a0' || return 1
+
+  echo "Waiting for machine to be up..."
+  until ssh benmezger@"$router_ip" "ping -c1 -W1 $machine_ip" &>/dev/null;
+  do
+    echo "Not up yet, retrying..."
+    sleep 5
+  done
+
+  echo "SSHing into for luks crypt..."
+  ssh -A -t benmezger@"$router_ip" \
+      "ssh root@$machine_ip"
+
+  echo "Waiting for machine's sshd..."
+  until ssh -o ConnectTimeout=5 -o BatchMode=yes seds@lenin echo ok 2>/dev/null;
+  do
+    echo "Not up yet..."
+    sleep 5
+  done
+  echo "Machine is up"
+}
+
+boot-lenin-local() {
+  local machine_ip="192.168.50.2"
+  local router_ip="192.168.50.1"
+
+  ssh benmezger@"$router_ip" 'ether-wake -i br0 e8:9c:25:38:4e:a0' || return 1
+
+  echo "Waiting for machine to be up..."
+  until ssh benmezger@"$router_ip" "ping -c1 -W1 $machine_ip" &>/dev/null;
+  do
+    echo "Not up yet, retrying..."
+    sleep 5
+  done
+
+  echo "SSHing into for luks crypt..."
+  ssh -A -t benmezger@"$router_ip" \
+      "ssh root@$machine_ip"
+
+  echo "Waiting for machine's sshd..."
+  until ssh -o ConnectTimeout=5 -o BatchMode=yes seds@"$machine_ip" echo ok 2>/dev/null;
+  do
+    echo "Not up yet..."
+    sleep 5
+  done
+  echo "Machine is up"
+}
