@@ -1,8 +1,35 @@
-{{- if .secrets -}}
-{{ onepasswordRead (join "/" (list .onepassword.ssh "config")) }}
-{{- end -}}
+# from local
+Host router-local
+    User benmezger
+    Hostname 192.168.50.1
 
-{{- if .workconf -}}
+# from tailscale
+Host router-ts
+    User benmezger
+    Hostname gt-ax11000-pro-58e0
+
+# from local
+Host lenin-local
+    User seds
+    Hostname 192.168.50.2
+
+# from tailscale
+Host lenin-ts
+    User seds
+    Hostname lenin
+
+# from tailscale
+Host lenin-initramfs-ts
+    HostName 192.168.50.2
+    User root
+    ProxyJump router-ts
+
+# from local
+Host lenin-initramfs-local
+    HostName 192.168.50.2
+    User root
+
+{{ if .workconf -}}
 Host github.com
     Hostname ssh.github.com
     Port 443
