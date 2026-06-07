@@ -1335,6 +1335,7 @@ since circe-display passes the plist as a single wrapped list."
   :config
   (setq deft-extensions '("txt" "tex" "org")
     deft-directory org-directory
+    deft-ignore-file-regexp "/\\.venv/"
     deft-recursive t
     deft-use-filename-as-title t))
 
