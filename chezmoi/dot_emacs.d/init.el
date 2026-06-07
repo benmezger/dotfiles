@@ -642,7 +642,8 @@
   (dolist (proj '("~/workspace/dotfiles/"
                    "~/workspace/terraform/"
                    "~/workspace/blog/"
-                   "~/workspace/org/"))
+                   "~/workspace/org/"
+                   "~/workspace/org/refs/"))
     (project-remember-project (list 'vc 'Git proj)))
 
   (defun my/project-remember-current ()
