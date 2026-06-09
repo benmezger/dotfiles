@@ -944,8 +944,16 @@
   :config
   (auto-insert-mode 1)
   (setq auto-insert-alist nil)
+  (defun my/org-journal-file-p ()
+    "Return t if the current buffer is under `org-journal-dir'."
+    (and buffer-file-name org-journal-dir
+      (string-prefix-p
+        (file-name-as-directory (expand-file-name org-journal-dir))
+        (expand-file-name buffer-file-name))))
+
   (defun my/org-auto-insert ()
-    (unless (or (string-match-p "/archived_" buffer-file-name)
+    (unless (or (not (my/org-journal-file-p))
+	      (string-match-p "/archived_" buffer-file-name)
 	      (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
       (let* ((base (file-name-base buffer-file-name))
 	      (spaced (let (case-fold-search)
