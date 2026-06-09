@@ -1403,3 +1403,6 @@ since circe-display passes the plist as a single wrapped list."
     '(git-gutter:added-sign "+")
     '(git-gutter:deleted-sign "-"))
   )
+
+(use-package verb
+  :straight t)
