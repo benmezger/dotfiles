@@ -1413,4 +1413,9 @@ since circe-display passes the plist as a single wrapped list."
   )
 
 (use-package verb
-  :straight t)
+  :straight t
+  :config
+  (setq verb-babel-timeout 60)
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((verb . t)))))
