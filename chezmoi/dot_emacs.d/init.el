@@ -1418,4 +1418,4 @@ since circe-display passes the plist as a single wrapped list."
   (setq verb-babel-timeout 60)
   (org-babel-do-load-languages
     'org-babel-load-languages
-    '((verb . t)))))
+    '((verb . t))))
