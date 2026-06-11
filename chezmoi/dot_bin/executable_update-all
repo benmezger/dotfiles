@@ -16,6 +16,8 @@ emacs --batch \
     --eval "(straight-rebuild-all)" \
     --eval "(straight-freeze-versions)"
 
+find ~/.emacs.d -name "*.elc" -path "*/org/*" -delete
+
 echo "Native-compiling Emacs packages"
 emacs --batch \
     --eval "(when (fboundp 'native-compile-async)
