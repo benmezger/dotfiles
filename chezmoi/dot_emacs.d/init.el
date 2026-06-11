@@ -742,6 +742,10 @@
         (float-time (time-subtract after-init-time before-init-time)))
       gcs-done))
 
+  ;; disable CMD-T if on osx, which opens the menu-set-font
+  (when (eq system-type 'darwin)
+    (global-set-key (kbd "s-t") #'ignore))
+
   (defun my/open-dotfiles ()
     "Open dotfiles directory in dired."
     (interactive) (dired "~/workspace/dotfiles/"))
