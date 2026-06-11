@@ -12,7 +12,7 @@
 ;; Suppress GC and file-handler regexp checks during startup; both are
 ;; restored to their runtime values by the emacs-startup hook in init.el.
 (setq gc-cons-threshold most-positive-fixnum
-      gc-cons-percentage 1.0)
+  gc-cons-percentage 1.0)
 (defvar my/file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 
@@ -24,7 +24,7 @@
     (dolist (line (split-string (with-temp-buffer
                                   (insert-file-contents env-file)
                                   (buffer-string))
-                                "\n" t))
+                    "\n" t))
       (when (string-match "^\\([^=\n]+\\)=\\(.*\\)$" line)
         (setenv (match-string 1 line) (match-string 2 line))))
     (when-let* ((path (getenv "PATH")))
@@ -32,18 +32,19 @@
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
+	(expand-file-name
+          "straight/repos/straight.el/bootstrap.el"
+          (or (bound-and-true-p straight-base-dir)
             user-emacs-directory)))
-      (bootstrap-version 7))
+       (bootstrap-version 7))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
+      (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
 ;; https://github.com/radian-software/straight.el#the-wrong-version-of-my-package-was-loaded
 (straight-use-package 'org)
