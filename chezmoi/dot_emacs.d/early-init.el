@@ -45,3 +45,5 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+;; https://github.com/radian-software/straight.el#the-wrong-version-of-my-package-was-loaded
+(straight-use-package 'org)
