@@ -91,7 +91,7 @@
                            gnus xref flymake python
                            elisp-mode epa yaml-mode
                            markdown-mode docker sh-script
-                           go-mode message))
+                           go-mode message org-agenda))
   ;; isearch C-w default yanks from buffer; delete last word instead (vim behaviour)
   (defun my/isearch-delete-word ()
     "Delete the last word from the isearch string."
