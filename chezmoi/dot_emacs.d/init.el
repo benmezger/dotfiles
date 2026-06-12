@@ -1372,7 +1372,7 @@ since circe-display passes the plist as a single wrapped list."
   (global-hl-todo-mode))
 
 (use-package gptel
-  :straight t
+  :straight (:host github :repo "karthink/gptel" :nonrecursive t)
   :general
   (my/leader-keys
     "l s" '(gptel-send :which-key "send")
