@@ -407,6 +407,16 @@
     ob-async-no-async-languages-alist '("gnuplot" "mermaid"))
   (setq-default org-catch-invisible-edits 'smart)
 
+  (setq org-agenda-custom-commands
+    '(("w" "Work" alltodo "work"
+        ((org-agenda-files (list (concat org-directory "work/ah.org.gpg")))
+          (org-agenda-sorting-strategy '(priority-up effort-down)))
+	("work.html"))
+       ("p" "Personal" alltodo "personal"
+         ((org-agenda-files (list (concat org-directory "refs/todos.org.gpg")))
+           (org-agenda-sorting-strategy '(priority-up effort-down)))
+	 ("todos.html"))))
+
   (defun my/org-ret ()
     "Follow link at point or fall back to `evil-ret'."
     (interactive)
