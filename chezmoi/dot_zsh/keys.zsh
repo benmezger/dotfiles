@@ -1,4 +1,11 @@
 bindkey -v
+
+# vi mode mishandles bracketed-paste ESC/~ sequences; last char gets swapcased
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+bindkey -M viins '^[[200~' bracketed-paste
+bindkey -M vicmd '^[[200~' bracketed-paste
+
 bindkey '\ew' kill-region
 bindkey -s '\el' "ls\n"
 bindkey "^[[5~" up-line-or-history
