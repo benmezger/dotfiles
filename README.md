@@ -60,16 +60,6 @@ Run `chezmoi init <dotfiles-path>` again. This will reload the
 configuration by regenerating [chezmoi.yaml](.chezmoi.yaml.tmpl) in
 `$HOME/.config/chezmoi/chezmoi.yaml`.
 
-### Sourcing environment variables with i3
-
-For some reason, i3 sources `.xprofile` instead of `.xinitrc`. To get
-the GitHub plugin for [i3status-rust](dot_config/i3/status.toml) to
-work, you need to set a variable in your `.xprofile`:
-
-```shell
-export I3RS_GITHUB_TOKEN="your-github-token"
-```
-
 ## Screenshots
 
 ### macOS
