@@ -4,11 +4,6 @@
 {{- $workconf := false -}}
 {{- $laptop_mode := false -}}
 
-{{- if (env "CI") -}}
-{{- $headless = true -}}
-{{- $secrets = false -}}
-{{- end -}}
-
 {{- if (env "SECRETS_OFF") -}}
 {{- $secrets = false -}}
 {{- end -}}
