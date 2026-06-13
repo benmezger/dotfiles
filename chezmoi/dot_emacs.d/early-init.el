@@ -48,3 +48,25 @@
 
 ;; https://github.com/radian-software/straight.el#the-wrong-version-of-my-package-was-loaded
 (straight-use-package 'org)
+
+;; straight.el uses interactive popups for dirty repos and merge conflicts.
+;; In batch mode (update-all), reset automatically instead of prompting.
+(when noninteractive
+  (with-eval-after-load 'straight
+    (setq straight-log-messages t)
+    (defun my/straight-batch-ensure-worktree (local-repo)
+      (let ((status (let ((straight--process-trim nil))
+                      (straight--process-output
+                       "git" "-c" "status.branch=false"
+                       "status" "--short"))))
+        (unless (string-empty-p status)
+          (message "straight batch: resetting dirty worktree in %s"
+                   local-repo)
+          (straight--process-output "git" "reset" "--hard")
+          (straight--process-output "git" "clean" "-ffd")
+          (ignore-errors
+            (straight--process-output
+             "git" "submodule" "update" "--init" "--recursive")))
+        t))
+    (advice-add 'straight-vc-git--ensure-worktree
+                :override #'my/straight-batch-ensure-worktree)))
