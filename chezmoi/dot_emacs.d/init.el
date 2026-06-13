@@ -1459,3 +1459,8 @@ since circe-display passes the plist as a single wrapped list."
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((verb . t))))
+
+(use-package vc
+  :ensure nil
+  :custom
+  (vc-follow-symlinks t))
