@@ -39,6 +39,16 @@ Host lenin-initramfs-local
     HostName 192.168.50.2
     User root
 
+# from tailscale
+Host macbook-ts
+    HostName bens-macbook-pro
+    User seds
+
+# from local
+Host macbook-local
+    HostName 192.168.50.4
+    User seds
+
 {{ if .workconf -}}
 Host github.com
     Hostname ssh.github.com
