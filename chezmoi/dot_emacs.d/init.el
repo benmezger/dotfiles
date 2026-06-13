@@ -145,6 +145,8 @@
     "s p" '(consult-ripgrep :which-key "rg project")
     "s b" '(consult-line :which-key "find in buffer")
     "s d" '(my/consult-rg-directory :which-key "rg directory")
+    "s w"   '(:ignore t :which-key "web")
+    "s w k" '(my/consult-web-kagi :which-key "kagi search")
     "s i" '(consult-imenu :which-key "imenu")
     "s a" '(xref-find-apropos :which-key "apropos symbols")
     "p g" '(consult-ripgrep :which-key "grep files")
@@ -159,6 +161,30 @@
     "Run consult-ripgrep from the current directory."
     (interactive)
     (consult-ripgrep default-directory nil))
+
+  (defvar consult-kagi-history nil
+    "History for `my/consult-web-kagi'.")
+
+  (defun my/consult-web-kagi ()
+    (interactive)
+    (let ((query
+            (consult--read
+              (consult--dynamic-collection
+		(lambda (input)
+		  (if (string-empty-p input)
+                    (or consult-kagi-history nil)
+                    (consult--remove-dups
+                      (cons input (or consult-kagi-history nil)))))
+		:min-input 0)
+              :prompt "Kagi: "
+              :history 'consult-kagi-history
+              :preview-key nil
+              :sort nil)))
+      (when (and query (not (string-empty-p query)))
+        (browse-url
+          (format "https://kagi.com/search?q=%s"
+            (url-hexify-string (consult--tofu-strip query)))))))
+
   (consult-customize
     consult-ripgrep consult-grep consult-git-grep consult-man
     consult-buffer consult-project-buffer consult-recent-file
