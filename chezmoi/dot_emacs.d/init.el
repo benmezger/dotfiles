@@ -384,6 +384,8 @@
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
   (setq org-directory (expand-file-name "~/workspace/org/"))
+  ;; org-journal is deferred via :general; autoinsert needs this at startup.
+  (setq org-journal-dir (expand-file-name "journal/" org-directory))
   :hook (org-mode . auto-fill-mode)
   :requires general
   :custom
@@ -994,33 +996,34 @@
         (expand-file-name buffer-file-name))))
 
   (defun my/org-auto-insert ()
-    (unless (or (not (my/org-journal-file-p))
-	      (string-match-p "/archived_" buffer-file-name)
-	      (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
+    (unless (or (my/org-journal-file-p)
+                (string-match-p "/archived_" buffer-file-name)
+                (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
+      (require 'org-id)
       (let* ((base (file-name-base buffer-file-name))
-	      (spaced (let (case-fold-search)
+             (spaced (let (case-fold-search)
+                       (replace-regexp-in-string
+                        "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
                         (replace-regexp-in-string
-                          "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
-                          (replace-regexp-in-string
-                            "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
-                            "\\1 \\2" base))))
-	      (title (string-join (mapcar #'capitalize
-                                    (split-string spaced "[^[:word:]0-9]+"))
-		       " ")))
-	(insert ":PROPERTIES:\n"
-          ":ID: " (org-id-new) "\n"
-          ":END:\n"
-          "#+TITLE: " (read-string "Title: " title) "\n"
-          "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
-          "#+AUTHOR: " (user-full-name) "\n"
-          "#+EMAIL: " user-mail-address "\n"
-          "#+DATE: <" (format-time-string "%F %a %R") ">\n\n"
-          "#+HTML_DOCTYPE: xhtml5\n"
-          "#+HTML_HTML5_FANCY:\n\n"
-          "# Hugo config\n"
-          "#+DRAFT: false\n"
-          "#+HUGO_BASE_DIR: ~/workspace/blog\n"
-          "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
+                         "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
+                         "\\1 \\2" base))))
+             (title (string-join (mapcar #'capitalize
+                                         (split-string spaced "[^[:word:]0-9]+"))
+                                 " ")))
+        (insert ":PROPERTIES:\n"
+                ":ID: " (org-id-new) "\n"
+                ":END:\n"
+                "#+TITLE: " (read-string "Title: " title) "\n"
+                "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
+                "#+AUTHOR: " (user-full-name) "\n"
+                "#+EMAIL: " user-mail-address "\n"
+                "#+DATE: <" (format-time-string "%F %a %R") ">\n\n"
+                "#+HTML_DOCTYPE: xhtml5\n"
+                "#+HTML_HTML5_FANCY:\n\n"
+                "# Hugo config\n"
+                "#+DRAFT: false\n"
+                "#+HUGO_BASE_DIR: ~/workspace/blog\n"
+                "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
 
   (define-auto-insert '("\\.org\\(\\.gpg\\)?\\'" . "Org template") #'my/org-auto-insert)
 
