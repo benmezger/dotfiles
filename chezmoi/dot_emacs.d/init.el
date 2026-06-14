@@ -623,7 +623,12 @@
   (org-hugo-external-file-extensions-allowed-for-copying
     '("jpg" "jpeg" "tiff" "png" "svg" "gif"
        "mp4" "pdf" "odt" "doc" "ppt" "xls"
-       "docx" "pptx" "xlsx" "zip")))
+       "docx" "pptx" "xlsx" "zip"))
+  :config
+  (defun my/org-hugo-drop-attach-tag (tag-list _info)
+    "Remove org-attach's ATTACH tag from ox-hugo heading/front matter tags."
+    (cl-remove "ATTACH" tag-list :test #'string=))
+  (add-to-list 'org-hugo-tag-processing-functions #'my/org-hugo-drop-attach-tag))
 
 (use-package org-journal
   :general
