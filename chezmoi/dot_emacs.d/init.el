@@ -152,7 +152,6 @@
     "s i" '(consult-imenu :which-key "imenu")
     "s a" '(xref-find-apropos :which-key "apropos symbols")
     "p g" '(consult-ripgrep :which-key "grep files")
-    "p s" '(my/consult-rg-project :which-key "search project")
     "g g" '(consult-git-grep :which-key "git grep")
     "p b" '(consult-project-buffer :which-key "project buffers"))
   :custom
@@ -252,7 +251,11 @@
   (git-commit-summary-max-length 50)
   :config
   (remove-hook 'server-switch-hook 'magit-commit-diff)
-  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff))
+  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
+  ;; Forge inserts after "o" in magit-dispatch, removed in magit 4.x.
+  ;; Plant a placeholder so forge's transient-insert-suffix can find it.
+  (transient-append-suffix 'magit-dispatch "!"
+    '("o" "" ignore)))
 
 (use-package pyenv-mode
   :straight t
@@ -701,6 +704,7 @@
   (add-to-list 'org-hugo-tag-processing-functions #'my/org-hugo-drop-attach-tag))
 
 (use-package org-journal
+  :after org
   :general
   (my/leader-keys
     "n j"   '(:ignore t :which-key "journal")
@@ -709,7 +713,6 @@
     "n j r" '(org-journal-search :which-key "search ranged journal"))
   :straight t
   :custom
-  (org-journal-dir "~/workspace/org/journal")
   (org-journal-encrypt-journal t)
   (org-journal-file-format "%Y%m%d.org")
   (org-journal-date-format "%A, %m/%d/%Y"))
@@ -753,7 +756,11 @@
 
 (use-package project
   :ensure nil
+  :requires general
   :hook (find-file . my/project-remember-current)
+  :general
+  (my/leader-keys
+    "p s" '(my/consult-rg-project :which-key "search project"))
   :custom
   ;; Treat directories containing these files as sub-project roots, so
   ;; monorepo sub-packages each get their own lsp workspace rather than
@@ -770,7 +777,12 @@
 
   (defun my/project-remember-current ()
     (when-let* ((proj (project-current)))
-      (project-remember-project proj))))
+      (project-remember-project proj)))
+
+  (defun my/consult-rg-project ()
+    "Run consult-ripgrep from the current project root."
+    (interactive)
+    (consult-ripgrep (project-root (project-current t)))))
 
 (use-package emacs
   :ensure nil
@@ -985,11 +997,6 @@
     (interactive)
     (load-file user-init-file)
     (message "init.el reloaded"))
-
-  (defun my/consult-rg-project ()
-    "Run consult-ripgrep from the current project root."
-    (interactive)
-    (consult-ripgrep (project-root (project-current t))))
 
   (defun my/copy-current-file-path ()
     "Copy the current buffer's file path to the kill ring."
@@ -1417,12 +1424,8 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package forge
   :after magit
+  :defer t
   :straight t
-  :init
-  ;; Forge inserts after "o" in magit-dispatch, removed in magit 4.x.
-  ;; Plant a placeholder so forge's transient-insert-suffix can find it.
-  (transient-append-suffix 'magit-dispatch "!"
-    '("o" "" ignore))
   :config
   (transient-remove-suffix 'magit-dispatch "o"))
 
