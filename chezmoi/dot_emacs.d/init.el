@@ -816,6 +816,7 @@
   ((emacs-startup . my/emacs-startup-message)
     (after-save . executable-make-buffer-file-executable-if-script-p)
     (after-init . my/enable-global-modes)
+    (after-init . my/start-emacs-server)
     (find-file . my/disable-backup-for-gpg))
   :general
   (my/leader-keys
@@ -929,6 +930,12 @@
 		   scroll-bar-mode
 		   tool-bar-mode))
     (funcall mode -1))
+
+  (defun my/start-emacs-server ()
+    (unless noninteractive
+      (require 'server)
+      (unless server-process
+        (server-start))))
 
   (defun my/enable-global-modes ()
     "Enable global minor modes after init."
