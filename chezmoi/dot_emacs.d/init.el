@@ -581,7 +581,8 @@
       (dolist (f files)
 	(let ((buf (find-file-noselect f)))
           (with-current-buffer buf
-            (when (my/org-roam-hugo-setupfile-p)
+            (when (and (my/org-roam-hugo-setupfile-p)
+                       (not (my/org-roam-private-p)))
               (org-hugo-export-wim-to-md)))
           (unless (get-buffer-window buf)
             (kill-buffer buf))))))
@@ -590,7 +591,13 @@
     "Return t if the current Org buffer has a Hugo SETUPFILE keyword."
     (save-excursion
       (goto-char (point-min))
-      (re-search-forward "^#\\+SETUPFILE:.*hugo" nil t))))
+      (re-search-forward "^#\\+SETUPFILE:.*hugo" nil t)))
+
+  (defun my/org-roam-private-p ()
+    "Return t if the current Org buffer has #+PRIVATE: t."
+    (save-excursion
+      (goto-char (point-min))
+      (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t))))
 
 (use-package org-roam-ui
   :straight t
