@@ -429,7 +429,13 @@
                     ,(with-temp-buffer
                        (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
                        (buffer-string)))
-          :unnarrowed t))))
+          :unnarrowed t)
+         ("p" "private" plain "%?"
+           :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                     ,(with-temp-buffer
+			(insert-file-contents (concat roam-capture-dir "roam-default-private-head.capture"))
+			(buffer-string)))
+           :unnarrowed t))))
 
   (defun my/org-roam-node-insert-immediate (arg &rest args)
     (interactive "P")
