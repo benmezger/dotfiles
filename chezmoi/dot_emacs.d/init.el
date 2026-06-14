@@ -406,6 +406,80 @@
        > > > "- uses: actions/checkout@v4" \n
        > > > "- name: " _ \n)))
 
+(use-package org-roam
+  :straight t
+  :after org
+  :requires org
+  :commands (org-roam-node-find
+              org-roam-node-insert
+              org-roam-buffer-toggle
+              org-roam-capture
+              org-roam-dailies-goto-today
+              org-roam-dailies-find-date)
+  :hook (org-mode . org-roam-db-autosync-mode)
+  :custom
+  (org-roam-directory (expand-file-name "roam/" org-directory))
+  (org-roam-file-exclude-regexp "journal/\\|\.org\.gpg$")
+  :config
+
+  (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
+    (setq org-roam-capture-templates
+      `(("d" "default" plain "%?"
+          :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
+                    ,(with-temp-buffer
+                       (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
+                       (buffer-string)))
+          :unnarrowed t))))
+
+  (defun my/org-roam-node-insert-immediate (arg &rest args)
+    (interactive "P")
+    (let ((args (cons arg args))
+           (org-roam-capture-templates
+             (list (append (car org-roam-capture-templates)
+                     '(:immediate-finish t)))))
+      (apply #'org-roam-node-insert args)))
+
+  (defun my/org-roam-protocol-focus-advice (orig &rest args)
+    "Focus the Emacs frame when opening an org-roam protocol link."
+    (x-focus-frame nil)
+    (apply orig args))
+  (advice-add 'org-roam-protocol-open-ref :around #'my/org-roam-protocol-focus-advice)
+  (advice-add 'org-roam-protocol-open-file :around #'my/org-roam-protocol-focus-advice)
+
+  (defun my/org-update-org-ids ()
+    "Update all org ids."
+    (interactive)
+    (org-id-update-id-locations
+      (directory-files-recursively
+        org-roam-directory "\\.org$")))
+
+  (defun my/org-roam-export-all ()
+    "Re-exports all Org-roam files to Hugo markdown."
+    (interactive)
+    (require 'ox-extra nil t)
+    (require 'ox-hugo nil t)
+    (let ((files (mapcar #'car (org-roam-db-query [:select [file] :from files]))))
+      (dolist (f files)
+	(let ((buf (find-file-noselect f)))
+          (with-current-buffer buf
+            (when (and (my/org-roam-hugo-setupfile-p)
+                    (not (my/org-roam-private-p)))
+              (org-hugo-export-wim-to-md)))
+          (unless (get-buffer-window buf)
+            (kill-buffer buf))))))
+
+  (defun my/org-roam-hugo-setupfile-p ()
+    "Return t if the current Org buffer has a Hugo SETUPFILE keyword."
+    (save-excursion
+      (goto-char (point-min))
+      (re-search-forward "^#\\+SETUPFILE:.*hugo" nil t)))
+
+  (defun my/org-roam-private-p ()
+    "Return t if the current Org buffer has #+PRIVATE: t."
+    (save-excursion
+      (goto-char (point-min))
+      (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t))))
+
 (use-package org
   :straight t
   :init
@@ -486,9 +560,26 @@
     "n t" '(org-todo-list :which-key "todo list")
     "n v" '(my/org-open-cv :which-key "cv")
     "n w" '(:ignore t :which-key "work")
-    "n w o" '(my/org-open-work-notes :which-key "open work notes"))
+    "n w o" '(my/org-open-work-notes :which-key "open work notes")
+    "n r f" '(org-roam-node-find :which-key "find node")
+    "n r i" '(org-roam-node-insert :which-key "insert node")
+    "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
+    "n r c" '(org-roam-capture :which-key "capture")
+    "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
+    "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
   :config
   (setq org-confirm-babel-evaluate nil)
+
+  (defun my/org-load-extras ()
+    "Load org-related extras on first visit to an Org buffer."
+    (require 'orgit nil t)
+    (require 'ox-extra nil t)
+    (require 'ox-hugo nil t)
+    (require 'verb nil t)
+    (org-babel-do-load-languages 'org-babel-load-languages '((verb . t))))
+  (add-hook 'org-mode-hook #'my/org-load-extras)
+  (my/org-load-extras)
+
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((shell . t) (python . t) (go . t) (gnuplot . t) (C . t)))
@@ -584,94 +675,17 @@
 
 (use-package gnuplot
   :straight t
+  :defer t
   :after org)
 
 (use-package ob-go
   :straight t
+  :defer t
   :after org)
 
 (use-package orgit
   :straight t
-  :after org
-  :defer t
-  :preface
-  (defun my/orgit-load ()
-    (require 'orgit nil t))
-  :init (add-hook 'org-mode-hook #'my/orgit-load))
-
-(use-package org-roam
-  :straight t
-  :after org
-  :requires org
-  :hook (org-mode . org-roam-db-autosync-mode)
-  :general
-  (my/leader-keys
-    "n r f" '(org-roam-node-find :which-key "find node")
-    "n r i" '(org-roam-node-insert :which-key "insert node")
-    "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
-    "n r c" '(org-roam-capture :which-key "capture")
-    "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
-    "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
-  :custom
-  (org-roam-directory (expand-file-name "roam/" org-directory))
-  (org-roam-file-exclude-regexp "journal/\\|\.org\.gpg$")
-  :config
-
-  (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
-    (setq org-roam-capture-templates
-      `(("d" "default" plain "%?"
-          :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org\" (current-time) t)"
-                    ,(with-temp-buffer
-                       (insert-file-contents (concat roam-capture-dir "roam-default-head.capture"))
-                       (buffer-string)))
-          :unnarrowed t))))
-
-  (defun my/org-roam-node-insert-immediate (arg &rest args)
-    (interactive "P")
-    (let ((args (cons arg args))
-           (org-roam-capture-templates
-             (list (append (car org-roam-capture-templates)
-                     '(:immediate-finish t)))))
-      (apply #'org-roam-node-insert args)))
-
-  (defun my/org-roam-protocol-focus-advice (orig &rest args)
-    "Focus the Emacs frame when opening an org-roam protocol link."
-    (x-focus-frame nil)
-    (apply orig args))
-  (advice-add 'org-roam-protocol-open-ref :around #'my/org-roam-protocol-focus-advice)
-  (advice-add 'org-roam-protocol-open-file :around #'my/org-roam-protocol-focus-advice)
-
-  (defun my/org-update-org-ids ()
-    "Update all org ids."
-    (interactive)
-    (org-id-update-id-locations
-      (directory-files-recursively
-        org-roam-directory "\\.org$")))
-
-  (defun my/org-roam-export-all ()
-    "Re-exports all Org-roam files to Hugo markdown."
-    (interactive)
-    (let ((files (mapcar #'car (org-roam-db-query [:select [file] :from files]))))
-      (dolist (f files)
-	(let ((buf (find-file-noselect f)))
-          (with-current-buffer buf
-            (when (and (my/org-roam-hugo-setupfile-p)
-                    (not (my/org-roam-private-p)))
-              (org-hugo-export-wim-to-md)))
-          (unless (get-buffer-window buf)
-            (kill-buffer buf))))))
-
-  (defun my/org-roam-hugo-setupfile-p ()
-    "Return t if the current Org buffer has a Hugo SETUPFILE keyword."
-    (save-excursion
-      (goto-char (point-min))
-      (re-search-forward "^#\\+SETUPFILE:.*hugo" nil t)))
-
-  (defun my/org-roam-private-p ()
-    "Return t if the current Org buffer has #+PRIVATE: t."
-    (save-excursion
-      (goto-char (point-min))
-      (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t))))
+  :defer t)
 
 (use-package org-roam-ui
   :straight t
@@ -684,14 +698,13 @@
   (org-roam-ui-open-on-start nil))
 
 (use-package org-contrib
-  :requires org
-  :after org
   :straight (:host github :repo "emacsmirror/org-contrib")
-  :config (require 'ox-extra))
+  :defer t)
 
 (use-package ox-hugo
   :straight t
-  :after org
+  :defer t
+  :commands (org-hugo-export-to-md org-hugo-export-wdtree-to-md org-hugo-export-wim-to-md)
   :custom
   (org-hugo-default-static-subdirectory-for-externals "files")
   (org-hugo-external-file-extensions-allowed-for-copying
@@ -699,6 +712,7 @@
        "mp4" "pdf" "odt" "doc" "ppt" "xls"
        "docx" "pptx" "xlsx" "zip"))
   :config
+  (require 'ox-extra nil t)
   (defun my/org-hugo-drop-attach-tag (tag-list _info)
     "Remove org-attach's ATTACH tag from ox-hugo heading/front matter tags."
     (cl-remove "ATTACH" tag-list :test #'string=))
@@ -1213,7 +1227,7 @@
 
 (use-package circe
   :straight t
-  :demand t
+  :defer t
   :hook
   ((circe-channel-mode . enable-lui-autopaste)
     (circe-channel-mode . my/circe-use-default-completion)
@@ -1481,11 +1495,9 @@ since circe-display passes the plist as a single wrapped list."
 
 (use-package verb
   :straight t
-  :config
-  (setq verb-babel-timeout 60)
-  (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((verb . t))))
+  :defer t
+  :custom
+  (verb-babel-timeout 60))
 
 
 (use-package vc
