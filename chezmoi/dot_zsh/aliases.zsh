@@ -64,6 +64,7 @@ fi
 if (( $+commands[emacsclient] )); then
     alias e='emacsclient -c -n -a ""'
 fi
+emacs="emacsclient -n -c"
 
 alias grep='grep --color=auto'
 
