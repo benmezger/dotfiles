@@ -151,9 +151,8 @@
     "s w k" '(my/consult-web-kagi :which-key "kagi search")
     "s i" '(consult-imenu :which-key "imenu")
     "s a" '(xref-find-apropos :which-key "apropos symbols")
-    "p g" '(consult-ripgrep :which-key "grep files")
-    "g g" '(consult-git-grep :which-key "git grep")
-    "p b" '(consult-project-buffer :which-key "project buffers"))
+    "b b" '(consult-buffer :which-key "switch buffer")
+    "j b" '(consult-bookmark :which-key "bookmark"))
   :custom
   (consult-async-min-input 0)
   :config
@@ -243,7 +242,9 @@
   :requires general
   :general
   (my/leader-keys
-    "g s" '(magit-status :which-key "git status"))
+    "g s" '(magit-status :which-key "git status")
+    "g g" '(consult-git-grep :which-key "git grep")
+    "d g" '(magit-diff-range :which-key "diff git range"))
   :custom
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (magit-save-repository-buffers nil)
@@ -760,6 +761,12 @@
   :hook (find-file . my/project-remember-current)
   :general
   (my/leader-keys
+    "p p" '(project-switch-project :which-key "switch project")
+    "p f" '(project-find-file :which-key "find file")
+    "p k" '(project-kill-buffers :which-key "kill buffers")
+    "p c" '(project-compile :which-key "compile project")
+    "p g" '(consult-ripgrep :which-key "grep files")
+    "p b" '(consult-project-buffer :which-key "project buffers")
     "p s" '(my/consult-rg-project :which-key "search project"))
   :custom
   ;; Treat directories containing these files as sub-project roots, so
@@ -812,7 +819,6 @@
     "g"   '(:ignore t :which-key "git")
     "b"   '(:ignore t :which-key "buffers")
     "l"   '(:ignore t :which-key "llm")
-    "b b" '(consult-buffer :which-key "switch buffer")
     "b k" '(kill-buffer :which-key "kill buffer")
     "b s" '(save-buffer :which-key "save buffer")
     "b l" '(ibuffer-list-buffers :which-key "list buffers")
@@ -824,10 +830,6 @@
     "w v" '(split-window-right :which-key "split vertical")
     "w k" '(delete-window :which-key "close window")
     "p"   '(:ignore t :which-key "project")
-    "p p" '(project-switch-project :which-key "switch project")
-    "p f" '(project-find-file :which-key "find file")
-    "p k" '(project-kill-buffers :which-key "kill buffers")
-    "p c" '(project-compile :which-key "compile project")
     "t"   '(:ignore t :which-key "toggle")
     "t b" '(my/big-font-mode :which-key "big font")
     "q"   '(:ignore t :which-key "quit")
@@ -843,11 +845,9 @@
     "o n" '(my/open-org :which-key "org")
     "SPC" '(my/find-file :which-key "find file")
     "j"   '(:ignore t :which-key "jump")
-    "j b" '(consult-bookmark :which-key "bookmark")
     "j w" '(webjump :which-key "webjump")
     "d"   '(:ignore t :which-key "diff")
     "d d" '(my/diff-current-buffer :which-key "diff buffer")
-    "d g" '(magit-diff-range :which-key "diff git range")
     "d s" '(diff-buffer-with-file :which-key "diff with file"))
   :custom
   (display-line-numbers-type t)
