@@ -379,6 +379,29 @@
     "Load lsp-pyright for the current buffer."
     (require 'lsp-pyright)))
 
+(use-package autoinsert
+  :custom
+  (auto-insert-query nil)
+  :config
+  (auto-insert-mode 1)
+  (setq auto-insert-alist nil)
+  (define-auto-insert '("\\.github/workflows/.*\\.yml\\'" . "GitHub Actions workflow")
+    '(nil
+       "name: " (skeleton-read "Workflow name: " "CI") \n
+       \n
+       "on:" \n
+       > "push:" \n
+       > > "branches: [main]" \n
+       > "pull_request:" \n
+       > > "branches: [main]" \n
+       \n
+       "jobs:" \n
+       > (skeleton-read "Job name: " "ci") ":" \n
+       > > "runs-on: ubuntu-latest" \n
+       > > "steps:" \n
+       > > > "- uses: actions/checkout@v4" \n
+       > > > "- name: " _ \n)))
+
 (use-package org
   :straight t
   :init
@@ -386,6 +409,44 @@
   (setq org-directory (expand-file-name "~/workspace/org/"))
   ;; org-journal is deferred via :general; autoinsert needs this at startup.
   (setq org-journal-dir (expand-file-name "journal/" org-directory))
+  ;; Org is deferred, but auto-insert runs on find-file-hook before org-mode.
+  ;; Register the .org template here (after autoinsert clears the alist).
+  (defun my/org-journal-file-p ()
+    "Return t if the current buffer is under `org-journal-dir'."
+    (and buffer-file-name org-journal-dir
+      (string-prefix-p
+        (file-name-as-directory (expand-file-name org-journal-dir))
+        (expand-file-name buffer-file-name))))
+  (defun my/org-auto-insert ()
+    (unless (or (my/org-journal-file-p)
+              (string-match-p "/archived_" buffer-file-name)
+              (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
+      (require 'org-id)
+      (let* ((base (file-name-base buffer-file-name))
+              (spaced (let (case-fold-search)
+			(replace-regexp-in-string
+                          "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
+                          (replace-regexp-in-string
+                            "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
+                            "\\1 \\2" base))))
+              (title (string-join (mapcar #'capitalize
+                                    (split-string spaced "[^[:word:]0-9]+"))
+                       " ")))
+        (insert ":PROPERTIES:\n"
+          ":ID: " (org-id-new) "\n"
+          ":END:\n"
+          "#+TITLE: " (read-string "Title: " title) "\n"
+          "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
+          "#+AUTHOR: " (user-full-name) "\n"
+          "#+EMAIL: " user-mail-address "\n"
+          "#+DATE: <" (format-time-string "%F %a %R") ">\n\n"
+          "#+HTML_DOCTYPE: xhtml5\n"
+          "#+HTML_HTML5_FANCY:\n\n"
+          "# Hugo config\n"
+          "#+DRAFT: false\n"
+          "#+HUGO_BASE_DIR: ~/workspace/blog\n"
+          "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
+  (define-auto-insert '("\\.org\\(\\.gpg\\)?\\'" . "Org template") #'my/org-auto-insert)
   :hook (org-mode . auto-fill-mode)
   :requires general
   :custom
@@ -518,17 +579,26 @@
         (t (call-interactively 'org-insert-link))))))
 
 (use-package gnuplot
-  :straight t)
+  :straight t
+  :after org)
 
 (use-package ob-go
   :straight t
   :after org)
 
 (use-package orgit
-  :straight t)
+  :straight t
+  :after org
+  :defer t
+  :preface
+  (defun my/orgit-load ()
+    (require 'orgit nil t))
+  :init (add-hook 'org-mode-hook #'my/orgit-load))
 
 (use-package org-roam
   :straight t
+  :after org
+  :requires org
   :hook (org-mode . org-roam-db-autosync-mode)
   :general
   (my/leader-keys
@@ -582,7 +652,7 @@
 	(let ((buf (find-file-noselect f)))
           (with-current-buffer buf
             (when (and (my/org-roam-hugo-setupfile-p)
-                       (not (my/org-roam-private-p)))
+                    (not (my/org-roam-private-p)))
               (org-hugo-export-wim-to-md)))
           (unless (get-buffer-window buf)
             (kill-buffer buf))))))
@@ -994,85 +1064,6 @@
   :straight t
   :mode "\\.tf\\'")
 
-(use-package autoinsert
-  :custom
-  (auto-insert-query nil)
-  :config
-  (auto-insert-mode 1)
-  (setq auto-insert-alist nil)
-  (defun my/org-journal-file-p ()
-    "Return t if the current buffer is under `org-journal-dir'."
-    (and buffer-file-name org-journal-dir
-      (string-prefix-p
-        (file-name-as-directory (expand-file-name org-journal-dir))
-        (expand-file-name buffer-file-name))))
-
-  (defun my/org-auto-insert ()
-    (unless (or (my/org-journal-file-p)
-                (string-match-p "/archived_" buffer-file-name)
-                (and (fboundp 'org-roam-capture-p) (org-roam-capture-p)))
-      (require 'org-id)
-      (let* ((base (file-name-base buffer-file-name))
-             (spaced (let (case-fold-search)
-                       (replace-regexp-in-string
-                        "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
-                        (replace-regexp-in-string
-                         "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)"
-                         "\\1 \\2" base))))
-             (title (string-join (mapcar #'capitalize
-                                         (split-string spaced "[^[:word:]0-9]+"))
-                                 " ")))
-        (insert ":PROPERTIES:\n"
-                ":ID: " (org-id-new) "\n"
-                ":END:\n"
-                "#+TITLE: " (read-string "Title: " title) "\n"
-                "#+SUBTITLE: " (read-string "Subtitle: " "") "\n"
-                "#+AUTHOR: " (user-full-name) "\n"
-                "#+EMAIL: " user-mail-address "\n"
-                "#+DATE: <" (format-time-string "%F %a %R") ">\n\n"
-                "#+HTML_DOCTYPE: xhtml5\n"
-                "#+HTML_HTML5_FANCY:\n\n"
-                "# Hugo config\n"
-                "#+DRAFT: false\n"
-                "#+HUGO_BASE_DIR: ~/workspace/blog\n"
-                "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
-
-  (define-auto-insert '("\\.org\\(\\.gpg\\)?\\'" . "Org template") #'my/org-auto-insert)
-
-  (defun my/python-file-header ()
-    (insert "# Author: " (user-full-name) " <" user-mail-address ">\n")
-    (insert "# Created at <" (format-time-string "%F %a %R") ">\n")
-    (insert "\n"))
-
-  (define-auto-insert '("\\.py\\'" . "Python template")
-    '(nil (my/python-file-header) _))
-
-  (define-auto-insert '("__main__\\.py\\'" . "Python __main__ template")
-    '(nil
-       (my/python-file-header)
-       \n
-       "def main() -> None:" \n
-       > _ \n
-       > "..." \n
-       "\n\nif __name__ == \"__main__\":\n    main()\n"))
-
-  (define-auto-insert '("\\.github/workflows/.*\\.yml\\'" . "GitHub Actions workflow")
-    '(nil
-       "name: " (skeleton-read "Workflow name: " "CI") \n
-       \n
-       "on:" \n
-       > "push:" \n
-       > > "branches: [main]" \n
-       > "pull_request:" \n
-       > > "branches: [main]" \n
-       \n
-       "jobs:" \n
-       > (skeleton-read "Job name: " "ci") ":" \n
-       > > "runs-on: ubuntu-latest" \n
-       > > "steps:" \n
-       > > > "- uses: actions/checkout@v4" \n
-       > > > "- name: " _ \n)))
-
 (use-package yaml-mode
   :straight t
   :mode ("\\.yaml\\'" "\\.yml\\'"))
@@ -1099,6 +1090,22 @@
 
 (use-package python
   :mode ("\\.py\\'" . python-ts-mode)
+  :init
+  ;; python-ts-mode is deferred, but auto-insert runs on find-file-hook first.
+  (defun my/python-file-header ()
+    (insert "# Author: " (user-full-name) " <" user-mail-address ">\n")
+    (insert "# Created at <" (format-time-string "%F %a %R") ">\n")
+    (insert "\n"))
+  (define-auto-insert '("\\.py\\'" . "Python template")
+    '(nil (my/python-file-header) _))
+  (define-auto-insert '("__main__\\.py\\'" . "Python __main__ template")
+    '(nil
+       (my/python-file-header)
+       \n
+       "def main() -> None:" \n
+       > _ \n
+       > "..." \n
+       "\n\nif __name__ == \"__main__\":\n    main()\n"))
   :hook (python-ts-mode . my/python-maybe-activate-venv)
   :config
   (defun my/python-fmt ()
@@ -1476,6 +1483,7 @@ since circe-display passes the plist as a single wrapped list."
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((verb . t))))
+
 
 (use-package vc
   :ensure nil
