@@ -408,8 +408,6 @@
 
 (use-package org-roam
   :straight t
-  :after org
-  :requires org
   :commands (org-roam-node-find
               org-roam-node-insert
               org-roam-buffer-toggle
