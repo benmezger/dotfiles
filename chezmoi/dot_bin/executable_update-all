@@ -2,7 +2,7 @@
 
 if [[ ${OSTYPE} == darwin* ]]; then
     echo "Updating OSX packages"
-    brew update && brew upgrade && brew cleanup
+    brew update && brew upgrade --no-ask && brew cleanup
 elif [[ -f /etc/arch-release ]]; then
     echo "Updating Arch Linux packages"
     sudo pacman -Syyu --noconfirm
