@@ -896,9 +896,21 @@
         (float-time (time-subtract after-init-time before-init-time)))
       gcs-done))
 
-  ;; disable CMD-T if on osx, which opens the menu-set-font
   (when (eq system-type 'darwin)
-    (global-set-key (kbd "s-t") #'ignore))
+    (defun my/close-frame (&optional arg)
+      "Prompt to save the current buffer, then close this frame."
+      (interactive "P")
+      (let ((buf (current-buffer)))
+        (condition-case nil
+            (progn
+              (save-some-buffers
+               arg (lambda () (eq (current-buffer) buf)))
+              (delete-frame))
+          (quit nil))))
+
+    ;; disable CMD-T if on osx, which opens the menu-set-font
+    (global-set-key (kbd "s-t") #'ignore)
+    (global-set-key (kbd "s-w") #'my/close-frame))
 
   (defun my/open-dotfiles ()
     "Open dotfiles directory in dired."
