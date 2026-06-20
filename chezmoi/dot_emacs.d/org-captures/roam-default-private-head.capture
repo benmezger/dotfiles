@@ -5,6 +5,7 @@
 #+SETUPFILE: ../blog/hugo.setup
 #+HUGO_SLUG: ${slug}
 #+HUGO_TAGS: %^{Hugo tags}
+#+HUGO_CUSTOM_FRONT_MATTER: :summary %^{Hugo summary}
 #+EXPORT_FILE_NAME: exports/%(format-time-string "%Y-%m-%d--%H-%M-%SZ--${slug}" (current-time) t)
 
 - Related pages

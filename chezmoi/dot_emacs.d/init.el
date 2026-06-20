@@ -527,7 +527,8 @@
           "# Hugo config\n"
           "#+DRAFT: false\n"
           "#+HUGO_BASE_DIR: ~/workspace/blog\n"
-          "#+HUGO_AUTO_SET_LASTMOD: t\n\n"))))
+          "#+HUGO_AUTO_SET_LASTMOD: t\n"
+          "#+HUGO_CUSTOM_FRONT_MATTER: :summary " (read-string "Summary: " "") "\n\n"))))
   (define-auto-insert '("\\.org\\(\\.gpg\\)?\\'" . "Org template") #'my/org-auto-insert)
   :hook (org-mode . auto-fill-mode)
   :requires general
