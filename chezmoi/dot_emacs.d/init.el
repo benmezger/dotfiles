@@ -724,7 +724,6 @@
   (add-to-list 'org-hugo-tag-processing-functions #'my/org-hugo-drop-attach-tag))
 
 (use-package org-journal
-  :after org
   :general
   (my/leader-keys
     "n j"   '(:ignore t :which-key "journal")
@@ -902,10 +901,10 @@
       (interactive "P")
       (let ((buf (current-buffer)))
         (condition-case nil
-            (progn
-              (save-some-buffers
-               arg (lambda () (eq (current-buffer) buf)))
-              (delete-frame))
+          (progn
+            (save-some-buffers
+              arg (lambda () (eq (current-buffer) buf)))
+            (delete-frame))
           (quit nil))))
 
     ;; disable CMD-T if on osx, which opens the menu-set-font
