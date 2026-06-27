@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+export GIT_COMMON_DIR
+test -f "$GIT_COMMON_DIR/CHERRY_PICK_HEAD" && exit 0
+
+HOOKS_DIR=$(cd "$(dirname "$0")" && pwd)
+
+for hook in $(git config --get-all hooks.enabled); do
+	script="$HOOKS_DIR/$hook"
+	if [ -f "$script" ]; then
+		if ! "$script"; then
+			exit 1
+		fi
+	fi
+done

@@ -8,6 +8,7 @@
     excludesfile = ~/.gitignore_global
     editor = ~/.bin/editor
     whitespace = trailing-space,space-before-tab
+    hooksPath = ~/.config/git/hooks
 [filter "media"]
     required = true
     clean = git media clean %f
@@ -66,7 +67,7 @@
     showUntrackedFiles = all
 [commit]
     verbose = true
-    template = ~/.gittemplates/commit
+    template = ~/.config/git/templates/commit
     gpgsign = true
 [advice]
     pushNonFastForward = false
@@ -97,7 +98,7 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
 [init]
-    templatedir = ~/.gittemplates
+    templatedir = ~/.config/git/templates
     defaultBranch = main
 [merge "ours"]
     driver = true
@@ -125,7 +126,7 @@
 {{- end -}}
 {{- end }}
 [hooks]
-    enabled = python
+    enabled = check_encrypted_files
 [help]
     autocorrect = 1
 [includeIf "gitdir:~/workspace/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}/"]

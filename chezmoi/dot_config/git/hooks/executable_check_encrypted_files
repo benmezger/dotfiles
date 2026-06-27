@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+FAILED=()
+
+while IFS= read -r file; do
+  [[ -z "$file" ]] && continue
+
+  if ! git show ":$file" 2>/dev/null \
+          | gpg --batch --list-packets 2>/dev/null \
+          | grep -qE 'symkey enc packet|pubkey enc packet|encrypted data packet'; then
+    FAILED+=("$file")
+  fi
+
+done < <(git diff --cached --name-only --diff-filter=ACM \
+             | grep -E '\.(gpg|asc)$')
+
+if [[ ${#FAILED[@]} -gt 0 ]]; then
+  echo ""
+  echo "pre-commit: encryption check failed"
+  echo "   These files do not appear to be GPG-encrypted:"
+  echo ""
+  for f in "${FAILED[@]}"; do
+    echo "   x  $f"
+  done
+  echo ""
+  echo "   Encrypt them, re-stage, and commit again."
+  echo ""
+  exit 1
+fi
+
+exit 0
