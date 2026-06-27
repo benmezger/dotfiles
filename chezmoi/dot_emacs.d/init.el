@@ -1527,3 +1527,11 @@ since circe-display passes the plist as a single wrapped list."
   :ensure nil
   :custom
   (vc-follow-symlinks t))
+
+(use-package winner
+  :ensure nil
+  :bind (("C-c h" . winner-undo)
+	  ("C-c l" . winner-redo))
+  :defer t
+  :config
+  (winner-mode 1))
