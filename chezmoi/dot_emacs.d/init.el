@@ -256,7 +256,8 @@
   ;; Forge inserts after "o" in magit-dispatch, removed in magit 4.x.
   ;; Plant a placeholder so forge's transient-insert-suffix can find it.
   (transient-append-suffix 'magit-dispatch "!"
-    '("o" "" ignore)))
+    '("o" "" ignore))
+  (magit-wip-mode))
 
 (use-package pyenv-mode
   :straight t
