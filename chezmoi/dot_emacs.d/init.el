@@ -244,6 +244,9 @@
   (my/leader-keys
     "g s" '(magit-status :which-key "git status")
     "g g" '(consult-git-grep :which-key "git grep")
+    "g b" '(magit-blame-addition :which-key "git blame buffer")
+    "g w l" '(magit-wip-log :which-key "magit wip log")
+    "g w c" '(magit-wip-commit :which-key "magit wip commit")
     "d g" '(magit-diff-range :which-key "diff git range"))
   :custom
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
@@ -837,6 +840,7 @@
     "n"   '(:ignore t :which-key "org")
     "n r" '(:ignore t :which-key "roam")
     "g"   '(:ignore t :which-key "git")
+    "g w" '(:ignore t :which-key "git wip")
     "b"   '(:ignore t :which-key "buffers")
     "l"   '(:ignore t :which-key "llm")
     "b k" '(kill-buffer :which-key "kill buffer")
