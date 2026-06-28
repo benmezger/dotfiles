@@ -494,12 +494,23 @@
       (goto-char (point-min))
       (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t))))
 
+(use-package org-journal
+  :straight t
+  :after org
+  :commands (org-journal-new-entry
+              org-journal-search
+              org-journal-search-forever)
+  :custom
+  (org-journal-encrypt-journal t)
+  (org-journal-file-format "%Y%m%d.org")
+  (org-journal-date-format "%A, %m/%d/%Y"))
+
 (use-package org
   :straight t
   :init
   ;; Set before org loads so keybindings referencing this variable never see it void.
   (setq org-directory (expand-file-name "~/workspace/org/"))
-  ;; org-journal is deferred via :general; autoinsert needs this at startup.
+  ;; org-journal is deferred; autoinsert needs org-journal-dir at startup.
   (setq org-journal-dir (expand-file-name "journal/" org-directory))
   ;; Org is deferred, but auto-insert runs on find-file-hook before org-mode.
   ;; Register the .org template here (after autoinsert clears the alist).
@@ -581,7 +592,11 @@
     "n r b" '(org-roam-buffer-toggle :which-key "backlinks")
     "n r c" '(org-roam-capture :which-key "capture")
     "n r d" '(org-roam-dailies-goto-today :which-key "today's daily")
-    "n r D" '(org-roam-dailies-find-date :which-key "find daily"))
+    "n r D" '(org-roam-dailies-find-date :which-key "find daily")
+    "n j"   '(:ignore t :which-key "journal")
+    "n j n" '(org-journal-new-entry :which-key "new journal entry")
+    "n j s" '(org-journal-search-forever :which-key "search all journal")
+    "n j r" '(org-journal-search :which-key "search ranged journal"))
   :config
   (setq org-confirm-babel-evaluate nil)
 
@@ -732,19 +747,6 @@
     "Remove org-attach's ATTACH tag from ox-hugo heading/front matter tags."
     (cl-remove "ATTACH" tag-list :test #'string=))
   (add-to-list 'org-hugo-tag-processing-functions #'my/org-hugo-drop-attach-tag))
-
-(use-package org-journal
-  :general
-  (my/leader-keys
-    "n j"   '(:ignore t :which-key "journal")
-    "n j n" '(org-journal-new-entry :which-key "new journal entry")
-    "n j s" '(org-journal-search-forever :which-key "search all journal")
-    "n j r" '(org-journal-search :which-key "search ranged journal"))
-  :straight t
-  :custom
-  (org-journal-encrypt-journal t)
-  (org-journal-file-format "%Y%m%d.org")
-  (org-journal-date-format "%A, %m/%d/%Y"))
 
 (use-package direnv
   :defer t
