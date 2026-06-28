@@ -602,13 +602,13 @@
 
   (defun my/org-load-extras ()
     "Load org-related extras on first visit to an Org buffer."
+    (remove-hook 'org-mode-hook #'my/org-load-extras)
     (require 'orgit nil t)
     (require 'ox-extra nil t)
     (require 'ox-hugo nil t)
     (require 'verb nil t)
     (org-babel-do-load-languages 'org-babel-load-languages '((verb . t))))
   (add-hook 'org-mode-hook #'my/org-load-extras)
-  (my/org-load-extras)
 
   (org-babel-do-load-languages
     'org-babel-load-languages
