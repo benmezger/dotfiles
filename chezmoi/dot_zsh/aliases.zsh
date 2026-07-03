@@ -173,7 +173,8 @@ boot-lenin-remote() {
   # Use tailscale
   _boot-lenin "gt-ax11000-pro-58e0" "seds@lenin"
 }
+
 boot-lenin-local()  {
   # from local network
-  _boot-Lenin "192.168.50.1" "seds@192.168.50.2"
+  _boot-lenin "192.168.50.1" "seds@192.168.50.2"
 }
