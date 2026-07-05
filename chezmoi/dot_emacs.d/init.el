@@ -441,7 +441,7 @@
          ("e" "encrypted" plain "%?"
            :if-new (file+head "%(format-time-string \"%Y-%m-%d--%H-%M-%SZ--${slug}.org.gpg\" (current-time) t)"
                      ,(with-temp-buffer
-			(insert-file-contents (concat roam-capture-dir "roam-default-private-head.capture"))
+			(insert-file-contents (concat roam-capture-dir "roam-default-encrypted-head.capture"))
 			(buffer-string)))
            :unnarrowed t))))
 
