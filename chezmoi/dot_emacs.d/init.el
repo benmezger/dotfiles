@@ -3,7 +3,13 @@
 (use-package straight
   :custom
   (straight-use-package-by-default t)
-  (straight-recipe-repositories '(org-elpa melpa gnu-elpa-mirror nongnu-elpa el-get emacsmirror-mirror)))
+  (straight-recipe-repositories
+    '(org-elpa
+       melpa
+       gnu-elpa-mirror
+       nongnu-elpa
+       el-get
+       emacsmirror-mirror)))
 
 (use-package vertico
   :straight t
