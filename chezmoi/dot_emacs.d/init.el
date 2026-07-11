@@ -837,6 +837,7 @@
   :hook
   ((emacs-startup . my/emacs-startup-message)
     (after-save . executable-make-buffer-file-executable-if-script-p)
+    (before-save . delete-trailing-whitespace)
     (after-init . my/enable-global-modes)
     (after-init . my/start-emacs-server)
     (find-file . my/disable-backup-for-gpg))
