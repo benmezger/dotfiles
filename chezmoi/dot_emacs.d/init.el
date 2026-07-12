@@ -429,7 +429,7 @@
   (org-roam-directory (expand-file-name "roam/" org-directory))
   (org-roam-file-exclude-regexp "journal/")
   (org-roam-node-display-template
-    (concat "${title:*} " (propertize "${tags:40}" 'face 'org-tag)))
+    (concat "${title:*} ${private:2}" (propertize "${tags:40}" 'face 'org-tag)))
   :config
 
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
@@ -500,7 +500,20 @@
     "Return t if the current Org buffer has #+PRIVATE: t."
     (save-excursion
       (goto-char (point-min))
-      (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t))))
+      (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t)))
+
+  (defun org-roam-node-private (node)
+    "Return a marker if NODE is private.
+     A node counts as private if its file is GPG-encrypted (checked via
+    the filename, never decrypted) or its buffer has #+PRIVATE: t."
+    (let ((file (org-roam-node-file node)))
+      (if (or (string-suffix-p ".gpg" file)
+            (with-temp-buffer
+              (insert-file-contents-literally file nil 0 2000)
+              (goto-char (point-min))
+              (re-search-forward "^#\\+PRIVATE:[ \t]*t\\([ \t]\\|$\\)" nil t)))
+        (propertize "P" 'face 'error)
+        " "))))
 
 (use-package org-journal
   :straight t
