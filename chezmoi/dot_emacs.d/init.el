@@ -428,6 +428,8 @@
   :custom
   (org-roam-directory (expand-file-name "roam/" org-directory))
   (org-roam-file-exclude-regexp "journal/")
+  (org-roam-node-display-template
+    (concat "${title:*} " (propertize "${tags:40}" 'face 'org-tag)))
   :config
 
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
