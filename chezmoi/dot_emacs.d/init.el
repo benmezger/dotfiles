@@ -427,7 +427,7 @@
   :hook (org-mode . org-roam-db-autosync-mode)
   :custom
   (org-roam-directory (expand-file-name "roam/" org-directory))
-  (org-roam-file-exclude-regexp "journal/\\|\.org\.gpg$")
+  (org-roam-file-exclude-regexp "journal/")
   :config
 
   (let ((roam-capture-dir (concat user-emacs-directory "org-captures/")))
