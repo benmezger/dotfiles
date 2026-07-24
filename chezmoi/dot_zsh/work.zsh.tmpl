@@ -2,7 +2,7 @@
 
 alias work="cd $WORKSPACE/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}"
 
-export KUBECONFIG=~/.kube/agbs/dev
+export KUBECONFIG=~/.kube/ah/config
 export GH_ENTERPRISE_TOKEN="{{ onepasswordRead (join "/" (list .onepassword.work_env "gh_token")) }}"
 
 # Artifactory
