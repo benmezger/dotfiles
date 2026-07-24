@@ -27,5 +27,17 @@
       "Bash(curl:*)",
       "Bash(wget:*)"
     ]
+  },
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"\\(.session_id) | \\(now | strftime(\"%Y-%m-%d %H:%M\"))\"' >> .claude-sessions.log"
+          }
+        ]
+      }
+    ]
   }
 }
