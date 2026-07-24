@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+setopt ERR_EXIT      # set -e
+setopt NO_UNSET      # set -u
+setopt PIPE_FAIL     # set -o pipefail
+
+
 if [[ ${OSTYPE} == darwin* ]]; then
     echo "Updating OSX packages"
     brew update && brew upgrade --no-ask && brew cleanup
