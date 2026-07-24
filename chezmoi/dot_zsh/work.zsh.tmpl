@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
-alias work="cd $WORKSPACE/{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}"
+_workdir="{{ onepasswordRead (join "/" (list .onepassword.work_env "work_dir")) }}"
 
-export KUBECONFIG=~/.kube/ah/config
+alias work="cd $WORKSPACE/${_workdir}"
+
+export KUBECONFIG="~/.kube/${_workdir}/config"
 export GH_ENTERPRISE_TOKEN="{{ onepasswordRead (join "/" (list .onepassword.work_env "gh_token")) }}"
 
 # Artifactory
@@ -11,3 +13,5 @@ export UV_INDEX_TECH_NL_SHARED_PYPI_PASSWORD="{{ onepasswordRead (join "/" (list
 
 export POETRY_HTTP_BASIC_TECH_NL_SHARED_PYPI_USERNAME="{{ onepasswordRead (join "/" (list .onepassword.work_env "artifactory_username")) }}"
 export POETRY_HTTP_BASIC_TECH_NL_SHARED_PYPI_PASSWORD="{{ onepasswordRead (join "/" (list .onepassword.work_env "artifactory_password")) }}"
+
+unset _workdir
