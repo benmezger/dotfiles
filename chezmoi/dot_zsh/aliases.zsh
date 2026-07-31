@@ -178,3 +178,5 @@ boot-lenin-local()  {
   # from local network
   _boot-lenin "192.168.50.1" "seds@192.168.50.2"
 }
+
+alias claude-work='CLAUDE_CONFIG_DIR=~/.claude-work claude --settings ~/.claude/work_settings.json'
