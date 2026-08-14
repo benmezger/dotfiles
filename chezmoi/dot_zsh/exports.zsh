@@ -15,7 +15,6 @@ fi
 ### Plugins
 
 # zsh prompt
-ZSH_GIT_PROMPT_SHOW_STASH=1
 source $HOME/.zsh/prompt.zsh
 
 ## Tmux autostart
