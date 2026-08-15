@@ -45,14 +45,24 @@
 - Never weaken or delete a failing test to make it pass — fix the code
   or tell me.
 - Don't test implementation details; test observable behavior.
-- - Never test private methods/functions (i.e. leading underscore);
+- Never test private methods/functions (i.e. leading underscore);
   test them through the public API.
+- Never write Args/Returns/Raises/Assumptions-style docstrings that
+  restate type hints or obvious behavior; strip them on sight, keeping
+  only comments that explain non-obvious why
 
 ### Python (when working with .py files)
 - Use type hints on function signatures.
 - Prefer pathlib over os.path, f-strings over format/%.
 - Use the project's existing tooling (check pyproject.toml first): its
   formatter, linter, and test runner — don't introduce new ones.
+- Run Python commands through the project's package manager, not
+  directly:
+  - If `uv.lock` exists: `uv run pytest`, `uv run python script.py`
+  - If `poetry.lock` exists: `poetry run pytest`, `poetry run python
+    script.py`
+- Never call bare `python`, `pytest`, `ruff`, etc. as they may resolve
+  outside the project venv.
 - Run ruff/pytest if configured before declaring done.
 - No new dependencies without asking.
 - No defensive checks for situations that can't occur (hasattr,
