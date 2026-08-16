@@ -50,9 +50,14 @@
 - Never write Args/Returns/Raises/Assumptions-style docstrings that
   restate type hints or obvious behavior; strip them on sight, keeping
   only comments that explain non-obvious why
+- Always ensure Single Responsability principle. Functions and methods
+  should do one thing and one thing only.
+- Use dependency injection when appropriate if that simplifies
+  testing and maintanability.
 
 ### Python (when working with .py files)
-- Use type hints on function signatures.
+- Always use type hints on function/method signatures, even when
+  writing tests.
 - Prefer pathlib over os.path, f-strings over format/%.
 - Use the project's existing tooling (check pyproject.toml first): its
   formatter, linter, and test runner — don't introduce new ones.
@@ -68,3 +73,10 @@
 - No defensive checks for situations that can't occur (hasattr,
   isinstance, None checks on typed params).
 - No backwards-compat shims or deprecated fallbacks unless asked.
+- When creating a new project, always use `uv` for dependency
+  management.
+- When creating a new project, always use `pyright` for type checking.
+- When creating a new project, always use `ruff` for code formatting
+- When creating a new project, always use `taskipy` to deal with
+  formatting, type checking commands.
+- When creating a new project, always use `pytest` for running tests.
