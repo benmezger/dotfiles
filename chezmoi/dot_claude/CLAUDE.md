@@ -80,3 +80,5 @@
 - When creating a new project, always use `taskipy` to deal with
   formatting, type checking commands.
 - When creating a new project, always use `pytest` for running tests.
+- Prefer `Pydantic` over `Dataclass` if `Pydantic` is installed as a
+  project dependency.
