@@ -8,6 +8,9 @@ setopt PIPE_FAIL     # set -o pipefail
 if [[ ${OSTYPE} == darwin* ]]; then
     echo "Updating OSX packages"
     brew update && brew upgrade --no-ask && brew cleanup
+
+    cp -r /opt/homebrew/opt/emacs-plus@31/Emacs.app /Applications/
+    cp -r "/opt/homebrew/opt/emacs-plus@31/Emacs Client.app" /Applications/
 elif [[ -f /etc/arch-release ]]; then
     echo "Updating Arch Linux packages"
     sudo pacman -Syyu --noconfirm
