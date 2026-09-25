@@ -212,5 +212,4 @@ poetry.toml
 pyrightconfig.json
 
 # Claude
-
-.claude/settings.local.json
+.claude/
