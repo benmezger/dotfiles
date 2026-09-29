@@ -213,3 +213,4 @@ pyrightconfig.json
 
 # Claude
 .claude/
+Claude outputs/
