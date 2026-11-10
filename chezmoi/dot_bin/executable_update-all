@@ -25,6 +25,7 @@ emacs --batch \
     --eval "(straight-freeze-versions)"
 
 find ~/.emacs.d -name "*.elc" -path "*/org/*" -delete
+rm -f ~/.emacs.d/straight/build/**/*(-@N)
 
 echo "Native-compiling Emacs packages"
 emacs --batch \
