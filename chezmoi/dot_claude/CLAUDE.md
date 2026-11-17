@@ -96,6 +96,8 @@
   compare once.
 - Never weaken or delete a failing test to make it pass — fix the code
   or tell me.
+- When test data needs people's names, use Berry, Muffin, Alice and
+  Natara where possible.
 
 ### Workflows and production safety
 - Anything that can write to production needs an explicit dry-run
